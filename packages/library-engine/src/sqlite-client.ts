@@ -1,16 +1,50 @@
 import initSqlJs, { Database, SqlJsStatic } from "sql.js";
 import * as fs from "node:fs";
+import * as path from "node:path";
 import { defaultLogger } from "@dtyp/utilities";
+
+export interface SqliteClientOptions {
+  dbFilePath?: string;
+  locateFile?: (file: string) => string;
+}
 
 export class SqliteClient {
   private db: Database | null = null;
   private SQL: SqlJsStatic | null = null;
   private logger = defaultLogger.child("SqliteClient");
 
-  public async initialize(dbFilePath?: string): Promise<void> {
+  public async initialize(dbFilePathOrOptions?: string | SqliteClientOptions): Promise<void> {
     if (this.db) return;
 
-    this.SQL = await initSqlJs();
+    let dbFilePath: string | undefined;
+    let locateFile: ((file: string) => string) | undefined;
+
+    if (typeof dbFilePathOrOptions === "string") {
+      dbFilePath = dbFilePathOrOptions;
+    } else if (dbFilePathOrOptions) {
+      dbFilePath = dbFilePathOrOptions.dbFilePath;
+      locateFile = dbFilePathOrOptions.locateFile;
+    }
+
+    if (!locateFile) {
+      locateFile = (file: string) => {
+        if (dbFilePath) {
+          const adjacentWasm = path.join(path.dirname(dbFilePath), file);
+          if (fs.existsSync(adjacentWasm)) return adjacentWasm;
+          const distWasm = path.join(path.dirname(path.dirname(dbFilePath)), "dist", file);
+          if (fs.existsSync(distWasm)) return distWasm;
+        }
+        const dirnameWasm = path.join(__dirname, file);
+        if (fs.existsSync(dirnameWasm)) return dirnameWasm;
+        try {
+          return require.resolve(`sql.js/dist/${file}`);
+        } catch {
+          return file;
+        }
+      };
+    }
+
+    this.SQL = await initSqlJs({ locateFile });
     if (dbFilePath && fs.existsSync(dbFilePath)) {
       const fileBuffer = fs.readFileSync(dbFilePath);
       this.db = new this.SQL.Database(fileBuffer);

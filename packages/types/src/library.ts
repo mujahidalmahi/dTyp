@@ -117,12 +117,12 @@ export interface Alias {
 }
 
 export interface ParsedCommand {
-  raw: string;
-  segments: string[];
+  raw?: string;
+  segments?: string[];
   category: string;
   component: string;
   arguments: string[];
-  isCategoryPath: boolean;
+  isCategoryPath?: boolean;
 }
 
 export interface LibraryEngine {

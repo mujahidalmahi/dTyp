@@ -32,15 +32,33 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
   logger.info("Activating dTyp VS Code Extension v2.0.0");
 
   const dbPath = path.join(context.extensionPath, "library", "dtyp.db");
+  const locateWasm = (file: string): string => {
+    // 1. First check dist/ directory (where extension.js runs from)
+    const distWasm = path.join(context.extensionPath, "dist", file);
+    if (fs.existsSync(distWasm)) return distWasm;
+    // 2. Check library/ directory (alongside dtyp.db)
+    const libWasm = path.join(context.extensionPath, "library", file);
+    if (fs.existsSync(libWasm)) return libWasm;
+    // 3. Check __dirname (local bundle directory)
+    const localWasm = path.join(__dirname, file);
+    if (fs.existsSync(localWasm)) return localWasm;
+    // 4. Fallback to node_modules if in development
+    try {
+      return require.resolve(`sql.js/dist/${file}`);
+    } catch {
+      return distWasm;
+    }
+  };
+
   sqlite = new SqliteClient();
 
   try {
     if (fs.existsSync(dbPath)) {
-      await sqlite.initialize(dbPath);
+      await sqlite.initialize({ dbFilePath: dbPath, locateFile: locateWasm });
       logger.info(`Loaded bundled database from ${dbPath}`);
     } else {
       logger.warn(`Database not found at ${dbPath}, initializing in-memory fallback`);
-      await sqlite.initialize();
+      await sqlite.initialize({ locateFile: locateWasm });
     }
   } catch (err: any) {
     vscode.window.showErrorMessage(`dTyp failed to load library database: ${err.message}`);
