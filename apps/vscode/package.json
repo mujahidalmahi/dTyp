@@ -44,7 +44,16 @@
     "onCommand:dtyp.browseLibrary",
     "onCommand:dtyp.insertSnippet",
     "onCommand:dtyp.showHistory",
-    "onCommand:dtyp.cancelTyping"
+    "onCommand:dtyp.cancelTyping",
+    "onView:dtyp.libraryView",
+    "onView:dtyp.favoritesView",
+    "onView:dtyp.historyView",
+    "onView:dtyp.quickActionsView",
+    "onCommand:dtyp.showReleaseNotes",
+    "onCommand:dtyp.checkForUpdates",
+    "onCommand:dtyp.healthCheck",
+    "onCommand:dtyp.toggleTypingMode",
+    "onCommand:dtyp.refreshViews"
   ],
   "contributes": {
     "commands": [
@@ -87,6 +96,51 @@
         "command": "dtyp.cancelTyping",
         "title": "dTyp: Cancel Typing / Clear Queue",
         "category": "dTyp"
+      },
+      {
+        "command": "dtyp.insertComponentById",
+        "title": "dTyp: Insert Component",
+        "category": "dTyp"
+      },
+      {
+        "command": "dtyp.toggleFavorite",
+        "title": "dTyp: Star / Unstar Component",
+        "category": "dTyp",
+        "icon": "$(star)"
+      },
+      {
+        "command": "dtyp.copyComponentCode",
+        "title": "dTyp: Copy Code to Clipboard",
+        "category": "dTyp",
+        "icon": "$(copy)"
+      },
+      {
+        "command": "dtyp.toggleTypingMode",
+        "title": "dTyp: Toggle Typing Mode (Auto / Manual Ctrl+D)",
+        "category": "dTyp"
+      },
+      {
+        "command": "dtyp.showReleaseNotes",
+        "title": "dTyp: What's New (Release Notes)",
+        "category": "dTyp",
+        "icon": "$(megaphone)"
+      },
+      {
+        "command": "dtyp.checkForUpdates",
+        "title": "dTyp: Check for Updates...",
+        "category": "dTyp"
+      },
+      {
+        "command": "dtyp.healthCheck",
+        "title": "dTyp: Diagnostics & System Health Check",
+        "category": "dTyp",
+        "icon": "$(pulse)"
+      },
+      {
+        "command": "dtyp.refreshViews",
+        "title": "dTyp: Refresh Views",
+        "category": "dTyp",
+        "icon": "$(refresh)"
       }
     ],
     "keybindings": [
@@ -110,7 +164,10 @@
       "properties": {
         "dtyp.typingMode": {
           "type": "string",
-          "enum": ["automatic", "manual"],
+          "enum": [
+            "automatic",
+            "manual"
+          ],
           "default": "automatic",
           "description": "Typing mode: 'automatic' types characters sequentially with realistic delay. 'manual' queues code and outputs character-by-character per Ctrl+D press."
         },
@@ -137,9 +194,128 @@
           "type": "boolean",
           "default": true,
           "description": "Automatically insert missing standard headers (like <stdlib.h>, <stdbool.h>) needed by the component."
+        },
+        "dtyp.showReleaseNotesOnUpdate": {
+          "type": "boolean",
+          "default": true,
+          "description": "Automatically show the release notes webview after installing or updating to a new version."
+        },
+        "dtyp.checkForUpdates": {
+          "type": "boolean",
+          "default": true,
+          "description": "Periodically check GitHub releases for extension updates."
         }
       }
-    }
+    },
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "dtyp-explorer",
+          "title": "dTyp",
+          "icon": "images/dtyp-activitybar.svg"
+        }
+      ]
+    },
+    "views": {
+      "dtyp-explorer": [
+        {
+          "id": "dtyp.libraryView",
+          "name": "Offline C Library (24,478)"
+        },
+        {
+          "id": "dtyp.favoritesView",
+          "name": "Favorites & Pinned"
+        },
+        {
+          "id": "dtyp.historyView",
+          "name": "Recent Insertions"
+        },
+        {
+          "id": "dtyp.quickActionsView",
+          "name": "Quick Controls"
+        }
+      ]
+    },
+    "menus": {
+      "view/title": [
+        {
+          "command": "dtyp.refreshViews",
+          "when": "view == dtyp.libraryView || view == dtyp.favoritesView || view == dtyp.historyView || view == dtyp.quickActionsView",
+          "group": "navigation"
+        }
+      ],
+      "view/item/context": [
+        {
+          "command": "dtyp.insertComponentById",
+          "when": "view == dtyp.libraryView && viewItem == component",
+          "group": "inline@1"
+        },
+        {
+          "command": "dtyp.toggleFavorite",
+          "when": "view == dtyp.libraryView && viewItem == component",
+          "group": "inline@2"
+        },
+        {
+          "command": "dtyp.copyComponentCode",
+          "when": "view == dtyp.libraryView && viewItem == component",
+          "group": "inline@3"
+        }
+      ]
+    },
+    "walkthroughs": [
+      {
+        "id": "dtyp.gettingStarted",
+        "title": "Getting Started with dTyp",
+        "description": "Master the 24,478-component offline C library and stealth typing engine.",
+        "featuredImage": "images/icon.png",
+        "steps": [
+          {
+            "id": "welcome",
+            "title": "Discover 24,478 C Components",
+            "description": "Explore the completely offline C library across 12 domains.\\n[Browse Offline Library](command:dtyp.browseLibrary)",
+            "media": {
+              "markdown": "walkthroughs/welcome.md"
+            },
+            "completionEvents": [
+              "onCommand:dtyp.browseLibrary"
+            ]
+          },
+          {
+            "id": "typingModes",
+            "title": "Dual Typing Modes (Ctrl+D Stealth)",
+            "description": "Simulate natural typing or queue code and step per Ctrl+D.\\n[Toggle Typing Mode](command:dtyp.toggleTypingMode)",
+            "media": {
+              "markdown": "walkthroughs/typing-modes.md"
+            },
+            "completionEvents": [
+              "onCommand:dtyp.toggleTypingMode"
+            ]
+          },
+          {
+            "id": "snippets",
+            "title": "Interactive Snippets & Tab Stops",
+            "description": "Use dtyp.* prefixes for quick function and struct templates.\\n[Insert Snippet](command:dtyp.insertSnippet)",
+            "media": {
+              "markdown": "walkthroughs/snippets.md"
+            },
+            "completionEvents": [
+              "onCommand:dtyp.insertSnippet"
+            ]
+          },
+          {
+            "id": "safeGuards",
+            "title": "Smart Header & Duplicate Guards",
+            "description": "Automatic header injection and duplicate definition detection.\\n[Run Health Check](command:dtyp.healthCheck)",
+            "media": {
+              "markdown": "walkthroughs/safe-guards.md"
+            },
+            "completionEvents": [
+              "onCommand:dtyp.healthCheck"
+            ]
+          }
+        ]
+      }
+    ]
   },
   "scripts": {
     "build": "tsc",

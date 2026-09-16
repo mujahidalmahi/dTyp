@@ -1,6 +1,6 @@
 {
   "name": "dtyp-monorepo",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "private": true,
   "description": "dTyp - Don't Tell Your Professor (Offline Academic C Library & VS Code Extension)",
   "workspaces": [
@@ -21,7 +21,10 @@
     "validate:library": "tsx scripts/validation/validate-library.ts",
     "build:db": "tsx scripts/database/build-db.ts",
     "vscode:bundle": "npm --workspace=dtyp-vscode run bundle",
-    "vscode:package": "npm --workspace=dtyp-vscode run package"
+    "vscode:package": "npm --workspace=dtyp-vscode run package",
+    "bump:patch": "tsx scripts/version/bump.ts patch",
+    "bump:minor": "tsx scripts/version/bump.ts minor",
+    "bump:major": "tsx scripts/version/bump.ts major"
   },
   "devDependencies": {
     "@types/node": "^22.10.2",
