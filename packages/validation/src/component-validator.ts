@@ -1,5 +1,9 @@
 import { Component, Snippet, Template } from "@dtyp/types";
-import { ValidationResult } from "./session-validator.js";
+
+export interface ValidationResult {
+  valid: boolean;
+  errors: string[];
+}
 
 export const validateComponent = (component: unknown): ValidationResult => {
   const errors: string[] = [];

@@ -1,6 +1,6 @@
 # dTyp — Don't Tell Your Professor
 
-Production-grade Windows desktop application and VS Code extension ecosystem featuring a shared character-by-character typing engine, an offline SQLite academic C programming library (1,000+ components), and background session automation with global `Ctrl+D` coordination.
+Production-grade VS Code extension and offline academic C programming library featuring **51,100+ components** across 297 categories, topological dependency resolution, smart duplicate detection, and automated character-by-character editor typing (never bulk clipboard paste).
 
 ---
 
@@ -9,30 +9,27 @@ Production-grade Windows desktop application and VS Code extension ecosystem fea
 ```
                                   dTyp
                                     │
-             ┌──────────────────────┴──────────────────────┐
-             │                                             │
-      Electron Desktop                              VS Code Extension
-             │                                             │
-       ┌─────┴──────┐                                ┌─────┴──────┐
-       │            │                                │            │
-   Sessions     Windows                           Parser      Library
-       │         Layer                               │          Engine
-       │            │                                │            │
-       │       Hotkey/Input                          │         SQLite
-       │            │                                │            │
-       └──────┬─────┘                                └─────┬──────┘
-              │                                            │
-              └─────────────────────┬──────────────────────┘
+                            VS Code Extension
+                       (dtyp-vscode-1.0.0.vsix)
                                     │
-                               Shared Core
+            ┌───────────────────────┴───────────────────────┐
+            │                                               │
+      Command Parser &                             Library Engine
+    Completion Provider                           (WebAssembly sql.js)
+            │                                               │
+            │                                     SQLite Database (dtyp.db)
+            │                                     51,102 Offline C Components
+            │                                               │
+            └───────────────────────┬───────────────────────┘
                                     │
-                          ┌─────────┴─────────┐
-                          │                   │
-                     Typing Engine        Shared Types
-                          │
-                   Character Scheduler
-                          │
-               Keyboard/Editor Target Adapter
+                          Typing Engine Core
+                                    │
+                         ┌──────────┴──────────┐
+                         │                     │
+                Character Queue         Scheduler & Jitter
+                         │
+                VS Code Editor Target
+            (Character-by-character typing)
 ```
 
 ---
@@ -42,96 +39,118 @@ Production-grade Windows desktop application and VS Code extension ecosystem fea
 ```
 dTyp/
 ├── apps/
-│   ├── desktop/                 # Windows Electron + React application
-│   │   ├── electron/            # Main process, preload, IPC router, tray, Windows targets
-│   │   ├── renderer/            # React + Vite desktop UI
-│   │   └── windows/             # Win32 automation bridge (dtyp-bridge.exe)
-│   │
 │   └── vscode/                  # Offline VS Code extension
 │       ├── src/                 # Extension entry, command parser, completions, typing target
-│       └── library/             # Bundled SQLite database (dtyp.db)
+│       ├── images/              # Custom high-resolution icon (256x256)
+│       ├── library/             # Bundled SQLite database (dtyp.db, 178.7 MB)
+│       └── dtyp-vscode-1.0.0.vsix # Production extension package (20.23 MB)
 │
 ├── packages/
-│   ├── types/                   # Shared TypeScript interfaces (Session, Typing, Library, IPC)
+│   ├── types/                   # Domain interfaces (Component, Category, TypingOptions, LogEntry)
 │   ├── utilities/               # Logger, EventEmitter, Time, File helpers
-│   ├── validation/              # Schemas and validators for components and sessions
-│   ├── storage/                 # Local persistence service (%APPDATA%/dTyp/)
-│   ├── typing-engine/           # Queue, Scheduler, KeyboardMapper, DefaultTypingEngine
-│   ├── session-engine/          # SessionManager, TargetRecovery, StateMachine
-│   ├── library-engine/          # SQLite client (sql.js), DependencyResolver (DAG), DuplicateDetector
-│   └── core/                    # Unified orchestrator
+│   ├── validation/              # C component schema & syntax balance validators
+│   ├── typing-engine/           # CharacterQueue, Scheduler, EditorTypingTarget
+│   └── library-engine/          # SQLite client (sql.js), DependencyResolver (DAG), DuplicateDetector
 │
 ├── database/
-│   ├── schema/schema.sql        # Database schema with performance indexes
-│   └── dtyp.db                  # Pre-compiled, indexed SQLite database (1,090 components)
+│   ├── schema/schema.sql        # Database schema with FTS & performance indexes
+│   └── dtyp.db                  # Pre-compiled, indexed SQLite database (51,102 components)
 │
-├── library-source/              # Maintainable JSON sources for all 24 categories
+├── library-source/              # Component source JSONs partitioned by domain (< 33 MB each)
+│   └── components/              # 11 domain partitions (data-structures, algorithms, numerical, etc.)
+│
+├── taxonomy/                    # 297 hierarchical categories and metadata
 │
 ├── scripts/
-│   ├── database/build-db.ts     # Compiles dtyp.db from validated library sources
-│   ├── library/generate-...     # Generates 1,000+ academic C components
-│   ├── validation/validate-...  # Validates syntax, schemas, and dependency graphs
-│   └── build/compile-bridge.ps1 # Compiles Windows C# automation bridge via csc.exe
+│   ├── library/generators/      # Component generators for all 11 computer science domains
+│   ├── database/build-db.ts     # Compiles dtyp.db from partitioned sources (8.2s build time)
+│   └── validation/validate-...  # Validates all 51,100+ components, braces, and DAG dependencies
 │
 └── tests/
-    ├── unit/                    # Unit tests for core packages
-    └── integration/             # Integration tests for Desktop & VS Code flows
+    ├── unit/                    # Unit tests for parser, resolver, detector, and typing scheduler
+    └── integration/             # End-to-end VS Code insertion & duplicate detection test flow
 ```
 
 ---
 
 ## Key Invariants
 
-1. **Character-by-Character Typing**: All typing is performed character-by-character through the queue scheduler with realistic configurable delays. Bulk paste is strictly avoided.
-2. **Hotkey Safety**: `Ctrl+D` is registered **only** while a session is active. Terminating the session, deactivating, or closing dTyp immediately unregisters `Ctrl+D`.
-3. **Offline Operation**: The C library runs 100% offline from the bundled `dtyp.db` database. No external servers or LLM APIs required.
-4. **Explicit Dependencies**: Functions with prerequisites (e.g. `quickSort` -> `partition` -> `swap`) are automatically topologically resolved and inserted in correct order.
-5. **Duplicate Detection**: The extension inspects open files to prevent duplicate struct and function declarations from being inserted.
+1. **Character-by-Character Typing**: All typing into the active VS Code editor is performed character-by-character with realistic configurable delay (`dtyp.typingDelayMs`) and human jitter. Clipboard pasting is strictly avoided.
+2. **100% Offline Operation**: Zero external API calls, cloud queries, or LLM requirements. Runs from bundled WebAssembly SQLite database.
+3. **Explicit Topological Dependencies**: Functions with prerequisites (e.g. `quickSort` -> `partition` -> `swap`) are topologically resolved and inserted in correct chronological order.
+4. **Smart Duplicate Detection**: Scans open editor buffers to automatically omit duplicate struct or function definitions.
+5. **Discrete Data Structure Variants**: Singly, Doubly, Circular Singly, and Circular Doubly Linked Lists, Trees, Stacks, Queues, Graphs each have separate, distinct components.
+6. **Algorithmic Parameter Flexibility**: Numerical methods (Newton-Raphson, Bisection, etc.) support single-param function callbacks with automatic numerical derivatives, as well as explicit tolerance and iteration bounds.
 
 ---
 
 ## Command Syntax (VS Code Extension)
 
-Type `category>component()` into your editor:
+Type `category>component()` or fluent path drilling into your editor:
 
 ```c
-linkedList>createNode()
-linkedList>insertAtBeginning()
-sorting>quickSort()
+// Linked Lists
+ds>ll>singly>createNode()
+ds>ll>singly>insertHead()
+ds>ll>doubly>deleteTail()
+ds>ll>circular>detectCycle()
+
+// Searching & Sorting
+algo>sort>quickSort()
+algo>search>binarySearch()
+
+// Numerical Methods
+num>root>newton()
+num>integral>simpson13()
+num>ode>rk4()
 stack>push()
 queue>dequeue()
 bst>insert()
 graph>dijkstra()
 dp>knapsack01()
-numerical>bisectionMethod()
 ```
 
 Typing `>` after any category triggers rich autocomplete with signatures, time/space complexity, and documentation.
 
 ---
 
-## Desktop Application Features
+## VS Code Extension Features & Commands
 
-- **Dashboard**: Live active session status, speed slider, and quick termination button.
-- **Sessions**: Create, save, activate, renew, and delete multi-mapping sessions.
-- **Targets**: Live detection and enumeration of top-level Windows application windows (Notepad, Word, VS Code, browsers, terminals).
-- **System Tray**: Runs unobtrusively in the background with quick access to session controls.
-- **Logging**: Structured, real-time log viewer.
+- **Character-by-Character Typing**: Inserts code into the active editor character-by-character with realistic typing speed and human variance.
+- **Smart Prerequisite Injection**: Automatically resolves and inserts dependent data types, structs, and helper functions ahead of the requested function.
+- **Duplicate Prevention**: Scans open editor buffers to prevent re-declaring existing structs, typedefs, or function headers.
+- **Deep Category Drilling**: Autocompletion supports fluent drill-down across 297 categories (e.g., `ds>ll>singly>`, `algo>sort>`, `num>root>`).
+- **Interactive QuickPick Library Browser**: Search all 51,100+ components with live markdown preview.
+
+### Extension Commands
+
+| Command | Identifier | Description |
+| :--- | :--- | :--- |
+| **dTyp: Insert Component** | `dtyp.insertComponent` | Prompts for a component ID and types it character-by-character. |
+| **dTyp: Browse Library** | `dtyp.browseLibrary` | Search and preview all 51,100+ offline C components. |
+| **dTyp: Cancel Typing** | `dtyp.cancelTyping` | Immediately aborts any ongoing typing sequence. |
+
+### Extension Settings
+
+| Setting | Default | Description |
+| :--- | :--- | :--- |
+| `dtyp.typingDelayMs` | `15` | Typing delay in milliseconds per character (lower = faster). |
+| `dtyp.checkDuplicates` | `true` | Prevent duplicate struct or function definitions from being inserted. |
 
 ---
 
-## Quick Start & Build Instructions
+## Quick Start & Development Instructions
 
 ### Prerequisites
-- Node.js v18+ (tested on Node v22/24)
-- Windows x64
+- Node.js v18+ (tested on Node v22/v24)
+- VS Code 1.80+
 
 ### 1. Install Dependencies
 ```powershell
 npm install
 ```
 
-### 2. Build Core Packages
+### 2. Build Monorepo Packages
 ```powershell
 npm run build
 ```
@@ -141,37 +160,27 @@ npm run build
 npm test
 ```
 
-### 4. Build Database & Win32 Bridge
+### 4. Generate & Validate Offline Library
 ```powershell
 npm run generate:library
 npm run validate:library
 npm run build:db
-npm run build:bridge
 ```
 
-### 5. Launch Desktop App in Development Mode
+### 5. Package VS Code Extension (.vsix)
 ```powershell
-npm run desktop:dev
+npm run vscode:package
 ```
+Generates `apps/vscode/dtyp-vscode-1.0.0.vsix` (20.23 MB, containing the full 178.7 MB offline SQLite database).
 
----
-
-## Packaging
-
-- **Desktop Installer**:
-  ```powershell
-  npm --workspace=@dtyp/desktop run package
-  ```
-  Generates `release/dTyp-Setup-1.0.0-x64.exe`.
-
-- **VS Code Extension VSIX**:
-  ```powershell
-  npx @vscode/vsce package --no-dependencies
-  ```
-  Generates `dtyp-vscode-1.0.0.vsix`.
+### 6. Install Extension Locally
+```powershell
+code --install-extension apps/vscode/dtyp-vscode-1.0.0.vsix
+```
 
 ---
 
 ## License
 
-MIT License. Designed and engineered for high-reliability Windows automation and offline academic C programming.
+MIT © [Mujahid Al Mahi](https://github.com/mujahidalmahi)
+
