@@ -2,8 +2,6 @@
   <img src="images/icon.png" width="128" height="128" alt="dTyp Logo" />
 </p>
 
-<h1 align="center">dTyp_</h1>
-
 <p align="center">
   <b>Don't Tell Your Professor — Production-Grade Academic C/C++ Engineering Ecosystem & Stealth Typing Assistant for VS Code</b>
 </p>
