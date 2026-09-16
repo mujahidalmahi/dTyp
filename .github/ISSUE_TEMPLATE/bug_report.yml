@@ -1,0 +1,42 @@
+name: Bug Report
+description: Report an issue or unexpected behavior in dTyp
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report an issue! Please provide as much detail as possible.
+  - type: textarea
+    id: description
+    attributes:
+      label: Bug Description
+      description: A clear and concise description of what went wrong.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to Reproduce
+      description: Step by step instructions to reproduce the behavior.
+      placeholder: |
+        1. Open a C file
+        2. Run command 'dTyp: Browse Offline Library...'
+        3. Select 'linked-list' -> 'createNode'
+        4. See error...
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Environment
+      description: OS and VS Code version (Tip: run 'dTyp: Diagnostics & System Health Check' in VS Code to auto-generate this).
+      placeholder: "Windows 11 / VS Code 1.85.0 / dTyp v2.0.0"
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Diagnostics Output / Logs
+      description: Paste any error messages from the VS Code Developer Tools or Output panel.
+      render: shell

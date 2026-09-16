@@ -1,0 +1,38 @@
+name: Component Request
+description: Request a new C algorithm, data structure, or template for the offline library
+title: "[Component Request]: "
+labels: ["component", "library"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Request new data structures, algorithms, numerical solvers, or academic boilerplate for the 24,000+ C library.
+  - type: input
+    id: component_name
+    attributes:
+      label: Component Name
+      description: The name of the algorithm or data structure (e.g. 'Hopcroft-Karp Bipartite Matching').
+      placeholder: "e.g. SuffixAutomaton"
+    validations:
+      required: true
+  - type: dropdown
+    id: category
+    attributes:
+      label: Domain Category
+      options:
+        - "Boiler Plate"
+        - "Data Structures"
+        - "Algorithms (Sorting/Searching)"
+        - "Graph Theory"
+        - "Dynamic Programming"
+        - "Numerical Methods"
+        - "Competitive Programming"
+        - "Programming Patterns"
+        - "Utilities & Projects"
+    validations:
+      required: true
+  - type: textarea
+    id: details
+    attributes:
+      label: Specifications & Variations
+      description: Describe preferred function signatures, return codes vs pointer semantics, or time/space complexity goals.
