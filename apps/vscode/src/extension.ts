@@ -43,7 +43,7 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
   // Status Bar Item
   const statusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Right, 100);
   statusBarItem.text = "$(keyboard) dTyp: Ready";
-  statusBarItem.tooltip = "dTyp Academic C Library (1,000+ components)";
+  statusBarItem.tooltip = "dTyp Offline C Library (50,000+ components)";
   statusBarItem.command = "dtyp.browseLibrary";
   statusBarItem.show();
   context.subscriptions.push(statusBarItem);
@@ -170,7 +170,7 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
     } as any));
 
     const selected = await vscode.window.showQuickPick(items, {
-      placeHolder: "Search 1,000+ academic C components...",
+      placeHolder: "Search 50,000+ offline C components...",
       matchOnDescription: true,
       matchOnDetail: true,
     });

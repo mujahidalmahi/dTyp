@@ -1,4 +1,5 @@
 import * as path from "node:path";
+import * as fs from "node:fs";
 import { Component, Snippet, Template } from "@dtyp/types";
 import { safeReadJsonFile, defaultLogger } from "@dtyp/utilities";
 import { validateComponent, validateSnippet, validateTemplate } from "@dtyp/validation";
@@ -10,10 +11,21 @@ export const validateLibrary = async (): Promise<boolean> => {
   logger.info("Starting dTyp Library Validation Pipeline...");
 
   const baseSourceDir = path.resolve(process.cwd(), "library-source");
-  const allComponents = safeReadJsonFile<Component[]>(
-    path.join(baseSourceDir, "all-components.json"),
-    []
-  );
+  let allComponents: Component[] = [];
+  const componentsDir = path.join(baseSourceDir, "components");
+  if (fs.existsSync(componentsDir)) {
+    const files = fs.readdirSync(componentsDir).filter((f) => f.endsWith(".json"));
+    for (const file of files) {
+      const list = safeReadJsonFile<Component[]>(path.join(componentsDir, file), []);
+      allComponents.push(...list);
+    }
+  }
+  if (allComponents.length === 0) {
+    allComponents = safeReadJsonFile<Component[]>(
+      path.join(baseSourceDir, "all-components.json"),
+      []
+    );
+  }
   const snippets = safeReadJsonFile<Snippet[]>(
     path.join(baseSourceDir, "snippets", "snippets.json"),
     []
@@ -25,8 +37,8 @@ export const validateLibrary = async (): Promise<boolean> => {
 
   logger.info(`Loaded ${allComponents.length} components, ${snippets.length} snippets, ${templates.length} templates`);
 
-  if (allComponents.length < 1000) {
-    logger.error(`Validation failed: Component count (${allComponents.length}) is below the 1,000 threshold requirement!`);
+  if (allComponents.length < 50000) {
+    logger.error(`Validation failed: Component count (${allComponents.length}) is below the 50,000 threshold requirement!`);
     return false;
   }
 
@@ -98,12 +110,12 @@ export const validateLibrary = async (): Promise<boolean> => {
     return false;
   }
 
-  logger.info("All 1,000+ components, snippets, and templates passed validation successfully!");
+  logger.info("All 50,000+ components, snippets, and templates passed validation successfully!");
   return true;
 };
 
 // Execute if run directly
-if (import.meta.url === `file:///${process.argv[1].replace(/\\/g, "/")}`) {
+if (process.argv[1] && process.argv[1].includes("validate-library")) {
   validateLibrary()
     .then((success) => {
       process.exit(success ? 0 : 1);

@@ -4,20 +4,34 @@ const CATEGORY_ALIASES: Record<string, string> = {
   linkedlist: "linked-list",
   linked_list: "linked-list",
   ll: "linked-list",
+  sorting: "sorting",
+  sort: "sorting",
+  searching: "searching",
+  search: "searching",
   dp: "dynamic-programming",
   dynamicprogramming: "dynamic-programming",
   num: "numerical-methods",
   numerical: "numerical-methods",
-  math: "fundamentals",
-  fundamental: "fundamentals",
-  sort: "sorting",
-  search: "searching",
-  backtrack: "recursion-backtracking",
-  backtracking: "recursion-backtracking",
+  ds: "data-structures",
+  datastructures: "data-structures",
+  stack: "stack",
+  stacks: "stack",
+  queue: "queue",
+  queues: "queue",
   tree: "tree",
   trees: "tree",
   graph: "graph",
   graphs: "graph",
+  cp: "competitive-programming",
+  patterns: "programming-patterns",
+  academic: "academic-programming",
+  projects: "projects",
+  utilities: "utilities",
+  basics: "c-basics",
+  intermediate: "c-intermediate",
+  advanced: "c-advanced",
+  fundamentals: "fundamentals",
+  math: "fundamentals",
 };
 
 export class CommandParser {
@@ -30,7 +44,7 @@ export class CommandParser {
   }
 
   /**
-   * Parses command syntax: `category>component(arg1, arg2)`
+   * Parses command syntax: `category>component(arg1, arg2)` or `cat>subcat>func()`
    */
   public static parse(input: string): ParsedCommand | null {
     const trimmed = input.trim();
@@ -38,23 +52,24 @@ export class CommandParser {
       return null;
     }
 
-    const parts = trimmed.split(">");
-    if (parts.length < 2) return null;
+    const segments = trimmed.split(">");
+    if (segments.length < 2) return null;
 
-    const rawCategory = parts[0].trim();
-    const rest = parts.slice(1).join(">").trim();
+    const lastPart = segments[segments.length - 1].trim();
+    const categoryParts = segments.slice(0, segments.length - 1).map((s) => s.trim()).filter(Boolean);
 
-    if (!rawCategory || !rest) return null;
+    if (categoryParts.length === 0 || !lastPart) return null;
 
-    const parenOpen = rest.indexOf("(");
-    let component = rest;
+    const rawCategory = categoryParts.length === 1 ? categoryParts[0] : categoryParts.join("/");
+    const parenOpen = lastPart.indexOf("(");
+    let component = lastPart;
     const args: string[] = [];
 
     if (parenOpen !== -1) {
-      component = rest.substring(0, parenOpen).trim();
-      const parenClose = rest.lastIndexOf(")");
+      component = lastPart.substring(0, parenOpen).trim();
+      const parenClose = lastPart.lastIndexOf(")");
       if (parenClose !== -1 && parenClose > parenOpen) {
-        const argString = rest.substring(parenOpen + 1, parenClose).trim();
+        const argString = lastPart.substring(parenOpen + 1, parenClose).trim();
         if (argString) {
           argString.split(",").forEach((a) => {
             const clean = a.trim();

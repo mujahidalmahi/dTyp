@@ -1,0 +1,101 @@
+[
+  {
+    "id": "programming-patterns",
+    "parentId": null,
+    "name": "Programming Patterns",
+    "slug": "programming-patterns",
+    "path": "programming-patterns",
+    "depth": 0,
+    "type": "primary",
+    "description": "Programming Patterns hierarchy node",
+    "sortOrder": 0
+  },
+  {
+    "id": "programming-patterns.two-pointers",
+    "parentId": "programming-patterns",
+    "name": "Two Pointers",
+    "slug": "two-pointers",
+    "path": "programming-patterns/two-pointers",
+    "depth": 1,
+    "type": "family",
+    "description": "Two Pointers hierarchy node",
+    "sortOrder": 0
+  },
+  {
+    "id": "programming-patterns.sliding-window",
+    "parentId": "programming-patterns",
+    "name": "Sliding Window",
+    "slug": "sliding-window",
+    "path": "programming-patterns/sliding-window",
+    "depth": 1,
+    "type": "family",
+    "description": "Sliding Window hierarchy node",
+    "sortOrder": 1
+  },
+  {
+    "id": "programming-patterns.fast-slow",
+    "parentId": "programming-patterns",
+    "name": "Fast Slow Pointers",
+    "slug": "fast-slow",
+    "path": "programming-patterns/fast-slow",
+    "depth": 1,
+    "type": "family",
+    "description": "Fast Slow Pointers hierarchy node",
+    "sortOrder": 2
+  },
+  {
+    "id": "programming-patterns.prefix-sum",
+    "parentId": "programming-patterns",
+    "name": "Prefix Sum",
+    "slug": "prefix-sum",
+    "path": "programming-patterns/prefix-sum",
+    "depth": 1,
+    "type": "family",
+    "description": "Prefix Sum hierarchy node",
+    "sortOrder": 3
+  },
+  {
+    "id": "programming-patterns.difference-array",
+    "parentId": "programming-patterns",
+    "name": "Difference Array",
+    "slug": "difference-array",
+    "path": "programming-patterns/difference-array",
+    "depth": 1,
+    "type": "family",
+    "description": "Difference Array hierarchy node",
+    "sortOrder": 4
+  },
+  {
+    "id": "programming-patterns.monotonic",
+    "parentId": "programming-patterns",
+    "name": "Monotonic Queue Stack",
+    "slug": "monotonic",
+    "path": "programming-patterns/monotonic",
+    "depth": 1,
+    "type": "family",
+    "description": "Monotonic Queue Stack hierarchy node",
+    "sortOrder": 5
+  },
+  {
+    "id": "programming-patterns.coordinate-compression",
+    "parentId": "programming-patterns",
+    "name": "Coordinate Compression",
+    "slug": "coordinate-compression",
+    "path": "programming-patterns/coordinate-compression",
+    "depth": 1,
+    "type": "family",
+    "description": "Coordinate Compression hierarchy node",
+    "sortOrder": 6
+  },
+  {
+    "id": "programming-patterns.state-machine",
+    "parentId": "programming-patterns",
+    "name": "State Machine",
+    "slug": "state-machine",
+    "path": "programming-patterns/state-machine",
+    "depth": 1,
+    "type": "family",
+    "description": "State Machine hierarchy node",
+    "sortOrder": 7
+  }
+]

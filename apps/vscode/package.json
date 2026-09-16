@@ -77,7 +77,7 @@
   "scripts": {
     "build": "tsc",
     "bundle": "esbuild src/extension.ts --bundle --platform=node --target=node18 --external:vscode --outfile=dist/extension.js --minify",
-    "package": "npm run bundle && vsce package --no-dependencies"
+    "package": "npm run bundle && npx @vscode/vsce package --no-dependencies"
   },
   "dependencies": {
     "@dtyp/library-engine": "*",

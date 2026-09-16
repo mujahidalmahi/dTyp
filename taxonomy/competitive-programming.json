@@ -1,0 +1,112 @@
+[
+  {
+    "id": "competitive-programming",
+    "parentId": null,
+    "name": "Competitive Programming",
+    "slug": "competitive-programming",
+    "path": "competitive-programming",
+    "depth": 0,
+    "type": "primary",
+    "description": "Competitive Programming hierarchy node",
+    "sortOrder": 0
+  },
+  {
+    "id": "competitive-programming.fast-io",
+    "parentId": "competitive-programming",
+    "name": "Fast IO",
+    "slug": "fast-io",
+    "path": "competitive-programming/fast-io",
+    "depth": 1,
+    "type": "family",
+    "description": "Fast IO hierarchy node",
+    "sortOrder": 0
+  },
+  {
+    "id": "competitive-programming.modular-arithmetic",
+    "parentId": "competitive-programming",
+    "name": "Modular Arithmetic",
+    "slug": "modular-arithmetic",
+    "path": "competitive-programming/modular-arithmetic",
+    "depth": 1,
+    "type": "family",
+    "description": "Modular Arithmetic hierarchy node",
+    "sortOrder": 1
+  },
+  {
+    "id": "competitive-programming.number-theory",
+    "parentId": "competitive-programming",
+    "name": "Number Theory",
+    "slug": "number-theory",
+    "path": "competitive-programming/number-theory",
+    "depth": 1,
+    "type": "family",
+    "description": "Number Theory hierarchy node",
+    "sortOrder": 2
+  },
+  {
+    "id": "competitive-programming.primes-sieve",
+    "parentId": "competitive-programming",
+    "name": "Primes & Sieve",
+    "slug": "primes-sieve",
+    "path": "competitive-programming/primes-sieve",
+    "depth": 1,
+    "type": "family",
+    "description": "Primes & Sieve hierarchy node",
+    "sortOrder": 3
+  },
+  {
+    "id": "competitive-programming.combinatorics",
+    "parentId": "competitive-programming",
+    "name": "Combinatorics",
+    "slug": "combinatorics",
+    "path": "competitive-programming/combinatorics",
+    "depth": 1,
+    "type": "family",
+    "description": "Combinatorics hierarchy node",
+    "sortOrder": 4
+  },
+  {
+    "id": "competitive-programming.segment-tree-template",
+    "parentId": "competitive-programming",
+    "name": "Segment Tree Template",
+    "slug": "segment-tree-template",
+    "path": "competitive-programming/segment-tree-template",
+    "depth": 1,
+    "type": "family",
+    "description": "Segment Tree Template hierarchy node",
+    "sortOrder": 5
+  },
+  {
+    "id": "competitive-programming.fenwick-template",
+    "parentId": "competitive-programming",
+    "name": "Fenwick Tree Template",
+    "slug": "fenwick-template",
+    "path": "competitive-programming/fenwick-template",
+    "depth": 1,
+    "type": "family",
+    "description": "Fenwick Tree Template hierarchy node",
+    "sortOrder": 6
+  },
+  {
+    "id": "competitive-programming.dsu-template",
+    "parentId": "competitive-programming",
+    "name": "DSU Template",
+    "slug": "dsu-template",
+    "path": "competitive-programming/dsu-template",
+    "depth": 1,
+    "type": "family",
+    "description": "DSU Template hierarchy node",
+    "sortOrder": 7
+  },
+  {
+    "id": "competitive-programming.binary-lifting-lca",
+    "parentId": "competitive-programming",
+    "name": "Binary Lifting LCA",
+    "slug": "binary-lifting-lca",
+    "path": "competitive-programming/binary-lifting-lca",
+    "depth": 1,
+    "type": "family",
+    "description": "Binary Lifting LCA hierarchy node",
+    "sortOrder": 8
+  }
+]

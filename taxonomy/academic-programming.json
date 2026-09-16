@@ -1,0 +1,79 @@
+[
+  {
+    "id": "academic-programming",
+    "parentId": null,
+    "name": "Academic Programming",
+    "slug": "academic-programming",
+    "path": "academic-programming",
+    "depth": 0,
+    "type": "primary",
+    "description": "Academic Programming hierarchy node",
+    "sortOrder": 0
+  },
+  {
+    "id": "academic-programming.signals-fft",
+    "parentId": "academic-programming",
+    "name": "Signals & FFT",
+    "slug": "signals-fft",
+    "path": "academic-programming/signals-fft",
+    "depth": 1,
+    "type": "family",
+    "description": "Signals & FFT hierarchy node",
+    "sortOrder": 0
+  },
+  {
+    "id": "academic-programming.circuits",
+    "parentId": "academic-programming",
+    "name": "Circuit Analysis",
+    "slug": "circuits",
+    "path": "academic-programming/circuits",
+    "depth": 1,
+    "type": "family",
+    "description": "Circuit Analysis hierarchy node",
+    "sortOrder": 1
+  },
+  {
+    "id": "academic-programming.physics",
+    "parentId": "academic-programming",
+    "name": "Physics & Mechanics",
+    "slug": "physics",
+    "path": "academic-programming/physics",
+    "depth": 1,
+    "type": "family",
+    "description": "Physics & Mechanics hierarchy node",
+    "sortOrder": 2
+  },
+  {
+    "id": "academic-programming.discrete-math",
+    "parentId": "academic-programming",
+    "name": "Discrete Math",
+    "slug": "discrete-math",
+    "path": "academic-programming/discrete-math",
+    "depth": 1,
+    "type": "family",
+    "description": "Discrete Math hierarchy node",
+    "sortOrder": 3
+  },
+  {
+    "id": "academic-programming.statistics",
+    "parentId": "academic-programming",
+    "name": "Statistics",
+    "slug": "statistics",
+    "path": "academic-programming/statistics",
+    "depth": 1,
+    "type": "family",
+    "description": "Statistics hierarchy node",
+    "sortOrder": 4
+  },
+  {
+    "id": "academic-programming.lab-tasks",
+    "parentId": "academic-programming",
+    "name": "University Lab Tasks",
+    "slug": "lab-tasks",
+    "path": "academic-programming/lab-tasks",
+    "depth": 1,
+    "type": "family",
+    "description": "University Lab Tasks hierarchy node",
+    "sortOrder": 5
+  }
+]

@@ -1,0 +1,90 @@
+[
+  {
+    "id": "projects",
+    "parentId": null,
+    "name": "C Projects",
+    "slug": "projects",
+    "path": "projects",
+    "depth": 0,
+    "type": "primary",
+    "description": "C Projects hierarchy node",
+    "sortOrder": 0
+  },
+  {
+    "id": "projects.student-management",
+    "parentId": "projects",
+    "name": "Student Management",
+    "slug": "student-management",
+    "path": "projects/student-management",
+    "depth": 1,
+    "type": "family",
+    "description": "Student Management hierarchy node",
+    "sortOrder": 0
+  },
+  {
+    "id": "projects.banking-system",
+    "parentId": "projects",
+    "name": "Banking System",
+    "slug": "banking-system",
+    "path": "projects/banking-system",
+    "depth": 1,
+    "type": "family",
+    "description": "Banking System hierarchy node",
+    "sortOrder": 1
+  },
+  {
+    "id": "projects.library-system",
+    "parentId": "projects",
+    "name": "Library System",
+    "slug": "library-system",
+    "path": "projects/library-system",
+    "depth": 1,
+    "type": "family",
+    "description": "Library System hierarchy node",
+    "sortOrder": 2
+  },
+  {
+    "id": "projects.cli-shell",
+    "parentId": "projects",
+    "name": "CLI Shell",
+    "slug": "cli-shell",
+    "path": "projects/cli-shell",
+    "depth": 1,
+    "type": "family",
+    "description": "CLI Shell hierarchy node",
+    "sortOrder": 3
+  },
+  {
+    "id": "projects.file-database",
+    "parentId": "projects",
+    "name": "File Database",
+    "slug": "file-database",
+    "path": "projects/file-database",
+    "depth": 1,
+    "type": "family",
+    "description": "File Database hierarchy node",
+    "sortOrder": 4
+  },
+  {
+    "id": "projects.calculator",
+    "parentId": "projects",
+    "name": "Expression Calculator",
+    "slug": "calculator",
+    "path": "projects/calculator",
+    "depth": 1,
+    "type": "family",
+    "description": "Expression Calculator hierarchy node",
+    "sortOrder": 5
+  },
+  {
+    "id": "projects.quiz-engine",
+    "parentId": "projects",
+    "name": "Quiz Engine",
+    "slug": "quiz-engine",
+    "path": "projects/quiz-engine",
+    "depth": 1,
+    "type": "family",
+    "description": "Quiz Engine hierarchy node",
+    "sortOrder": 6
+  }
+]
