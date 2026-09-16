@@ -8,6 +8,14 @@ import { Component } from "@dtyp/types";
 import { VSCodeTypingTarget } from "./adapter/vscode-typing-target.js";
 import { DTypCompletionProvider } from "./provider/completion-provider.js";
 import { DTypHoverProvider } from "./provider/hover-provider.js";
+import {
+  CursorEngine,
+  SessionEngine,
+  MemoryEngine,
+  SearchEngine,
+  AutoTypeEngine,
+  SnippetEngine,
+} from "./engine/index.js";
 
 const logger = defaultLogger.child("VSCodeExtension");
 
@@ -15,11 +23,14 @@ let sqlite: SqliteClient | null = null;
 let libraryEngine: DefaultLibraryEngine | null = null;
 let typingEngine: DefaultTypingEngine | null = null;
 let typingTarget: VSCodeTypingTarget | null = null;
+let sessionEngine: SessionEngine | null = null;
+let searchEngine: SearchEngine | null = null;
+let autoTypeEngine: AutoTypeEngine | null = null;
+let snippetEngine: SnippetEngine | null = null;
 
 export async function activate(context: vscode.ExtensionContext): Promise<void> {
-  logger.info("Activating dTyp VS Code Extension");
+  logger.info("Activating dTyp VS Code Extension v2.0.0");
 
-  // Locate bundled SQLite database
   const dbPath = path.join(context.extensionPath, "library", "dtyp.db");
   sqlite = new SqliteClient();
 
@@ -40,16 +51,24 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
   typingTarget = new VSCodeTypingTarget();
   typingEngine = new DefaultTypingEngine(typingTarget);
 
-  // Status Bar Item
+  sessionEngine = new SessionEngine(context);
+  searchEngine = new SearchEngine(libraryEngine);
+  autoTypeEngine = new AutoTypeEngine(typingEngine, typingTarget);
+  snippetEngine = new SnippetEngine(libraryEngine);
+  await snippetEngine.loadSnippets();
+
+  const totalCount = await libraryEngine.count();
+
   const statusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Right, 100);
-  statusBarItem.text = "$(keyboard) dTyp: Ready";
-  statusBarItem.tooltip = "dTyp Offline C Library (50,000+ components)";
+  statusBarItem.text = `$(keyboard) dTyp: ${totalCount.toLocaleString()} Ready`;
+  statusBarItem.tooltip = `dTyp Offline C Library (${totalCount.toLocaleString()} components) - Click to Browse`;
   statusBarItem.command = "dtyp.browseLibrary";
   statusBarItem.show();
   context.subscriptions.push(statusBarItem);
 
   typingEngine.on("start", (stats) => {
-    statusBarItem.text = `$(sync~spin) dTyp: Typing (0/${stats.charactersTotal})`;
+    vscode.commands.executeCommand("setContext", "dtyp.isTyping", true);
+    statusBarItem.text = `$(sync~spin) dTyp: 0/${stats.charactersTotal}`;
   });
 
   typingEngine.on("progress", (data) => {
@@ -57,20 +76,31 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
   });
 
   typingEngine.on("complete", () => {
-    statusBarItem.text = "$(keyboard) dTyp: Completed";
+    vscode.commands.executeCommand("setContext", "dtyp.isTyping", false);
+    statusBarItem.text = "$(check) dTyp: Completed";
     setTimeout(() => {
-      statusBarItem.text = "$(keyboard) dTyp: Ready";
+      statusBarItem.text = `$(keyboard) dTyp: ${totalCount.toLocaleString()} Ready`;
     }, 3000);
   });
 
   typingEngine.on("cancel", () => {
-    statusBarItem.text = "$(keyboard) dTyp: Cancelled";
+    vscode.commands.executeCommand("setContext", "dtyp.isTyping", false);
+    statusBarItem.text = "$(x) dTyp: Cancelled";
     setTimeout(() => {
-      statusBarItem.text = "$(keyboard) dTyp: Ready";
+      statusBarItem.text = `$(keyboard) dTyp: ${totalCount.toLocaleString()} Ready`;
     }, 3000);
   });
 
-  // Register Completion Provider
+  autoTypeEngine.onQueueChange((hasQueue, remaining) => {
+    if (hasQueue) {
+      statusBarItem.text = `$(keyboard) dTyp: ${remaining} chars [Ctrl+D to step]`;
+      statusBarItem.tooltip = "Press Ctrl+D to step through characters one-by-one";
+    } else if (!typingEngine?.isTyping()) {
+      statusBarItem.text = `$(keyboard) dTyp: ${totalCount.toLocaleString()} Ready`;
+      statusBarItem.tooltip = `dTyp Offline C Library (${totalCount.toLocaleString()} components) - Click to Browse`;
+    }
+  });
+
   const completionProvider = vscode.languages.registerCompletionItemProvider(
     ["c", "cpp"],
     new DTypCompletionProvider(libraryEngine),
@@ -78,16 +108,21 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
   );
   context.subscriptions.push(completionProvider);
 
-  // Register Hover Provider
+  const snippetProvider = vscode.languages.registerCompletionItemProvider(
+    ["c", "cpp"],
+    snippetEngine,
+    "."
+  );
+  context.subscriptions.push(snippetProvider);
+
   const hoverProvider = vscode.languages.registerHoverProvider(
     ["c", "cpp"],
     new DTypHoverProvider(libraryEngine)
   );
   context.subscriptions.push(hoverProvider);
 
-  // Helper for character-by-character insertion with dependency resolution
-  const insertComponentPipeline = async (componentId: string) => {
-    if (!libraryEngine || !typingEngine || !typingTarget) return;
+  const insertComponentPipeline = async (componentId: string, modeOverride?: "automatic" | "manual") => {
+    if (!libraryEngine || !typingEngine || !typingTarget || !autoTypeEngine || !sessionEngine) return;
 
     const editor = vscode.window.activeTextEditor;
     if (!editor) {
@@ -95,15 +130,12 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
       return;
     }
 
-    typingTarget.setEditor(editor);
-
     const comp = await libraryEngine.findComponent(componentId);
     if (!comp) {
       vscode.window.showErrorMessage(`Component "${componentId}" not found in dTyp library.`);
       return;
     }
 
-    // Resolve dependencies topologically
     let componentsToInsert: Component[] = [];
     try {
       componentsToInsert = await libraryEngine.getDependencies(componentId);
@@ -112,7 +144,6 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
       return;
     }
 
-    // Check duplicate definitions against current editor document
     const config = vscode.workspace.getConfiguration("dtyp");
     const checkDuplicates = config.get<boolean>("checkDuplicates", true);
 
@@ -134,61 +165,116 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
       return;
     }
 
-    // Assemble text to type
     const fullText = componentsToInsert.map((c) => c.code).join("\n\n") + "\n";
-    const delayMs = config.get<number>("typingDelayMs", 15);
 
-    // Character-by-character typing execution
+    const autoIncludeHeaders = config.get<boolean>("autoIncludeHeaders", true);
+    if (autoIncludeHeaders) {
+      const addedHeaders = await MemoryEngine.ensureHeaders(editor, fullText);
+      if (addedHeaders.length > 0) {
+        vscode.window.setStatusBarMessage(`dTyp: Added header(s): ${addedHeaders.join(", ")}`, 3000);
+      }
+    }
+
+    const insertionMode = modeOverride || config.get<"automatic" | "manual">("typingMode", "automatic");
+
     try {
-      await typingEngine.start(fullText, {
-        delayMs,
-        mode: "character",
-        preserveNewlines: true,
-        preserveTabs: true,
+      const insertPos = editor.selection.active;
+      await autoTypeEngine.startInsertion(comp.id, comp.name, fullText, editor, insertionMode);
+
+      sessionEngine.recordInsertion({
+        componentId: comp.id,
+        componentName: comp.name,
+        fileUri: editor.document.uri.toString(),
+        charactersTyped: fullText.length,
+        mode: insertionMode,
       });
+
+      if (insertionMode === "automatic") {
+        const endPos = editor.document.positionAt(editor.document.offsetAt(insertPos) + fullText.length);
+        CursorEngine.jumpToFirstPlaceholder(editor, new vscode.Range(insertPos, endPos));
+      } else {
+        vscode.window.showInformationMessage(`dTyp: ${comp.name} queued! Press Ctrl+D to step type characters.`);
+      }
     } catch (err: any) {
-      logger.error(`Typing error: ${err.message}`);
+      logger.error(`Typing execution error: ${err.message}`);
     }
   };
 
-  // Command: Insert Component
+  const quickInsertCmd = vscode.commands.registerCommand("dtyp.quickInsert", async () => {
+    if (!libraryEngine || !searchEngine) return;
+
+    const quickPick = vscode.window.createQuickPick();
+    quickPick.placeholder = "Search 24,000+ offline components (e.g. quick sort, boiler:main, ds:stack)...";
+    quickPick.matchOnDescription = true;
+    quickPick.matchOnDetail = true;
+
+    const updateItems = async (query: string) => {
+      quickPick.busy = true;
+      if (!query.trim()) {
+        const top = await libraryEngine!.getAllComponents(50);
+        quickPick.items = top.map((c) => ({
+          label: `${c.name}()`,
+          description: `[${c.category}] ${c.complexity.time}`,
+          detail: `${c.description} — ${c.signature}`,
+          componentId: c.id,
+        } as any));
+      } else {
+        const scored = await searchEngine!.search(query, 50);
+        quickPick.items = scored.map((s) => ({
+          label: `${s.component.name}()`,
+          description: `[${s.component.category}] score:${s.score}`,
+          detail: `${s.component.description} — ${s.component.signature}`,
+          componentId: s.component.id,
+        } as any));
+      }
+      quickPick.busy = false;
+    };
+
+    quickPick.onDidChangeValue((val) => updateItems(val));
+    quickPick.onDidAccept(async () => {
+      const selected = quickPick.selectedItems[0] as any;
+      if (selected && selected.componentId) {
+        quickPick.hide();
+        await insertComponentPipeline(selected.componentId);
+      }
+    });
+
+    quickPick.show();
+    await updateItems("");
+  });
+  context.subscriptions.push(quickInsertCmd);
+
   const insertCmd = vscode.commands.registerCommand("dtyp.insertComponent", async (idArg?: string) => {
     if (idArg) {
       await insertComponentPipeline(idArg);
       return;
     }
-
-    if (!libraryEngine) return;
-
-    // QuickPick searching all components
-    const all = await libraryEngine.getAllComponents(500);
-    const items: vscode.QuickPickItem[] = all.map((c) => ({
-      label: `${c.name}()`,
-      description: `[${c.category}] ${c.complexity.time}`,
-      detail: `${c.description} — ${c.signature}`,
-      id: c.id,
-    } as any));
-
-    const selected = await vscode.window.showQuickPick(items, {
-      placeHolder: "Search 50,000+ offline C components...",
-      matchOnDescription: true,
-      matchOnDetail: true,
-    });
-
-    if (selected && (selected as any).id) {
-      await insertComponentPipeline((selected as any).id);
-    }
+    await vscode.commands.executeCommand("dtyp.quickInsert");
   });
   context.subscriptions.push(insertCmd);
 
-  // Command: Browse Library
+  const stepCharCmd = vscode.commands.registerCommand("dtyp.typeNextCharacter", async () => {
+    if (autoTypeEngine?.isManualQueueActive()) {
+      await autoTypeEngine.stepNextCharacter();
+    }
+  });
+  context.subscriptions.push(stepCharCmd);
+
+  const flushCmd = vscode.commands.registerCommand("dtyp.flushRemaining", async () => {
+    if (autoTypeEngine?.isManualQueueActive()) {
+      await autoTypeEngine.flushRemaining();
+      vscode.window.showInformationMessage("dTyp: Flushed all remaining queued characters.");
+    }
+  });
+  context.subscriptions.push(flushCmd);
+
   const browseCmd = vscode.commands.registerCommand("dtyp.browseLibrary", async () => {
     if (!libraryEngine) return;
 
     const categories = await libraryEngine.getCategories();
     const catItems = categories.map((cat) => ({
       label: cat.toUpperCase(),
-      description: `Browse ${cat} components`,
+      description: `Browse components in ${cat}`,
       category: cat,
     }));
 
@@ -201,36 +287,90 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
     const components = await libraryEngine.getByCategory(selectedCat.category);
     const compItems = components.map((c) => ({
       label: `${c.name}()`,
-      description: c.complexity.time,
+      description: `[${c.complexity.time}] ${c.subcategory || ""}`,
       detail: c.signature,
-      id: c.id,
+      componentId: c.id,
     }));
 
     const selectedComp = await vscode.window.showQuickPick(compItems, {
-      placeHolder: `Components in ${selectedCat.category}...`,
+      placeHolder: `${selectedCat.category} components (${components.length} available)...`,
     });
 
-    if (selectedComp) {
-      await insertComponentPipeline(selectedComp.id);
+    if (selectedComp && (selectedComp as any).componentId) {
+      await insertComponentPipeline((selectedComp as any).componentId);
     }
   });
   context.subscriptions.push(browseCmd);
 
-  // Command: Cancel Typing
+  const insertSnippetCmd = vscode.commands.registerCommand("dtyp.insertSnippet", async () => {
+    if (!snippetEngine) return;
+    const snippets = snippetEngine.getSnippets();
+    const items = snippets.map((s) => ({
+      label: s.prefix,
+      description: s.description || "",
+      detail: s.category || "",
+      body: s.body,
+    }));
+
+    const selected = await vscode.window.showQuickPick(items, {
+      placeHolder: "Select a dTyp Snippet to insert...",
+    });
+
+    if (selected) {
+      const editor = vscode.window.activeTextEditor;
+      if (editor) {
+        editor.insertSnippet(new vscode.SnippetString(selected.body));
+      }
+    }
+  });
+  context.subscriptions.push(insertSnippetCmd);
+
+  const historyCmd = vscode.commands.registerCommand("dtyp.showHistory", async () => {
+    if (!sessionEngine) return;
+    const history = sessionEngine.getHistory(30);
+    if (history.length === 0) {
+      vscode.window.showInformationMessage("dTyp: No insertion history recorded yet.");
+      return;
+    }
+
+    const items = history.map((h) => ({
+      label: h.componentName,
+      description: `[${h.mode}] ${new Date(h.timestamp).toLocaleTimeString()}`,
+      detail: `${h.charactersTyped} chars — ${h.componentId}`,
+      componentId: h.componentId,
+    }));
+
+    const selected = await vscode.window.showQuickPick(items, {
+      placeHolder: "Recent insertions (select to re-insert)...",
+    });
+
+    if (selected) {
+      await insertComponentPipeline(selected.componentId);
+    }
+  });
+  context.subscriptions.push(historyCmd);
+
   const cancelCmd = vscode.commands.registerCommand("dtyp.cancelTyping", () => {
+    if (autoTypeEngine?.isManualQueueActive()) {
+      autoTypeEngine.cancelManualQueue();
+      vscode.window.showInformationMessage("dTyp: Manual typing queue cleared.");
+    }
     if (typingEngine?.isTyping()) {
       typingEngine.cancel();
-      vscode.window.showInformationMessage("dTyp character typing cancelled.");
+      vscode.window.showInformationMessage("dTyp: Automated character typing cancelled.");
     }
   });
   context.subscriptions.push(cancelCmd);
 
-  logger.info("dTyp Extension activated successfully");
+  logger.info("dTyp Extension v2.0.0 activated successfully");
 }
 
 export function deactivate(): void {
   if (typingEngine?.isTyping()) {
     typingEngine.cancel();
+  }
+  if (autoTypeEngine?.isManualQueueActive()) {
+    autoTypeEngine.cancelManualQueue();
   }
   sqlite?.close();
   logger.info("dTyp Extension deactivated");

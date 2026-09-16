@@ -64,6 +64,25 @@ export interface Snippet {
   body: string;
   description?: string;
   category?: string;
+  tabStops?: string[];
+  scope?: string;
+}
+
+export interface HistoryEntry {
+  id: string;
+  componentId: string;
+  componentName: string;
+  timestamp: number;
+  fileUri?: string;
+  charactersTyped: number;
+  mode: "automatic" | "manual";
+}
+
+export interface FavoriteEntry {
+  componentId: string;
+  componentName: string;
+  category: string;
+  addedAt: number;
 }
 
 export interface Template {
@@ -116,6 +135,7 @@ export interface LibraryEngine {
   findCategoryByPath(path: string): Promise<Category | null>;
   getDependencies(id: string): Promise<Component[]>;
   getSnippet(id: string): Promise<Snippet | null>;
+  getSnippets(): Promise<Snippet[]>;
   getTemplate(id: string): Promise<Template | null>;
   getCategories(): Promise<string[]>;
   getAllComponents(limit?: number, offset?: number): Promise<Component[]>;

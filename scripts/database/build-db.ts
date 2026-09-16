@@ -214,9 +214,18 @@ export const buildDatabase = async (): Promise<void> => {
   logger.info(`Inserted ${allComponents.length} components, aliases, and tags into SQLite`);
 
   // 4. Insert snippets
-  const snipStmt = db.prepare(`INSERT INTO snippets (id, component_id, prefix, body, description, category) VALUES (?, ?, ?, ?, ?, ?)`);
+  const snipStmt = db.prepare(`INSERT INTO snippets (id, component_id, prefix, body, description, category, tab_stops, scope) VALUES (?, ?, ?, ?, ?, ?, ?, ?)`);
   for (const s of snippets) {
-    snipStmt.run([s.id, s.component_id ?? null, s.prefix, s.body, s.description ?? null, s.category ?? null]);
+    snipStmt.run([
+      s.id,
+      s.component_id ?? null,
+      s.prefix,
+      s.body,
+      s.description ?? null,
+      s.category ?? null,
+      s.tabStops ? JSON.stringify(s.tabStops) : null,
+      s.scope ?? "c,cpp",
+    ]);
   }
   snipStmt.free();
 

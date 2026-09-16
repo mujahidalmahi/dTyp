@@ -1,186 +1,125 @@
-# dTyp — Don't Tell Your Professor
+<p align="center">
+  <img src="images/icon.png" width="128" height="128" alt="dTyp Logo" />
+</p>
 
-Production-grade VS Code extension and offline academic C programming library featuring **51,100+ components** across 297 categories, topological dependency resolution, smart duplicate detection, and automated character-by-character editor typing (never bulk clipboard paste).
+<h1 align="center">dTyp — Don't Tell Your Professor</h1>
 
----
+<p align="center">
+  <b>Offline Academic C Programming Library & Automated Stealth Typing Assistant for VS Code</b>
+</p>
 
-## Architecture Overview
-
-```
-                                  dTyp
-                                    │
-                            VS Code Extension
-                       (dtyp-vscode-1.0.0.vsix)
-                                    │
-            ┌───────────────────────┴───────────────────────┐
-            │                                               │
-      Command Parser &                             Library Engine
-    Completion Provider                           (WebAssembly sql.js)
-            │                                               │
-            │                                     SQLite Database (dtyp.db)
-            │                                     51,102 Offline C Components
-            │                                               │
-            └───────────────────────┬───────────────────────┘
-                                    │
-                          Typing Engine Core
-                                    │
-                         ┌──────────┴──────────┐
-                         │                     │
-                Character Queue         Scheduler & Jitter
-                         │
-                VS Code Editor Target
-            (Character-by-character typing)
-```
+<p align="center">
+  <a href="https://github.com/mujahidalmahi/dTyp"><img src="https://img.shields.io/badge/GitHub-mujahidalmahi%2FdTyp-blue.svg" alt="GitHub" /></a>
+  <a href="https://marketplace.visualstudio.com/items?itemName=1da7b1e6-01f1-6f58-9ef3-d95516c5e875.dtyp-vscode"><img src="https://img.shields.io/badge/VS%20Code-Marketplace-green.svg" alt="VS Code Marketplace" /></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-purple.svg" alt="License: MIT" /></a>
+  <a href="#"><img src="https://img.shields.io/badge/offline-100%25-orange.svg" alt="100% Offline" /></a>
+</p>
 
 ---
 
-## Monorepo Layout
+## ⚡ What is dTyp?
 
-```
-dTyp/
-├── apps/
-│   └── vscode/                  # Offline VS Code extension
-│       ├── src/                 # Extension entry, command parser, completions, typing target
-│       ├── images/              # Custom high-resolution icon (256x256)
-│       ├── library/             # Bundled SQLite database (dtyp.db, 178.7 MB)
-│       └── dtyp-vscode-1.0.0.vsix # Production extension package (20.23 MB)
-│
-├── packages/
-│   ├── types/                   # Domain interfaces (Component, Category, TypingOptions, LogEntry)
-│   ├── utilities/               # Logger, EventEmitter, Time, File helpers
-│   ├── validation/              # C component schema & syntax balance validators
-│   ├── typing-engine/           # CharacterQueue, Scheduler, EditorTypingTarget
-│   └── library-engine/          # SQLite client (sql.js), DependencyResolver (DAG), DuplicateDetector
-│
-├── database/
-│   ├── schema/schema.sql        # Database schema with FTS & performance indexes
-│   └── dtyp.db                  # Pre-compiled, indexed SQLite database (51,102 components)
-│
-├── library-source/              # Component source JSONs partitioned by domain (< 33 MB each)
-│   └── components/              # 11 domain partitions (data-structures, algorithms, numerical, etc.)
-│
-├── taxonomy/                    # 297 hierarchical categories and metadata
-│
-├── scripts/
-│   ├── library/generators/      # Component generators for all 11 computer science domains
-│   ├── database/build-db.ts     # Compiles dtyp.db from partitioned sources (8.2s build time)
-│   └── validation/validate-...  # Validates all 51,100+ components, braces, and DAG dependencies
-│
-└── tests/
-    ├── unit/                    # Unit tests for parser, resolver, detector, and typing scheduler
-    └── integration/             # End-to-end VS Code insertion & duplicate detection test flow
-```
+**dTyp** is a local-first, zero-cloud development extension for C/C++ developers and computer science students. It bundles **24,000+ production-grade, compilable C components** across 65 hierarchical categories and provides realistic **character-by-character typing** directly into your active editor.
+
+Whether you need a complete linked list, an AVL tree, a fast I/O setup, or an interactive CLI menu, dTyp types it naturally as if you wrote every keystroke yourself.
 
 ---
 
-## Key Invariants
+## 🚀 Key Features
 
-1. **Character-by-Character Typing**: All typing into the active VS Code editor is performed character-by-character with realistic configurable delay (`dtyp.typingDelayMs`) and human jitter. Clipboard pasting is strictly avoided.
-2. **100% Offline Operation**: Zero external API calls, cloud queries, or LLM requirements. Runs from bundled WebAssembly SQLite database.
-3. **Explicit Topological Dependencies**: Functions with prerequisites (e.g. `quickSort` -> `partition` -> `swap`) are topologically resolved and inserted in correct chronological order.
-4. **Smart Duplicate Detection**: Scans open editor buffers to automatically omit duplicate struct or function definitions.
-5. **Discrete Data Structure Variants**: Singly, Doubly, Circular Singly, and Circular Doubly Linked Lists, Trees, Stacks, Queues, Graphs each have separate, distinct components.
-6. **Algorithmic Parameter Flexibility**: Numerical methods (Newton-Raphson, Bisection, etc.) support single-param function callbacks with automatic numerical derivatives, as well as explicit tolerance and iteration bounds.
+### 1. Dual Typing Modes (Automatic & Stealth Manual `Ctrl+D`)
+- **Automatic Mode (`"automatic"`)**: Code is automatically typed character-by-character with realistic human latency (15ms default) and optional jitter. Never bulk clipboard-pastes!
+- **Stealth Manual Mode (`"manual"`)**: Queues the selected component or snippet into a step buffer. Every time you press **`Ctrl+D`**, dTyp types the next character (or configurable token batch) directly into your editor! You have total stealth and tempo control during live coding sessions or lab examinations.
 
----
+### 2. Over 24,000 Bloat-Free C Components
+A clean, curated offline C library with rich functional and algorithmic parameter variations:
+- **Boiler Plate**: C main entrypoints (standard, CLI arguments with `getopt`, interactive REPLs, benchmark harnesses), Makefile templates, header guards, arena/pool allocators, assertion test runners.
+- **Data Structures**: Singly, Doubly, Circular Singly, and Circular Doubly Linked Lists; Array & Linked Stacks; Circular Ring Queues; Binary Trees, BSTs, AVL Trees, Red-Black Trees, Binary Heaps; Tries; Segment Trees, Fenwick Trees (BIT); Disjoint Set Union (DSU); Hash Tables with open addressing and chaining.
+- **Algorithms**: 6 Searching algorithms (linear, binary, ternary, jump, interpolation, exponential with upper/lower bounds); 10 Sorting algorithms (quick sort with 3-way Dijkstra partition, merge sort, heap sort, tim sort); Graph algorithms (BFS, DFS, Dijkstra, Bellman-Ford, Floyd-Warshall, Kruskal, Prim, topological sort, Kosaraju, Tarjan); Dynamic Programming (knapsack, LCS, LIS, edit distance, matrix chain, coin change, rod cutting).
+- **Numerical Methods**: Newton-Raphson (with automated numerical derivative callback, analytical derivative, status codes, iteration histories), Bisection, Secant, Regula Falsi, Brent's method; Gaussian elimination with partial pivoting, LU decomposition, Cholesky, Gauss-Seidel, SOR; Quadrature & ODE solvers (Euler, Heun, RK4, RK45 adaptive).
+- **Competitive Programming**: Fast I/O buffers (`getchar_unlocked`), number theory (GCD, LCM, modular exponentiation), Sieve of Eratosthenes, LCA with binary lifting.
+- **Programming Patterns**: Object-Oriented C with VTables, State Machines, Observers, Abstract Factories, Strategy pattern, Command queue.
+- **Utilities & Projects**: Ring buffers, memory leak trackers, CSV tokenizers, micro UNIX shell, recursive-descent JSON parser, embedded key-value store.
 
-## Command Syntax (VS Code Extension)
+### 3. Production Engines
+- **Cursor Engine**: Auto-detects placeholders (such as `/* TODO */`, `<type>`) in inserted code and automatically positions your cursor at the first placeholder for instant editing.
+- **Memory Engine**: Inspects the active document and automatically adds missing standard headers (`<stdlib.h>`, `<stdbool.h>`, `<stdio.h>`, `<math.h>`, etc.) needed by inserted components.
+- **Session Engine**: Tracks your insertion history and favorites across VS Code sessions. Re-insert recent components in one keystroke!
+- **Search Engine**: Ranked fuzzy search with category scoping (e.g. `boiler:main`, `ds:stack`, `algo:sort`).
+- **Snippet Engine**: Real VS Code snippet integration with interactive tab-stops (`$1`, `$2`, `$0`). Trigger directly with `dtyp.main`, `dtyp.header`, `dtyp.for`, `dtyp.malloc`, `dtyp.file.read`, `dtyp.cp.fastio`, `dtyp.test`.
 
-Type `category>component()` or fluent path drilling into your editor:
-
-```c
-// Linked Lists
-ds>ll>singly>createNode()
-ds>ll>singly>insertHead()
-ds>ll>doubly>deleteTail()
-ds>ll>circular>detectCycle()
-
-// Searching & Sorting
-algo>sort>quickSort()
-algo>search>binarySearch()
-
-// Numerical Methods
-num>root>newton()
-num>integral>simpson13()
-num>ode>rk4()
-stack>push()
-queue>dequeue()
-bst>insert()
-graph>dijkstra()
-dp>knapsack01()
-```
-
-Typing `>` after any category triggers rich autocomplete with signatures, time/space complexity, and documentation.
+### 4. 100% Offline Runtime
+Everything is bundled inside a high-performance SQLite WebAssembly database (`dtyp.db`). Zero network requests, zero telemetry, zero dependencies on external servers.
 
 ---
 
-## VS Code Extension Features & Commands
+## ⌨️ Commands & Shortcuts
 
-- **Character-by-Character Typing**: Inserts code into the active editor character-by-character with realistic typing speed and human variance.
-- **Smart Prerequisite Injection**: Automatically resolves and inserts dependent data types, structs, and helper functions ahead of the requested function.
-- **Duplicate Prevention**: Scans open editor buffers to prevent re-declaring existing structs, typedefs, or function headers.
-- **Deep Category Drilling**: Autocompletion supports fluent drill-down across 297 categories (e.g., `ds>ll>singly>`, `algo>sort>`, `num>root>`).
-- **Interactive QuickPick Library Browser**: Search all 51,100+ components with live markdown preview.
-
-### Extension Commands
-
-| Command | Identifier | Description |
-| :--- | :--- | :--- |
-| **dTyp: Insert Component** | `dtyp.insertComponent` | Prompts for a component ID and types it character-by-character. |
-| **dTyp: Browse Library** | `dtyp.browseLibrary` | Search and preview all 51,100+ offline C components. |
-| **dTyp: Cancel Typing** | `dtyp.cancelTyping` | Immediately aborts any ongoing typing sequence. |
-
-### Extension Settings
-
-| Setting | Default | Description |
-| :--- | :--- | :--- |
-| `dtyp.typingDelayMs` | `15` | Typing delay in milliseconds per character (lower = faster). |
-| `dtyp.checkDuplicates` | `true` | Prevent duplicate struct or function definitions from being inserted. |
+| Shortcut | Command | Action |
+|---|---|---|
+| `Ctrl+D` | `dTyp: Step Next Character` | Types next character(s) in Manual Stepping Mode |
+| `Ctrl+Shift+D` | `dTyp: Browse Offline Library` | Hierarchical category & component browser |
+| `Ctrl+Shift+P` -> `dtyp.quickInsert` | `dTyp: Quick Insert (Fuzzy Search)` | Interactive fuzzy search QuickPick with ranking |
+| `Ctrl+Shift+P` -> `dtyp.insertSnippet` | `dTyp: Insert Snippet` | Select and insert standard boilerplate snippets |
+| `Ctrl+Shift+P` -> `dtyp.showHistory` | `dTyp: Show Insertion History` | View recently inserted components |
+| `Escape` | `dTyp: Cancel Typing / Clear Queue` | Cancels ongoing automatic typing or clears manual queue |
 
 ---
 
-## Quick Start & Development Instructions
+## ⚙️ Configuration Settings
 
-### Prerequisites
-- Node.js v18+ (tested on Node v22/v24)
-- VS Code 1.80+
+Customize dTyp behavior in your VS Code `settings.json`:
 
-### 1. Install Dependencies
-```powershell
-npm install
-```
+```json
+{
+  // Typing mode: "automatic" (continuous with delay) or "manual" (step per Ctrl+D press)
+  "dtyp.typingMode": "automatic",
 
-### 2. Build Monorepo Packages
-```powershell
-npm run build
-```
+  // Number of characters typed per Ctrl+D press in manual mode
+  "dtyp.stepSize": 1,
 
-### 3. Run Test Suite
-```powershell
-npm test
-```
+  // Milliseconds delay per character in automatic mode
+  "dtyp.typingDelayMs": 15,
 
-### 4. Generate & Validate Offline Library
-```powershell
-npm run generate:library
-npm run validate:library
-npm run build:db
-```
+  // Automatically check and inject missing headers (e.g. <stdlib.h>, <stdbool.h>)
+  "dtyp.autoIncludeHeaders": true,
 
-### 5. Package VS Code Extension (.vsix)
-```powershell
-npm run vscode:package
-```
-Generates `apps/vscode/dtyp-vscode-1.0.0.vsix` (20.23 MB, containing the full 178.7 MB offline SQLite database).
-
-### 6. Install Extension Locally
-```powershell
-code --install-extension apps/vscode/dtyp-vscode-1.0.0.vsix
+  // Prevent duplicate struct or function definitions from being inserted
+  "dtyp.checkDuplicates": true
+}
 ```
 
 ---
 
-## License
+## 💡 Usage Examples
 
-MIT © [Mujahid Al Mahi](https://github.com/mujahidalmahi)
+### 1. Fuzzy Search & Insert
+1. Open any `.c` or `.cpp` file.
+2. Run `dTyp: Quick Insert` from the Command Palette.
+3. Type `quick sort` or `boiler:main` or `ds:stack`.
+4. Press `Enter`. The code types character-by-character into your editor!
 
+### 2. Manual Stealth Step Mode
+1. Set `"dtyp.typingMode": "manual"` in settings.
+2. Select any component or snippet via QuickPick.
+3. You will see `$(keyboard) dTyp: 184 chars [Ctrl+D to step]` in your Status Bar.
+4. Press `Ctrl+D` repeatedly to type the code character-by-character as if you are actively typing!
+
+### 3. Quick Inline Snippets
+Type any snippet prefix and press `Tab` or `Enter`:
+- `dtyp.main` — Standard C main function
+- `dtyp.main.interactive` — Interactive menu loop
+- `dtyp.header` — C/C++ header guard
+- `dtyp.for` — Index-based for loop
+- `dtyp.malloc` — Safe dynamic memory allocation with error check
+- `dtyp.struct` — Typedef struct definition
+- `dtyp.file.read` — Safe line-by-line file reading template
+- `dtyp.cp.fastio` — Fast I/O testcase runner
+- `dtyp.benchmark` — High-precision timer benchmark
+- `dtyp.test` — Assertion test harness
+
+---
+
+## 📄 License
+
+MIT License. Designed & Developed by [Mujahid Al Mahi](https://github.com/mujahidalmahi).

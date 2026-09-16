@@ -1,8 +1,8 @@
-# dTyp Architecture Guide
+# dTyp Architecture Guide (v2.0)
 
 ## Overview
 
-**dTyp (Don't Tell Your Professor)** is a production-grade VS Code extension and offline academic C programming ecosystem designed to provide instant, offline C code insertion and character-by-character editor typing simulation.
+**dTyp (Don't Tell Your Professor)** is a production-grade VS Code extension and offline academic C programming ecosystem designed to provide instant, offline C code insertion, smart context awareness, and character-by-character editor typing simulation.
 
 ```
                             dTyp Workspace
@@ -10,15 +10,14 @@
                              apps/vscode
                          (VS Code Extension)
                                   │
-          ┌───────────────────────┴───────────────────────┐
-          │                                               │
-    Command Parser &                             Library Engine
-  Completion Provider                           (WebAssembly sql.js)
-          │                                               │
-          │                                     SQLite Database (dtyp.db)
-          │                                     51,102 Offline C Components
-          │                                               │
-          └───────────────────────┬───────────────────────┘
+          ┌───────────────────────┼───────────────────────┐
+          │                       │                       │
+    Command Parser &        6 Core Engines          Library Engine
+  Completion Providers    (Cursor, Session,      (WebAssembly sql.js)
+  (Completion & Snippet)   Memory, AutoType,              │
+          │               Search, Snippets)     SQLite Database (dtyp.db)
+          │                       │             24,478 Offline C Components
+          └───────────────────────┼───────────────────────┘
                                   │
                              Shared Core
                                   │
@@ -31,33 +30,62 @@
 
 ---
 
-## 1. Subsystems
+## 1. The 6 Production Engines (`apps/vscode/src/engine/`)
 
-### A. VS Code Extension (`apps/vscode/`)
-- **Activation Events**: Activated on `c`, `cpp` files and `dtyp.*` commands.
-- **`CommandParser`**: Parses input command syntax (`category>component()` or fluent path drilling `ds>ll>singly>insertHead()`).
-- **`DTypCompletionProvider`**: Rich autocomplete triggered by `>` with deep hierarchical category exploration, type signatures, and documentation markdown previews.
-- **`VSCodeTypingTarget`**: Implements `TypingTarget` interface, writing character-by-character into `vscode.window.activeTextEditor` with realistic simulated typing delay.
-- **Publisher ID**: `1da7b1e6-01f1-6f58-9ef3-d95516c5e875`
-- **Bundled Database**: Contains `dtyp.db` (178.7 MB SQLite database, packaged inside a 20.23 MB `.vsix`).
+### 1. `CursorEngine`
+- Auto-detects placeholders (such as `/* TODO */`, `/* INSERT */`, `<type>`) in inserted code.
+- Automatically jumps the cursor to the first placeholder and selects it so the developer can immediately type.
+- Provides placeholder forward/backward navigation.
 
-### B. Library Engine (`packages/library-engine/`)
-- **`SqliteClient`**: In-memory SQLite querying using WebAssembly `sql.js`. Zero native C++ Node addons, guaranteeing cross-platform extension host execution.
-- **`DependencyResolver`**: Directed Acyclic Graph (DAG) topological sorter that orders prerequisites (e.g. structs, nodes, helper functions) before inserting the requested component.
-- **`DuplicateDetector`**: Regex and AST-based scanner that inspects active editor text to prevent inserting existing structs, typedefs, or function declarations.
-- **Hierarchical Path & Alias Matching**: Resolves abbreviations (`ll` -> `linked-list`, `num` -> `numerical-methods`, `ds` -> `data-structures`).
+### 2. `SessionEngine`
+- Tracks the developer's insertion history across VS Code sessions (persisted via `context.globalState`).
+- Manages recently inserted components with timestamps and typing statistics.
+- Manages starred Favorites for rapid re-insertion.
 
-### C. Typing Engine (`packages/typing-engine/`)
-- **`CharacterQueue`**: Normalizes line endings (`\r\n` -> `\n`) and manages character streams.
-- **`TypingScheduler`**: Asynchronous non-blocking queue scheduling characters with configurable delay (`dtyp.typingDelayMs`), human-like randomized jitter, pause/resume, and safe cancellation.
+### 3. `MemoryEngine`
+- Analyzes the active document context.
+- Detects required standard library headers (e.g. `<stdlib.h>` for `malloc`, `<stdbool.h>` for `bool`, `<stdio.h>` for `printf`) and automatically injects missing headers at the top of the file.
+- Guards against duplicate definitions.
+
+### 4. `AutoTypeEngine`
+- Implements dual typing execution modes:
+  1. **Automatic Mode**: Types code continuously at realistic typing speeds (15ms default) with simulated human jitter.
+  2. **Stealth Manual Mode**: Queues code into a pending step buffer. Every press of **`Ctrl+D`** types the next character(s) into the active editor for maximum stealth and pacing control.
+- Manages queue states, status bar notifications, and safe cancellation via `Escape`.
+
+### 5. `SearchEngine`
+- Production-grade ranked fuzzy search engine.
+- Calculates relevance scores: exact ID match (1000) > exact name (800) > name prefix (600) > name contains (400) > aliases (350) > category (250) > tags (150).
+- Supports category-scoped searches (e.g. `boiler:main`, `ds:stack`, `algo:sort`, `num:root`).
+- LRU query caching for sub-millisecond autocomplete responsiveness.
+
+### 6. `SnippetEngine`
+- Native VS Code `CompletionItemProvider` integration.
+- Expands snippet triggers (`dtyp.main`, `dtyp.header`, `dtyp.for`, `dtyp.malloc`, `dtyp.file.read`, `dtyp.cp.fastio`, `dtyp.test`) into `vscode.SnippetString` with interactive tab stops (`$1`, `$2`, `$0`).
 
 ---
 
-## 2. Invariants
+## 2. Component Taxonomy & Library
 
-1. **Character-by-Character Typing**: All code insertion occurs character-by-character through the queue scheduler with realistic configurable delays. Bulk paste is strictly avoided.
-2. **100% Offline Operation**: Local-first runtime. Bundled SQLite database (`dtyp.db`) requires zero network access, external servers, or LLM APIs.
-3. **Topological Dependency Resolution**: Prerequisites are resolved in topological order with cycle detection (`DependencyCycleError`).
-4. **Duplicate Prevention**: Existing signatures and structs in target documents are detected and deduplicated before insertion.
-5. **Discrete Data Structure Variants**: Every linked list type (Singly, Doubly, Circular Singly, Circular Doubly) and data structure has dedicated components.
-6. **Configurable Complexity**: Numerical methods support single-parameter callbacks with automated internal derivatives as well as explicit bounds.
+The offline library contains **24,478 compilable C components** organized across 12 primary domains and 65 categories:
+
+1. **Boiler Plate (`boiler-plate`)**: Main entrypoints (standard, CLI args, interactive REPL, benchmarks), header guards, Makefiles, custom memory allocators (arena, pool, bump, stack), testing harnesses, and file I/O starters.
+2. **Data Structures (`data-structures`)**: Singly, Doubly, Circular Singly, and Circular Doubly Linked Lists; Array & Linked Stacks; Circular Ring Queues; Binary Trees, BSTs, AVL Trees, Red-Black Trees, Binary Heaps; Tries; Segment Trees, Fenwick Trees; DSU; Hash Tables.
+3. **Algorithms (`algorithms`)**: Linear, binary, ternary, jump, interpolation, exponential searches; 10 Sorting algorithms; Graph algorithms (BFS, DFS, Dijkstra, Bellman-Ford, Floyd-Warshall, Kruskal, Prim, topological sort, Kosaraju, Tarjan); Dynamic Programming (knapsack, LCS, LIS, edit distance, matrix chain, coin change, rod cutting).
+4. **Numerical Methods (`numerical-methods`)**: Root finding (Newton-Raphson, Bisection, Secant, Regula Falsi, Brent); Linear solvers (Gaussian elimination, LU, Cholesky, Gauss-Seidel, SOR); Quadrature & ODE solvers (Euler, Heun, RK4, RK45 adaptive); Interpolation & curve fitting.
+5. **Competitive Programming (`competitive-programming`)**: Fast I/O buffers, number theory, prime sieves, LCA binary lifting.
+6. **Programming Patterns (`programming-patterns`)**: OOP in C with VTables, State Machines, Observers, Factories, Strategy pattern, Command queue.
+7. **Utilities (`utilities`)**: Ring buffers, memory trackers, CSV tokenizers, bit manipulation.
+8. **C Basics (`c-basics`)**: Control flow, math formulas, I/O formatting, conversions.
+9. **C Intermediate (`c-intermediate`)**: Pointers, dynamic memory, structs, files.
+10. **C Advanced (`c-advanced`)**: Function pointers, callbacks, variadics, signals.
+11. **Academic Programming (`academic-programming`)**: Coursework algorithms and data structures.
+12. **Projects (`projects`)**: Micro systems (mini shell, JSON parser, key-value store).
+
+---
+
+## 3. Storage & Packaging Optimization
+
+- **Bundled Database**: Packed with SQLite WebAssembly (`dtyp.db`), optimized from 178.7 MB down to **47.2 MB** (73% size reduction).
+- **VSIX Package**: The entire extension packages into a **5.64 MB** `.vsix` file (down from 20.2 MB).
+- **Zero Cloud**: 100% offline, zero network requests, zero telemetry.

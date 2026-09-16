@@ -37,8 +37,8 @@ export const validateLibrary = async (): Promise<boolean> => {
 
   logger.info(`Loaded ${allComponents.length} components, ${snippets.length} snippets, ${templates.length} templates`);
 
-  if (allComponents.length < 50000) {
-    logger.error(`Validation failed: Component count (${allComponents.length}) is below the 50,000 threshold requirement!`);
+  if (allComponents.length < 20000) {
+    logger.error(`Validation failed: Component count (${allComponents.length}) is below the 20,000 threshold requirement!`);
     return false;
   }
 

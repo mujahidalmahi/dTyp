@@ -275,11 +275,27 @@ export class DefaultLibraryEngine implements LibraryEngine {
   }
 
   public async getSnippet(id: string): Promise<Snippet | null> {
-    const row = this.sqlite.queryOne<Snippet>(
+    const row = this.sqlite.queryOne<any>(
       "SELECT * FROM snippets WHERE id = ? OR prefix = ? LIMIT 1",
       [id, id]
     );
-    return row ?? null;
+    if (!row) return null;
+    return {
+      ...row,
+      tabStops: row.tab_stops ? (typeof row.tab_stops === "string" ? JSON.parse(row.tab_stops) : row.tab_stops) : undefined,
+    };
+  }
+
+  public async getSnippets(): Promise<Snippet[]> {
+    try {
+      const rows = this.sqlite.query<any>("SELECT * FROM snippets ORDER BY prefix ASC");
+      return rows.map((r) => ({
+        ...r,
+        tabStops: r.tab_stops ? (typeof r.tab_stops === "string" ? JSON.parse(r.tab_stops) : r.tab_stops) : undefined,
+      }));
+    } catch {
+      return [];
+    }
   }
 
   public async getTemplate(id: string): Promise<Template | null> {

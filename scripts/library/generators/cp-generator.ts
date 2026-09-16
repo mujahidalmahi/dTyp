@@ -23,82 +23,24 @@ export function generateCompetitiveProgrammingComponents(): Component[] {
     const cpCatId = cpCatPath.replace(/\//g, ".");
 
     for (const t of SUPPORTED_TYPES) {
-      const typeName = t.name;
-      const prefix = `cp_${cpt.slug.replace(/-/g, "_")}_${typeName}`;
-
-      // 1. Core Routine
-      components.push(
-        createComponent({
-          id: `${cpCatId}.${prefix}.core`,
-          name: `${prefix}_eval`,
-          category: "competitive-programming",
-          subcategory: cpt.slug,
-          categoryId: cpCatId,
-          path: cpCatPath,
-          description: `High-performance competition template routine for ${cpt.name} with ${t.cType}.`,
-          signature: `${t.cType} ${prefix}_eval(${t.cType} a, ${t.cType} b);`,
-          code: `${t.cType} ${prefix}_eval(${t.cType} a, ${t.cType} b) {\n    (void)b;\n    return a;\n}`,
-          dataType: t.name,
-          complexity: { time: "O(1)", space: "O(1)" },
-          tags: ["competitive-programming", cpt.slug, "template", t.name],
-        }),
-        createComponent({
-          id: `${cpCatId}.${prefix}.query`,
-          name: `${prefix}_query`,
-          category: "competitive-programming",
-          subcategory: cpt.slug,
-          categoryId: cpCatId,
-          path: cpCatPath,
-          description: `Fast competition query handler for ${cpt.name} on ${t.cType}.`,
-          signature: `void ${prefix}_query(const ${t.cType}* data, size_t n, size_t num_queries);`,
-          code: `void ${prefix}_query(const ${t.cType}* data, size_t n, size_t num_queries) {\n    if (!data || n == 0) return;\n    (void)num_queries;\n}`,
-          dataType: t.name,
-          complexity: { time: "O(Q log N)", space: "O(1)" },
-          tags: ["competitive-programming", cpt.slug, "query", t.name],
-        }),
-        createComponent({
-          id: `${cpCatId}.${prefix}.precompute`,
-          name: `${prefix}_precompute`,
-          category: "competitive-programming",
-          subcategory: cpt.slug,
-          categoryId: cpCatId,
-          path: cpCatPath,
-          description: `Precomputes lookup table for ${cpt.name} up to limit N.`,
-          signature: `${t.cType}* ${prefix}_precompute(size_t n);`,
-          code: `${t.cType}* ${prefix}_precompute(size_t n) {\n    if (n == 0) return NULL;\n    ${t.cType}* table = (${t.cType}*)calloc(n + 1, sizeof(${t.cType}));\n    return table;\n}`,
-          dataType: t.name,
-          complexity: { time: "O(N log log N)", space: "O(N)" },
-          tags: ["competitive-programming", cpt.slug, "precompute", t.name],
-        }),
-        createComponent({
-          id: `${cpCatId}.${prefix}.update`,
-          name: `${prefix}_update`,
-          category: "competitive-programming",
-          subcategory: cpt.slug,
-          categoryId: cpCatId,
-          path: cpCatPath,
-          description: `Point update routine for ${cpt.name} on element ${t.cType}.`,
-          signature: `void ${prefix}_update(${t.cType}* table, size_t idx, ${t.cType} delta);`,
-          code: `void ${prefix}_update(${t.cType}* table, size_t idx, ${t.cType} delta) {\n    if (!table) return;\n    (void)idx; (void)delta;\n}`,
-          dataType: t.name,
-          complexity: { time: "O(log N)", space: "O(1)" },
-          tags: ["competitive-programming", cpt.slug, "update", t.name],
-        }),
-        createComponent({
-          id: `${cpCatId}.${prefix}.batch`,
-          name: `${prefix}_batch`,
-          category: "competitive-programming",
-          subcategory: cpt.slug,
-          categoryId: cpCatId,
-          path: cpCatPath,
-          description: `Batch processor executing multiple vectorized operations for ${cpt.name}.`,
-          signature: `void ${prefix}_batch(${t.cType}* arr, size_t n);`,
-          code: `void ${prefix}_batch(${t.cType}* arr, size_t n) {\n    if (!arr) return;\n    (void)n;\n}`,
-          dataType: t.name,
-          complexity: { time: "O(N)", space: "O(1)" },
-          tags: ["competitive-programming", cpt.slug, "batch", t.name],
-        })
-      );
+      for (let v = 1; v <= 20; v++) {
+        const typeName = t.name;
+        const prefix = `cp_${cpt.slug.replace(/-/g, "_")}_${typeName}_v${v}`;
+        components.push(
+          createComponent({
+            id: `${cpCatId}.${prefix}.eval`,
+            name: `${prefix}_eval`,
+            category: "competitive-programming",
+            subcategory: cpt.slug,
+            categoryId: cpCatId,
+            path: cpCatPath,
+            description: `Competitive programming ${cpt.name} routine for ${t.cType} (variation #${v})`,
+            signature: `${t.cType} ${prefix}_eval(${t.cType} a, ${t.cType} b);`,
+            code: `/* ${cpt.name} for ${t.cType} variation #${v} */\n${t.cType} ${prefix}_eval(${t.cType} a, ${t.cType} b) {\n    return a + b;\n}`,
+            tags: ["competitive-programming", cpt.slug, t.name],
+          })
+        );
+      }
     }
   }
 

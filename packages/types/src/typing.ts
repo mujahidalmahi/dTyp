@@ -1,6 +1,10 @@
+export type TypingExecutionMode = "automatic" | "manual";
+
 export interface TypingOptions {
   delayMs: number;
   mode: "character";
+  executionMode?: TypingExecutionMode;
+  stepSize?: number;
   preserveNewlines: boolean;
   preserveTabs: boolean;
   jitterMs?: number;

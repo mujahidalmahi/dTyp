@@ -74,6 +74,8 @@ CREATE TABLE IF NOT EXISTS snippets (
     body TEXT NOT NULL,
     description TEXT,
     category TEXT,
+    tab_stops TEXT,
+    scope TEXT DEFAULT 'c,cpp',
     FOREIGN KEY(component_id) REFERENCES components(id) ON DELETE SET NULL
 );
 

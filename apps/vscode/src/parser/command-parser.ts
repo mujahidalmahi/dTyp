@@ -82,9 +82,12 @@ export class CommandParser {
     if (!component) return null;
 
     return {
+      raw: trimmed,
+      segments: categoryParts.concat(component),
       category: this.normalizeCategory(rawCategory),
       component,
       arguments: args,
+      isCategoryPath: categoryParts.length > 1,
     };
   }
 }

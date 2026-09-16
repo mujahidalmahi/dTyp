@@ -2,7 +2,7 @@
   "name": "dtyp-vscode",
   "displayName": "dTyp — Don't Tell Your Professor",
   "description": "Offline academic C programming library & automated character-by-character typing assistant",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "publisher": "1da7b1e6-01f1-6f58-9ef3-d95516c5e875",
   "icon": "images/icon.png",
   "engines": {
@@ -30,46 +30,113 @@
     "data-structures",
     "algorithms",
     "automation",
-    "offline"
+    "offline",
+    "boiler-plate"
   ],
   "main": "./dist/extension.js",
   "activationEvents": [
     "onLanguage:c",
     "onLanguage:cpp",
     "onCommand:dtyp.insertComponent",
+    "onCommand:dtyp.quickInsert",
+    "onCommand:dtyp.typeNextCharacter",
+    "onCommand:dtyp.flushRemaining",
     "onCommand:dtyp.browseLibrary",
+    "onCommand:dtyp.insertSnippet",
+    "onCommand:dtyp.showHistory",
     "onCommand:dtyp.cancelTyping"
   ],
   "contributes": {
     "commands": [
       {
         "command": "dtyp.insertComponent",
-        "title": "dTyp: Insert Component",
+        "title": "dTyp: Search & Insert Component...",
+        "category": "dTyp"
+      },
+      {
+        "command": "dtyp.quickInsert",
+        "title": "dTyp: Quick Insert (Fuzzy Search)",
+        "category": "dTyp"
+      },
+      {
+        "command": "dtyp.typeNextCharacter",
+        "title": "dTyp: Step Next Character",
+        "category": "dTyp"
+      },
+      {
+        "command": "dtyp.flushRemaining",
+        "title": "dTyp: Flush Remaining Characters",
         "category": "dTyp"
       },
       {
         "command": "dtyp.browseLibrary",
-        "title": "dTyp: Browse Library",
+        "title": "dTyp: Browse Offline Library...",
+        "category": "dTyp"
+      },
+      {
+        "command": "dtyp.insertSnippet",
+        "title": "dTyp: Insert Snippet...",
+        "category": "dTyp"
+      },
+      {
+        "command": "dtyp.showHistory",
+        "title": "dTyp: Show Insertion History",
         "category": "dTyp"
       },
       {
         "command": "dtyp.cancelTyping",
-        "title": "dTyp: Cancel Typing",
+        "title": "dTyp: Cancel Typing / Clear Queue",
         "category": "dTyp"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "dtyp.typeNextCharacter",
+        "key": "ctrl+d",
+        "when": "editorTextFocus && dtyp.hasQueuedCharacters"
+      },
+      {
+        "command": "dtyp.browseLibrary",
+        "key": "ctrl+shift+d"
+      },
+      {
+        "command": "dtyp.cancelTyping",
+        "key": "escape",
+        "when": "editorTextFocus && (dtyp.isTyping || dtyp.hasQueuedCharacters)"
       }
     ],
     "configuration": {
       "title": "dTyp Configuration",
       "properties": {
+        "dtyp.typingMode": {
+          "type": "string",
+          "enum": ["automatic", "manual"],
+          "default": "automatic",
+          "description": "Typing mode: 'automatic' types characters sequentially with realistic delay. 'manual' queues code and outputs character-by-character per Ctrl+D press."
+        },
+        "dtyp.stepSize": {
+          "type": "number",
+          "default": 1,
+          "minimum": 1,
+          "maximum": 50,
+          "description": "Number of characters typed per Ctrl+D press in manual mode."
+        },
         "dtyp.typingDelayMs": {
           "type": "number",
           "default": 15,
-          "description": "Typing delay in milliseconds per character."
+          "minimum": 1,
+          "maximum": 200,
+          "description": "Typing delay in milliseconds per character in automatic mode."
         },
         "dtyp.checkDuplicates": {
           "type": "boolean",
           "default": true,
           "description": "Prevent duplicate struct or function definitions from being inserted."
+        },
+        "dtyp.autoIncludeHeaders": {
+          "type": "boolean",
+          "default": true,
+          "description": "Automatically insert missing standard headers (like <stdlib.h>, <stdbool.h>) needed by the component."
         }
       }
     }
