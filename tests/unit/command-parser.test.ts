@@ -5,7 +5,7 @@ describe("CommandParser", () => {
   it("parses valid command without arguments", () => {
     const cmd = CommandParser.parse("linkedList>createNode()");
     expect(cmd).not.toBeNull();
-    expect(cmd?.category).toBe("linked-list");
+    expect(cmd?.category).toBe("data-structures");
     expect(cmd?.component).toBe("createNode");
     expect(cmd?.arguments).toEqual([]);
   });
@@ -13,17 +13,17 @@ describe("CommandParser", () => {
   it("parses valid command with arguments", () => {
     const cmd = CommandParser.parse("sorting>quickSort(arr, 0, n - 1)");
     expect(cmd).not.toBeNull();
-    expect(cmd?.category).toBe("sorting");
+    expect(cmd?.category).toBe("algorithms");
     expect(cmd?.component).toBe("quickSort");
     expect(cmd?.arguments).toEqual(["arr", "0", "n - 1"]);
   });
 
   it("normalizes category aliases", () => {
     const cmd1 = CommandParser.parse("ll>insertAtBeginning()");
-    expect(cmd1?.category).toBe("linked-list");
+    expect(cmd1?.category).toBe("data-structures");
 
     const cmd2 = CommandParser.parse("dp>knapsack01()");
-    expect(cmd2?.category).toBe("dynamic-programming");
+    expect(cmd2?.category).toBe("algorithms");
 
     const cmd3 = CommandParser.parse("num>bisectionMethod()");
     expect(cmd3?.category).toBe("numerical-methods");

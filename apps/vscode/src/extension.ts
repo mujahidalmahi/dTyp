@@ -435,7 +435,39 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
     if (!selectedCat) return;
 
     const components = await libraryEngine.getByCategory(selectedCat.category);
-    const compItems = components.map((c) => ({
+    const subcats = Array.from(new Set(components.map((c) => c.subcategory).filter(Boolean))).sort();
+
+    let filteredComponents = components;
+    if (subcats.length > 1) {
+      const subcatItems = [
+        {
+          label: `$(list-unordered) All ${selectedCat.label}`,
+          description: `View all ${components.length} components in this domain`,
+          subcat: "__ALL__",
+        },
+        ...subcats.map((sub) => {
+          const count = components.filter((c) => c.subcategory === sub).length;
+          const isLinkedList = ["singly", "doubly", "circular-singly", "circular-doubly"].includes(sub!);
+          const prefix = isLinkedList ? "Linked Lists > " : "";
+          return {
+            label: `$(symbol-folder) ${prefix}${sub}`,
+            description: `${count} components`,
+            subcat: sub!,
+          };
+        }),
+      ];
+
+      const selectedSub = await vscode.window.showQuickPick(subcatItems, {
+        placeHolder: `Filter ${selectedCat.label} by subcategory or view all...`,
+      });
+
+      if (!selectedSub) return;
+      if (selectedSub.subcat !== "__ALL__") {
+        filteredComponents = components.filter((c) => c.subcategory === selectedSub.subcat);
+      }
+    }
+
+    const compItems = filteredComponents.map((c) => ({
       label: `${c.name}()`,
       description: `[${c.complexity.time}] ${c.subcategory || ""}`,
       detail: c.signature,
@@ -443,7 +475,7 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
     }));
 
     const selectedComp = await vscode.window.showQuickPick(compItems, {
-      placeHolder: `${selectedCat.category} components (${components.length} available)...`,
+      placeHolder: `${selectedCat.category} components (${filteredComponents.length} available)...`,
     });
 
     if (selectedComp && (selectedComp as any).componentId) {

@@ -39,7 +39,7 @@ describe("Integration Test 3 & 4: VS Code Extension Insertion & Duplicate Detect
   it("Test 3: linkedList>createNode() -> dependency resolution -> character-by-character insertion", async () => {
     const parsed = CommandParser.parse("linkedList>createNode()");
     expect(parsed).not.toBeNull();
-    expect(parsed?.category).toBe("linked-list");
+    expect(parsed?.category).toBe("data-structures");
 
     const comp = await libraryEngine.findComponent("linkedList.createNode");
     expect(comp).not.toBeNull();
