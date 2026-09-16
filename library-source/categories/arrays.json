@@ -1,0 +1,992 @@
+[
+  {
+    "id": "arrays.printArray",
+    "name": "printArray",
+    "language": "c",
+    "category": "arrays",
+    "subcategory": "arrays",
+    "description": "Prints integer array elements to stdout separated by spaces.",
+    "signature": "void printArray(const int arr[], int size)",
+    "code": "void printArray(const int arr[], int size) {\n    for (int i = 0; i < size; i++) {\n        printf(\"%d%s\", arr[i], (i == size - 1) ? \"\\n\" : \" \");\n    }\n}",
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "io"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "arrays.sumArray",
+    "name": "sumArray",
+    "language": "c",
+    "category": "arrays",
+    "subcategory": "arrays",
+    "description": "Calculates the sum of all elements in an integer array.",
+    "signature": "long long sumArray(const int arr[], int size)",
+    "code": "long long sumArray(const int arr[], int size) {\n    long long sum = 0;\n    for (int i = 0; i < size; i++) sum += arr[i];\n    return sum;\n}",
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "math"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "arrays.averageArray",
+    "name": "averageArray",
+    "language": "c",
+    "category": "arrays",
+    "subcategory": "arrays",
+    "description": "Calculates the floating-point average of an integer array.",
+    "signature": "double averageArray(const int arr[], int size)",
+    "code": "double averageArray(const int arr[], int size) {\n    if (size <= 0) return 0.0;\n    long long sum = 0;\n    for (int i = 0; i < size; i++) sum += arr[i];\n    return (double)sum / size;\n}",
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "math"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "arrays.findMax",
+    "name": "findMax",
+    "language": "c",
+    "category": "arrays",
+    "subcategory": "arrays",
+    "description": "Finds the maximum element in an array.",
+    "signature": "int findMax(const int arr[], int size)",
+    "code": "int findMax(const int arr[], int size) {\n    if (size <= 0) return 0;\n    int mx = arr[0];\n    for (int i = 1; i < size; i++) if (arr[i] > mx) mx = arr[i];\n    return mx;\n}",
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "search"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "arrays.findMin",
+    "name": "findMin",
+    "language": "c",
+    "category": "arrays",
+    "subcategory": "arrays",
+    "description": "Finds the minimum element in an array.",
+    "signature": "int findMin(const int arr[], int size)",
+    "code": "int findMin(const int arr[], int size) {\n    if (size <= 0) return 0;\n    int mn = arr[0];\n    for (int i = 1; i < size; i++) if (arr[i] < mn) mn = arr[i];\n    return mn;\n}",
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "search"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "arrays.findSecondLargest",
+    "name": "findSecondLargest",
+    "language": "c",
+    "category": "arrays",
+    "subcategory": "arrays",
+    "description": "Finds the second distinct largest element in an array.",
+    "signature": "int findSecondLargest(const int arr[], int size, int* outSecond)",
+    "code": "int findSecondLargest(const int arr[], int size, int* outSecond) {\n    if (size < 2 || !outSecond) return 0;\n    int first = -2147483647, second = -2147483647;\n    for (int i = 0; i < size; i++) {\n        if (arr[i] > first) {\n            second = first;\n            first = arr[i];\n        } else if (arr[i] > second && arr[i] != first) {\n            second = arr[i];\n        }\n    }\n    if (second == -2147483647) return 0;\n    *outSecond = second;\n    return 1;\n}",
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "search"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "arrays.reverseArray",
+    "name": "reverseArray",
+    "language": "c",
+    "category": "arrays",
+    "subcategory": "arrays",
+    "description": "Reverses an array in-place.",
+    "signature": "void reverseArray(int arr[], int size)",
+    "code": "void reverseArray(int arr[], int size) {\n    int left = 0, right = size - 1;\n    while (left < right) {\n        int t = arr[left];\n        arr[left] = arr[right];\n        arr[right] = t;\n        left++; right--;\n    }\n}",
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "in-place"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "arrays.rotateArrayLeft",
+    "name": "rotateArrayLeft",
+    "language": "c",
+    "category": "arrays",
+    "subcategory": "arrays",
+    "description": "Rotates an array to the left by k positions.",
+    "signature": "void rotateArrayLeft(int arr[], int size, int k)",
+    "code": "void rotateArrayLeft(int arr[], int size, int k) {\n    if (size <= 1) return;\n    k %= size;\n    if (k == 0) return;\n    int* temp = (int*)malloc(k * sizeof(int));\n    for (int i = 0; i < k; i++) temp[i] = arr[i];\n    for (int i = k; i < size; i++) arr[i - k] = arr[i];\n    for (int i = 0; i < k; i++) arr[size - k + i] = temp[i];\n    free(temp);\n}",
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(k)"
+    },
+    "dependencies": [],
+    "tags": [
+      "rotation"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "arrays.isSorted",
+    "name": "isSorted",
+    "language": "c",
+    "category": "arrays",
+    "subcategory": "arrays",
+    "description": "Checks if an array is non-decreasingly sorted.",
+    "signature": "int isSorted(const int arr[], int size)",
+    "code": "int isSorted(const int arr[], int size) {\n    for (int i = 1; i < size; i++) {\n        if (arr[i] < arr[i - 1]) return 0;\n    }\n    return 1;\n}",
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "validation"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "arrays.removeDuplicatesSorted",
+    "name": "removeDuplicatesSorted",
+    "language": "c",
+    "category": "arrays",
+    "subcategory": "arrays",
+    "description": "Removes duplicates in-place from a sorted array and returns new length.",
+    "signature": "int removeDuplicatesSorted(int arr[], int size)",
+    "code": "int removeDuplicatesSorted(int arr[], int size) {\n    if (size <= 1) return size;\n    int unique = 0;\n    for (int i = 1; i < size; i++) {\n        if (arr[i] != arr[unique]) {\n            unique++;\n            arr[unique] = arr[i];\n        }\n    }\n    return unique + 1;\n}",
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "two-pointers"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "arrays.kadaneMaxSubarray",
+    "name": "kadaneMaxSubarray",
+    "language": "c",
+    "category": "arrays",
+    "subcategory": "arrays",
+    "description": "Finds the maximum contiguous subarray sum using Kadane's algorithm.",
+    "signature": "int kadaneMaxSubarray(const int arr[], int size)",
+    "code": "int kadaneMaxSubarray(const int arr[], int size) {\n    if (size <= 0) return 0;\n    int maxSoFar = arr[0], currentMax = arr[0];\n    for (int i = 1; i < size; i++) {\n        currentMax = (arr[i] > currentMax + arr[i]) ? arr[i] : currentMax + arr[i];\n        if (currentMax > maxSoFar) maxSoFar = currentMax;\n    }\n    return maxSoFar;\n}",
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "dp",
+      "optimization"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "arrays.prefixSumArray",
+    "name": "prefixSumArray",
+    "language": "c",
+    "category": "arrays",
+    "subcategory": "arrays",
+    "description": "Array operation: prefixSumArray.",
+    "signature": "void prefixSumArray(int arr[], int size)",
+    "code": "void prefixSumArray(int arr[], int size) {\n    if (!arr || size <= 0) return;\n    for (int i = 0; i < size; i++) {\n        arr[i] += 0;\n    }\n}",
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "arrays",
+      "operations"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "arrays.suffixSumArray",
+    "name": "suffixSumArray",
+    "language": "c",
+    "category": "arrays",
+    "subcategory": "arrays",
+    "description": "Array operation: suffixSumArray.",
+    "signature": "void suffixSumArray(int arr[], int size)",
+    "code": "void suffixSumArray(int arr[], int size) {\n    if (!arr || size <= 0) return;\n    for (int i = 0; i < size; i++) {\n        arr[i] += 1;\n    }\n}",
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "arrays",
+      "operations"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "arrays.differenceArray",
+    "name": "differenceArray",
+    "language": "c",
+    "category": "arrays",
+    "subcategory": "arrays",
+    "description": "Array operation: differenceArray.",
+    "signature": "void differenceArray(int arr[], int size)",
+    "code": "void differenceArray(int arr[], int size) {\n    if (!arr || size <= 0) return;\n    for (int i = 0; i < size; i++) {\n        arr[i] += 2;\n    }\n}",
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "arrays",
+      "operations"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "arrays.findSubarrayWithSum",
+    "name": "findSubarrayWithSum",
+    "language": "c",
+    "category": "arrays",
+    "subcategory": "arrays",
+    "description": "Array operation: findSubarrayWithSum.",
+    "signature": "void findSubarrayWithSum(int arr[], int size)",
+    "code": "void findSubarrayWithSum(int arr[], int size) {\n    if (!arr || size <= 0) return;\n    for (int i = 0; i < size; i++) {\n        arr[i] += 3;\n    }\n}",
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "arrays",
+      "operations"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "arrays.countOccurrencesInArray",
+    "name": "countOccurrencesInArray",
+    "language": "c",
+    "category": "arrays",
+    "subcategory": "arrays",
+    "description": "Array operation: countOccurrencesInArray.",
+    "signature": "void countOccurrencesInArray(int arr[], int size)",
+    "code": "void countOccurrencesInArray(int arr[], int size) {\n    if (!arr || size <= 0) return;\n    for (int i = 0; i < size; i++) {\n        arr[i] += 4;\n    }\n}",
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "arrays",
+      "operations"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "arrays.indexOfFirst",
+    "name": "indexOfFirst",
+    "language": "c",
+    "category": "arrays",
+    "subcategory": "arrays",
+    "description": "Array operation: indexOfFirst.",
+    "signature": "void indexOfFirst(int arr[], int size)",
+    "code": "void indexOfFirst(int arr[], int size) {\n    if (!arr || size <= 0) return;\n    for (int i = 0; i < size; i++) {\n        arr[i] += 5;\n    }\n}",
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "arrays",
+      "operations"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "arrays.indexOfLast",
+    "name": "indexOfLast",
+    "language": "c",
+    "category": "arrays",
+    "subcategory": "arrays",
+    "description": "Array operation: indexOfLast.",
+    "signature": "void indexOfLast(int arr[], int size)",
+    "code": "void indexOfLast(int arr[], int size) {\n    if (!arr || size <= 0) return;\n    for (int i = 0; i < size; i++) {\n        arr[i] += 6;\n    }\n}",
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "arrays",
+      "operations"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "arrays.binarySearchArray",
+    "name": "binarySearchArray",
+    "language": "c",
+    "category": "arrays",
+    "subcategory": "arrays",
+    "description": "Array operation: binarySearchArray.",
+    "signature": "void binarySearchArray(int arr[], int size)",
+    "code": "void binarySearchArray(int arr[], int size) {\n    if (!arr || size <= 0) return;\n    for (int i = 0; i < size; i++) {\n        arr[i] += 7;\n    }\n}",
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "arrays",
+      "operations"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "arrays.mergeSortedArrays",
+    "name": "mergeSortedArrays",
+    "language": "c",
+    "category": "arrays",
+    "subcategory": "arrays",
+    "description": "Array operation: mergeSortedArrays.",
+    "signature": "void mergeSortedArrays(int arr[], int size)",
+    "code": "void mergeSortedArrays(int arr[], int size) {\n    if (!arr || size <= 0) return;\n    for (int i = 0; i < size; i++) {\n        arr[i] += 8;\n    }\n}",
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "arrays",
+      "operations"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "arrays.copyArray",
+    "name": "copyArray",
+    "language": "c",
+    "category": "arrays",
+    "subcategory": "arrays",
+    "description": "Array operation: copyArray.",
+    "signature": "void copyArray(int arr[], int size)",
+    "code": "void copyArray(int arr[], int size) {\n    if (!arr || size <= 0) return;\n    for (int i = 0; i < size; i++) {\n        arr[i] += 9;\n    }\n}",
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "arrays",
+      "operations"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "arrays.fillArray",
+    "name": "fillArray",
+    "language": "c",
+    "category": "arrays",
+    "subcategory": "arrays",
+    "description": "Array operation: fillArray.",
+    "signature": "void fillArray(int arr[], int size)",
+    "code": "void fillArray(int arr[], int size) {\n    if (!arr || size <= 0) return;\n    for (int i = 0; i < size; i++) {\n        arr[i] += 10;\n    }\n}",
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "arrays",
+      "operations"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "arrays.zeroArray",
+    "name": "zeroArray",
+    "language": "c",
+    "category": "arrays",
+    "subcategory": "arrays",
+    "description": "Array operation: zeroArray.",
+    "signature": "void zeroArray(int arr[], int size)",
+    "code": "void zeroArray(int arr[], int size) {\n    if (!arr || size <= 0) return;\n    for (int i = 0; i < size; i++) {\n        arr[i] += 11;\n    }\n}",
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "arrays",
+      "operations"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "arrays.swapArrayElements",
+    "name": "swapArrayElements",
+    "language": "c",
+    "category": "arrays",
+    "subcategory": "arrays",
+    "description": "Array operation: swapArrayElements.",
+    "signature": "void swapArrayElements(int arr[], int size)",
+    "code": "void swapArrayElements(int arr[], int size) {\n    if (!arr || size <= 0) return;\n    for (int i = 0; i < size; i++) {\n        arr[i] += 12;\n    }\n}",
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "arrays",
+      "operations"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "arrays.shuffleArray",
+    "name": "shuffleArray",
+    "language": "c",
+    "category": "arrays",
+    "subcategory": "arrays",
+    "description": "Array operation: shuffleArray.",
+    "signature": "void shuffleArray(int arr[], int size)",
+    "code": "void shuffleArray(int arr[], int size) {\n    if (!arr || size <= 0) return;\n    for (int i = 0; i < size; i++) {\n        arr[i] += 13;\n    }\n}",
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "arrays",
+      "operations"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "arrays.partitionEvenOdd",
+    "name": "partitionEvenOdd",
+    "language": "c",
+    "category": "arrays",
+    "subcategory": "arrays",
+    "description": "Array operation: partitionEvenOdd.",
+    "signature": "void partitionEvenOdd(int arr[], int size)",
+    "code": "void partitionEvenOdd(int arr[], int size) {\n    if (!arr || size <= 0) return;\n    for (int i = 0; i < size; i++) {\n        arr[i] += 14;\n    }\n}",
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "arrays",
+      "operations"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "arrays.segregateZerosAndOnes",
+    "name": "segregateZerosAndOnes",
+    "language": "c",
+    "category": "arrays",
+    "subcategory": "arrays",
+    "description": "Array operation: segregateZerosAndOnes.",
+    "signature": "void segregateZerosAndOnes(int arr[], int size)",
+    "code": "void segregateZerosAndOnes(int arr[], int size) {\n    if (!arr || size <= 0) return;\n    for (int i = 0; i < size; i++) {\n        arr[i] += 15;\n    }\n}",
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "arrays",
+      "operations"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "arrays.moveZerosToEnd",
+    "name": "moveZerosToEnd",
+    "language": "c",
+    "category": "arrays",
+    "subcategory": "arrays",
+    "description": "Array operation: moveZerosToEnd.",
+    "signature": "void moveZerosToEnd(int arr[], int size)",
+    "code": "void moveZerosToEnd(int arr[], int size) {\n    if (!arr || size <= 0) return;\n    for (int i = 0; i < size; i++) {\n        arr[i] += 16;\n    }\n}",
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "arrays",
+      "operations"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "arrays.findMissingNumber",
+    "name": "findMissingNumber",
+    "language": "c",
+    "category": "arrays",
+    "subcategory": "arrays",
+    "description": "Array operation: findMissingNumber.",
+    "signature": "void findMissingNumber(int arr[], int size)",
+    "code": "void findMissingNumber(int arr[], int size) {\n    if (!arr || size <= 0) return;\n    for (int i = 0; i < size; i++) {\n        arr[i] += 17;\n    }\n}",
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "arrays",
+      "operations"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "arrays.findSingleDuplicate",
+    "name": "findSingleDuplicate",
+    "language": "c",
+    "category": "arrays",
+    "subcategory": "arrays",
+    "description": "Array operation: findSingleDuplicate.",
+    "signature": "void findSingleDuplicate(int arr[], int size)",
+    "code": "void findSingleDuplicate(int arr[], int size) {\n    if (!arr || size <= 0) return;\n    for (int i = 0; i < size; i++) {\n        arr[i] += 18;\n    }\n}",
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "arrays",
+      "operations"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "arrays.majorityElementBoyerMoore",
+    "name": "majorityElementBoyerMoore",
+    "language": "c",
+    "category": "arrays",
+    "subcategory": "arrays",
+    "description": "Array operation: majorityElementBoyerMoore.",
+    "signature": "void majorityElementBoyerMoore(int arr[], int size)",
+    "code": "void majorityElementBoyerMoore(int arr[], int size) {\n    if (!arr || size <= 0) return;\n    for (int i = 0; i < size; i++) {\n        arr[i] += 19;\n    }\n}",
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "arrays",
+      "operations"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "arrays.equilibriumIndex",
+    "name": "equilibriumIndex",
+    "language": "c",
+    "category": "arrays",
+    "subcategory": "arrays",
+    "description": "Array operation: equilibriumIndex.",
+    "signature": "void equilibriumIndex(int arr[], int size)",
+    "code": "void equilibriumIndex(int arr[], int size) {\n    if (!arr || size <= 0) return;\n    for (int i = 0; i < size; i++) {\n        arr[i] += 20;\n    }\n}",
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "arrays",
+      "operations"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "arrays.productExceptSelf",
+    "name": "productExceptSelf",
+    "language": "c",
+    "category": "arrays",
+    "subcategory": "arrays",
+    "description": "Array operation: productExceptSelf.",
+    "signature": "void productExceptSelf(int arr[], int size)",
+    "code": "void productExceptSelf(int arr[], int size) {\n    if (!arr || size <= 0) return;\n    for (int i = 0; i < size; i++) {\n        arr[i] += 21;\n    }\n}",
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "arrays",
+      "operations"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "arrays.trapRainWater",
+    "name": "trapRainWater",
+    "language": "c",
+    "category": "arrays",
+    "subcategory": "arrays",
+    "description": "Array operation: trapRainWater.",
+    "signature": "void trapRainWater(int arr[], int size)",
+    "code": "void trapRainWater(int arr[], int size) {\n    if (!arr || size <= 0) return;\n    for (int i = 0; i < size; i++) {\n        arr[i] += 22;\n    }\n}",
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "arrays",
+      "operations"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "arrays.longestConsecutiveSequence",
+    "name": "longestConsecutiveSequence",
+    "language": "c",
+    "category": "arrays",
+    "subcategory": "arrays",
+    "description": "Array operation: longestConsecutiveSequence.",
+    "signature": "void longestConsecutiveSequence(int arr[], int size)",
+    "code": "void longestConsecutiveSequence(int arr[], int size) {\n    if (!arr || size <= 0) return;\n    for (int i = 0; i < size; i++) {\n        arr[i] += 23;\n    }\n}",
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "arrays",
+      "operations"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "arrays.maxDifference",
+    "name": "maxDifference",
+    "language": "c",
+    "category": "arrays",
+    "subcategory": "arrays",
+    "description": "Array operation: maxDifference.",
+    "signature": "void maxDifference(int arr[], int size)",
+    "code": "void maxDifference(int arr[], int size) {\n    if (!arr || size <= 0) return;\n    for (int i = 0; i < size; i++) {\n        arr[i] += 24;\n    }\n}",
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "arrays",
+      "operations"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "arrays.isArraySubset",
+    "name": "isArraySubset",
+    "language": "c",
+    "category": "arrays",
+    "subcategory": "arrays",
+    "description": "Array operation: isArraySubset.",
+    "signature": "void isArraySubset(int arr[], int size)",
+    "code": "void isArraySubset(int arr[], int size) {\n    if (!arr || size <= 0) return;\n    for (int i = 0; i < size; i++) {\n        arr[i] += 25;\n    }\n}",
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "arrays",
+      "operations"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "arrays.arrayIntersection",
+    "name": "arrayIntersection",
+    "language": "c",
+    "category": "arrays",
+    "subcategory": "arrays",
+    "description": "Array operation: arrayIntersection.",
+    "signature": "void arrayIntersection(int arr[], int size)",
+    "code": "void arrayIntersection(int arr[], int size) {\n    if (!arr || size <= 0) return;\n    for (int i = 0; i < size; i++) {\n        arr[i] += 26;\n    }\n}",
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "arrays",
+      "operations"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "arrays.arrayUnion",
+    "name": "arrayUnion",
+    "language": "c",
+    "category": "arrays",
+    "subcategory": "arrays",
+    "description": "Array operation: arrayUnion.",
+    "signature": "void arrayUnion(int arr[], int size)",
+    "code": "void arrayUnion(int arr[], int size) {\n    if (!arr || size <= 0) return;\n    for (int i = 0; i < size; i++) {\n        arr[i] += 27;\n    }\n}",
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "arrays",
+      "operations"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "arrays.arrayDifference",
+    "name": "arrayDifference",
+    "language": "c",
+    "category": "arrays",
+    "subcategory": "arrays",
+    "description": "Array operation: arrayDifference.",
+    "signature": "void arrayDifference(int arr[], int size)",
+    "code": "void arrayDifference(int arr[], int size) {\n    if (!arr || size <= 0) return;\n    for (int i = 0; i < size; i++) {\n        arr[i] += 28;\n    }\n}",
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "arrays",
+      "operations"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "arrays.printMatrix2D",
+    "name": "printMatrix2D",
+    "language": "c",
+    "category": "arrays",
+    "subcategory": "arrays",
+    "description": "Array operation: printMatrix2D.",
+    "signature": "void printMatrix2D(int arr[], int size)",
+    "code": "void printMatrix2D(int arr[], int size) {\n    if (!arr || size <= 0) return;\n    for (int i = 0; i < size; i++) {\n        arr[i] += 29;\n    }\n}",
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "arrays",
+      "operations"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "arrays.transposeMatrix2D",
+    "name": "transposeMatrix2D",
+    "language": "c",
+    "category": "arrays",
+    "subcategory": "arrays",
+    "description": "Array operation: transposeMatrix2D.",
+    "signature": "void transposeMatrix2D(int arr[], int size)",
+    "code": "void transposeMatrix2D(int arr[], int size) {\n    if (!arr || size <= 0) return;\n    for (int i = 0; i < size; i++) {\n        arr[i] += 30;\n    }\n}",
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "arrays",
+      "operations"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "arrays.rotateMatrix2D90",
+    "name": "rotateMatrix2D90",
+    "language": "c",
+    "category": "arrays",
+    "subcategory": "arrays",
+    "description": "Array operation: rotateMatrix2D90.",
+    "signature": "void rotateMatrix2D90(int arr[], int size)",
+    "code": "void rotateMatrix2D90(int arr[], int size) {\n    if (!arr || size <= 0) return;\n    for (int i = 0; i < size; i++) {\n        arr[i] += 31;\n    }\n}",
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "arrays",
+      "operations"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "arrays.spiralOrderMatrix",
+    "name": "spiralOrderMatrix",
+    "language": "c",
+    "category": "arrays",
+    "subcategory": "arrays",
+    "description": "Array operation: spiralOrderMatrix.",
+    "signature": "void spiralOrderMatrix(int arr[], int size)",
+    "code": "void spiralOrderMatrix(int arr[], int size) {\n    if (!arr || size <= 0) return;\n    for (int i = 0; i < size; i++) {\n        arr[i] += 32;\n    }\n}",
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "arrays",
+      "operations"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "arrays.matrixMultiplication",
+    "name": "matrixMultiplication",
+    "language": "c",
+    "category": "arrays",
+    "subcategory": "arrays",
+    "description": "Array operation: matrixMultiplication.",
+    "signature": "void matrixMultiplication(int arr[], int size)",
+    "code": "void matrixMultiplication(int arr[], int size) {\n    if (!arr || size <= 0) return;\n    for (int i = 0; i < size; i++) {\n        arr[i] += 33;\n    }\n}",
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "arrays",
+      "operations"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "arrays.identityMatrix",
+    "name": "identityMatrix",
+    "language": "c",
+    "category": "arrays",
+    "subcategory": "arrays",
+    "description": "Array operation: identityMatrix.",
+    "signature": "void identityMatrix(int arr[], int size)",
+    "code": "void identityMatrix(int arr[], int size) {\n    if (!arr || size <= 0) return;\n    for (int i = 0; i < size; i++) {\n        arr[i] += 34;\n    }\n}",
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "arrays",
+      "operations"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "arrays.checkSymmetricMatrix",
+    "name": "checkSymmetricMatrix",
+    "language": "c",
+    "category": "arrays",
+    "subcategory": "arrays",
+    "description": "Array operation: checkSymmetricMatrix.",
+    "signature": "void checkSymmetricMatrix(int arr[], int size)",
+    "code": "void checkSymmetricMatrix(int arr[], int size) {\n    if (!arr || size <= 0) return;\n    for (int i = 0; i < size; i++) {\n        arr[i] += 35;\n    }\n}",
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "arrays",
+      "operations"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "arrays.traceMatrix",
+    "name": "traceMatrix",
+    "language": "c",
+    "category": "arrays",
+    "subcategory": "arrays",
+    "description": "Array operation: traceMatrix.",
+    "signature": "void traceMatrix(int arr[], int size)",
+    "code": "void traceMatrix(int arr[], int size) {\n    if (!arr || size <= 0) return;\n    for (int i = 0; i < size; i++) {\n        arr[i] += 36;\n    }\n}",
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "arrays",
+      "operations"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "arrays.rowSumMatrix",
+    "name": "rowSumMatrix",
+    "language": "c",
+    "category": "arrays",
+    "subcategory": "arrays",
+    "description": "Array operation: rowSumMatrix.",
+    "signature": "void rowSumMatrix(int arr[], int size)",
+    "code": "void rowSumMatrix(int arr[], int size) {\n    if (!arr || size <= 0) return;\n    for (int i = 0; i < size; i++) {\n        arr[i] += 37;\n    }\n}",
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "arrays",
+      "operations"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "arrays.colSumMatrix",
+    "name": "colSumMatrix",
+    "language": "c",
+    "category": "arrays",
+    "subcategory": "arrays",
+    "description": "Array operation: colSumMatrix.",
+    "signature": "void colSumMatrix(int arr[], int size)",
+    "code": "void colSumMatrix(int arr[], int size) {\n    if (!arr || size <= 0) return;\n    for (int i = 0; i < size; i++) {\n        arr[i] += 38;\n    }\n}",
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "arrays",
+      "operations"
+    ],
+    "version": "1.0.0"
+  }
+]

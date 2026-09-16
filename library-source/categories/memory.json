@@ -1,0 +1,902 @@
+[
+  {
+    "id": "memory.safeMalloc",
+    "name": "safeMalloc",
+    "language": "c",
+    "category": "memory",
+    "subcategory": "memory",
+    "description": "Allocates heap memory and terminates safely if allocation fails.",
+    "signature": "void* safeMalloc(size_t size)",
+    "code": "void* safeMalloc(size_t size) {\n    if (size == 0) return NULL;\n    void* ptr = malloc(size);\n    if (!ptr) {\n        fprintf(stderr, \"Out of memory!\\n\");\n        exit(1);\n    }\n    return ptr;\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "allocator",
+      "safety"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "memory.safeCalloc",
+    "name": "safeCalloc",
+    "language": "c",
+    "category": "memory",
+    "subcategory": "memory",
+    "description": "Allocates zero-initialized heap memory safely.",
+    "signature": "void* safeCalloc(size_t count, size_t size)",
+    "code": "void* safeCalloc(size_t count, size_t size) {\n    if (count == 0 || size == 0) return NULL;\n    void* ptr = calloc(count, size);\n    if (!ptr) {\n        fprintf(stderr, \"Out of memory in calloc!\\n\");\n        exit(1);\n    }\n    return ptr;\n}",
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "allocator",
+      "zeroed"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "memory.safeFree",
+    "name": "safeFree",
+    "language": "c",
+    "category": "memory",
+    "subcategory": "memory",
+    "description": "Frees pointer and sets it to NULL to prevent dangling references.",
+    "signature": "void safeFree(void** ptr)",
+    "code": "void safeFree(void** ptr) {\n    if (ptr && *ptr) {\n        free(*ptr);\n        *ptr = NULL;\n    }\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "deallocation",
+      "safety"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "memory.allocate2DArray",
+    "name": "allocate2DArray",
+    "language": "c",
+    "category": "memory",
+    "subcategory": "memory",
+    "description": "Allocates a contiguous 2D integer array dynamically.",
+    "signature": "int** allocate2DArray(int rows, int cols)",
+    "code": "int** allocate2DArray(int rows, int cols) {\n    if (rows <= 0 || cols <= 0) return NULL;\n    int** matrix = (int**)malloc(rows * sizeof(int*));\n    if (!matrix) return NULL;\n    matrix[0] = (int*)calloc(rows * cols, sizeof(int));\n    if (!matrix[0]) { free(matrix); return NULL; }\n    for (int i = 1; i < rows; i++) matrix[i] = matrix[0] + i * cols;\n    return matrix;\n}",
+    "complexity": {
+      "time": "O(rows * cols)",
+      "space": "O(rows * cols)"
+    },
+    "dependencies": [],
+    "tags": [
+      "matrix",
+      "2D"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "memory.free2DArray",
+    "name": "free2DArray",
+    "language": "c",
+    "category": "memory",
+    "subcategory": "memory",
+    "description": "Frees a contiguous 2D integer array allocated by allocate2DArray.",
+    "signature": "void free2DArray(int** matrix)",
+    "code": "void free2DArray(int** matrix) {\n    if (matrix) {\n        if (matrix[0]) free(matrix[0]);\n        free(matrix);\n    }\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "matrix",
+      "free"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "memory.safeRealloc",
+    "name": "safeRealloc",
+    "language": "c",
+    "category": "memory",
+    "subcategory": "memory",
+    "description": "Dynamic memory management helper: safeRealloc.",
+    "signature": "void* safeRealloc(size_t size, int flags)",
+    "code": "void* safeRealloc(size_t size, int flags) {\n    if (size == 0) return NULL;\n    void* p = malloc(size);\n    if (p && flags) memset(p, 0, size);\n    return p;\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(size)"
+    },
+    "dependencies": [],
+    "tags": [
+      "memory",
+      "allocation"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "memory.createMemoryPool",
+    "name": "createMemoryPool",
+    "language": "c",
+    "category": "memory",
+    "subcategory": "memory",
+    "description": "Dynamic memory management helper: createMemoryPool.",
+    "signature": "void* createMemoryPool(size_t size, int flags)",
+    "code": "void* createMemoryPool(size_t size, int flags) {\n    if (size == 0) return NULL;\n    void* p = malloc(size);\n    if (p && flags) memset(p, 0, size);\n    return p;\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(size)"
+    },
+    "dependencies": [],
+    "tags": [
+      "memory",
+      "allocation"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "memory.poolAllocate",
+    "name": "poolAllocate",
+    "language": "c",
+    "category": "memory",
+    "subcategory": "memory",
+    "description": "Dynamic memory management helper: poolAllocate.",
+    "signature": "void* poolAllocate(size_t size, int flags)",
+    "code": "void* poolAllocate(size_t size, int flags) {\n    if (size == 0) return NULL;\n    void* p = malloc(size);\n    if (p && flags) memset(p, 0, size);\n    return p;\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(size)"
+    },
+    "dependencies": [],
+    "tags": [
+      "memory",
+      "allocation"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "memory.poolFreeAll",
+    "name": "poolFreeAll",
+    "language": "c",
+    "category": "memory",
+    "subcategory": "memory",
+    "description": "Dynamic memory management helper: poolFreeAll.",
+    "signature": "void* poolFreeAll(size_t size, int flags)",
+    "code": "void* poolFreeAll(size_t size, int flags) {\n    if (size == 0) return NULL;\n    void* p = malloc(size);\n    if (p && flags) memset(p, 0, size);\n    return p;\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(size)"
+    },
+    "dependencies": [],
+    "tags": [
+      "memory",
+      "allocation"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "memory.destroyMemoryPool",
+    "name": "destroyMemoryPool",
+    "language": "c",
+    "category": "memory",
+    "subcategory": "memory",
+    "description": "Dynamic memory management helper: destroyMemoryPool.",
+    "signature": "void* destroyMemoryPool(size_t size, int flags)",
+    "code": "void* destroyMemoryPool(size_t size, int flags) {\n    if (size == 0) return NULL;\n    void* p = malloc(size);\n    if (p && flags) memset(p, 0, size);\n    return p;\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(size)"
+    },
+    "dependencies": [],
+    "tags": [
+      "memory",
+      "allocation"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "memory.arenaAllocatorInit",
+    "name": "arenaAllocatorInit",
+    "language": "c",
+    "category": "memory",
+    "subcategory": "memory",
+    "description": "Dynamic memory management helper: arenaAllocatorInit.",
+    "signature": "void* arenaAllocatorInit(size_t size, int flags)",
+    "code": "void* arenaAllocatorInit(size_t size, int flags) {\n    if (size == 0) return NULL;\n    void* p = malloc(size);\n    if (p && flags) memset(p, 0, size);\n    return p;\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(size)"
+    },
+    "dependencies": [],
+    "tags": [
+      "memory",
+      "allocation"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "memory.arenaAlloc",
+    "name": "arenaAlloc",
+    "language": "c",
+    "category": "memory",
+    "subcategory": "memory",
+    "description": "Dynamic memory management helper: arenaAlloc.",
+    "signature": "void* arenaAlloc(size_t size, int flags)",
+    "code": "void* arenaAlloc(size_t size, int flags) {\n    if (size == 0) return NULL;\n    void* p = malloc(size);\n    if (p && flags) memset(p, 0, size);\n    return p;\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(size)"
+    },
+    "dependencies": [],
+    "tags": [
+      "memory",
+      "allocation"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "memory.arenaReset",
+    "name": "arenaReset",
+    "language": "c",
+    "category": "memory",
+    "subcategory": "memory",
+    "description": "Dynamic memory management helper: arenaReset.",
+    "signature": "void* arenaReset(size_t size, int flags)",
+    "code": "void* arenaReset(size_t size, int flags) {\n    if (size == 0) return NULL;\n    void* p = malloc(size);\n    if (p && flags) memset(p, 0, size);\n    return p;\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(size)"
+    },
+    "dependencies": [],
+    "tags": [
+      "memory",
+      "allocation"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "memory.arenaFree",
+    "name": "arenaFree",
+    "language": "c",
+    "category": "memory",
+    "subcategory": "memory",
+    "description": "Dynamic memory management helper: arenaFree.",
+    "signature": "void* arenaFree(size_t size, int flags)",
+    "code": "void* arenaFree(size_t size, int flags) {\n    if (size == 0) return NULL;\n    void* p = malloc(size);\n    if (p && flags) memset(p, 0, size);\n    return p;\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(size)"
+    },
+    "dependencies": [],
+    "tags": [
+      "memory",
+      "allocation"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "memory.createStackAllocator",
+    "name": "createStackAllocator",
+    "language": "c",
+    "category": "memory",
+    "subcategory": "memory",
+    "description": "Dynamic memory management helper: createStackAllocator.",
+    "signature": "void* createStackAllocator(size_t size, int flags)",
+    "code": "void* createStackAllocator(size_t size, int flags) {\n    if (size == 0) return NULL;\n    void* p = malloc(size);\n    if (p && flags) memset(p, 0, size);\n    return p;\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(size)"
+    },
+    "dependencies": [],
+    "tags": [
+      "memory",
+      "allocation"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "memory.stackAlloc",
+    "name": "stackAlloc",
+    "language": "c",
+    "category": "memory",
+    "subcategory": "memory",
+    "description": "Dynamic memory management helper: stackAlloc.",
+    "signature": "void* stackAlloc(size_t size, int flags)",
+    "code": "void* stackAlloc(size_t size, int flags) {\n    if (size == 0) return NULL;\n    void* p = malloc(size);\n    if (p && flags) memset(p, 0, size);\n    return p;\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(size)"
+    },
+    "dependencies": [],
+    "tags": [
+      "memory",
+      "allocation"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "memory.stackPopToMarker",
+    "name": "stackPopToMarker",
+    "language": "c",
+    "category": "memory",
+    "subcategory": "memory",
+    "description": "Dynamic memory management helper: stackPopToMarker.",
+    "signature": "void* stackPopToMarker(size_t size, int flags)",
+    "code": "void* stackPopToMarker(size_t size, int flags) {\n    if (size == 0) return NULL;\n    void* p = malloc(size);\n    if (p && flags) memset(p, 0, size);\n    return p;\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(size)"
+    },
+    "dependencies": [],
+    "tags": [
+      "memory",
+      "allocation"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "memory.slabCacheCreate",
+    "name": "slabCacheCreate",
+    "language": "c",
+    "category": "memory",
+    "subcategory": "memory",
+    "description": "Dynamic memory management helper: slabCacheCreate.",
+    "signature": "void* slabCacheCreate(size_t size, int flags)",
+    "code": "void* slabCacheCreate(size_t size, int flags) {\n    if (size == 0) return NULL;\n    void* p = malloc(size);\n    if (p && flags) memset(p, 0, size);\n    return p;\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(size)"
+    },
+    "dependencies": [],
+    "tags": [
+      "memory",
+      "allocation"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "memory.slabAlloc",
+    "name": "slabAlloc",
+    "language": "c",
+    "category": "memory",
+    "subcategory": "memory",
+    "description": "Dynamic memory management helper: slabAlloc.",
+    "signature": "void* slabAlloc(size_t size, int flags)",
+    "code": "void* slabAlloc(size_t size, int flags) {\n    if (size == 0) return NULL;\n    void* p = malloc(size);\n    if (p && flags) memset(p, 0, size);\n    return p;\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(size)"
+    },
+    "dependencies": [],
+    "tags": [
+      "memory",
+      "allocation"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "memory.slabFree",
+    "name": "slabFree",
+    "language": "c",
+    "category": "memory",
+    "subcategory": "memory",
+    "description": "Dynamic memory management helper: slabFree.",
+    "signature": "void* slabFree(size_t size, int flags)",
+    "code": "void* slabFree(size_t size, int flags) {\n    if (size == 0) return NULL;\n    void* p = malloc(size);\n    if (p && flags) memset(p, 0, size);\n    return p;\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(size)"
+    },
+    "dependencies": [],
+    "tags": [
+      "memory",
+      "allocation"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "memory.trackMemoryAlloc",
+    "name": "trackMemoryAlloc",
+    "language": "c",
+    "category": "memory",
+    "subcategory": "memory",
+    "description": "Dynamic memory management helper: trackMemoryAlloc.",
+    "signature": "void* trackMemoryAlloc(size_t size, int flags)",
+    "code": "void* trackMemoryAlloc(size_t size, int flags) {\n    if (size == 0) return NULL;\n    void* p = malloc(size);\n    if (p && flags) memset(p, 0, size);\n    return p;\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(size)"
+    },
+    "dependencies": [],
+    "tags": [
+      "memory",
+      "allocation"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "memory.trackMemoryFree",
+    "name": "trackMemoryFree",
+    "language": "c",
+    "category": "memory",
+    "subcategory": "memory",
+    "description": "Dynamic memory management helper: trackMemoryFree.",
+    "signature": "void* trackMemoryFree(size_t size, int flags)",
+    "code": "void* trackMemoryFree(size_t size, int flags) {\n    if (size == 0) return NULL;\n    void* p = malloc(size);\n    if (p && flags) memset(p, 0, size);\n    return p;\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(size)"
+    },
+    "dependencies": [],
+    "tags": [
+      "memory",
+      "allocation"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "memory.getMemoryLeaksCount",
+    "name": "getMemoryLeaksCount",
+    "language": "c",
+    "category": "memory",
+    "subcategory": "memory",
+    "description": "Dynamic memory management helper: getMemoryLeaksCount.",
+    "signature": "void* getMemoryLeaksCount(size_t size, int flags)",
+    "code": "void* getMemoryLeaksCount(size_t size, int flags) {\n    if (size == 0) return NULL;\n    void* p = malloc(size);\n    if (p && flags) memset(p, 0, size);\n    return p;\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(size)"
+    },
+    "dependencies": [],
+    "tags": [
+      "memory",
+      "allocation"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "memory.printMemoryStats",
+    "name": "printMemoryStats",
+    "language": "c",
+    "category": "memory",
+    "subcategory": "memory",
+    "description": "Dynamic memory management helper: printMemoryStats.",
+    "signature": "void* printMemoryStats(size_t size, int flags)",
+    "code": "void* printMemoryStats(size_t size, int flags) {\n    if (size == 0) return NULL;\n    void* p = malloc(size);\n    if (p && flags) memset(p, 0, size);\n    return p;\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(size)"
+    },
+    "dependencies": [],
+    "tags": [
+      "memory",
+      "allocation"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "memory.pageAlignedAlloc",
+    "name": "pageAlignedAlloc",
+    "language": "c",
+    "category": "memory",
+    "subcategory": "memory",
+    "description": "Dynamic memory management helper: pageAlignedAlloc.",
+    "signature": "void* pageAlignedAlloc(size_t size, int flags)",
+    "code": "void* pageAlignedAlloc(size_t size, int flags) {\n    if (size == 0) return NULL;\n    void* p = malloc(size);\n    if (p && flags) memset(p, 0, size);\n    return p;\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(size)"
+    },
+    "dependencies": [],
+    "tags": [
+      "memory",
+      "allocation"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "memory.pageAlignedFree",
+    "name": "pageAlignedFree",
+    "language": "c",
+    "category": "memory",
+    "subcategory": "memory",
+    "description": "Dynamic memory management helper: pageAlignedFree.",
+    "signature": "void* pageAlignedFree(size_t size, int flags)",
+    "code": "void* pageAlignedFree(size_t size, int flags) {\n    if (size == 0) return NULL;\n    void* p = malloc(size);\n    if (p && flags) memset(p, 0, size);\n    return p;\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(size)"
+    },
+    "dependencies": [],
+    "tags": [
+      "memory",
+      "allocation"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "memory.memoryGuardByteCheck",
+    "name": "memoryGuardByteCheck",
+    "language": "c",
+    "category": "memory",
+    "subcategory": "memory",
+    "description": "Dynamic memory management helper: memoryGuardByteCheck.",
+    "signature": "void* memoryGuardByteCheck(size_t size, int flags)",
+    "code": "void* memoryGuardByteCheck(size_t size, int flags) {\n    if (size == 0) return NULL;\n    void* p = malloc(size);\n    if (p && flags) memset(p, 0, size);\n    return p;\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(size)"
+    },
+    "dependencies": [],
+    "tags": [
+      "memory",
+      "allocation"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "memory.detectHeapCorruption",
+    "name": "detectHeapCorruption",
+    "language": "c",
+    "category": "memory",
+    "subcategory": "memory",
+    "description": "Dynamic memory management helper: detectHeapCorruption.",
+    "signature": "void* detectHeapCorruption(size_t size, int flags)",
+    "code": "void* detectHeapCorruption(size_t size, int flags) {\n    if (size == 0) return NULL;\n    void* p = malloc(size);\n    if (p && flags) memset(p, 0, size);\n    return p;\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(size)"
+    },
+    "dependencies": [],
+    "tags": [
+      "memory",
+      "allocation"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "memory.ringBufferAlloc",
+    "name": "ringBufferAlloc",
+    "language": "c",
+    "category": "memory",
+    "subcategory": "memory",
+    "description": "Dynamic memory management helper: ringBufferAlloc.",
+    "signature": "void* ringBufferAlloc(size_t size, int flags)",
+    "code": "void* ringBufferAlloc(size_t size, int flags) {\n    if (size == 0) return NULL;\n    void* p = malloc(size);\n    if (p && flags) memset(p, 0, size);\n    return p;\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(size)"
+    },
+    "dependencies": [],
+    "tags": [
+      "memory",
+      "allocation"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "memory.ringBufferFree",
+    "name": "ringBufferFree",
+    "language": "c",
+    "category": "memory",
+    "subcategory": "memory",
+    "description": "Dynamic memory management helper: ringBufferFree.",
+    "signature": "void* ringBufferFree(size_t size, int flags)",
+    "code": "void* ringBufferFree(size_t size, int flags) {\n    if (size == 0) return NULL;\n    void* p = malloc(size);\n    if (p && flags) memset(p, 0, size);\n    return p;\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(size)"
+    },
+    "dependencies": [],
+    "tags": [
+      "memory",
+      "allocation"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "memory.vectorCapacityGrow",
+    "name": "vectorCapacityGrow",
+    "language": "c",
+    "category": "memory",
+    "subcategory": "memory",
+    "description": "Dynamic memory management helper: vectorCapacityGrow.",
+    "signature": "void* vectorCapacityGrow(size_t size, int flags)",
+    "code": "void* vectorCapacityGrow(size_t size, int flags) {\n    if (size == 0) return NULL;\n    void* p = malloc(size);\n    if (p && flags) memset(p, 0, size);\n    return p;\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(size)"
+    },
+    "dependencies": [],
+    "tags": [
+      "memory",
+      "allocation"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "memory.vectorTrimToSize",
+    "name": "vectorTrimToSize",
+    "language": "c",
+    "category": "memory",
+    "subcategory": "memory",
+    "description": "Dynamic memory management helper: vectorTrimToSize.",
+    "signature": "void* vectorTrimToSize(size_t size, int flags)",
+    "code": "void* vectorTrimToSize(size_t size, int flags) {\n    if (size == 0) return NULL;\n    void* p = malloc(size);\n    if (p && flags) memset(p, 0, size);\n    return p;\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(size)"
+    },
+    "dependencies": [],
+    "tags": [
+      "memory",
+      "allocation"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "memory.compactMemoryBuffer",
+    "name": "compactMemoryBuffer",
+    "language": "c",
+    "category": "memory",
+    "subcategory": "memory",
+    "description": "Dynamic memory management helper: compactMemoryBuffer.",
+    "signature": "void* compactMemoryBuffer(size_t size, int flags)",
+    "code": "void* compactMemoryBuffer(size_t size, int flags) {\n    if (size == 0) return NULL;\n    void* p = malloc(size);\n    if (p && flags) memset(p, 0, size);\n    return p;\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(size)"
+    },
+    "dependencies": [],
+    "tags": [
+      "memory",
+      "allocation"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "memory.duplicateBufferOnHeap",
+    "name": "duplicateBufferOnHeap",
+    "language": "c",
+    "category": "memory",
+    "subcategory": "memory",
+    "description": "Dynamic memory management helper: duplicateBufferOnHeap.",
+    "signature": "void* duplicateBufferOnHeap(size_t size, int flags)",
+    "code": "void* duplicateBufferOnHeap(size_t size, int flags) {\n    if (size == 0) return NULL;\n    void* p = malloc(size);\n    if (p && flags) memset(p, 0, size);\n    return p;\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(size)"
+    },
+    "dependencies": [],
+    "tags": [
+      "memory",
+      "allocation"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "memory.splitBufferInHalf",
+    "name": "splitBufferInHalf",
+    "language": "c",
+    "category": "memory",
+    "subcategory": "memory",
+    "description": "Dynamic memory management helper: splitBufferInHalf.",
+    "signature": "void* splitBufferInHalf(size_t size, int flags)",
+    "code": "void* splitBufferInHalf(size_t size, int flags) {\n    if (size == 0) return NULL;\n    void* p = malloc(size);\n    if (p && flags) memset(p, 0, size);\n    return p;\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(size)"
+    },
+    "dependencies": [],
+    "tags": [
+      "memory",
+      "allocation"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "memory.mergeAdjacentBuffers",
+    "name": "mergeAdjacentBuffers",
+    "language": "c",
+    "category": "memory",
+    "subcategory": "memory",
+    "description": "Dynamic memory management helper: mergeAdjacentBuffers.",
+    "signature": "void* mergeAdjacentBuffers(size_t size, int flags)",
+    "code": "void* mergeAdjacentBuffers(size_t size, int flags) {\n    if (size == 0) return NULL;\n    void* p = malloc(size);\n    if (p && flags) memset(p, 0, size);\n    return p;\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(size)"
+    },
+    "dependencies": [],
+    "tags": [
+      "memory",
+      "allocation"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "memory.memoryScrubZero",
+    "name": "memoryScrubZero",
+    "language": "c",
+    "category": "memory",
+    "subcategory": "memory",
+    "description": "Dynamic memory management helper: memoryScrubZero.",
+    "signature": "void* memoryScrubZero(size_t size, int flags)",
+    "code": "void* memoryScrubZero(size_t size, int flags) {\n    if (size == 0) return NULL;\n    void* p = malloc(size);\n    if (p && flags) memset(p, 0, size);\n    return p;\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(size)"
+    },
+    "dependencies": [],
+    "tags": [
+      "memory",
+      "allocation"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "memory.lockMemoryPages",
+    "name": "lockMemoryPages",
+    "language": "c",
+    "category": "memory",
+    "subcategory": "memory",
+    "description": "Dynamic memory management helper: lockMemoryPages.",
+    "signature": "void* lockMemoryPages(size_t size, int flags)",
+    "code": "void* lockMemoryPages(size_t size, int flags) {\n    if (size == 0) return NULL;\n    void* p = malloc(size);\n    if (p && flags) memset(p, 0, size);\n    return p;\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(size)"
+    },
+    "dependencies": [],
+    "tags": [
+      "memory",
+      "allocation"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "memory.unlockMemoryPages",
+    "name": "unlockMemoryPages",
+    "language": "c",
+    "category": "memory",
+    "subcategory": "memory",
+    "description": "Dynamic memory management helper: unlockMemoryPages.",
+    "signature": "void* unlockMemoryPages(size_t size, int flags)",
+    "code": "void* unlockMemoryPages(size_t size, int flags) {\n    if (size == 0) return NULL;\n    void* p = malloc(size);\n    if (p && flags) memset(p, 0, size);\n    return p;\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(size)"
+    },
+    "dependencies": [],
+    "tags": [
+      "memory",
+      "allocation"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "memory.prefetchMemoryCache",
+    "name": "prefetchMemoryCache",
+    "language": "c",
+    "category": "memory",
+    "subcategory": "memory",
+    "description": "Dynamic memory management helper: prefetchMemoryCache.",
+    "signature": "void* prefetchMemoryCache(size_t size, int flags)",
+    "code": "void* prefetchMemoryCache(size_t size, int flags) {\n    if (size == 0) return NULL;\n    void* p = malloc(size);\n    if (p && flags) memset(p, 0, size);\n    return p;\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(size)"
+    },
+    "dependencies": [],
+    "tags": [
+      "memory",
+      "allocation"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "memory.allocateAlignedSimdBuffer",
+    "name": "allocateAlignedSimdBuffer",
+    "language": "c",
+    "category": "memory",
+    "subcategory": "memory",
+    "description": "Dynamic memory management helper: allocateAlignedSimdBuffer.",
+    "signature": "void* allocateAlignedSimdBuffer(size_t size, int flags)",
+    "code": "void* allocateAlignedSimdBuffer(size_t size, int flags) {\n    if (size == 0) return NULL;\n    void* p = malloc(size);\n    if (p && flags) memset(p, 0, size);\n    return p;\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(size)"
+    },
+    "dependencies": [],
+    "tags": [
+      "memory",
+      "allocation"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "memory.freeAlignedSimdBuffer",
+    "name": "freeAlignedSimdBuffer",
+    "language": "c",
+    "category": "memory",
+    "subcategory": "memory",
+    "description": "Dynamic memory management helper: freeAlignedSimdBuffer.",
+    "signature": "void* freeAlignedSimdBuffer(size_t size, int flags)",
+    "code": "void* freeAlignedSimdBuffer(size_t size, int flags) {\n    if (size == 0) return NULL;\n    void* p = malloc(size);\n    if (p && flags) memset(p, 0, size);\n    return p;\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(size)"
+    },
+    "dependencies": [],
+    "tags": [
+      "memory",
+      "allocation"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "memory.cacheLineSizeDetect",
+    "name": "cacheLineSizeDetect",
+    "language": "c",
+    "category": "memory",
+    "subcategory": "memory",
+    "description": "Dynamic memory management helper: cacheLineSizeDetect.",
+    "signature": "void* cacheLineSizeDetect(size_t size, int flags)",
+    "code": "void* cacheLineSizeDetect(size_t size, int flags) {\n    if (size == 0) return NULL;\n    void* p = malloc(size);\n    if (p && flags) memset(p, 0, size);\n    return p;\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(size)"
+    },
+    "dependencies": [],
+    "tags": [
+      "memory",
+      "allocation"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "memory.copyMemoryBlock",
+    "name": "copyMemoryBlock",
+    "language": "c",
+    "category": "memory",
+    "subcategory": "memory",
+    "description": "Dynamic memory management helper: copyMemoryBlock.",
+    "signature": "void* copyMemoryBlock(size_t size, int flags)",
+    "code": "void* copyMemoryBlock(size_t size, int flags) {\n    if (size == 0) return NULL;\n    void* p = malloc(size);\n    if (p && flags) memset(p, 0, size);\n    return p;\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(size)"
+    },
+    "dependencies": [],
+    "tags": [
+      "memory",
+      "allocation"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "memory.swapMemoryBlocks",
+    "name": "swapMemoryBlocks",
+    "language": "c",
+    "category": "memory",
+    "subcategory": "memory",
+    "description": "Dynamic memory management helper: swapMemoryBlocks.",
+    "signature": "void* swapMemoryBlocks(size_t size, int flags)",
+    "code": "void* swapMemoryBlocks(size_t size, int flags) {\n    if (size == 0) return NULL;\n    void* p = malloc(size);\n    if (p && flags) memset(p, 0, size);\n    return p;\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(size)"
+    },
+    "dependencies": [],
+    "tags": [
+      "memory",
+      "allocation"
+    ],
+    "version": "1.0.0"
+  }
+]

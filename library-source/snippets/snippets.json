@@ -1,0 +1,82 @@
+[
+  {
+    "id": "snip_ll_node",
+    "component_id": "linkedList.createNode",
+    "prefix": "dtyp.ll.node",
+    "body": "Node* ${1:node} = createNode(${2:0});",
+    "description": "Instantiate a new linked list node",
+    "category": "linked-list"
+  },
+  {
+    "id": "snip_stack_create",
+    "component_id": "stack.createStack",
+    "prefix": "dtyp.stack.basic",
+    "body": "ArrayStack* ${1:stack} = createStack(${2:100});",
+    "description": "Create fixed size stack",
+    "category": "stack"
+  },
+  {
+    "id": "snip_queue_create",
+    "component_id": "queue.createQueue",
+    "prefix": "dtyp.queue.basic",
+    "body": "ArrayQueue* ${1:queue} = createQueue(${2:100});",
+    "description": "Create circular queue",
+    "category": "queue"
+  },
+  {
+    "id": "snip_quick_sort",
+    "component_id": "sorting.quickSort",
+    "prefix": "dtyp.sort.quick",
+    "body": "quickSort(${1:arr}, 0, ${2:n} - 1);",
+    "description": "Invoke quicksort on array slice",
+    "category": "sorting"
+  },
+  {
+    "id": "snip_binary_search",
+    "component_id": "searching.binarySearch",
+    "prefix": "dtyp.search.binary",
+    "body": "int ${1:idx} = binarySearch(${2:arr}, ${3:n}, ${4:target});",
+    "description": "Binary search invocation",
+    "category": "searching"
+  },
+  {
+    "id": "snip_bst_insert",
+    "component_id": "bst.insert",
+    "prefix": "dtyp.bst.insert",
+    "body": "${1:root} = insert(${1:root}, ${2:val});",
+    "description": "Insert into BST",
+    "category": "bst"
+  },
+  {
+    "id": "snip_dijkstra",
+    "component_id": "graph.dijkstra",
+    "prefix": "dtyp.graph.dijkstra",
+    "body": "dijkstra(${1:g}, ${2:0}, ${3:dist});",
+    "description": "Run Dijkstra algorithm",
+    "category": "graph"
+  },
+  {
+    "id": "snip_knapsack",
+    "component_id": "dp.knapsack01",
+    "prefix": "dtyp.dp.knapsack",
+    "body": "int ${1:maxVal} = knapsack01(${2:W}, ${3:wt}, ${4:val}, ${5:n});",
+    "description": "0/1 Knapsack solution",
+    "category": "dynamic-programming"
+  },
+  {
+    "id": "snip_bisection",
+    "component_id": "numerical.bisectionMethod",
+    "prefix": "dtyp.num.bisection",
+    "body": "double ${1:root} = bisectionMethod(${2:f}, ${3:a}, ${4:b}, ${5:1e-6});",
+    "description": "Root finding bisection",
+    "category": "numerical-methods"
+  },
+  {
+    "id": "snip_print_array",
+    "component_id": "arrays.printArray",
+    "prefix": "dtyp.array.print",
+    "body": "printArray(${1:arr}, ${2:n});",
+    "description": "Print array elements to stdout",
+    "category": "arrays"
+  }
+]

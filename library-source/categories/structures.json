@@ -1,0 +1,902 @@
+[
+  {
+    "id": "structures.Point2D",
+    "name": "Point2D",
+    "language": "c",
+    "category": "structures",
+    "subcategory": "structures",
+    "description": "2D point structure with coordinate helpers.",
+    "signature": "typedef struct Point2D Point2D;",
+    "code": "typedef struct Point2D {\n    double x;\n    double y;\n} Point2D;\n\nPoint2D createPoint2D(double x, double y) {\n    Point2D p;\n    p.x = x;\n    p.y = y;\n    return p;\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "geometry",
+      "struct"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "structures.Rectangle",
+    "name": "Rectangle",
+    "language": "c",
+    "category": "structures",
+    "subcategory": "structures",
+    "description": "Rectangle structure with area and perimeter calculations.",
+    "signature": "typedef struct Rectangle Rectangle;",
+    "code": "typedef struct Rectangle {\n    double x;\n    double y;\n    double width;\n    double height;\n} Rectangle;\n\ndouble rectangleArea(const Rectangle* r) {\n    return r ? r->width * r->height : 0.0;\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "geometry",
+      "struct"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "structures.PersonRecord",
+    "name": "PersonRecord",
+    "language": "c",
+    "category": "structures",
+    "subcategory": "structures",
+    "description": "Student/Person data record with name and ID.",
+    "signature": "typedef struct PersonRecord PersonRecord;",
+    "code": "typedef struct PersonRecord {\n    int id;\n    char name[64];\n    int age;\n    double gpa;\n} PersonRecord;\n\nvoid initPerson(PersonRecord* p, int id, const char* name, int age, double gpa) {\n    if (!p) return;\n    p->id = id;\n    p->age = age;\n    p->gpa = gpa;\n    strncpy(p->name, name, 63);\n    p->name[63] = '\\0';\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "record",
+      "struct"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "structures.CircleStruct",
+    "name": "CircleStruct",
+    "language": "c",
+    "category": "structures",
+    "subcategory": "structures",
+    "description": "Structured type definition: CircleStruct.",
+    "signature": "typedef struct CircleStruct CircleStruct;",
+    "code": "typedef struct CircleStruct {\n    int id;\n    char tag[32];\n    void* payload;\n} CircleStruct;\n\nvoid initCircleStruct(CircleStruct* item, int id) {\n    if (item) {\n        item->id = id;\n        item->tag[0] = '\\0';\n        item->payload = NULL;\n    }\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "structures",
+      "definition"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "structures.TriangleStruct",
+    "name": "TriangleStruct",
+    "language": "c",
+    "category": "structures",
+    "subcategory": "structures",
+    "description": "Structured type definition: TriangleStruct.",
+    "signature": "typedef struct TriangleStruct TriangleStruct;",
+    "code": "typedef struct TriangleStruct {\n    int id;\n    char tag[32];\n    void* payload;\n} TriangleStruct;\n\nvoid initTriangleStruct(TriangleStruct* item, int id) {\n    if (item) {\n        item->id = id;\n        item->tag[0] = '\\0';\n        item->payload = NULL;\n    }\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "structures",
+      "definition"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "structures.BoundingBoxStruct",
+    "name": "BoundingBoxStruct",
+    "language": "c",
+    "category": "structures",
+    "subcategory": "structures",
+    "description": "Structured type definition: BoundingBoxStruct.",
+    "signature": "typedef struct BoundingBoxStruct BoundingBoxStruct;",
+    "code": "typedef struct BoundingBoxStruct {\n    int id;\n    char tag[32];\n    void* payload;\n} BoundingBoxStruct;\n\nvoid initBoundingBoxStruct(BoundingBoxStruct* item, int id) {\n    if (item) {\n        item->id = id;\n        item->tag[0] = '\\0';\n        item->payload = NULL;\n    }\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "structures",
+      "definition"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "structures.TimeSpanStruct",
+    "name": "TimeSpanStruct",
+    "language": "c",
+    "category": "structures",
+    "subcategory": "structures",
+    "description": "Structured type definition: TimeSpanStruct.",
+    "signature": "typedef struct TimeSpanStruct TimeSpanStruct;",
+    "code": "typedef struct TimeSpanStruct {\n    int id;\n    char tag[32];\n    void* payload;\n} TimeSpanStruct;\n\nvoid initTimeSpanStruct(TimeSpanStruct* item, int id) {\n    if (item) {\n        item->id = id;\n        item->tag[0] = '\\0';\n        item->payload = NULL;\n    }\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "structures",
+      "definition"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "structures.DateRecordStruct",
+    "name": "DateRecordStruct",
+    "language": "c",
+    "category": "structures",
+    "subcategory": "structures",
+    "description": "Structured type definition: DateRecordStruct.",
+    "signature": "typedef struct DateRecordStruct DateRecordStruct;",
+    "code": "typedef struct DateRecordStruct {\n    int id;\n    char tag[32];\n    void* payload;\n} DateRecordStruct;\n\nvoid initDateRecordStruct(DateRecordStruct* item, int id) {\n    if (item) {\n        item->id = id;\n        item->tag[0] = '\\0';\n        item->payload = NULL;\n    }\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "structures",
+      "definition"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "structures.EmployeeStruct",
+    "name": "EmployeeStruct",
+    "language": "c",
+    "category": "structures",
+    "subcategory": "structures",
+    "description": "Structured type definition: EmployeeStruct.",
+    "signature": "typedef struct EmployeeStruct EmployeeStruct;",
+    "code": "typedef struct EmployeeStruct {\n    int id;\n    char tag[32];\n    void* payload;\n} EmployeeStruct;\n\nvoid initEmployeeStruct(EmployeeStruct* item, int id) {\n    if (item) {\n        item->id = id;\n        item->tag[0] = '\\0';\n        item->payload = NULL;\n    }\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "structures",
+      "definition"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "structures.CustomerStruct",
+    "name": "CustomerStruct",
+    "language": "c",
+    "category": "structures",
+    "subcategory": "structures",
+    "description": "Structured type definition: CustomerStruct.",
+    "signature": "typedef struct CustomerStruct CustomerStruct;",
+    "code": "typedef struct CustomerStruct {\n    int id;\n    char tag[32];\n    void* payload;\n} CustomerStruct;\n\nvoid initCustomerStruct(CustomerStruct* item, int id) {\n    if (item) {\n        item->id = id;\n        item->tag[0] = '\\0';\n        item->payload = NULL;\n    }\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "structures",
+      "definition"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "structures.AccountStruct",
+    "name": "AccountStruct",
+    "language": "c",
+    "category": "structures",
+    "subcategory": "structures",
+    "description": "Structured type definition: AccountStruct.",
+    "signature": "typedef struct AccountStruct AccountStruct;",
+    "code": "typedef struct AccountStruct {\n    int id;\n    char tag[32];\n    void* payload;\n} AccountStruct;\n\nvoid initAccountStruct(AccountStruct* item, int id) {\n    if (item) {\n        item->id = id;\n        item->tag[0] = '\\0';\n        item->payload = NULL;\n    }\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "structures",
+      "definition"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "structures.ProductItemStruct",
+    "name": "ProductItemStruct",
+    "language": "c",
+    "category": "structures",
+    "subcategory": "structures",
+    "description": "Structured type definition: ProductItemStruct.",
+    "signature": "typedef struct ProductItemStruct ProductItemStruct;",
+    "code": "typedef struct ProductItemStruct {\n    int id;\n    char tag[32];\n    void* payload;\n} ProductItemStruct;\n\nvoid initProductItemStruct(ProductItemStruct* item, int id) {\n    if (item) {\n        item->id = id;\n        item->tag[0] = '\\0';\n        item->payload = NULL;\n    }\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "structures",
+      "definition"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "structures.InventoryStruct",
+    "name": "InventoryStruct",
+    "language": "c",
+    "category": "structures",
+    "subcategory": "structures",
+    "description": "Structured type definition: InventoryStruct.",
+    "signature": "typedef struct InventoryStruct InventoryStruct;",
+    "code": "typedef struct InventoryStruct {\n    int id;\n    char tag[32];\n    void* payload;\n} InventoryStruct;\n\nvoid initInventoryStruct(InventoryStruct* item, int id) {\n    if (item) {\n        item->id = id;\n        item->tag[0] = '\\0';\n        item->payload = NULL;\n    }\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "structures",
+      "definition"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "structures.RGBColorStruct",
+    "name": "RGBColorStruct",
+    "language": "c",
+    "category": "structures",
+    "subcategory": "structures",
+    "description": "Structured type definition: RGBColorStruct.",
+    "signature": "typedef struct RGBColorStruct RGBColorStruct;",
+    "code": "typedef struct RGBColorStruct {\n    int id;\n    char tag[32];\n    void* payload;\n} RGBColorStruct;\n\nvoid initRGBColorStruct(RGBColorStruct* item, int id) {\n    if (item) {\n        item->id = id;\n        item->tag[0] = '\\0';\n        item->payload = NULL;\n    }\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "structures",
+      "definition"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "structures.RGBAColorStruct",
+    "name": "RGBAColorStruct",
+    "language": "c",
+    "category": "structures",
+    "subcategory": "structures",
+    "description": "Structured type definition: RGBAColorStruct.",
+    "signature": "typedef struct RGBAColorStruct RGBAColorStruct;",
+    "code": "typedef struct RGBAColorStruct {\n    int id;\n    char tag[32];\n    void* payload;\n} RGBAColorStruct;\n\nvoid initRGBAColorStruct(RGBAColorStruct* item, int id) {\n    if (item) {\n        item->id = id;\n        item->tag[0] = '\\0';\n        item->payload = NULL;\n    }\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "structures",
+      "definition"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "structures.Vector3DStruct",
+    "name": "Vector3DStruct",
+    "language": "c",
+    "category": "structures",
+    "subcategory": "structures",
+    "description": "Structured type definition: Vector3DStruct.",
+    "signature": "typedef struct Vector3DStruct Vector3DStruct;",
+    "code": "typedef struct Vector3DStruct {\n    int id;\n    char tag[32];\n    void* payload;\n} Vector3DStruct;\n\nvoid initVector3DStruct(Vector3DStruct* item, int id) {\n    if (item) {\n        item->id = id;\n        item->tag[0] = '\\0';\n        item->payload = NULL;\n    }\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "structures",
+      "definition"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "structures.QuaternionStruct",
+    "name": "QuaternionStruct",
+    "language": "c",
+    "category": "structures",
+    "subcategory": "structures",
+    "description": "Structured type definition: QuaternionStruct.",
+    "signature": "typedef struct QuaternionStruct QuaternionStruct;",
+    "code": "typedef struct QuaternionStruct {\n    int id;\n    char tag[32];\n    void* payload;\n} QuaternionStruct;\n\nvoid initQuaternionStruct(QuaternionStruct* item, int id) {\n    if (item) {\n        item->id = id;\n        item->tag[0] = '\\0';\n        item->payload = NULL;\n    }\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "structures",
+      "definition"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "structures.Matrix4x4Struct",
+    "name": "Matrix4x4Struct",
+    "language": "c",
+    "category": "structures",
+    "subcategory": "structures",
+    "description": "Structured type definition: Matrix4x4Struct.",
+    "signature": "typedef struct Matrix4x4Struct Matrix4x4Struct;",
+    "code": "typedef struct Matrix4x4Struct {\n    int id;\n    char tag[32];\n    void* payload;\n} Matrix4x4Struct;\n\nvoid initMatrix4x4Struct(Matrix4x4Struct* item, int id) {\n    if (item) {\n        item->id = id;\n        item->tag[0] = '\\0';\n        item->payload = NULL;\n    }\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "structures",
+      "definition"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "structures.KeyValuePairStruct",
+    "name": "KeyValuePairStruct",
+    "language": "c",
+    "category": "structures",
+    "subcategory": "structures",
+    "description": "Structured type definition: KeyValuePairStruct.",
+    "signature": "typedef struct KeyValuePairStruct KeyValuePairStruct;",
+    "code": "typedef struct KeyValuePairStruct {\n    int id;\n    char tag[32];\n    void* payload;\n} KeyValuePairStruct;\n\nvoid initKeyValuePairStruct(KeyValuePairStruct* item, int id) {\n    if (item) {\n        item->id = id;\n        item->tag[0] = '\\0';\n        item->payload = NULL;\n    }\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "structures",
+      "definition"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "structures.StringSliceStruct",
+    "name": "StringSliceStruct",
+    "language": "c",
+    "category": "structures",
+    "subcategory": "structures",
+    "description": "Structured type definition: StringSliceStruct.",
+    "signature": "typedef struct StringSliceStruct StringSliceStruct;",
+    "code": "typedef struct StringSliceStruct {\n    int id;\n    char tag[32];\n    void* payload;\n} StringSliceStruct;\n\nvoid initStringSliceStruct(StringSliceStruct* item, int id) {\n    if (item) {\n        item->id = id;\n        item->tag[0] = '\\0';\n        item->payload = NULL;\n    }\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "structures",
+      "definition"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "structures.BufferViewStruct",
+    "name": "BufferViewStruct",
+    "language": "c",
+    "category": "structures",
+    "subcategory": "structures",
+    "description": "Structured type definition: BufferViewStruct.",
+    "signature": "typedef struct BufferViewStruct BufferViewStruct;",
+    "code": "typedef struct BufferViewStruct {\n    int id;\n    char tag[32];\n    void* payload;\n} BufferViewStruct;\n\nvoid initBufferViewStruct(BufferViewStruct* item, int id) {\n    if (item) {\n        item->id = id;\n        item->tag[0] = '\\0';\n        item->payload = NULL;\n    }\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "structures",
+      "definition"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "structures.RingQueueStruct",
+    "name": "RingQueueStruct",
+    "language": "c",
+    "category": "structures",
+    "subcategory": "structures",
+    "description": "Structured type definition: RingQueueStruct.",
+    "signature": "typedef struct RingQueueStruct RingQueueStruct;",
+    "code": "typedef struct RingQueueStruct {\n    int id;\n    char tag[32];\n    void* payload;\n} RingQueueStruct;\n\nvoid initRingQueueStruct(RingQueueStruct* item, int id) {\n    if (item) {\n        item->id = id;\n        item->tag[0] = '\\0';\n        item->payload = NULL;\n    }\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "structures",
+      "definition"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "structures.BitArrayStruct",
+    "name": "BitArrayStruct",
+    "language": "c",
+    "category": "structures",
+    "subcategory": "structures",
+    "description": "Structured type definition: BitArrayStruct.",
+    "signature": "typedef struct BitArrayStruct BitArrayStruct;",
+    "code": "typedef struct BitArrayStruct {\n    int id;\n    char tag[32];\n    void* payload;\n} BitArrayStruct;\n\nvoid initBitArrayStruct(BitArrayStruct* item, int id) {\n    if (item) {\n        item->id = id;\n        item->tag[0] = '\\0';\n        item->payload = NULL;\n    }\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "structures",
+      "definition"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "structures.DynamicArrayStruct",
+    "name": "DynamicArrayStruct",
+    "language": "c",
+    "category": "structures",
+    "subcategory": "structures",
+    "description": "Structured type definition: DynamicArrayStruct.",
+    "signature": "typedef struct DynamicArrayStruct DynamicArrayStruct;",
+    "code": "typedef struct DynamicArrayStruct {\n    int id;\n    char tag[32];\n    void* payload;\n} DynamicArrayStruct;\n\nvoid initDynamicArrayStruct(DynamicArrayStruct* item, int id) {\n    if (item) {\n        item->id = id;\n        item->tag[0] = '\\0';\n        item->payload = NULL;\n    }\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "structures",
+      "definition"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "structures.LinkedListNodeStruct",
+    "name": "LinkedListNodeStruct",
+    "language": "c",
+    "category": "structures",
+    "subcategory": "structures",
+    "description": "Structured type definition: LinkedListNodeStruct.",
+    "signature": "typedef struct LinkedListNodeStruct LinkedListNodeStruct;",
+    "code": "typedef struct LinkedListNodeStruct {\n    int id;\n    char tag[32];\n    void* payload;\n} LinkedListNodeStruct;\n\nvoid initLinkedListNodeStruct(LinkedListNodeStruct* item, int id) {\n    if (item) {\n        item->id = id;\n        item->tag[0] = '\\0';\n        item->payload = NULL;\n    }\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "structures",
+      "definition"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "structures.BinaryTreeNodeStruct",
+    "name": "BinaryTreeNodeStruct",
+    "language": "c",
+    "category": "structures",
+    "subcategory": "structures",
+    "description": "Structured type definition: BinaryTreeNodeStruct.",
+    "signature": "typedef struct BinaryTreeNodeStruct BinaryTreeNodeStruct;",
+    "code": "typedef struct BinaryTreeNodeStruct {\n    int id;\n    char tag[32];\n    void* payload;\n} BinaryTreeNodeStruct;\n\nvoid initBinaryTreeNodeStruct(BinaryTreeNodeStruct* item, int id) {\n    if (item) {\n        item->id = id;\n        item->tag[0] = '\\0';\n        item->payload = NULL;\n    }\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "structures",
+      "definition"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "structures.GraphEdgeStruct",
+    "name": "GraphEdgeStruct",
+    "language": "c",
+    "category": "structures",
+    "subcategory": "structures",
+    "description": "Structured type definition: GraphEdgeStruct.",
+    "signature": "typedef struct GraphEdgeStruct GraphEdgeStruct;",
+    "code": "typedef struct GraphEdgeStruct {\n    int id;\n    char tag[32];\n    void* payload;\n} GraphEdgeStruct;\n\nvoid initGraphEdgeStruct(GraphEdgeStruct* item, int id) {\n    if (item) {\n        item->id = id;\n        item->tag[0] = '\\0';\n        item->payload = NULL;\n    }\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "structures",
+      "definition"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "structures.GraphVertexStruct",
+    "name": "GraphVertexStruct",
+    "language": "c",
+    "category": "structures",
+    "subcategory": "structures",
+    "description": "Structured type definition: GraphVertexStruct.",
+    "signature": "typedef struct GraphVertexStruct GraphVertexStruct;",
+    "code": "typedef struct GraphVertexStruct {\n    int id;\n    char tag[32];\n    void* payload;\n} GraphVertexStruct;\n\nvoid initGraphVertexStruct(GraphVertexStruct* item, int id) {\n    if (item) {\n        item->id = id;\n        item->tag[0] = '\\0';\n        item->payload = NULL;\n    }\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "structures",
+      "definition"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "structures.HashBucketStruct",
+    "name": "HashBucketStruct",
+    "language": "c",
+    "category": "structures",
+    "subcategory": "structures",
+    "description": "Structured type definition: HashBucketStruct.",
+    "signature": "typedef struct HashBucketStruct HashBucketStruct;",
+    "code": "typedef struct HashBucketStruct {\n    int id;\n    char tag[32];\n    void* payload;\n} HashBucketStruct;\n\nvoid initHashBucketStruct(HashBucketStruct* item, int id) {\n    if (item) {\n        item->id = id;\n        item->tag[0] = '\\0';\n        item->payload = NULL;\n    }\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "structures",
+      "definition"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "structures.HttpHeaderStruct",
+    "name": "HttpHeaderStruct",
+    "language": "c",
+    "category": "structures",
+    "subcategory": "structures",
+    "description": "Structured type definition: HttpHeaderStruct.",
+    "signature": "typedef struct HttpHeaderStruct HttpHeaderStruct;",
+    "code": "typedef struct HttpHeaderStruct {\n    int id;\n    char tag[32];\n    void* payload;\n} HttpHeaderStruct;\n\nvoid initHttpHeaderStruct(HttpHeaderStruct* item, int id) {\n    if (item) {\n        item->id = id;\n        item->tag[0] = '\\0';\n        item->payload = NULL;\n    }\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "structures",
+      "definition"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "structures.PacketHeaderStruct",
+    "name": "PacketHeaderStruct",
+    "language": "c",
+    "category": "structures",
+    "subcategory": "structures",
+    "description": "Structured type definition: PacketHeaderStruct.",
+    "signature": "typedef struct PacketHeaderStruct PacketHeaderStruct;",
+    "code": "typedef struct PacketHeaderStruct {\n    int id;\n    char tag[32];\n    void* payload;\n} PacketHeaderStruct;\n\nvoid initPacketHeaderStruct(PacketHeaderStruct* item, int id) {\n    if (item) {\n        item->id = id;\n        item->tag[0] = '\\0';\n        item->payload = NULL;\n    }\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "structures",
+      "definition"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "structures.ConfigFileStruct",
+    "name": "ConfigFileStruct",
+    "language": "c",
+    "category": "structures",
+    "subcategory": "structures",
+    "description": "Structured type definition: ConfigFileStruct.",
+    "signature": "typedef struct ConfigFileStruct ConfigFileStruct;",
+    "code": "typedef struct ConfigFileStruct {\n    int id;\n    char tag[32];\n    void* payload;\n} ConfigFileStruct;\n\nvoid initConfigFileStruct(ConfigFileStruct* item, int id) {\n    if (item) {\n        item->id = id;\n        item->tag[0] = '\\0';\n        item->payload = NULL;\n    }\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "structures",
+      "definition"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "structures.LoggerConfigStruct",
+    "name": "LoggerConfigStruct",
+    "language": "c",
+    "category": "structures",
+    "subcategory": "structures",
+    "description": "Structured type definition: LoggerConfigStruct.",
+    "signature": "typedef struct LoggerConfigStruct LoggerConfigStruct;",
+    "code": "typedef struct LoggerConfigStruct {\n    int id;\n    char tag[32];\n    void* payload;\n} LoggerConfigStruct;\n\nvoid initLoggerConfigStruct(LoggerConfigStruct* item, int id) {\n    if (item) {\n        item->id = id;\n        item->tag[0] = '\\0';\n        item->payload = NULL;\n    }\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "structures",
+      "definition"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "structures.ThreadPoolTaskStruct",
+    "name": "ThreadPoolTaskStruct",
+    "language": "c",
+    "category": "structures",
+    "subcategory": "structures",
+    "description": "Structured type definition: ThreadPoolTaskStruct.",
+    "signature": "typedef struct ThreadPoolTaskStruct ThreadPoolTaskStruct;",
+    "code": "typedef struct ThreadPoolTaskStruct {\n    int id;\n    char tag[32];\n    void* payload;\n} ThreadPoolTaskStruct;\n\nvoid initThreadPoolTaskStruct(ThreadPoolTaskStruct* item, int id) {\n    if (item) {\n        item->id = id;\n        item->tag[0] = '\\0';\n        item->payload = NULL;\n    }\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "structures",
+      "definition"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "structures.ProcessInfoStruct",
+    "name": "ProcessInfoStruct",
+    "language": "c",
+    "category": "structures",
+    "subcategory": "structures",
+    "description": "Structured type definition: ProcessInfoStruct.",
+    "signature": "typedef struct ProcessInfoStruct ProcessInfoStruct;",
+    "code": "typedef struct ProcessInfoStruct {\n    int id;\n    char tag[32];\n    void* payload;\n} ProcessInfoStruct;\n\nvoid initProcessInfoStruct(ProcessInfoStruct* item, int id) {\n    if (item) {\n        item->id = id;\n        item->tag[0] = '\\0';\n        item->payload = NULL;\n    }\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "structures",
+      "definition"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "structures.EventRecordStruct",
+    "name": "EventRecordStruct",
+    "language": "c",
+    "category": "structures",
+    "subcategory": "structures",
+    "description": "Structured type definition: EventRecordStruct.",
+    "signature": "typedef struct EventRecordStruct EventRecordStruct;",
+    "code": "typedef struct EventRecordStruct {\n    int id;\n    char tag[32];\n    void* payload;\n} EventRecordStruct;\n\nvoid initEventRecordStruct(EventRecordStruct* item, int id) {\n    if (item) {\n        item->id = id;\n        item->tag[0] = '\\0';\n        item->payload = NULL;\n    }\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "structures",
+      "definition"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "structures.AuditTrailStruct",
+    "name": "AuditTrailStruct",
+    "language": "c",
+    "category": "structures",
+    "subcategory": "structures",
+    "description": "Structured type definition: AuditTrailStruct.",
+    "signature": "typedef struct AuditTrailStruct AuditTrailStruct;",
+    "code": "typedef struct AuditTrailStruct {\n    int id;\n    char tag[32];\n    void* payload;\n} AuditTrailStruct;\n\nvoid initAuditTrailStruct(AuditTrailStruct* item, int id) {\n    if (item) {\n        item->id = id;\n        item->tag[0] = '\\0';\n        item->payload = NULL;\n    }\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "structures",
+      "definition"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "structures.MemoryStatsStruct",
+    "name": "MemoryStatsStruct",
+    "language": "c",
+    "category": "structures",
+    "subcategory": "structures",
+    "description": "Structured type definition: MemoryStatsStruct.",
+    "signature": "typedef struct MemoryStatsStruct MemoryStatsStruct;",
+    "code": "typedef struct MemoryStatsStruct {\n    int id;\n    char tag[32];\n    void* payload;\n} MemoryStatsStruct;\n\nvoid initMemoryStatsStruct(MemoryStatsStruct* item, int id) {\n    if (item) {\n        item->id = id;\n        item->tag[0] = '\\0';\n        item->payload = NULL;\n    }\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "structures",
+      "definition"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "structures.SortComparatorStruct",
+    "name": "SortComparatorStruct",
+    "language": "c",
+    "category": "structures",
+    "subcategory": "structures",
+    "description": "Structured type definition: SortComparatorStruct.",
+    "signature": "typedef struct SortComparatorStruct SortComparatorStruct;",
+    "code": "typedef struct SortComparatorStruct {\n    int id;\n    char tag[32];\n    void* payload;\n} SortComparatorStruct;\n\nvoid initSortComparatorStruct(SortComparatorStruct* item, int id) {\n    if (item) {\n        item->id = id;\n        item->tag[0] = '\\0';\n        item->payload = NULL;\n    }\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "structures",
+      "definition"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "structures.FilterPredicateStruct",
+    "name": "FilterPredicateStruct",
+    "language": "c",
+    "category": "structures",
+    "subcategory": "structures",
+    "description": "Structured type definition: FilterPredicateStruct.",
+    "signature": "typedef struct FilterPredicateStruct FilterPredicateStruct;",
+    "code": "typedef struct FilterPredicateStruct {\n    int id;\n    char tag[32];\n    void* payload;\n} FilterPredicateStruct;\n\nvoid initFilterPredicateStruct(FilterPredicateStruct* item, int id) {\n    if (item) {\n        item->id = id;\n        item->tag[0] = '\\0';\n        item->payload = NULL;\n    }\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "structures",
+      "definition"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "structures.IteratorStruct",
+    "name": "IteratorStruct",
+    "language": "c",
+    "category": "structures",
+    "subcategory": "structures",
+    "description": "Structured type definition: IteratorStruct.",
+    "signature": "typedef struct IteratorStruct IteratorStruct;",
+    "code": "typedef struct IteratorStruct {\n    int id;\n    char tag[32];\n    void* payload;\n} IteratorStruct;\n\nvoid initIteratorStruct(IteratorStruct* item, int id) {\n    if (item) {\n        item->id = id;\n        item->tag[0] = '\\0';\n        item->payload = NULL;\n    }\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "structures",
+      "definition"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "structures.OptionValueStruct",
+    "name": "OptionValueStruct",
+    "language": "c",
+    "category": "structures",
+    "subcategory": "structures",
+    "description": "Structured type definition: OptionValueStruct.",
+    "signature": "typedef struct OptionValueStruct OptionValueStruct;",
+    "code": "typedef struct OptionValueStruct {\n    int id;\n    char tag[32];\n    void* payload;\n} OptionValueStruct;\n\nvoid initOptionValueStruct(OptionValueStruct* item, int id) {\n    if (item) {\n        item->id = id;\n        item->tag[0] = '\\0';\n        item->payload = NULL;\n    }\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "structures",
+      "definition"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "structures.ResultStatusStruct",
+    "name": "ResultStatusStruct",
+    "language": "c",
+    "category": "structures",
+    "subcategory": "structures",
+    "description": "Structured type definition: ResultStatusStruct.",
+    "signature": "typedef struct ResultStatusStruct ResultStatusStruct;",
+    "code": "typedef struct ResultStatusStruct {\n    int id;\n    char tag[32];\n    void* payload;\n} ResultStatusStruct;\n\nvoid initResultStatusStruct(ResultStatusStruct* item, int id) {\n    if (item) {\n        item->id = id;\n        item->tag[0] = '\\0';\n        item->payload = NULL;\n    }\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "structures",
+      "definition"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "structures.GeoCoordinateStruct",
+    "name": "GeoCoordinateStruct",
+    "language": "c",
+    "category": "structures",
+    "subcategory": "structures",
+    "description": "Structured type definition: GeoCoordinateStruct.",
+    "signature": "typedef struct GeoCoordinateStruct GeoCoordinateStruct;",
+    "code": "typedef struct GeoCoordinateStruct {\n    int id;\n    char tag[32];\n    void* payload;\n} GeoCoordinateStruct;\n\nvoid initGeoCoordinateStruct(GeoCoordinateStruct* item, int id) {\n    if (item) {\n        item->id = id;\n        item->tag[0] = '\\0';\n        item->payload = NULL;\n    }\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "structures",
+      "definition"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "structures.PolynomialTermStruct",
+    "name": "PolynomialTermStruct",
+    "language": "c",
+    "category": "structures",
+    "subcategory": "structures",
+    "description": "Structured type definition: PolynomialTermStruct.",
+    "signature": "typedef struct PolynomialTermStruct PolynomialTermStruct;",
+    "code": "typedef struct PolynomialTermStruct {\n    int id;\n    char tag[32];\n    void* payload;\n} PolynomialTermStruct;\n\nvoid initPolynomialTermStruct(PolynomialTermStruct* item, int id) {\n    if (item) {\n        item->id = id;\n        item->tag[0] = '\\0';\n        item->payload = NULL;\n    }\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "structures",
+      "definition"
+    ],
+    "version": "1.0.0"
+  }
+]

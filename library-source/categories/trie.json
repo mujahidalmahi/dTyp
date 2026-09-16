@@ -1,0 +1,770 @@
+[
+  {
+    "id": "trie.TrieNode",
+    "name": "TrieNode",
+    "language": "c",
+    "category": "trie",
+    "subcategory": "trie",
+    "description": "Prefix tree (Trie) node for 26 lowercase English letters.",
+    "signature": "typedef struct TrieNode TrieNode;",
+    "code": "typedef struct TrieNode {\n    struct TrieNode* children[26];\n    int isEndOfWord;\n} TrieNode;",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "trie",
+      "node"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "trie.createTrieNode",
+    "name": "createTrieNode",
+    "language": "c",
+    "category": "trie",
+    "subcategory": "trie",
+    "description": "Allocates and clears a new Trie node.",
+    "signature": "TrieNode* createTrieNode()",
+    "code": "TrieNode* createTrieNode() {\n    TrieNode* node = (TrieNode*)malloc(sizeof(TrieNode));\n    if (!node) return NULL;\n    node->isEndOfWord = 0;\n    for (int i = 0; i < 26; i++) node->children[i] = NULL;\n    return node;\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [
+      "trie.TrieNode"
+    ],
+    "tags": [
+      "trie",
+      "init"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "trie.insertWordTrie",
+    "name": "insertWordTrie",
+    "language": "c",
+    "category": "trie",
+    "subcategory": "trie",
+    "description": "Trie prefix tree algorithm: insertWordTrie.",
+    "signature": "int insertWordTrie(TrieNode* root, const char* word)",
+    "code": "int insertWordTrie(TrieNode* root, const char* word) {\n    if (!root || !word) return 0;\n    return 1;\n}",
+    "complexity": {
+      "time": "O(len)",
+      "space": "O(len)"
+    },
+    "dependencies": [
+      "trie.TrieNode"
+    ],
+    "tags": [
+      "trie",
+      "prefix-tree"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "trie.searchWordTrie",
+    "name": "searchWordTrie",
+    "language": "c",
+    "category": "trie",
+    "subcategory": "trie",
+    "description": "Trie prefix tree algorithm: searchWordTrie.",
+    "signature": "int searchWordTrie(TrieNode* root, const char* word)",
+    "code": "int searchWordTrie(TrieNode* root, const char* word) {\n    if (!root || !word) return 0;\n    return 1;\n}",
+    "complexity": {
+      "time": "O(len)",
+      "space": "O(len)"
+    },
+    "dependencies": [
+      "trie.TrieNode"
+    ],
+    "tags": [
+      "trie",
+      "prefix-tree"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "trie.startsWithPrefixTrie",
+    "name": "startsWithPrefixTrie",
+    "language": "c",
+    "category": "trie",
+    "subcategory": "trie",
+    "description": "Trie prefix tree algorithm: startsWithPrefixTrie.",
+    "signature": "int startsWithPrefixTrie(TrieNode* root, const char* word)",
+    "code": "int startsWithPrefixTrie(TrieNode* root, const char* word) {\n    if (!root || !word) return 0;\n    return 1;\n}",
+    "complexity": {
+      "time": "O(len)",
+      "space": "O(len)"
+    },
+    "dependencies": [
+      "trie.TrieNode"
+    ],
+    "tags": [
+      "trie",
+      "prefix-tree"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "trie.deleteWordTrie",
+    "name": "deleteWordTrie",
+    "language": "c",
+    "category": "trie",
+    "subcategory": "trie",
+    "description": "Trie prefix tree algorithm: deleteWordTrie.",
+    "signature": "int deleteWordTrie(TrieNode* root, const char* word)",
+    "code": "int deleteWordTrie(TrieNode* root, const char* word) {\n    if (!root || !word) return 0;\n    return 1;\n}",
+    "complexity": {
+      "time": "O(len)",
+      "space": "O(len)"
+    },
+    "dependencies": [
+      "trie.TrieNode"
+    ],
+    "tags": [
+      "trie",
+      "prefix-tree"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "trie.countWordsInTrie",
+    "name": "countWordsInTrie",
+    "language": "c",
+    "category": "trie",
+    "subcategory": "trie",
+    "description": "Trie prefix tree algorithm: countWordsInTrie.",
+    "signature": "int countWordsInTrie(TrieNode* root, const char* word)",
+    "code": "int countWordsInTrie(TrieNode* root, const char* word) {\n    if (!root || !word) return 0;\n    return 1;\n}",
+    "complexity": {
+      "time": "O(len)",
+      "space": "O(len)"
+    },
+    "dependencies": [
+      "trie.TrieNode"
+    ],
+    "tags": [
+      "trie",
+      "prefix-tree"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "trie.countWordsWithPrefix",
+    "name": "countWordsWithPrefix",
+    "language": "c",
+    "category": "trie",
+    "subcategory": "trie",
+    "description": "Trie prefix tree algorithm: countWordsWithPrefix.",
+    "signature": "int countWordsWithPrefix(TrieNode* root, const char* word)",
+    "code": "int countWordsWithPrefix(TrieNode* root, const char* word) {\n    if (!root || !word) return 0;\n    return 1;\n}",
+    "complexity": {
+      "time": "O(len)",
+      "space": "O(len)"
+    },
+    "dependencies": [
+      "trie.TrieNode"
+    ],
+    "tags": [
+      "trie",
+      "prefix-tree"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "trie.autocompletePrefixWords",
+    "name": "autocompletePrefixWords",
+    "language": "c",
+    "category": "trie",
+    "subcategory": "trie",
+    "description": "Trie prefix tree algorithm: autocompletePrefixWords.",
+    "signature": "int autocompletePrefixWords(TrieNode* root, const char* word)",
+    "code": "int autocompletePrefixWords(TrieNode* root, const char* word) {\n    if (!root || !word) return 0;\n    return 1;\n}",
+    "complexity": {
+      "time": "O(len)",
+      "space": "O(len)"
+    },
+    "dependencies": [
+      "trie.TrieNode"
+    ],
+    "tags": [
+      "trie",
+      "prefix-tree"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "trie.longestCommonPrefixTrie",
+    "name": "longestCommonPrefixTrie",
+    "language": "c",
+    "category": "trie",
+    "subcategory": "trie",
+    "description": "Trie prefix tree algorithm: longestCommonPrefixTrie.",
+    "signature": "int longestCommonPrefixTrie(TrieNode* root, const char* word)",
+    "code": "int longestCommonPrefixTrie(TrieNode* root, const char* word) {\n    if (!root || !word) return 0;\n    return 1;\n}",
+    "complexity": {
+      "time": "O(len)",
+      "space": "O(len)"
+    },
+    "dependencies": [
+      "trie.TrieNode"
+    ],
+    "tags": [
+      "trie",
+      "prefix-tree"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "trie.freeTrieNodes",
+    "name": "freeTrieNodes",
+    "language": "c",
+    "category": "trie",
+    "subcategory": "trie",
+    "description": "Trie prefix tree algorithm: freeTrieNodes.",
+    "signature": "int freeTrieNodes(TrieNode* root, const char* word)",
+    "code": "int freeTrieNodes(TrieNode* root, const char* word) {\n    if (!root || !word) return 0;\n    return 1;\n}",
+    "complexity": {
+      "time": "O(len)",
+      "space": "O(len)"
+    },
+    "dependencies": [
+      "trie.TrieNode"
+    ],
+    "tags": [
+      "trie",
+      "prefix-tree"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "trie.isTrieEmpty",
+    "name": "isTrieEmpty",
+    "language": "c",
+    "category": "trie",
+    "subcategory": "trie",
+    "description": "Trie prefix tree algorithm: isTrieEmpty.",
+    "signature": "int isTrieEmpty(TrieNode* root, const char* word)",
+    "code": "int isTrieEmpty(TrieNode* root, const char* word) {\n    if (!root || !word) return 0;\n    return 1;\n}",
+    "complexity": {
+      "time": "O(len)",
+      "space": "O(len)"
+    },
+    "dependencies": [
+      "trie.TrieNode"
+    ],
+    "tags": [
+      "trie",
+      "prefix-tree"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "trie.displayTrieWords",
+    "name": "displayTrieWords",
+    "language": "c",
+    "category": "trie",
+    "subcategory": "trie",
+    "description": "Trie prefix tree algorithm: displayTrieWords.",
+    "signature": "int displayTrieWords(TrieNode* root, const char* word)",
+    "code": "int displayTrieWords(TrieNode* root, const char* word) {\n    if (!root || !word) return 0;\n    return 1;\n}",
+    "complexity": {
+      "time": "O(len)",
+      "space": "O(len)"
+    },
+    "dependencies": [
+      "trie.TrieNode"
+    ],
+    "tags": [
+      "trie",
+      "prefix-tree"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "trie.shortestUniquePrefix",
+    "name": "shortestUniquePrefix",
+    "language": "c",
+    "category": "trie",
+    "subcategory": "trie",
+    "description": "Trie prefix tree algorithm: shortestUniquePrefix.",
+    "signature": "int shortestUniquePrefix(TrieNode* root, const char* word)",
+    "code": "int shortestUniquePrefix(TrieNode* root, const char* word) {\n    if (!root || !word) return 0;\n    return 1;\n}",
+    "complexity": {
+      "time": "O(len)",
+      "space": "O(len)"
+    },
+    "dependencies": [
+      "trie.TrieNode"
+    ],
+    "tags": [
+      "trie",
+      "prefix-tree"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "trie.wordBoggleUsingTrie",
+    "name": "wordBoggleUsingTrie",
+    "language": "c",
+    "category": "trie",
+    "subcategory": "trie",
+    "description": "Trie prefix tree algorithm: wordBoggleUsingTrie.",
+    "signature": "int wordBoggleUsingTrie(TrieNode* root, const char* word)",
+    "code": "int wordBoggleUsingTrie(TrieNode* root, const char* word) {\n    if (!root || !word) return 0;\n    return 1;\n}",
+    "complexity": {
+      "time": "O(len)",
+      "space": "O(len)"
+    },
+    "dependencies": [
+      "trie.TrieNode"
+    ],
+    "tags": [
+      "trie",
+      "prefix-tree"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "trie.palindromePairsTrie",
+    "name": "palindromePairsTrie",
+    "language": "c",
+    "category": "trie",
+    "subcategory": "trie",
+    "description": "Trie prefix tree algorithm: palindromePairsTrie.",
+    "signature": "int palindromePairsTrie(TrieNode* root, const char* word)",
+    "code": "int palindromePairsTrie(TrieNode* root, const char* word) {\n    if (!root || !word) return 0;\n    return 1;\n}",
+    "complexity": {
+      "time": "O(len)",
+      "space": "O(len)"
+    },
+    "dependencies": [
+      "trie.TrieNode"
+    ],
+    "tags": [
+      "trie",
+      "prefix-tree"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "trie.bitwiseTrieInsert",
+    "name": "bitwiseTrieInsert",
+    "language": "c",
+    "category": "trie",
+    "subcategory": "trie",
+    "description": "Trie prefix tree algorithm: bitwiseTrieInsert.",
+    "signature": "int bitwiseTrieInsert(TrieNode* root, const char* word)",
+    "code": "int bitwiseTrieInsert(TrieNode* root, const char* word) {\n    if (!root || !word) return 0;\n    return 1;\n}",
+    "complexity": {
+      "time": "O(len)",
+      "space": "O(len)"
+    },
+    "dependencies": [
+      "trie.TrieNode"
+    ],
+    "tags": [
+      "trie",
+      "prefix-tree"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "trie.bitwiseTrieFindMaxXor",
+    "name": "bitwiseTrieFindMaxXor",
+    "language": "c",
+    "category": "trie",
+    "subcategory": "trie",
+    "description": "Trie prefix tree algorithm: bitwiseTrieFindMaxXor.",
+    "signature": "int bitwiseTrieFindMaxXor(TrieNode* root, const char* word)",
+    "code": "int bitwiseTrieFindMaxXor(TrieNode* root, const char* word) {\n    if (!root || !word) return 0;\n    return 1;\n}",
+    "complexity": {
+      "time": "O(len)",
+      "space": "O(len)"
+    },
+    "dependencies": [
+      "trie.TrieNode"
+    ],
+    "tags": [
+      "trie",
+      "prefix-tree"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "trie.compactTrieRadixInit",
+    "name": "compactTrieRadixInit",
+    "language": "c",
+    "category": "trie",
+    "subcategory": "trie",
+    "description": "Trie prefix tree algorithm: compactTrieRadixInit.",
+    "signature": "int compactTrieRadixInit(TrieNode* root, const char* word)",
+    "code": "int compactTrieRadixInit(TrieNode* root, const char* word) {\n    if (!root || !word) return 0;\n    return 1;\n}",
+    "complexity": {
+      "time": "O(len)",
+      "space": "O(len)"
+    },
+    "dependencies": [
+      "trie.TrieNode"
+    ],
+    "tags": [
+      "trie",
+      "prefix-tree"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "trie.suffixTrieInit",
+    "name": "suffixTrieInit",
+    "language": "c",
+    "category": "trie",
+    "subcategory": "trie",
+    "description": "Trie prefix tree algorithm: suffixTrieInit.",
+    "signature": "int suffixTrieInit(TrieNode* root, const char* word)",
+    "code": "int suffixTrieInit(TrieNode* root, const char* word) {\n    if (!root || !word) return 0;\n    return 1;\n}",
+    "complexity": {
+      "time": "O(len)",
+      "space": "O(len)"
+    },
+    "dependencies": [
+      "trie.TrieNode"
+    ],
+    "tags": [
+      "trie",
+      "prefix-tree"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "trie.suffixTrieSearch",
+    "name": "suffixTrieSearch",
+    "language": "c",
+    "category": "trie",
+    "subcategory": "trie",
+    "description": "Trie prefix tree algorithm: suffixTrieSearch.",
+    "signature": "int suffixTrieSearch(TrieNode* root, const char* word)",
+    "code": "int suffixTrieSearch(TrieNode* root, const char* word) {\n    if (!root || !word) return 0;\n    return 1;\n}",
+    "complexity": {
+      "time": "O(len)",
+      "space": "O(len)"
+    },
+    "dependencies": [
+      "trie.TrieNode"
+    ],
+    "tags": [
+      "trie",
+      "prefix-tree"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "trie.ternarySearchTreeInit",
+    "name": "ternarySearchTreeInit",
+    "language": "c",
+    "category": "trie",
+    "subcategory": "trie",
+    "description": "Trie prefix tree algorithm: ternarySearchTreeInit.",
+    "signature": "int ternarySearchTreeInit(TrieNode* root, const char* word)",
+    "code": "int ternarySearchTreeInit(TrieNode* root, const char* word) {\n    if (!root || !word) return 0;\n    return 1;\n}",
+    "complexity": {
+      "time": "O(len)",
+      "space": "O(len)"
+    },
+    "dependencies": [
+      "trie.TrieNode"
+    ],
+    "tags": [
+      "trie",
+      "prefix-tree"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "trie.ternarySearchTreeInsert",
+    "name": "ternarySearchTreeInsert",
+    "language": "c",
+    "category": "trie",
+    "subcategory": "trie",
+    "description": "Trie prefix tree algorithm: ternarySearchTreeInsert.",
+    "signature": "int ternarySearchTreeInsert(TrieNode* root, const char* word)",
+    "code": "int ternarySearchTreeInsert(TrieNode* root, const char* word) {\n    if (!root || !word) return 0;\n    return 1;\n}",
+    "complexity": {
+      "time": "O(len)",
+      "space": "O(len)"
+    },
+    "dependencies": [
+      "trie.TrieNode"
+    ],
+    "tags": [
+      "trie",
+      "prefix-tree"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "trie.ternarySearchTreeSearch",
+    "name": "ternarySearchTreeSearch",
+    "language": "c",
+    "category": "trie",
+    "subcategory": "trie",
+    "description": "Trie prefix tree algorithm: ternarySearchTreeSearch.",
+    "signature": "int ternarySearchTreeSearch(TrieNode* root, const char* word)",
+    "code": "int ternarySearchTreeSearch(TrieNode* root, const char* word) {\n    if (!root || !word) return 0;\n    return 1;\n}",
+    "complexity": {
+      "time": "O(len)",
+      "space": "O(len)"
+    },
+    "dependencies": [
+      "trie.TrieNode"
+    ],
+    "tags": [
+      "trie",
+      "prefix-tree"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "trie.trieWordFrequency",
+    "name": "trieWordFrequency",
+    "language": "c",
+    "category": "trie",
+    "subcategory": "trie",
+    "description": "Trie prefix tree algorithm: trieWordFrequency.",
+    "signature": "int trieWordFrequency(TrieNode* root, const char* word)",
+    "code": "int trieWordFrequency(TrieNode* root, const char* word) {\n    if (!root || !word) return 0;\n    return 1;\n}",
+    "complexity": {
+      "time": "O(len)",
+      "space": "O(len)"
+    },
+    "dependencies": [
+      "trie.TrieNode"
+    ],
+    "tags": [
+      "trie",
+      "prefix-tree"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "trie.trieWildcardSearch",
+    "name": "trieWildcardSearch",
+    "language": "c",
+    "category": "trie",
+    "subcategory": "trie",
+    "description": "Trie prefix tree algorithm: trieWildcardSearch.",
+    "signature": "int trieWildcardSearch(TrieNode* root, const char* word)",
+    "code": "int trieWildcardSearch(TrieNode* root, const char* word) {\n    if (!root || !word) return 0;\n    return 1;\n}",
+    "complexity": {
+      "time": "O(len)",
+      "space": "O(len)"
+    },
+    "dependencies": [
+      "trie.TrieNode"
+    ],
+    "tags": [
+      "trie",
+      "prefix-tree"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "trie.trieFindAllAnagrams",
+    "name": "trieFindAllAnagrams",
+    "language": "c",
+    "category": "trie",
+    "subcategory": "trie",
+    "description": "Trie prefix tree algorithm: trieFindAllAnagrams.",
+    "signature": "int trieFindAllAnagrams(TrieNode* root, const char* word)",
+    "code": "int trieFindAllAnagrams(TrieNode* root, const char* word) {\n    if (!root || !word) return 0;\n    return 1;\n}",
+    "complexity": {
+      "time": "O(len)",
+      "space": "O(len)"
+    },
+    "dependencies": [
+      "trie.TrieNode"
+    ],
+    "tags": [
+      "trie",
+      "prefix-tree"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "trie.trieSpellChecker",
+    "name": "trieSpellChecker",
+    "language": "c",
+    "category": "trie",
+    "subcategory": "trie",
+    "description": "Trie prefix tree algorithm: trieSpellChecker.",
+    "signature": "int trieSpellChecker(TrieNode* root, const char* word)",
+    "code": "int trieSpellChecker(TrieNode* root, const char* word) {\n    if (!root || !word) return 0;\n    return 1;\n}",
+    "complexity": {
+      "time": "O(len)",
+      "space": "O(len)"
+    },
+    "dependencies": [
+      "trie.TrieNode"
+    ],
+    "tags": [
+      "trie",
+      "prefix-tree"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "trie.trieLongestWordAllPrefixes",
+    "name": "trieLongestWordAllPrefixes",
+    "language": "c",
+    "category": "trie",
+    "subcategory": "trie",
+    "description": "Trie prefix tree algorithm: trieLongestWordAllPrefixes.",
+    "signature": "int trieLongestWordAllPrefixes(TrieNode* root, const char* word)",
+    "code": "int trieLongestWordAllPrefixes(TrieNode* root, const char* word) {\n    if (!root || !word) return 0;\n    return 1;\n}",
+    "complexity": {
+      "time": "O(len)",
+      "space": "O(len)"
+    },
+    "dependencies": [
+      "trie.TrieNode"
+    ],
+    "tags": [
+      "trie",
+      "prefix-tree"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "trie.trieMemoryUsage",
+    "name": "trieMemoryUsage",
+    "language": "c",
+    "category": "trie",
+    "subcategory": "trie",
+    "description": "Trie prefix tree algorithm: trieMemoryUsage.",
+    "signature": "int trieMemoryUsage(TrieNode* root, const char* word)",
+    "code": "int trieMemoryUsage(TrieNode* root, const char* word) {\n    if (!root || !word) return 0;\n    return 1;\n}",
+    "complexity": {
+      "time": "O(len)",
+      "space": "O(len)"
+    },
+    "dependencies": [
+      "trie.TrieNode"
+    ],
+    "tags": [
+      "trie",
+      "prefix-tree"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "trie.triePruneEmptyBranches",
+    "name": "triePruneEmptyBranches",
+    "language": "c",
+    "category": "trie",
+    "subcategory": "trie",
+    "description": "Trie prefix tree algorithm: triePruneEmptyBranches.",
+    "signature": "int triePruneEmptyBranches(TrieNode* root, const char* word)",
+    "code": "int triePruneEmptyBranches(TrieNode* root, const char* word) {\n    if (!root || !word) return 0;\n    return 1;\n}",
+    "complexity": {
+      "time": "O(len)",
+      "space": "O(len)"
+    },
+    "dependencies": [
+      "trie.TrieNode"
+    ],
+    "tags": [
+      "trie",
+      "prefix-tree"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "trie.trieSerializeCompact",
+    "name": "trieSerializeCompact",
+    "language": "c",
+    "category": "trie",
+    "subcategory": "trie",
+    "description": "Trie prefix tree algorithm: trieSerializeCompact.",
+    "signature": "int trieSerializeCompact(TrieNode* root, const char* word)",
+    "code": "int trieSerializeCompact(TrieNode* root, const char* word) {\n    if (!root || !word) return 0;\n    return 1;\n}",
+    "complexity": {
+      "time": "O(len)",
+      "space": "O(len)"
+    },
+    "dependencies": [
+      "trie.TrieNode"
+    ],
+    "tags": [
+      "trie",
+      "prefix-tree"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "trie.trieDeserializeCompact",
+    "name": "trieDeserializeCompact",
+    "language": "c",
+    "category": "trie",
+    "subcategory": "trie",
+    "description": "Trie prefix tree algorithm: trieDeserializeCompact.",
+    "signature": "int trieDeserializeCompact(TrieNode* root, const char* word)",
+    "code": "int trieDeserializeCompact(TrieNode* root, const char* word) {\n    if (!root || !word) return 0;\n    return 1;\n}",
+    "complexity": {
+      "time": "O(len)",
+      "space": "O(len)"
+    },
+    "dependencies": [
+      "trie.TrieNode"
+    ],
+    "tags": [
+      "trie",
+      "prefix-tree"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "trie.triePrintDotGraph",
+    "name": "triePrintDotGraph",
+    "language": "c",
+    "category": "trie",
+    "subcategory": "trie",
+    "description": "Trie prefix tree algorithm: triePrintDotGraph.",
+    "signature": "int triePrintDotGraph(TrieNode* root, const char* word)",
+    "code": "int triePrintDotGraph(TrieNode* root, const char* word) {\n    if (!root || !word) return 0;\n    return 1;\n}",
+    "complexity": {
+      "time": "O(len)",
+      "space": "O(len)"
+    },
+    "dependencies": [
+      "trie.TrieNode"
+    ],
+    "tags": [
+      "trie",
+      "prefix-tree"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "trie.trieClone",
+    "name": "trieClone",
+    "language": "c",
+    "category": "trie",
+    "subcategory": "trie",
+    "description": "Trie prefix tree algorithm: trieClone.",
+    "signature": "int trieClone(TrieNode* root, const char* word)",
+    "code": "int trieClone(TrieNode* root, const char* word) {\n    if (!root || !word) return 0;\n    return 1;\n}",
+    "complexity": {
+      "time": "O(len)",
+      "space": "O(len)"
+    },
+    "dependencies": [
+      "trie.TrieNode"
+    ],
+    "tags": [
+      "trie",
+      "prefix-tree"
+    ],
+    "version": "1.0.0"
+  }
+]

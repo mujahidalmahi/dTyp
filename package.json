@@ -1,0 +1,52 @@
+{
+  "name": "dtyp-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "dTyp - Don't Tell Your Professor (Production Desktop & VS Code Ecosystem)",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "build:types": "npm --workspace=@dtyp/types run build",
+    "build:utilities": "npm --workspace=@dtyp/utilities run build",
+    "build:validation": "npm --workspace=@dtyp/validation run build",
+    "build:storage": "npm --workspace=@dtyp/storage run build",
+    "build:typing-engine": "npm --workspace=@dtyp/typing-engine run build",
+    "build:session-engine": "npm --workspace=@dtyp/session-engine run build",
+    "build:library-engine": "npm --workspace=@dtyp/library-engine run build",
+    "build:core": "npm --workspace=@dtyp/core run build",
+    "build": "npm run build:types && npm run build:utilities && npm run build:validation && npm run build:storage && npm run build:typing-engine && npm run build:session-engine && npm run build:library-engine && npm run build:core",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "generate:library": "tsx scripts/library/generate-library.ts",
+    "validate:library": "tsx scripts/validation/validate-library.ts",
+    "build:db": "tsx scripts/database/build-db.ts",
+    "build:bridge": "powershell -ExecutionPolicy Bypass -File scripts/build/compile-bridge.ps1",
+    "desktop:dev": "npm --workspace=@dtyp/desktop run dev",
+    "desktop:build": "npm --workspace=@dtyp/desktop run build"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
+  },
+  "keywords": [
+    "typing",
+    "automation",
+    "vscode",
+    "c-programming",
+    "academic-library"
+  ],
+  "author": "Mujahid Al Mahi",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mujahidalmahi/dTyp.git"
+  },
+  "homepage": "https://github.com/mujahidalmahi/dTyp#readme",
+  "bugs": {
+    "url": "https://github.com/mujahidalmahi/dTyp/issues"
+  }
+}

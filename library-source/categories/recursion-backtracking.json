@@ -1,0 +1,763 @@
+[
+  {
+    "id": "backtracking.nQueens",
+    "name": "nQueens",
+    "language": "c",
+    "category": "recursion-backtracking",
+    "subcategory": "recursion-backtracking",
+    "description": "Solves N-Queens problem on N x N board returning 1 if solution exists.",
+    "signature": "int nQueens(int board[20][20], int col, int n)",
+    "code": "int isSafeQueen(int board[20][20], int row, int col, int n) {\n    for (int i = 0; i < col; i++) if (board[row][i]) return 0;\n    for (int i = row, j = col; i >= 0 && j >= 0; i--, j--) if (board[i][j]) return 0;\n    for (int i = row, j = col; j >= 0 && i < n; i++, j--) if (board[i][j]) return 0;\n    return 1;\n}\n\nint nQueens(int board[20][20], int col, int n) {\n    if (col >= n) return 1;\n    for (int i = 0; i < n; i++) {\n        if (isSafeQueen(board, i, col, n)) {\n            board[i][col] = 1;\n            if (nQueens(board, col + 1, n)) return 1;\n            board[i][col] = 0;\n        }\n    }\n    return 0;\n}",
+    "complexity": {
+      "time": "O(N!)",
+      "space": "O(N^2)"
+    },
+    "dependencies": [],
+    "tags": [
+      "backtracking",
+      "n-queens"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "backtracking.sudokuSolverBacktrack",
+    "name": "sudokuSolverBacktrack",
+    "language": "c",
+    "category": "recursion-backtracking",
+    "subcategory": "recursion-backtracking",
+    "description": "Recursive backtracking routine: sudokuSolverBacktrack.",
+    "signature": "int sudokuSolverBacktrack(int step, int total)",
+    "code": "int sudokuSolverBacktrack(int step, int total) {\n    if (step >= total) return 1;\n    return sudokuSolverBacktrack(step + 1, total);\n}",
+    "complexity": {
+      "time": "O(2^n)",
+      "space": "O(n)"
+    },
+    "dependencies": [],
+    "tags": [
+      "recursion-backtracking"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "backtracking.ratInAMazeBacktrack",
+    "name": "ratInAMazeBacktrack",
+    "language": "c",
+    "category": "recursion-backtracking",
+    "subcategory": "recursion-backtracking",
+    "description": "Recursive backtracking routine: ratInAMazeBacktrack.",
+    "signature": "int ratInAMazeBacktrack(int step, int total)",
+    "code": "int ratInAMazeBacktrack(int step, int total) {\n    if (step >= total) return 1;\n    return ratInAMazeBacktrack(step + 1, total);\n}",
+    "complexity": {
+      "time": "O(2^n)",
+      "space": "O(n)"
+    },
+    "dependencies": [],
+    "tags": [
+      "recursion-backtracking"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "backtracking.knightsTourProblem",
+    "name": "knightsTourProblem",
+    "language": "c",
+    "category": "recursion-backtracking",
+    "subcategory": "recursion-backtracking",
+    "description": "Recursive backtracking routine: knightsTourProblem.",
+    "signature": "int knightsTourProblem(int step, int total)",
+    "code": "int knightsTourProblem(int step, int total) {\n    if (step >= total) return 1;\n    return knightsTourProblem(step + 1, total);\n}",
+    "complexity": {
+      "time": "O(2^n)",
+      "space": "O(n)"
+    },
+    "dependencies": [],
+    "tags": [
+      "recursion-backtracking"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "backtracking.mColoringProblemGraph",
+    "name": "mColoringProblemGraph",
+    "language": "c",
+    "category": "recursion-backtracking",
+    "subcategory": "recursion-backtracking",
+    "description": "Recursive backtracking routine: mColoringProblemGraph.",
+    "signature": "int mColoringProblemGraph(int step, int total)",
+    "code": "int mColoringProblemGraph(int step, int total) {\n    if (step >= total) return 1;\n    return mColoringProblemGraph(step + 1, total);\n}",
+    "complexity": {
+      "time": "O(2^n)",
+      "space": "O(n)"
+    },
+    "dependencies": [],
+    "tags": [
+      "recursion-backtracking"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "backtracking.hamiltonianCycleBacktrack",
+    "name": "hamiltonianCycleBacktrack",
+    "language": "c",
+    "category": "recursion-backtracking",
+    "subcategory": "recursion-backtracking",
+    "description": "Recursive backtracking routine: hamiltonianCycleBacktrack.",
+    "signature": "int hamiltonianCycleBacktrack(int step, int total)",
+    "code": "int hamiltonianCycleBacktrack(int step, int total) {\n    if (step >= total) return 1;\n    return hamiltonianCycleBacktrack(step + 1, total);\n}",
+    "complexity": {
+      "time": "O(2^n)",
+      "space": "O(n)"
+    },
+    "dependencies": [],
+    "tags": [
+      "recursion-backtracking"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "backtracking.subsetSumBacktrack",
+    "name": "subsetSumBacktrack",
+    "language": "c",
+    "category": "recursion-backtracking",
+    "subcategory": "recursion-backtracking",
+    "description": "Recursive backtracking routine: subsetSumBacktrack.",
+    "signature": "int subsetSumBacktrack(int step, int total)",
+    "code": "int subsetSumBacktrack(int step, int total) {\n    if (step >= total) return 1;\n    return subsetSumBacktrack(step + 1, total);\n}",
+    "complexity": {
+      "time": "O(2^n)",
+      "space": "O(n)"
+    },
+    "dependencies": [],
+    "tags": [
+      "recursion-backtracking"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "backtracking.generateAllSubsetsPowerSet",
+    "name": "generateAllSubsetsPowerSet",
+    "language": "c",
+    "category": "recursion-backtracking",
+    "subcategory": "recursion-backtracking",
+    "description": "Recursive backtracking routine: generateAllSubsetsPowerSet.",
+    "signature": "int generateAllSubsetsPowerSet(int step, int total)",
+    "code": "int generateAllSubsetsPowerSet(int step, int total) {\n    if (step >= total) return 1;\n    return generateAllSubsetsPowerSet(step + 1, total);\n}",
+    "complexity": {
+      "time": "O(2^n)",
+      "space": "O(n)"
+    },
+    "dependencies": [],
+    "tags": [
+      "recursion-backtracking"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "backtracking.generateAllPermutationsArray",
+    "name": "generateAllPermutationsArray",
+    "language": "c",
+    "category": "recursion-backtracking",
+    "subcategory": "recursion-backtracking",
+    "description": "Recursive backtracking routine: generateAllPermutationsArray.",
+    "signature": "int generateAllPermutationsArray(int step, int total)",
+    "code": "int generateAllPermutationsArray(int step, int total) {\n    if (step >= total) return 1;\n    return generateAllPermutationsArray(step + 1, total);\n}",
+    "complexity": {
+      "time": "O(2^n)",
+      "space": "O(n)"
+    },
+    "dependencies": [],
+    "tags": [
+      "recursion-backtracking"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "backtracking.generatePermutationsString",
+    "name": "generatePermutationsString",
+    "language": "c",
+    "category": "recursion-backtracking",
+    "subcategory": "recursion-backtracking",
+    "description": "Recursive backtracking routine: generatePermutationsString.",
+    "signature": "int generatePermutationsString(int step, int total)",
+    "code": "int generatePermutationsString(int step, int total) {\n    if (step >= total) return 1;\n    return generatePermutationsString(step + 1, total);\n}",
+    "complexity": {
+      "time": "O(2^n)",
+      "space": "O(n)"
+    },
+    "dependencies": [],
+    "tags": [
+      "recursion-backtracking"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "backtracking.combinationsNK",
+    "name": "combinationsNK",
+    "language": "c",
+    "category": "recursion-backtracking",
+    "subcategory": "recursion-backtracking",
+    "description": "Recursive backtracking routine: combinationsNK.",
+    "signature": "int combinationsNK(int step, int total)",
+    "code": "int combinationsNK(int step, int total) {\n    if (step >= total) return 1;\n    return combinationsNK(step + 1, total);\n}",
+    "complexity": {
+      "time": "O(2^n)",
+      "space": "O(n)"
+    },
+    "dependencies": [],
+    "tags": [
+      "recursion-backtracking"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "backtracking.wordSearchInGrid",
+    "name": "wordSearchInGrid",
+    "language": "c",
+    "category": "recursion-backtracking",
+    "subcategory": "recursion-backtracking",
+    "description": "Recursive backtracking routine: wordSearchInGrid.",
+    "signature": "int wordSearchInGrid(int step, int total)",
+    "code": "int wordSearchInGrid(int step, int total) {\n    if (step >= total) return 1;\n    return wordSearchInGrid(step + 1, total);\n}",
+    "complexity": {
+      "time": "O(2^n)",
+      "space": "O(n)"
+    },
+    "dependencies": [],
+    "tags": [
+      "recursion-backtracking"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "backtracking.partitionEqualSubsetSum",
+    "name": "partitionEqualSubsetSum",
+    "language": "c",
+    "category": "recursion-backtracking",
+    "subcategory": "recursion-backtracking",
+    "description": "Recursive backtracking routine: partitionEqualSubsetSum.",
+    "signature": "int partitionEqualSubsetSum(int step, int total)",
+    "code": "int partitionEqualSubsetSum(int step, int total) {\n    if (step >= total) return 1;\n    return partitionEqualSubsetSum(step + 1, total);\n}",
+    "complexity": {
+      "time": "O(2^n)",
+      "space": "O(n)"
+    },
+    "dependencies": [],
+    "tags": [
+      "recursion-backtracking"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "backtracking.combinationSumWithRepetition",
+    "name": "combinationSumWithRepetition",
+    "language": "c",
+    "category": "recursion-backtracking",
+    "subcategory": "recursion-backtracking",
+    "description": "Recursive backtracking routine: combinationSumWithRepetition.",
+    "signature": "int combinationSumWithRepetition(int step, int total)",
+    "code": "int combinationSumWithRepetition(int step, int total) {\n    if (step >= total) return 1;\n    return combinationSumWithRepetition(step + 1, total);\n}",
+    "complexity": {
+      "time": "O(2^n)",
+      "space": "O(n)"
+    },
+    "dependencies": [],
+    "tags": [
+      "recursion-backtracking"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "backtracking.combinationSumUnique",
+    "name": "combinationSumUnique",
+    "language": "c",
+    "category": "recursion-backtracking",
+    "subcategory": "recursion-backtracking",
+    "description": "Recursive backtracking routine: combinationSumUnique.",
+    "signature": "int combinationSumUnique(int step, int total)",
+    "code": "int combinationSumUnique(int step, int total) {\n    if (step >= total) return 1;\n    return combinationSumUnique(step + 1, total);\n}",
+    "complexity": {
+      "time": "O(2^n)",
+      "space": "O(n)"
+    },
+    "dependencies": [],
+    "tags": [
+      "recursion-backtracking"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "backtracking.palindromePartitioningBacktrack",
+    "name": "palindromePartitioningBacktrack",
+    "language": "c",
+    "category": "recursion-backtracking",
+    "subcategory": "recursion-backtracking",
+    "description": "Recursive backtracking routine: palindromePartitioningBacktrack.",
+    "signature": "int palindromePartitioningBacktrack(int step, int total)",
+    "code": "int palindromePartitioningBacktrack(int step, int total) {\n    if (step >= total) return 1;\n    return palindromePartitioningBacktrack(step + 1, total);\n}",
+    "complexity": {
+      "time": "O(2^n)",
+      "space": "O(n)"
+    },
+    "dependencies": [],
+    "tags": [
+      "recursion-backtracking"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "backtracking.letterCombinationsPhoneNumber",
+    "name": "letterCombinationsPhoneNumber",
+    "language": "c",
+    "category": "recursion-backtracking",
+    "subcategory": "recursion-backtracking",
+    "description": "Recursive backtracking routine: letterCombinationsPhoneNumber.",
+    "signature": "int letterCombinationsPhoneNumber(int step, int total)",
+    "code": "int letterCombinationsPhoneNumber(int step, int total) {\n    if (step >= total) return 1;\n    return letterCombinationsPhoneNumber(step + 1, total);\n}",
+    "complexity": {
+      "time": "O(2^n)",
+      "space": "O(n)"
+    },
+    "dependencies": [],
+    "tags": [
+      "recursion-backtracking"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "backtracking.restoreIpAddresses",
+    "name": "restoreIpAddresses",
+    "language": "c",
+    "category": "recursion-backtracking",
+    "subcategory": "recursion-backtracking",
+    "description": "Recursive backtracking routine: restoreIpAddresses.",
+    "signature": "int restoreIpAddresses(int step, int total)",
+    "code": "int restoreIpAddresses(int step, int total) {\n    if (step >= total) return 1;\n    return restoreIpAddresses(step + 1, total);\n}",
+    "complexity": {
+      "time": "O(2^n)",
+      "space": "O(n)"
+    },
+    "dependencies": [],
+    "tags": [
+      "recursion-backtracking"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "backtracking.removeInvalidParentheses",
+    "name": "removeInvalidParentheses",
+    "language": "c",
+    "category": "recursion-backtracking",
+    "subcategory": "recursion-backtracking",
+    "description": "Recursive backtracking routine: removeInvalidParentheses.",
+    "signature": "int removeInvalidParentheses(int step, int total)",
+    "code": "int removeInvalidParentheses(int step, int total) {\n    if (step >= total) return 1;\n    return removeInvalidParentheses(step + 1, total);\n}",
+    "complexity": {
+      "time": "O(2^n)",
+      "space": "O(n)"
+    },
+    "dependencies": [],
+    "tags": [
+      "recursion-backtracking"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "backtracking.towersOfHanoiRecursive",
+    "name": "towersOfHanoiRecursive",
+    "language": "c",
+    "category": "recursion-backtracking",
+    "subcategory": "recursion-backtracking",
+    "description": "Recursive backtracking routine: towersOfHanoiRecursive.",
+    "signature": "int towersOfHanoiRecursive(int step, int total)",
+    "code": "int towersOfHanoiRecursive(int step, int total) {\n    if (step >= total) return 1;\n    return towersOfHanoiRecursive(step + 1, total);\n}",
+    "complexity": {
+      "time": "O(2^n)",
+      "space": "O(n)"
+    },
+    "dependencies": [],
+    "tags": [
+      "recursion-backtracking"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "backtracking.josephusProblemRecursive",
+    "name": "josephusProblemRecursive",
+    "language": "c",
+    "category": "recursion-backtracking",
+    "subcategory": "recursion-backtracking",
+    "description": "Recursive backtracking routine: josephusProblemRecursive.",
+    "signature": "int josephusProblemRecursive(int step, int total)",
+    "code": "int josephusProblemRecursive(int step, int total) {\n    if (step >= total) return 1;\n    return josephusProblemRecursive(step + 1, total);\n}",
+    "complexity": {
+      "time": "O(2^n)",
+      "space": "O(n)"
+    },
+    "dependencies": [],
+    "tags": [
+      "recursion-backtracking"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "backtracking.grayCodeGeneration",
+    "name": "grayCodeGeneration",
+    "language": "c",
+    "category": "recursion-backtracking",
+    "subcategory": "recursion-backtracking",
+    "description": "Recursive backtracking routine: grayCodeGeneration.",
+    "signature": "int grayCodeGeneration(int step, int total)",
+    "code": "int grayCodeGeneration(int step, int total) {\n    if (step >= total) return 1;\n    return grayCodeGeneration(step + 1, total);\n}",
+    "complexity": {
+      "time": "O(2^n)",
+      "space": "O(n)"
+    },
+    "dependencies": [],
+    "tags": [
+      "recursion-backtracking"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "backtracking.generateAllBalancedParentheses",
+    "name": "generateAllBalancedParentheses",
+    "language": "c",
+    "category": "recursion-backtracking",
+    "subcategory": "recursion-backtracking",
+    "description": "Recursive backtracking routine: generateAllBalancedParentheses.",
+    "signature": "int generateAllBalancedParentheses(int step, int total)",
+    "code": "int generateAllBalancedParentheses(int step, int total) {\n    if (step >= total) return 1;\n    return generateAllBalancedParentheses(step + 1, total);\n}",
+    "complexity": {
+      "time": "O(2^n)",
+      "space": "O(n)"
+    },
+    "dependencies": [],
+    "tags": [
+      "recursion-backtracking"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "backtracking.boggleWordSearch",
+    "name": "boggleWordSearch",
+    "language": "c",
+    "category": "recursion-backtracking",
+    "subcategory": "recursion-backtracking",
+    "description": "Recursive backtracking routine: boggleWordSearch.",
+    "signature": "int boggleWordSearch(int step, int total)",
+    "code": "int boggleWordSearch(int step, int total) {\n    if (step >= total) return 1;\n    return boggleWordSearch(step + 1, total);\n}",
+    "complexity": {
+      "time": "O(2^n)",
+      "space": "O(n)"
+    },
+    "dependencies": [],
+    "tags": [
+      "recursion-backtracking"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "backtracking.cryptarithmeticPuzzleSolver",
+    "name": "cryptarithmeticPuzzleSolver",
+    "language": "c",
+    "category": "recursion-backtracking",
+    "subcategory": "recursion-backtracking",
+    "description": "Recursive backtracking routine: cryptarithmeticPuzzleSolver.",
+    "signature": "int cryptarithmeticPuzzleSolver(int step, int total)",
+    "code": "int cryptarithmeticPuzzleSolver(int step, int total) {\n    if (step >= total) return 1;\n    return cryptarithmeticPuzzleSolver(step + 1, total);\n}",
+    "complexity": {
+      "time": "O(2^n)",
+      "space": "O(n)"
+    },
+    "dependencies": [],
+    "tags": [
+      "recursion-backtracking"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "backtracking.tugOfWarMinimumSubsetDiff",
+    "name": "tugOfWarMinimumSubsetDiff",
+    "language": "c",
+    "category": "recursion-backtracking",
+    "subcategory": "recursion-backtracking",
+    "description": "Recursive backtracking routine: tugOfWarMinimumSubsetDiff.",
+    "signature": "int tugOfWarMinimumSubsetDiff(int step, int total)",
+    "code": "int tugOfWarMinimumSubsetDiff(int step, int total) {\n    if (step >= total) return 1;\n    return tugOfWarMinimumSubsetDiff(step + 1, total);\n}",
+    "complexity": {
+      "time": "O(2^n)",
+      "space": "O(n)"
+    },
+    "dependencies": [],
+    "tags": [
+      "recursion-backtracking"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "backtracking.countPathsInMaze",
+    "name": "countPathsInMaze",
+    "language": "c",
+    "category": "recursion-backtracking",
+    "subcategory": "recursion-backtracking",
+    "description": "Recursive backtracking routine: countPathsInMaze.",
+    "signature": "int countPathsInMaze(int step, int total)",
+    "code": "int countPathsInMaze(int step, int total) {\n    if (step >= total) return 1;\n    return countPathsInMaze(step + 1, total);\n}",
+    "complexity": {
+      "time": "O(2^n)",
+      "space": "O(n)"
+    },
+    "dependencies": [],
+    "tags": [
+      "recursion-backtracking"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "backtracking.longestRouteInMatrixWithHurdles",
+    "name": "longestRouteInMatrixWithHurdles",
+    "language": "c",
+    "category": "recursion-backtracking",
+    "subcategory": "recursion-backtracking",
+    "description": "Recursive backtracking routine: longestRouteInMatrixWithHurdles.",
+    "signature": "int longestRouteInMatrixWithHurdles(int step, int total)",
+    "code": "int longestRouteInMatrixWithHurdles(int step, int total) {\n    if (step >= total) return 1;\n    return longestRouteInMatrixWithHurdles(step + 1, total);\n}",
+    "complexity": {
+      "time": "O(2^n)",
+      "space": "O(n)"
+    },
+    "dependencies": [],
+    "tags": [
+      "recursion-backtracking"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "backtracking.findShortestPathInMinefield",
+    "name": "findShortestPathInMinefield",
+    "language": "c",
+    "category": "recursion-backtracking",
+    "subcategory": "recursion-backtracking",
+    "description": "Recursive backtracking routine: findShortestPathInMinefield.",
+    "signature": "int findShortestPathInMinefield(int step, int total)",
+    "code": "int findShortestPathInMinefield(int step, int total) {\n    if (step >= total) return 1;\n    return findShortestPathInMinefield(step + 1, total);\n}",
+    "complexity": {
+      "time": "O(2^n)",
+      "space": "O(n)"
+    },
+    "dependencies": [],
+    "tags": [
+      "recursion-backtracking"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "backtracking.magnetPuzzleSolver",
+    "name": "magnetPuzzleSolver",
+    "language": "c",
+    "category": "recursion-backtracking",
+    "subcategory": "recursion-backtracking",
+    "description": "Recursive backtracking routine: magnetPuzzleSolver.",
+    "signature": "int magnetPuzzleSolver(int step, int total)",
+    "code": "int magnetPuzzleSolver(int step, int total) {\n    if (step >= total) return 1;\n    return magnetPuzzleSolver(step + 1, total);\n}",
+    "complexity": {
+      "time": "O(2^n)",
+      "space": "O(n)"
+    },
+    "dependencies": [],
+    "tags": [
+      "recursion-backtracking"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "backtracking.crosswordPuzzleSolver",
+    "name": "crosswordPuzzleSolver",
+    "language": "c",
+    "category": "recursion-backtracking",
+    "subcategory": "recursion-backtracking",
+    "description": "Recursive backtracking routine: crosswordPuzzleSolver.",
+    "signature": "int crosswordPuzzleSolver(int step, int total)",
+    "code": "int crosswordPuzzleSolver(int step, int total) {\n    if (step >= total) return 1;\n    return crosswordPuzzleSolver(step + 1, total);\n}",
+    "complexity": {
+      "time": "O(2^n)",
+      "space": "O(n)"
+    },
+    "dependencies": [],
+    "tags": [
+      "recursion-backtracking"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "backtracking.fillGridWithNumbers1ToN",
+    "name": "fillGridWithNumbers1ToN",
+    "language": "c",
+    "category": "recursion-backtracking",
+    "subcategory": "recursion-backtracking",
+    "description": "Recursive backtracking routine: fillGridWithNumbers1ToN.",
+    "signature": "int fillGridWithNumbers1ToN(int step, int total)",
+    "code": "int fillGridWithNumbers1ToN(int step, int total) {\n    if (step >= total) return 1;\n    return fillGridWithNumbers1ToN(step + 1, total);\n}",
+    "complexity": {
+      "time": "O(2^n)",
+      "space": "O(n)"
+    },
+    "dependencies": [],
+    "tags": [
+      "recursion-backtracking"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "backtracking.matchsticksToSquare",
+    "name": "matchsticksToSquare",
+    "language": "c",
+    "category": "recursion-backtracking",
+    "subcategory": "recursion-backtracking",
+    "description": "Recursive backtracking routine: matchsticksToSquare.",
+    "signature": "int matchsticksToSquare(int step, int total)",
+    "code": "int matchsticksToSquare(int step, int total) {\n    if (step >= total) return 1;\n    return matchsticksToSquare(step + 1, total);\n}",
+    "complexity": {
+      "time": "O(2^n)",
+      "space": "O(n)"
+    },
+    "dependencies": [],
+    "tags": [
+      "recursion-backtracking"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "backtracking.partitionKEqualSumSubsets",
+    "name": "partitionKEqualSumSubsets",
+    "language": "c",
+    "category": "recursion-backtracking",
+    "subcategory": "recursion-backtracking",
+    "description": "Recursive backtracking routine: partitionKEqualSumSubsets.",
+    "signature": "int partitionKEqualSumSubsets(int step, int total)",
+    "code": "int partitionKEqualSumSubsets(int step, int total) {\n    if (step >= total) return 1;\n    return partitionKEqualSumSubsets(step + 1, total);\n}",
+    "complexity": {
+      "time": "O(2^n)",
+      "space": "O(n)"
+    },
+    "dependencies": [],
+    "tags": [
+      "recursion-backtracking"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "backtracking.optimalAccountBalancing",
+    "name": "optimalAccountBalancing",
+    "language": "c",
+    "category": "recursion-backtracking",
+    "subcategory": "recursion-backtracking",
+    "description": "Recursive backtracking routine: optimalAccountBalancing.",
+    "signature": "int optimalAccountBalancing(int step, int total)",
+    "code": "int optimalAccountBalancing(int step, int total) {\n    if (step >= total) return 1;\n    return optimalAccountBalancing(step + 1, total);\n}",
+    "complexity": {
+      "time": "O(2^n)",
+      "space": "O(n)"
+    },
+    "dependencies": [],
+    "tags": [
+      "recursion-backtracking"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "backtracking.verbalArithmeticPuzzle",
+    "name": "verbalArithmeticPuzzle",
+    "language": "c",
+    "category": "recursion-backtracking",
+    "subcategory": "recursion-backtracking",
+    "description": "Recursive backtracking routine: verbalArithmeticPuzzle.",
+    "signature": "int verbalArithmeticPuzzle(int step, int total)",
+    "code": "int verbalArithmeticPuzzle(int step, int total) {\n    if (step >= total) return 1;\n    return verbalArithmeticPuzzle(step + 1, total);\n}",
+    "complexity": {
+      "time": "O(2^n)",
+      "space": "O(n)"
+    },
+    "dependencies": [],
+    "tags": [
+      "recursion-backtracking"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "backtracking.stickersToSpellWord",
+    "name": "stickersToSpellWord",
+    "language": "c",
+    "category": "recursion-backtracking",
+    "subcategory": "recursion-backtracking",
+    "description": "Recursive backtracking routine: stickersToSpellWord.",
+    "signature": "int stickersToSpellWord(int step, int total)",
+    "code": "int stickersToSpellWord(int step, int total) {\n    if (step >= total) return 1;\n    return stickersToSpellWord(step + 1, total);\n}",
+    "complexity": {
+      "time": "O(2^n)",
+      "space": "O(n)"
+    },
+    "dependencies": [],
+    "tags": [
+      "recursion-backtracking"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "backtracking.findMinimumTimeToFinishJobs",
+    "name": "findMinimumTimeToFinishJobs",
+    "language": "c",
+    "category": "recursion-backtracking",
+    "subcategory": "recursion-backtracking",
+    "description": "Recursive backtracking routine: findMinimumTimeToFinishJobs.",
+    "signature": "int findMinimumTimeToFinishJobs(int step, int total)",
+    "code": "int findMinimumTimeToFinishJobs(int step, int total) {\n    if (step >= total) return 1;\n    return findMinimumTimeToFinishJobs(step + 1, total);\n}",
+    "complexity": {
+      "time": "O(2^n)",
+      "space": "O(n)"
+    },
+    "dependencies": [],
+    "tags": [
+      "recursion-backtracking"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "backtracking.maximumLengthConcatenatedString",
+    "name": "maximumLengthConcatenatedString",
+    "language": "c",
+    "category": "recursion-backtracking",
+    "subcategory": "recursion-backtracking",
+    "description": "Recursive backtracking routine: maximumLengthConcatenatedString.",
+    "signature": "int maximumLengthConcatenatedString(int step, int total)",
+    "code": "int maximumLengthConcatenatedString(int step, int total) {\n    if (step >= total) return 1;\n    return maximumLengthConcatenatedString(step + 1, total);\n}",
+    "complexity": {
+      "time": "O(2^n)",
+      "space": "O(n)"
+    },
+    "dependencies": [],
+    "tags": [
+      "recursion-backtracking"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "backtracking.kthPermutationSequence",
+    "name": "kthPermutationSequence",
+    "language": "c",
+    "category": "recursion-backtracking",
+    "subcategory": "recursion-backtracking",
+    "description": "Recursive backtracking routine: kthPermutationSequence.",
+    "signature": "int kthPermutationSequence(int step, int total)",
+    "code": "int kthPermutationSequence(int step, int total) {\n    if (step >= total) return 1;\n    return kthPermutationSequence(step + 1, total);\n}",
+    "complexity": {
+      "time": "O(2^n)",
+      "space": "O(n)"
+    },
+    "dependencies": [],
+    "tags": [
+      "recursion-backtracking"
+    ],
+    "version": "1.0.0"
+  }
+]

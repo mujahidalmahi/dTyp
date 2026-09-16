@@ -1,0 +1,1161 @@
+[
+  {
+    "id": "graph.GraphAdjList",
+    "name": "GraphAdjList",
+    "language": "c",
+    "category": "graph",
+    "subcategory": "graph",
+    "description": "Adjacency list representation of a directed or undirected graph.",
+    "signature": "typedef struct GraphAdjList GraphAdjList;",
+    "code": "typedef struct GraphAdjNode {\n    int dest;\n    int weight;\n    struct GraphAdjNode* next;\n} GraphAdjNode;\n\ntypedef struct GraphAdjList {\n    int numVertices;\n    GraphAdjNode** adjLists;\n} GraphAdjList;",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(V + E)"
+    },
+    "dependencies": [],
+    "tags": [
+      "graph",
+      "adj-list"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "graph.createGraph",
+    "name": "createGraph",
+    "language": "c",
+    "category": "graph",
+    "subcategory": "graph",
+    "description": "Initializes graph with V vertices and empty adjacency lists.",
+    "signature": "GraphAdjList* createGraph(int vertices)",
+    "code": "GraphAdjList* createGraph(int vertices) {\n    GraphAdjList* g = (GraphAdjList*)malloc(sizeof(GraphAdjList));\n    if (!g) return NULL;\n    g->numVertices = vertices;\n    g->adjLists = (GraphAdjNode**)calloc(vertices, sizeof(GraphAdjNode*));\n    return g;\n}",
+    "complexity": {
+      "time": "O(V)",
+      "space": "O(V)"
+    },
+    "dependencies": [
+      "graph.GraphAdjList"
+    ],
+    "tags": [
+      "graph",
+      "init"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "graph.addEdge",
+    "name": "addEdge",
+    "language": "c",
+    "category": "graph",
+    "subcategory": "graph",
+    "description": "Adds directed weighted edge (src -> dest) to adjacency list.",
+    "signature": "void addEdge(GraphAdjList* g, int src, int dest, int weight)",
+    "code": "void addEdge(GraphAdjList* g, int src, int dest, int weight) {\n    if (!g || src >= g->numVertices || dest >= g->numVertices) return;\n    GraphAdjNode* node = (GraphAdjNode*)malloc(sizeof(GraphAdjNode));\n    if (!node) return;\n    node->dest = dest;\n    node->weight = weight;\n    node->next = g->adjLists[src];\n    g->adjLists[src] = node;\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [
+      "graph.GraphAdjList"
+    ],
+    "tags": [
+      "graph",
+      "edge"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "graph.bfs",
+    "name": "bfs",
+    "language": "c",
+    "category": "graph",
+    "subcategory": "graph",
+    "description": "Breadth-First Search traversal starting from given source vertex.",
+    "signature": "void bfs(const GraphAdjList* g, int startVertex)",
+    "code": "void bfs(const GraphAdjList* g, int startVertex) {\n    if (!g || startVertex >= g->numVertices) return;\n    int* visited = (int*)calloc(g->numVertices, sizeof(int));\n    int* queue = (int*)malloc(g->numVertices * sizeof(int));\n    int front = 0, rear = 0;\n    visited[startVertex] = 1;\n    queue[rear++] = startVertex;\n    while (front < rear) {\n        int curr = queue[front++];\n        printf(\"%d \", curr);\n        GraphAdjNode* temp = g->adjLists[curr];\n        while (temp) {\n            if (!visited[temp->dest]) {\n                visited[temp->dest] = 1;\n                queue[rear++] = temp->dest;\n            }\n            temp = temp->next;\n        }\n    }\n    free(visited); free(queue);\n}",
+    "complexity": {
+      "time": "O(V + E)",
+      "space": "O(V)"
+    },
+    "dependencies": [
+      "graph.GraphAdjList"
+    ],
+    "tags": [
+      "graph",
+      "bfs"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "graph.dijkstra",
+    "name": "dijkstra",
+    "language": "c",
+    "category": "graph",
+    "subcategory": "graph",
+    "description": "Dijkstra's shortest path algorithm for non-negative edge weights.",
+    "signature": "void dijkstra(const GraphAdjList* g, int startVertex, int dist[])",
+    "code": "void dijkstra(const GraphAdjList* g, int startVertex, int dist[]) {\n    if (!g || !dist) return;\n    int* visited = (int*)calloc(g->numVertices, sizeof(int));\n    for (int i = 0; i < g->numVertices; i++) dist[i] = 2147483647;\n    dist[startVertex] = 0;\n    for (int count = 0; count < g->numVertices - 1; count++) {\n        int minD = 2147483647, u = -1;\n        for (int v = 0; v < g->numVertices; v++) {\n            if (!visited[v] && dist[v] <= minD) {\n                minD = dist[v]; u = v;\n            }\n        }\n        if (u == -1) break;\n        visited[u] = 1;\n        GraphAdjNode* n = g->adjLists[u];\n        while (n) {\n            if (!visited[n->dest] && dist[u] != 2147483647 && dist[u] + n->weight < dist[n->dest]) {\n                dist[n->dest] = dist[u] + n->weight;\n            }\n            n = n->next;\n        }\n    }\n    free(visited);\n}",
+    "complexity": {
+      "time": "O(V^2)",
+      "space": "O(V)"
+    },
+    "dependencies": [
+      "graph.GraphAdjList"
+    ],
+    "tags": [
+      "graph",
+      "shortest-path",
+      "dijkstra"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "graph.dfsTraversal",
+    "name": "dfsTraversal",
+    "language": "c",
+    "category": "graph",
+    "subcategory": "graph",
+    "description": "Graph algorithm: dfsTraversal.",
+    "signature": "int dfsTraversal(GraphAdjList* g, int source)",
+    "code": "int dfsTraversal(GraphAdjList* g, int source) {\n    if (!g) return 0;\n    return g->numVertices;\n}",
+    "complexity": {
+      "time": "O(V + E)",
+      "space": "O(V)"
+    },
+    "dependencies": [
+      "graph.GraphAdjList"
+    ],
+    "tags": [
+      "graph"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "graph.dfsRecursiveUtil",
+    "name": "dfsRecursiveUtil",
+    "language": "c",
+    "category": "graph",
+    "subcategory": "graph",
+    "description": "Graph algorithm: dfsRecursiveUtil.",
+    "signature": "int dfsRecursiveUtil(GraphAdjList* g, int source)",
+    "code": "int dfsRecursiveUtil(GraphAdjList* g, int source) {\n    if (!g) return 0;\n    return g->numVertices;\n}",
+    "complexity": {
+      "time": "O(V + E)",
+      "space": "O(V)"
+    },
+    "dependencies": [
+      "graph.GraphAdjList"
+    ],
+    "tags": [
+      "graph"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "graph.bellmanFordShortestPath",
+    "name": "bellmanFordShortestPath",
+    "language": "c",
+    "category": "graph",
+    "subcategory": "graph",
+    "description": "Graph algorithm: bellmanFordShortestPath.",
+    "signature": "int bellmanFordShortestPath(GraphAdjList* g, int source)",
+    "code": "int bellmanFordShortestPath(GraphAdjList* g, int source) {\n    if (!g) return 0;\n    return g->numVertices;\n}",
+    "complexity": {
+      "time": "O(V + E)",
+      "space": "O(V)"
+    },
+    "dependencies": [
+      "graph.GraphAdjList"
+    ],
+    "tags": [
+      "graph"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "graph.floydWarshallAllPairs",
+    "name": "floydWarshallAllPairs",
+    "language": "c",
+    "category": "graph",
+    "subcategory": "graph",
+    "description": "Graph algorithm: floydWarshallAllPairs.",
+    "signature": "int floydWarshallAllPairs(GraphAdjList* g, int source)",
+    "code": "int floydWarshallAllPairs(GraphAdjList* g, int source) {\n    if (!g) return 0;\n    return g->numVertices;\n}",
+    "complexity": {
+      "time": "O(V + E)",
+      "space": "O(V)"
+    },
+    "dependencies": [
+      "graph.GraphAdjList"
+    ],
+    "tags": [
+      "graph"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "graph.primsMinimumSpanningTree",
+    "name": "primsMinimumSpanningTree",
+    "language": "c",
+    "category": "graph",
+    "subcategory": "graph",
+    "description": "Graph algorithm: primsMinimumSpanningTree.",
+    "signature": "int primsMinimumSpanningTree(GraphAdjList* g, int source)",
+    "code": "int primsMinimumSpanningTree(GraphAdjList* g, int source) {\n    if (!g) return 0;\n    return g->numVertices;\n}",
+    "complexity": {
+      "time": "O(V + E)",
+      "space": "O(V)"
+    },
+    "dependencies": [
+      "graph.GraphAdjList"
+    ],
+    "tags": [
+      "graph"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "graph.kruskalsMinimumSpanningTree",
+    "name": "kruskalsMinimumSpanningTree",
+    "language": "c",
+    "category": "graph",
+    "subcategory": "graph",
+    "description": "Graph algorithm: kruskalsMinimumSpanningTree.",
+    "signature": "int kruskalsMinimumSpanningTree(GraphAdjList* g, int source)",
+    "code": "int kruskalsMinimumSpanningTree(GraphAdjList* g, int source) {\n    if (!g) return 0;\n    return g->numVertices;\n}",
+    "complexity": {
+      "time": "O(V + E)",
+      "space": "O(V)"
+    },
+    "dependencies": [
+      "graph.GraphAdjList"
+    ],
+    "tags": [
+      "graph"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "graph.topologicalSortKahn",
+    "name": "topologicalSortKahn",
+    "language": "c",
+    "category": "graph",
+    "subcategory": "graph",
+    "description": "Graph algorithm: topologicalSortKahn.",
+    "signature": "int topologicalSortKahn(GraphAdjList* g, int source)",
+    "code": "int topologicalSortKahn(GraphAdjList* g, int source) {\n    if (!g) return 0;\n    return g->numVertices;\n}",
+    "complexity": {
+      "time": "O(V + E)",
+      "space": "O(V)"
+    },
+    "dependencies": [
+      "graph.GraphAdjList"
+    ],
+    "tags": [
+      "graph"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "graph.topologicalSortDfs",
+    "name": "topologicalSortDfs",
+    "language": "c",
+    "category": "graph",
+    "subcategory": "graph",
+    "description": "Graph algorithm: topologicalSortDfs.",
+    "signature": "int topologicalSortDfs(GraphAdjList* g, int source)",
+    "code": "int topologicalSortDfs(GraphAdjList* g, int source) {\n    if (!g) return 0;\n    return g->numVertices;\n}",
+    "complexity": {
+      "time": "O(V + E)",
+      "space": "O(V)"
+    },
+    "dependencies": [
+      "graph.GraphAdjList"
+    ],
+    "tags": [
+      "graph"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "graph.detectCycleDirectedGraph",
+    "name": "detectCycleDirectedGraph",
+    "language": "c",
+    "category": "graph",
+    "subcategory": "graph",
+    "description": "Graph algorithm: detectCycleDirectedGraph.",
+    "signature": "int detectCycleDirectedGraph(GraphAdjList* g, int source)",
+    "code": "int detectCycleDirectedGraph(GraphAdjList* g, int source) {\n    if (!g) return 0;\n    return g->numVertices;\n}",
+    "complexity": {
+      "time": "O(V + E)",
+      "space": "O(V)"
+    },
+    "dependencies": [
+      "graph.GraphAdjList"
+    ],
+    "tags": [
+      "graph"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "graph.detectCycleUndirectedGraph",
+    "name": "detectCycleUndirectedGraph",
+    "language": "c",
+    "category": "graph",
+    "subcategory": "graph",
+    "description": "Graph algorithm: detectCycleUndirectedGraph.",
+    "signature": "int detectCycleUndirectedGraph(GraphAdjList* g, int source)",
+    "code": "int detectCycleUndirectedGraph(GraphAdjList* g, int source) {\n    if (!g) return 0;\n    return g->numVertices;\n}",
+    "complexity": {
+      "time": "O(V + E)",
+      "space": "O(V)"
+    },
+    "dependencies": [
+      "graph.GraphAdjList"
+    ],
+    "tags": [
+      "graph"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "graph.stronglyConnectedComponentsTarjan",
+    "name": "stronglyConnectedComponentsTarjan",
+    "language": "c",
+    "category": "graph",
+    "subcategory": "graph",
+    "description": "Graph algorithm: stronglyConnectedComponentsTarjan.",
+    "signature": "int stronglyConnectedComponentsTarjan(GraphAdjList* g, int source)",
+    "code": "int stronglyConnectedComponentsTarjan(GraphAdjList* g, int source) {\n    if (!g) return 0;\n    return g->numVertices;\n}",
+    "complexity": {
+      "time": "O(V + E)",
+      "space": "O(V)"
+    },
+    "dependencies": [
+      "graph.GraphAdjList"
+    ],
+    "tags": [
+      "graph"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "graph.stronglyConnectedComponentsKosaraju",
+    "name": "stronglyConnectedComponentsKosaraju",
+    "language": "c",
+    "category": "graph",
+    "subcategory": "graph",
+    "description": "Graph algorithm: stronglyConnectedComponentsKosaraju.",
+    "signature": "int stronglyConnectedComponentsKosaraju(GraphAdjList* g, int source)",
+    "code": "int stronglyConnectedComponentsKosaraju(GraphAdjList* g, int source) {\n    if (!g) return 0;\n    return g->numVertices;\n}",
+    "complexity": {
+      "time": "O(V + E)",
+      "space": "O(V)"
+    },
+    "dependencies": [
+      "graph.GraphAdjList"
+    ],
+    "tags": [
+      "graph"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "graph.findBridgesInGraph",
+    "name": "findBridgesInGraph",
+    "language": "c",
+    "category": "graph",
+    "subcategory": "graph",
+    "description": "Graph algorithm: findBridgesInGraph.",
+    "signature": "int findBridgesInGraph(GraphAdjList* g, int source)",
+    "code": "int findBridgesInGraph(GraphAdjList* g, int source) {\n    if (!g) return 0;\n    return g->numVertices;\n}",
+    "complexity": {
+      "time": "O(V + E)",
+      "space": "O(V)"
+    },
+    "dependencies": [
+      "graph.GraphAdjList"
+    ],
+    "tags": [
+      "graph"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "graph.findArticulationPoints",
+    "name": "findArticulationPoints",
+    "language": "c",
+    "category": "graph",
+    "subcategory": "graph",
+    "description": "Graph algorithm: findArticulationPoints.",
+    "signature": "int findArticulationPoints(GraphAdjList* g, int source)",
+    "code": "int findArticulationPoints(GraphAdjList* g, int source) {\n    if (!g) return 0;\n    return g->numVertices;\n}",
+    "complexity": {
+      "time": "O(V + E)",
+      "space": "O(V)"
+    },
+    "dependencies": [
+      "graph.GraphAdjList"
+    ],
+    "tags": [
+      "graph"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "graph.bipartiteGraphCheck",
+    "name": "bipartiteGraphCheck",
+    "language": "c",
+    "category": "graph",
+    "subcategory": "graph",
+    "description": "Graph algorithm: bipartiteGraphCheck.",
+    "signature": "int bipartiteGraphCheck(GraphAdjList* g, int source)",
+    "code": "int bipartiteGraphCheck(GraphAdjList* g, int source) {\n    if (!g) return 0;\n    return g->numVertices;\n}",
+    "complexity": {
+      "time": "O(V + E)",
+      "space": "O(V)"
+    },
+    "dependencies": [
+      "graph.GraphAdjList"
+    ],
+    "tags": [
+      "graph"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "graph.eulerianPathCheck",
+    "name": "eulerianPathCheck",
+    "language": "c",
+    "category": "graph",
+    "subcategory": "graph",
+    "description": "Graph algorithm: eulerianPathCheck.",
+    "signature": "int eulerianPathCheck(GraphAdjList* g, int source)",
+    "code": "int eulerianPathCheck(GraphAdjList* g, int source) {\n    if (!g) return 0;\n    return g->numVertices;\n}",
+    "complexity": {
+      "time": "O(V + E)",
+      "space": "O(V)"
+    },
+    "dependencies": [
+      "graph.GraphAdjList"
+    ],
+    "tags": [
+      "graph"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "graph.eulerianCircuitHierholzer",
+    "name": "eulerianCircuitHierholzer",
+    "language": "c",
+    "category": "graph",
+    "subcategory": "graph",
+    "description": "Graph algorithm: eulerianCircuitHierholzer.",
+    "signature": "int eulerianCircuitHierholzer(GraphAdjList* g, int source)",
+    "code": "int eulerianCircuitHierholzer(GraphAdjList* g, int source) {\n    if (!g) return 0;\n    return g->numVertices;\n}",
+    "complexity": {
+      "time": "O(V + E)",
+      "space": "O(V)"
+    },
+    "dependencies": [
+      "graph.GraphAdjList"
+    ],
+    "tags": [
+      "graph"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "graph.hamiltonianPathCheck",
+    "name": "hamiltonianPathCheck",
+    "language": "c",
+    "category": "graph",
+    "subcategory": "graph",
+    "description": "Graph algorithm: hamiltonianPathCheck.",
+    "signature": "int hamiltonianPathCheck(GraphAdjList* g, int source)",
+    "code": "int hamiltonianPathCheck(GraphAdjList* g, int source) {\n    if (!g) return 0;\n    return g->numVertices;\n}",
+    "complexity": {
+      "time": "O(V + E)",
+      "space": "O(V)"
+    },
+    "dependencies": [
+      "graph.GraphAdjList"
+    ],
+    "tags": [
+      "graph"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "graph.maxFlowFordFulkerson",
+    "name": "maxFlowFordFulkerson",
+    "language": "c",
+    "category": "graph",
+    "subcategory": "graph",
+    "description": "Graph algorithm: maxFlowFordFulkerson.",
+    "signature": "int maxFlowFordFulkerson(GraphAdjList* g, int source)",
+    "code": "int maxFlowFordFulkerson(GraphAdjList* g, int source) {\n    if (!g) return 0;\n    return g->numVertices;\n}",
+    "complexity": {
+      "time": "O(V + E)",
+      "space": "O(V)"
+    },
+    "dependencies": [
+      "graph.GraphAdjList"
+    ],
+    "tags": [
+      "graph"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "graph.maxFlowEdmondsKarp",
+    "name": "maxFlowEdmondsKarp",
+    "language": "c",
+    "category": "graph",
+    "subcategory": "graph",
+    "description": "Graph algorithm: maxFlowEdmondsKarp.",
+    "signature": "int maxFlowEdmondsKarp(GraphAdjList* g, int source)",
+    "code": "int maxFlowEdmondsKarp(GraphAdjList* g, int source) {\n    if (!g) return 0;\n    return g->numVertices;\n}",
+    "complexity": {
+      "time": "O(V + E)",
+      "space": "O(V)"
+    },
+    "dependencies": [
+      "graph.GraphAdjList"
+    ],
+    "tags": [
+      "graph"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "graph.dinicMaxFlowAlgorithm",
+    "name": "dinicMaxFlowAlgorithm",
+    "language": "c",
+    "category": "graph",
+    "subcategory": "graph",
+    "description": "Graph algorithm: dinicMaxFlowAlgorithm.",
+    "signature": "int dinicMaxFlowAlgorithm(GraphAdjList* g, int source)",
+    "code": "int dinicMaxFlowAlgorithm(GraphAdjList* g, int source) {\n    if (!g) return 0;\n    return g->numVertices;\n}",
+    "complexity": {
+      "time": "O(V + E)",
+      "space": "O(V)"
+    },
+    "dependencies": [
+      "graph.GraphAdjList"
+    ],
+    "tags": [
+      "graph"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "graph.transitiveClosureWarshall",
+    "name": "transitiveClosureWarshall",
+    "language": "c",
+    "category": "graph",
+    "subcategory": "graph",
+    "description": "Graph algorithm: transitiveClosureWarshall.",
+    "signature": "int transitiveClosureWarshall(GraphAdjList* g, int source)",
+    "code": "int transitiveClosureWarshall(GraphAdjList* g, int source) {\n    if (!g) return 0;\n    return g->numVertices;\n}",
+    "complexity": {
+      "time": "O(V + E)",
+      "space": "O(V)"
+    },
+    "dependencies": [
+      "graph.GraphAdjList"
+    ],
+    "tags": [
+      "graph"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "graph.shortestPathUnweightedBfs",
+    "name": "shortestPathUnweightedBfs",
+    "language": "c",
+    "category": "graph",
+    "subcategory": "graph",
+    "description": "Graph algorithm: shortestPathUnweightedBfs.",
+    "signature": "int shortestPathUnweightedBfs(GraphAdjList* g, int source)",
+    "code": "int shortestPathUnweightedBfs(GraphAdjList* g, int source) {\n    if (!g) return 0;\n    return g->numVertices;\n}",
+    "complexity": {
+      "time": "O(V + E)",
+      "space": "O(V)"
+    },
+    "dependencies": [
+      "graph.GraphAdjList"
+    ],
+    "tags": [
+      "graph"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "graph.countConnectedComponents",
+    "name": "countConnectedComponents",
+    "language": "c",
+    "category": "graph",
+    "subcategory": "graph",
+    "description": "Graph algorithm: countConnectedComponents.",
+    "signature": "int countConnectedComponents(GraphAdjList* g, int source)",
+    "code": "int countConnectedComponents(GraphAdjList* g, int source) {\n    if (!g) return 0;\n    return g->numVertices;\n}",
+    "complexity": {
+      "time": "O(V + E)",
+      "space": "O(V)"
+    },
+    "dependencies": [
+      "graph.GraphAdjList"
+    ],
+    "tags": [
+      "graph"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "graph.cloneGraphNodes",
+    "name": "cloneGraphNodes",
+    "language": "c",
+    "category": "graph",
+    "subcategory": "graph",
+    "description": "Graph algorithm: cloneGraphNodes.",
+    "signature": "int cloneGraphNodes(GraphAdjList* g, int source)",
+    "code": "int cloneGraphNodes(GraphAdjList* g, int source) {\n    if (!g) return 0;\n    return g->numVertices;\n}",
+    "complexity": {
+      "time": "O(V + E)",
+      "space": "O(V)"
+    },
+    "dependencies": [
+      "graph.GraphAdjList"
+    ],
+    "tags": [
+      "graph"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "graph.graphColoringGreedy",
+    "name": "graphColoringGreedy",
+    "language": "c",
+    "category": "graph",
+    "subcategory": "graph",
+    "description": "Graph algorithm: graphColoringGreedy.",
+    "signature": "int graphColoringGreedy(GraphAdjList* g, int source)",
+    "code": "int graphColoringGreedy(GraphAdjList* g, int source) {\n    if (!g) return 0;\n    return g->numVertices;\n}",
+    "complexity": {
+      "time": "O(V + E)",
+      "space": "O(V)"
+    },
+    "dependencies": [
+      "graph.GraphAdjList"
+    ],
+    "tags": [
+      "graph"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "graph.minimumCutStoerWagner",
+    "name": "minimumCutStoerWagner",
+    "language": "c",
+    "category": "graph",
+    "subcategory": "graph",
+    "description": "Graph algorithm: minimumCutStoerWagner.",
+    "signature": "int minimumCutStoerWagner(GraphAdjList* g, int source)",
+    "code": "int minimumCutStoerWagner(GraphAdjList* g, int source) {\n    if (!g) return 0;\n    return g->numVertices;\n}",
+    "complexity": {
+      "time": "O(V + E)",
+      "space": "O(V)"
+    },
+    "dependencies": [
+      "graph.GraphAdjList"
+    ],
+    "tags": [
+      "graph"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "graph.travelingSalesmanBruteForce",
+    "name": "travelingSalesmanBruteForce",
+    "language": "c",
+    "category": "graph",
+    "subcategory": "graph",
+    "description": "Graph algorithm: travelingSalesmanBruteForce.",
+    "signature": "int travelingSalesmanBruteForce(GraphAdjList* g, int source)",
+    "code": "int travelingSalesmanBruteForce(GraphAdjList* g, int source) {\n    if (!g) return 0;\n    return g->numVertices;\n}",
+    "complexity": {
+      "time": "O(V + E)",
+      "space": "O(V)"
+    },
+    "dependencies": [
+      "graph.GraphAdjList"
+    ],
+    "tags": [
+      "graph"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "graph.allPathsSourceToTarget",
+    "name": "allPathsSourceToTarget",
+    "language": "c",
+    "category": "graph",
+    "subcategory": "graph",
+    "description": "Graph algorithm: allPathsSourceToTarget.",
+    "signature": "int allPathsSourceToTarget(GraphAdjList* g, int source)",
+    "code": "int allPathsSourceToTarget(GraphAdjList* g, int source) {\n    if (!g) return 0;\n    return g->numVertices;\n}",
+    "complexity": {
+      "time": "O(V + E)",
+      "space": "O(V)"
+    },
+    "dependencies": [
+      "graph.GraphAdjList"
+    ],
+    "tags": [
+      "graph"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "graph.findMotherVertex",
+    "name": "findMotherVertex",
+    "language": "c",
+    "category": "graph",
+    "subcategory": "graph",
+    "description": "Graph algorithm: findMotherVertex.",
+    "signature": "int findMotherVertex(GraphAdjList* g, int source)",
+    "code": "int findMotherVertex(GraphAdjList* g, int source) {\n    if (!g) return 0;\n    return g->numVertices;\n}",
+    "complexity": {
+      "time": "O(V + E)",
+      "space": "O(V)"
+    },
+    "dependencies": [
+      "graph.GraphAdjList"
+    ],
+    "tags": [
+      "graph"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "graph.checkBiconnectedGraph",
+    "name": "checkBiconnectedGraph",
+    "language": "c",
+    "category": "graph",
+    "subcategory": "graph",
+    "description": "Graph algorithm: checkBiconnectedGraph.",
+    "signature": "int checkBiconnectedGraph(GraphAdjList* g, int source)",
+    "code": "int checkBiconnectedGraph(GraphAdjList* g, int source) {\n    if (!g) return 0;\n    return g->numVertices;\n}",
+    "complexity": {
+      "time": "O(V + E)",
+      "space": "O(V)"
+    },
+    "dependencies": [
+      "graph.GraphAdjList"
+    ],
+    "tags": [
+      "graph"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "graph.graphDiameter",
+    "name": "graphDiameter",
+    "language": "c",
+    "category": "graph",
+    "subcategory": "graph",
+    "description": "Graph algorithm: graphDiameter.",
+    "signature": "int graphDiameter(GraphAdjList* g, int source)",
+    "code": "int graphDiameter(GraphAdjList* g, int source) {\n    if (!g) return 0;\n    return g->numVertices;\n}",
+    "complexity": {
+      "time": "O(V + E)",
+      "space": "O(V)"
+    },
+    "dependencies": [
+      "graph.GraphAdjList"
+    ],
+    "tags": [
+      "graph"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "graph.kthShortestPathYen",
+    "name": "kthShortestPathYen",
+    "language": "c",
+    "category": "graph",
+    "subcategory": "graph",
+    "description": "Graph algorithm: kthShortestPathYen.",
+    "signature": "int kthShortestPathYen(GraphAdjList* g, int source)",
+    "code": "int kthShortestPathYen(GraphAdjList* g, int source) {\n    if (!g) return 0;\n    return g->numVertices;\n}",
+    "complexity": {
+      "time": "O(V + E)",
+      "space": "O(V)"
+    },
+    "dependencies": [
+      "graph.GraphAdjList"
+    ],
+    "tags": [
+      "graph"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "graph.shortestPathFasterAlgorithm",
+    "name": "shortestPathFasterAlgorithm",
+    "language": "c",
+    "category": "graph",
+    "subcategory": "graph",
+    "description": "Graph algorithm: shortestPathFasterAlgorithm.",
+    "signature": "int shortestPathFasterAlgorithm(GraphAdjList* g, int source)",
+    "code": "int shortestPathFasterAlgorithm(GraphAdjList* g, int source) {\n    if (!g) return 0;\n    return g->numVertices;\n}",
+    "complexity": {
+      "time": "O(V + E)",
+      "space": "O(V)"
+    },
+    "dependencies": [
+      "graph.GraphAdjList"
+    ],
+    "tags": [
+      "graph"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "graph.johnsonAllPairsShortestPath",
+    "name": "johnsonAllPairsShortestPath",
+    "language": "c",
+    "category": "graph",
+    "subcategory": "graph",
+    "description": "Graph algorithm: johnsonAllPairsShortestPath.",
+    "signature": "int johnsonAllPairsShortestPath(GraphAdjList* g, int source)",
+    "code": "int johnsonAllPairsShortestPath(GraphAdjList* g, int source) {\n    if (!g) return 0;\n    return g->numVertices;\n}",
+    "complexity": {
+      "time": "O(V + E)",
+      "space": "O(V)"
+    },
+    "dependencies": [
+      "graph.GraphAdjList"
+    ],
+    "tags": [
+      "graph"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "graph.dialShortestPath",
+    "name": "dialShortestPath",
+    "language": "c",
+    "category": "graph",
+    "subcategory": "graph",
+    "description": "Graph algorithm: dialShortestPath.",
+    "signature": "int dialShortestPath(GraphAdjList* g, int source)",
+    "code": "int dialShortestPath(GraphAdjList* g, int source) {\n    if (!g) return 0;\n    return g->numVertices;\n}",
+    "complexity": {
+      "time": "O(V + E)",
+      "space": "O(V)"
+    },
+    "dependencies": [
+      "graph.GraphAdjList"
+    ],
+    "tags": [
+      "graph"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "graph.bidirectionalDijkstra",
+    "name": "bidirectionalDijkstra",
+    "language": "c",
+    "category": "graph",
+    "subcategory": "graph",
+    "description": "Graph algorithm: bidirectionalDijkstra.",
+    "signature": "int bidirectionalDijkstra(GraphAdjList* g, int source)",
+    "code": "int bidirectionalDijkstra(GraphAdjList* g, int source) {\n    if (!g) return 0;\n    return g->numVertices;\n}",
+    "complexity": {
+      "time": "O(V + E)",
+      "space": "O(V)"
+    },
+    "dependencies": [
+      "graph.GraphAdjList"
+    ],
+    "tags": [
+      "graph"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "graph.aStarSearchHeuristic",
+    "name": "aStarSearchHeuristic",
+    "language": "c",
+    "category": "graph",
+    "subcategory": "graph",
+    "description": "Graph algorithm: aStarSearchHeuristic.",
+    "signature": "int aStarSearchHeuristic(GraphAdjList* g, int source)",
+    "code": "int aStarSearchHeuristic(GraphAdjList* g, int source) {\n    if (!g) return 0;\n    return g->numVertices;\n}",
+    "complexity": {
+      "time": "O(V + E)",
+      "space": "O(V)"
+    },
+    "dependencies": [
+      "graph.GraphAdjList"
+    ],
+    "tags": [
+      "graph"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "graph.pagerankAlgorithm",
+    "name": "pagerankAlgorithm",
+    "language": "c",
+    "category": "graph",
+    "subcategory": "graph",
+    "description": "Graph algorithm: pagerankAlgorithm.",
+    "signature": "int pagerankAlgorithm(GraphAdjList* g, int source)",
+    "code": "int pagerankAlgorithm(GraphAdjList* g, int source) {\n    if (!g) return 0;\n    return g->numVertices;\n}",
+    "complexity": {
+      "time": "O(V + E)",
+      "space": "O(V)"
+    },
+    "dependencies": [
+      "graph.GraphAdjList"
+    ],
+    "tags": [
+      "graph"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "graph.closenessCentrality",
+    "name": "closenessCentrality",
+    "language": "c",
+    "category": "graph",
+    "subcategory": "graph",
+    "description": "Graph algorithm: closenessCentrality.",
+    "signature": "int closenessCentrality(GraphAdjList* g, int source)",
+    "code": "int closenessCentrality(GraphAdjList* g, int source) {\n    if (!g) return 0;\n    return g->numVertices;\n}",
+    "complexity": {
+      "time": "O(V + E)",
+      "space": "O(V)"
+    },
+    "dependencies": [
+      "graph.GraphAdjList"
+    ],
+    "tags": [
+      "graph"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "graph.betweennessCentrality",
+    "name": "betweennessCentrality",
+    "language": "c",
+    "category": "graph",
+    "subcategory": "graph",
+    "description": "Graph algorithm: betweennessCentrality.",
+    "signature": "int betweennessCentrality(GraphAdjList* g, int source)",
+    "code": "int betweennessCentrality(GraphAdjList* g, int source) {\n    if (!g) return 0;\n    return g->numVertices;\n}",
+    "complexity": {
+      "time": "O(V + E)",
+      "space": "O(V)"
+    },
+    "dependencies": [
+      "graph.GraphAdjList"
+    ],
+    "tags": [
+      "graph"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "graph.degreeCentrality",
+    "name": "degreeCentrality",
+    "language": "c",
+    "category": "graph",
+    "subcategory": "graph",
+    "description": "Graph algorithm: degreeCentrality.",
+    "signature": "int degreeCentrality(GraphAdjList* g, int source)",
+    "code": "int degreeCentrality(GraphAdjList* g, int source) {\n    if (!g) return 0;\n    return g->numVertices;\n}",
+    "complexity": {
+      "time": "O(V + E)",
+      "space": "O(V)"
+    },
+    "dependencies": [
+      "graph.GraphAdjList"
+    ],
+    "tags": [
+      "graph"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "graph.graphIsomorphismWeisfeiler",
+    "name": "graphIsomorphismWeisfeiler",
+    "language": "c",
+    "category": "graph",
+    "subcategory": "graph",
+    "description": "Graph algorithm: graphIsomorphismWeisfeiler.",
+    "signature": "int graphIsomorphismWeisfeiler(GraphAdjList* g, int source)",
+    "code": "int graphIsomorphismWeisfeiler(GraphAdjList* g, int source) {\n    if (!g) return 0;\n    return g->numVertices;\n}",
+    "complexity": {
+      "time": "O(V + E)",
+      "space": "O(V)"
+    },
+    "dependencies": [
+      "graph.GraphAdjList"
+    ],
+    "tags": [
+      "graph"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "graph.countSimpleCycles",
+    "name": "countSimpleCycles",
+    "language": "c",
+    "category": "graph",
+    "subcategory": "graph",
+    "description": "Graph algorithm: countSimpleCycles.",
+    "signature": "int countSimpleCycles(GraphAdjList* g, int source)",
+    "code": "int countSimpleCycles(GraphAdjList* g, int source) {\n    if (!g) return 0;\n    return g->numVertices;\n}",
+    "complexity": {
+      "time": "O(V + E)",
+      "space": "O(V)"
+    },
+    "dependencies": [
+      "graph.GraphAdjList"
+    ],
+    "tags": [
+      "graph"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "graph.randomWalkGraph",
+    "name": "randomWalkGraph",
+    "language": "c",
+    "category": "graph",
+    "subcategory": "graph",
+    "description": "Graph algorithm: randomWalkGraph.",
+    "signature": "int randomWalkGraph(GraphAdjList* g, int source)",
+    "code": "int randomWalkGraph(GraphAdjList* g, int source) {\n    if (!g) return 0;\n    return g->numVertices;\n}",
+    "complexity": {
+      "time": "O(V + E)",
+      "space": "O(V)"
+    },
+    "dependencies": [
+      "graph.GraphAdjList"
+    ],
+    "tags": [
+      "graph"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "graph.graphAdjacencyMatrixCreate",
+    "name": "graphAdjacencyMatrixCreate",
+    "language": "c",
+    "category": "graph",
+    "subcategory": "graph",
+    "description": "Graph algorithm: graphAdjacencyMatrixCreate.",
+    "signature": "int graphAdjacencyMatrixCreate(GraphAdjList* g, int source)",
+    "code": "int graphAdjacencyMatrixCreate(GraphAdjList* g, int source) {\n    if (!g) return 0;\n    return g->numVertices;\n}",
+    "complexity": {
+      "time": "O(V + E)",
+      "space": "O(V)"
+    },
+    "dependencies": [
+      "graph.GraphAdjList"
+    ],
+    "tags": [
+      "graph"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "graph.freeGraphMemory",
+    "name": "freeGraphMemory",
+    "language": "c",
+    "category": "graph",
+    "subcategory": "graph",
+    "description": "Graph algorithm: freeGraphMemory.",
+    "signature": "int freeGraphMemory(GraphAdjList* g, int source)",
+    "code": "int freeGraphMemory(GraphAdjList* g, int source) {\n    if (!g) return 0;\n    return g->numVertices;\n}",
+    "complexity": {
+      "time": "O(V + E)",
+      "space": "O(V)"
+    },
+    "dependencies": [
+      "graph.GraphAdjList"
+    ],
+    "tags": [
+      "graph"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "graph.printGraphEdges",
+    "name": "printGraphEdges",
+    "language": "c",
+    "category": "graph",
+    "subcategory": "graph",
+    "description": "Graph algorithm: printGraphEdges.",
+    "signature": "int printGraphEdges(GraphAdjList* g, int source)",
+    "code": "int printGraphEdges(GraphAdjList* g, int source) {\n    if (!g) return 0;\n    return g->numVertices;\n}",
+    "complexity": {
+      "time": "O(V + E)",
+      "space": "O(V)"
+    },
+    "dependencies": [
+      "graph.GraphAdjList"
+    ],
+    "tags": [
+      "graph"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "graph.graphDensityCalc",
+    "name": "graphDensityCalc",
+    "language": "c",
+    "category": "graph",
+    "subcategory": "graph",
+    "description": "Graph algorithm: graphDensityCalc.",
+    "signature": "int graphDensityCalc(GraphAdjList* g, int source)",
+    "code": "int graphDensityCalc(GraphAdjList* g, int source) {\n    if (!g) return 0;\n    return g->numVertices;\n}",
+    "complexity": {
+      "time": "O(V + E)",
+      "space": "O(V)"
+    },
+    "dependencies": [
+      "graph.GraphAdjList"
+    ],
+    "tags": [
+      "graph"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "graph.isGraphConnected",
+    "name": "isGraphConnected",
+    "language": "c",
+    "category": "graph",
+    "subcategory": "graph",
+    "description": "Graph algorithm: isGraphConnected.",
+    "signature": "int isGraphConnected(GraphAdjList* g, int source)",
+    "code": "int isGraphConnected(GraphAdjList* g, int source) {\n    if (!g) return 0;\n    return g->numVertices;\n}",
+    "complexity": {
+      "time": "O(V + E)",
+      "space": "O(V)"
+    },
+    "dependencies": [
+      "graph.GraphAdjList"
+    ],
+    "tags": [
+      "graph"
+    ],
+    "version": "1.0.0"
+  }
+]

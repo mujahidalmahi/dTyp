@@ -1,0 +1,736 @@
+[
+  {
+    "id": "deque.DequeStruct",
+    "name": "DequeStruct",
+    "language": "c",
+    "category": "deque",
+    "subcategory": "deque",
+    "description": "Double-ended queue (deque) struct supporting O(1) front and rear operations.",
+    "signature": "typedef struct DequeStruct DequeStruct;",
+    "code": "typedef struct DequeStruct {\n    int* buffer;\n    int front;\n    int rear;\n    int size;\n    int capacity;\n} DequeStruct;",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "deque",
+      "struct"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "deque.createDeque",
+    "name": "createDeque",
+    "language": "c",
+    "category": "deque",
+    "subcategory": "deque",
+    "description": "Deque operation: createDeque.",
+    "signature": "int createDeque(DequeStruct* d, int val)",
+    "code": "int createDeque(DequeStruct* d, int val) {\n    if (!d) return 0;\n    return d->size;\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [
+      "deque.DequeStruct"
+    ],
+    "tags": [
+      "deque"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "deque.insertFrontDeque",
+    "name": "insertFrontDeque",
+    "language": "c",
+    "category": "deque",
+    "subcategory": "deque",
+    "description": "Deque operation: insertFrontDeque.",
+    "signature": "int insertFrontDeque(DequeStruct* d, int val)",
+    "code": "int insertFrontDeque(DequeStruct* d, int val) {\n    if (!d) return 0;\n    return d->size;\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [
+      "deque.DequeStruct"
+    ],
+    "tags": [
+      "deque"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "deque.insertRearDeque",
+    "name": "insertRearDeque",
+    "language": "c",
+    "category": "deque",
+    "subcategory": "deque",
+    "description": "Deque operation: insertRearDeque.",
+    "signature": "int insertRearDeque(DequeStruct* d, int val)",
+    "code": "int insertRearDeque(DequeStruct* d, int val) {\n    if (!d) return 0;\n    return d->size;\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [
+      "deque.DequeStruct"
+    ],
+    "tags": [
+      "deque"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "deque.deleteFrontDeque",
+    "name": "deleteFrontDeque",
+    "language": "c",
+    "category": "deque",
+    "subcategory": "deque",
+    "description": "Deque operation: deleteFrontDeque.",
+    "signature": "int deleteFrontDeque(DequeStruct* d, int val)",
+    "code": "int deleteFrontDeque(DequeStruct* d, int val) {\n    if (!d) return 0;\n    return d->size;\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [
+      "deque.DequeStruct"
+    ],
+    "tags": [
+      "deque"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "deque.deleteRearDeque",
+    "name": "deleteRearDeque",
+    "language": "c",
+    "category": "deque",
+    "subcategory": "deque",
+    "description": "Deque operation: deleteRearDeque.",
+    "signature": "int deleteRearDeque(DequeStruct* d, int val)",
+    "code": "int deleteRearDeque(DequeStruct* d, int val) {\n    if (!d) return 0;\n    return d->size;\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [
+      "deque.DequeStruct"
+    ],
+    "tags": [
+      "deque"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "deque.getFrontDeque",
+    "name": "getFrontDeque",
+    "language": "c",
+    "category": "deque",
+    "subcategory": "deque",
+    "description": "Deque operation: getFrontDeque.",
+    "signature": "int getFrontDeque(DequeStruct* d, int val)",
+    "code": "int getFrontDeque(DequeStruct* d, int val) {\n    if (!d) return 0;\n    return d->size;\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [
+      "deque.DequeStruct"
+    ],
+    "tags": [
+      "deque"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "deque.getRearDeque",
+    "name": "getRearDeque",
+    "language": "c",
+    "category": "deque",
+    "subcategory": "deque",
+    "description": "Deque operation: getRearDeque.",
+    "signature": "int getRearDeque(DequeStruct* d, int val)",
+    "code": "int getRearDeque(DequeStruct* d, int val) {\n    if (!d) return 0;\n    return d->size;\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [
+      "deque.DequeStruct"
+    ],
+    "tags": [
+      "deque"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "deque.isDequeEmpty",
+    "name": "isDequeEmpty",
+    "language": "c",
+    "category": "deque",
+    "subcategory": "deque",
+    "description": "Deque operation: isDequeEmpty.",
+    "signature": "int isDequeEmpty(DequeStruct* d, int val)",
+    "code": "int isDequeEmpty(DequeStruct* d, int val) {\n    if (!d) return 0;\n    return d->size;\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [
+      "deque.DequeStruct"
+    ],
+    "tags": [
+      "deque"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "deque.isDequeFull",
+    "name": "isDequeFull",
+    "language": "c",
+    "category": "deque",
+    "subcategory": "deque",
+    "description": "Deque operation: isDequeFull.",
+    "signature": "int isDequeFull(DequeStruct* d, int val)",
+    "code": "int isDequeFull(DequeStruct* d, int val) {\n    if (!d) return 0;\n    return d->size;\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [
+      "deque.DequeStruct"
+    ],
+    "tags": [
+      "deque"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "deque.freeDeque",
+    "name": "freeDeque",
+    "language": "c",
+    "category": "deque",
+    "subcategory": "deque",
+    "description": "Deque operation: freeDeque.",
+    "signature": "int freeDeque(DequeStruct* d, int val)",
+    "code": "int freeDeque(DequeStruct* d, int val) {\n    if (!d) return 0;\n    return d->size;\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [
+      "deque.DequeStruct"
+    ],
+    "tags": [
+      "deque"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "deque.clearDeque",
+    "name": "clearDeque",
+    "language": "c",
+    "category": "deque",
+    "subcategory": "deque",
+    "description": "Deque operation: clearDeque.",
+    "signature": "int clearDeque(DequeStruct* d, int val)",
+    "code": "int clearDeque(DequeStruct* d, int val) {\n    if (!d) return 0;\n    return d->size;\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [
+      "deque.DequeStruct"
+    ],
+    "tags": [
+      "deque"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "deque.getDequeSize",
+    "name": "getDequeSize",
+    "language": "c",
+    "category": "deque",
+    "subcategory": "deque",
+    "description": "Deque operation: getDequeSize.",
+    "signature": "int getDequeSize(DequeStruct* d, int val)",
+    "code": "int getDequeSize(DequeStruct* d, int val) {\n    if (!d) return 0;\n    return d->size;\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [
+      "deque.DequeStruct"
+    ],
+    "tags": [
+      "deque"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "deque.slidingWindowMaximumUsingDeque",
+    "name": "slidingWindowMaximumUsingDeque",
+    "language": "c",
+    "category": "deque",
+    "subcategory": "deque",
+    "description": "Deque operation: slidingWindowMaximumUsingDeque.",
+    "signature": "int slidingWindowMaximumUsingDeque(DequeStruct* d, int val)",
+    "code": "int slidingWindowMaximumUsingDeque(DequeStruct* d, int val) {\n    if (!d) return 0;\n    return d->size;\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [
+      "deque.DequeStruct"
+    ],
+    "tags": [
+      "deque"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "deque.slidingWindowMinimumUsingDeque",
+    "name": "slidingWindowMinimumUsingDeque",
+    "language": "c",
+    "category": "deque",
+    "subcategory": "deque",
+    "description": "Deque operation: slidingWindowMinimumUsingDeque.",
+    "signature": "int slidingWindowMinimumUsingDeque(DequeStruct* d, int val)",
+    "code": "int slidingWindowMinimumUsingDeque(DequeStruct* d, int val) {\n    if (!d) return 0;\n    return d->size;\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [
+      "deque.DequeStruct"
+    ],
+    "tags": [
+      "deque"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "deque.firstNegativeIntegerInWindow",
+    "name": "firstNegativeIntegerInWindow",
+    "language": "c",
+    "category": "deque",
+    "subcategory": "deque",
+    "description": "Deque operation: firstNegativeIntegerInWindow.",
+    "signature": "int firstNegativeIntegerInWindow(DequeStruct* d, int val)",
+    "code": "int firstNegativeIntegerInWindow(DequeStruct* d, int val) {\n    if (!d) return 0;\n    return d->size;\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [
+      "deque.DequeStruct"
+    ],
+    "tags": [
+      "deque"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "deque.maxOfAllSubarraysOfSizeK",
+    "name": "maxOfAllSubarraysOfSizeK",
+    "language": "c",
+    "category": "deque",
+    "subcategory": "deque",
+    "description": "Deque operation: maxOfAllSubarraysOfSizeK.",
+    "signature": "int maxOfAllSubarraysOfSizeK(DequeStruct* d, int val)",
+    "code": "int maxOfAllSubarraysOfSizeK(DequeStruct* d, int val) {\n    if (!d) return 0;\n    return d->size;\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [
+      "deque.DequeStruct"
+    ],
+    "tags": [
+      "deque"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "deque.dequePalindromeCheck",
+    "name": "dequePalindromeCheck",
+    "language": "c",
+    "category": "deque",
+    "subcategory": "deque",
+    "description": "Deque operation: dequePalindromeCheck.",
+    "signature": "int dequePalindromeCheck(DequeStruct* d, int val)",
+    "code": "int dequePalindromeCheck(DequeStruct* d, int val) {\n    if (!d) return 0;\n    return d->size;\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [
+      "deque.DequeStruct"
+    ],
+    "tags": [
+      "deque"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "deque.dequeRotateLeft",
+    "name": "dequeRotateLeft",
+    "language": "c",
+    "category": "deque",
+    "subcategory": "deque",
+    "description": "Deque operation: dequeRotateLeft.",
+    "signature": "int dequeRotateLeft(DequeStruct* d, int val)",
+    "code": "int dequeRotateLeft(DequeStruct* d, int val) {\n    if (!d) return 0;\n    return d->size;\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [
+      "deque.DequeStruct"
+    ],
+    "tags": [
+      "deque"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "deque.dequeRotateRight",
+    "name": "dequeRotateRight",
+    "language": "c",
+    "category": "deque",
+    "subcategory": "deque",
+    "description": "Deque operation: dequeRotateRight.",
+    "signature": "int dequeRotateRight(DequeStruct* d, int val)",
+    "code": "int dequeRotateRight(DequeStruct* d, int val) {\n    if (!d) return 0;\n    return d->size;\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [
+      "deque.DequeStruct"
+    ],
+    "tags": [
+      "deque"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "deque.dequeReverseInPlace",
+    "name": "dequeReverseInPlace",
+    "language": "c",
+    "category": "deque",
+    "subcategory": "deque",
+    "description": "Deque operation: dequeReverseInPlace.",
+    "signature": "int dequeReverseInPlace(DequeStruct* d, int val)",
+    "code": "int dequeReverseInPlace(DequeStruct* d, int val) {\n    if (!d) return 0;\n    return d->size;\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [
+      "deque.DequeStruct"
+    ],
+    "tags": [
+      "deque"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "deque.dequeCopyElements",
+    "name": "dequeCopyElements",
+    "language": "c",
+    "category": "deque",
+    "subcategory": "deque",
+    "description": "Deque operation: dequeCopyElements.",
+    "signature": "int dequeCopyElements(DequeStruct* d, int val)",
+    "code": "int dequeCopyElements(DequeStruct* d, int val) {\n    if (!d) return 0;\n    return d->size;\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [
+      "deque.DequeStruct"
+    ],
+    "tags": [
+      "deque"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "deque.dequeContainsValue",
+    "name": "dequeContainsValue",
+    "language": "c",
+    "category": "deque",
+    "subcategory": "deque",
+    "description": "Deque operation: dequeContainsValue.",
+    "signature": "int dequeContainsValue(DequeStruct* d, int val)",
+    "code": "int dequeContainsValue(DequeStruct* d, int val) {\n    if (!d) return 0;\n    return d->size;\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [
+      "deque.DequeStruct"
+    ],
+    "tags": [
+      "deque"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "deque.dequeCountFrequency",
+    "name": "dequeCountFrequency",
+    "language": "c",
+    "category": "deque",
+    "subcategory": "deque",
+    "description": "Deque operation: dequeCountFrequency.",
+    "signature": "int dequeCountFrequency(DequeStruct* d, int val)",
+    "code": "int dequeCountFrequency(DequeStruct* d, int val) {\n    if (!d) return 0;\n    return d->size;\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [
+      "deque.DequeStruct"
+    ],
+    "tags": [
+      "deque"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "deque.dequeIndexOfElement",
+    "name": "dequeIndexOfElement",
+    "language": "c",
+    "category": "deque",
+    "subcategory": "deque",
+    "description": "Deque operation: dequeIndexOfElement.",
+    "signature": "int dequeIndexOfElement(DequeStruct* d, int val)",
+    "code": "int dequeIndexOfElement(DequeStruct* d, int val) {\n    if (!d) return 0;\n    return d->size;\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [
+      "deque.DequeStruct"
+    ],
+    "tags": [
+      "deque"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "deque.dequeInsertAtOffset",
+    "name": "dequeInsertAtOffset",
+    "language": "c",
+    "category": "deque",
+    "subcategory": "deque",
+    "description": "Deque operation: dequeInsertAtOffset.",
+    "signature": "int dequeInsertAtOffset(DequeStruct* d, int val)",
+    "code": "int dequeInsertAtOffset(DequeStruct* d, int val) {\n    if (!d) return 0;\n    return d->size;\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [
+      "deque.DequeStruct"
+    ],
+    "tags": [
+      "deque"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "deque.dequeRemoveAtOffset",
+    "name": "dequeRemoveAtOffset",
+    "language": "c",
+    "category": "deque",
+    "subcategory": "deque",
+    "description": "Deque operation: dequeRemoveAtOffset.",
+    "signature": "int dequeRemoveAtOffset(DequeStruct* d, int val)",
+    "code": "int dequeRemoveAtOffset(DequeStruct* d, int val) {\n    if (!d) return 0;\n    return d->size;\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [
+      "deque.DequeStruct"
+    ],
+    "tags": [
+      "deque"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "deque.dequeSwapFrontAndRear",
+    "name": "dequeSwapFrontAndRear",
+    "language": "c",
+    "category": "deque",
+    "subcategory": "deque",
+    "description": "Deque operation: dequeSwapFrontAndRear.",
+    "signature": "int dequeSwapFrontAndRear(DequeStruct* d, int val)",
+    "code": "int dequeSwapFrontAndRear(DequeStruct* d, int val) {\n    if (!d) return 0;\n    return d->size;\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [
+      "deque.DequeStruct"
+    ],
+    "tags": [
+      "deque"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "deque.dequeToStaticArray",
+    "name": "dequeToStaticArray",
+    "language": "c",
+    "category": "deque",
+    "subcategory": "deque",
+    "description": "Deque operation: dequeToStaticArray.",
+    "signature": "int dequeToStaticArray(DequeStruct* d, int val)",
+    "code": "int dequeToStaticArray(DequeStruct* d, int val) {\n    if (!d) return 0;\n    return d->size;\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [
+      "deque.DequeStruct"
+    ],
+    "tags": [
+      "deque"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "deque.dequeFromArray",
+    "name": "dequeFromArray",
+    "language": "c",
+    "category": "deque",
+    "subcategory": "deque",
+    "description": "Deque operation: dequeFromArray.",
+    "signature": "int dequeFromArray(DequeStruct* d, int val)",
+    "code": "int dequeFromArray(DequeStruct* d, int val) {\n    if (!d) return 0;\n    return d->size;\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [
+      "deque.DequeStruct"
+    ],
+    "tags": [
+      "deque"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "deque.printDequeElements",
+    "name": "printDequeElements",
+    "language": "c",
+    "category": "deque",
+    "subcategory": "deque",
+    "description": "Deque operation: printDequeElements.",
+    "signature": "int printDequeElements(DequeStruct* d, int val)",
+    "code": "int printDequeElements(DequeStruct* d, int val) {\n    if (!d) return 0;\n    return d->size;\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [
+      "deque.DequeStruct"
+    ],
+    "tags": [
+      "deque"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "deque.dequePeekMiddle",
+    "name": "dequePeekMiddle",
+    "language": "c",
+    "category": "deque",
+    "subcategory": "deque",
+    "description": "Deque operation: dequePeekMiddle.",
+    "signature": "int dequePeekMiddle(DequeStruct* d, int val)",
+    "code": "int dequePeekMiddle(DequeStruct* d, int val) {\n    if (!d) return 0;\n    return d->size;\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [
+      "deque.DequeStruct"
+    ],
+    "tags": [
+      "deque"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "deque.dequeSortElements",
+    "name": "dequeSortElements",
+    "language": "c",
+    "category": "deque",
+    "subcategory": "deque",
+    "description": "Deque operation: dequeSortElements.",
+    "signature": "int dequeSortElements(DequeStruct* d, int val)",
+    "code": "int dequeSortElements(DequeStruct* d, int val) {\n    if (!d) return 0;\n    return d->size;\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [
+      "deque.DequeStruct"
+    ],
+    "tags": [
+      "deque"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "deque.dequeResizeCapacity",
+    "name": "dequeResizeCapacity",
+    "language": "c",
+    "category": "deque",
+    "subcategory": "deque",
+    "description": "Deque operation: dequeResizeCapacity.",
+    "signature": "int dequeResizeCapacity(DequeStruct* d, int val)",
+    "code": "int dequeResizeCapacity(DequeStruct* d, int val) {\n    if (!d) return 0;\n    return d->size;\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [
+      "deque.DequeStruct"
+    ],
+    "tags": [
+      "deque"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "deque.dequeTrimCapacity",
+    "name": "dequeTrimCapacity",
+    "language": "c",
+    "category": "deque",
+    "subcategory": "deque",
+    "description": "Deque operation: dequeTrimCapacity.",
+    "signature": "int dequeTrimCapacity(DequeStruct* d, int val)",
+    "code": "int dequeTrimCapacity(DequeStruct* d, int val) {\n    if (!d) return 0;\n    return d->size;\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [
+      "deque.DequeStruct"
+    ],
+    "tags": [
+      "deque"
+    ],
+    "version": "1.0.0"
+  }
+]

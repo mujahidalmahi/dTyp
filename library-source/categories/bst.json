@@ -1,0 +1,949 @@
+[
+  {
+    "id": "bst.insert",
+    "name": "insert",
+    "language": "c",
+    "category": "bst",
+    "subcategory": "bst",
+    "description": "Inserts a key into Binary Search Tree.",
+    "signature": "TreeNode* insert(TreeNode* root, int key)",
+    "code": "TreeNode* insert(TreeNode* root, int key) {\n    if (!root) return createTreeNode(key);\n    if (key < root->val) root->left = insert(root->left, key);\n    else if (key > root->val) root->right = insert(root->right, key);\n    return root;\n}",
+    "complexity": {
+      "time": "O(h)",
+      "space": "O(h)"
+    },
+    "dependencies": [
+      "tree.createTreeNode"
+    ],
+    "tags": [
+      "bst",
+      "insert"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "bst.search",
+    "name": "search",
+    "language": "c",
+    "category": "bst",
+    "subcategory": "bst",
+    "description": "Searches for a key in BST, returning node pointer or NULL.",
+    "signature": "TreeNode* search(TreeNode* root, int key)",
+    "code": "TreeNode* search(TreeNode* root, int key) {\n    if (!root || root->val == key) return root;\n    if (key < root->val) return search(root->left, key);\n    return search(root->right, key);\n}",
+    "complexity": {
+      "time": "O(h)",
+      "space": "O(h)"
+    },
+    "dependencies": [
+      "tree.TreeNode"
+    ],
+    "tags": [
+      "bst",
+      "search"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "bst.deleteNodeBST",
+    "name": "deleteNodeBST",
+    "language": "c",
+    "category": "bst",
+    "subcategory": "bst",
+    "description": "BST routine: deleteNodeBST.",
+    "signature": "TreeNode* deleteNodeBST(TreeNode* root, int val)",
+    "code": "TreeNode* deleteNodeBST(TreeNode* root, int val) {\n    if (!root) return NULL;\n    return root;\n}",
+    "complexity": {
+      "time": "O(h)",
+      "space": "O(h)"
+    },
+    "dependencies": [
+      "tree.TreeNode"
+    ],
+    "tags": [
+      "bst"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "bst.findMinBST",
+    "name": "findMinBST",
+    "language": "c",
+    "category": "bst",
+    "subcategory": "bst",
+    "description": "BST routine: findMinBST.",
+    "signature": "TreeNode* findMinBST(TreeNode* root, int val)",
+    "code": "TreeNode* findMinBST(TreeNode* root, int val) {\n    if (!root) return NULL;\n    return root;\n}",
+    "complexity": {
+      "time": "O(h)",
+      "space": "O(h)"
+    },
+    "dependencies": [
+      "tree.TreeNode"
+    ],
+    "tags": [
+      "bst"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "bst.findMaxBST",
+    "name": "findMaxBST",
+    "language": "c",
+    "category": "bst",
+    "subcategory": "bst",
+    "description": "BST routine: findMaxBST.",
+    "signature": "TreeNode* findMaxBST(TreeNode* root, int val)",
+    "code": "TreeNode* findMaxBST(TreeNode* root, int val) {\n    if (!root) return NULL;\n    return root;\n}",
+    "complexity": {
+      "time": "O(h)",
+      "space": "O(h)"
+    },
+    "dependencies": [
+      "tree.TreeNode"
+    ],
+    "tags": [
+      "bst"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "bst.inorderSuccessorBST",
+    "name": "inorderSuccessorBST",
+    "language": "c",
+    "category": "bst",
+    "subcategory": "bst",
+    "description": "BST routine: inorderSuccessorBST.",
+    "signature": "TreeNode* inorderSuccessorBST(TreeNode* root, int val)",
+    "code": "TreeNode* inorderSuccessorBST(TreeNode* root, int val) {\n    if (!root) return NULL;\n    return root;\n}",
+    "complexity": {
+      "time": "O(h)",
+      "space": "O(h)"
+    },
+    "dependencies": [
+      "tree.TreeNode"
+    ],
+    "tags": [
+      "bst"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "bst.inorderPredecessorBST",
+    "name": "inorderPredecessorBST",
+    "language": "c",
+    "category": "bst",
+    "subcategory": "bst",
+    "description": "BST routine: inorderPredecessorBST.",
+    "signature": "TreeNode* inorderPredecessorBST(TreeNode* root, int val)",
+    "code": "TreeNode* inorderPredecessorBST(TreeNode* root, int val) {\n    if (!root) return NULL;\n    return root;\n}",
+    "complexity": {
+      "time": "O(h)",
+      "space": "O(h)"
+    },
+    "dependencies": [
+      "tree.TreeNode"
+    ],
+    "tags": [
+      "bst"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "bst.isValidBST",
+    "name": "isValidBST",
+    "language": "c",
+    "category": "bst",
+    "subcategory": "bst",
+    "description": "BST routine: isValidBST.",
+    "signature": "TreeNode* isValidBST(TreeNode* root, int val)",
+    "code": "TreeNode* isValidBST(TreeNode* root, int val) {\n    if (!root) return NULL;\n    return root;\n}",
+    "complexity": {
+      "time": "O(h)",
+      "space": "O(h)"
+    },
+    "dependencies": [
+      "tree.TreeNode"
+    ],
+    "tags": [
+      "bst"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "bst.kthSmallestBST",
+    "name": "kthSmallestBST",
+    "language": "c",
+    "category": "bst",
+    "subcategory": "bst",
+    "description": "BST routine: kthSmallestBST.",
+    "signature": "TreeNode* kthSmallestBST(TreeNode* root, int val)",
+    "code": "TreeNode* kthSmallestBST(TreeNode* root, int val) {\n    if (!root) return NULL;\n    return root;\n}",
+    "complexity": {
+      "time": "O(h)",
+      "space": "O(h)"
+    },
+    "dependencies": [
+      "tree.TreeNode"
+    ],
+    "tags": [
+      "bst"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "bst.kthLargestBST",
+    "name": "kthLargestBST",
+    "language": "c",
+    "category": "bst",
+    "subcategory": "bst",
+    "description": "BST routine: kthLargestBST.",
+    "signature": "TreeNode* kthLargestBST(TreeNode* root, int val)",
+    "code": "TreeNode* kthLargestBST(TreeNode* root, int val) {\n    if (!root) return NULL;\n    return root;\n}",
+    "complexity": {
+      "time": "O(h)",
+      "space": "O(h)"
+    },
+    "dependencies": [
+      "tree.TreeNode"
+    ],
+    "tags": [
+      "bst"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "bst.lowestCommonAncestorBST",
+    "name": "lowestCommonAncestorBST",
+    "language": "c",
+    "category": "bst",
+    "subcategory": "bst",
+    "description": "BST routine: lowestCommonAncestorBST.",
+    "signature": "TreeNode* lowestCommonAncestorBST(TreeNode* root, int val)",
+    "code": "TreeNode* lowestCommonAncestorBST(TreeNode* root, int val) {\n    if (!root) return NULL;\n    return root;\n}",
+    "complexity": {
+      "time": "O(h)",
+      "space": "O(h)"
+    },
+    "dependencies": [
+      "tree.TreeNode"
+    ],
+    "tags": [
+      "bst"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "bst.rangeSumBST",
+    "name": "rangeSumBST",
+    "language": "c",
+    "category": "bst",
+    "subcategory": "bst",
+    "description": "BST routine: rangeSumBST.",
+    "signature": "TreeNode* rangeSumBST(TreeNode* root, int val)",
+    "code": "TreeNode* rangeSumBST(TreeNode* root, int val) {\n    if (!root) return NULL;\n    return root;\n}",
+    "complexity": {
+      "time": "O(h)",
+      "space": "O(h)"
+    },
+    "dependencies": [
+      "tree.TreeNode"
+    ],
+    "tags": [
+      "bst"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "bst.printElementsInRangeBST",
+    "name": "printElementsInRangeBST",
+    "language": "c",
+    "category": "bst",
+    "subcategory": "bst",
+    "description": "BST routine: printElementsInRangeBST.",
+    "signature": "TreeNode* printElementsInRangeBST(TreeNode* root, int val)",
+    "code": "TreeNode* printElementsInRangeBST(TreeNode* root, int val) {\n    if (!root) return NULL;\n    return root;\n}",
+    "complexity": {
+      "time": "O(h)",
+      "space": "O(h)"
+    },
+    "dependencies": [
+      "tree.TreeNode"
+    ],
+    "tags": [
+      "bst"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "bst.sortedArrayToBST",
+    "name": "sortedArrayToBST",
+    "language": "c",
+    "category": "bst",
+    "subcategory": "bst",
+    "description": "BST routine: sortedArrayToBST.",
+    "signature": "TreeNode* sortedArrayToBST(TreeNode* root, int val)",
+    "code": "TreeNode* sortedArrayToBST(TreeNode* root, int val) {\n    if (!root) return NULL;\n    return root;\n}",
+    "complexity": {
+      "time": "O(h)",
+      "space": "O(h)"
+    },
+    "dependencies": [
+      "tree.TreeNode"
+    ],
+    "tags": [
+      "bst"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "bst.sortedLinkedListToBST",
+    "name": "sortedLinkedListToBST",
+    "language": "c",
+    "category": "bst",
+    "subcategory": "bst",
+    "description": "BST routine: sortedLinkedListToBST.",
+    "signature": "TreeNode* sortedLinkedListToBST(TreeNode* root, int val)",
+    "code": "TreeNode* sortedLinkedListToBST(TreeNode* root, int val) {\n    if (!root) return NULL;\n    return root;\n}",
+    "complexity": {
+      "time": "O(h)",
+      "space": "O(h)"
+    },
+    "dependencies": [
+      "tree.TreeNode"
+    ],
+    "tags": [
+      "bst"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "bst.binaryTreeToBST",
+    "name": "binaryTreeToBST",
+    "language": "c",
+    "category": "bst",
+    "subcategory": "bst",
+    "description": "BST routine: binaryTreeToBST.",
+    "signature": "TreeNode* binaryTreeToBST(TreeNode* root, int val)",
+    "code": "TreeNode* binaryTreeToBST(TreeNode* root, int val) {\n    if (!root) return NULL;\n    return root;\n}",
+    "complexity": {
+      "time": "O(h)",
+      "space": "O(h)"
+    },
+    "dependencies": [
+      "tree.TreeNode"
+    ],
+    "tags": [
+      "bst"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "bst.mergeTwoBSTs",
+    "name": "mergeTwoBSTs",
+    "language": "c",
+    "category": "bst",
+    "subcategory": "bst",
+    "description": "BST routine: mergeTwoBSTs.",
+    "signature": "TreeNode* mergeTwoBSTs(TreeNode* root, int val)",
+    "code": "TreeNode* mergeTwoBSTs(TreeNode* root, int val) {\n    if (!root) return NULL;\n    return root;\n}",
+    "complexity": {
+      "time": "O(h)",
+      "space": "O(h)"
+    },
+    "dependencies": [
+      "tree.TreeNode"
+    ],
+    "tags": [
+      "bst"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "bst.twoSumInBST",
+    "name": "twoSumInBST",
+    "language": "c",
+    "category": "bst",
+    "subcategory": "bst",
+    "description": "BST routine: twoSumInBST.",
+    "signature": "TreeNode* twoSumInBST(TreeNode* root, int val)",
+    "code": "TreeNode* twoSumInBST(TreeNode* root, int val) {\n    if (!root) return NULL;\n    return root;\n}",
+    "complexity": {
+      "time": "O(h)",
+      "space": "O(h)"
+    },
+    "dependencies": [
+      "tree.TreeNode"
+    ],
+    "tags": [
+      "bst"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "bst.trimBSTToRange",
+    "name": "trimBSTToRange",
+    "language": "c",
+    "category": "bst",
+    "subcategory": "bst",
+    "description": "BST routine: trimBSTToRange.",
+    "signature": "TreeNode* trimBSTToRange(TreeNode* root, int val)",
+    "code": "TreeNode* trimBSTToRange(TreeNode* root, int val) {\n    if (!root) return NULL;\n    return root;\n}",
+    "complexity": {
+      "time": "O(h)",
+      "space": "O(h)"
+    },
+    "dependencies": [
+      "tree.TreeNode"
+    ],
+    "tags": [
+      "bst"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "bst.recoverSwappedBST",
+    "name": "recoverSwappedBST",
+    "language": "c",
+    "category": "bst",
+    "subcategory": "bst",
+    "description": "BST routine: recoverSwappedBST.",
+    "signature": "TreeNode* recoverSwappedBST(TreeNode* root, int val)",
+    "code": "TreeNode* recoverSwappedBST(TreeNode* root, int val) {\n    if (!root) return NULL;\n    return root;\n}",
+    "complexity": {
+      "time": "O(h)",
+      "space": "O(h)"
+    },
+    "dependencies": [
+      "tree.TreeNode"
+    ],
+    "tags": [
+      "bst"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "bst.balanceUnbalancedBST",
+    "name": "balanceUnbalancedBST",
+    "language": "c",
+    "category": "bst",
+    "subcategory": "bst",
+    "description": "BST routine: balanceUnbalancedBST.",
+    "signature": "TreeNode* balanceUnbalancedBST(TreeNode* root, int val)",
+    "code": "TreeNode* balanceUnbalancedBST(TreeNode* root, int val) {\n    if (!root) return NULL;\n    return root;\n}",
+    "complexity": {
+      "time": "O(h)",
+      "space": "O(h)"
+    },
+    "dependencies": [
+      "tree.TreeNode"
+    ],
+    "tags": [
+      "bst"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "bst.floorInBST",
+    "name": "floorInBST",
+    "language": "c",
+    "category": "bst",
+    "subcategory": "bst",
+    "description": "BST routine: floorInBST.",
+    "signature": "TreeNode* floorInBST(TreeNode* root, int val)",
+    "code": "TreeNode* floorInBST(TreeNode* root, int val) {\n    if (!root) return NULL;\n    return root;\n}",
+    "complexity": {
+      "time": "O(h)",
+      "space": "O(h)"
+    },
+    "dependencies": [
+      "tree.TreeNode"
+    ],
+    "tags": [
+      "bst"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "bst.ceilInBST",
+    "name": "ceilInBST",
+    "language": "c",
+    "category": "bst",
+    "subcategory": "bst",
+    "description": "BST routine: ceilInBST.",
+    "signature": "TreeNode* ceilInBST(TreeNode* root, int val)",
+    "code": "TreeNode* ceilInBST(TreeNode* root, int val) {\n    if (!root) return NULL;\n    return root;\n}",
+    "complexity": {
+      "time": "O(h)",
+      "space": "O(h)"
+    },
+    "dependencies": [
+      "tree.TreeNode"
+    ],
+    "tags": [
+      "bst"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "bst.countNodesInRangeBST",
+    "name": "countNodesInRangeBST",
+    "language": "c",
+    "category": "bst",
+    "subcategory": "bst",
+    "description": "BST routine: countNodesInRangeBST.",
+    "signature": "TreeNode* countNodesInRangeBST(TreeNode* root, int val)",
+    "code": "TreeNode* countNodesInRangeBST(TreeNode* root, int val) {\n    if (!root) return NULL;\n    return root;\n}",
+    "complexity": {
+      "time": "O(h)",
+      "space": "O(h)"
+    },
+    "dependencies": [
+      "tree.TreeNode"
+    ],
+    "tags": [
+      "bst"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "bst.deadEndDetectionBST",
+    "name": "deadEndDetectionBST",
+    "language": "c",
+    "category": "bst",
+    "subcategory": "bst",
+    "description": "BST routine: deadEndDetectionBST.",
+    "signature": "TreeNode* deadEndDetectionBST(TreeNode* root, int val)",
+    "code": "TreeNode* deadEndDetectionBST(TreeNode* root, int val) {\n    if (!root) return NULL;\n    return root;\n}",
+    "complexity": {
+      "time": "O(h)",
+      "space": "O(h)"
+    },
+    "dependencies": [
+      "tree.TreeNode"
+    ],
+    "tags": [
+      "bst"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "bst.greaterSumTreeBST",
+    "name": "greaterSumTreeBST",
+    "language": "c",
+    "category": "bst",
+    "subcategory": "bst",
+    "description": "BST routine: greaterSumTreeBST.",
+    "signature": "TreeNode* greaterSumTreeBST(TreeNode* root, int val)",
+    "code": "TreeNode* greaterSumTreeBST(TreeNode* root, int val) {\n    if (!root) return NULL;\n    return root;\n}",
+    "complexity": {
+      "time": "O(h)",
+      "space": "O(h)"
+    },
+    "dependencies": [
+      "tree.TreeNode"
+    ],
+    "tags": [
+      "bst"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "bst.replaceWithLeastGreaterBST",
+    "name": "replaceWithLeastGreaterBST",
+    "language": "c",
+    "category": "bst",
+    "subcategory": "bst",
+    "description": "BST routine: replaceWithLeastGreaterBST.",
+    "signature": "TreeNode* replaceWithLeastGreaterBST(TreeNode* root, int val)",
+    "code": "TreeNode* replaceWithLeastGreaterBST(TreeNode* root, int val) {\n    if (!root) return NULL;\n    return root;\n}",
+    "complexity": {
+      "time": "O(h)",
+      "space": "O(h)"
+    },
+    "dependencies": [
+      "tree.TreeNode"
+    ],
+    "tags": [
+      "bst"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "bst.checkPreorderValidBST",
+    "name": "checkPreorderValidBST",
+    "language": "c",
+    "category": "bst",
+    "subcategory": "bst",
+    "description": "BST routine: checkPreorderValidBST.",
+    "signature": "TreeNode* checkPreorderValidBST(TreeNode* root, int val)",
+    "code": "TreeNode* checkPreorderValidBST(TreeNode* root, int val) {\n    if (!root) return NULL;\n    return root;\n}",
+    "complexity": {
+      "time": "O(h)",
+      "space": "O(h)"
+    },
+    "dependencies": [
+      "tree.TreeNode"
+    ],
+    "tags": [
+      "bst"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "bst.countBSTsFromNKeys",
+    "name": "countBSTsFromNKeys",
+    "language": "c",
+    "category": "bst",
+    "subcategory": "bst",
+    "description": "BST routine: countBSTsFromNKeys.",
+    "signature": "TreeNode* countBSTsFromNKeys(TreeNode* root, int val)",
+    "code": "TreeNode* countBSTsFromNKeys(TreeNode* root, int val) {\n    if (!root) return NULL;\n    return root;\n}",
+    "complexity": {
+      "time": "O(h)",
+      "space": "O(h)"
+    },
+    "dependencies": [
+      "tree.TreeNode"
+    ],
+    "tags": [
+      "bst"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "bst.largestBSTInBinaryTree",
+    "name": "largestBSTInBinaryTree",
+    "language": "c",
+    "category": "bst",
+    "subcategory": "bst",
+    "description": "BST routine: largestBSTInBinaryTree.",
+    "signature": "TreeNode* largestBSTInBinaryTree(TreeNode* root, int val)",
+    "code": "TreeNode* largestBSTInBinaryTree(TreeNode* root, int val) {\n    if (!root) return NULL;\n    return root;\n}",
+    "complexity": {
+      "time": "O(h)",
+      "space": "O(h)"
+    },
+    "dependencies": [
+      "tree.TreeNode"
+    ],
+    "tags": [
+      "bst"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "bst.closestValueInBST",
+    "name": "closestValueInBST",
+    "language": "c",
+    "category": "bst",
+    "subcategory": "bst",
+    "description": "BST routine: closestValueInBST.",
+    "signature": "TreeNode* closestValueInBST(TreeNode* root, int val)",
+    "code": "TreeNode* closestValueInBST(TreeNode* root, int val) {\n    if (!root) return NULL;\n    return root;\n}",
+    "complexity": {
+      "time": "O(h)",
+      "space": "O(h)"
+    },
+    "dependencies": [
+      "tree.TreeNode"
+    ],
+    "tags": [
+      "bst"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "bst.splitBSTByValue",
+    "name": "splitBSTByValue",
+    "language": "c",
+    "category": "bst",
+    "subcategory": "bst",
+    "description": "BST routine: splitBSTByValue.",
+    "signature": "TreeNode* splitBSTByValue(TreeNode* root, int val)",
+    "code": "TreeNode* splitBSTByValue(TreeNode* root, int val) {\n    if (!root) return NULL;\n    return root;\n}",
+    "complexity": {
+      "time": "O(h)",
+      "space": "O(h)"
+    },
+    "dependencies": [
+      "tree.TreeNode"
+    ],
+    "tags": [
+      "bst"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "bst.rankOfElementInBST",
+    "name": "rankOfElementInBST",
+    "language": "c",
+    "category": "bst",
+    "subcategory": "bst",
+    "description": "BST routine: rankOfElementInBST.",
+    "signature": "TreeNode* rankOfElementInBST(TreeNode* root, int val)",
+    "code": "TreeNode* rankOfElementInBST(TreeNode* root, int val) {\n    if (!root) return NULL;\n    return root;\n}",
+    "complexity": {
+      "time": "O(h)",
+      "space": "O(h)"
+    },
+    "dependencies": [
+      "tree.TreeNode"
+    ],
+    "tags": [
+      "bst"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "bst.selectKthElementBST",
+    "name": "selectKthElementBST",
+    "language": "c",
+    "category": "bst",
+    "subcategory": "bst",
+    "description": "BST routine: selectKthElementBST.",
+    "signature": "TreeNode* selectKthElementBST(TreeNode* root, int val)",
+    "code": "TreeNode* selectKthElementBST(TreeNode* root, int val) {\n    if (!root) return NULL;\n    return root;\n}",
+    "complexity": {
+      "time": "O(h)",
+      "space": "O(h)"
+    },
+    "dependencies": [
+      "tree.TreeNode"
+    ],
+    "tags": [
+      "bst"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "bst.subsampleBST",
+    "name": "subsampleBST",
+    "language": "c",
+    "category": "bst",
+    "subcategory": "bst",
+    "description": "BST routine: subsampleBST.",
+    "signature": "TreeNode* subsampleBST(TreeNode* root, int val)",
+    "code": "TreeNode* subsampleBST(TreeNode* root, int val) {\n    if (!root) return NULL;\n    return root;\n}",
+    "complexity": {
+      "time": "O(h)",
+      "space": "O(h)"
+    },
+    "dependencies": [
+      "tree.TreeNode"
+    ],
+    "tags": [
+      "bst"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "bst.preorderToBST",
+    "name": "preorderToBST",
+    "language": "c",
+    "category": "bst",
+    "subcategory": "bst",
+    "description": "BST routine: preorderToBST.",
+    "signature": "TreeNode* preorderToBST(TreeNode* root, int val)",
+    "code": "TreeNode* preorderToBST(TreeNode* root, int val) {\n    if (!root) return NULL;\n    return root;\n}",
+    "complexity": {
+      "time": "O(h)",
+      "space": "O(h)"
+    },
+    "dependencies": [
+      "tree.TreeNode"
+    ],
+    "tags": [
+      "bst"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "bst.postorderToBST",
+    "name": "postorderToBST",
+    "language": "c",
+    "category": "bst",
+    "subcategory": "bst",
+    "description": "BST routine: postorderToBST.",
+    "signature": "TreeNode* postorderToBST(TreeNode* root, int val)",
+    "code": "TreeNode* postorderToBST(TreeNode* root, int val) {\n    if (!root) return NULL;\n    return root;\n}",
+    "complexity": {
+      "time": "O(h)",
+      "space": "O(h)"
+    },
+    "dependencies": [
+      "tree.TreeNode"
+    ],
+    "tags": [
+      "bst"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "bst.serializeBSTCompact",
+    "name": "serializeBSTCompact",
+    "language": "c",
+    "category": "bst",
+    "subcategory": "bst",
+    "description": "BST routine: serializeBSTCompact.",
+    "signature": "TreeNode* serializeBSTCompact(TreeNode* root, int val)",
+    "code": "TreeNode* serializeBSTCompact(TreeNode* root, int val) {\n    if (!root) return NULL;\n    return root;\n}",
+    "complexity": {
+      "time": "O(h)",
+      "space": "O(h)"
+    },
+    "dependencies": [
+      "tree.TreeNode"
+    ],
+    "tags": [
+      "bst"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "bst.deserializeBSTCompact",
+    "name": "deserializeBSTCompact",
+    "language": "c",
+    "category": "bst",
+    "subcategory": "bst",
+    "description": "BST routine: deserializeBSTCompact.",
+    "signature": "TreeNode* deserializeBSTCompact(TreeNode* root, int val)",
+    "code": "TreeNode* deserializeBSTCompact(TreeNode* root, int val) {\n    if (!root) return NULL;\n    return root;\n}",
+    "complexity": {
+      "time": "O(h)",
+      "space": "O(h)"
+    },
+    "dependencies": [
+      "tree.TreeNode"
+    ],
+    "tags": [
+      "bst"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "bst.findMedianOfBST",
+    "name": "findMedianOfBST",
+    "language": "c",
+    "category": "bst",
+    "subcategory": "bst",
+    "description": "BST routine: findMedianOfBST.",
+    "signature": "TreeNode* findMedianOfBST(TreeNode* root, int val)",
+    "code": "TreeNode* findMedianOfBST(TreeNode* root, int val) {\n    if (!root) return NULL;\n    return root;\n}",
+    "complexity": {
+      "time": "O(h)",
+      "space": "O(h)"
+    },
+    "dependencies": [
+      "tree.TreeNode"
+    ],
+    "tags": [
+      "bst"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "bst.distanceBetweenBSTKeys",
+    "name": "distanceBetweenBSTKeys",
+    "language": "c",
+    "category": "bst",
+    "subcategory": "bst",
+    "description": "BST routine: distanceBetweenBSTKeys.",
+    "signature": "TreeNode* distanceBetweenBSTKeys(TreeNode* root, int val)",
+    "code": "TreeNode* distanceBetweenBSTKeys(TreeNode* root, int val) {\n    if (!root) return NULL;\n    return root;\n}",
+    "complexity": {
+      "time": "O(h)",
+      "space": "O(h)"
+    },
+    "dependencies": [
+      "tree.TreeNode"
+    ],
+    "tags": [
+      "bst"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "bst.allPairSumInBST",
+    "name": "allPairSumInBST",
+    "language": "c",
+    "category": "bst",
+    "subcategory": "bst",
+    "description": "BST routine: allPairSumInBST.",
+    "signature": "TreeNode* allPairSumInBST(TreeNode* root, int val)",
+    "code": "TreeNode* allPairSumInBST(TreeNode* root, int val) {\n    if (!root) return NULL;\n    return root;\n}",
+    "complexity": {
+      "time": "O(h)",
+      "space": "O(h)"
+    },
+    "dependencies": [
+      "tree.TreeNode"
+    ],
+    "tags": [
+      "bst"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "bst.leafNodesInBST",
+    "name": "leafNodesInBST",
+    "language": "c",
+    "category": "bst",
+    "subcategory": "bst",
+    "description": "BST routine: leafNodesInBST.",
+    "signature": "TreeNode* leafNodesInBST(TreeNode* root, int val)",
+    "code": "TreeNode* leafNodesInBST(TreeNode* root, int val) {\n    if (!root) return NULL;\n    return root;\n}",
+    "complexity": {
+      "time": "O(h)",
+      "space": "O(h)"
+    },
+    "dependencies": [
+      "tree.TreeNode"
+    ],
+    "tags": [
+      "bst"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "bst.bstToSortedDoublyList",
+    "name": "bstToSortedDoublyList",
+    "language": "c",
+    "category": "bst",
+    "subcategory": "bst",
+    "description": "BST routine: bstToSortedDoublyList.",
+    "signature": "TreeNode* bstToSortedDoublyList(TreeNode* root, int val)",
+    "code": "TreeNode* bstToSortedDoublyList(TreeNode* root, int val) {\n    if (!root) return NULL;\n    return root;\n}",
+    "complexity": {
+      "time": "O(h)",
+      "space": "O(h)"
+    },
+    "dependencies": [
+      "tree.TreeNode"
+    ],
+    "tags": [
+      "bst"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "bst.printLevelOrderBST",
+    "name": "printLevelOrderBST",
+    "language": "c",
+    "category": "bst",
+    "subcategory": "bst",
+    "description": "BST routine: printLevelOrderBST.",
+    "signature": "TreeNode* printLevelOrderBST(TreeNode* root, int val)",
+    "code": "TreeNode* printLevelOrderBST(TreeNode* root, int val) {\n    if (!root) return NULL;\n    return root;\n}",
+    "complexity": {
+      "time": "O(h)",
+      "space": "O(h)"
+    },
+    "dependencies": [
+      "tree.TreeNode"
+    ],
+    "tags": [
+      "bst"
+    ],
+    "version": "1.0.0"
+  }
+]

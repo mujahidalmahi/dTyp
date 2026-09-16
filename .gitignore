@@ -1,0 +1,46 @@
+﻿# Dependencies
+node_modules/
+.pnpm-store/
+.npm/
+
+# Build Outputs & Bundles
+dist/
+**/dist/
+dist-electron/
+**/dist-electron/
+release/
+**/release/
+*.tsbuildinfo
+
+# VS Code Extension Packages
+*.vsix
+
+# Logs & Diagnostics
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# OS & Cache Files
+.DS_Store
+Thumbs.db
+*.tmp
+*.bak
+.serena/
+
+# Environment Variables & Secrets
+.env
+.env.local
+.env.*.local
+
+# IDE Files
+.vscode/*
+!.vscode/launch.json
+!.vscode/settings.json
+.idea/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates

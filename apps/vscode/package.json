@@ -1,0 +1,94 @@
+{
+  "name": "dtyp-vscode",
+  "displayName": "dTyp — Don't Tell Your Professor",
+  "description": "Offline academic C programming library & automated character-by-character typing assistant",
+  "version": "1.0.0",
+  "publisher": "1da7b1e6-01f1-6f58-9ef3-d95516c5e875",
+  "icon": "images/icon.png",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mujahidalmahi/dTyp.git"
+  },
+  "homepage": "https://github.com/mujahidalmahi/dTyp#readme",
+  "bugs": {
+    "url": "https://github.com/mujahidalmahi/dTyp/issues"
+  },
+  "categories": [
+    "Programming Languages",
+    "Snippets",
+    "Education"
+  ],
+  "keywords": [
+    "c",
+    "academic",
+    "snippets",
+    "typing",
+    "data-structures",
+    "algorithms",
+    "automation",
+    "offline"
+  ],
+  "main": "./dist/extension.js",
+  "activationEvents": [
+    "onLanguage:c",
+    "onLanguage:cpp",
+    "onCommand:dtyp.insertComponent",
+    "onCommand:dtyp.browseLibrary",
+    "onCommand:dtyp.cancelTyping"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "dtyp.insertComponent",
+        "title": "dTyp: Insert Component",
+        "category": "dTyp"
+      },
+      {
+        "command": "dtyp.browseLibrary",
+        "title": "dTyp: Browse Library",
+        "category": "dTyp"
+      },
+      {
+        "command": "dtyp.cancelTyping",
+        "title": "dTyp: Cancel Typing",
+        "category": "dTyp"
+      }
+    ],
+    "configuration": {
+      "title": "dTyp Configuration",
+      "properties": {
+        "dtyp.typingDelayMs": {
+          "type": "number",
+          "default": 15,
+          "description": "Typing delay in milliseconds per character."
+        },
+        "dtyp.checkDuplicates": {
+          "type": "boolean",
+          "default": true,
+          "description": "Prevent duplicate struct or function definitions from being inserted."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "bundle": "esbuild src/extension.ts --bundle --platform=node --target=node18 --external:vscode --outfile=dist/extension.js --minify",
+    "package": "npm run bundle && vsce package --no-dependencies"
+  },
+  "dependencies": {
+    "@dtyp/library-engine": "*",
+    "@dtyp/types": "*",
+    "@dtyp/typing-engine": "*",
+    "@dtyp/utilities": "*",
+    "sql.js": "^1.14.2"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.80.0",
+    "esbuild": "^0.28.2",
+    "typescript": "^5.7.2"
+  }
+}

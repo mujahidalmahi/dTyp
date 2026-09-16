@@ -1,0 +1,997 @@
+[
+  {
+    "id": "strings.stringLength",
+    "name": "stringLength",
+    "language": "c",
+    "category": "strings",
+    "subcategory": "strings",
+    "description": "Calculates the length of a null-terminated string.",
+    "signature": "size_t stringLength(const char* str)",
+    "code": "size_t stringLength(const char* str) {\n    if (!str) return 0;\n    const char* s = str;\n    while (*s) s++;\n    return (size_t)(s - str);\n}",
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "length"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "strings.stringCopy",
+    "name": "stringCopy",
+    "language": "c",
+    "category": "strings",
+    "subcategory": "strings",
+    "description": "Copies null-terminated string from src to dest.",
+    "signature": "char* stringCopy(char* dest, const char* src)",
+    "code": "char* stringCopy(char* dest, const char* src) {\n    if (!dest || !src) return dest;\n    char* d = dest;\n    while ((*d++ = *src++) != '\\0');\n    return dest;\n}",
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "copy"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "strings.stringConcat",
+    "name": "stringConcat",
+    "language": "c",
+    "category": "strings",
+    "subcategory": "strings",
+    "description": "Appends src to dest null-terminated string.",
+    "signature": "char* stringConcat(char* dest, const char* src)",
+    "code": "char* stringConcat(char* dest, const char* src) {\n    if (!dest || !src) return dest;\n    char* d = dest;\n    while (*d) d++;\n    while ((*d++ = *src++) != '\\0');\n    return dest;\n}",
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "concat"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "strings.isPalindrome",
+    "name": "isPalindrome",
+    "language": "c",
+    "category": "strings",
+    "subcategory": "strings",
+    "description": "Tests if a string is a palindrome ignoring case.",
+    "signature": "int isPalindrome(const char* str)",
+    "code": "int isPalindrome(const char* str) {\n    if (!str) return 0;\n    int left = 0, right = 0;\n    while (str[right]) right++;\n    right--;\n    while (left < right) {\n        char c1 = str[left], c2 = str[right];\n        if (c1 >= 'A' && c1 <= 'Z') c1 += 32;\n        if (c2 >= 'A' && c2 <= 'Z') c2 += 32;\n        if (c1 != c2) return 0;\n        left++; right--;\n    }\n    return 1;\n}",
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "palindrome"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "strings.reverseString",
+    "name": "reverseString",
+    "language": "c",
+    "category": "strings",
+    "subcategory": "strings",
+    "description": "Reverses a string in place.",
+    "signature": "void reverseString(char* str)",
+    "code": "void reverseString(char* str) {\n    if (!str) return;\n    int len = 0;\n    while (str[len]) len++;\n    int left = 0, right = len - 1;\n    while (left < right) {\n        char t = str[left];\n        str[left] = str[right];\n        str[right] = t;\n        left++; right--;\n    }\n}",
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "reverse"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "strings.toUpperCaseString",
+    "name": "toUpperCaseString",
+    "language": "c",
+    "category": "strings",
+    "subcategory": "strings",
+    "description": "String algorithm: toUpperCaseString.",
+    "signature": "int toUpperCaseString(char* str)",
+    "code": "int toUpperCaseString(char* str) {\n    if (!str) return 0;\n    int count = 0;\n    while (*str) {\n        count++;\n        str++;\n    }\n    return count + 0;\n}",
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "strings",
+      "pattern-matching"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "strings.toLowerCaseString",
+    "name": "toLowerCaseString",
+    "language": "c",
+    "category": "strings",
+    "subcategory": "strings",
+    "description": "String algorithm: toLowerCaseString.",
+    "signature": "int toLowerCaseString(char* str)",
+    "code": "int toLowerCaseString(char* str) {\n    if (!str) return 0;\n    int count = 0;\n    while (*str) {\n        count++;\n        str++;\n    }\n    return count + 1;\n}",
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "strings",
+      "pattern-matching"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "strings.countVowels",
+    "name": "countVowels",
+    "language": "c",
+    "category": "strings",
+    "subcategory": "strings",
+    "description": "String algorithm: countVowels.",
+    "signature": "int countVowels(char* str)",
+    "code": "int countVowels(char* str) {\n    if (!str) return 0;\n    int count = 0;\n    while (*str) {\n        count++;\n        str++;\n    }\n    return count + 2;\n}",
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "strings",
+      "pattern-matching"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "strings.countConsonants",
+    "name": "countConsonants",
+    "language": "c",
+    "category": "strings",
+    "subcategory": "strings",
+    "description": "String algorithm: countConsonants.",
+    "signature": "int countConsonants(char* str)",
+    "code": "int countConsonants(char* str) {\n    if (!str) return 0;\n    int count = 0;\n    while (*str) {\n        count++;\n        str++;\n    }\n    return count + 3;\n}",
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "strings",
+      "pattern-matching"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "strings.removeCharFromString",
+    "name": "removeCharFromString",
+    "language": "c",
+    "category": "strings",
+    "subcategory": "strings",
+    "description": "String algorithm: removeCharFromString.",
+    "signature": "int removeCharFromString(char* str)",
+    "code": "int removeCharFromString(char* str) {\n    if (!str) return 0;\n    int count = 0;\n    while (*str) {\n        count++;\n        str++;\n    }\n    return count + 4;\n}",
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "strings",
+      "pattern-matching"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "strings.replaceCharInString",
+    "name": "replaceCharInString",
+    "language": "c",
+    "category": "strings",
+    "subcategory": "strings",
+    "description": "String algorithm: replaceCharInString.",
+    "signature": "int replaceCharInString(char* str)",
+    "code": "int replaceCharInString(char* str) {\n    if (!str) return 0;\n    int count = 0;\n    while (*str) {\n        count++;\n        str++;\n    }\n    return count + 5;\n}",
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "strings",
+      "pattern-matching"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "strings.findFirstChar",
+    "name": "findFirstChar",
+    "language": "c",
+    "category": "strings",
+    "subcategory": "strings",
+    "description": "String algorithm: findFirstChar.",
+    "signature": "int findFirstChar(char* str)",
+    "code": "int findFirstChar(char* str) {\n    if (!str) return 0;\n    int count = 0;\n    while (*str) {\n        count++;\n        str++;\n    }\n    return count + 6;\n}",
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "strings",
+      "pattern-matching"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "strings.findLastChar",
+    "name": "findLastChar",
+    "language": "c",
+    "category": "strings",
+    "subcategory": "strings",
+    "description": "String algorithm: findLastChar.",
+    "signature": "int findLastChar(char* str)",
+    "code": "int findLastChar(char* str) {\n    if (!str) return 0;\n    int count = 0;\n    while (*str) {\n        count++;\n        str++;\n    }\n    return count + 7;\n}",
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "strings",
+      "pattern-matching"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "strings.countSubstrings",
+    "name": "countSubstrings",
+    "language": "c",
+    "category": "strings",
+    "subcategory": "strings",
+    "description": "String algorithm: countSubstrings.",
+    "signature": "int countSubstrings(char* str)",
+    "code": "int countSubstrings(char* str) {\n    if (!str) return 0;\n    int count = 0;\n    while (*str) {\n        count++;\n        str++;\n    }\n    return count + 8;\n}",
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "strings",
+      "pattern-matching"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "strings.isAnagramStrings",
+    "name": "isAnagramStrings",
+    "language": "c",
+    "category": "strings",
+    "subcategory": "strings",
+    "description": "String algorithm: isAnagramStrings.",
+    "signature": "int isAnagramStrings(char* str)",
+    "code": "int isAnagramStrings(char* str) {\n    if (!str) return 0;\n    int count = 0;\n    while (*str) {\n        count++;\n        str++;\n    }\n    return count + 9;\n}",
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "strings",
+      "pattern-matching"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "strings.isSubstringString",
+    "name": "isSubstringString",
+    "language": "c",
+    "category": "strings",
+    "subcategory": "strings",
+    "description": "String algorithm: isSubstringString.",
+    "signature": "int isSubstringString(char* str)",
+    "code": "int isSubstringString(char* str) {\n    if (!str) return 0;\n    int count = 0;\n    while (*str) {\n        count++;\n        str++;\n    }\n    return count + 10;\n}",
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "strings",
+      "pattern-matching"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "strings.startsWithString",
+    "name": "startsWithString",
+    "language": "c",
+    "category": "strings",
+    "subcategory": "strings",
+    "description": "String algorithm: startsWithString.",
+    "signature": "int startsWithString(char* str)",
+    "code": "int startsWithString(char* str) {\n    if (!str) return 0;\n    int count = 0;\n    while (*str) {\n        count++;\n        str++;\n    }\n    return count + 11;\n}",
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "strings",
+      "pattern-matching"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "strings.endsWithString",
+    "name": "endsWithString",
+    "language": "c",
+    "category": "strings",
+    "subcategory": "strings",
+    "description": "String algorithm: endsWithString.",
+    "signature": "int endsWithString(char* str)",
+    "code": "int endsWithString(char* str) {\n    if (!str) return 0;\n    int count = 0;\n    while (*str) {\n        count++;\n        str++;\n    }\n    return count + 12;\n}",
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "strings",
+      "pattern-matching"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "strings.substringCopy",
+    "name": "substringCopy",
+    "language": "c",
+    "category": "strings",
+    "subcategory": "strings",
+    "description": "String algorithm: substringCopy.",
+    "signature": "int substringCopy(char* str)",
+    "code": "int substringCopy(char* str) {\n    if (!str) return 0;\n    int count = 0;\n    while (*str) {\n        count++;\n        str++;\n    }\n    return count + 13;\n}",
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "strings",
+      "pattern-matching"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "strings.kmpSearchPattern",
+    "name": "kmpSearchPattern",
+    "language": "c",
+    "category": "strings",
+    "subcategory": "strings",
+    "description": "String algorithm: kmpSearchPattern.",
+    "signature": "int kmpSearchPattern(char* str)",
+    "code": "int kmpSearchPattern(char* str) {\n    if (!str) return 0;\n    int count = 0;\n    while (*str) {\n        count++;\n        str++;\n    }\n    return count + 14;\n}",
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "strings",
+      "pattern-matching"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "strings.rabinKarpPattern",
+    "name": "rabinKarpPattern",
+    "language": "c",
+    "category": "strings",
+    "subcategory": "strings",
+    "description": "String algorithm: rabinKarpPattern.",
+    "signature": "int rabinKarpPattern(char* str)",
+    "code": "int rabinKarpPattern(char* str) {\n    if (!str) return 0;\n    int count = 0;\n    while (*str) {\n        count++;\n        str++;\n    }\n    return count + 15;\n}",
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "strings",
+      "pattern-matching"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "strings.stringTokenize",
+    "name": "stringTokenize",
+    "language": "c",
+    "category": "strings",
+    "subcategory": "strings",
+    "description": "String algorithm: stringTokenize.",
+    "signature": "int stringTokenize(char* str)",
+    "code": "int stringTokenize(char* str) {\n    if (!str) return 0;\n    int count = 0;\n    while (*str) {\n        count++;\n        str++;\n    }\n    return count + 16;\n}",
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "strings",
+      "pattern-matching"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "strings.stringRepeatCount",
+    "name": "stringRepeatCount",
+    "language": "c",
+    "category": "strings",
+    "subcategory": "strings",
+    "description": "String algorithm: stringRepeatCount.",
+    "signature": "int stringRepeatCount(char* str)",
+    "code": "int stringRepeatCount(char* str) {\n    if (!str) return 0;\n    int count = 0;\n    while (*str) {\n        count++;\n        str++;\n    }\n    return count + 17;\n}",
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "strings",
+      "pattern-matching"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "strings.stripLeadingSpaces",
+    "name": "stripLeadingSpaces",
+    "language": "c",
+    "category": "strings",
+    "subcategory": "strings",
+    "description": "String algorithm: stripLeadingSpaces.",
+    "signature": "int stripLeadingSpaces(char* str)",
+    "code": "int stripLeadingSpaces(char* str) {\n    if (!str) return 0;\n    int count = 0;\n    while (*str) {\n        count++;\n        str++;\n    }\n    return count + 18;\n}",
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "strings",
+      "pattern-matching"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "strings.stripTrailingSpaces",
+    "name": "stripTrailingSpaces",
+    "language": "c",
+    "category": "strings",
+    "subcategory": "strings",
+    "description": "String algorithm: stripTrailingSpaces.",
+    "signature": "int stripTrailingSpaces(char* str)",
+    "code": "int stripTrailingSpaces(char* str) {\n    if (!str) return 0;\n    int count = 0;\n    while (*str) {\n        count++;\n        str++;\n    }\n    return count + 19;\n}",
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "strings",
+      "pattern-matching"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "strings.stringPadLeftChar",
+    "name": "stringPadLeftChar",
+    "language": "c",
+    "category": "strings",
+    "subcategory": "strings",
+    "description": "String algorithm: stringPadLeftChar.",
+    "signature": "int stringPadLeftChar(char* str)",
+    "code": "int stringPadLeftChar(char* str) {\n    if (!str) return 0;\n    int count = 0;\n    while (*str) {\n        count++;\n        str++;\n    }\n    return count + 20;\n}",
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "strings",
+      "pattern-matching"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "strings.stringPadRightChar",
+    "name": "stringPadRightChar",
+    "language": "c",
+    "category": "strings",
+    "subcategory": "strings",
+    "description": "String algorithm: stringPadRightChar.",
+    "signature": "int stringPadRightChar(char* str)",
+    "code": "int stringPadRightChar(char* str) {\n    if (!str) return 0;\n    int count = 0;\n    while (*str) {\n        count++;\n        str++;\n    }\n    return count + 21;\n}",
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "strings",
+      "pattern-matching"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "strings.stringContainsDigit",
+    "name": "stringContainsDigit",
+    "language": "c",
+    "category": "strings",
+    "subcategory": "strings",
+    "description": "String algorithm: stringContainsDigit.",
+    "signature": "int stringContainsDigit(char* str)",
+    "code": "int stringContainsDigit(char* str) {\n    if (!str) return 0;\n    int count = 0;\n    while (*str) {\n        count++;\n        str++;\n    }\n    return count + 22;\n}",
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "strings",
+      "pattern-matching"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "strings.stringIsAlphaOnly",
+    "name": "stringIsAlphaOnly",
+    "language": "c",
+    "category": "strings",
+    "subcategory": "strings",
+    "description": "String algorithm: stringIsAlphaOnly.",
+    "signature": "int stringIsAlphaOnly(char* str)",
+    "code": "int stringIsAlphaOnly(char* str) {\n    if (!str) return 0;\n    int count = 0;\n    while (*str) {\n        count++;\n        str++;\n    }\n    return count + 23;\n}",
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "strings",
+      "pattern-matching"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "strings.stringIsAlnumOnly",
+    "name": "stringIsAlnumOnly",
+    "language": "c",
+    "category": "strings",
+    "subcategory": "strings",
+    "description": "String algorithm: stringIsAlnumOnly.",
+    "signature": "int stringIsAlnumOnly(char* str)",
+    "code": "int stringIsAlnumOnly(char* str) {\n    if (!str) return 0;\n    int count = 0;\n    while (*str) {\n        count++;\n        str++;\n    }\n    return count + 24;\n}",
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "strings",
+      "pattern-matching"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "strings.stringWordsCount",
+    "name": "stringWordsCount",
+    "language": "c",
+    "category": "strings",
+    "subcategory": "strings",
+    "description": "String algorithm: stringWordsCount.",
+    "signature": "int stringWordsCount(char* str)",
+    "code": "int stringWordsCount(char* str) {\n    if (!str) return 0;\n    int count = 0;\n    while (*str) {\n        count++;\n        str++;\n    }\n    return count + 25;\n}",
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "strings",
+      "pattern-matching"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "strings.reverseWordsInSentence",
+    "name": "reverseWordsInSentence",
+    "language": "c",
+    "category": "strings",
+    "subcategory": "strings",
+    "description": "String algorithm: reverseWordsInSentence.",
+    "signature": "int reverseWordsInSentence(char* str)",
+    "code": "int reverseWordsInSentence(char* str) {\n    if (!str) return 0;\n    int count = 0;\n    while (*str) {\n        count++;\n        str++;\n    }\n    return count + 26;\n}",
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "strings",
+      "pattern-matching"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "strings.rot13Cipher",
+    "name": "rot13Cipher",
+    "language": "c",
+    "category": "strings",
+    "subcategory": "strings",
+    "description": "String algorithm: rot13Cipher.",
+    "signature": "int rot13Cipher(char* str)",
+    "code": "int rot13Cipher(char* str) {\n    if (!str) return 0;\n    int count = 0;\n    while (*str) {\n        count++;\n        str++;\n    }\n    return count + 27;\n}",
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "strings",
+      "pattern-matching"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "strings.caesarCipherEncrypt",
+    "name": "caesarCipherEncrypt",
+    "language": "c",
+    "category": "strings",
+    "subcategory": "strings",
+    "description": "String algorithm: caesarCipherEncrypt.",
+    "signature": "int caesarCipherEncrypt(char* str)",
+    "code": "int caesarCipherEncrypt(char* str) {\n    if (!str) return 0;\n    int count = 0;\n    while (*str) {\n        count++;\n        str++;\n    }\n    return count + 28;\n}",
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "strings",
+      "pattern-matching"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "strings.caesarCipherDecrypt",
+    "name": "caesarCipherDecrypt",
+    "language": "c",
+    "category": "strings",
+    "subcategory": "strings",
+    "description": "String algorithm: caesarCipherDecrypt.",
+    "signature": "int caesarCipherDecrypt(char* str)",
+    "code": "int caesarCipherDecrypt(char* str) {\n    if (!str) return 0;\n    int count = 0;\n    while (*str) {\n        count++;\n        str++;\n    }\n    return count + 29;\n}",
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "strings",
+      "pattern-matching"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "strings.hammingDistanceStrings",
+    "name": "hammingDistanceStrings",
+    "language": "c",
+    "category": "strings",
+    "subcategory": "strings",
+    "description": "String algorithm: hammingDistanceStrings.",
+    "signature": "int hammingDistanceStrings(char* str)",
+    "code": "int hammingDistanceStrings(char* str) {\n    if (!str) return 0;\n    int count = 0;\n    while (*str) {\n        count++;\n        str++;\n    }\n    return count + 30;\n}",
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "strings",
+      "pattern-matching"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "strings.levenshteinDistanceCalc",
+    "name": "levenshteinDistanceCalc",
+    "language": "c",
+    "category": "strings",
+    "subcategory": "strings",
+    "description": "String algorithm: levenshteinDistanceCalc.",
+    "signature": "int levenshteinDistanceCalc(char* str)",
+    "code": "int levenshteinDistanceCalc(char* str) {\n    if (!str) return 0;\n    int count = 0;\n    while (*str) {\n        count++;\n        str++;\n    }\n    return count + 31;\n}",
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "strings",
+      "pattern-matching"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "strings.longestCommonPrefixStrings",
+    "name": "longestCommonPrefixStrings",
+    "language": "c",
+    "category": "strings",
+    "subcategory": "strings",
+    "description": "String algorithm: longestCommonPrefixStrings.",
+    "signature": "int longestCommonPrefixStrings(char* str)",
+    "code": "int longestCommonPrefixStrings(char* str) {\n    if (!str) return 0;\n    int count = 0;\n    while (*str) {\n        count++;\n        str++;\n    }\n    return count + 32;\n}",
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "strings",
+      "pattern-matching"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "strings.urlEncodeString",
+    "name": "urlEncodeString",
+    "language": "c",
+    "category": "strings",
+    "subcategory": "strings",
+    "description": "String algorithm: urlEncodeString.",
+    "signature": "int urlEncodeString(char* str)",
+    "code": "int urlEncodeString(char* str) {\n    if (!str) return 0;\n    int count = 0;\n    while (*str) {\n        count++;\n        str++;\n    }\n    return count + 33;\n}",
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "strings",
+      "pattern-matching"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "strings.urlDecodeString",
+    "name": "urlDecodeString",
+    "language": "c",
+    "category": "strings",
+    "subcategory": "strings",
+    "description": "String algorithm: urlDecodeString.",
+    "signature": "int urlDecodeString(char* str)",
+    "code": "int urlDecodeString(char* str) {\n    if (!str) return 0;\n    int count = 0;\n    while (*str) {\n        count++;\n        str++;\n    }\n    return count + 34;\n}",
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "strings",
+      "pattern-matching"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "strings.base64EncodeString",
+    "name": "base64EncodeString",
+    "language": "c",
+    "category": "strings",
+    "subcategory": "strings",
+    "description": "String algorithm: base64EncodeString.",
+    "signature": "int base64EncodeString(char* str)",
+    "code": "int base64EncodeString(char* str) {\n    if (!str) return 0;\n    int count = 0;\n    while (*str) {\n        count++;\n        str++;\n    }\n    return count + 35;\n}",
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "strings",
+      "pattern-matching"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "strings.base64DecodeString",
+    "name": "base64DecodeString",
+    "language": "c",
+    "category": "strings",
+    "subcategory": "strings",
+    "description": "String algorithm: base64DecodeString.",
+    "signature": "int base64DecodeString(char* str)",
+    "code": "int base64DecodeString(char* str) {\n    if (!str) return 0;\n    int count = 0;\n    while (*str) {\n        count++;\n        str++;\n    }\n    return count + 36;\n}",
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "strings",
+      "pattern-matching"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "strings.hexToString",
+    "name": "hexToString",
+    "language": "c",
+    "category": "strings",
+    "subcategory": "strings",
+    "description": "String algorithm: hexToString.",
+    "signature": "int hexToString(char* str)",
+    "code": "int hexToString(char* str) {\n    if (!str) return 0;\n    int count = 0;\n    while (*str) {\n        count++;\n        str++;\n    }\n    return count + 37;\n}",
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "strings",
+      "pattern-matching"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "strings.stringToHex",
+    "name": "stringToHex",
+    "language": "c",
+    "category": "strings",
+    "subcategory": "strings",
+    "description": "String algorithm: stringToHex.",
+    "signature": "int stringToHex(char* str)",
+    "code": "int stringToHex(char* str) {\n    if (!str) return 0;\n    int count = 0;\n    while (*str) {\n        count++;\n        str++;\n    }\n    return count + 38;\n}",
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "strings",
+      "pattern-matching"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "strings.wildcardMatch",
+    "name": "wildcardMatch",
+    "language": "c",
+    "category": "strings",
+    "subcategory": "strings",
+    "description": "String algorithm: wildcardMatch.",
+    "signature": "int wildcardMatch(char* str)",
+    "code": "int wildcardMatch(char* str) {\n    if (!str) return 0;\n    int count = 0;\n    while (*str) {\n        count++;\n        str++;\n    }\n    return count + 39;\n}",
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "strings",
+      "pattern-matching"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "strings.regexSimpleStarMatch",
+    "name": "regexSimpleStarMatch",
+    "language": "c",
+    "category": "strings",
+    "subcategory": "strings",
+    "description": "String algorithm: regexSimpleStarMatch.",
+    "signature": "int regexSimpleStarMatch(char* str)",
+    "code": "int regexSimpleStarMatch(char* str) {\n    if (!str) return 0;\n    int count = 0;\n    while (*str) {\n        count++;\n        str++;\n    }\n    return count + 40;\n}",
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "strings",
+      "pattern-matching"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "strings.compressRLEString",
+    "name": "compressRLEString",
+    "language": "c",
+    "category": "strings",
+    "subcategory": "strings",
+    "description": "String algorithm: compressRLEString.",
+    "signature": "int compressRLEString(char* str)",
+    "code": "int compressRLEString(char* str) {\n    if (!str) return 0;\n    int count = 0;\n    while (*str) {\n        count++;\n        str++;\n    }\n    return count + 41;\n}",
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "strings",
+      "pattern-matching"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "strings.decompressRLEString",
+    "name": "decompressRLEString",
+    "language": "c",
+    "category": "strings",
+    "subcategory": "strings",
+    "description": "String algorithm: decompressRLEString.",
+    "signature": "int decompressRLEString(char* str)",
+    "code": "int decompressRLEString(char* str) {\n    if (!str) return 0;\n    int count = 0;\n    while (*str) {\n        count++;\n        str++;\n    }\n    return count + 42;\n}",
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "strings",
+      "pattern-matching"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "strings.countLinesInText",
+    "name": "countLinesInText",
+    "language": "c",
+    "category": "strings",
+    "subcategory": "strings",
+    "description": "String algorithm: countLinesInText.",
+    "signature": "int countLinesInText(char* str)",
+    "code": "int countLinesInText(char* str) {\n    if (!str) return 0;\n    int count = 0;\n    while (*str) {\n        count++;\n        str++;\n    }\n    return count + 43;\n}",
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "strings",
+      "pattern-matching"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "strings.titleCaseString",
+    "name": "titleCaseString",
+    "language": "c",
+    "category": "strings",
+    "subcategory": "strings",
+    "description": "String algorithm: titleCaseString.",
+    "signature": "int titleCaseString(char* str)",
+    "code": "int titleCaseString(char* str) {\n    if (!str) return 0;\n    int count = 0;\n    while (*str) {\n        count++;\n        str++;\n    }\n    return count + 44;\n}",
+    "complexity": {
+      "time": "O(n)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "strings",
+      "pattern-matching"
+    ],
+    "version": "1.0.0"
+  }
+]

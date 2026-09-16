@@ -1,0 +1,702 @@
+[
+  {
+    "id": "unions.DataPayload",
+    "name": "DataPayload",
+    "language": "c",
+    "category": "unions",
+    "subcategory": "unions",
+    "description": "Tagged union representing variant basic types (int, float, char*, ptr).",
+    "signature": "typedef union DataPayload DataPayload;",
+    "code": "typedef union DataPayload {\n    int asInt;\n    float asFloat;\n    double asDouble;\n    void* asPtr;\n    char asBytes[8];\n} DataPayload;",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "union",
+      "variant"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "unions.ByteInspector",
+    "name": "ByteInspector",
+    "language": "c",
+    "category": "unions",
+    "subcategory": "unions",
+    "description": "Union for inspecting individual bytes of a 32-bit integer (endianness detection).",
+    "signature": "typedef union ByteInspector ByteInspector;",
+    "code": "typedef union ByteInspector {\n    unsigned int value;\n    unsigned char bytes[4];\n} ByteInspector;\n\nint isLittleEndian() {\n    ByteInspector b;\n    b.value = 1;\n    return b.bytes[0] == 1;\n}",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "endianness",
+      "inspection"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "unions.VariantNumber",
+    "name": "VariantNumber",
+    "language": "c",
+    "category": "unions",
+    "subcategory": "unions",
+    "description": "C union data definition: VariantNumber.",
+    "signature": "typedef union VariantNumber VariantNumber;",
+    "code": "typedef union VariantNumber {\n    unsigned long long raw64;\n    unsigned int raw32[2];\n    unsigned char raw8[8];\n} VariantNumber;",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "unions",
+      "low-level"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "unions.Ipv4AddressUnion",
+    "name": "Ipv4AddressUnion",
+    "language": "c",
+    "category": "unions",
+    "subcategory": "unions",
+    "description": "C union data definition: Ipv4AddressUnion.",
+    "signature": "typedef union Ipv4AddressUnion Ipv4AddressUnion;",
+    "code": "typedef union Ipv4AddressUnion {\n    unsigned long long raw64;\n    unsigned int raw32[2];\n    unsigned char raw8[8];\n} Ipv4AddressUnion;",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "unions",
+      "low-level"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "unions.ColorUnion32",
+    "name": "ColorUnion32",
+    "language": "c",
+    "category": "unions",
+    "subcategory": "unions",
+    "description": "C union data definition: ColorUnion32.",
+    "signature": "typedef union ColorUnion32 ColorUnion32;",
+    "code": "typedef union ColorUnion32 {\n    unsigned long long raw64;\n    unsigned int raw32[2];\n    unsigned char raw8[8];\n} ColorUnion32;",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "unions",
+      "low-level"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "unions.RegisterAccessUnion",
+    "name": "RegisterAccessUnion",
+    "language": "c",
+    "category": "unions",
+    "subcategory": "unions",
+    "description": "C union data definition: RegisterAccessUnion.",
+    "signature": "typedef union RegisterAccessUnion RegisterAccessUnion;",
+    "code": "typedef union RegisterAccessUnion {\n    unsigned long long raw64;\n    unsigned int raw32[2];\n    unsigned char raw8[8];\n} RegisterAccessUnion;",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "unions",
+      "low-level"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "unions.BitfieldFlagsUnion",
+    "name": "BitfieldFlagsUnion",
+    "language": "c",
+    "category": "unions",
+    "subcategory": "unions",
+    "description": "C union data definition: BitfieldFlagsUnion.",
+    "signature": "typedef union BitfieldFlagsUnion BitfieldFlagsUnion;",
+    "code": "typedef union BitfieldFlagsUnion {\n    unsigned long long raw64;\n    unsigned int raw32[2];\n    unsigned char raw8[8];\n} BitfieldFlagsUnion;",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "unions",
+      "low-level"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "unions.FloatBitsUnion",
+    "name": "FloatBitsUnion",
+    "language": "c",
+    "category": "unions",
+    "subcategory": "unions",
+    "description": "C union data definition: FloatBitsUnion.",
+    "signature": "typedef union FloatBitsUnion FloatBitsUnion;",
+    "code": "typedef union FloatBitsUnion {\n    unsigned long long raw64;\n    unsigned int raw32[2];\n    unsigned char raw8[8];\n} FloatBitsUnion;",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "unions",
+      "low-level"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "unions.DoubleBitsUnion",
+    "name": "DoubleBitsUnion",
+    "language": "c",
+    "category": "unions",
+    "subcategory": "unions",
+    "description": "C union data definition: DoubleBitsUnion.",
+    "signature": "typedef union DoubleBitsUnion DoubleBitsUnion;",
+    "code": "typedef union DoubleBitsUnion {\n    unsigned long long raw64;\n    unsigned int raw32[2];\n    unsigned char raw8[8];\n} DoubleBitsUnion;",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "unions",
+      "low-level"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "unions.GenericPointerUnion",
+    "name": "GenericPointerUnion",
+    "language": "c",
+    "category": "unions",
+    "subcategory": "unions",
+    "description": "C union data definition: GenericPointerUnion.",
+    "signature": "typedef union GenericPointerUnion GenericPointerUnion;",
+    "code": "typedef union GenericPointerUnion {\n    unsigned long long raw64;\n    unsigned int raw32[2];\n    unsigned char raw8[8];\n} GenericPointerUnion;",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "unions",
+      "low-level"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "unions.InstructionCodeUnion",
+    "name": "InstructionCodeUnion",
+    "language": "c",
+    "category": "unions",
+    "subcategory": "unions",
+    "description": "C union data definition: InstructionCodeUnion.",
+    "signature": "typedef union InstructionCodeUnion InstructionCodeUnion;",
+    "code": "typedef union InstructionCodeUnion {\n    unsigned long long raw64;\n    unsigned int raw32[2];\n    unsigned char raw8[8];\n} InstructionCodeUnion;",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "unions",
+      "low-level"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "unions.PacketFlagsUnion",
+    "name": "PacketFlagsUnion",
+    "language": "c",
+    "category": "unions",
+    "subcategory": "unions",
+    "description": "C union data definition: PacketFlagsUnion.",
+    "signature": "typedef union PacketFlagsUnion PacketFlagsUnion;",
+    "code": "typedef union PacketFlagsUnion {\n    unsigned long long raw64;\n    unsigned int raw32[2];\n    unsigned char raw8[8];\n} PacketFlagsUnion;",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "unions",
+      "low-level"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "unions.TimestampUnion",
+    "name": "TimestampUnion",
+    "language": "c",
+    "category": "unions",
+    "subcategory": "unions",
+    "description": "C union data definition: TimestampUnion.",
+    "signature": "typedef union TimestampUnion TimestampUnion;",
+    "code": "typedef union TimestampUnion {\n    unsigned long long raw64;\n    unsigned int raw32[2];\n    unsigned char raw8[8];\n} TimestampUnion;",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "unions",
+      "low-level"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "unions.AudioSampleUnion",
+    "name": "AudioSampleUnion",
+    "language": "c",
+    "category": "unions",
+    "subcategory": "unions",
+    "description": "C union data definition: AudioSampleUnion.",
+    "signature": "typedef union AudioSampleUnion AudioSampleUnion;",
+    "code": "typedef union AudioSampleUnion {\n    unsigned long long raw64;\n    unsigned int raw32[2];\n    unsigned char raw8[8];\n} AudioSampleUnion;",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "unions",
+      "low-level"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "unions.PixelFormatUnion",
+    "name": "PixelFormatUnion",
+    "language": "c",
+    "category": "unions",
+    "subcategory": "unions",
+    "description": "C union data definition: PixelFormatUnion.",
+    "signature": "typedef union PixelFormatUnion PixelFormatUnion;",
+    "code": "typedef union PixelFormatUnion {\n    unsigned long long raw64;\n    unsigned int raw32[2];\n    unsigned char raw8[8];\n} PixelFormatUnion;",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "unions",
+      "low-level"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "unions.NetworkAddressUnion",
+    "name": "NetworkAddressUnion",
+    "language": "c",
+    "category": "unions",
+    "subcategory": "unions",
+    "description": "C union data definition: NetworkAddressUnion.",
+    "signature": "typedef union NetworkAddressUnion NetworkAddressUnion;",
+    "code": "typedef union NetworkAddressUnion {\n    unsigned long long raw64;\n    unsigned int raw32[2];\n    unsigned char raw8[8];\n} NetworkAddressUnion;",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "unions",
+      "low-level"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "unions.HardwarePortUnion",
+    "name": "HardwarePortUnion",
+    "language": "c",
+    "category": "unions",
+    "subcategory": "unions",
+    "description": "C union data definition: HardwarePortUnion.",
+    "signature": "typedef union HardwarePortUnion HardwarePortUnion;",
+    "code": "typedef union HardwarePortUnion {\n    unsigned long long raw64;\n    unsigned int raw32[2];\n    unsigned char raw8[8];\n} HardwarePortUnion;",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "unions",
+      "low-level"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "unions.EventPayloadUnion",
+    "name": "EventPayloadUnion",
+    "language": "c",
+    "category": "unions",
+    "subcategory": "unions",
+    "description": "C union data definition: EventPayloadUnion.",
+    "signature": "typedef union EventPayloadUnion EventPayloadUnion;",
+    "code": "typedef union EventPayloadUnion {\n    unsigned long long raw64;\n    unsigned int raw32[2];\n    unsigned char raw8[8];\n} EventPayloadUnion;",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "unions",
+      "low-level"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "unions.MessageBodyUnion",
+    "name": "MessageBodyUnion",
+    "language": "c",
+    "category": "unions",
+    "subcategory": "unions",
+    "description": "C union data definition: MessageBodyUnion.",
+    "signature": "typedef union MessageBodyUnion MessageBodyUnion;",
+    "code": "typedef union MessageBodyUnion {\n    unsigned long long raw64;\n    unsigned int raw32[2];\n    unsigned char raw8[8];\n} MessageBodyUnion;",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "unions",
+      "low-level"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "unions.TokenValueUnion",
+    "name": "TokenValueUnion",
+    "language": "c",
+    "category": "unions",
+    "subcategory": "unions",
+    "description": "C union data definition: TokenValueUnion.",
+    "signature": "typedef union TokenValueUnion TokenValueUnion;",
+    "code": "typedef union TokenValueUnion {\n    unsigned long long raw64;\n    unsigned int raw32[2];\n    unsigned char raw8[8];\n} TokenValueUnion;",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "unions",
+      "low-level"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "unions.AstNodeUnion",
+    "name": "AstNodeUnion",
+    "language": "c",
+    "category": "unions",
+    "subcategory": "unions",
+    "description": "C union data definition: AstNodeUnion.",
+    "signature": "typedef union AstNodeUnion AstNodeUnion;",
+    "code": "typedef union AstNodeUnion {\n    unsigned long long raw64;\n    unsigned int raw32[2];\n    unsigned char raw8[8];\n} AstNodeUnion;",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "unions",
+      "low-level"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "unions.TypePunnerUnion",
+    "name": "TypePunnerUnion",
+    "language": "c",
+    "category": "unions",
+    "subcategory": "unions",
+    "description": "C union data definition: TypePunnerUnion.",
+    "signature": "typedef union TypePunnerUnion TypePunnerUnion;",
+    "code": "typedef union TypePunnerUnion {\n    unsigned long long raw64;\n    unsigned int raw32[2];\n    unsigned char raw8[8];\n} TypePunnerUnion;",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "unions",
+      "low-level"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "unions.UuidBytesUnion",
+    "name": "UuidBytesUnion",
+    "language": "c",
+    "category": "unions",
+    "subcategory": "unions",
+    "description": "C union data definition: UuidBytesUnion.",
+    "signature": "typedef union UuidBytesUnion UuidBytesUnion;",
+    "code": "typedef union UuidBytesUnion {\n    unsigned long long raw64;\n    unsigned int raw32[2];\n    unsigned char raw8[8];\n} UuidBytesUnion;",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "unions",
+      "low-level"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "unions.AesBlockUnion",
+    "name": "AesBlockUnion",
+    "language": "c",
+    "category": "unions",
+    "subcategory": "unions",
+    "description": "C union data definition: AesBlockUnion.",
+    "signature": "typedef union AesBlockUnion AesBlockUnion;",
+    "code": "typedef union AesBlockUnion {\n    unsigned long long raw64;\n    unsigned int raw32[2];\n    unsigned char raw8[8];\n} AesBlockUnion;",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "unions",
+      "low-level"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "unions.ShaHashUnion",
+    "name": "ShaHashUnion",
+    "language": "c",
+    "category": "unions",
+    "subcategory": "unions",
+    "description": "C union data definition: ShaHashUnion.",
+    "signature": "typedef union ShaHashUnion ShaHashUnion;",
+    "code": "typedef union ShaHashUnion {\n    unsigned long long raw64;\n    unsigned int raw32[2];\n    unsigned char raw8[8];\n} ShaHashUnion;",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "unions",
+      "low-level"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "unions.FileDescriptorUnion",
+    "name": "FileDescriptorUnion",
+    "language": "c",
+    "category": "unions",
+    "subcategory": "unions",
+    "description": "C union data definition: FileDescriptorUnion.",
+    "signature": "typedef union FileDescriptorUnion FileDescriptorUnion;",
+    "code": "typedef union FileDescriptorUnion {\n    unsigned long long raw64;\n    unsigned int raw32[2];\n    unsigned char raw8[8];\n} FileDescriptorUnion;",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "unions",
+      "low-level"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "unions.ErrorStatusUnion",
+    "name": "ErrorStatusUnion",
+    "language": "c",
+    "category": "unions",
+    "subcategory": "unions",
+    "description": "C union data definition: ErrorStatusUnion.",
+    "signature": "typedef union ErrorStatusUnion ErrorStatusUnion;",
+    "code": "typedef union ErrorStatusUnion {\n    unsigned long long raw64;\n    unsigned int raw32[2];\n    unsigned char raw8[8];\n} ErrorStatusUnion;",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "unions",
+      "low-level"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "unions.NumericCoercionUnion",
+    "name": "NumericCoercionUnion",
+    "language": "c",
+    "category": "unions",
+    "subcategory": "unions",
+    "description": "C union data definition: NumericCoercionUnion.",
+    "signature": "typedef union NumericCoercionUnion NumericCoercionUnion;",
+    "code": "typedef union NumericCoercionUnion {\n    unsigned long long raw64;\n    unsigned int raw32[2];\n    unsigned char raw8[8];\n} NumericCoercionUnion;",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "unions",
+      "low-level"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "unions.RawBufferOverlayUnion",
+    "name": "RawBufferOverlayUnion",
+    "language": "c",
+    "category": "unions",
+    "subcategory": "unions",
+    "description": "C union data definition: RawBufferOverlayUnion.",
+    "signature": "typedef union RawBufferOverlayUnion RawBufferOverlayUnion;",
+    "code": "typedef union RawBufferOverlayUnion {\n    unsigned long long raw64;\n    unsigned int raw32[2];\n    unsigned char raw8[8];\n} RawBufferOverlayUnion;",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "unions",
+      "low-level"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "unions.FixedPointUnion",
+    "name": "FixedPointUnion",
+    "language": "c",
+    "category": "unions",
+    "subcategory": "unions",
+    "description": "C union data definition: FixedPointUnion.",
+    "signature": "typedef union FixedPointUnion FixedPointUnion;",
+    "code": "typedef union FixedPointUnion {\n    unsigned long long raw64;\n    unsigned int raw32[2];\n    unsigned char raw8[8];\n} FixedPointUnion;",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "unions",
+      "low-level"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "unions.HalfFloatUnion",
+    "name": "HalfFloatUnion",
+    "language": "c",
+    "category": "unions",
+    "subcategory": "unions",
+    "description": "C union data definition: HalfFloatUnion.",
+    "signature": "typedef union HalfFloatUnion HalfFloatUnion;",
+    "code": "typedef union HalfFloatUnion {\n    unsigned long long raw64;\n    unsigned int raw32[2];\n    unsigned char raw8[8];\n} HalfFloatUnion;",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "unions",
+      "low-level"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "unions.SimdRegisterUnion",
+    "name": "SimdRegisterUnion",
+    "language": "c",
+    "category": "unions",
+    "subcategory": "unions",
+    "description": "C union data definition: SimdRegisterUnion.",
+    "signature": "typedef union SimdRegisterUnion SimdRegisterUnion;",
+    "code": "typedef union SimdRegisterUnion {\n    unsigned long long raw64;\n    unsigned int raw32[2];\n    unsigned char raw8[8];\n} SimdRegisterUnion;",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "unions",
+      "low-level"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "unions.CrcChecksumUnion",
+    "name": "CrcChecksumUnion",
+    "language": "c",
+    "category": "unions",
+    "subcategory": "unions",
+    "description": "C union data definition: CrcChecksumUnion.",
+    "signature": "typedef union CrcChecksumUnion CrcChecksumUnion;",
+    "code": "typedef union CrcChecksumUnion {\n    unsigned long long raw64;\n    unsigned int raw32[2];\n    unsigned char raw8[8];\n} CrcChecksumUnion;",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "unions",
+      "low-level"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "unions.EntropySeedUnion",
+    "name": "EntropySeedUnion",
+    "language": "c",
+    "category": "unions",
+    "subcategory": "unions",
+    "description": "C union data definition: EntropySeedUnion.",
+    "signature": "typedef union EntropySeedUnion EntropySeedUnion;",
+    "code": "typedef union EntropySeedUnion {\n    unsigned long long raw64;\n    unsigned int raw32[2];\n    unsigned char raw8[8];\n} EntropySeedUnion;",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "unions",
+      "low-level"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "unions.SerialFrameUnion",
+    "name": "SerialFrameUnion",
+    "language": "c",
+    "category": "unions",
+    "subcategory": "unions",
+    "description": "C union data definition: SerialFrameUnion.",
+    "signature": "typedef union SerialFrameUnion SerialFrameUnion;",
+    "code": "typedef union SerialFrameUnion {\n    unsigned long long raw64;\n    unsigned int raw32[2];\n    unsigned char raw8[8];\n} SerialFrameUnion;",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "unions",
+      "low-level"
+    ],
+    "version": "1.0.0"
+  }
+]

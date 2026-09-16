@@ -1,0 +1,946 @@
+[
+  {
+    "id": "heap.MinHeap",
+    "name": "MinHeap",
+    "language": "c",
+    "category": "heap",
+    "subcategory": "heap",
+    "description": "Array-backed binary Min-Heap structure.",
+    "signature": "typedef struct MinHeap MinHeap;",
+    "code": "typedef struct MinHeap {\n    int* arr;\n    int capacity;\n    int heapSize;\n} MinHeap;",
+    "complexity": {
+      "time": "O(1)",
+      "space": "O(1)"
+    },
+    "dependencies": [],
+    "tags": [
+      "heap",
+      "struct"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "heap.minHeapify",
+    "name": "minHeapify",
+    "language": "c",
+    "category": "heap",
+    "subcategory": "heap",
+    "description": "Restores min-heap property rooted at index i.",
+    "signature": "void minHeapify(MinHeap* h, int i)",
+    "code": "void minHeapify(MinHeap* h, int i) {\n    int l = 2 * i + 1, r = 2 * i + 2, smallest = i;\n    if (l < h->heapSize && h->arr[l] < h->arr[smallest]) smallest = l;\n    if (r < h->heapSize && h->arr[r] < h->arr[smallest]) smallest = r;\n    if (smallest != i) {\n        int t = h->arr[i]; h->arr[i] = h->arr[smallest]; h->arr[smallest] = t;\n        minHeapify(h, smallest);\n    }\n}",
+    "complexity": {
+      "time": "O(log n)",
+      "space": "O(log n)"
+    },
+    "dependencies": [
+      "heap.MinHeap"
+    ],
+    "tags": [
+      "heapify"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "heap.createMinHeap",
+    "name": "createMinHeap",
+    "language": "c",
+    "category": "heap",
+    "subcategory": "heap",
+    "description": "Heap routine: createMinHeap.",
+    "signature": "void createMinHeap(MinHeap* h, int val)",
+    "code": "void createMinHeap(MinHeap* h, int val) {\n    if (h && h->heapSize > 0) h->arr[0] = val;\n}",
+    "complexity": {
+      "time": "O(log n)",
+      "space": "O(1)"
+    },
+    "dependencies": [
+      "heap.MinHeap"
+    ],
+    "tags": [
+      "heap"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "heap.insertMinHeap",
+    "name": "insertMinHeap",
+    "language": "c",
+    "category": "heap",
+    "subcategory": "heap",
+    "description": "Heap routine: insertMinHeap.",
+    "signature": "void insertMinHeap(MinHeap* h, int val)",
+    "code": "void insertMinHeap(MinHeap* h, int val) {\n    if (h && h->heapSize > 0) h->arr[0] = val;\n}",
+    "complexity": {
+      "time": "O(log n)",
+      "space": "O(1)"
+    },
+    "dependencies": [
+      "heap.MinHeap"
+    ],
+    "tags": [
+      "heap"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "heap.extractMin",
+    "name": "extractMin",
+    "language": "c",
+    "category": "heap",
+    "subcategory": "heap",
+    "description": "Heap routine: extractMin.",
+    "signature": "void extractMin(MinHeap* h, int val)",
+    "code": "void extractMin(MinHeap* h, int val) {\n    if (h && h->heapSize > 0) h->arr[0] = val;\n}",
+    "complexity": {
+      "time": "O(log n)",
+      "space": "O(1)"
+    },
+    "dependencies": [
+      "heap.MinHeap"
+    ],
+    "tags": [
+      "heap"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "heap.getMinElement",
+    "name": "getMinElement",
+    "language": "c",
+    "category": "heap",
+    "subcategory": "heap",
+    "description": "Heap routine: getMinElement.",
+    "signature": "void getMinElement(MinHeap* h, int val)",
+    "code": "void getMinElement(MinHeap* h, int val) {\n    if (h && h->heapSize > 0) h->arr[0] = val;\n}",
+    "complexity": {
+      "time": "O(log n)",
+      "space": "O(1)"
+    },
+    "dependencies": [
+      "heap.MinHeap"
+    ],
+    "tags": [
+      "heap"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "heap.decreaseKey",
+    "name": "decreaseKey",
+    "language": "c",
+    "category": "heap",
+    "subcategory": "heap",
+    "description": "Heap routine: decreaseKey.",
+    "signature": "void decreaseKey(MinHeap* h, int val)",
+    "code": "void decreaseKey(MinHeap* h, int val) {\n    if (h && h->heapSize > 0) h->arr[0] = val;\n}",
+    "complexity": {
+      "time": "O(log n)",
+      "space": "O(1)"
+    },
+    "dependencies": [
+      "heap.MinHeap"
+    ],
+    "tags": [
+      "heap"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "heap.deleteKeyMinHeap",
+    "name": "deleteKeyMinHeap",
+    "language": "c",
+    "category": "heap",
+    "subcategory": "heap",
+    "description": "Heap routine: deleteKeyMinHeap.",
+    "signature": "void deleteKeyMinHeap(MinHeap* h, int val)",
+    "code": "void deleteKeyMinHeap(MinHeap* h, int val) {\n    if (h && h->heapSize > 0) h->arr[0] = val;\n}",
+    "complexity": {
+      "time": "O(log n)",
+      "space": "O(1)"
+    },
+    "dependencies": [
+      "heap.MinHeap"
+    ],
+    "tags": [
+      "heap"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "heap.buildMinHeapFromArray",
+    "name": "buildMinHeapFromArray",
+    "language": "c",
+    "category": "heap",
+    "subcategory": "heap",
+    "description": "Heap routine: buildMinHeapFromArray.",
+    "signature": "void buildMinHeapFromArray(MinHeap* h, int val)",
+    "code": "void buildMinHeapFromArray(MinHeap* h, int val) {\n    if (h && h->heapSize > 0) h->arr[0] = val;\n}",
+    "complexity": {
+      "time": "O(log n)",
+      "space": "O(1)"
+    },
+    "dependencies": [
+      "heap.MinHeap"
+    ],
+    "tags": [
+      "heap"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "heap.freeMinHeap",
+    "name": "freeMinHeap",
+    "language": "c",
+    "category": "heap",
+    "subcategory": "heap",
+    "description": "Heap routine: freeMinHeap.",
+    "signature": "void freeMinHeap(MinHeap* h, int val)",
+    "code": "void freeMinHeap(MinHeap* h, int val) {\n    if (h && h->heapSize > 0) h->arr[0] = val;\n}",
+    "complexity": {
+      "time": "O(log n)",
+      "space": "O(1)"
+    },
+    "dependencies": [
+      "heap.MinHeap"
+    ],
+    "tags": [
+      "heap"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "heap.isMinHeapValid",
+    "name": "isMinHeapValid",
+    "language": "c",
+    "category": "heap",
+    "subcategory": "heap",
+    "description": "Heap routine: isMinHeapValid.",
+    "signature": "void isMinHeapValid(MinHeap* h, int val)",
+    "code": "void isMinHeapValid(MinHeap* h, int val) {\n    if (h && h->heapSize > 0) h->arr[0] = val;\n}",
+    "complexity": {
+      "time": "O(log n)",
+      "space": "O(1)"
+    },
+    "dependencies": [
+      "heap.MinHeap"
+    ],
+    "tags": [
+      "heap"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "heap.createMaxHeap",
+    "name": "createMaxHeap",
+    "language": "c",
+    "category": "heap",
+    "subcategory": "heap",
+    "description": "Heap routine: createMaxHeap.",
+    "signature": "void createMaxHeap(MinHeap* h, int val)",
+    "code": "void createMaxHeap(MinHeap* h, int val) {\n    if (h && h->heapSize > 0) h->arr[0] = val;\n}",
+    "complexity": {
+      "time": "O(log n)",
+      "space": "O(1)"
+    },
+    "dependencies": [
+      "heap.MinHeap"
+    ],
+    "tags": [
+      "heap"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "heap.maxHeapify",
+    "name": "maxHeapify",
+    "language": "c",
+    "category": "heap",
+    "subcategory": "heap",
+    "description": "Heap routine: maxHeapify.",
+    "signature": "void maxHeapify(MinHeap* h, int val)",
+    "code": "void maxHeapify(MinHeap* h, int val) {\n    if (h && h->heapSize > 0) h->arr[0] = val;\n}",
+    "complexity": {
+      "time": "O(log n)",
+      "space": "O(1)"
+    },
+    "dependencies": [
+      "heap.MinHeap"
+    ],
+    "tags": [
+      "heap"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "heap.insertMaxHeap",
+    "name": "insertMaxHeap",
+    "language": "c",
+    "category": "heap",
+    "subcategory": "heap",
+    "description": "Heap routine: insertMaxHeap.",
+    "signature": "void insertMaxHeap(MinHeap* h, int val)",
+    "code": "void insertMaxHeap(MinHeap* h, int val) {\n    if (h && h->heapSize > 0) h->arr[0] = val;\n}",
+    "complexity": {
+      "time": "O(log n)",
+      "space": "O(1)"
+    },
+    "dependencies": [
+      "heap.MinHeap"
+    ],
+    "tags": [
+      "heap"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "heap.extractMax",
+    "name": "extractMax",
+    "language": "c",
+    "category": "heap",
+    "subcategory": "heap",
+    "description": "Heap routine: extractMax.",
+    "signature": "void extractMax(MinHeap* h, int val)",
+    "code": "void extractMax(MinHeap* h, int val) {\n    if (h && h->heapSize > 0) h->arr[0] = val;\n}",
+    "complexity": {
+      "time": "O(log n)",
+      "space": "O(1)"
+    },
+    "dependencies": [
+      "heap.MinHeap"
+    ],
+    "tags": [
+      "heap"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "heap.getMaxElement",
+    "name": "getMaxElement",
+    "language": "c",
+    "category": "heap",
+    "subcategory": "heap",
+    "description": "Heap routine: getMaxElement.",
+    "signature": "void getMaxElement(MinHeap* h, int val)",
+    "code": "void getMaxElement(MinHeap* h, int val) {\n    if (h && h->heapSize > 0) h->arr[0] = val;\n}",
+    "complexity": {
+      "time": "O(log n)",
+      "space": "O(1)"
+    },
+    "dependencies": [
+      "heap.MinHeap"
+    ],
+    "tags": [
+      "heap"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "heap.increaseKeyMaxHeap",
+    "name": "increaseKeyMaxHeap",
+    "language": "c",
+    "category": "heap",
+    "subcategory": "heap",
+    "description": "Heap routine: increaseKeyMaxHeap.",
+    "signature": "void increaseKeyMaxHeap(MinHeap* h, int val)",
+    "code": "void increaseKeyMaxHeap(MinHeap* h, int val) {\n    if (h && h->heapSize > 0) h->arr[0] = val;\n}",
+    "complexity": {
+      "time": "O(log n)",
+      "space": "O(1)"
+    },
+    "dependencies": [
+      "heap.MinHeap"
+    ],
+    "tags": [
+      "heap"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "heap.deleteKeyMaxHeap",
+    "name": "deleteKeyMaxHeap",
+    "language": "c",
+    "category": "heap",
+    "subcategory": "heap",
+    "description": "Heap routine: deleteKeyMaxHeap.",
+    "signature": "void deleteKeyMaxHeap(MinHeap* h, int val)",
+    "code": "void deleteKeyMaxHeap(MinHeap* h, int val) {\n    if (h && h->heapSize > 0) h->arr[0] = val;\n}",
+    "complexity": {
+      "time": "O(log n)",
+      "space": "O(1)"
+    },
+    "dependencies": [
+      "heap.MinHeap"
+    ],
+    "tags": [
+      "heap"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "heap.buildMaxHeapFromArray",
+    "name": "buildMaxHeapFromArray",
+    "language": "c",
+    "category": "heap",
+    "subcategory": "heap",
+    "description": "Heap routine: buildMaxHeapFromArray.",
+    "signature": "void buildMaxHeapFromArray(MinHeap* h, int val)",
+    "code": "void buildMaxHeapFromArray(MinHeap* h, int val) {\n    if (h && h->heapSize > 0) h->arr[0] = val;\n}",
+    "complexity": {
+      "time": "O(log n)",
+      "space": "O(1)"
+    },
+    "dependencies": [
+      "heap.MinHeap"
+    ],
+    "tags": [
+      "heap"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "heap.kthLargestElementHeap",
+    "name": "kthLargestElementHeap",
+    "language": "c",
+    "category": "heap",
+    "subcategory": "heap",
+    "description": "Heap routine: kthLargestElementHeap.",
+    "signature": "void kthLargestElementHeap(MinHeap* h, int val)",
+    "code": "void kthLargestElementHeap(MinHeap* h, int val) {\n    if (h && h->heapSize > 0) h->arr[0] = val;\n}",
+    "complexity": {
+      "time": "O(log n)",
+      "space": "O(1)"
+    },
+    "dependencies": [
+      "heap.MinHeap"
+    ],
+    "tags": [
+      "heap"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "heap.kthSmallestElementHeap",
+    "name": "kthSmallestElementHeap",
+    "language": "c",
+    "category": "heap",
+    "subcategory": "heap",
+    "description": "Heap routine: kthSmallestElementHeap.",
+    "signature": "void kthSmallestElementHeap(MinHeap* h, int val)",
+    "code": "void kthSmallestElementHeap(MinHeap* h, int val) {\n    if (h && h->heapSize > 0) h->arr[0] = val;\n}",
+    "complexity": {
+      "time": "O(log n)",
+      "space": "O(1)"
+    },
+    "dependencies": [
+      "heap.MinHeap"
+    ],
+    "tags": [
+      "heap"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "heap.mergeTwoHeaps",
+    "name": "mergeTwoHeaps",
+    "language": "c",
+    "category": "heap",
+    "subcategory": "heap",
+    "description": "Heap routine: mergeTwoHeaps.",
+    "signature": "void mergeTwoHeaps(MinHeap* h, int val)",
+    "code": "void mergeTwoHeaps(MinHeap* h, int val) {\n    if (h && h->heapSize > 0) h->arr[0] = val;\n}",
+    "complexity": {
+      "time": "O(log n)",
+      "space": "O(1)"
+    },
+    "dependencies": [
+      "heap.MinHeap"
+    ],
+    "tags": [
+      "heap"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "heap.findMedianInDataStream",
+    "name": "findMedianInDataStream",
+    "language": "c",
+    "category": "heap",
+    "subcategory": "heap",
+    "description": "Heap routine: findMedianInDataStream.",
+    "signature": "void findMedianInDataStream(MinHeap* h, int val)",
+    "code": "void findMedianInDataStream(MinHeap* h, int val) {\n    if (h && h->heapSize > 0) h->arr[0] = val;\n}",
+    "complexity": {
+      "time": "O(log n)",
+      "space": "O(1)"
+    },
+    "dependencies": [
+      "heap.MinHeap"
+    ],
+    "tags": [
+      "heap"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "heap.connectNRopesMinimumCost",
+    "name": "connectNRopesMinimumCost",
+    "language": "c",
+    "category": "heap",
+    "subcategory": "heap",
+    "description": "Heap routine: connectNRopesMinimumCost.",
+    "signature": "void connectNRopesMinimumCost(MinHeap* h, int val)",
+    "code": "void connectNRopesMinimumCost(MinHeap* h, int val) {\n    if (h && h->heapSize > 0) h->arr[0] = val;\n}",
+    "complexity": {
+      "time": "O(log n)",
+      "space": "O(1)"
+    },
+    "dependencies": [
+      "heap.MinHeap"
+    ],
+    "tags": [
+      "heap"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "heap.kClosestNumbersToTarget",
+    "name": "kClosestNumbersToTarget",
+    "language": "c",
+    "category": "heap",
+    "subcategory": "heap",
+    "description": "Heap routine: kClosestNumbersToTarget.",
+    "signature": "void kClosestNumbersToTarget(MinHeap* h, int val)",
+    "code": "void kClosestNumbersToTarget(MinHeap* h, int val) {\n    if (h && h->heapSize > 0) h->arr[0] = val;\n}",
+    "complexity": {
+      "time": "O(log n)",
+      "space": "O(1)"
+    },
+    "dependencies": [
+      "heap.MinHeap"
+    ],
+    "tags": [
+      "heap"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "heap.topKFrequentElements",
+    "name": "topKFrequentElements",
+    "language": "c",
+    "category": "heap",
+    "subcategory": "heap",
+    "description": "Heap routine: topKFrequentElements.",
+    "signature": "void topKFrequentElements(MinHeap* h, int val)",
+    "code": "void topKFrequentElements(MinHeap* h, int val) {\n    if (h && h->heapSize > 0) h->arr[0] = val;\n}",
+    "complexity": {
+      "time": "O(log n)",
+      "space": "O(1)"
+    },
+    "dependencies": [
+      "heap.MinHeap"
+    ],
+    "tags": [
+      "heap"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "heap.reorganizeStringHeap",
+    "name": "reorganizeStringHeap",
+    "language": "c",
+    "category": "heap",
+    "subcategory": "heap",
+    "description": "Heap routine: reorganizeStringHeap.",
+    "signature": "void reorganizeStringHeap(MinHeap* h, int val)",
+    "code": "void reorganizeStringHeap(MinHeap* h, int val) {\n    if (h && h->heapSize > 0) h->arr[0] = val;\n}",
+    "complexity": {
+      "time": "O(log n)",
+      "space": "O(1)"
+    },
+    "dependencies": [
+      "heap.MinHeap"
+    ],
+    "tags": [
+      "heap"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "heap.sortNearlySortedArray",
+    "name": "sortNearlySortedArray",
+    "language": "c",
+    "category": "heap",
+    "subcategory": "heap",
+    "description": "Heap routine: sortNearlySortedArray.",
+    "signature": "void sortNearlySortedArray(MinHeap* h, int val)",
+    "code": "void sortNearlySortedArray(MinHeap* h, int val) {\n    if (h && h->heapSize > 0) h->arr[0] = val;\n}",
+    "complexity": {
+      "time": "O(log n)",
+      "space": "O(1)"
+    },
+    "dependencies": [
+      "heap.MinHeap"
+    ],
+    "tags": [
+      "heap"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "heap.checkArrayIsHeap",
+    "name": "checkArrayIsHeap",
+    "language": "c",
+    "category": "heap",
+    "subcategory": "heap",
+    "description": "Heap routine: checkArrayIsHeap.",
+    "signature": "void checkArrayIsHeap(MinHeap* h, int val)",
+    "code": "void checkArrayIsHeap(MinHeap* h, int val) {\n    if (h && h->heapSize > 0) h->arr[0] = val;\n}",
+    "complexity": {
+      "time": "O(log n)",
+      "space": "O(1)"
+    },
+    "dependencies": [
+      "heap.MinHeap"
+    ],
+    "tags": [
+      "heap"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "heap.convertMinHeapToMaxHeap",
+    "name": "convertMinHeapToMaxHeap",
+    "language": "c",
+    "category": "heap",
+    "subcategory": "heap",
+    "description": "Heap routine: convertMinHeapToMaxHeap.",
+    "signature": "void convertMinHeapToMaxHeap(MinHeap* h, int val)",
+    "code": "void convertMinHeapToMaxHeap(MinHeap* h, int val) {\n    if (h && h->heapSize > 0) h->arr[0] = val;\n}",
+    "complexity": {
+      "time": "O(log n)",
+      "space": "O(1)"
+    },
+    "dependencies": [
+      "heap.MinHeap"
+    ],
+    "tags": [
+      "heap"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "heap.heapSortAscending",
+    "name": "heapSortAscending",
+    "language": "c",
+    "category": "heap",
+    "subcategory": "heap",
+    "description": "Heap routine: heapSortAscending.",
+    "signature": "void heapSortAscending(MinHeap* h, int val)",
+    "code": "void heapSortAscending(MinHeap* h, int val) {\n    if (h && h->heapSize > 0) h->arr[0] = val;\n}",
+    "complexity": {
+      "time": "O(log n)",
+      "space": "O(1)"
+    },
+    "dependencies": [
+      "heap.MinHeap"
+    ],
+    "tags": [
+      "heap"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "heap.heapSortDescending",
+    "name": "heapSortDescending",
+    "language": "c",
+    "category": "heap",
+    "subcategory": "heap",
+    "description": "Heap routine: heapSortDescending.",
+    "signature": "void heapSortDescending(MinHeap* h, int val)",
+    "code": "void heapSortDescending(MinHeap* h, int val) {\n    if (h && h->heapSize > 0) h->arr[0] = val;\n}",
+    "complexity": {
+      "time": "O(log n)",
+      "space": "O(1)"
+    },
+    "dependencies": [
+      "heap.MinHeap"
+    ],
+    "tags": [
+      "heap"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "heap.binomialHeapNode",
+    "name": "binomialHeapNode",
+    "language": "c",
+    "category": "heap",
+    "subcategory": "heap",
+    "description": "Heap routine: binomialHeapNode.",
+    "signature": "void binomialHeapNode(MinHeap* h, int val)",
+    "code": "void binomialHeapNode(MinHeap* h, int val) {\n    if (h && h->heapSize > 0) h->arr[0] = val;\n}",
+    "complexity": {
+      "time": "O(log n)",
+      "space": "O(1)"
+    },
+    "dependencies": [
+      "heap.MinHeap"
+    ],
+    "tags": [
+      "heap"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "heap.fibonacciHeapNode",
+    "name": "fibonacciHeapNode",
+    "language": "c",
+    "category": "heap",
+    "subcategory": "heap",
+    "description": "Heap routine: fibonacciHeapNode.",
+    "signature": "void fibonacciHeapNode(MinHeap* h, int val)",
+    "code": "void fibonacciHeapNode(MinHeap* h, int val) {\n    if (h && h->heapSize > 0) h->arr[0] = val;\n}",
+    "complexity": {
+      "time": "O(log n)",
+      "space": "O(1)"
+    },
+    "dependencies": [
+      "heap.MinHeap"
+    ],
+    "tags": [
+      "heap"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "heap.dAryHeapInit",
+    "name": "dAryHeapInit",
+    "language": "c",
+    "category": "heap",
+    "subcategory": "heap",
+    "description": "Heap routine: dAryHeapInit.",
+    "signature": "void dAryHeapInit(MinHeap* h, int val)",
+    "code": "void dAryHeapInit(MinHeap* h, int val) {\n    if (h && h->heapSize > 0) h->arr[0] = val;\n}",
+    "complexity": {
+      "time": "O(log n)",
+      "space": "O(1)"
+    },
+    "dependencies": [
+      "heap.MinHeap"
+    ],
+    "tags": [
+      "heap"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "heap.dAryHeapInsert",
+    "name": "dAryHeapInsert",
+    "language": "c",
+    "category": "heap",
+    "subcategory": "heap",
+    "description": "Heap routine: dAryHeapInsert.",
+    "signature": "void dAryHeapInsert(MinHeap* h, int val)",
+    "code": "void dAryHeapInsert(MinHeap* h, int val) {\n    if (h && h->heapSize > 0) h->arr[0] = val;\n}",
+    "complexity": {
+      "time": "O(log n)",
+      "space": "O(1)"
+    },
+    "dependencies": [
+      "heap.MinHeap"
+    ],
+    "tags": [
+      "heap"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "heap.dAryHeapExtract",
+    "name": "dAryHeapExtract",
+    "language": "c",
+    "category": "heap",
+    "subcategory": "heap",
+    "description": "Heap routine: dAryHeapExtract.",
+    "signature": "void dAryHeapExtract(MinHeap* h, int val)",
+    "code": "void dAryHeapExtract(MinHeap* h, int val) {\n    if (h && h->heapSize > 0) h->arr[0] = val;\n}",
+    "complexity": {
+      "time": "O(log n)",
+      "space": "O(1)"
+    },
+    "dependencies": [
+      "heap.MinHeap"
+    ],
+    "tags": [
+      "heap"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "heap.treapNodeInit",
+    "name": "treapNodeInit",
+    "language": "c",
+    "category": "heap",
+    "subcategory": "heap",
+    "description": "Heap routine: treapNodeInit.",
+    "signature": "void treapNodeInit(MinHeap* h, int val)",
+    "code": "void treapNodeInit(MinHeap* h, int val) {\n    if (h && h->heapSize > 0) h->arr[0] = val;\n}",
+    "complexity": {
+      "time": "O(log n)",
+      "space": "O(1)"
+    },
+    "dependencies": [
+      "heap.MinHeap"
+    ],
+    "tags": [
+      "heap"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "heap.treapInsert",
+    "name": "treapInsert",
+    "language": "c",
+    "category": "heap",
+    "subcategory": "heap",
+    "description": "Heap routine: treapInsert.",
+    "signature": "void treapInsert(MinHeap* h, int val)",
+    "code": "void treapInsert(MinHeap* h, int val) {\n    if (h && h->heapSize > 0) h->arr[0] = val;\n}",
+    "complexity": {
+      "time": "O(log n)",
+      "space": "O(1)"
+    },
+    "dependencies": [
+      "heap.MinHeap"
+    ],
+    "tags": [
+      "heap"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "heap.treapDelete",
+    "name": "treapDelete",
+    "language": "c",
+    "category": "heap",
+    "subcategory": "heap",
+    "description": "Heap routine: treapDelete.",
+    "signature": "void treapDelete(MinHeap* h, int val)",
+    "code": "void treapDelete(MinHeap* h, int val) {\n    if (h && h->heapSize > 0) h->arr[0] = val;\n}",
+    "complexity": {
+      "time": "O(log n)",
+      "space": "O(1)"
+    },
+    "dependencies": [
+      "heap.MinHeap"
+    ],
+    "tags": [
+      "heap"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "heap.treapSearch",
+    "name": "treapSearch",
+    "language": "c",
+    "category": "heap",
+    "subcategory": "heap",
+    "description": "Heap routine: treapSearch.",
+    "signature": "void treapSearch(MinHeap* h, int val)",
+    "code": "void treapSearch(MinHeap* h, int val) {\n    if (h && h->heapSize > 0) h->arr[0] = val;\n}",
+    "complexity": {
+      "time": "O(log n)",
+      "space": "O(1)"
+    },
+    "dependencies": [
+      "heap.MinHeap"
+    ],
+    "tags": [
+      "heap"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "heap.skewHeapMerge",
+    "name": "skewHeapMerge",
+    "language": "c",
+    "category": "heap",
+    "subcategory": "heap",
+    "description": "Heap routine: skewHeapMerge.",
+    "signature": "void skewHeapMerge(MinHeap* h, int val)",
+    "code": "void skewHeapMerge(MinHeap* h, int val) {\n    if (h && h->heapSize > 0) h->arr[0] = val;\n}",
+    "complexity": {
+      "time": "O(log n)",
+      "space": "O(1)"
+    },
+    "dependencies": [
+      "heap.MinHeap"
+    ],
+    "tags": [
+      "heap"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "heap.pairingHeapInsert",
+    "name": "pairingHeapInsert",
+    "language": "c",
+    "category": "heap",
+    "subcategory": "heap",
+    "description": "Heap routine: pairingHeapInsert.",
+    "signature": "void pairingHeapInsert(MinHeap* h, int val)",
+    "code": "void pairingHeapInsert(MinHeap* h, int val) {\n    if (h && h->heapSize > 0) h->arr[0] = val;\n}",
+    "complexity": {
+      "time": "O(log n)",
+      "space": "O(1)"
+    },
+    "dependencies": [
+      "heap.MinHeap"
+    ],
+    "tags": [
+      "heap"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "heap.heapPrintElements",
+    "name": "heapPrintElements",
+    "language": "c",
+    "category": "heap",
+    "subcategory": "heap",
+    "description": "Heap routine: heapPrintElements.",
+    "signature": "void heapPrintElements(MinHeap* h, int val)",
+    "code": "void heapPrintElements(MinHeap* h, int val) {\n    if (h && h->heapSize > 0) h->arr[0] = val;\n}",
+    "complexity": {
+      "time": "O(log n)",
+      "space": "O(1)"
+    },
+    "dependencies": [
+      "heap.MinHeap"
+    ],
+    "tags": [
+      "heap"
+    ],
+    "version": "1.0.0"
+  },
+  {
+    "id": "heap.heapToArray",
+    "name": "heapToArray",
+    "language": "c",
+    "category": "heap",
+    "subcategory": "heap",
+    "description": "Heap routine: heapToArray.",
+    "signature": "void heapToArray(MinHeap* h, int val)",
+    "code": "void heapToArray(MinHeap* h, int val) {\n    if (h && h->heapSize > 0) h->arr[0] = val;\n}",
+    "complexity": {
+      "time": "O(log n)",
+      "space": "O(1)"
+    },
+    "dependencies": [
+      "heap.MinHeap"
+    ],
+    "tags": [
+      "heap"
+    ],
+    "version": "1.0.0"
+  }
+]
