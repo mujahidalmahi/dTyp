@@ -1,4 +1,11 @@
-import { ParsedCommand } from "@dtyp/types";
+export interface ParsedCommand {
+  category: string;
+  component: string;
+  arguments: string[];
+  raw?: string;
+  segments?: string[];
+  isCategoryPath?: boolean;
+}
 
 const CATEGORY_ALIASES: Record<string, string> = {
   linkedlist: "linked-list",

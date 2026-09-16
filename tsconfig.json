@@ -1,0 +1,28 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@dtyp/types": [
+        "./packages/types/src/index.ts"
+      ],
+      "@dtyp/utilities": [
+        "./packages/utilities/src/index.ts"
+      ],
+      "@dtyp/validation": [
+        "./packages/validation/src/index.ts"
+      ],
+      "@dtyp/typing-engine": [
+        "./packages/typing-engine/src/index.ts"
+      ],
+      "@dtyp/library-engine": [
+        "./packages/library-engine/src/index.ts"
+      ]
+    }
+  },
+  "include": [
+    "packages/*/src/**/*",
+    "apps/*/src/**/*",
+    "tests/**/*"
+  ]
+}

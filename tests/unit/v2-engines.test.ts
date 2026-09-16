@@ -122,7 +122,7 @@ describe("dTyp v2.0 Production Engines", () => {
 
   describe("SearchEngine", () => {
     it("ranks exact matches higher than partial matches", async () => {
-      const mockEngine = new MockLibraryEngine() as LibraryEngine;
+      const mockEngine = new MockLibraryEngine() as unknown as LibraryEngine;
       const search = new SearchEngine(mockEngine);
 
       const results = await search.search("quickSort");
@@ -132,7 +132,7 @@ describe("dTyp v2.0 Production Engines", () => {
     });
 
     it("supports category-scoped search queries (e.g. 'boiler:main')", async () => {
-      const mockEngine = new MockLibraryEngine() as LibraryEngine;
+      const mockEngine = new MockLibraryEngine() as unknown as LibraryEngine;
       const search = new SearchEngine(mockEngine);
 
       const results = await search.search("boiler:main");
