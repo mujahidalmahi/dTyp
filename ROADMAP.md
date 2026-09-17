@@ -4,33 +4,50 @@ This document outlines the strategic roadmap for the **dTyp** developer ecosyste
 
 ---
 
-## 🚀 Released: Version 2.0.0 (Current)
+## 🚀 Released: Version 3.0.0 (Current Production Release)
 
-- [x] **2,500 Essential C Components**: Complete bloat-free refactor across 12 canonical domains.
-- [x] **New Boiler Plate Category**: Compilable entry points, CLI args, Makefiles, allocators.
-- [x] **Dual Typing Engine**: Automatic human-simulated delay vs **Stealth Manual `Ctrl+D`** stepping.
-- [x] **6 Production Engines**: Cursor, Session, Memory, AutoType, Search, Snippets.
-- [x] **Database Optimization**: SQLite WebAssembly database shrunk from 178 MB down to 3.82 MB (over 97% reduction).
-- [x] **Activity Bar & Sidebar TreeViews**: Hierarchical library explorer, favorites, recent history, controls.
-- [x] **Release Notes Dashboard**: Interactive dark-mode webview with shortcuts cheat-sheet.
-- [x] **Auto-Update Engine**: Non-intrusive GitHub release detection and one-click VSIX update.
-- [x] **Native Walkthrough**: VS Code "Get Started" guide with step-by-step tutorials.
-- [x] **System Diagnostics**: Built-in health check and one-click GitHub issue reporting.
-- [x] **CI/CD Workflows**: Multi-version GitHub Actions pipeline and automated marketplace publishing.
+- [x] **Humanized Natural Typing Engine**:
+  - Intelligent auto-closing delimiter step-over (`overtypeCharacter`).
+  - Muscle-memory keyword burst acceleration (35%–60% faster on 55+ C keywords).
+  - Cognitive hesitations at structural junctions (`{`, `\n`, `;`, `,`).
+  - Physical QWERTY layout proximity typo simulation with immediate 4-step self-correction.
+  - Seamless dual-mode: humanized actions in both Automatic Streaming and Stealth Manual (`Ctrl+D`) stepping.
+- [x] **500 Compilable C Components across 7 Ordered Domains**:
+  - `boiler-plates` (64), `data-structures` (126), `algorithms` (120), `competitive-programming` (50), `academics-programming` (46), `projects` (30), `detection` (64).
+  - **Strict Zero-Comments Invariant**: 100% verified across all 500 components.
+- [x] **8 Specialized Production Engines**:
+  - `AutoTypeEngine`, `HeaderEngine`, `MemoryEngine`, `CursorEngine`, `SnippetEngine`, `SessionEngine`, `SearchEngine`, `UpdateEngine`.
+- [x] **Real-World Edge Case Guards**:
+  - 1ms to 1000ms delay range (`dtyp.typingDelayMs`).
+  - Granular undo chunking (default: 3 chars per `Ctrl+Z`).
+  - Cursor relocation detection & tab-switch guard.
+- [x] **Modernized UI/UX**:
+  - Preloaded QuickPick with action buttons (View Docs, Favorite, Copy Code).
+  - Themed domain browser with custom icons and component action buttons.
+  - Interactive hover tooltips with complexity metrics and clickable command links.
+  - 1,492 structured snippets & 500 Markdown documentation pages.
+- [x] **Templates Completely Eradicated**: Full removal of legacy templates per requirements.
 
 ---
 
-## 🎯 Upcoming: Version 2.1.0
+## 🚀 Released: Version 2.0.0
+
+- [x] Multi-engine modularization.
+- [x] SQLite WebAssembly optimization with `sql.js`.
+- [x] Activity Bar & 4 Sidebar TreeViews.
+- [x] Interactive release notes webview dashboard.
+- [x] Automated background GitHub release update checker.
+
+---
+
+## 🚀 Released: Version 1.0.0
+
+- [x] Initial core architecture and offline database prototype.
+
+---
+
+## 🎯 Upcoming: Version 3.1.0
 
 - [ ] **Custom Component Importer**: Allow users to save their own custom C functions/structs directly into the local SQLite library.
-- [ ] **C++20 Extensions**: Dedicated subcategories for Modern C++ templates, STL companions, and constexpr utilities.
 - [ ] **Typing Profiles**: Presets for typing speed (Slow / Realistic / Fast / Stealth / Instant).
 - [ ] **Multi-File Project Scaffolding**: One-click generation of complete multi-file academic C projects with Makefiles, headers, and test harnesses.
-
----
-
-## 🔮 Future: Version 3.0.0
-
-- [ ] **In-Editor C Code Runner**: Embedded WebAssembly C compiler (Clang/Wasm) to compile and test inserted code snippets without leaving VS Code.
-- [ ] **Visual Data Structure Debugger**: Interactive memory-layout visualization for linked lists, binary trees, and graphs inserted by dTyp.
-- [ ] **Multi-Language Expansion**: Porting the dTyp offline library model to Rust and Go.

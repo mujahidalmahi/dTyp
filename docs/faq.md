@@ -5,8 +5,24 @@
 
 ---
 
+### Q: How does the Humanized Natural Typing Engine work?
+**A:** The engine simulates real human typing behavior in modern IDEs:
+1. **Intelligent Delimiter Pairing**: When you type `{` or `(`, VS Code auto-creates the closing partner. dTyp detects this and steps over the closing delimiter instead of typing a duplicate token.
+2. **Muscle Memory Bursts**: 35%–60% faster typing on 55+ common C keywords (`int`, `return`, `printf`, `struct`, `sizeof`, `typedef`, etc.).
+3. **Cognitive Hesitations**: Natural pauses before block openers (`{`), after statement ends (`;`), at line breaks (`\n`), and after parameter commas (`,`).
+4. **Physical QWERTY Typos**: Occasional realistic keystroke slips to adjacent keys with an immediate 4-step self-correction sequence: stroke &rarr; pause &rarr; backspace &rarr; correct stroke.
+
+---
+
 ### Q: How does the Stealth Manual Typing (`Ctrl+D`) mode work?
-**A:** In Manual mode (`"dtyp.typingMode": "manual"`), when you select a component or snippet to insert, dTyp loads the code into an in-memory queue. Every time you press **`Ctrl+D`**, dTyp types the next character (or token batch configured via `dtyp.stepSize`) at your cursor position. This allows you to control the exact pacing of code generation during live demonstrations, screen shares, or laboratory sessions.
+**A:** In Manual mode (`"dtyp.typingMode": "manual"`), when you select a component or snippet to insert, dTyp tokenizes and loads the humanized actions into an in-memory queue. Every time you press **`Ctrl+D`**, dTyp executes the next humanized keystroke (including delimiter step-over and typo backspacing). This provides complete, realistic stealth during live demonstrations or evaluations.
+
+---
+
+### Q: How do I adjust the typing delay and undo behavior?
+**A:** Open VS Code settings (`Ctrl+,`) and search for `dtyp`:
+- **`dtyp.typingDelayMs`**: Configurable from 1ms up to **1000ms** per character.
+- **`dtyp.undoChunkSize`**: Groups edits into 2–3 character chunks (1 to 10 max) so pressing `Ctrl+Z` undoes a few characters at a time rather than reverting the entire file.
 
 ---
 

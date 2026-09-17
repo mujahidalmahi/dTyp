@@ -1,6 +1,6 @@
-# dTyp Typing Engine Specification
+# dTyp Humanized Typing Engine Specification (v3.0)
 
-The dTyp typing engine is a dual-mode, human-like keystroke simulation engine designed for Visual Studio Code and standalone desktop environments. It eliminates abrupt clipboard pasting in favor of realistic, organic character generation.
+The dTyp typing engine is a dual-mode, humanized keystroke simulation engine designed for Visual Studio Code. It eliminates abrupt clipboard pasting in favor of realistic, organic character generation that simulates how real programmers type in modern IDEs.
 
 ---
 
@@ -11,7 +11,12 @@ The dTyp typing engine is a dual-mode, human-like keystroke simulation engine de
             │
             ▼
 ┌───────────────────────┐
-│     MemoryEngine      │  ── Detects and injects missing #include headers
+│     HeaderEngine      │  ── Analyzes and injects missing standard C headers
+└───────────────────────┘
+            │
+            ▼
+┌───────────────────────┐
+│  StructuralTokenizer  │  ── Identifies keywords, hesitations, closing delimiters, and typos
 └───────────────────────┘
             │
             ▼
@@ -23,14 +28,14 @@ The dTyp typing engine is a dual-mode, human-like keystroke simulation engine de
    ▼                                 ▼
 [AUTOMATIC MODE]              [MANUAL STEALTH MODE]
    │                                 │
-CharacterQueue                Pending Step Buffer
-   │                                 │
-TypingScheduler                      ▼
-(Delay + Gaussian Jitter)     User presses [Ctrl+D]
-   │                                 │
-   ▼                                 ▼
-Editor Transaction            Editor Transaction
-(Character-by-character)      (Batch / Character step)
+TypingScheduler               Pending Action Queue
+(Cadence + Jitter + Typos)           │
+   │                                 ▼
+   ▼                          User presses [Ctrl+D]
+VSCodeTypingTarget                   │
+(Type / Overtype / Backspace)        ▼
+   │                          VSCodeTypingTarget
+   │                          (Type / Overtype / Backspace)
    │                                 │
    └────────┬────────────────────────┘
             │
@@ -42,40 +47,32 @@ Editor Transaction            Editor Transaction
 
 ---
 
-## 2. Dual Typing Modes
+## 2. Core Capabilities
 
-### Mode 1: Automatic Streaming (`"automatic"`)
-- **Continuous Keystroke Emulation**: The engine iterates through characters sequentially, inserting each character into the active `vscode.TextEditor` via an edit transaction.
-- **Latency & Jitter Simulation**:
-  - Base delay: Configured via `dtyp.typingDelayMs` (default `15ms`).
-  - Human Jitter: Uses a randomized Gaussian variance (`± jitterMs`) to simulate human rhythm.
-  - Punctuation Pauses: Slight micro-pauses after semicolons (`;`), braces (`{`, `}`), and newlines (`\n`) mimic natural pauses when writing code.
-- **Indentation Preservation**: Honors existing tab and space indentations without double-spacing.
+### A. Intelligent Delimiter Pairing & Overtyping
+When a human types `{` or `(`, modern editors like VS Code auto-insert the closing partner `}` or `)`. The typing engine marks closing delimiters as `overtype` actions. The target checks if the character at the active cursor position already matches the closing delimiter:
+- If it matches: smoothly steps the cursor over by 1 character without inserting a duplicate.
+- If it does not match: safely inserts the character.
 
-### Mode 2: Stealth Manual Stepping (`"manual"`)
-- **The `Ctrl+D` Stepping Queue**: Designed specifically for high-stress scenarios, live technical interviews, lab evaluations, and demonstrations.
-- **Queue Mechanics**:
-  1. When a component or snippet is selected, its text is loaded into an in-memory queue.
-  2. The VS Code context key `dtyp.hasQueuedCharacters` is set to `true`.
-  3. A status bar indicator appears: `$(keyboard) dTyp: <N> chars [Ctrl+D to step]`.
-  4. Each time the user presses **`Ctrl+D`**, the engine consumes `stepSize` characters (default `1`) from the queue and writes them directly at the active cursor position.
-  5. The status bar count updates dynamically.
-  6. When the queue reaches `0`, the stepping session concludes, and the context key is cleared.
-- **Complete Stealth**: The user has full control over when each character appears. Keystrokes appear indistinguishable from manual typing.
+### B. Muscle Memory Keyword Bursts
+Programmers type familiar keywords much faster. Keystrokes on 55+ common C keywords accelerate by **35% to 60%**.
 
----
+### C. Cognitive Hesitations
+Realistic pauses are injected at structural boundaries:
+- Before block openers (`{`)
+- After statement terminators (`;`)
+- At line breaks (`\n`)
+- After parameter commas (`,`)
 
-## 3. Safety, Concurrency & Cancellation Protocol
+### D. Physical QWERTY Typo Simulation & Self-Correction
+Keystrokes occasionally slip to physically adjacent keys based on a QWERTY proximity map. The engine simulates a 4-step correction sequence:
+1. Typo stroke (`type`)
+2. Visual recognition pause (`pause`)
+3. Deletion (`backspace` via `deleteBackward`)
+4. Correct stroke (`type`)
 
-### Cancellation (`Escape`)
-- If automatic typing is active or manual characters are queued, pressing **`Escape`** invokes `dtyp.cancelTyping`.
-- The scheduler loop terminates instantly.
-- The manual queue buffer is discarded.
-- Status bar items are removed.
-- Context keys `dtyp.isTyping` and `dtyp.hasQueuedCharacters` are reset to `false`.
-
-### Modifier Key Handling
-- In standalone environments (e.g. desktop Electron), native modifier keys (`Shift`, `Ctrl`, `Alt`) are explicitly released via `KEYEVENTF_KEYUP` to prevent keyboard lockup.
-
-### Concurrency Protection
-- If a typing session is already underway, initiating a new insertion will cleanly cancel the ongoing session before starting the new one, preventing race conditions or interleaved characters.
+### E. Real-World Edge Case Guards
+1. **Configurable Delay**: 1ms up to **1000ms** per character (`dtyp.typingDelayMs`).
+2. **Granular Undo**: Groups edits into 2–3 character chunks so pressing `Ctrl+Z` undoes a few characters at a time (`dtyp.undoChunkSize`).
+3. **Cursor Relocation Guard**: If the user moves the cursor manually while typing, the engine immediately pauses and offers a prompt to resume or realign.
+4. **Tab-Switch Guard**: If the user switches editor tabs while typing, the engine pauses immediately to prevent code corruption in other files.

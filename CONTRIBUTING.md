@@ -53,19 +53,22 @@ By participating in this project, you agree to abide by our [Code of Conduct](CO
 
 ### 1. Contributing C Components
 All C components in dTyp adhere to strict quality invariants:
+- **Zero Comments Invariant**: Components must contain 0 comments (no `//` or `/* */`).
 - **Zero External Dependencies**: Must compile on standard `gcc -Wall -Wextra -std=c11` without third-party libraries.
 - **Self-Contained Structures**: Any struct types required (e.g. `Node`, `Stack`, `Matrix`) must declare their typedefs and dependencies cleanly.
 - **Memory Safety**: Any function that performs dynamic memory allocation (`malloc`) must check for allocation failure (`NULL`) and provide a corresponding free/destroy companion function.
 - **Clear Documentation & Complexity**: Every component must specify its time and space complexity (e.g. `O(n log n)`, `O(1)`) and a descriptive summary.
 
 ### 2. Adding / Modifying Engines
-The VS Code extension core is partitioned into 6 independent engines located under `apps/vscode/src/engine/`:
+The VS Code extension core is partitioned into 8 independent engines located under `apps/vscode/src/engine/`:
+- `auto-type-engine.ts`: Dual-mode typing (automatic streaming vs manual `Ctrl+D` stepping) with human cadence, delimiter overtyping, and typo correction.
+- `header-engine.ts`: Document header scanning and duplicate-free auto-injection.
+- `memory-engine.ts`: Heap allocation leak detection and disposable resource tracking.
 - `cursor-engine.ts`: Placeholder detection and cursor navigation.
-- `session-engine.ts`: Insertion history and favorites management.
-- `memory-engine.ts`: Document header scanning and auto-injection.
-- `auto-type-engine.ts`: Dual-mode typing (automatic simulated jitter vs manual `Ctrl+D` stepping).
-- `search-engine.ts`: Scored fuzzy search with category filters.
 - `snippet-engine.ts`: Native completion provider with interactive tab-stops.
+- `session-engine.ts`: Insertion history and favorites management.
+- `search-engine.ts`: Scored fuzzy search with category filters.
+- `update-engine.ts`: Background GitHub release checking and one-click VSIX update.
 
 All engine logic must remain modular and covered by unit tests in `tests/unit/`.
 
@@ -79,7 +82,7 @@ All engine logic must remain modular and covered by unit tests in `tests/unit/`.
    ```
 2. Ensure full type-checking passes:
    ```bash
-   npx tsc --noEmit
+   npm run build
    ```
 3. Ensure all tests pass:
    ```bash
@@ -90,4 +93,4 @@ All engine logic must remain modular and covered by unit tests in `tests/unit/`.
    - `fix:` for bug fixes
    - `docs:` for documentation updates
    - `refactor:` for code refactoring
-5. Push to your fork and submit a Pull Request against `main` using our [PR Template](.github/PULL_REQUEST_TEMPLATE.md).
+5. Push to your fork and submit a Pull Request against `main`.
