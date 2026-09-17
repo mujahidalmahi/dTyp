@@ -52,7 +52,9 @@ describe("DefaultTypingEngine", () => {
 
     const progressChars: string[] = [];
     engine.on("progress", (data) => {
-      progressChars.push(data.char);
+      if (data.char) {
+        progressChars.push(data.char);
+      }
     });
 
     await engine.start("Hello", {
