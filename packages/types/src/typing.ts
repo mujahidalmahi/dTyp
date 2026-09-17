@@ -1,7 +1,7 @@
 export type TypingExecutionMode = "automatic" | "manual";
-export type TypingModel = "humanized" | "linear";
+export type TypingModel = "nonlinear" | "humanized" | "linear";
 
-export type TypingActionType = "type" | "overtype" | "backspace" | "pause";
+export type TypingActionType = "type" | "overtype" | "backspace" | "pause" | "cursor_move" | "newline";
 
 export interface TypingAction {
   type: TypingActionType;
@@ -9,6 +9,10 @@ export interface TypingAction {
   delayMs?: number;
   description?: string;
   autoClose?: string;
+  targetLineOffset?: number;
+  targetColumn?: number;
+  indentSpaces?: number;
+  targetLandmark?: "above_main" | "inside_main";
 }
 
 export interface TypingOptions {
@@ -44,6 +48,10 @@ export interface QueuedCharacter {
   action?: TypingActionType;
   description?: string;
   autoClose?: string;
+  targetLineOffset?: number;
+  targetColumn?: number;
+  indentSpaces?: number;
+  targetLandmark?: "above_main" | "inside_main";
 }
 
 export interface TypingTarget {
@@ -52,6 +60,7 @@ export interface TypingTarget {
   releaseModifiers(): Promise<void>;
   overtypeCharacter?(character: string): Promise<void>;
   deleteBackward?(): Promise<void>;
+  moveCursor?(lineOffset: number, column?: number, landmark?: "above_main" | "inside_main"): Promise<void>;
 }
 
 export interface KeyboardMapper {
@@ -59,6 +68,7 @@ export interface KeyboardMapper {
   releaseModifiers?(): Promise<void>;
   overtypeCharacter?(character: string): Promise<void>;
   deleteBackward?(): Promise<void>;
+  moveCursor?(lineOffset: number, column?: number, landmark?: "above_main" | "inside_main"): Promise<void>;
 }
 
 export interface TypingProgressEvent {

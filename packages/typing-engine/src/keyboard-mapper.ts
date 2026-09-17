@@ -37,4 +37,14 @@ export class StandardKeyboardMapper implements KeyboardMapper {
       await this.target.releaseModifiers();
     }
   }
+
+  public async moveCursor(
+    lineOffset: number,
+    column?: number,
+    landmark?: "above_main" | "inside_main"
+  ): Promise<void> {
+    if (this.target && typeof this.target.moveCursor === "function") {
+      await this.target.moveCursor(lineOffset, column, landmark);
+    }
+  }
 }

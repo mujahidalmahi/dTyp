@@ -77,7 +77,7 @@ export class AutoTypeEngine {
     const cursorPolicy = config.get<CursorJumpAction>("onCursorJump", "pause");
     const pauseOnTabSwitch = config.get<boolean>("pauseOnTabSwitch", true);
     const undoChunkSize = config.get<number>("undoChunkSize", 3);
-    const naturalTypingModel = config.get<TypingModel>("naturalTypingModel", "humanized");
+    const naturalTypingModel = config.get<TypingModel>("naturalTypingModel", "nonlinear");
     const enableTypoSimulation = config.get<boolean>("enableTypoSimulation", true);
     const typoRate = config.get<number>("typoRate", 0.015);
 
@@ -104,7 +104,7 @@ export class AutoTypeEngine {
       } catch (err: any) {
         if (err.message === "TYPING_PAUSED_CURSOR_MOVED") {
           vscode.window.showWarningMessage(
-            `dTyp: Typing paused because the cursor was moved. Use Ctrl+D or click Resume.`,
+            `dTyp: Typing paused because the cursor was moved. Use Ctrl+Shift+D or click Resume.`,
             "Resume at original position",
             "Resume at current cursor",
             "Cancel"
@@ -142,7 +142,7 @@ export class AutoTypeEngine {
       let actions: TypingAction[];
       if (naturalTypingModel !== "linear") {
         const tokenizer = new StructuralTokenizer({
-          model: "humanized",
+          model: naturalTypingModel,
           baseDelayMs: delayMs,
           jitterMs,
           enableTypoSimulation,
@@ -194,8 +194,15 @@ export class AutoTypeEngine {
           await this.typingTarget.overtypeCharacter(action.char || "");
         } else if (action.type === "backspace") {
           await this.typingTarget.deleteBackward();
+        } else if (action.type === "cursor_move") {
+          await this.typingTarget.moveCursor(
+            action.targetLineOffset ?? 0,
+            action.targetColumn,
+            action.targetLandmark
+          );
+          stepsExecuted--;
         } else if (action.type === "pause") {
-          // Pause action - don't consume user's Ctrl+D stroke on a pure pause
+          // Pause action - don't consume user's keystroke on a pure pause
           stepsExecuted--;
         } else {
           await this.typingTarget.typeCharacter(action.char || "", action.autoClose);
@@ -240,6 +247,12 @@ export class AutoTypeEngine {
         await this.typingTarget.overtypeCharacter(action.char || "");
       } else if (action.type === "backspace") {
         await this.typingTarget.deleteBackward();
+      } else if (action.type === "cursor_move") {
+        await this.typingTarget.moveCursor(
+          action.targetLineOffset ?? 0,
+          action.targetColumn,
+          action.targetLandmark
+        );
       } else if (action.type === "type") {
         await this.typingTarget.typeCharacter(action.char || "", action.autoClose);
       }

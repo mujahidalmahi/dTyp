@@ -23,6 +23,10 @@ export class CharacterQueue {
         action: act.type,
         description: act.description,
         autoClose: act.autoClose,
+        targetLineOffset: act.targetLineOffset,
+        targetColumn: act.targetColumn,
+        indentSpaces: act.indentSpaces,
+        targetLandmark: act.targetLandmark,
       });
     }
   }

@@ -70,6 +70,8 @@ export class TypingScheduler {
           await this.mapper.deleteBackward();
         } else if (item.action === "pause") {
           // Pure pause action (hesitation or recognition)
+        } else if (item.action === "cursor_move") {
+          await this.mapper.moveCursor(item.targetLineOffset ?? 0, item.targetColumn, item.targetLandmark);
         } else {
           await this.mapper.typeCharacter(item.char, item.autoClose);
           typedChars++;

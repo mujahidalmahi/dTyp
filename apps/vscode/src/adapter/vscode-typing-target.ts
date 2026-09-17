@@ -238,4 +238,100 @@ export class VSCodeTypingTarget implements TypingTarget {
   public async releaseModifiers(): Promise<void> {
     this.logger.debug("VS Code typing target modifier release requested");
   }
+
+  public async moveCursor(
+    lineOffset: number,
+    column?: number,
+    landmark?: "above_main" | "inside_main"
+  ): Promise<void> {
+    const activeEditor = this.editor ?? vscode.window.activeTextEditor;
+    if (!activeEditor) {
+      throw new Error("No active text editor in VS Code to move cursor");
+    }
+
+    if (this.pauseOnTabSwitch && this.activeDocUri && activeEditor.document.uri.toString() !== this.activeDocUri) {
+      throw new Error("TYPING_PAUSED_TAB_SWITCHED");
+    }
+
+    const doc = activeEditor.document;
+    let targetLine = -1;
+    let targetCol = column ?? 0;
+
+    if (landmark === "above_main") {
+      // Find line declaring main()
+      for (let l = 0; l < doc.lineCount; l++) {
+        const text = doc.lineAt(l).text;
+        if (/\b(?:int|void)\s+main\s*\(/.test(text)) {
+          targetLine = l;
+          break;
+        }
+      }
+      if (targetLine !== -1) {
+        // If line immediately above main is empty, position cursor on it.
+        if (targetLine > 0 && doc.lineAt(targetLine - 1).text.trim() === "") {
+          targetLine = targetLine - 1;
+        } else {
+          // If no empty line above main, insert a newline before main
+          const insertPos = new vscode.Position(targetLine, 0);
+          await activeEditor.edit((builder) => builder.insert(insertPos, "\n"), {
+            undoStopBefore: false,
+            undoStopAfter: false,
+          });
+        }
+        targetCol = 0;
+      }
+    } else if (landmark === "inside_main") {
+      // Find main() and locate either 'return' or opening brace
+      let mainLine = -1;
+      for (let l = 0; l < doc.lineCount; l++) {
+        if (/\b(?:int|void)\s+main\s*\(/.test(doc.lineAt(l).text)) {
+          mainLine = l;
+          break;
+        }
+      }
+
+      if (mainLine !== -1) {
+        let returnLine = -1;
+        let braceLine = -1;
+        for (let l = mainLine; l < doc.lineCount; l++) {
+          const text = doc.lineAt(l).text;
+          if (text.includes("{") && braceLine === -1) {
+            braceLine = l;
+          }
+          if (/\breturn\b/.test(text)) {
+            returnLine = l;
+            break;
+          }
+          if (text.includes("}") && l > mainLine) {
+            break;
+          }
+        }
+
+        if (returnLine !== -1) {
+          targetLine = returnLine;
+          targetCol = 0;
+        } else if (braceLine !== -1) {
+          targetLine = Math.min(doc.lineCount - 1, braceLine + 1);
+          targetCol = 4;
+        }
+      }
+    }
+
+    // Fallback if landmark not found or not specified
+    if (targetLine === -1) {
+      const currentPos = activeEditor.selection.active;
+      targetLine = Math.max(0, Math.min(doc.lineCount - 1, currentPos.line + lineOffset));
+      targetCol = column !== undefined ? column : currentPos.character;
+    }
+
+    const lineLength = doc.lineAt(targetLine).text.length;
+    const clampedCol = Math.max(0, Math.min(lineLength, targetCol));
+    const newPos = new vscode.Position(targetLine, clampedCol);
+
+    activeEditor.selection = new vscode.Selection(newPos, newPos);
+    this.expectedHead = newPos;
+
+    activeEditor.revealRange(new vscode.Range(newPos, newPos), vscode.TextEditorRevealType.InCenterIfOutsideViewport);
+    this.logger.debug(`Cursor moved to line ${targetLine}, col ${clampedCol} (landmark: ${landmark ?? "none"})`);
+  }
 }

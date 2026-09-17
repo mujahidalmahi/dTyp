@@ -53,9 +53,9 @@ export class DefaultTypingEngine implements TypingEngine {
       return;
     }
 
-    if (options.naturalTypingModel === "humanized") {
+    if (options.naturalTypingModel === "humanized" || options.naturalTypingModel === "nonlinear") {
       const tokenizer = new StructuralTokenizer({
-        model: "humanized",
+        model: options.naturalTypingModel,
         baseDelayMs: options.delayMs,
         jitterMs: options.jitterMs,
         enableTypoSimulation: options.enableTypoSimulation ?? true,

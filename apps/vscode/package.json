@@ -253,11 +253,12 @@
         "dtyp.naturalTypingModel": {
           "type": "string",
           "enum": [
+            "nonlinear",
             "humanized",
             "linear"
           ],
-          "default": "humanized",
-          "description": "Typing model: 'humanized' simulates muscle memory bursts, delimiter overtyping, and natural cadence; 'linear' outputs raw character sequence."
+          "default": "nonlinear",
+          "description": "Typing model: 'nonlinear' (recommended) scaffolds headers and main() first, moves above main() for types and helper functions, and enters main() for driver logic; 'humanized' simulates cadence bursts linearly; 'linear' outputs raw character stream."
         },
         "dtyp.enableTypoSimulation": {
           "type": "boolean",

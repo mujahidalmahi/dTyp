@@ -4,3 +4,5 @@ export * from "./scheduler.js";
 export * from "./typing-engine.js";
 export * from "./human-cadence.js";
 export * from "./structural-tokenizer.js";
+export * from "./c-structural-decomposer.js";
+export * from "./nonlinear-authoring-planner.js";

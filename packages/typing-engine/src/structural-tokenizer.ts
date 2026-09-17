@@ -1,5 +1,7 @@
 import { TypingAction, TypingModel } from "@dtyp/types";
 import { HumanCadence, C_BURST_KEYWORDS } from "./human-cadence.js";
+import { CStructuralDecomposer } from "./c-structural-decomposer.js";
+import { NonlinearAuthoringPlanner } from "./nonlinear-authoring-planner.js";
 
 export interface TokenizerOptions {
   model: TypingModel;
@@ -30,12 +32,64 @@ export class StructuralTokenizer {
   }
 
   /**
-   * Tokenizes C source code into an executable sequence of humanized TypingActions
-   * with realistic auto-closing pair simulation matching VS Code behavior.
+   * Tokenizes C source code into an executable sequence of humanized TypingActions.
+   * If the code is a full C program and the model is nonlinear/humanized, it scaffolds
+   * headers and main() first, moves above main() for helper functions, and returns into main().
    */
   public tokenize(source: string): TypingAction[] {
+    const isNonlinear = this.options.model === "nonlinear" || this.options.model === "humanized";
+    if (isNonlinear) {
+      const decomposed = CStructuralDecomposer.decompose(source);
+      if (decomposed.isFullProgram) {
+        const steps = NonlinearAuthoringPlanner.plan(decomposed, source);
+        const actions: TypingAction[] = [];
+
+        for (const step of steps) {
+          if (step.cursorMoveBefore) {
+            actions.push({
+              type: "cursor_move",
+              targetLineOffset: step.cursorMoveBefore.lineOffset,
+              targetColumn: step.cursorMoveBefore.column,
+              targetLandmark: step.cursorMoveBefore.landmark,
+              delayMs: 150,
+              description: step.description,
+            });
+          }
+
+          if (step.pauseBeforeMs && step.pauseBeforeMs > 0) {
+            actions.push({
+              type: "pause",
+              delayMs: step.pauseBeforeMs,
+              description: "thinking hesitation",
+            });
+          }
+
+          const stepActions = this.tokenizeLinear(step.code);
+          actions.push(...stepActions);
+
+          if (step.pauseAfterMs && step.pauseAfterMs > 0) {
+            actions.push({
+              type: "pause",
+              delayMs: step.pauseAfterMs,
+              description: "post-step cognitive hesitation",
+            });
+          }
+        }
+
+        return actions;
+      }
+    }
+
+    return this.tokenizeLinear(source);
+  }
+
+  /**
+   * Tokenizes C source code linearly character by character with burst keywords,
+   * auto-close simulation, and realistic typos.
+   */
+  public tokenizeLinear(source: string): TypingAction[] {
     const actions: TypingAction[] = [];
-    const isHumanized = this.options.model === "humanized";
+    const isHumanized = this.options.model === "humanized" || this.options.model === "nonlinear";
     const enableTypos = this.options.enableTypoSimulation ?? true;
     const typoRate = this.options.typoRate ?? 0.015;
 
