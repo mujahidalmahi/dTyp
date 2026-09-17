@@ -22,15 +22,48 @@
     "sortOrder": 0
   },
   {
+    "id": "boiler-plate.loops",
+    "parentId": "boiler-plate",
+    "name": "Loops Syntax",
+    "slug": "loops",
+    "path": "boiler-plate/loops",
+    "depth": 1,
+    "type": "family",
+    "description": "Loops Syntax hierarchy node",
+    "sortOrder": 1
+  },
+  {
+    "id": "boiler-plate.conditionals",
+    "parentId": "boiler-plate",
+    "name": "Conditionals Syntax",
+    "slug": "conditionals",
+    "path": "boiler-plate/conditionals",
+    "depth": 1,
+    "type": "family",
+    "description": "Conditionals Syntax hierarchy node",
+    "sortOrder": 2
+  },
+  {
+    "id": "boiler-plate.types",
+    "parentId": "boiler-plate",
+    "name": "Types & Structs",
+    "slug": "types",
+    "path": "boiler-plate/types",
+    "depth": 1,
+    "type": "family",
+    "description": "Types & Structs hierarchy node",
+    "sortOrder": 3
+  },
+  {
     "id": "boiler-plate.memory",
     "parentId": "boiler-plate",
-    "name": "Memory Allocators",
+    "name": "Memory Allocation",
     "slug": "memory",
     "path": "boiler-plate/memory",
     "depth": 1,
     "type": "family",
-    "description": "Memory Allocators hierarchy node",
-    "sortOrder": 1
+    "description": "Memory Allocation hierarchy node",
+    "sortOrder": 4
   },
   {
     "id": "boiler-plate.file",
@@ -41,7 +74,7 @@
     "depth": 1,
     "type": "family",
     "description": "File Streams hierarchy node",
-    "sortOrder": 2
+    "sortOrder": 5
   },
   {
     "id": "boiler-plate.testing",
@@ -52,7 +85,7 @@
     "depth": 1,
     "type": "family",
     "description": "Testing & Assertions hierarchy node",
-    "sortOrder": 3
+    "sortOrder": 6
   },
   {
     "id": "boiler-plate.headers",
@@ -63,6 +96,6 @@
     "depth": 1,
     "type": "family",
     "description": "Headers & Modules hierarchy node",
-    "sortOrder": 4
+    "sortOrder": 7
   }
 ]

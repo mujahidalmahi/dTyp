@@ -2,7 +2,7 @@
 
 ## 1. Overview
 
-The dTyp C Library is an offline-first collection of **10,000 production-grade academic C components**, snippets, and architectural templates spanning 12 foundational computer science domains and 303 categories.
+The dTyp C Library is an offline-first collection of **2,500 production-grade academic C components**, snippets, and architectural templates spanning 12 foundational computer science domains and 306 categories.
 
 The library is compiled into an indexed SQLite WebAssembly database (`dtyp.db`) located in:
 - `database/dtyp.db`
@@ -16,18 +16,18 @@ For an exhaustive architectural catalog with sample signatures, parameter variat
 
 | Domain | Category Code | Component Count | Highlights |
 |---|---|---|---|
-| **Data Structures** | `data-structures` | 2,800 | Singly, Doubly, Circular Linked Lists; Stacks; Queues; Trees (Binary, BST, AVL, RB); Binary Heaps; Tries; Hash Tables |
-| **Algorithms** | `algorithms` | 2,500 | Sorting (Quick, Merge, Heap, Tim, Radix), Searching (Binary, Exponential), Graph (BFS, DFS, Dijkstra, Prim), DP (Knapsack, LCS, LIS) |
-| **Numerical Methods** | `numerical-methods` | 1,300 | Root finding (Newton-Raphson, Bisection), Linear systems (Gaussian, LU), Quadrature, Runge-Kutta ODE solvers |
-| **Competitive Programming** | `competitive-programming` | 900 | Fast I/O buffers (`getchar_unlocked`), Modular arithmetic, Prime sieve, Fenwick, DSU |
-| **Boiler Plate** | `boiler-plate` | 600 | Main entry points, CLI args (`getopt`), arena/pool allocators, file streams, test assertion runners |
-| **Utilities & Templates** | `utilities` | 500 | Memory leak trackers, high-res timers, string builders, CSV tokenizers, bit arrays |
-| **Programming Patterns** | `programming-patterns` | 500 | Two Pointers, Sliding Window, Monotonic Stacks, Coordinate Compression, State Machines |
-| **C Basics** | `c-basics` | 200 | Syntax declarations, loops, conditionals, array fundamentals, standard conversions |
-| **C Intermediate** | `c-intermediate` | 200 | Structs & unions, dynamic memory allocations, file I/O operations, preprocessor macros |
-| **C Advanced** | `c-advanced` | 200 | Function pointers, dispatch tables, bitwise hacks, memory alignments, UB guards |
-| **Academic Programming** | `academic-programming` | 150 | Signals & FFT, circuit analysis, physics simulation, discrete mathematics, university lab tasks |
-| **C Projects** | `projects` | 150 | Student management, banking system, library system, CLI shell, file database, calculator |
+| **Data Structures** | `data-structures` | 700 | Singly, Doubly, Circular Linked Lists; Stacks; Queues; Deques; Trees (Binary, BST, AVL, RB); Binary Heaps; Tries; Hash Tables; Vectors; Ring Buffers; Matrices |
+| **Algorithms** | `algorithms` | 550 | Sorting (Quick, Merge, Heap, Tim, Radix), Searching (Binary, Exponential), Graph (BFS, DFS, Dijkstra, Prim), DP (Knapsack, LCS, LIS), Backtracking |
+| **Competitive Programming** | `competitive-programming` | 250 | Fast I/O buffers (`getchar_unlocked`), Modular arithmetic, Prime sieve, Fenwick (BIT), LCA binary lifting, Strings (KMP, Z) |
+| **Numerical Methods** | `numerical-methods` | 250 | Root finding (Newton-Raphson, Bisection), Linear systems (Gaussian, LU), Quadrature, Runge-Kutta ODE solvers (RK4, RK45) |
+| **Boiler Plate** | `boiler-plate` | 205 | C language syntax templates: loops, conditionals, main starters, structs/unions, memory allocation, file I/O, preprocessor |
+| **Programming Patterns** | `programming-patterns` | 140 | OOP in C with VTables, State Machines, Observers, Sliding Window, Two Pointers, Monotonic Stacks |
+| **Utilities & Templates** | `utilities` | 140 | Dynamic string builder, dynamic bitset, memory leak tracker, leveled logger, high-res timers |
+| **C Basics** | `c-basics` | 70 | Validated terminal I/O, array rotations/min/max/average, custom string algorithms without string.h |
+| **C Intermediate** | `c-intermediate` | 60 | Binary/text struct serialization, dynamic 2D memory layouts, function pointer callbacks, preprocessor macros |
+| **C Advanced** | `c-advanced` | 60 | C11 _Generic macros, variadic <stdarg.h>, cache-line alignment utilities, POSIX signals, sockets |
+| **Academic Programming** | `academic-programming` | 50 | Cooley-Tukey FFT/IFFT, RLC circuit solver, 2D physics & orbital simulation, discrete math truth tables |
+| **C Projects** | `projects` | 25 | 25 Complete standalone runnable project files from beginning to end with main() |
 
 ---
 

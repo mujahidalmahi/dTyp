@@ -56,7 +56,10 @@ export function getFullTaxonomyHierarchy(): Record<string, TaxonomyNode[]> {
         slug: "boiler-plate",
         children: [
           { name: "Main Entrypoint", slug: "main" },
-          { name: "Memory Allocators", slug: "memory" },
+          { name: "Loops Syntax", slug: "loops" },
+          { name: "Conditionals Syntax", slug: "conditionals" },
+          { name: "Types & Structs", slug: "types" },
+          { name: "Memory Allocation", slug: "memory" },
           { name: "File Streams", slug: "file" },
           { name: "Testing & Assertions", slug: "testing" },
           { name: "Headers & Modules", slug: "headers" },

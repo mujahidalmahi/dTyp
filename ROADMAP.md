@@ -6,11 +6,11 @@ This document outlines the strategic roadmap for the **dTyp** developer ecosyste
 
 ## 🚀 Released: Version 2.0.0 (Current)
 
-- [x] **10,000 Must-Have C Components**: Complete bloat-free refactor across 12 canonical domains.
+- [x] **2,500 Essential C Components**: Complete bloat-free refactor across 12 canonical domains.
 - [x] **New Boiler Plate Category**: Compilable entry points, CLI args, Makefiles, allocators.
 - [x] **Dual Typing Engine**: Automatic human-simulated delay vs **Stealth Manual `Ctrl+D`** stepping.
 - [x] **6 Production Engines**: Cursor, Session, Memory, AutoType, Search, Snippets.
-- [x] **Database Optimization**: SQLite WebAssembly database shrunk from 178 MB down to 18.0 MB (over 89% reduction).
+- [x] **Database Optimization**: SQLite WebAssembly database shrunk from 178 MB down to 3.82 MB (over 97% reduction).
 - [x] **Activity Bar & Sidebar TreeViews**: Hierarchical library explorer, favorites, recent history, controls.
 - [x] **Release Notes Dashboard**: Interactive dark-mode webview with shortcuts cheat-sheet.
 - [x] **Auto-Update Engine**: Non-intrusive GitHub release detection and one-click VSIX update.
