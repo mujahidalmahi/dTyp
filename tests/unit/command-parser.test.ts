@@ -25,8 +25,11 @@ describe("CommandParser", () => {
     const cmd2 = CommandParser.parse("dp>knapsack01()");
     expect(cmd2?.category).toBe("algorithms");
 
-    const cmd3 = CommandParser.parse("num>bisectionMethod()");
-    expect(cmd3?.category).toBe("numerical-methods");
+    const cmd3 = CommandParser.parse("boiler>main()");
+    expect(cmd3?.category).toBe("boiler-plates");
+
+    const cmd4 = CommandParser.parse("academic>fft()");
+    expect(cmd4?.category).toBe("academics-programming");
   });
 
   it("rejects invalid commands", () => {

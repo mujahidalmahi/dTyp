@@ -79,14 +79,6 @@ CREATE TABLE IF NOT EXISTS snippets (
     FOREIGN KEY(component_id) REFERENCES components(id) ON DELETE SET NULL
 );
 
-CREATE TABLE IF NOT EXISTS templates (
-    id TEXT PRIMARY KEY,
-    name TEXT NOT NULL,
-    category TEXT NOT NULL,
-    body TEXT NOT NULL,
-    description TEXT
-);
-
 -- Tags
 CREATE TABLE IF NOT EXISTS tags (
     id INTEGER PRIMARY KEY AUTOINCREMENT,

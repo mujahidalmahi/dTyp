@@ -1,4 +1,14 @@
 export type TypingExecutionMode = "automatic" | "manual";
+export type TypingModel = "humanized" | "linear";
+
+export type TypingActionType = "type" | "overtype" | "backspace" | "pause";
+
+export interface TypingAction {
+  type: TypingActionType;
+  char?: string;
+  delayMs?: number;
+  description?: string;
+}
 
 export interface TypingOptions {
   delayMs: number;
@@ -8,6 +18,9 @@ export interface TypingOptions {
   preserveNewlines: boolean;
   preserveTabs: boolean;
   jitterMs?: number;
+  naturalTypingModel?: TypingModel;
+  enableTypoSimulation?: boolean;
+  typoRate?: number;
 }
 
 export type TypingState = "idle" | "typing" | "paused" | "cancelled" | "completed" | "error";
@@ -27,12 +40,16 @@ export interface QueuedCharacter {
   isNewline: boolean;
   isTab: boolean;
   delayOverrideMs?: number;
+  action?: TypingActionType;
+  description?: string;
 }
 
 export interface TypingTarget {
   focus(): Promise<void>;
   typeCharacter(character: string): Promise<void>;
   releaseModifiers(): Promise<void>;
+  overtypeCharacter?(character: string): Promise<void>;
+  deleteBackward?(): Promise<void>;
 }
 
 export interface KeyboardMapper {

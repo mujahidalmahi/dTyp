@@ -10,7 +10,7 @@
   <a href="https://github.com/mujahidalmahi/dTyp/actions/workflows/ci.yml"><img src="https://img.shields.io/github/actions/workflow/status/mujahidalmahi/dTyp/ci.yml?branch=main&label=CI&logo=github" alt="CI Build Status" /></a>
   <a href="https://github.com/mujahidalmahi/dTyp/releases/latest"><img src="https://img.shields.io/github/v/release/mujahidalmahi/dTyp?color=blue&label=version&logo=semanticrelease" alt="Release Version" /></a>
   <a href="https://marketplace.visualstudio.com/items?itemName=1da7b1e6-01f1-6f58-9ef3-d95516c5e875.dtyp-vscode"><img src="https://img.shields.io/badge/VS%20Code-Marketplace-007ACC?logo=visualstudiocode&logoColor=white" alt="VS Code Marketplace" /></a>
-  <a href="docs/LIBRARY_CATALOG.md"><img src="https://img.shields.io/badge/library-2%2C500%20C%20Components-emerald?logo=c" alt="2,500 C Components" /></a>
+  <a href="docs/LIBRARY_CATALOG.md"><img src="https://img.shields.io/badge/library-500%20C%20Components-emerald?logo=c" alt="500 C Components" /></a>
   <a href="#"><img src="https://img.shields.io/badge/runtime-SQLite%20WASM-blueviolet?logo=sqlite" alt="SQLite WASM" /></a>
   <a href="SECURITY.md"><img src="https://img.shields.io/badge/privacy-100%25%20Offline-orange" alt="100% Offline" /></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-green.svg" alt="License: MIT" /></a>
@@ -21,7 +21,7 @@
 
 ## ⚡ Executive Summary
 
-**dTyp** is a zero-cloud, high-performance C/C++ developer companion and stealth typing simulator built natively for Visual Studio Code. It packages **2,500 compilable, bloat-free C components** across 12 primary computer science domains inside an embedded SQLite WebAssembly database, accompanied by a realistic **character-by-character typing engine**.
+**dTyp** is a zero-cloud, high-performance C/C++ developer companion and stealth typing simulator built natively for Visual Studio Code. It packages **500 compilable, bloat-free C components** across 7 primary computer science domains inside an embedded SQLite WebAssembly database, accompanied by a realistic **character-by-character typing engine**.
 
 Whether practicing complex algorithms, preparing academic lab assignments, or debugging real-world systems, dTyp types flawless, production-ready code directly into your editor—either continuously with human-like jitter or discreetly keystroke-by-keystroke via **`Ctrl+D`**.
 
@@ -32,8 +32,8 @@ Whether practicing complex algorithms, preparing academic lab assignments, or de
 - [Why dTyp?](#-why-dtyp)
 - [Key Architectural Features](#-key-architectural-features)
   - [1. Dual Typing Simulation Modes](#1-dual-typing-simulation-modes)
-  - [2. 2,500 Compilable C Components](#2-2500-compilable-c-components)
-  - [3. Six High-Performance Production Engines](#3-six-high-performance-production-engines)
+  - [2. 500 Compilable C Components](#2-2500-compilable-c-components)
+  - [3. Eight High-Performance Production Engines](#3-six-high-performance-production-engines)
   - [4. Dedicated Activity Bar & 4 Sidebar TreeViews](#4-dedicated-activity-bar--4-sidebar-treeviews)
   - [5. Interactive Release Notes & Automated Update Engine](#5-interactive-release-notes--automated-update-engine)
   - [6. 100% Offline & Zero-Cloud Privacy Guarantee](#6-100-offline--zero-cloud-privacy-guarantee)
@@ -56,9 +56,9 @@ Whether practicing complex algorithms, preparing academic lab assignments, or de
 |---|---|---|---|
 | **Insertion Mechanism** | Instant bulk clipboard paste | Multi-token streaming / paste | **Realistic character typing or stealth `Ctrl+D` stepping** |
 | **Offline Reliability** | ✅ Yes (Static JSON) | ❌ No (Requires internet & active subscription) | **✅ 100% Offline (Embedded SQLite WebAssembly)** |
-| **Component Depth** | ~50 basic templates | Probabilistic / Hallucinatory | **2,500 verified compilable C components** |
+| **Component Depth** | ~50 basic templates | Probabilistic / Hallucinatory | **500 verified compilable C components** |
 | **Parameter Variations** | ❌ None | Unpredictable variations | **Structured algorithmic & pointer variations** |
-| **AST / Header Injection** | ❌ None | Partial / Manual | **Automatic missing header detection & insertion** |
+| **AST / Header Injection** | ❌ None | Partial / Manual | **Automatic header injection & dynamic memory leak analysis** |
 | **Exam / Lab Discretion** | ❌ Obvious paste events | ❌ Flagged by network proxies & telemetry | **Total stealth with status-bar stepping buffer** |
 | **UI Experience** | Basic autocomplete list | Ghost text inline suggestions | **Dedicated Activity Bar, TreeViews, & Webviews** |
 
@@ -71,8 +71,8 @@ dTyp never forces a sudden clipboard paste. Instead, choose your typing modality
 - **Automatic Streaming (`"automatic"`)**: The engine simulates human keystrokes with configurable character latency (`15ms` default) and randomized Gaussian jitter. Complete with realistic newline pauses and indentation awareness.
 - **Stealth Manual Stepping (`"manual"`)**: Queues the selected component or snippet into an in-memory stepping buffer. Every time you press **`Ctrl+D`**, dTyp types the next character (or batch of characters) into your active editor. To an observer or screen recorder, you are typing every character yourself with natural human timing.
 
-### 2. 2,500 Compilable C Components
-Curated, bloat-free, standards-compliant C99/C11 code organized into 12 primary domains and 306 categories. Every component features rich parameter variations:
+### 2. 500 Compilable C Components
+Curated, bloat-free, standards-compliant C99/C11 code organized into 7 primary domains and 306 categories. Every component features rich parameter variations:
 - **Function pointer abstractions** vs **direct pointer operations**.
 - **Error status codes (`int` returning error enums)** vs **direct return value types**.
 - **Iterative implementations** vs **recursive implementations**.
@@ -80,9 +80,10 @@ Curated, bloat-free, standards-compliant C99/C11 code organized into 12 primary 
 
 *Explore the full catalog breakdown in [docs/LIBRARY_CATALOG.md](docs/LIBRARY_CATALOG.md).*
 
-### 3. Six High-Performance Production Engines
+### 3. Eight High-Performance Production Engines
 - 🎯 **CursorEngine**: Automatically parses inserted code for placeholder tokens (e.g. `/* TODO */`, `/* INSERT */`, `<type>`) and places your cursor exactly at the first editable target.
-- 🧠 **MemoryEngine**: Scans the active C document and automatically injects any missing standard headers (e.g. `<stdlib.h>`, `<stdbool.h>`, `<stdio.h>`, `<math.h>`) at the top of the file without creating duplicate includes.
+- 🛡️ **HeaderEngine**: Scans the active C document and automatically injects missing standard headers (<stdlib.h>, <stdbool.h>, <stdio.h>, <math.h>) without duplicates.
+- 🧠 **MemoryEngine**: Scans dynamic heap allocations (malloc, calloc, realloc) and detects potential memory leaks, missing free() calls, and handles resource disposal.
 - ⏱️ **SessionEngine**: Persists your insertion history, session statistics, and starred favorites across editor reloads.
 - ⚡ **AutoTypeEngine**: Orchestrates the character queue, keystroke scheduler, and `Ctrl+D` manual step buffer.
 - 🔍 **SearchEngine**: Production-grade ranked fuzzy search with category scoping (`boiler:main`, `ds:tree`, `algo:sort`) and sub-millisecond LRU caching.
@@ -90,7 +91,7 @@ Curated, bloat-free, standards-compliant C99/C11 code organized into 12 primary 
 
 ### 4. Dedicated Activity Bar & 4 Sidebar TreeViews
 Access the entire ecosystem without touching the keyboard:
-- 🌲 **Offline C Library (2,500)**: Hierarchical explorer organized by Domain > Category > Component. Click any item to preview and insert.
+- 🌲 **Offline C Library (500)**: Hierarchical explorer organized by Domain > Category > Component. Click any item to preview and insert.
 - ⭐ **Favorites & Pinned**: Keep your most frequently used structs, algorithms, and templates pinned for instantaneous access.
 - 📜 **Recent Insertions**: Search and re-insert recently used components with one click.
 - 🎛️ **Quick Controls**: Switch typing mode, toggle auto-header injection, view diagnostics, and trigger release notes directly from the sidebar.
@@ -100,7 +101,7 @@ Access the entire ecosystem without touching the keyboard:
 - **GitHub Releases Update Engine**: Non-intrusive background check against `mujahidalmahi/dTyp` releases with one-click direct download.
 
 ### 6. 100% Offline & Zero-Cloud Privacy Guarantee
-All 2,500 components and search indexes reside in `dtyp.db`, accessed in-memory via pure WebAssembly (`sql.js`). No external network requests, zero telemetry, zero analytics, zero cloud reliance.
+All 500 components and search indexes reside in `dtyp.db`, accessed in-memory via pure WebAssembly (`sql.js`). No external network requests, zero telemetry, zero analytics, zero cloud reliance.
 
 ---
 
@@ -112,7 +113,7 @@ Click the **dTyp** icon in the VS Code Activity Bar (or press `Ctrl+Shift+D`) to
 ┌──────────────────────────────────────────────┐
 │ dTyp: Activity Bar Explorer                  │
 ├──────────────────────────────────────────────┤
-│ ▼ OFFLINE C LIBRARY (2,500)                  │
+│ ▼ OFFLINE C LIBRARY (500)                  │
 │   ▶ 📁 Data Structures (700)                 │
 │     ▶ 📁 Linked Lists (132)                  │
 │     ▼ 📁 Binary Search Trees (42)            │
@@ -149,7 +150,7 @@ Click the **dTyp** icon in the VS Code Activity Bar (or press `Ctrl+Shift+D`) to
 | **`Ctrl+D`** | `dtyp.typeNextCharacter` | Types the next character (or batch) from the manual stepping queue |
 | **`Ctrl+Shift+D`** | `dtyp.browseLibrary` | Opens the hierarchical category and component browser |
 | **`Escape`** | `dtyp.cancelTyping` | Instantly halts automatic typing or flushes the manual queue |
-| `Ctrl+Shift+P` | `dtyp.quickInsert` | Opens ranked fuzzy search QuickPick across all 2,500 components |
+| `Ctrl+Shift+P` | `dtyp.quickInsert` | Opens ranked fuzzy search QuickPick across all 500 components |
 | `Ctrl+Shift+P` | `dtyp.insertSnippet` | Interactively selects and inserts standard C boilerplate snippets |
 | `Ctrl+Shift+P` | `dtyp.showHistory` | Opens history QuickPick to re-insert recently used items |
 | `Ctrl+Shift+P` | `dtyp.showReleaseNotes` | Launches the interactive "What's New in v2.0" Webview panel |
@@ -170,8 +171,11 @@ Configure dTyp via your VS Code Settings UI or `settings.json`:
   // Number of characters typed per Ctrl+D press in manual mode (1 - 50)
   "dtyp.stepSize": 1,
 
-  // Keystroke latency in milliseconds for automatic mode (1 - 200 ms)
+  // Keystroke latency in milliseconds for automatic mode (1 - 1000 ms)
   "dtyp.typingDelayMs": 15,
+
+  // Maximum number of characters per Ctrl+Z undo chunk (1 - 10)
+  "dtyp.undoChunkSize": 3,
 
   // Automatically detect and inject missing standard library headers (<stdlib.h>, <stdbool.h>, etc.)
   "dtyp.autoIncludeHeaders": true,
@@ -191,7 +195,7 @@ Configure dTyp via your VS Code Settings UI or `settings.json`:
 
 ## 📚 Component Taxonomy
 
-The offline database (`dtyp.db`) houses **2,500 components** structured across 12 primary domains:
+The offline database (`dtyp.db`) houses **500 components** structured across 7 primary domains:
 
 | Domain | Categories | Parameter Variations & Scope |
 |---|---|---|
@@ -264,7 +268,7 @@ If you ever encounter an issue or want to verify your installation:
 2. Run **`dTyp: Diagnostics & System Health`**.
 3. dTyp executes a live self-test verifying:
    - WebAssembly SQLite initialization.
-   - Database integrity and component count (`2,500` rows verified).
+   - Database integrity and component count (`500` rows verified).
    - Core engine responsiveness (Cursor, Memory, Session, AutoType, Search).
    - Active typing mode and keybinding registrations.
 4. Results are presented in an interactive VS Code notification with an option to view full telemetry logs.
@@ -292,7 +296,7 @@ dTyp/
 │   └── library-engine/           # SQLite abstraction layer
 ├── docs/
 │   ├── architecture.md           # End-to-end technical architecture guide
-│   ├── LIBRARY_CATALOG.md        # Complete 2,500 component domain catalog
+│   ├── LIBRARY_CATALOG.md        # Complete 500 component domain catalog
 │   ├── typing-engine.md          # Typing simulation & stealth stepping spec
 │   └── faq.md                    # Frequently Asked Questions
 ├── .github/

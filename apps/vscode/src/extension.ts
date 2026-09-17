@@ -15,6 +15,7 @@ import {
   SearchEngine,
   AutoTypeEngine,
   SnippetEngine,
+  HeaderEngine,
 } from "./engine/index.js";
 import {
   LibraryTreeProvider,
@@ -36,6 +37,7 @@ let sessionEngine: SessionEngine | null = null;
 let searchEngine: SearchEngine | null = null;
 let autoTypeEngine: AutoTypeEngine | null = null;
 let snippetEngine: SnippetEngine | null = null;
+let memoryEngine: MemoryEngine | null = null;
 let updateEngine: UpdateEngine | null = null;
 
 let libraryTreeProvider: LibraryTreeProvider | null = null;
@@ -89,6 +91,9 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
   autoTypeEngine = new AutoTypeEngine(typingEngine, typingTarget);
   snippetEngine = new SnippetEngine(libraryEngine);
   await snippetEngine.loadSnippets();
+
+  memoryEngine = new MemoryEngine();
+  context.subscriptions.push(memoryEngine);
 
   updateEngine = new UpdateEngine(context);
 
@@ -226,9 +231,19 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
 
     const autoIncludeHeaders = config.get<boolean>("autoIncludeHeaders", true);
     if (autoIncludeHeaders) {
-      const addedHeaders = await MemoryEngine.ensureHeaders(editor, fullText);
+      const addedHeaders = await HeaderEngine.ensureHeaders(editor, fullText);
       if (addedHeaders.length > 0) {
         vscode.window.setStatusBarMessage(`dTyp: Added header(s): ${addedHeaders.join(", ")}`, 3000);
+      }
+    }
+
+    const checkMemory = config.get<boolean>("analyzeMemoryAllocations", true);
+    if (checkMemory) {
+      const allocations = MemoryEngine.analyzeAllocations(fullText);
+      const unmanaged = allocations.filter((a) => !a.hasMatchingFree);
+      if (unmanaged.length > 0) {
+        const names = unmanaged.map((u) => u.variableName).join(", ");
+        vscode.window.setStatusBarMessage(`dTyp: Note - dynamic allocation(s) without free(): ${names}`, 5000);
       }
     }
 
@@ -287,24 +302,81 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
   context.subscriptions.push(insertCmd);
 
   const quickInsertCmd = vscode.commands.registerCommand("dtyp.quickInsert", async () => {
-    if (!searchEngine) return;
+    if (!searchEngine || !libraryEngine) return;
     const quickPick = vscode.window.createQuickPick();
-    quickPick.placeholder = "Type to fuzzy search components (e.g. 'quickSort', 'boiler:main', 'ds:stack')...";
+    quickPick.placeholder = "Type to search 500 components (e.g. 'quickSort', 'boiler:main', 'ds:tree', 'malloc')...";
+
+    const buildItem = (comp: Component, score?: number) => {
+      const isFav = sessionEngine?.isFavorite(comp.id) ?? false;
+      const scoreStr = score !== undefined ? ` (match: ${score})` : "";
+      return {
+        label: `$(symbol-method) ${comp.name}()`,
+        description: `[${comp.category}] • ${comp.complexity.time}${comp.difficulty ? ' • ' + comp.difficulty : ''}${scoreStr}`,
+        detail: `${comp.description} — ${comp.signature}`,
+        componentId: comp.id,
+        component: comp,
+        buttons: [
+          {
+            iconPath: new vscode.ThemeIcon("book"),
+            tooltip: "View Documentation",
+          },
+          {
+            iconPath: new vscode.ThemeIcon(isFav ? "star-full" : "star"),
+            tooltip: isFav ? "Remove Favorite" : "Add to Favorites",
+          },
+          {
+            iconPath: new vscode.ThemeIcon("copy"),
+            tooltip: "Copy Code",
+          },
+        ],
+      } as vscode.QuickPickItem & { componentId: string; component: Component };
+    };
+
+    // Preload top components so user doesn't see a blank list
+    const initialComps = await libraryEngine.getAllComponents(35);
+    quickPick.items = initialComps.map((c) => buildItem(c));
 
     quickPick.onDidChangeValue(async (value) => {
       if (!value.trim()) {
-        quickPick.items = [];
+        quickPick.items = initialComps.map((c) => buildItem(c));
         return;
       }
       quickPick.busy = true;
-      const scored = await searchEngine!.search(value, 30);
-      quickPick.items = scored.map((s) => ({
-        label: `${s.component.name}()`,
-        description: `[${s.component.category}] ${s.component.complexity.time} (match: ${s.score})`,
-        detail: s.component.signature,
-        componentId: s.component.id,
-      } as any));
+      const scored = await searchEngine!.search(value, 35);
+      quickPick.items = scored.map((s) => buildItem(s.component, s.score));
       quickPick.busy = false;
+    });
+
+    quickPick.onDidTriggerItemButton(async (e) => {
+      const item = e.item as any;
+      if (!item || !item.component) return;
+      const comp: Component = item.component;
+
+      if (e.button.tooltip === "View Documentation") {
+        const docContent = comp.documentation || `# ${comp.name}\n\n${comp.description}\n\n\`\`\`c\n${comp.code}\n\`\`\``;
+        const doc = await vscode.workspace.openTextDocument({
+          content: docContent,
+          language: "markdown",
+        });
+        await vscode.window.showTextDocument(doc, { preview: true, viewColumn: vscode.ViewColumn.Beside });
+      } else if (e.button.tooltip?.includes("Favorite")) {
+        if (sessionEngine) {
+          sessionEngine.toggleFavorite(comp.id, comp.name, comp.category);
+          favoritesTreeProvider?.refresh();
+          const isNowFav = sessionEngine.isFavorite(comp.id);
+          vscode.window.setStatusBarMessage(
+            isNowFav ? `dTyp: Starred "${comp.name}" ★` : `dTyp: Removed "${comp.name}" from favorites`,
+            2500
+          );
+          // Refresh item in list
+          quickPick.items = quickPick.items.map((it: any) =>
+            it.componentId === comp.id ? buildItem(comp) : it
+          );
+        }
+      } else if (e.button.tooltip === "Copy Code") {
+        await vscode.env.clipboard.writeText(comp.code);
+        vscode.window.setStatusBarMessage(`dTyp: Copied "${comp.name}" code to clipboard!`, 2500);
+      }
     });
 
     quickPick.onDidAccept(async () => {
@@ -421,15 +493,29 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
   const browseCmd = vscode.commands.registerCommand("dtyp.browseLibrary", async () => {
     if (!libraryEngine) return;
 
+    const DOMAIN_METADATA: Record<string, { icon: string; title: string; count: number }> = {
+      "boiler-plates": { icon: "repo", title: "Boilerplates & Fundamentals", count: 64 },
+      "data-structures": { icon: "layers", title: "Data Structures & Containers", count: 126 },
+      "algorithms": { icon: "symbol-event", title: "Algorithms & Problem-Solving", count: 120 },
+      "competitive-programming": { icon: "trophy", title: "Competitive Programming", count: 50 },
+      "academics-programming": { icon: "mortar-board", title: "Academic & Engineering Math", count: 46 },
+      "projects": { icon: "package", title: "Complete Projects & Systems", count: 30 },
+      "detection": { icon: "shield", title: "Algorithmic Detection Primitives", count: 64 },
+    };
+
     const categories = await libraryEngine.getCategories();
-    const catItems = categories.map((cat) => ({
-      label: cat.toUpperCase(),
-      description: `Browse components in ${cat}`,
-      category: cat,
-    }));
+    const catItems = categories.map((cat) => {
+      const meta = DOMAIN_METADATA[cat] || { icon: "folder", title: cat.toUpperCase(), count: 0 };
+      return {
+        label: `$(${meta.icon}) ${meta.title}`,
+        description: `${meta.count} components`,
+        detail: `Domain: ${cat}`,
+        category: cat,
+      };
+    });
 
     const selectedCat = await vscode.window.showQuickPick(catItems, {
-      placeHolder: "Select a Category to browse components...",
+      placeHolder: "Select a Domain to browse components...",
     });
 
     if (!selectedCat) return;
@@ -467,20 +553,73 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
       }
     }
 
-    const compItems = filteredComponents.map((c) => ({
-      label: `${c.name}()`,
-      description: `[${c.complexity.time}] ${c.subcategory || ""}`,
-      detail: c.signature,
-      componentId: c.id,
-    }));
-
-    const selectedComp = await vscode.window.showQuickPick(compItems, {
-      placeHolder: `${selectedCat.category} components (${filteredComponents.length} available)...`,
+    const compItems = filteredComponents.map((c) => {
+      const isFav = sessionEngine?.isFavorite(c.id) ?? false;
+      return {
+        label: `$(symbol-method) ${c.name}()`,
+        description: `[${c.complexity.time}] ${c.difficulty ? '• ' + c.difficulty : ''}`,
+        detail: `${c.description} | ${c.signature}`,
+        componentId: c.id,
+        component: c,
+        buttons: [
+          {
+            iconPath: new vscode.ThemeIcon("book"),
+            tooltip: "View Documentation",
+          },
+          {
+            iconPath: new vscode.ThemeIcon(isFav ? "star-full" : "star"),
+            tooltip: isFav ? "Remove Favorite" : "Add to Favorites",
+          },
+          {
+            iconPath: new vscode.ThemeIcon("copy"),
+            tooltip: "Copy Code",
+          },
+        ],
+      };
     });
 
-    if (selectedComp && (selectedComp as any).componentId) {
-      await insertComponentPipeline((selectedComp as any).componentId);
-    }
+    const compQuickPick = vscode.window.createQuickPick();
+    compQuickPick.placeholder = `${selectedCat.label} (${filteredComponents.length} available) — Select to insert...`;
+    compQuickPick.items = compItems;
+
+    compQuickPick.onDidTriggerItemButton(async (e) => {
+      const item = e.item as any;
+      if (!item || !item.component) return;
+      const comp: Component = item.component;
+
+      if (e.button.tooltip === "View Documentation") {
+        const docContent = comp.documentation || `# ${comp.name}\n\n${comp.description}\n\n\`\`\`c\n${comp.code}\n\`\`\``;
+        const doc = await vscode.workspace.openTextDocument({
+          content: docContent,
+          language: "markdown",
+        });
+        await vscode.window.showTextDocument(doc, { preview: true, viewColumn: vscode.ViewColumn.Beside });
+      } else if (e.button.tooltip?.includes("Favorite")) {
+        if (sessionEngine) {
+          sessionEngine.toggleFavorite(comp.id, comp.name, comp.category);
+          favoritesTreeProvider?.refresh();
+          const isNowFav = sessionEngine.isFavorite(comp.id);
+          vscode.window.setStatusBarMessage(
+            isNowFav ? `dTyp: Starred "${comp.name}" ★` : `dTyp: Removed "${comp.name}" from favorites`,
+            2500
+          );
+        }
+      } else if (e.button.tooltip === "Copy Code") {
+        await vscode.env.clipboard.writeText(comp.code);
+        vscode.window.setStatusBarMessage(`dTyp: Copied "${comp.name}" code to clipboard!`, 2500);
+      }
+    });
+
+    compQuickPick.onDidAccept(async () => {
+      const selected = compQuickPick.selectedItems[0] as any;
+      compQuickPick.hide();
+      if (selected && selected.componentId) {
+        await insertComponentPipeline(selected.componentId);
+      }
+    });
+
+    compQuickPick.onDidHide(() => compQuickPick.dispose());
+    compQuickPick.show();
   });
   context.subscriptions.push(browseCmd);
 
@@ -544,6 +683,91 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
   });
   context.subscriptions.push(cancelCmd);
 
+  const viewDocCmd = vscode.commands.registerCommand("dtyp.viewDocumentation", async (node?: any) => {
+    if (!libraryEngine) return;
+    let componentId: string | undefined;
+
+    if (node && node.component) {
+      componentId = node.component.id;
+    } else if (typeof node === "string") {
+      componentId = node;
+    } else {
+      const allComponents = await libraryEngine.getAllComponents(1000);
+      const items: (vscode.QuickPickItem & { componentId: string })[] = allComponents.map((c) => ({
+        label: `${c.name}()`,
+        description: `[${c.category}] ${c.signature}`,
+        detail: c.description,
+        componentId: c.id,
+      }));
+      const picked = await vscode.window.showQuickPick(items, {
+        placeHolder: "Select a component to view comprehensive documentation...",
+        matchOnDescription: true,
+        matchOnDetail: true,
+      });
+      if (picked) {
+        componentId = picked.componentId;
+      }
+    }
+
+    if (componentId) {
+      const comp = await libraryEngine.findComponent(componentId);
+      if (!comp) {
+        vscode.window.showErrorMessage(`Component "${componentId}" not found.`);
+        return;
+      }
+
+      const docContent = comp.documentation || `# ${comp.name}\n\n${comp.description}\n\n\`\`\`c\n${comp.code}\n\`\`\``;
+      const doc = await vscode.workspace.openTextDocument({
+        content: docContent,
+        language: "markdown",
+      });
+      await vscode.window.showTextDocument(doc, { preview: true, viewColumn: vscode.ViewColumn.Beside });
+    }
+  });
+  context.subscriptions.push(viewDocCmd);
+
+  const analyzeMemoryCmd = vscode.commands.registerCommand("dtyp.analyzeMemory", async () => {
+    const editor = vscode.window.activeTextEditor;
+    if (!editor) {
+      vscode.window.showWarningMessage("Open a C/C++ file to analyze dynamic memory allocations.");
+      return;
+    }
+    const code = editor.document.getText();
+    const allocations = MemoryEngine.analyzeAllocations(code);
+    if (allocations.length === 0) {
+      vscode.window.showInformationMessage("dTyp Memory Engine: No dynamic heap allocations (malloc/calloc/realloc) found in active file.");
+      return;
+    }
+    const unmanaged = allocations.filter((a) => !a.hasMatchingFree);
+    if (unmanaged.length === 0) {
+      vscode.window.showInformationMessage(`dTyp Memory Engine: All ${allocations.length} dynamic heap allocation(s) have matching free() calls. Clean!`);
+    } else {
+      const list = unmanaged.map((a) => `'${a.variableName}' (line ${a.line})`).join(", ");
+      vscode.window.showWarningMessage(`dTyp Memory Engine: Potential memory leak detected! No matching free() found for: ${list}`);
+    }
+  });
+  context.subscriptions.push(analyzeMemoryCmd);
+
+  const jumpNextCmd = vscode.commands.registerCommand("dtyp.jumpToNextPlaceholder", () => {
+    const editor = vscode.window.activeTextEditor;
+    if (!editor) return;
+    const found = CursorEngine.jumpToNextPlaceholder(editor);
+    if (!found) {
+      vscode.window.setStatusBarMessage("dTyp: No placeholders found in document", 2000);
+    }
+  });
+  context.subscriptions.push(jumpNextCmd);
+
+  const jumpPrevCmd = vscode.commands.registerCommand("dtyp.jumpToPrevPlaceholder", () => {
+    const editor = vscode.window.activeTextEditor;
+    if (!editor) return;
+    const found = CursorEngine.jumpToPrevPlaceholder(editor);
+    if (!found) {
+      vscode.window.setStatusBarMessage("dTyp: No placeholders found in document", 2000);
+    }
+  });
+  context.subscriptions.push(jumpPrevCmd);
+
   // Check whether to show Release Notes on version upgrade/install
   const lastVersion = context.globalState.get<string>("dtyp.lastVersion");
   const currentVersion = context.extension.packageJSON.version;
@@ -570,6 +794,7 @@ export function deactivate(): void {
   if (autoTypeEngine?.isManualQueueActive()) {
     autoTypeEngine.cancelManualQueue();
   }
+  memoryEngine?.dispose();
   sqlite?.close();
   logger.info("dTyp Extension deactivated");
 }

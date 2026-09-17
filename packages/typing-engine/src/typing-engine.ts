@@ -10,6 +10,7 @@ import { EventEmitter, defaultLogger } from "@dtyp/utilities";
 import { CharacterQueue } from "./character-queue.js";
 import { StandardKeyboardMapper } from "./keyboard-mapper.js";
 import { TypingScheduler } from "./scheduler.js";
+import { StructuralTokenizer } from "./structural-tokenizer.js";
 
 export class DefaultTypingEngine implements TypingEngine {
   private queue: CharacterQueue;
@@ -52,7 +53,19 @@ export class DefaultTypingEngine implements TypingEngine {
       return;
     }
 
-    this.queue.loadText(text, options.preserveNewlines, options.preserveTabs);
+    if (options.naturalTypingModel === "humanized") {
+      const tokenizer = new StructuralTokenizer({
+        model: "humanized",
+        baseDelayMs: options.delayMs,
+        jitterMs: options.jitterMs,
+        enableTypoSimulation: options.enableTypoSimulation ?? true,
+        typoRate: options.typoRate ?? 0.015,
+      });
+      const actions = tokenizer.tokenize(text);
+      this.queue.loadActions(actions);
+    } else {
+      this.queue.loadText(text, options.preserveNewlines, options.preserveTabs);
+    }
     this.state = "typing";
 
     this.stats = {

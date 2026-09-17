@@ -1,4 +1,4 @@
-import { QueuedCharacter } from "@dtyp/types";
+import { QueuedCharacter, TypingAction } from "@dtyp/types";
 
 export class CharacterQueue {
   private queue: QueuedCharacter[] = [];
@@ -7,6 +7,22 @@ export class CharacterQueue {
   constructor(text?: string, preserveNewlines = true, preserveTabs = true) {
     if (text) {
       this.loadText(text, preserveNewlines, preserveTabs);
+    }
+  }
+
+  public loadActions(actions: TypingAction[]): void {
+    this.clear();
+    for (const act of actions) {
+      const char = act.char ?? "";
+      this.queue.push({
+        id: this.nextId++,
+        char,
+        isNewline: char === "\n",
+        isTab: char === "\t",
+        delayOverrideMs: act.delayMs,
+        action: act.type,
+        description: act.description,
+      });
     }
   }
 
@@ -35,13 +51,22 @@ export class CharacterQueue {
     }
   }
 
-  public enqueue(char: string, isNewline = false, isTab = false, delayOverrideMs?: number): void {
+  public enqueue(
+    char: string,
+    isNewline = false,
+    isTab = false,
+    delayOverrideMs?: number,
+    action: QueuedCharacter["action"] = "type",
+    description?: string
+  ): void {
     this.queue.push({
       id: this.nextId++,
       char,
       isNewline,
       isTab,
       delayOverrideMs,
+      action,
+      description,
     });
   }
 

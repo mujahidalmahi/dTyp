@@ -34,7 +34,21 @@ export class LibraryTreeProvider implements vscode.TreeDataProvider<LibraryTreeN
         vscode.TreeItemCollapsibleState.Collapsed
       );
       item.id = `cat_${element.category.id}`;
-      item.iconPath = new vscode.ThemeIcon("symbol-folder");
+      
+      let icon = "symbol-folder";
+      if (!element.category.parentId) {
+        switch (element.category.slug) {
+          case "boiler-plates": icon = "repo"; break;
+          case "data-structures": icon = "layers"; break;
+          case "algorithms": icon = "symbol-event"; break;
+          case "competitive-programming": icon = "trophy"; break;
+          case "academics-programming": icon = "mortar-board"; break;
+          case "projects": icon = "package"; break;
+          case "detection": icon = "shield"; break;
+          default: icon = "folder";
+        }
+      }
+      item.iconPath = new vscode.ThemeIcon(icon);
       item.description = element.category.slug;
       item.tooltip = `Category: ${element.category.name} (${element.category.path})`;
       item.contextValue = "category";
@@ -43,7 +57,7 @@ export class LibraryTreeProvider implements vscode.TreeDataProvider<LibraryTreeN
       const comp = element.component;
       const item = new vscode.TreeItem(comp.name, vscode.TreeItemCollapsibleState.None);
       item.id = `comp_${comp.id}`;
-      item.description = comp.signature || comp.complexity.time;
+      item.description = `${comp.complexity.time} • ${comp.difficulty || "standard"}`;
       item.iconPath = new vscode.ThemeIcon("symbol-method");
       
       const md = new vscode.MarkdownString();

@@ -26,6 +26,7 @@ vi.mock("vscode", () => ({
 }));
 
 import { MemoryEngine } from "../../apps/vscode/src/engine/memory-engine.js";
+import { HeaderEngine } from "../../apps/vscode/src/engine/header-engine.js";
 import { SearchEngine } from "../../apps/vscode/src/engine/search-engine.js";
 import { AutoTypeEngine } from "../../apps/vscode/src/engine/auto-type-engine.js";
 import { DefaultTypingEngine } from "@dtyp/typing-engine";
@@ -33,6 +34,13 @@ import { TypingTarget, Component, LibraryEngine } from "@dtyp/types";
 
 class MockTypingTarget implements TypingTarget {
   public typedCharacters: string[] = [];
+  onCursorJump(_cb: any): void {}
+  setEditor(_ed: any): void {}
+  setCursorJumpPolicy(_p: any): void {}
+  setPauseOnTabSwitch(_enabled: boolean): void {}
+  setUndoChunkSize(_size: number): void {}
+  resetHead(_pos: any): void {}
+  getExpectedHead(): any { return null; }
   async focus(): Promise<void> {}
   async typeCharacter(char: string): Promise<void> {
     this.typedCharacters.push(char);
@@ -101,10 +109,10 @@ class MockLibraryEngine implements Partial<LibraryEngine> {
 }
 
 describe("dTyp v2.0 Production Engines", () => {
-  describe("MemoryEngine", () => {
+  describe("HeaderEngine", () => {
     it("detects existing headers in file", () => {
       const doc = "#include <stdio.h>\n#include <stdlib.h>\nint main() {}";
-      const headers = MemoryEngine.getExistingHeaders(doc);
+      const headers = HeaderEngine.getExistingHeaders(doc);
       expect(headers.has("stdio.h")).toBe(true);
       expect(headers.has("stdlib.h")).toBe(true);
       expect(headers.has("stdbool.h")).toBe(false);
@@ -113,10 +121,28 @@ describe("dTyp v2.0 Production Engines", () => {
     it("identifies missing headers required by inserted code", () => {
       const doc = "#include <stdio.h>\n";
       const codeToInsert = "int* ptr = (int*)malloc(sizeof(int)); bool flag = true;";
-      const missing = MemoryEngine.getMissingHeaders(doc, codeToInsert);
+      const missing = HeaderEngine.getMissingHeaders(doc, codeToInsert);
       expect(missing).toContain("stdlib.h");
       expect(missing).toContain("stdbool.h");
       expect(missing).not.toContain("stdio.h");
+    });
+  });
+
+  describe("MemoryEngine (Dynamic Allocation & Leak Analysis)", () => {
+    it("detects malloc/calloc and checks for matching free", () => {
+      const code = "int* arr = (int*)malloc(sizeof(int) * 10);\nfree(arr);";
+      const allocs = MemoryEngine.analyzeAllocations(code);
+      expect(allocs.length).toBe(1);
+      expect(allocs[0].variableName).toBe("arr");
+      expect(allocs[0].hasMatchingFree).toBe(true);
+    });
+
+    it("flags unmanaged dynamic allocations as potential leaks", () => {
+      const code = "Node* n = (Node*)malloc(sizeof(Node));";
+      const allocs = MemoryEngine.analyzeAllocations(code);
+      expect(allocs.length).toBe(1);
+      expect(allocs[0].variableName).toBe("n");
+      expect(allocs[0].hasMatchingFree).toBe(false);
     });
   });
 

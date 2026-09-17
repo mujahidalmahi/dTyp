@@ -84,7 +84,7 @@ export class DTypCompletionProvider implements vscode.CompletionItemProvider {
 
       // Trigger character-by-character typing insertion pipeline
       item.command = {
-        command: "dtyp.insertComponent",
+        command: "dtyp.insertComponentById",
         title: "Insert Component Character-by-Character",
         arguments: [comp.id],
       };

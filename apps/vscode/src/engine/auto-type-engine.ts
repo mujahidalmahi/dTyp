@@ -1,6 +1,7 @@
 import * as vscode from "vscode";
-import { DefaultTypingEngine } from "@dtyp/typing-engine";
-import { VSCodeTypingTarget } from "../adapter/vscode-typing-target.js";
+import { DefaultTypingEngine, StructuralTokenizer } from "@dtyp/typing-engine";
+import { TypingAction, TypingModel } from "@dtyp/types";
+import { VSCodeTypingTarget, CursorJumpAction } from "../adapter/vscode-typing-target.js";
 import { defaultLogger } from "@dtyp/utilities";
 
 export type TypingMode = "automatic" | "manual";
@@ -9,7 +10,7 @@ export interface PendingTypingQueue {
   componentId: string;
   componentName: string;
   fullText: string;
-  characters: string[];
+  actions: TypingAction[];
   currentIndex: number;
   startedAt: number;
 }
@@ -22,7 +23,11 @@ export class AutoTypeEngine {
   constructor(
     private typingEngine: DefaultTypingEngine,
     private typingTarget: VSCodeTypingTarget
-  ) {}
+  ) {
+    this.typingTarget.onCursorJump((expected, actual) => {
+      this.logger.warn(`Cursor relocated: expected ${expected.line}:${expected.character}, actual ${actual.line}:${actual.character}`);
+    });
+  }
 
   public onQueueChange(cb: (hasQueue: boolean, remaining: number) => void): () => void {
     this.onQueueChangeListeners.push(cb);
@@ -44,11 +49,18 @@ export class AutoTypeEngine {
 
   public getRemainingCount(): number {
     if (!this.pendingQueue) return 0;
-    return this.pendingQueue.characters.length - this.pendingQueue.currentIndex;
+    return this.pendingQueue.actions.length - this.pendingQueue.currentIndex;
   }
 
   public getActiveQueue(): PendingTypingQueue | null {
     return this.pendingQueue;
+  }
+
+  public cancelManualQueue(): void {
+    if (this.pendingQueue) {
+      this.pendingQueue = null;
+      this.notifyQueueChange();
+    }
   }
 
   public async startInsertion(
@@ -61,40 +73,99 @@ export class AutoTypeEngine {
     const config = vscode.workspace.getConfiguration("dtyp");
     const mode = modeOverride || config.get<TypingMode>("typingMode", "automatic");
     const delayMs = config.get<number>("typingDelayMs", 15);
+    const jitterMs = config.get<number>("typingJitterMs", 5);
+    const cursorPolicy = config.get<CursorJumpAction>("onCursorJump", "pause");
+    const pauseOnTabSwitch = config.get<boolean>("pauseOnTabSwitch", true);
+    const undoChunkSize = config.get<number>("undoChunkSize", 3);
+    const naturalTypingModel = config.get<TypingModel>("naturalTypingModel", "humanized");
+    const enableTypoSimulation = config.get<boolean>("enableTypoSimulation", true);
+    const typoRate = config.get<number>("typoRate", 0.015);
 
-    if (this.typingTarget && typeof (this.typingTarget as any).setEditor === "function") {
-      (this.typingTarget as any).setEditor(editor);
-    }
+    this.typingTarget.setEditor(editor);
+    this.typingTarget.setCursorJumpPolicy(cursorPolicy);
+    this.typingTarget.setPauseOnTabSwitch(pauseOnTabSwitch);
+    this.typingTarget.setUndoChunkSize(undoChunkSize);
+    this.typingTarget.resetHead(editor.selection.active);
 
     if (mode === "automatic") {
       this.cancelManualQueue();
-      await this.typingEngine.start(text, {
-        delayMs,
-        mode: "character",
-        executionMode: "automatic",
-        preserveNewlines: true,
-        preserveTabs: true,
-      });
+      try {
+        await this.typingEngine.start(text, {
+          delayMs,
+          jitterMs,
+          mode: "character",
+          executionMode: "automatic",
+          preserveNewlines: true,
+          preserveTabs: true,
+          naturalTypingModel,
+          enableTypoSimulation,
+          typoRate,
+        });
+      } catch (err: any) {
+        if (err.message === "TYPING_PAUSED_CURSOR_MOVED") {
+          vscode.window.showWarningMessage(
+            `dTyp: Typing paused because the cursor was moved. Use Ctrl+D or click Resume.`,
+            "Resume at original position",
+            "Resume at current cursor",
+            "Cancel"
+          ).then(async (action) => {
+            if (action === "Resume at original position") {
+              const head = this.typingTarget.getExpectedHead();
+              if (head && vscode.window.activeTextEditor) {
+                vscode.window.activeTextEditor.selection = new vscode.Selection(head, head);
+                this.typingTarget.resetHead(head);
+                await this.typingEngine.resume();
+              }
+            } else if (action === "Resume at current cursor") {
+              if (vscode.window.activeTextEditor) {
+                this.typingTarget.resetHead(vscode.window.activeTextEditor.selection.active);
+                await this.typingEngine.resume();
+              }
+            } else if (action === "Cancel") {
+              this.typingEngine.cancel();
+            }
+          });
+        } else if (err.message === "TYPING_PAUSED_TAB_SWITCHED") {
+          vscode.window.showInformationMessage("dTyp: Typing paused because you switched editor tabs.");
+          this.typingEngine.pause();
+        } else {
+          throw err;
+        }
+      }
     } else {
-      // Manual Mode: Queue characters for Ctrl+D manual stepping
+      // Manual Mode: Queue actions for Ctrl+D manual stepping
       this.typingEngine.cancel();
+
+      let actions: TypingAction[];
+      if (naturalTypingModel !== "linear") {
+        const tokenizer = new StructuralTokenizer({
+          model: "humanized",
+          baseDelayMs: delayMs,
+          jitterMs,
+          enableTypoSimulation,
+          typoRate,
+        });
+        actions = tokenizer.tokenize(text);
+      } else {
+        actions = text.split("").map((char) => ({
+          type: "type" as const,
+          char,
+        }));
+      }
+
       this.pendingQueue = {
         componentId,
         componentName,
         fullText: text,
-        characters: text.split(""),
+        actions,
         currentIndex: 0,
         startedAt: Date.now(),
       };
-      this.logger.info(`Queued ${this.pendingQueue.characters.length} characters for manual stepping (Ctrl+D)`);
+      this.logger.info(`Queued ${this.pendingQueue.actions.length} actions for manual stepping (Ctrl+D) [model: ${naturalTypingModel}]`);
       this.notifyQueueChange();
     }
   }
 
-  /**
-   * Called when user presses Ctrl+D in manual mode.
-   * Types the next character(s) at cursor position!
-   */
   public async stepNextCharacter(editor?: vscode.TextEditor): Promise<number> {
     if (!this.pendingQueue || this.getRemainingCount() <= 0) {
       return 0;
@@ -102,54 +173,72 @@ export class AutoTypeEngine {
 
     const activeEditor = editor || vscode.window.activeTextEditor;
     if (!activeEditor) return 0;
+    this.typingTarget.setEditor(activeEditor);
 
     const config = vscode.workspace.getConfiguration("dtyp");
     const stepSize = Math.max(1, config.get<number>("stepSize", 1));
 
-    const endIndex = Math.min(this.pendingQueue.currentIndex + stepSize, this.pendingQueue.characters.length);
-    const charsToType = this.pendingQueue.characters.slice(this.pendingQueue.currentIndex, endIndex).join("");
-    this.pendingQueue.currentIndex = endIndex;
+    let stepsExecuted = 0;
+    while (stepsExecuted < stepSize && this.pendingQueue.currentIndex < this.pendingQueue.actions.length) {
+      const action = this.pendingQueue.actions[this.pendingQueue.currentIndex];
+      this.pendingQueue.currentIndex++;
+      stepsExecuted++;
 
-    await activeEditor.edit(
-      (builder) => {
-        builder.insert(activeEditor.selection.active, charsToType);
-      },
-      { undoStopBefore: false, undoStopAfter: false }
-    );
+      try {
+        if (action.type === "overtype") {
+          await this.typingTarget.overtypeCharacter(action.char || "");
+        } else if (action.type === "backspace") {
+          await this.typingTarget.deleteBackward();
+        } else if (action.type === "pause") {
+          // Pause action - don't consume user's Ctrl+D stroke on a pure pause
+          stepsExecuted--;
+        } else {
+          await this.typingTarget.typeCharacter(action.char || "");
+        }
+      } catch (err: any) {
+        if (err.message === "TYPING_PAUSED_CURSOR_MOVED" || err.message === "TYPING_PAUSED_TAB_SWITCHED") {
+          vscode.window.showWarningMessage(`dTyp: Manual typing halted: ${err.message}`);
+          break;
+        }
+        throw err;
+      }
+    }
 
-    const remaining = this.getRemainingCount();
-    if (remaining === 0) {
-      this.logger.info(`Completed manual typing for ${this.pendingQueue.componentName}`);
+    if (this.getRemainingCount() <= 0) {
+      this.logger.info(`Manual typing finished for component: ${this.pendingQueue.componentName}`);
+      vscode.window.setStatusBarMessage(`$(check) dTyp: Finished typing ${this.pendingQueue.componentName}`, 3000);
       this.pendingQueue = null;
     }
 
     this.notifyQueueChange();
-    return charsToType.length;
+    return stepsExecuted;
   }
 
-  /**
-   * Flushes all remaining characters immediately.
-   */
-  public async flushRemaining(editor?: vscode.TextEditor): Promise<void> {
-    if (!this.pendingQueue || this.getRemainingCount() <= 0) return;
+  public async flushRemaining(editor?: vscode.TextEditor): Promise<number> {
+    if (!this.pendingQueue || this.getRemainingCount() <= 0) {
+      return 0;
+    }
 
     const activeEditor = editor || vscode.window.activeTextEditor;
-    if (!activeEditor) return;
+    if (!activeEditor) return 0;
+    this.typingTarget.setEditor(activeEditor);
 
-    const remainingText = this.pendingQueue.characters.slice(this.pendingQueue.currentIndex).join("");
-    this.pendingQueue = null;
+    const remainingActions = this.pendingQueue.actions.slice(this.pendingQueue.currentIndex);
+    const remainingCount = remainingActions.length;
 
-    await activeEditor.edit((builder) => {
-      builder.insert(activeEditor.selection.active, remainingText);
-    });
-
-    this.notifyQueueChange();
-  }
-
-  public cancelManualQueue(): void {
-    if (this.pendingQueue) {
-      this.pendingQueue = null;
-      this.notifyQueueChange();
+    for (const action of remainingActions) {
+      if (action.type === "overtype") {
+        await this.typingTarget.overtypeCharacter(action.char || "");
+      } else if (action.type === "backspace") {
+        await this.typingTarget.deleteBackward();
+      } else if (action.type === "type") {
+        await this.typingTarget.typeCharacter(action.char || "");
+      }
     }
+
+    this.logger.info(`Flushed remaining ${remainingCount} actions for ${this.pendingQueue.componentName}`);
+    this.pendingQueue = null;
+    this.notifyQueueChange();
+    return remainingCount;
   }
 }

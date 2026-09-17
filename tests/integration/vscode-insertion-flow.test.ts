@@ -18,6 +18,14 @@ class MockEditorBuffer implements TypingTarget {
     this.content += c;
   }
 
+  public async overtypeCharacter(c: string): Promise<void> {
+    this.content += c;
+  }
+
+  public async deleteBackward(): Promise<void> {
+    this.content = this.content.slice(0, -1);
+  }
+
   public async releaseModifiers(): Promise<void> {}
 }
 

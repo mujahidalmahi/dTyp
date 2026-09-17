@@ -1,16 +1,18 @@
 import * as path from "node:path";
 import * as fs from "node:fs";
-import { Component, Snippet, Template } from "@dtyp/types";
+import { Component, Snippet, Category } from "@dtyp/types";
 import { safeReadJsonFile, defaultLogger } from "@dtyp/utilities";
-import { validateComponent, validateSnippet, validateTemplate } from "@dtyp/validation";
+import { validateComponent, validateSnippet } from "@dtyp/validation";
 import { DependencyResolver } from "@dtyp/library-engine";
 
 const logger = defaultLogger.child("LibraryValidator");
 
 export const validateLibrary = async (): Promise<boolean> => {
-  logger.info("Starting dTyp Library Validation Pipeline...");
+  logger.info("Starting dTyp Production Library Validation Pipeline...");
 
   const baseSourceDir = path.resolve(process.cwd(), "library-source");
+  const taxonomyDir = path.resolve(process.cwd(), "taxonomy");
+
   let allComponents: Component[] = [];
   const componentsDir = path.join(baseSourceDir, "components");
   if (fs.existsSync(componentsDir)) {
@@ -26,19 +28,26 @@ export const validateLibrary = async (): Promise<boolean> => {
       []
     );
   }
+
   const snippets = safeReadJsonFile<Snippet[]>(
     path.join(baseSourceDir, "snippets", "snippets.json"),
     []
   );
-  const templates = safeReadJsonFile<Template[]>(
-    path.join(baseSourceDir, "templates", "templates.json"),
+
+  const categories = safeReadJsonFile<Category[]>(
+    path.join(taxonomyDir, "all-categories.json"),
     []
   );
 
-  logger.info(`Loaded ${allComponents.length} components, ${snippets.length} snippets, ${templates.length} templates`);
+  logger.info(`Loaded ${allComponents.length} components, ${snippets.length} snippets, ${categories.length} categories`);
 
-  if (allComponents.length < 2500) {
-    logger.error(`Validation failed: Component count (${allComponents.length}) is below the 2,500 threshold requirement!`);
+  if (allComponents.length !== 500) {
+    logger.error(`Validation failed: Component count (${allComponents.length}) must be exactly 500!`);
+    return false;
+  }
+
+  if (categories.length !== 361) {
+    logger.error(`Validation failed: Category count (${categories.length}) must be exactly 361!`);
     return false;
   }
 
@@ -46,7 +55,7 @@ export const validateLibrary = async (): Promise<boolean> => {
   const componentMap = new Map<string, Component>();
   const idSet = new Set<string>();
 
-  // 1. Component Schema & Syntax Validation
+  // 1. Component Schema, Syntax & Zero-Comment Invariant
   for (const comp of allComponents) {
     if (idSet.has(comp.id)) {
       logger.error(`Duplicate component ID: ${comp.id}`);
@@ -59,6 +68,20 @@ export const validateLibrary = async (): Promise<boolean> => {
     if (!res.valid) {
       logger.error(`Component "${comp.id}" failed validation: ${res.errors.join("; ")}`);
       hasErrors = true;
+    }
+
+    // Zero-comments verification
+    const lines = comp.code.split("\n");
+    for (let i = 0; i < lines.length; i++) {
+      const l = lines[i].trim();
+      if (l.startsWith("//") || l.startsWith("/*") || l.includes("/*")) {
+        logger.error(`Comment detected in component ${comp.id} on line ${i + 1}: ${l}`);
+        hasErrors = true;
+      }
+      if (l.includes("//") && !l.includes("://")) {
+        logger.error(`Inline comment detected in component ${comp.id} on line ${i + 1}: ${l}`);
+        hasErrors = true;
+      }
     }
   }
 
@@ -73,7 +96,6 @@ export const validateLibrary = async (): Promise<boolean> => {
         }
       }
 
-      // Check for cycles
       try {
         await resolver.resolve(comp.id, async (id) => componentMap.get(id) ?? null);
       } catch (err: any) {
@@ -84,6 +106,7 @@ export const validateLibrary = async (): Promise<boolean> => {
   }
 
   // 3. Snippet Validation
+  const snippetPrefixSet = new Set<string>();
   for (const snip of snippets) {
     const res = validateSnippet(snip);
     if (!res.valid) {
@@ -94,13 +117,17 @@ export const validateLibrary = async (): Promise<boolean> => {
       logger.error(`Snippet "${snip.id}" references non-existent component "${snip.component_id}"`);
       hasErrors = true;
     }
+    snippetPrefixSet.add(snip.prefix);
   }
 
-  // 4. Template Validation
-  for (const tpl of templates) {
-    const res = validateTemplate(tpl);
-    if (!res.valid) {
-      logger.error(`Template "${tpl.id}" failed validation: ${res.errors.join("; ")}`);
+  // 4. Taxonomy Parent-Child Integrity
+  const catMap = new Map<string, Category>();
+  for (const cat of categories) {
+    catMap.set(cat.id, cat);
+  }
+  for (const cat of categories) {
+    if (cat.parentId && !catMap.has(cat.parentId)) {
+      logger.error(`Category "${cat.id}" references invalid parentId "${cat.parentId}"`);
       hasErrors = true;
     }
   }
@@ -110,11 +137,10 @@ export const validateLibrary = async (): Promise<boolean> => {
     return false;
   }
 
-  logger.info("All 50,000+ components, snippets, and templates passed validation successfully!");
+  logger.info(`All ${allComponents.length} components, ${snippets.length} snippets, and ${categories.length} categories passed validation successfully!`);
   return true;
 };
 
-// Execute if run directly
 if (process.argv[1] && process.argv[1].includes("validate-library")) {
   validateLibrary()
     .then((success) => {

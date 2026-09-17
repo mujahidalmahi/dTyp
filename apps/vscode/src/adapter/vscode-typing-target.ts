@@ -2,16 +2,58 @@ import * as vscode from "vscode";
 import { TypingTarget } from "@dtyp/types";
 import { defaultLogger } from "@dtyp/utilities";
 
+export type CursorJumpAction = "pause" | "realign" | "abort";
+
 export class VSCodeTypingTarget implements TypingTarget {
   private editor: vscode.TextEditor | null = null;
   private logger = defaultLogger.child("VSCodeTarget");
+  private charCount = 0;
+  private expectedHead: vscode.Position | null = null;
+  private activeDocUri: string | null = null;
+  private cursorJumpPolicy: CursorJumpAction = "pause";
+  private pauseOnTabSwitch = true;
+  private undoChunkSize = 3;
+  private onCursorJumpCallback: ((expected: vscode.Position, actual: vscode.Position) => void) | null = null;
 
   constructor(editor?: vscode.TextEditor) {
     this.editor = editor ?? vscode.window.activeTextEditor ?? null;
+    if (this.editor) {
+      this.activeDocUri = this.editor.document.uri.toString();
+    }
   }
 
   public setEditor(editor: vscode.TextEditor): void {
     this.editor = editor;
+    this.activeDocUri = editor.document.uri.toString();
+  }
+
+  public setCursorJumpPolicy(policy: CursorJumpAction): void {
+    this.cursorJumpPolicy = policy;
+  }
+
+  public setPauseOnTabSwitch(enabled: boolean): void {
+    this.pauseOnTabSwitch = enabled;
+  }
+
+  public setUndoChunkSize(size: number): void {
+    this.undoChunkSize = Math.max(1, Math.min(10, size));
+  }
+
+  public onCursorJump(cb: (expected: vscode.Position, actual: vscode.Position) => void): void {
+    this.onCursorJumpCallback = cb;
+  }
+
+  public resetHead(pos?: vscode.Position): void {
+    this.charCount = 0;
+    const activeEditor = this.editor ?? vscode.window.activeTextEditor;
+    if (activeEditor) {
+      this.expectedHead = pos ?? activeEditor.selection.active;
+      this.activeDocUri = activeEditor.document.uri.toString();
+    }
+  }
+
+  public getExpectedHead(): vscode.Position | null {
+    return this.expectedHead;
   }
 
   public async focus(): Promise<void> {
@@ -26,21 +68,132 @@ export class VSCodeTypingTarget implements TypingTarget {
       throw new Error("No active text editor in VS Code to type character");
     }
 
-    const currentPos = activeEditor.selection.active;
+    // 1. Tab-Switch Guard: Prevent typing into wrong document if user switched tabs
+    if (this.pauseOnTabSwitch && this.activeDocUri && activeEditor.document.uri.toString() !== this.activeDocUri) {
+      this.logger.warn("Active document changed during typing, halting typing session");
+      throw new Error("TYPING_PAUSED_TAB_SWITCHED");
+    }
+
+    // 2. Cursor Relocation Detection
+    let targetPos = activeEditor.selection.active;
+    if (this.expectedHead && !targetPos.isEqual(this.expectedHead)) {
+      this.logger.warn(`Cursor manually jumped from ${this.expectedHead.line}:${this.expectedHead.character} to ${targetPos.line}:${targetPos.character}`);
+      this.onCursorJumpCallback?.(this.expectedHead, targetPos);
+
+      if (this.cursorJumpPolicy === "pause") {
+        throw new Error("TYPING_PAUSED_CURSOR_MOVED");
+      } else if (this.cursorJumpPolicy === "realign") {
+        targetPos = this.expectedHead;
+      } else if (this.cursorJumpPolicy === "abort") {
+        throw new Error("TYPING_ABORTED_CURSOR_MOVED");
+      }
+    }
+
+    this.charCount++;
+    // User Requirement: Configurable undo step chunks (defaults to 3 characters max)
+    const isUndoStop = this.charCount % this.undoChunkSize === 0;
 
     await activeEditor.edit(
       (editBuilder) => {
-        editBuilder.insert(currentPos, character);
+        editBuilder.insert(targetPos, character);
       },
       {
         undoStopBefore: false,
-        undoStopAfter: false,
+        undoStopAfter: isUndoStop,
       }
     );
+
+    // Calculate expected next position after insertion
+    if (character === "\n") {
+      this.expectedHead = new vscode.Position(targetPos.line + 1, 0);
+    } else {
+      this.expectedHead = new vscode.Position(targetPos.line, targetPos.character + character.length);
+    }
+  }
+
+  public async overtypeCharacter(character: string): Promise<void> {
+    const activeEditor = this.editor ?? vscode.window.activeTextEditor;
+    if (!activeEditor) {
+      throw new Error("No active text editor in VS Code to overtype character");
+    }
+
+    // Tab-Switch Guard
+    if (this.pauseOnTabSwitch && this.activeDocUri && activeEditor.document.uri.toString() !== this.activeDocUri) {
+      this.logger.warn("Active document changed during typing, halting typing session");
+      throw new Error("TYPING_PAUSED_TAB_SWITCHED");
+    }
+
+    // Cursor Relocation Detection
+    let targetPos = activeEditor.selection.active;
+    if (this.expectedHead && !targetPos.isEqual(this.expectedHead)) {
+      this.logger.warn(`Cursor manually jumped from ${this.expectedHead.line}:${this.expectedHead.character} to ${targetPos.line}:${targetPos.character}`);
+      this.onCursorJumpCallback?.(this.expectedHead, targetPos);
+
+      if (this.cursorJumpPolicy === "pause") {
+        throw new Error("TYPING_PAUSED_CURSOR_MOVED");
+      } else if (this.cursorJumpPolicy === "realign") {
+        targetPos = this.expectedHead;
+      } else if (this.cursorJumpPolicy === "abort") {
+        throw new Error("TYPING_ABORTED_CURSOR_MOVED");
+      }
+    }
+
+    const lineText = activeEditor.document.lineAt(targetPos.line).text;
+    const charAtCursor = lineText.charAt(targetPos.character);
+
+    if (charAtCursor === character) {
+      // Step over without inserting duplicate delimiter
+      const nextPos = new vscode.Position(targetPos.line, targetPos.character + 1);
+      activeEditor.selection = new vscode.Selection(nextPos, nextPos);
+      this.expectedHead = nextPos;
+      this.charCount++;
+      return;
+    }
+
+    // If delimiter is not already at cursor position, type it normally
+    await this.typeCharacter(character);
+  }
+
+  public async deleteBackward(): Promise<void> {
+    const activeEditor = this.editor ?? vscode.window.activeTextEditor;
+    if (!activeEditor) {
+      throw new Error("No active text editor in VS Code to backspace");
+    }
+
+    if (this.pauseOnTabSwitch && this.activeDocUri && activeEditor.document.uri.toString() !== this.activeDocUri) {
+      throw new Error("TYPING_PAUSED_TAB_SWITCHED");
+    }
+
+    const targetPos = activeEditor.selection.active;
+    if (targetPos.character > 0) {
+      const prevPos = new vscode.Position(targetPos.line, targetPos.character - 1);
+      await activeEditor.edit(
+        (editBuilder) => {
+          editBuilder.delete(new vscode.Range(prevPos, targetPos));
+        },
+        {
+          undoStopBefore: false,
+          undoStopAfter: false,
+        }
+      );
+      this.expectedHead = prevPos;
+    } else if (targetPos.line > 0) {
+      const prevLineLength = activeEditor.document.lineAt(targetPos.line - 1).text.length;
+      const prevPos = new vscode.Position(targetPos.line - 1, prevLineLength);
+      await activeEditor.edit(
+        (editBuilder) => {
+          editBuilder.delete(new vscode.Range(prevPos, targetPos));
+        },
+        {
+          undoStopBefore: false,
+          undoStopAfter: false,
+        }
+      );
+      this.expectedHead = prevPos;
+    }
   }
 
   public async releaseModifiers(): Promise<void> {
-    // In VS Code editor context, no OS modifier keys are held down by default
     this.logger.debug("VS Code typing target modifier release requested");
   }
 }

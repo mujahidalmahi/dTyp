@@ -1,6 +1,6 @@
 import * as path from "node:path";
 import * as fs from "node:fs";
-import { Component, Category, Snippet, Template } from "@dtyp/types";
+import { Component, Category, Snippet } from "@dtyp/types";
 import { safeReadJsonFile, ensureDirectoryExists, defaultLogger } from "@dtyp/utilities";
 import { SqliteClient } from "@dtyp/library-engine";
 
@@ -40,60 +40,13 @@ export const buildDatabase = async (): Promise<void> => {
     );
   }
 
-  const baselineComponents: Component[] = [
-    {
-      id: "linkedList.node",
-      name: "Node",
-      language: "c",
-      type: "struct",
-      categoryId: "data-structures.linked-lists.singly.node",
-      category: "data-structures",
-      subcategory: "singly",
-      path: "data-structures/linked-lists/singly/node",
-      description: "Node struct for singly linked list",
-      signature: "typedef struct Node { int data; struct Node* next; } Node;",
-      code: "typedef struct Node {\n    int data;\n    struct Node* next;\n} Node;",
-      complexity: { time: "O(1)", space: "O(1)" },
-      dependencies: [],
-      tags: ["linked-list", "node", "struct"],
-      aliases: ["Node", "linkedList.node", "linkedList>Node()"],
-      version: "1.0.0",
-    },
-    {
-      id: "linkedList.createNode",
-      name: "createNode",
-      language: "c",
-      type: "function",
-      categoryId: "data-structures.linked-lists.singly.node",
-      category: "data-structures",
-      subcategory: "singly",
-      path: "data-structures/linked-lists/singly/node",
-      description: "Allocates a new linked list node",
-      signature: "Node* createNode(int data);",
-      code: "Node* createNode(int data) {\n    Node* n = (Node*)malloc(sizeof(Node));\n    if (!n) return NULL;\n    n->data = data;\n    n->next = NULL;\n    return n;\n}",
-      complexity: { time: "O(1)", space: "O(1)" },
-      dependencies: ["linkedList.node"],
-      tags: ["linked-list", "node", "creation"],
-      aliases: ["createNode", "linkedList.createNode", "linkedList>createNode()"],
-      version: "1.0.0",
-    },
-  ];
-
-  for (const b of baselineComponents) {
-    if (!allComponents.some((c) => c.id === b.id)) {
-      allComponents.push(b);
-    }
-  }
+  // No hardcoded fallback components: strictly mirror source components
   const snippets = safeReadJsonFile<Snippet[]>(
     path.join(baseSourceDir, "snippets", "snippets.json"),
     []
   );
-  const templates = safeReadJsonFile<Template[]>(
-    path.join(baseSourceDir, "templates", "templates.json"),
-    []
-  );
 
-  logger.info(`Loaded: ${categories.length} categories, ${allComponents.length} components`);
+  logger.info(`Loaded: ${categories.length} categories, ${allComponents.length} components, ${snippets.length} snippets`);
 
   const sqlite = new SqliteClient();
   await sqlite.initialize(); // in-memory build
@@ -228,13 +181,6 @@ export const buildDatabase = async (): Promise<void> => {
     ]);
   }
   snipStmt.free();
-
-  // 5. Insert templates
-  const tmplStmt = db.prepare(`INSERT INTO templates (id, name, category, body, description) VALUES (?, ?, ?, ?, ?)`);
-  for (const t of templates) {
-    tmplStmt.run([t.id, t.name, t.category, t.body, t.description ?? null]);
-  }
-  tmplStmt.free();
 
   // Commit transaction
   db.exec("COMMIT;");

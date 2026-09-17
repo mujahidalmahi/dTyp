@@ -3,4 +3,6 @@ export * from "./session-engine.js";
 export * from "./memory-engine.js";
 export * from "./search-engine.js";
 export * from "./auto-type-engine.js";
+export * from "./header-engine.js";
 export * from "./snippet-engine.js";
+export * from "./update-engine.js";

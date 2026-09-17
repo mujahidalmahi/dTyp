@@ -28,15 +28,44 @@ export const validateComponent = (component: unknown): ValidationResult => {
     errors.push("Component requires non-empty C code");
   }
 
-  // Basic C syntax check: balanced braces and parentheses
+  // Basic C syntax check: balanced braces and parentheses (ignoring string/char literals)
   if (c.code) {
     let openBraces = 0;
     let openParens = 0;
-    for (const char of c.code) {
+    let inString = false;
+    let inChar = false;
+    let escaped = false;
+
+    for (let i = 0; i < c.code.length; i++) {
+      const char = c.code[i];
+      if (escaped) {
+        escaped = false;
+        continue;
+      }
+      if (char === "\\") {
+        escaped = true;
+        continue;
+      }
+      if (inString) {
+        if (char === '"') inString = false;
+        continue;
+      }
+      if (inChar) {
+        if (char === "'") inChar = false;
+        continue;
+      }
+      if (char === '"') {
+        inString = true;
+        continue;
+      }
+      if (char === "'") {
+        inChar = true;
+        continue;
+      }
       if (char === "{") openBraces++;
-      if (char === "}") openBraces--;
-      if (char === "(") openParens++;
-      if (char === ")") openParens--;
+      else if (char === "}") openBraces--;
+      else if (char === "(") openParens++;
+      else if (char === ")") openParens--;
     }
     if (openBraces !== 0) {
       errors.push(`Unbalanced curly braces in component code (delta: ${openBraces})`);

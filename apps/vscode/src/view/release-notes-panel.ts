@@ -17,7 +17,7 @@ export class ReleaseNotesPanel {
 
     const panel = vscode.window.createWebviewPanel(
       "dtyp.releaseNotes",
-      "What's New in dTyp v2.0",
+      "What's New in dTyp v3.0",
       column || vscode.ViewColumn.One,
       {
         enableScripts: true,
@@ -88,7 +88,7 @@ export class ReleaseNotesPanel {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>What's New in dTyp v2.0</title>
+  <title>What's New in dTyp v3.0</title>
   <style>
     :root {
       --bg: var(--vscode-editor-background);
@@ -291,16 +291,16 @@ export class ReleaseNotesPanel {
     <div class="brand">
       <div class="brand-badge">dTyp_</div>
       <div class="title-group">
-        <h1>Welcome to dTyp v2.0</h1>
+        <h1>Welcome to dTyp v3.0</h1>
         <p>Offline Academic C Library & Automated Stealth Typing Assistant</p>
       </div>
     </div>
-    <span class="version-tag">v2.0.0 Production Release</span>
+    <span class="version-tag">v3.0.0 Production Release</span>
   </div>
 
   <div class="actions">
     <button class="btn-primary" onclick="sendMessage('browseLibrary')">
-      <span>📚</span> Browse Library (2,500)
+      <span>📚</span> Browse Library (500)
     </button>
     <button class="btn-secondary" onclick="sendMessage('openWalkthrough')">
       <span>🎓</span> Open Interactive Walkthrough
@@ -321,32 +321,32 @@ export class ReleaseNotesPanel {
   <div class="grid">
     <div class="card">
       <div class="card-icon">⚡</div>
-      <h3>Dual Typing Engine (Stealth Mode)</h3>
-      <p>Choose between <b>Automatic</b> (timed simulation) and <b>Stealth Manual</b> mode. In manual mode, code is queued and typed character-by-character per <kbd>Ctrl+D</kbd> keystroke.</p>
+      <h3>Dual Typing Engine & Edge-Case Guards</h3>
+      <p>Choose between <b>Automatic</b> (1ms to 1000ms delay) and <b>Stealth Manual</b> mode (<kbd>Ctrl+D</kbd>). Includes cursor jump relocation pause, tab-switch guard, and 2-3 char undo chunks.</p>
     </div>
 
     <div class="card">
       <div class="card-icon">📚</div>
-      <h3>2,500 Essential C Components</h3>
-      <p>Completely bloat-free offline library across 12 domains. Rich algorithmic variations (iterative vs recursive, return code vs pointer, fixed vs dynamic capacity).</p>
+      <h3>500 Essential C Components (Zero Comments)</h3>
+      <p>Completely bloat-free offline library across 7 structured domains. Strict Zero-Comments Invariant verified 100% with parametric variations.</p>
     </div>
 
     <div class="card">
       <div class="card-icon">📦</div>
-      <h3>New Boiler Plate Category</h3>
-      <p>Production-ready main entry points, CLI argument handling (<code>getopt</code>), interactive REPLs, Makefiles, custom allocators (arena/pool/bump), and test harnesses.</p>
+      <h3>Complete Projects & Boilerplates</h3>
+      <p>Stand-alone system projects (shell, HTTP server, compiler, allocator) alongside production main templates, IO, strings, and testing harnesses.</p>
     </div>
 
     <div class="card">
       <div class="card-icon">🧩</div>
-      <h3>Native Snippets & Tab Stops</h3>
-      <p>Type <code>dtyp.*</code> anywhere in a <code>.c</code> or <code>.cpp</code> file to trigger instant completions with interactive tab stops (<code>$1</code>, <code>$2</code>, <code>$0</code>).</p>
+      <h3>1,492 Structured Snippets & Docs</h3>
+      <p>Hierarchical and alias snippet prefixes (<code>dtyp.*</code>) with interactive tab stops (<code>$1</code>, <code>$2</code>, <code>$0</code>) and 500 full Markdown documentation pages.</p>
     </div>
 
     <div class="card">
       <div class="card-icon">🛡️</div>
-      <h3>Auto Header & Duplicate Guard</h3>
-      <p>Detects missing headers (<code>&lt;stdlib.h&gt;</code>, <code>&lt;stdbool.h&gt;</code>, etc.) and injects them automatically. Prevents duplicate struct and function definitions.</p>
+      <h3>HeaderEngine & Memory Leak Detector</h3>
+      <p>Safe top-of-file header injection without duplicates, plus dynamic heap allocation (<code>malloc</code>/<code>free</code>) leak analysis.</p>
     </div>
 
     <div class="card">

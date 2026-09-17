@@ -69,4 +69,16 @@ export class CursorEngine {
     editor.revealRange(next.range, vscode.TextEditorRevealType.InCenter);
     return true;
   }
+
+  public static jumpToPrevPlaceholder(editor: vscode.TextEditor): boolean {
+    const placeholders = this.findAllPlaceholders(editor.document);
+    if (placeholders.length === 0) return false;
+
+    const currentPos = editor.selection.active;
+    const prev = [...placeholders].reverse().find((p) => p.range.start.isBefore(currentPos)) || placeholders[placeholders.length - 1];
+
+    editor.selection = new vscode.Selection(prev.range.start, prev.range.end);
+    editor.revealRange(prev.range, vscode.TextEditorRevealType.InCenter);
+    return true;
+  }
 }

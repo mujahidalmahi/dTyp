@@ -1,59 +1,77 @@
 import * as vscode from "vscode";
+import { defaultLogger } from "@dtyp/utilities";
 
-export interface HeaderRequirement {
-  header: string;
-  reasons: string[];
+export interface AllocationInfo {
+  variableName: string;
+  allocationType: "malloc" | "calloc" | "realloc";
+  line: number;
+  hasMatchingFree: boolean;
 }
 
-export class MemoryEngine {
-  private static readonly HEADER_DETECTORS: Array<{ header: string; pattern: RegExp; desc: string }> = [
-    { header: "stdio.h", pattern: /\b(printf|scanf|fprintf|sprintf|snprintf|fopen|fclose|fgets|fputs|fread|fwrite|perror|getchar|putchar)\b/, desc: "Standard I/O" },
-    { header: "stdlib.h", pattern: /\b(malloc|calloc|realloc|free|exit|qsort|bsearch|rand|srand|atoi|atof|strtol|abs)\b/, desc: "Memory & utilities" },
-    { header: "string.h", pattern: /\b(strlen|strcpy|strncpy|strcat|strncat|strcmp|strncmp|strchr|strstr|strtok|memcpy|memset|memmove|memcmp)\b/, desc: "String manipulation" },
-    { header: "stdbool.h", pattern: /\b(bool|true|false)\b/, desc: "Boolean types" },
-    { header: "math.h", pattern: /\b(sqrt|pow|sin|cos|tan|fabs|floor|ceil|log|log10|exp)\b/, desc: "Math functions" },
-    { header: "limits.h", pattern: /\b(INT_MAX|INT_MIN|UINT_MAX|LONG_MAX|LONG_MIN|CHAR_MAX|CHAR_BIT)\b/, desc: "Integer limits" },
-    { header: "time.h", pattern: /\b(time|clock|difftime|mktime|strftime|time_t|clock_t)\b/, desc: "Time functions" },
-    { header: "ctype.h", pattern: /\b(isalpha|isdigit|isalnum|isspace|isupper|islower|toupper|tolower)\b/, desc: "Character classification" },
-    { header: "stdint.h", pattern: /\b(int8_t|int16_t|int32_t|int64_t|uint8_t|uint16_t|uint32_t|uint64_t)\b/, desc: "Exact-width integer types" },
-  ];
+export class MemoryEngine implements vscode.Disposable {
+  private logger = defaultLogger.child("MemoryEngine");
+  private disposables: vscode.Disposable[] = [];
 
-  public static getExistingHeaders(documentText: string): Set<string> {
-    const existing = new Set<string>();
-    const includeRegex = /#\s*include\s*[<"]([^>"]+)[>"]/g;
-    let match: RegExpExecArray | null;
-    while ((match = includeRegex.exec(documentText)) !== null) {
-      existing.add(match[1].trim());
-    }
-    return existing;
+  constructor() {
+    this.logger.info("MemoryEngine initialized");
   }
 
-  public static getMissingHeaders(documentText: string, codeToInsert: string): string[] {
-    const existing = this.getExistingHeaders(documentText);
-    const missing: string[] = [];
+  /**
+   * Tracks an active VS Code disposable for safe teardown.
+   */
+  public registerDisposable(d: vscode.Disposable): void {
+    this.disposables.push(d);
+  }
 
-    for (const detector of this.HEADER_DETECTORS) {
-      if (detector.pattern.test(codeToInsert) && !existing.has(detector.header)) {
-        missing.push(detector.header);
+  /**
+   * Scans C code for dynamic heap allocations and identifies whether corresponding free() exists.
+   */
+  public static analyzeAllocations(code: string): AllocationInfo[] {
+    const lines = code.split("\n");
+    const allocations: AllocationInfo[] = [];
+
+    // Match patterns like: ptr = (Type*)malloc(...) or Type* ptr = malloc(...)
+    const allocRegex = /(?:(\w+)\s*=\s*(?:\([^)]+\)\s*)?|(?:\w+\s*\*\s*)(\w+)\s*=\s*(?:\([^)]+\)\s*)?)(malloc|calloc|realloc)\s*\(/;
+
+    for (let i = 0; i < lines.length; i++) {
+      const line = lines[i];
+      const match = line.match(allocRegex);
+      if (match) {
+        const varName = match[1] || match[2];
+        const allocType = match[3] as "malloc" | "calloc" | "realloc";
+        if (varName) {
+          // Check if free(varName) exists anywhere in code
+          const freeRegex = new RegExp(`\\bfree\\s*\\(\\s*${varName}\\s*\\)`);
+          const hasMatchingFree = freeRegex.test(code);
+          allocations.push({
+            variableName: varName,
+            allocationType: allocType,
+            line: i + 1,
+            hasMatchingFree,
+          });
+        }
       }
     }
 
-    return missing;
+    return allocations;
   }
 
-  public static async ensureHeaders(editor: vscode.TextEditor, codeToInsert: string): Promise<string[]> {
-    const document = editor.document;
-    const missing = this.getMissingHeaders(document.getText(), codeToInsert);
+  /**
+   * Generates a safe pointer deallocation snippet.
+   */
+  public static generateFreeSnippet(varName: string): string {
+    return `if (${varName} != NULL) {\\n    free(${varName});\\n    ${varName} = NULL;\\n}`;
+  }
 
-    if (missing.length === 0) return [];
-
-    const includeBlock = missing.map((h) => `#include <${h}>`).join("\n") + "\n";
-
-    // Insert at very top of document or after existing comments
-    await editor.edit((builder) => {
-      builder.insert(new vscode.Position(0, 0), includeBlock);
-    });
-
-    return missing;
+  public dispose(): void {
+    this.logger.info(`Disposing ${this.disposables.length} tracked resources in MemoryEngine`);
+    for (const d of this.disposables) {
+      try {
+        d.dispose();
+      } catch (err) {
+        // ignore
+      }
+    }
+    this.disposables = [];
   }
 }

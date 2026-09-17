@@ -62,9 +62,18 @@ export class TypingScheduler {
         const item = this.queue.dequeue();
         if (!item) break;
 
-        // Perform character typing
-        await this.mapper.typeCharacter(item.char);
-        typedChars++;
+        // Perform specific typing action
+        if (item.action === "overtype") {
+          await this.mapper.overtypeCharacter(item.char);
+          typedChars++;
+        } else if (item.action === "backspace") {
+          await this.mapper.deleteBackward();
+        } else if (item.action === "pause") {
+          // Pure pause action (hesitation or recognition)
+        } else {
+          await this.mapper.typeCharacter(item.char);
+          typedChars++;
+        }
 
         const elapsedMs = Math.max(1, Date.now() - startTime);
         const stats: TypingStatistics = {

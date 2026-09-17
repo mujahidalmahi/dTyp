@@ -1,0 +1,101 @@
+[
+  {
+    "id": "detection",
+    "parentId": null,
+    "name": "Detection",
+    "slug": "detection",
+    "path": "detection",
+    "depth": 0,
+    "type": "primary",
+    "description": "Specialized detection, integrity verification, anomaly identification, and hardware analysis routines",
+    "sortOrder": 7
+  },
+  {
+    "id": "detection.error-integrity",
+    "parentId": "detection",
+    "name": "Error & Integrity Detection",
+    "slug": "error-integrity",
+    "path": "detection/error-integrity",
+    "depth": 1,
+    "type": "subdomain",
+    "description": "Parity, checksums, CRCs, Hamming single-bit error detection, and canary checks",
+    "sortOrder": 1
+  },
+  {
+    "id": "detection.cycles-loops",
+    "parentId": "detection",
+    "name": "Cycle & Loop Detection",
+    "slug": "cycles-loops",
+    "path": "detection/cycles-loops",
+    "depth": 1,
+    "type": "subdomain",
+    "description": "Floyd, Brent, directed DFS, Kahn, undirected Union-Find, and deadlock cycle detection",
+    "sortOrder": 2
+  },
+  {
+    "id": "detection.graph-structural",
+    "parentId": "detection",
+    "name": "Graph & Structural Property Detection",
+    "slug": "graph-structural",
+    "path": "detection/graph-structural",
+    "depth": 1,
+    "type": "subdomain",
+    "description": "Bipartite graphs, Eulerian circuits/paths, bridges, articulation points, and DAG properties",
+    "sortOrder": 3
+  },
+  {
+    "id": "detection.patterns-strings",
+    "parentId": "detection",
+    "name": "Pattern & String Property Detection",
+    "slug": "patterns-strings",
+    "path": "detection/patterns-strings",
+    "depth": 1,
+    "type": "subdomain",
+    "description": "Palindromes, anagrams, pangrams, isograms, KMP, Rabin-Karp, and bracket balance",
+    "sortOrder": 4
+  },
+  {
+    "id": "detection.number-properties",
+    "parentId": "detection",
+    "name": "Number & Arithmetic Property Detection",
+    "slug": "number-properties",
+    "path": "detection/number-properties",
+    "depth": 1,
+    "type": "subdomain",
+    "description": "Primes, Armstrong, happy numbers, powers of two, and integer arithmetic overflow detection",
+    "sortOrder": 5
+  },
+  {
+    "id": "detection.array-anomalies",
+    "parentId": "detection",
+    "name": "Array & Sequence Anomaly Detection",
+    "slug": "array-anomalies",
+    "path": "detection/array-anomalies",
+    "depth": 1,
+    "type": "subdomain",
+    "description": "Sortedness, monotonicity, duplicates, majority voting, peaks, and missing number detection",
+    "sortOrder": 6
+  },
+  {
+    "id": "detection.geometry-collisions",
+    "parentId": "detection",
+    "name": "Geometric & Collision Detection",
+    "slug": "geometry-collisions",
+    "path": "detection/geometry-collisions",
+    "depth": 1,
+    "type": "subdomain",
+    "description": "2D AABB, circle-circle, point-in-polygon, line segment intersection, and 3D sphere collision",
+    "sortOrder": 7
+  },
+  {
+    "id": "detection.system-hardware",
+    "parentId": "detection",
+    "name": "System & Hardware Property Detection",
+    "slug": "system-hardware",
+    "path": "detection/system-hardware",
+    "depth": 1,
+    "type": "subdomain",
+    "description": "Runtime endianness, pointer alignment, architecture bit width, and stack growth direction",
+    "sortOrder": 8
+  }
+]

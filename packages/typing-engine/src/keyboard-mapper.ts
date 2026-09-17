@@ -15,6 +15,23 @@ export class StandardKeyboardMapper implements KeyboardMapper {
     await this.target.typeCharacter(character);
   }
 
+  public async overtypeCharacter(character: string): Promise<void> {
+    if (!this.target) {
+      throw new Error("Cannot overtype character: no typing target configured");
+    }
+    if (typeof this.target.overtypeCharacter === "function") {
+      await this.target.overtypeCharacter(character);
+    } else {
+      await this.target.typeCharacter(character);
+    }
+  }
+
+  public async deleteBackward(): Promise<void> {
+    if (this.target && typeof this.target.deleteBackward === "function") {
+      await this.target.deleteBackward();
+    }
+  }
+
   public async releaseModifiers(): Promise<void> {
     if (this.target && typeof this.target.releaseModifiers === "function") {
       await this.target.releaseModifiers();

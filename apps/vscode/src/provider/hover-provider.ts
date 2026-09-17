@@ -32,6 +32,9 @@ export class DTypHoverProvider implements vscode.HoverProvider {
       md.appendMarkdown(`- **Dependencies**: None\n`);
     }
 
+    md.appendMarkdown(`\n---\n[$(keyboard) Insert Component](command:dtyp.insertComponentById?${encodeURIComponent(JSON.stringify(exactMatch.id))}) &nbsp;|&nbsp; [$(book) View Documentation](command:dtyp.viewDocumentation?${encodeURIComponent(JSON.stringify(exactMatch.id))})`);
+    md.isTrusted = true;
+
     return new vscode.Hover(md, range);
   }
 }
