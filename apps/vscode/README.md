@@ -10,7 +10,7 @@
   <a href="https://github.com/mujahidalmahi/dTyp/actions/workflows/ci.yml"><img src="https://img.shields.io/github/actions/workflow/status/mujahidalmahi/dTyp/ci.yml?branch=main&label=CI&logo=github" alt="CI Build Status" /></a>
   <a href="https://github.com/mujahidalmahi/dTyp/releases/latest"><img src="https://img.shields.io/github/v/release/mujahidalmahi/dTyp?color=blue&label=version&logo=semanticrelease" alt="Release Version" /></a>
   <a href="https://marketplace.visualstudio.com/items?itemName=1da7b1e6-01f1-6f58-9ef3-d95516c5e875.dtyp-vscode"><img src="https://img.shields.io/badge/VS%20Code-Marketplace-007ACC?logo=visualstudiocode&logoColor=white" alt="VS Code Marketplace" /></a>
-  <a href="docs/LIBRARY_CATALOG.md"><img src="https://img.shields.io/badge/library-24%2C478%20C%20Components-emerald?logo=c" alt="24,478 C Components" /></a>
+  <a href="docs/LIBRARY_CATALOG.md"><img src="https://img.shields.io/badge/library-10%2C000%20C%20Components-emerald?logo=c" alt="10,000 C Components" /></a>
   <a href="#"><img src="https://img.shields.io/badge/runtime-SQLite%20WASM-blueviolet?logo=sqlite" alt="SQLite WASM" /></a>
   <a href="SECURITY.md"><img src="https://img.shields.io/badge/privacy-100%25%20Offline-orange" alt="100% Offline" /></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-green.svg" alt="License: MIT" /></a>
@@ -21,7 +21,7 @@
 
 ## ⚡ Executive Summary
 
-**dTyp** is a zero-cloud, high-performance C/C++ developer companion and stealth typing simulator built natively for Visual Studio Code. It packages **24,478 compilable, bloat-free C components** across 12 primary computer science domains inside an embedded SQLite WebAssembly database, accompanied by a realistic **character-by-character typing engine**.
+**dTyp** is a zero-cloud, high-performance C/C++ developer companion and stealth typing simulator built natively for Visual Studio Code. It packages **10,000 compilable, bloat-free C components** across 12 primary computer science domains inside an embedded SQLite WebAssembly database, accompanied by a realistic **character-by-character typing engine**.
 
 Whether practicing complex algorithms, preparing academic lab assignments, or debugging real-world systems, dTyp types flawless, production-ready code directly into your editor—either continuously with human-like jitter or discreetly keystroke-by-keystroke via **`Ctrl+D`**.
 
@@ -32,7 +32,7 @@ Whether practicing complex algorithms, preparing academic lab assignments, or de
 - [Why dTyp?](#-why-dtyp)
 - [Key Architectural Features](#-key-architectural-features)
   - [1. Dual Typing Simulation Modes](#1-dual-typing-simulation-modes)
-  - [2. 24,478 Compilable C Components](#2-24478-compilable-c-components)
+  - [2. 10,000 Compilable C Components](#2-10000-compilable-c-components)
   - [3. Six High-Performance Production Engines](#3-six-high-performance-production-engines)
   - [4. Dedicated Activity Bar & 4 Sidebar TreeViews](#4-dedicated-activity-bar--4-sidebar-treeviews)
   - [5. Interactive Release Notes & Automated Update Engine](#5-interactive-release-notes--automated-update-engine)
@@ -56,7 +56,7 @@ Whether practicing complex algorithms, preparing academic lab assignments, or de
 |---|---|---|---|
 | **Insertion Mechanism** | Instant bulk clipboard paste | Multi-token streaming / paste | **Realistic character typing or stealth `Ctrl+D` stepping** |
 | **Offline Reliability** | ✅ Yes (Static JSON) | ❌ No (Requires internet & active subscription) | **✅ 100% Offline (Embedded SQLite WebAssembly)** |
-| **Component Depth** | ~50 basic templates | Probabilistic / Hallucinatory | **24,478 verified compilable C components** |
+| **Component Depth** | ~50 basic templates | Probabilistic / Hallucinatory | **10,000 verified compilable C components** |
 | **Parameter Variations** | ❌ None | Unpredictable variations | **Structured algorithmic & pointer variations** |
 | **AST / Header Injection** | ❌ None | Partial / Manual | **Automatic missing header detection & insertion** |
 | **Exam / Lab Discretion** | ❌ Obvious paste events | ❌ Flagged by network proxies & telemetry | **Total stealth with status-bar stepping buffer** |
@@ -71,8 +71,8 @@ dTyp never forces a sudden clipboard paste. Instead, choose your typing modality
 - **Automatic Streaming (`"automatic"`)**: The engine simulates human keystrokes with configurable character latency (`15ms` default) and randomized Gaussian jitter. Complete with realistic newline pauses and indentation awareness.
 - **Stealth Manual Stepping (`"manual"`)**: Queues the selected component or snippet into an in-memory stepping buffer. Every time you press **`Ctrl+D`**, dTyp types the next character (or batch of characters) into your active editor. To an observer or screen recorder, you are typing every character yourself with natural human timing.
 
-### 2. 24,478 Compilable C Components
-Curated, bloat-free, standards-compliant C99/C11 code organized into 12 primary domains and 65 categories. Every component features rich parameter variations:
+### 2. 10,000 Compilable C Components
+Curated, bloat-free, standards-compliant C99/C11 code organized into 12 primary domains and 303 categories. Every component features rich parameter variations:
 - **Function pointer abstractions** vs **direct pointer operations**.
 - **Error status codes (`int` returning error enums)** vs **direct return value types**.
 - **Iterative implementations** vs **recursive implementations**.
@@ -90,7 +90,7 @@ Curated, bloat-free, standards-compliant C99/C11 code organized into 12 primary 
 
 ### 4. Dedicated Activity Bar & 4 Sidebar TreeViews
 Access the entire ecosystem without touching the keyboard:
-- 🌲 **Offline C Library (24,478)**: Hierarchical explorer organized by Domain > Category > Component. Click any item to preview and insert.
+- 🌲 **Offline C Library (10,000)**: Hierarchical explorer organized by Domain > Category > Component. Click any item to preview and insert.
 - ⭐ **Favorites & Pinned**: Keep your most frequently used structs, algorithms, and templates pinned for instantaneous access.
 - 📜 **Recent Insertions**: Search and re-insert recently used components with one click.
 - 🎛️ **Quick Controls**: Switch typing mode, toggle auto-header injection, view diagnostics, and trigger release notes directly from the sidebar.
@@ -100,7 +100,7 @@ Access the entire ecosystem without touching the keyboard:
 - **GitHub Releases Update Engine**: Non-intrusive background check against `mujahidalmahi/dTyp` releases with one-click direct download.
 
 ### 6. 100% Offline & Zero-Cloud Privacy Guarantee
-All 24,478 components and search indexes reside in `dtyp.db`, accessed in-memory via pure WebAssembly (`sql.js`). No external network requests, zero telemetry, zero analytics, zero cloud reliance.
+All 10,000 components and search indexes reside in `dtyp.db`, accessed in-memory via pure WebAssembly (`sql.js`). No external network requests, zero telemetry, zero analytics, zero cloud reliance.
 
 ---
 
@@ -112,7 +112,7 @@ Click the **dTyp** icon in the VS Code Activity Bar (or press `Ctrl+Shift+D`) to
 ┌──────────────────────────────────────────────┐
 │ dTyp: Activity Bar Explorer                  │
 ├──────────────────────────────────────────────┤
-│ ▼ OFFLINE C LIBRARY (24,478)                 │
+│ ▼ OFFLINE C LIBRARY (10,000)                 │
 │   ▶ 📁 Boiler Plate (2,050)                  │
 │   ▼ 📁 Data Structures (4,320)               │
 │     ▶ 📁 Linked Lists (1,080)                │
@@ -149,7 +149,7 @@ Click the **dTyp** icon in the VS Code Activity Bar (or press `Ctrl+Shift+D`) to
 | **`Ctrl+D`** | `dtyp.typeNextCharacter` | Types the next character (or batch) from the manual stepping queue |
 | **`Ctrl+Shift+D`** | `dtyp.browseLibrary` | Opens the hierarchical category and component browser |
 | **`Escape`** | `dtyp.cancelTyping` | Instantly halts automatic typing or flushes the manual queue |
-| `Ctrl+Shift+P` | `dtyp.quickInsert` | Opens ranked fuzzy search QuickPick across all 24,478 components |
+| `Ctrl+Shift+P` | `dtyp.quickInsert` | Opens ranked fuzzy search QuickPick across all 10,000 components |
 | `Ctrl+Shift+P` | `dtyp.insertSnippet` | Interactively selects and inserts standard C boilerplate snippets |
 | `Ctrl+Shift+P` | `dtyp.showHistory` | Opens history QuickPick to re-insert recently used items |
 | `Ctrl+Shift+P` | `dtyp.showReleaseNotes` | Launches the interactive "What's New in v2.0" Webview panel |
@@ -191,7 +191,7 @@ Configure dTyp via your VS Code Settings UI or `settings.json`:
 
 ## 📚 Component Taxonomy
 
-The offline database (`dtyp.db`) houses **24,478 components** structured across 12 primary domains:
+The offline database (`dtyp.db`) houses **10,000 components** structured across 12 primary domains:
 
 | Domain | Categories | Parameter Variations & Scope |
 |---|---|---|
@@ -264,7 +264,7 @@ If you ever encounter an issue or want to verify your installation:
 2. Run **`dTyp: Diagnostics & System Health`**.
 3. dTyp executes a live self-test verifying:
    - WebAssembly SQLite initialization.
-   - Database integrity and component count (`24,478` rows verified).
+   - Database integrity and component count (`10,000` rows verified).
    - Core engine responsiveness (Cursor, Memory, Session, AutoType, Search).
    - Active typing mode and keybinding registrations.
 4. Results are presented in an interactive VS Code notification with an option to view full telemetry logs.
@@ -292,7 +292,7 @@ dTyp/
 │   └── library-engine/           # SQLite abstraction layer
 ├── docs/
 │   ├── architecture.md           # End-to-end technical architecture guide
-│   ├── LIBRARY_CATALOG.md        # Complete 24,478 component domain catalog
+│   ├── LIBRARY_CATALOG.md        # Complete 10,000 component domain catalog
 │   ├── typing-engine.md          # Typing simulation & stealth stepping spec
 │   └── faq.md                    # Frequently Asked Questions
 ├── .github/

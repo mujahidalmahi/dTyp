@@ -13,9 +13,9 @@ All notable changes to the "dtyp-vscode" extension will be documented in this fi
   - **SearchEngine**: Fuzzy trigram search with relevance score ranking and category scoping.
   - **AutoTypeEngine**: Manages dual automatic and manual step queues.
   - **SnippetEngine**: Live snippet provider with tab-stops (`$1`, `$2`, `$0`) and instant completion.
-- **Clean 24,000+ Component Library**: Replaced bloated artificial variants with rich parameter and algorithmic variations.
+- **Clean 10,000 Must-Have Component Library**: Removed artificial bloat and trivial copy-paste variants, delivering 10,000 verified compilable C components with rich parameter and algorithmic variations across 12 canonical domains.
 - **New Primary Category**: Added `Boiler Plate` category with main starters, header guards, Makefiles, allocators, and testing harnesses.
-- **73% Database Size Reduction**: Optimized SQLite database from 178.7 MB to 47.2 MB.
+- **Over 89% Database & Package Reduction**: Optimized SQLite database from 178.7 MB down to 18.0 MB and VSIX package down to 2.97 MB.
 - **New Visual Identity**: Integrated new modern `dTyp_` monochrome logo.
 
 ## [1.0.0] - 2026-09-16

@@ -16,8 +16,8 @@
   (Library Explorer,         (Cursor, Session,             (WebAssembly sql.js)
    Favorites, History,        Memory, AutoType,                    │
    Quick Controls,            Search, Snippets)         SQLite Database (dtyp.db)
-   Release Notes Webview)             │                 24,478 Offline C Components
-         │                            │                            │
+    Release Notes Webview)             │                 10,000 Offline C Components
+          │                            │                            │
          └────────────────────────────┼────────────────────────────┘
                                       │
                                  Shared Core
@@ -103,7 +103,7 @@ dTyp contributes a custom container to the VS Code Activity Bar:
 - **Container ID**: `dtyp-explorer`
 - **Activity Bar Icon**: `images/dtyp-activitybar.svg`
 - **Tree Views**:
-  1. `dtyp.libraryView`: Hierarchical tree rendering the 24,478 components across domains and categories. Supports inline buttons for inserting, favoriting, and copying code.
+  1. `dtyp.libraryView`: Hierarchical tree rendering the 10,000 components across domains and categories. Supports inline buttons for inserting, favoriting, and copying code.
   2. `dtyp.favoritesView`: Quick-access list of user-favorited components.
   3. `dtyp.historyView`: Chronological list of recently typed components with relative timestamps.
   4. `dtyp.quickActionsView`: Fast toggle controls for typing mode, delay settings, update checking, and diagnostics.
@@ -113,7 +113,7 @@ dTyp contributes a custom container to the VS Code Activity Bar:
 ## 4. WebAssembly SQLite Storage Layer
 
 - **Pure WebAssembly**: Powered by `sql.js` compiled from SQLite 3. Zero native Node.js binaries (`node-gyp`) are used, eliminating OS-specific compilation issues.
-- **Single File Bundle**: All component data, metadata, complexity classifications, and signatures are compiled into `dtyp.db` (optimized at 47.2 MB).
+- **Single File Bundle**: All component data, metadata, complexity classifications, and signatures are compiled into `dtyp.db` (optimized at 18.0 MB).
 - **In-Memory Querying**: The database is read once during extension startup into WebAssembly memory, enabling instant sub-millisecond query execution.
 
 ---

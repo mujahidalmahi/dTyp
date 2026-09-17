@@ -1,6 +1,6 @@
 # dTyp Offline C Component Library Catalog
 
-The **dTyp** offline library contains **24,478 carefully curated, compilable C components** designed specifically for academic computer science courses, competitive programming, and systems engineering.
+The **dTyp** offline library contains **10,000 carefully curated, compilable C components** designed specifically for academic computer science courses, competitive programming, and systems engineering.
 
 Every component is self-contained, adheres to the C11 standard, requires zero third-party dependencies, and is indexed within an embedded SQLite WebAssembly database for sub-millisecond querying.
 
@@ -8,21 +8,20 @@ Every component is self-contained, adheres to the C11 standard, requires zero th
 
 ## 🏛️ Domain Breakdown (12 Primary Domains)
 
-| Domain | Key Categories | Approx. Components | Description |
+| Domain | Key Categories | Exact Components | Description |
 |---|---|---|---|
-| **1. Boiler Plate** | `main`, `cli-args`, `makefiles`, `allocators`, `test-harness` | 498 | Compilable entry points, argument parsers (`getopt`), custom arena/pool allocators, and test assertion runners. |
-| **2. Data Structures** | `linked-list`, `stack`, `queue`, `tree`, `hash-table`, `heap`, `trie`, `segment-tree` | 1,840 | Complete node definitions, traversals, insertions, deletions, rebalancing, and circular variants. |
-| **3. Algorithms** | `sorting`, `searching`, `divide-and-conquer`, `greedy`, `backtracking` | 1,500 | 10 sorting algorithms (quick, merge, heap, tim, radix), 6 searching algorithms with lower/upper bound helpers. |
-| **4. Graph Theory** | `traversal`, `shortest-path`, `minimum-spanning-tree`, `flow`, `components` | 1,100 | Adjacency list/matrix graphs, BFS, DFS, Dijkstra, Bellman-Ford, Floyd-Warshall, Kruskal, Prim, Tarjan, Kosaraju. |
-| **5. Dynamic Programming** | `knapsack`, `lcs`, `lis`, `matrix-chain`, `edit-distance`, `grid-paths` | 1,000 | Memoized recursive top-down and tabulated bottom-up solutions with space-optimized rolling arrays. |
-| **6. Numerical Methods** | `root-finding`, `linear-systems`, `interpolation`, `integration`, `ode-solvers` | 1,200 | Newton-Raphson, Bisection, Secant, Brent's method; Gaussian elimination, LU, Cholesky; RK4 and RK45 adaptive ODE solvers. |
-| **7. Competitive Programming** | `fast-io`, `modular-arithmetic`, `bitmask`, `combinatorics`, `geometry` | 1,400 | Ultra-fast `getchar_unlocked` I/O buffers, modular inverse, prime factorizations, Fenwick trees (BIT). |
-| **8. Programming Patterns** | `oop-c`, `state-machine`, `observer`, `factory`, `strategy`, `command-queue` | 1,100 | Object-oriented C with VTables, finite state machines, event dispatchers, and opaque pointer encapsulation. |
-| **9. Utilities & Memory** | `ring-buffer`, `string-builder`, `memory-tracker`, `bitset`, `timer` | 1,500 | Leak-detecting allocators, dynamic resizing string builders, lock-free circular queues, and high-res timers. |
-| **10. C Basics** | `variables`, `control-flow`, `loops`, `arrays`, `pointers-intro` | 2,000 | Fundamental university coursework exercises: pointer arithmetic, array manipulation, and condition checks. |
-| **11. C Intermediate** | `file-io`, `structs-unions`, `function-pointers`, `preprocessor`, `recursion` | 4,000 | Dynamic memory allocation patterns, file serializations, callbacks, and recursive mathematical models. |
-| **12. C Advanced & Systems** | `bit-manipulation`, `low-level-memory`, `concurrency-patterns`, `posix-wrappers` | 5,000 | Memory-mapped I/O, bitwise hacks (Hamming weight, CLZ/CTZ), alignment utilities, and thread-safe abstractions. |
-| **13. Academic Semester Projects**| `micro-shell`, `json-parser`, `kv-store`, `virtual-vm`, `compression` | 2,440 | Micro applications: recursive descent JSON parser, LZW compression, mini UNIX shell, and embedded database. |
+| **1. Data Structures** | `linked-lists`, `stacks`, `queues`, `trees`, `heaps`, `trie`, `hash-tables` | 2,800 | Complete node definitions, traversals, insertions, deletions, rebalancing, and circular variants. |
+| **2. Algorithms** | `sorting`, `searching`, `divide-and-conquer`, `greedy`, `backtracking`, `graphs`, `dynamic-programming` | 2,500 | 10 sorting algorithms (quick, merge, heap, tim, radix), searching algorithms, graph traversals, and dynamic programming. |
+| **3. Numerical Methods** | `root-finding`, `linear-systems`, `interpolation`, `integration`, `ode-solvers`, `curve-fitting` | 1,300 | Newton-Raphson, Bisection, Secant, Brent's method; Gaussian elimination, LU, Cholesky; RK4 and RK45 adaptive ODE solvers. |
+| **4. Competitive Programming** | `fast-io`, `modular-arithmetic`, `primes-sieve`, `combinatorics`, `segment-tree`, `fenwick`, `dsu` | 900 | Ultra-fast `getchar_unlocked` I/O buffers, modular inverse, prime factorizations, Fenwick trees (BIT), and DSU. |
+| **5. Boiler Plate** | `main`, `memory`, `file`, `testing`, `headers` | 600 | Compilable entry points, argument parsers (`getopt`), custom arena/pool allocators, and test assertion runners. |
+| **6. Utilities & Templates** | `memory-tracker`, `timer`, `string-builder`, `arg-parser`, `csv-tokenizer`, `bit-array` | 500 | Leak-detecting allocators, dynamic resizing string builders, lock-free circular queues, and high-res timers. |
+| **7. Programming Patterns** | `two-pointers`, `sliding-window`, `fast-slow`, `prefix-sum`, `monotonic`, `state-machine` | 500 | Two Pointers, Sliding Window, Monotonic Stacks, Coordinate Compression, and Finite State Machines. |
+| **8. C Basics** | `syntax`, `variables`, `data-types`, `operators`, `control-flow`, `loops`, `arrays`, `pointers-intro` | 200 | Fundamental university coursework exercises: pointer arithmetic, array manipulation, and condition checks. |
+| **9. C Intermediate** | `file-io`, `structs-unions`, `function-pointers`, `preprocessor`, `recursion`, `memory-allocation` | 200 | Dynamic memory allocation patterns, file serializations, callbacks, and recursive mathematical models. |
+| **10. C Advanced** | `advanced-pointers`, `generic-programming`, `variadic`, `bit-manipulation`, `safety-portability` | 200 | Memory-mapped I/O, bitwise hacks (Hamming weight, CLZ/CTZ), alignment utilities, and thread-safe abstractions. |
+| **11. Academic Programming** | `signals-fft`, `circuits`, `physics`, `discrete-math`, `statistics`, `lab-tasks` | 150 | Signals, FFT, circuit analysis, physics models, discrete mathematics, and university coursework lab tasks. |
+| **12. C Projects** | `student-management`, `banking-system`, `library-system`, `cli-shell`, `file-database`, `calculator` | 150 | Complete terminal micro applications: mini UNIX shell, embedded database, expression parser, and banking systems. |
 
 ---
 

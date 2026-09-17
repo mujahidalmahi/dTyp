@@ -57,7 +57,7 @@ export class QuickActionsTreeProvider implements vscode.TreeDataProvider<QuickAc
       },
       {
         id: "browse_library",
-        label: "Browse Library (24,478)",
+        label: "Browse Library (10,000)",
         description: "Ctrl+Shift+D",
         tooltip: "Search and browse all components and templates",
         icon: "library",
@@ -67,7 +67,7 @@ export class QuickActionsTreeProvider implements vscode.TreeDataProvider<QuickAc
         id: "quick_insert",
         label: "Quick Insert (Fuzzy)",
         description: "Ranked search",
-        tooltip: "Fuzzy search with relevance scoring across 24,000+ components",
+        tooltip: "Fuzzy search with relevance scoring across 10,000 components",
         icon: "search",
         command: "dtyp.quickInsert",
       },

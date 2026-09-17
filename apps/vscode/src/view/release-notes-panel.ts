@@ -300,7 +300,7 @@ export class ReleaseNotesPanel {
 
   <div class="actions">
     <button class="btn-primary" onclick="sendMessage('browseLibrary')">
-      <span>📚</span> Browse Library (24,478)
+      <span>📚</span> Browse Library (10,000)
     </button>
     <button class="btn-secondary" onclick="sendMessage('openWalkthrough')">
       <span>🎓</span> Open Interactive Walkthrough
@@ -327,7 +327,7 @@ export class ReleaseNotesPanel {
 
     <div class="card">
       <div class="card-icon">📚</div>
-      <h3>24,478 Curated C Components</h3>
+      <h3>10,000 Must-Have C Components</h3>
       <p>Completely bloat-free offline library across 12 domains. Rich algorithmic variations (iterative vs recursive, return code vs pointer, fixed vs dynamic capacity).</p>
     </div>
 

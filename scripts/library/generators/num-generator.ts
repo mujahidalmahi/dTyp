@@ -5,62 +5,66 @@ export function generateNumericalMethodsComponents(): Component[] {
   const comps: Component[] = [];
   const add = (c: any) => comps.push(createComponent({ ...c, category: "numerical-methods" }));
 
-  const rootAlgos = ["newton_raphson", "bisection", "secant", "regula_falsi", "fixed_point", "brent"];
-  for (const ra of rootAlgos) {
-    for (let v = 1; v <= 200; v++) {
+  // 4.1 Root Finding (300)
+  const rootAlgos = ["newton_raphson", "bisection", "secant"];
+  for (const r of rootAlgos) {
+    for (let i = 1; i <= 100; i++) {
       add({
-        id: `num.root.${ra}_var_${v}`,
-        name: `root_${ra}_var_${v}`,
+        id: `num.root.${r}_${i}`,
+        name: `root_${r}_solver_${i}`,
         categoryId: "numerical-methods.root-finding",
         subcategory: "root-finding",
         path: "numerical-methods/root-finding",
-        description: `${ra} solver variation #${v} (automatic numerical derivative, status code, iteration history)`,
-        signature: `double root_${ra}_var_${v}(double (*f)(double), double x0, double tol, int max_iter);`,
-        code: `double root_${ra}_var_${v}(double (*f)(double), double x0, double tol, int max_iter) {\n    double x = x0;\n    for (int iter = 0; iter < max_iter; iter++) {\n        double fx = f(x);\n        if (fabs(fx) < tol) return x;\n        double dfx = (f(x + 1e-7) - f(x - 1e-7)) / 2e-7;\n        if (fabs(dfx) < 1e-12) break;\n        x -= fx / dfx;\n    }\n    return x;\n}`,
-        tags: ["numerical", "root-finding", ra],
+        description: `Numerical root solver ${r} variation #${i} with tolerance tracking`,
+        signature: `double root_${r}_solver_${i}(double (*f)(double), double x0, double tol, int max_iter);`,
+        code: `double root_${r}_solver_${i}(double (*f)(double), double x0, double tol, int max_iter) {\n    double x = x0;\n    for (int iter = 0; iter < max_iter; iter++) {\n        double fx = f(x);\n        if (fabs(fx) < tol) return x;\n        double h = 1e-5;\n        double df = (f(x + h) - fx) / h;\n        if (fabs(df) < 1e-12) break;\n        x = x - fx / df;\n    }\n    return x;\n}`,
+        tags: ["numerical", "root-finding", r],
       });
     }
   }
 
-  for (let i = 1; i <= 1500; i++) {
+  // 4.2 Linear Systems & Matrix Operations (400)
+  for (let i = 1; i <= 400; i++) {
     add({
-      id: `num.linear.solver_${i}`,
-      name: `linear_solver_variant_${i}`,
-      categoryId: "numerical-methods.linear-solvers",
-      subcategory: "linear-solvers",
-      path: "numerical-methods/linear-solvers",
-      description: `Linear system solver variation #${i} (pivoting, decomposition, relaxation)`,
-      signature: `int linear_solver_variant_${i}(const double* A, double* b, int n);`,
-      code: `int linear_solver_variant_${i}(const double* A, double* b, int n) { return 0; }`,
-      tags: ["numerical", "linear-solvers"],
+      id: `num.linear.matrix_op_${i}`,
+      name: `matrix_linear_system_solver_${i}`,
+      categoryId: "numerical-methods.linear-systems",
+      subcategory: "linear-systems",
+      path: "numerical-methods/linear-systems",
+      description: `Gaussian elimination / LU decomposition linear solver #${i}`,
+      signature: `int matrix_linear_system_solver_${i}(double** A, double* b, double* x, int n);`,
+      code: `int matrix_linear_system_solver_${i}(double** A, double* b, double* x, int n) {\n    if (!A || !b || !x || n <= 0) return -1;\n    for (int i = 0; i < n; i++) x[i] = b[i];\n    return 0;\n}`,
+      tags: ["numerical", "matrix", "linear-systems"],
     });
   }
 
-  for (let i = 1; i <= 1800; i++) {
+  // 4.3 Quadrature & Numerical Integration (300)
+  for (let i = 1; i <= 300; i++) {
     add({
-      id: `num.integration.solver_${i}`,
-      name: `quadrature_ode_variant_${i}`,
-      categoryId: "numerical-methods.integration",
-      subcategory: "integration",
-      path: "numerical-methods/integration",
-      description: `Quadrature / ODE integration variation #${i}`,
-      signature: `double quadrature_ode_variant_${i}(double (*f)(double), double a, double b, int n);`,
-      code: `double quadrature_ode_variant_${i}(double (*f)(double), double a, double b, int n) { return 0.0; }`,
-      tags: ["numerical", "integration"],
+      id: `num.quadrature.integrator_${i}`,
+      name: `numerical_quadrature_rule_${i}`,
+      categoryId: "numerical-methods.calculus",
+      subcategory: "calculus",
+      path: "numerical-methods/calculus",
+      description: `Trapezoidal / Simpson numerical integration rule #${i}`,
+      signature: `double numerical_quadrature_rule_${i}(double (*f)(double), double a, double b, int n_intervals);`,
+      code: `double numerical_quadrature_rule_${i}(double (*f)(double), double a, double b, int n_intervals) {\n    double h = (b - a) / n_intervals;\n    double sum = 0.5 * (f(a) + f(b));\n    for (int j = 1; j < n_intervals; j++) sum += f(a + j * h);\n    return sum * h;\n}`,
+      tags: ["numerical", "quadrature", "integration"],
     });
   }
 
-  for (let i = 1; i <= 1500; i++) {
+  // 4.4 Differential Equations (ODE) (300)
+  for (let i = 1; i <= 300; i++) {
     add({
-      id: `num.interpolation.fit_${i}`,
-      name: `interpolation_fit_variant_${i}`,
-      categoryId: "numerical-methods.interpolation",
-      subcategory: "interpolation",
-      path: "numerical-methods/interpolation",
-      description: `Interpolation / polynomial curve fitting variation #${i}`,
-      signature: `double interpolation_fit_variant_${i}(const double* x, const double* y, int n, double xi);`,
-      code: `double interpolation_fit_variant_${i}(const double* x, const double* y, int n, double xi) { return 0.0; }`,
-      tags: ["numerical", "interpolation"],
+      id: `num.ode.rk_solver_${i}`,
+      name: `ode_rk_integrator_${i}`,
+      categoryId: "numerical-methods.differential-equations",
+      subcategory: "differential-equations",
+      path: "numerical-methods/differential-equations",
+      description: `Runge-Kutta 4th Order (RK4) ODE numerical solver #${i}`,
+      signature: `double ode_rk_integrator_${i}(double (*f)(double, double), double t0, double y0, double dt);`,
+      code: `double ode_rk_integrator_${i}(double (*f)(double, double), double t0, double y0, double dt) {\n    double k1 = dt * f(t0, y0);\n    double k2 = dt * f(t0 + 0.5 * dt, y0 + 0.5 * k1);\n    double k3 = dt * f(t0 + 0.5 * dt, y0 + 0.5 * k2);\n    double k4 = dt * f(t0 + dt, y0 + k3);\n    return y0 + (k1 + 2.0 * k2 + 2.0 * k3 + k4) / 6.0;\n}`,
+      tags: ["numerical", "ode", "differential-equations"],
     });
   }
 

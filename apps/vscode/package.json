@@ -220,7 +220,7 @@
       "dtyp-explorer": [
         {
           "id": "dtyp.libraryView",
-          "name": "Offline C Library (24,478)"
+          "name": "Offline C Library (10,000)"
         },
         {
           "id": "dtyp.favoritesView",
@@ -266,12 +266,12 @@
       {
         "id": "dtyp.gettingStarted",
         "title": "Getting Started with dTyp",
-        "description": "Master the 24,478-component offline C library and stealth typing engine.",
+        "description": "Master the 10,000-component offline C library and stealth typing engine.",
         "featuredImage": "images/icon.png",
         "steps": [
           {
             "id": "welcome",
-            "title": "Discover 24,478 C Components",
+            "title": "Discover 10,000 C Components",
             "description": "Explore the completely offline C library across 12 domains.\\n[Browse Offline Library](command:dtyp.browseLibrary)",
             "media": {
               "markdown": "walkthroughs/welcome.md"

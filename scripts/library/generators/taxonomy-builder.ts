@@ -50,6 +50,19 @@ export function flattenTaxonomy(
 
 export function getFullTaxonomyHierarchy(): Record<string, TaxonomyNode[]> {
   return {
+    "boiler-plate": [
+      {
+        name: "Boiler Plate",
+        slug: "boiler-plate",
+        children: [
+          { name: "Main Entrypoint", slug: "main" },
+          { name: "Memory Allocators", slug: "memory" },
+          { name: "File Streams", slug: "file" },
+          { name: "Testing & Assertions", slug: "testing" },
+          { name: "Headers & Modules", slug: "headers" },
+        ],
+      },
+    ],
     "c-basics": [
       {
         name: "C Basics",

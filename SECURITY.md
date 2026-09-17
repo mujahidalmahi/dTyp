@@ -10,7 +10,7 @@
 ## Local-First & Zero-Cloud Privacy Guarantee
 
 **dTyp** is built around a **100% offline, local-first architecture**:
-- **No Remote Code Execution**: All 24,478 C components run from an embedded local SQLite WebAssembly database.
+- **No Remote Code Execution**: All 10,000 C components run from an embedded local SQLite WebAssembly database.
 - **Zero Telemetry / Zero Tracking**: dTyp collects no user data, no keystroke metrics, no IP addresses, and no analytics.
 - **No Background Network Traffic**: The extension makes zero network requests during normal operation (except for the optional GitHub release check which queries public GitHub API endpoints if enabled).
 

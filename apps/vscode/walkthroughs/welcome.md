@@ -1,6 +1,6 @@
 # Welcome to dTyp
 
-**dTyp** is an offline academic C library and stealth typing assistant with **24,478 curated components** across 12 domains.
+**dTyp** is an offline academic C library and stealth typing assistant with **10,000 curated components** across 12 domains.
 
 ### What Makes dTyp Special?
 - **100% Offline**: Embedded SQLite database runs entirely local using WebAssembly.

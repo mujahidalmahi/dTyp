@@ -1,0 +1,68 @@
+[
+  {
+    "id": "boiler-plate",
+    "parentId": null,
+    "name": "Boiler Plate",
+    "slug": "boiler-plate",
+    "path": "boiler-plate",
+    "depth": 0,
+    "type": "primary",
+    "description": "Boiler Plate hierarchy node",
+    "sortOrder": 0
+  },
+  {
+    "id": "boiler-plate.main",
+    "parentId": "boiler-plate",
+    "name": "Main Entrypoint",
+    "slug": "main",
+    "path": "boiler-plate/main",
+    "depth": 1,
+    "type": "family",
+    "description": "Main Entrypoint hierarchy node",
+    "sortOrder": 0
+  },
+  {
+    "id": "boiler-plate.memory",
+    "parentId": "boiler-plate",
+    "name": "Memory Allocators",
+    "slug": "memory",
+    "path": "boiler-plate/memory",
+    "depth": 1,
+    "type": "family",
+    "description": "Memory Allocators hierarchy node",
+    "sortOrder": 1
+  },
+  {
+    "id": "boiler-plate.file",
+    "parentId": "boiler-plate",
+    "name": "File Streams",
+    "slug": "file",
+    "path": "boiler-plate/file",
+    "depth": 1,
+    "type": "family",
+    "description": "File Streams hierarchy node",
+    "sortOrder": 2
+  },
+  {
+    "id": "boiler-plate.testing",
+    "parentId": "boiler-plate",
+    "name": "Testing & Assertions",
+    "slug": "testing",
+    "path": "boiler-plate/testing",
+    "depth": 1,
+    "type": "family",
+    "description": "Testing & Assertions hierarchy node",
+    "sortOrder": 3
+  },
+  {
+    "id": "boiler-plate.headers",
+    "parentId": "boiler-plate",
+    "name": "Headers & Modules",
+    "slug": "headers",
+    "path": "boiler-plate/headers",
+    "depth": 1,
+    "type": "family",
+    "description": "Headers & Modules hierarchy node",
+    "sortOrder": 4
+  }
+]

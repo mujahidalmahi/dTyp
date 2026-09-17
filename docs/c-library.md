@@ -2,7 +2,7 @@
 
 ## 1. Overview
 
-The dTyp C Library is an offline-first collection of **24,478 production-grade academic C components**, snippets, and architectural templates spanning 12 foundational computer science domains and 65 categories.
+The dTyp C Library is an offline-first collection of **10,000 production-grade academic C components**, snippets, and architectural templates spanning 12 foundational computer science domains and 303 categories.
 
 The library is compiled into an indexed SQLite WebAssembly database (`dtyp.db`) located in:
 - `database/dtyp.db`
@@ -16,18 +16,18 @@ For an exhaustive architectural catalog with sample signatures, parameter variat
 
 | Domain | Category Code | Component Count | Highlights |
 |---|---|---|---|
-| **Boiler Plate** | `boiler-plate` | 2,050 | CLI args (`getopt`), REPL loops, Makefiles, arena/pool allocators, assertion test runners |
-| **Data Structures** | `data-structures` | 4,320 | Singly, Doubly, Circular Linked Lists; Stacks; Queues; Deques; Binary Trees, BSTs, AVL, Red-Black Trees; Binary Heaps; Tries; Segment Trees, Fenwick Trees; DSU; Hash Tables |
-| **Algorithms** | `algorithms` | 5,120 | Linear, Binary, Ternary, Jump, Interpolation, Exponential searches; 10 Sorting algorithms; Graph algorithms (BFS, DFS, Dijkstra, Bellman-Ford, Floyd-Warshall, Kruskal, Prim); Dynamic Programming (Knapsack, LCS, LIS, Matrix Chain, Coin Change) |
-| **Numerical Methods** | `numerical-methods` | 2,240 | Root finding (Newton-Raphson, Bisection, Secant, Regula Falsi, Brent); Linear solvers (Gaussian, LU, Cholesky, SOR); Quadrature & ODE solvers (Euler, Heun, RK4, RK45 adaptive) |
-| **Competitive Programming** | `competitive-programming` | 1,850 | Fast I/O buffers (`getchar_unlocked`), modular arithmetic, prime sieves, LCA binary lifting |
-| **Programming Patterns** | `programming-patterns` | 1,560 | OOP in C with VTables, State Machines, Observers, Factories, Strategy, Command queues |
-| **Utilities** | `utilities` | 1,420 | Ring buffers, memory trackers, CSV tokenizers, bit manipulation |
-| **C Basics** | `c-basics` | 1,280 | Control flow, math helpers, I/O formatting, conversions |
-| **C Intermediate** | `c-intermediate` | 1,450 | Pointer arithmetic, dynamic memory, structs, files |
-| **C Advanced** | `c-advanced` | 1,320 | Function pointers, callbacks, variadics, UNIX signals |
-| **Academic Programming** | `academic-programming` | 1,180 | Coursework algorithms, formal data structures, invariants |
-| **Projects** | `projects` | 688 | Micro UNIX shell, recursive-descent JSON parser, key-value store |
+| **Data Structures** | `data-structures` | 2,800 | Singly, Doubly, Circular Linked Lists; Stacks; Queues; Trees (Binary, BST, AVL, RB); Binary Heaps; Tries; Hash Tables |
+| **Algorithms** | `algorithms` | 2,500 | Sorting (Quick, Merge, Heap, Tim, Radix), Searching (Binary, Exponential), Graph (BFS, DFS, Dijkstra, Prim), DP (Knapsack, LCS, LIS) |
+| **Numerical Methods** | `numerical-methods` | 1,300 | Root finding (Newton-Raphson, Bisection), Linear systems (Gaussian, LU), Quadrature, Runge-Kutta ODE solvers |
+| **Competitive Programming** | `competitive-programming` | 900 | Fast I/O buffers (`getchar_unlocked`), Modular arithmetic, Prime sieve, Fenwick, DSU |
+| **Boiler Plate** | `boiler-plate` | 600 | Main entry points, CLI args (`getopt`), arena/pool allocators, file streams, test assertion runners |
+| **Utilities & Templates** | `utilities` | 500 | Memory leak trackers, high-res timers, string builders, CSV tokenizers, bit arrays |
+| **Programming Patterns** | `programming-patterns` | 500 | Two Pointers, Sliding Window, Monotonic Stacks, Coordinate Compression, State Machines |
+| **C Basics** | `c-basics` | 200 | Syntax declarations, loops, conditionals, array fundamentals, standard conversions |
+| **C Intermediate** | `c-intermediate` | 200 | Structs & unions, dynamic memory allocations, file I/O operations, preprocessor macros |
+| **C Advanced** | `c-advanced` | 200 | Function pointers, dispatch tables, bitwise hacks, memory alignments, UB guards |
+| **Academic Programming** | `academic-programming` | 150 | Signals & FFT, circuit analysis, physics simulation, discrete mathematics, university lab tasks |
+| **C Projects** | `projects` | 150 | Student management, banking system, library system, CLI shell, file database, calculator |
 
 ---
 
