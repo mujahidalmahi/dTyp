@@ -2,6 +2,30 @@
 
 All notable changes to the "dtyp-vscode" extension will be documented in this file.
 
+## [3.1.0] - 2026-09-17
+
+### Nonlinear Humanized C Authoring, Cognitive Pauses & Renew Engine Overhaul
+- **Nonlinear C Authoring Engine**:
+  - Implemented human programmer authoring flow: types scaffold (`#include` and `int main() { return 0; }`) first, jumps cursor above `main()` to declare structs, types, and helper functions, and navigates inside `main()` to complete driver logic.
+  - Added structural decomposition (`CStructuralDecomposer`) and landmark-aware cursor navigation (`NonlinearAuthoringPlanner`).
+  - Added `"nonlinear"` typing model setting (`dtyp.naturalTypingModel: "nonlinear"`).
+- **Cognitive Pauses Engine**:
+  - Multi-tier psychological hesitation modeling (`CognitivePauseModel`): control-flow formulation pauses on `if/while/for/switch` (400–800ms), syntax statement completion pauses on `;` (120–280ms), block closure review pauses on `}` (300–650ms), pointer navigation hesitation on `->` (150–320ms), argument deliberation pauses on `,` (80–180ms).
+  - Micro-rest pauses sampled from a log-normal distribution every 80–130 keystrokes.
+  - Dynamic stamina decay and renewal model (`StaminaRenewal`).
+- **Renew Engine**:
+  - Added Queue Renewal (`dtyp.renewQueue`, shortcut `Ctrl+Shift+R`) to reset active typing queue back to character 0.
+  - Added Step Rewinding (`dtyp.rewindStep`, shortcut `Ctrl+Shift+U`) to undo last typed character and decrement queue index.
+  - Added in-file component renewal (`dtyp.renewComponent`) and engine state cache renewal.
+- **Production Engine Overhaul**:
+  - `HeaderEngine`: Added detection for full C99/C11/POSIX/Windows headers (`assert.h`, `errno.h`, `stddef.h`, `float.h`, `unistd.h`, `pthread.h`, `fcntl.h`, `windows.h`).
+  - `MemoryEngine`: Integrated real-time VS Code `DiagnosticCollection` squiggly warnings for unmanaged heap allocations, QuickFix `CodeActionProvider` (`free(var); var = NULL;`), and unsafe direct `realloc` reassignment checks.
+  - `DuplicateDetector`: Support for distinguishing prototypes from full definitions, plus `#define` macro and `enum` collision checks.
+  - `SnippetEngine`: Dynamic conversion to interactive VS Code `SnippetString` with indexed tab stops (`${1:type}`, `${2:name}`).
+  - `SessionEngine`: Telemetry calculation (characters, estimated words, minutes saved) and JSON export/import.
+  - `CursorEngine`: Visual editor placeholder decorations and `dtyp.hasPlaceholders` context management.
+  - `UpdateEngine`: Background update check with context key `dtyp.updateAvailable`.
+
 ## [3.0.1] - 2026-09-17
 
 ### Hierarchical QuickPick Browser, Division Navigation & TreeView Alignment
