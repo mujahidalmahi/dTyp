@@ -1,7 +1,9 @@
-import { TypingAction, TypingModel } from "@dtyp/types";
+import { TypingAction, TypingModel, CognitivePauseIntensity } from "@dtyp/types";
 import { HumanCadence, C_BURST_KEYWORDS } from "./human-cadence.js";
 import { CStructuralDecomposer } from "./c-structural-decomposer.js";
 import { NonlinearAuthoringPlanner } from "./nonlinear-authoring-planner.js";
+import { CognitivePauseModel } from "./cognitive-pause-model.js";
+import { StaminaRenewal } from "./stamina-renewal.js";
 
 export interface TokenizerOptions {
   model: TypingModel;
@@ -11,6 +13,8 @@ export interface TokenizerOptions {
   typoRate?: number;
   preserveNewlines?: boolean;
   preserveTabs?: boolean;
+  cognitivePauseIntensity?: CognitivePauseIntensity;
+  enableFatigueRenewal?: boolean;
 }
 
 const OPEN_TO_CLOSE: Record<string, string> = {
@@ -19,8 +23,12 @@ const OPEN_TO_CLOSE: Record<string, string> = {
   "{": "}",
 };
 
+const CONTROL_FLOW_KEYWORDS = new Set(["if", "while", "for", "switch", "do"]);
+
 export class StructuralTokenizer {
   private cadence: HumanCadence;
+  private pauseModel: CognitivePauseModel;
+  private stamina: StaminaRenewal;
 
   constructor(private options: TokenizerOptions) {
     this.cadence = new HumanCadence({
@@ -29,6 +37,11 @@ export class StructuralTokenizer {
       enableTypoSimulation: options.enableTypoSimulation,
       typoRate: options.typoRate,
     });
+    this.pauseModel = new CognitivePauseModel({
+      intensity: options.cognitivePauseIntensity,
+      baseDelayMs: options.baseDelayMs,
+    });
+    this.stamina = new StaminaRenewal();
   }
 
   /**
@@ -137,7 +150,58 @@ export class StructuralTokenizer {
         inBurst = wordsInText[wordIdx].isBurst;
       }
 
-      const strokeDelay = this.cadence.calculateStrokeDelay(char, inBurst, prevChar);
+      // 1. Cognitive pause before control flow keywords (if, while, for, switch, do)
+      if (
+        isHumanized &&
+        wordIdx < wordsInText.length &&
+        i === wordsInText[wordIdx].start &&
+        CONTROL_FLOW_KEYWORDS.has(wordsInText[wordIdx].word) &&
+        !inString &&
+        !inChar
+      ) {
+        actions.push({
+          type: "pause",
+          pauseKind: "control_flow",
+          delayMs: this.pauseModel.getPauseDuration("control_flow"),
+          description: `cognitive pause formulating ${wordsInText[wordIdx].word} condition`,
+        });
+        this.stamina.renew();
+      }
+
+      // 2. Cognitive hesitation before pointer dereference ->
+      if (
+        isHumanized &&
+        char === "-" &&
+        i + 1 < normalized.length &&
+        normalized[i + 1] === ">" &&
+        !inString &&
+        !inChar
+      ) {
+        actions.push({
+          type: "pause",
+          pauseKind: "pointer_nav",
+          delayMs: this.pauseModel.getPauseDuration("pointer_nav"),
+          description: "pointer dereference verification pause",
+        });
+      }
+
+      // 3. Check for periodic fatigue micro-rest
+      if (isHumanized) {
+        const microRest = this.pauseModel.registerStroke();
+        if (microRest) {
+          actions.push(microRest);
+          this.stamina.renew();
+        }
+      }
+
+      let strokeDelay = this.cadence.calculateStrokeDelay(char, inBurst, prevChar);
+      if (isHumanized && this.options.enableFatigueRenewal !== false) {
+        strokeDelay = Math.max(1, Math.round(strokeDelay * this.stamina.getDelayMultiplier()));
+        this.stamina.recordKeystroke();
+        if (char === "\n") {
+          this.stamina.renew();
+        }
+      }
 
       // Handle escaped characters inside strings / chars
       if (escaped) {
@@ -242,6 +306,31 @@ export class StructuralTokenizer {
           } else {
             actions.push({ type: "type", char, delayMs: strokeDelay });
           }
+
+          if (isHumanized && char === "}") {
+            actions.push({
+              type: "pause",
+              pauseKind: "block_close",
+              delayMs: this.pauseModel.getPauseDuration("block_close"),
+              description: "block scope review pause",
+            });
+            this.stamina.renew();
+          }
+
+          prevChar = char;
+          continue;
+        }
+
+        // Statement termination pause on semicolon
+        if (isHumanized && char === ";") {
+          actions.push({ type: "type", char, delayMs: strokeDelay });
+          actions.push({
+            type: "pause",
+            pauseKind: "syntax_statement",
+            delayMs: this.pauseModel.getPauseDuration("syntax_statement"),
+            description: "statement syntax completion pause",
+          });
+          this.stamina.renew();
           prevChar = char;
           continue;
         }

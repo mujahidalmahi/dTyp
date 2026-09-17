@@ -14,6 +14,14 @@ export class HeaderEngine {
     { header: "time.h", pattern: /\b(time|clock|difftime|mktime|strftime|time_t|clock_t)\b/, desc: "Time functions" },
     { header: "ctype.h", pattern: /\b(isalpha|isdigit|isalnum|isspace|isupper|islower|toupper|tolower)\b/, desc: "Character classification" },
     { header: "stdint.h", pattern: /\b(int8_t|int16_t|int32_t|int64_t|uint8_t|uint16_t|uint32_t|uint64_t|uintptr_t)\b/, desc: "Exact-width integer types" },
+    { header: "assert.h", pattern: /\b(assert)\s*\(/, desc: "Assertions" },
+    { header: "errno.h", pattern: /\b(errno|EDOM|ERANGE|EACCES|EEXIST|ENOENT)\b/, desc: "Error numbers" },
+    { header: "stddef.h", pattern: /\b(offsetof|ptrdiff_t)\b/, desc: "Standard type definitions" },
+    { header: "float.h", pattern: /\b(FLT_MAX|FLT_MIN|DBL_MAX|DBL_MIN)\b/, desc: "Floating point limits" },
+    { header: "unistd.h", pattern: /\b(fork|pipe|usleep|getpid|getppid|execvp|execlp)\b/, desc: "POSIX OS API" },
+    { header: "pthread.h", pattern: /\b(pthread_create|pthread_join|pthread_mutex_t|pthread_mutex_lock|pthread_mutex_unlock|pthread_t)\b/, desc: "POSIX threads" },
+    { header: "fcntl.h", pattern: /\b(O_RDONLY|O_WRONLY|O_RDWR|O_CREAT|O_TRUNC|O_APPEND)\b/, desc: "File control options" },
+    { header: "windows.h", pattern: /\b(HANDLE|DWORD|HINSTANCE|HWND|CreateThread|CloseHandle)\b/, desc: "Windows API" },
   ];
 
   public static getExistingHeaders(documentText: string): Set<string> {

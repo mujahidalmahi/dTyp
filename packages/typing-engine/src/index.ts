@@ -6,3 +6,5 @@ export * from "./human-cadence.js";
 export * from "./structural-tokenizer.js";
 export * from "./c-structural-decomposer.js";
 export * from "./nonlinear-authoring-planner.js";
+export * from "./cognitive-pause-model.js";
+export * from "./stamina-renewal.js";

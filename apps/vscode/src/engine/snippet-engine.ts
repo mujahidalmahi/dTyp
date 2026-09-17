@@ -17,6 +17,17 @@ export class SnippetEngine implements vscode.CompletionItemProvider {
     }
   }
 
+  public static toSnippetString(rawBody: string): vscode.SnippetString {
+    let tabIndex = 1;
+    let converted = rawBody.replace(/<([a-zA-Z_][a-zA-Z0-9_]*)>/g, (_m, p1) => {
+      return `\${${tabIndex++}:${p1}}`;
+    });
+    converted = converted.replace(/\/\*\s*(TODO[^*]*)\*\//g, (_m, p1) => {
+      return `\${${tabIndex++}:${p1.trim()}}`;
+    });
+    return new vscode.SnippetString(converted);
+  }
+
   public async provideCompletionItems(
     document: vscode.TextDocument,
     position: vscode.Position
@@ -39,7 +50,7 @@ export class SnippetEngine implements vscode.CompletionItemProvider {
       item.documentation = new vscode.MarkdownString(
         `### ${snip.description || snip.prefix}\n\nCategory: \`${snip.category || "general"}\`\n\n\`\`\`c\n${snip.body}\n\`\`\``
       );
-      item.insertText = new vscode.SnippetString(snip.body);
+      item.insertText = SnippetEngine.toSnippetString(snip.body);
       item.sortText = `0_${snip.prefix}`;
       return item;
     });

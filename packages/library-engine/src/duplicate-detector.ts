@@ -10,12 +10,20 @@ export class DuplicateDetector {
   private logger = defaultLogger.child("DuplicateDetector");
 
   /**
-   * Checks whether a function with the given name is already declared or defined in the source.
+   * Checks whether a function with the given name is declared or defined in the source.
    */
   public hasFunction(source: string, functionName: string): boolean {
     if (!source || !functionName) return false;
-    // Regex matches function definitions or prototypes like: `int functionName(...)`
     const regex = new RegExp(`\\b${functionName}\\s*\\(`, "m");
+    return regex.test(source);
+  }
+
+  /**
+   * Checks whether a function definition with body { ... } already exists in the source.
+   */
+  public hasFunctionDefinition(source: string, functionName: string): boolean {
+    if (!source || !functionName) return false;
+    const regex = new RegExp(`\\b${functionName}\\s*\\([^;{]*\\)\\s*\\{`, "m");
     return regex.test(source);
   }
 
@@ -38,6 +46,24 @@ export class DuplicateDetector {
   }
 
   /**
+   * Checks whether a macro with the given name is already defined.
+   */
+  public hasMacro(source: string, macroName: string): boolean {
+    if (!source || !macroName) return false;
+    const regex = new RegExp(`^\\s*#\\s*define\\s+${macroName}\\b`, "m");
+    return regex.test(source);
+  }
+
+  /**
+   * Checks whether an enum with the given name is already defined.
+   */
+  public hasEnum(source: string, enumName: string): boolean {
+    if (!source || !enumName) return false;
+    const regex = new RegExp(`\\benum\\s+${enumName}\\b`, "m");
+    return regex.test(source);
+  }
+
+  /**
    * Checks whether a component is already present in the source text.
    */
   public checkComponent(source: string, component: Component): DuplicateCheckResult {
@@ -45,12 +71,38 @@ export class DuplicateDetector {
       return { isDuplicate: false };
     }
 
-    // Check by function name if component represents a function
-    if (this.hasFunction(source, component.name)) {
+    // Check by function definition if component contains a function body
+    const isDefinition = component.code.includes("{");
+    if (isDefinition && this.hasFunctionDefinition(source, component.name)) {
+      return {
+        isDuplicate: true,
+        reason: `Function definition for "${component.name}" already exists in the file.`,
+      };
+    } else if (!isDefinition && this.hasFunction(source, component.name)) {
       return {
         isDuplicate: true,
         reason: `Function "${component.name}" is already declared/defined in the file.`,
       };
+    }
+
+    // Check macros
+    if (component.type === "macro" || component.code.startsWith("#define")) {
+      if (this.hasMacro(source, component.name)) {
+        return {
+          isDuplicate: true,
+          reason: `Macro "#define ${component.name}" is already defined in the file.`,
+        };
+      }
+    }
+
+    // Check enums
+    if (component.type === "enum" || component.code.includes("enum " + component.name)) {
+      if (this.hasEnum(source, component.name)) {
+        return {
+          isDuplicate: true,
+          reason: `Enum "${component.name}" is already defined in the file.`,
+        };
+      }
     }
 
     // Check by struct name if component is a struct definition
@@ -67,10 +119,16 @@ export class DuplicateDetector {
     const normalizedSig = component.signature.trim().replace(/\s+/g, " ");
     const normalizedSource = source.replace(/\s+/g, " ");
     if (normalizedSource.includes(normalizedSig)) {
-      return {
-        isDuplicate: true,
-        reason: `Signature "${component.signature}" already exists in the file.`,
-      };
+      // If the component is a function definition and only a prototype declaration exists, allow it
+      const isFunction = component.signature.includes("(");
+      if (isFunction && isDefinition && !this.hasFunctionDefinition(source, component.name)) {
+        // Prototype declaration exists, but definition is missing -> allow insertion
+      } else {
+        return {
+          isDuplicate: true,
+          reason: `Signature "${component.signature}" already exists in the file.`,
+        };
+      }
     }
 
     return { isDuplicate: false };

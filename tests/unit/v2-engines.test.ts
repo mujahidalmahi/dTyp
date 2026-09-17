@@ -193,12 +193,12 @@ describe("dTyp v2.0 Production Engines", () => {
       await autoType.startInsertion("c1", "testFunc", "int x = 42;", mockEditor, "manual");
 
       expect(autoType.isManualQueueActive()).toBe(true);
-      expect(autoType.getRemainingCount()).toBe(11);
-      expect(queuedRemaining).toBe(11);
+      expect(autoType.getRemainingCount()).toBe(12);
+      expect(queuedRemaining).toBe(12);
 
       const stepped = await autoType.stepNextCharacter(mockEditor);
       expect(stepped).toBe(1);
-      expect(autoType.getRemainingCount()).toBe(10);
+      expect(autoType.getRemainingCount()).toBe(11);
 
       await autoType.flushRemaining(mockEditor);
       expect(autoType.isManualQueueActive()).toBe(false);

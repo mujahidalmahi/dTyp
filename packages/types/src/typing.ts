@@ -3,6 +3,16 @@ export type TypingModel = "nonlinear" | "humanized" | "linear";
 
 export type TypingActionType = "type" | "overtype" | "backspace" | "pause" | "cursor_move" | "newline";
 
+export type CognitivePauseKind =
+  | "control_flow"
+  | "syntax_statement"
+  | "block_close"
+  | "pointer_nav"
+  | "parameter"
+  | "fatigue_rest";
+
+export type CognitivePauseIntensity = "subtle" | "natural" | "deliberate";
+
 export interface TypingAction {
   type: TypingActionType;
   char?: string;
@@ -13,6 +23,7 @@ export interface TypingAction {
   targetColumn?: number;
   indentSpaces?: number;
   targetLandmark?: "above_main" | "inside_main";
+  pauseKind?: CognitivePauseKind;
 }
 
 export interface TypingOptions {
@@ -26,6 +37,8 @@ export interface TypingOptions {
   naturalTypingModel?: TypingModel;
   enableTypoSimulation?: boolean;
   typoRate?: number;
+  cognitivePauseIntensity?: CognitivePauseIntensity;
+  enableFatigueRenewal?: boolean;
 }
 
 export type TypingState = "idle" | "typing" | "paused" | "cancelled" | "completed" | "error";
@@ -37,6 +50,17 @@ export interface TypingStatistics {
   startedAt?: number;
   elapsedMs: number;
   averageSpeedCps: number;
+  wpm?: number;
+  keystrokesSaved?: number;
+  timeSavedSeconds?: number;
+}
+
+export interface TypingTelemetry {
+  wpm: number;
+  keystrokesSaved: number;
+  timeSavedSeconds: number;
+  averageCps: number;
+  totalPausesDurationMs: number;
 }
 
 export interface QueuedCharacter {
@@ -52,6 +76,7 @@ export interface QueuedCharacter {
   targetColumn?: number;
   indentSpaces?: number;
   targetLandmark?: "above_main" | "inside_main";
+  pauseKind?: CognitivePauseKind;
 }
 
 export interface TypingTarget {

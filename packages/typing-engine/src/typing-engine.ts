@@ -62,6 +62,8 @@ export class DefaultTypingEngine implements TypingEngine {
         typoRate: options.typoRate ?? 0.015,
         preserveNewlines: options.preserveNewlines,
         preserveTabs: options.preserveTabs,
+        cognitivePauseIntensity: options.cognitivePauseIntensity,
+        enableFatigueRenewal: options.enableFatigueRenewal,
       });
       const actions = tokenizer.tokenize(text);
       this.queue.loadActions(actions);

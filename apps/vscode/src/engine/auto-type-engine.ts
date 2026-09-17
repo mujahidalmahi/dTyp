@@ -80,6 +80,8 @@ export class AutoTypeEngine {
     const naturalTypingModel = config.get<TypingModel>("naturalTypingModel", "nonlinear");
     const enableTypoSimulation = config.get<boolean>("enableTypoSimulation", true);
     const typoRate = config.get<number>("typoRate", 0.015);
+    const cognitivePauseIntensity = config.get<"subtle" | "natural" | "deliberate">("cognitivePauseIntensity", "natural");
+    const enableFatigueRenewal = config.get<boolean>("enableFatigueRenewal", true);
 
     this.typingTarget.setEditor(editor);
     this.typingTarget.setCursorJumpPolicy(cursorPolicy);
@@ -100,6 +102,8 @@ export class AutoTypeEngine {
           naturalTypingModel,
           enableTypoSimulation,
           typoRate,
+          cognitivePauseIntensity,
+          enableFatigueRenewal,
         });
       } catch (err: any) {
         if (err.message === "TYPING_PAUSED_CURSOR_MOVED") {
@@ -149,6 +153,8 @@ export class AutoTypeEngine {
           typoRate,
           preserveNewlines: true,
           preserveTabs: true,
+          cognitivePauseIntensity,
+          enableFatigueRenewal,
         });
         actions = tokenizer.tokenize(text);
       } else {

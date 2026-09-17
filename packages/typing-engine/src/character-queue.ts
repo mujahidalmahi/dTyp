@@ -27,6 +27,7 @@ export class CharacterQueue {
         targetColumn: act.targetColumn,
         indentSpaces: act.indentSpaces,
         targetLandmark: act.targetLandmark,
+        pauseKind: act.pauseKind,
       });
     }
   }
@@ -79,6 +80,10 @@ export class CharacterQueue {
 
   public dequeue(): QueuedCharacter | undefined {
     return this.queue.shift();
+  }
+
+  public unshift(item: QueuedCharacter): void {
+    this.queue.unshift(item);
   }
 
   public peek(): QueuedCharacter | undefined {

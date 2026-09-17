@@ -57,7 +57,10 @@
     "onCommand:dtyp.viewDocumentation",
     "onCommand:dtyp.analyzeMemory",
     "onCommand:dtyp.jumpToNextPlaceholder",
-    "onCommand:dtyp.jumpToPrevPlaceholder"
+    "onCommand:dtyp.jumpToPrevPlaceholder",
+    "onCommand:dtyp.renewQueue",
+    "onCommand:dtyp.rewindStep",
+    "onCommand:dtyp.renewComponent"
   ],
   "contributes": {
     "commands": [
@@ -167,6 +170,24 @@
         "command": "dtyp.jumpToPrevPlaceholder",
         "title": "dTyp: Jump to Previous Placeholder",
         "category": "dTyp"
+      },
+      {
+        "command": "dtyp.renewQueue",
+        "title": "dTyp: Renew / Restart Typing Queue",
+        "category": "dTyp",
+        "icon": "$(sync)"
+      },
+      {
+        "command": "dtyp.rewindStep",
+        "title": "dTyp: Rewind One Step (Undo Char)",
+        "category": "dTyp",
+        "icon": "$(discard)"
+      },
+      {
+        "command": "dtyp.renewComponent",
+        "title": "dTyp: Renew Component in File...",
+        "category": "dTyp",
+        "icon": "$(refresh)"
       }
     ],
     "keybindings": [
@@ -193,6 +214,16 @@
         "command": "dtyp.jumpToPrevPlaceholder",
         "key": "alt+up",
         "when": "editorTextFocus && dtyp.hasPlaceholders"
+      },
+      {
+        "command": "dtyp.renewQueue",
+        "key": "ctrl+shift+r",
+        "when": "editorTextFocus && dtyp.hasQueuedCharacters"
+      },
+      {
+        "command": "dtyp.rewindStep",
+        "key": "ctrl+shift+u",
+        "when": "editorTextFocus && dtyp.hasQueuedCharacters"
       }
     ],
     "configuration": {
@@ -259,6 +290,21 @@
           ],
           "default": "nonlinear",
           "description": "Typing model: 'nonlinear' (recommended) scaffolds headers and main() first, moves above main() for types and helper functions, and enters main() for driver logic; 'humanized' simulates cadence bursts linearly; 'linear' outputs raw character stream."
+        },
+        "dtyp.cognitivePauseIntensity": {
+          "type": "string",
+          "enum": [
+            "subtle",
+            "natural",
+            "deliberate"
+          ],
+          "default": "natural",
+          "description": "Intensity of cognitive human hesitations (control flow formulation, statement pauses, fatigue micro-rests)."
+        },
+        "dtyp.enableFatigueRenewal": {
+          "type": "boolean",
+          "default": true,
+          "description": "Simulate motor stamina fatigue and organic renewal over prolonged typing bursts."
         },
         "dtyp.enableTypoSimulation": {
           "type": "boolean",

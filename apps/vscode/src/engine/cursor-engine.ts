@@ -81,4 +81,30 @@ export class CursorEngine {
     editor.revealRange(prev.range, vscode.TextEditorRevealType.InCenter);
     return true;
   }
+
+  private static placeholderDecorationType: vscode.TextEditorDecorationType | null = null;
+
+  public static getDecorationType(): vscode.TextEditorDecorationType {
+    if (!this.placeholderDecorationType) {
+      this.placeholderDecorationType = vscode.window.createTextEditorDecorationType({
+        backgroundColor: new vscode.ThemeColor("editor.findMatchHighlightBackground"),
+        borderRadius: "3px",
+        overviewRulerColor: new vscode.ThemeColor("editorOverviewRuler.findMatchForeground"),
+        overviewRulerLane: vscode.OverviewRulerLane.Right,
+      });
+    }
+    return this.placeholderDecorationType;
+  }
+
+  public static updateDecorations(editor?: vscode.TextEditor): number {
+    const activeEditor = editor || vscode.window.activeTextEditor;
+    if (!activeEditor) return 0;
+
+    const placeholders = this.findAllPlaceholders(activeEditor.document);
+    const ranges = placeholders.map((p) => p.range);
+    activeEditor.setDecorations(this.getDecorationType(), ranges);
+
+    vscode.commands.executeCommand("setContext", "dtyp.hasPlaceholders", placeholders.length > 0);
+    return placeholders.length;
+  }
 }

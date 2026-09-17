@@ -16,6 +16,7 @@ import {
   AutoTypeEngine,
   SnippetEngine,
   HeaderEngine,
+  RenewEngine,
 } from "./engine/index.js";
 import {
   LibraryTreeProvider,
@@ -40,6 +41,7 @@ let autoTypeEngine: AutoTypeEngine | null = null;
 let snippetEngine: SnippetEngine | null = null;
 let memoryEngine: MemoryEngine | null = null;
 let updateEngine: UpdateEngine | null = null;
+let renewEngine: RenewEngine | null = null;
 
 let libraryTreeProvider: LibraryTreeProvider | null = null;
 let favoritesTreeProvider: FavoritesTreeProvider | null = null;
@@ -99,6 +101,43 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
 
   updateEngine = new UpdateEngine(context);
 
+  renewEngine = new RenewEngine(
+    autoTypeEngine,
+    typingTarget,
+    sessionEngine,
+    libraryEngine,
+    searchEngine,
+    snippetEngine
+  );
+
+  // Register Memory Code Actions Provider
+  context.subscriptions.push(
+    vscode.languages.registerCodeActionsProvider(["c", "cpp"], memoryEngine, {
+      providedCodeActionKinds: [vscode.CodeActionKind.QuickFix],
+    })
+  );
+
+  // Initialize diagnostics and placeholder decorations for active text editor
+  if (vscode.window.activeTextEditor) {
+    memoryEngine.updateDiagnostics(vscode.window.activeTextEditor.document);
+    CursorEngine.updateDecorations(vscode.window.activeTextEditor);
+  }
+
+  context.subscriptions.push(
+    vscode.window.onDidChangeActiveTextEditor((editor) => {
+      if (editor && memoryEngine) {
+        memoryEngine.updateDiagnostics(editor.document);
+        CursorEngine.updateDecorations(editor);
+      }
+    }),
+    vscode.workspace.onDidChangeTextDocument((e) => {
+      if (vscode.window.activeTextEditor && e.document === vscode.window.activeTextEditor.document) {
+        memoryEngine?.updateDiagnostics(e.document);
+        CursorEngine.updateDecorations(vscode.window.activeTextEditor);
+      }
+    })
+  );
+
   // Register Activity Bar TreeView Providers
   libraryTreeProvider = new LibraryTreeProvider(libraryEngine);
   context.subscriptions.push(
@@ -157,7 +196,7 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
   });
   autoTypeEngine.onQueueChange((hasQueue, remaining) => {
     if (hasQueue) {
-      statusBarItem.text = `$(keyboard) dTyp: ${remaining} chars [Ctrl+D to step]`;
+      statusBarItem.text = `$(keyboard) dTyp: ${remaining} chars [Ctrl+Shift+D to step]`;
     } else {
       statusBarItem.text = `$(keyboard) dTyp: ${totalCount.toLocaleString()} Ready`;
     }
@@ -430,7 +469,7 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
     const next = current === "manual" ? "automatic" : "manual";
     await config.update("typingMode", next, vscode.ConfigurationTarget.Global);
     quickActionsTreeProvider?.refresh();
-    const modeDesc = next === "manual" ? "Manual Stealth Mode (Ctrl+D)" : "Automatic Simulated Delay";
+    const modeDesc = next === "manual" ? "Manual Stealth Mode (Ctrl+Shift+D)" : "Automatic Simulated Delay";
     vscode.window.showInformationMessage(`dTyp: Switched to ${modeDesc}`);
   });
   context.subscriptions.push(toggleModeCmd);
@@ -549,6 +588,27 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
     }
   });
   context.subscriptions.push(cancelCmd);
+
+  const renewQueueCmd = vscode.commands.registerCommand("dtyp.renewQueue", async () => {
+    if (renewEngine) {
+      await renewEngine.renewQueue();
+    }
+  });
+  context.subscriptions.push(renewQueueCmd);
+
+  const rewindStepCmd = vscode.commands.registerCommand("dtyp.rewindStep", async () => {
+    if (renewEngine) {
+      await renewEngine.rewindStep();
+    }
+  });
+  context.subscriptions.push(rewindStepCmd);
+
+  const renewCompCmd = vscode.commands.registerCommand("dtyp.renewComponent", async () => {
+    if (renewEngine) {
+      await renewEngine.renewComponentInFile(insertComponentPipeline);
+    }
+  });
+  context.subscriptions.push(renewCompCmd);
 
   const viewDocCmd = vscode.commands.registerCommand("dtyp.viewDocumentation", async (node?: any) => {
     if (!libraryEngine) return;

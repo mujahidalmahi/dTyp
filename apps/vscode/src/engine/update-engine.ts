@@ -67,6 +67,7 @@ export class UpdateEngine {
         const vsixAsset = release.assets.find((a) => a.name.endsWith(".vsix"));
         const actions = vsixAsset ? ["Update Extension", "View Release Notes", "Dismiss"] : ["View Release Notes", "Dismiss"];
 
+        vscode.commands.executeCommand("setContext", "dtyp.updateAvailable", true);
         const choice = await vscode.window.showInformationMessage(
           `dTyp v${remoteVersion} is available! (Current: v${currentVersion})`,
           ...actions
