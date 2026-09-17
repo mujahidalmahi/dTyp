@@ -2,6 +2,24 @@
 
 All notable changes to the "dtyp-vscode" extension will be documented in this file.
 
+## [3.0.1] - 2026-09-17
+
+### Hierarchical QuickPick Browser, Division Navigation & TreeView Alignment
+- **Hierarchical QuickPick Division Browser**:
+  - Rebuilt QuickPick browser (`dtyp.browseLibrary` from status bar and `dtyp.insertComponent`) with multi-step recursive taxonomy navigation.
+  - Aligned root domain titles, icons, descriptions, and ordering with the sidebar TreeView (`Boiler Plates`, `Data Structures`, `Algorithms`, `Competitive Programming`, `Academics Programming`, `Projects`, `Detection`).
+  - Added recursive division browsing (e.g. `Data Structures` → `Separate Components` → `Linked Lists` → `Singly Linked List`, `Doubly Linked List`, `Singly Circular Linked List`, `Doubly Circular Linked List`).
+  - Integrated native VS Code Back button (`QuickInputButtons.Back`) and dynamic breadcrumb paths.
+  - Added "View All" branch search option to filter across entire division subtrees.
+  - Interactive action buttons for `View Documentation` (`$(book)`), `Favorite` (`$(star)`), and `Copy Code` (`$(copy)`).
+- **TreeView Hierarchy & Isolation**:
+  - Resolved domain-wide component spills in `getByCategoryId`. Parent category nodes strictly render sub-division folders; components only display within leaf divisions.
+- **Humanized Typing & Safety Enhancements**:
+  - HeaderEngine double-typing prevention for full programs containing existing `#include` statements.
+  - Auto-closing bracket simulation with stack-based delimiter tracking and step-over overtyping.
+  - Real-time auto-indent column tracking to eliminate false-positive cursor relocation pauses on newline inserts.
+  - Manual stepping shortcut updated to `Ctrl+Shift+D` to prevent collision with VS Code multi-cursor matching.
+
 ## [3.0.0] - 2026-09-17
 
 ### Humanized Natural Typing Engine & Production Modernization

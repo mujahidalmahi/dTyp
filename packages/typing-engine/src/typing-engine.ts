@@ -60,6 +60,8 @@ export class DefaultTypingEngine implements TypingEngine {
         jitterMs: options.jitterMs,
         enableTypoSimulation: options.enableTypoSimulation ?? true,
         typoRate: options.typoRate ?? 0.015,
+        preserveNewlines: options.preserveNewlines,
+        preserveTabs: options.preserveTabs,
       });
       const actions = tokenizer.tokenize(text);
       this.queue.loadActions(actions);
@@ -68,10 +70,12 @@ export class DefaultTypingEngine implements TypingEngine {
     }
     this.state = "typing";
 
+    const totalChars = text.length;
+
     this.stats = {
-      charactersTotal: this.queue.length,
+      charactersTotal: totalChars,
       charactersTyped: 0,
-      charactersRemaining: this.queue.length,
+      charactersRemaining: totalChars,
       startedAt: Date.now(),
       elapsedMs: 0,
       averageSpeedCps: 0,

@@ -16,6 +16,7 @@ describe("LibraryEngine & SqliteClient", () => {
         id TEXT PRIMARY KEY,
         name TEXT NOT NULL,
         language TEXT NOT NULL,
+        category_id TEXT,
         category TEXT NOT NULL,
         subcategory TEXT,
         description TEXT,
@@ -27,21 +28,18 @@ describe("LibraryEngine & SqliteClient", () => {
         version TEXT NOT NULL
       );
       CREATE TABLE dependencies (
+        source_id TEXT NOT NULL,
+        target_id TEXT NOT NULL,
+        PRIMARY KEY(source_id, target_id)
+      );
+      CREATE TABLE aliases (
         component_id TEXT NOT NULL,
-        dependency_id TEXT NOT NULL,
-        PRIMARY KEY(component_id, dependency_id)
+        alias TEXT NOT NULL
       );
       CREATE TABLE snippets (
         id TEXT PRIMARY KEY,
         component_id TEXT,
         prefix TEXT NOT NULL,
-        body TEXT NOT NULL,
-        description TEXT
-      );
-      CREATE TABLE templates (
-        id TEXT PRIMARY KEY,
-        name TEXT NOT NULL,
-        category TEXT NOT NULL,
         body TEXT NOT NULL,
         description TEXT
       );
@@ -58,12 +56,13 @@ describe("LibraryEngine & SqliteClient", () => {
 
     // Insert sample components
     sqlite.query(
-      `INSERT INTO components (id, name, language, category, subcategory, description, signature, code, time_complexity, space_complexity, documentation, version)
-       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+      `INSERT INTO components (id, name, language, category_id, category, subcategory, description, signature, code, time_complexity, space_complexity, documentation, version)
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
       [
         "linkedList.createNode",
         "createNode",
         "c",
+        "cat.linked-list.singly",
         "linked-list",
         "singly",
         "Creates a new node",
@@ -77,12 +76,13 @@ describe("LibraryEngine & SqliteClient", () => {
     );
 
     sqlite.query(
-      `INSERT INTO components (id, name, language, category, subcategory, description, signature, code, time_complexity, space_complexity, documentation, version)
-       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+      `INSERT INTO components (id, name, language, category_id, category, subcategory, description, signature, code, time_complexity, space_complexity, documentation, version)
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
       [
         "sorting.quickSort",
         "quickSort",
         "c",
+        "cat.sorting.divide-and-conquer",
         "sorting",
         "divide-and-conquer",
         "Quick sort algorithm",
@@ -130,6 +130,32 @@ describe("LibraryEngine & SqliteClient", () => {
     expect(results[0].name).toBe("createNode");
   });
 
+  it("retrieves components by exact category_id", async () => {
+    const results = await engine.getByCategoryId("cat.linked-list.singly");
+    expect(results.length).toBe(1);
+    expect(results[0].name).toBe("createNode");
+
+    // Parent/unmatched category returns empty, preventing leaks to upper categories
+    const emptyResults = await engine.getByCategoryId("cat.linked-list");
+    expect(emptyResults.length).toBe(0);
+  });
+
+  it("retrieves components by category branch recursively", async () => {
+    // Exact match or parent prefix matches children
+    const branchResults = await engine.getByCategoryBranch("cat.linked-list");
+    expect(branchResults.length).toBe(1);
+    expect(branchResults[0].name).toBe("createNode");
+
+    const rootBranch = await engine.getByCategoryBranch("linked-list");
+    expect(rootBranch.length).toBe(1);
+
+    const count = await engine.getCategoryBranchCount("cat.linked-list");
+    expect(count).toBe(1);
+
+    const zeroCount = await engine.getCategoryBranchCount("non-existent");
+    expect(zeroCount).toBe(0);
+  });
+
   it("retrieves snippets by prefix", async () => {
     const snippet = await engine.getSnippet("dtyp.ll.node");
     expect(snippet).not.toBeNull();
@@ -139,5 +165,11 @@ describe("LibraryEngine & SqliteClient", () => {
   it("counts components", async () => {
     const count = await engine.count();
     expect(count).toBe(2);
+  });
+
+  it("retrieves dynamic category counts", async () => {
+    const counts = await engine.getCategoryCounts();
+    expect(counts["linked-list"]).toBe(1);
+    expect(counts["sorting"]).toBe(1);
   });
 });

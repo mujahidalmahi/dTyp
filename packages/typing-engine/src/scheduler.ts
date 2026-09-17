@@ -71,7 +71,7 @@ export class TypingScheduler {
         } else if (item.action === "pause") {
           // Pure pause action (hesitation or recognition)
         } else {
-          await this.mapper.typeCharacter(item.char);
+          await this.mapper.typeCharacter(item.char, item.autoClose);
           typedChars++;
         }
 

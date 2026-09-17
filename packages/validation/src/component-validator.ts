@@ -1,4 +1,4 @@
-import { Component, Snippet, Template } from "@dtyp/types";
+import { Component, Snippet } from "@dtyp/types";
 
 export interface ValidationResult {
   valid: boolean;
@@ -28,40 +28,76 @@ export const validateComponent = (component: unknown): ValidationResult => {
     errors.push("Component requires non-empty C code");
   }
 
-  // Basic C syntax check: balanced braces and parentheses (ignoring string/char literals)
+  // Basic C syntax check: balanced braces and parentheses (ignoring strings, chars, and comments)
   if (c.code) {
     let openBraces = 0;
     let openParens = 0;
     let inString = false;
     let inChar = false;
+    let inLineComment = false;
+    let inBlockComment = false;
     let escaped = false;
 
     for (let i = 0; i < c.code.length; i++) {
       const char = c.code[i];
+      const nextChar = i + 1 < c.code.length ? c.code[i + 1] : "";
+
+      if (inLineComment) {
+        if (char === "\n") inLineComment = false;
+        continue;
+      }
+
+      if (inBlockComment) {
+        if (char === "*" && nextChar === "/") {
+          inBlockComment = false;
+          i++; // skip closing /
+        }
+        continue;
+      }
+
       if (escaped) {
         escaped = false;
         continue;
       }
+
       if (char === "\\") {
         escaped = true;
         continue;
       }
+
       if (inString) {
         if (char === '"') inString = false;
         continue;
       }
+
       if (inChar) {
         if (char === "'") inChar = false;
         continue;
       }
+
+      // Check start of comments
+      if (char === "/" && nextChar === "/") {
+        inLineComment = true;
+        i++;
+        continue;
+      }
+
+      if (char === "/" && nextChar === "*") {
+        inBlockComment = true;
+        i++;
+        continue;
+      }
+
       if (char === '"') {
         inString = true;
         continue;
       }
+
       if (char === "'") {
         inChar = true;
         continue;
       }
+
       if (char === "{") openBraces++;
       else if (char === "}") openBraces--;
       else if (char === "(") openParens++;
@@ -99,21 +135,6 @@ export const validateSnippet = (snippet: unknown): ValidationResult => {
   if (!s.id || typeof s.id !== "string") errors.push("Snippet requires an id");
   if (!s.prefix || typeof s.prefix !== "string") errors.push("Snippet requires a prefix");
   if (!s.body || typeof s.body !== "string") errors.push("Snippet requires a body");
-
-  return { valid: errors.length === 0, errors };
-};
-
-export const validateTemplate = (template: unknown): ValidationResult => {
-  const errors: string[] = [];
-  if (!template || typeof template !== "object") {
-    return { valid: false, errors: ["Template must be an object"] };
-  }
-
-  const t = template as Partial<Template>;
-  if (!t.id || typeof t.id !== "string") errors.push("Template requires an id");
-  if (!t.name || typeof t.name !== "string") errors.push("Template requires a name");
-  if (!t.category || typeof t.category !== "string") errors.push("Template requires a category");
-  if (!t.body || typeof t.body !== "string") errors.push("Template requires a body");
 
   return { valid: errors.length === 0, errors };
 };

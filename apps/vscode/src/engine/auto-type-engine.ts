@@ -128,12 +128,15 @@ export class AutoTypeEngine {
         } else if (err.message === "TYPING_PAUSED_TAB_SWITCHED") {
           vscode.window.showInformationMessage("dTyp: Typing paused because you switched editor tabs.");
           this.typingEngine.pause();
+        } else if (err.message === "TYPING_ABORTED_CURSOR_MOVED") {
+          vscode.window.showWarningMessage("dTyp: Typing aborted because the cursor was moved.");
+          this.typingEngine.cancel();
         } else {
           throw err;
         }
       }
     } else {
-      // Manual Mode: Queue actions for Ctrl+D manual stepping
+      // Manual Mode: Queue actions for Ctrl+Shift+D manual stepping
       this.typingEngine.cancel();
 
       let actions: TypingAction[];
@@ -144,6 +147,8 @@ export class AutoTypeEngine {
           jitterMs,
           enableTypoSimulation,
           typoRate,
+          preserveNewlines: true,
+          preserveTabs: true,
         });
         actions = tokenizer.tokenize(text);
       } else {
@@ -161,7 +166,7 @@ export class AutoTypeEngine {
         currentIndex: 0,
         startedAt: Date.now(),
       };
-      this.logger.info(`Queued ${this.pendingQueue.actions.length} actions for manual stepping (Ctrl+D) [model: ${naturalTypingModel}]`);
+      this.logger.info(`Queued ${this.pendingQueue.actions.length} actions for manual stepping (Ctrl+Shift+D) [model: ${naturalTypingModel}]`);
       this.notifyQueueChange();
     }
   }
@@ -193,10 +198,14 @@ export class AutoTypeEngine {
           // Pause action - don't consume user's Ctrl+D stroke on a pure pause
           stepsExecuted--;
         } else {
-          await this.typingTarget.typeCharacter(action.char || "");
+          await this.typingTarget.typeCharacter(action.char || "", action.autoClose);
         }
       } catch (err: any) {
-        if (err.message === "TYPING_PAUSED_CURSOR_MOVED" || err.message === "TYPING_PAUSED_TAB_SWITCHED") {
+        if (
+          err.message === "TYPING_PAUSED_CURSOR_MOVED" ||
+          err.message === "TYPING_PAUSED_TAB_SWITCHED" ||
+          err.message === "TYPING_ABORTED_CURSOR_MOVED"
+        ) {
           vscode.window.showWarningMessage(`dTyp: Manual typing halted: ${err.message}`);
           break;
         }
@@ -232,7 +241,7 @@ export class AutoTypeEngine {
       } else if (action.type === "backspace") {
         await this.typingTarget.deleteBackward();
       } else if (action.type === "type") {
-        await this.typingTarget.typeCharacter(action.char || "");
+        await this.typingTarget.typeCharacter(action.char || "", action.autoClose);
       }
     }
 

@@ -106,7 +106,7 @@ export class QuickActionsTreeProvider implements vscode.TreeDataProvider<QuickAc
       },
       {
         id: "release_notes",
-        label: "What's New in dTyp v2.0",
+        label: "What's New in dTyp v3.0",
         description: "Release Notes",
         tooltip: "View features, architecture overhaul, and keyboard cheat-sheet",
         icon: "megaphone",

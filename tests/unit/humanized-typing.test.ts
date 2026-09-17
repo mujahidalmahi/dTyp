@@ -41,7 +41,9 @@ vi.mock("vscode", () => {
 
 import * as vscode from "vscode";
 import { HumanCadence, StructuralTokenizer } from "@dtyp/typing-engine";
+import { validateComponent } from "@dtyp/validation";
 import { VSCodeTypingTarget } from "../../apps/vscode/src/adapter/vscode-typing-target.js";
+import { HeaderEngine } from "../../apps/vscode/src/engine/header-engine.js";
 
 describe("Humanized Typing Engine: Cadence & Structural Tokenization", () => {
   describe("HumanCadence", () => {
@@ -191,6 +193,80 @@ describe("Humanized Typing Engine: Cadence & Structural Tokenization", () => {
 
       expect(mockEditor.edit).toHaveBeenCalled();
       expect(docText).toBe("hell");
+    });
+  });
+
+  describe("Auto-Closing Pairs & Cadence Realism", () => {
+    it("tags opening delimiters with matching autoClose property", () => {
+      const tokenizer = new StructuralTokenizer({
+        model: "humanized",
+        baseDelayMs: 15,
+        enableTypoSimulation: false,
+      });
+
+      const actions = tokenizer.tokenize("int arr[5] = {1, 2}; printf(\"hello %c\", 'x');");
+      
+      const parenAction = actions.find((a) => a.char === "(");
+      expect(parenAction?.autoClose).toBe(")");
+
+      const bracketAction = actions.find((a) => a.char === "[");
+      expect(bracketAction?.autoClose).toBe("]");
+
+      const braceAction = actions.find((a) => a.char === "{");
+      expect(braceAction?.autoClose).toBe("}");
+
+      const strQuoteAction = actions.find((a) => a.char === '"' && a.autoClose);
+      expect(strQuoteAction?.autoClose).toBe('"');
+
+      const charQuoteAction = actions.find((a) => a.char === "'" && a.autoClose);
+      expect(charQuoteAction?.autoClose).toBe("'");
+
+      // Verify matching closing delimiters are tagged as overtypes
+      const overtypes = actions.filter((a) => a.type === "overtype");
+      const overtypeChars = overtypes.map((a) => a.char);
+      expect(overtypeChars).toContain("]");
+      expect(overtypeChars).toContain("}");
+      expect(overtypeChars).toContain(")");
+      expect(overtypeChars).toContain('"');
+      expect(overtypeChars).toContain("'");
+    });
+  });
+
+  describe("C Syntax Validator: Comment-Awareness", () => {
+    it("validates C code containing braces and parens inside comments", () => {
+      const validCodeWithComments = `
+        // Check condition: if (x > 0) { do something
+        /* Multi-line comment with unclosed brace { and paren ( */
+        void myFunction() {
+            int a = 1;
+        }
+      `;
+      const result = validateComponent({
+        id: "core.myFunction",
+        name: "myFunction",
+        category: "core",
+        signature: "void myFunction()",
+        code: validCodeWithComments,
+        complexity: { time: "O(1)", space: "O(1)" },
+        dependencies: [],
+      });
+
+      expect(result.valid).toBe(true);
+      expect(result.errors).toHaveLength(0);
+    });
+  });
+
+  describe("HeaderEngine: Duplicate Prevention", () => {
+    it("does NOT flag headers as missing if codeToInsert already includes them", () => {
+      const fullProgram = `#include <stdio.h>\n#include <stdlib.h>\nint main() { printf("Hello\\n"); return 0; }`;
+      const missing = HeaderEngine.getMissingHeaders("", fullProgram);
+      expect(missing).toHaveLength(0);
+    });
+
+    it("flags headers as missing when code uses stdio functions without including stdio.h", () => {
+      const snippet = `int test() { printf("test"); return 0; }`;
+      const missing = HeaderEngine.getMissingHeaders("", snippet);
+      expect(missing).toContain("stdio.h");
     });
   });
 });

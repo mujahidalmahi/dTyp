@@ -2,7 +2,7 @@
   "name": "dtyp-vscode",
   "displayName": "dTyp — Don't Tell Your Professor",
   "description": "Offline academic C programming library & automated character-by-character typing assistant",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "publisher": "1da7b1e6-01f1-6f58-9ef3-d95516c5e875",
   "icon": "images/icon.png",
   "engines": {
@@ -172,12 +172,12 @@
     "keybindings": [
       {
         "command": "dtyp.typeNextCharacter",
-        "key": "ctrl+d",
+        "key": "ctrl+shift+d",
         "when": "editorTextFocus && dtyp.hasQueuedCharacters"
       },
       {
         "command": "dtyp.browseLibrary",
-        "key": "ctrl+shift+d"
+        "key": "ctrl+alt+d"
       },
       {
         "command": "dtyp.cancelTyping",
@@ -187,12 +187,12 @@
       {
         "command": "dtyp.jumpToNextPlaceholder",
         "key": "alt+down",
-        "when": "editorTextFocus"
+        "when": "editorTextFocus && dtyp.hasPlaceholders"
       },
       {
         "command": "dtyp.jumpToPrevPlaceholder",
         "key": "alt+up",
-        "when": "editorTextFocus"
+        "when": "editorTextFocus && dtyp.hasPlaceholders"
       }
     ],
     "configuration": {
@@ -205,14 +205,14 @@
             "manual"
           ],
           "default": "automatic",
-          "description": "Typing mode: 'automatic' types characters sequentially with realistic delay. 'manual' queues code and outputs character-by-character per Ctrl+D press."
+          "description": "Typing mode: 'automatic' types characters sequentially with realistic delay. 'manual' queues code and outputs character-by-character per Ctrl+Shift+D press."
         },
         "dtyp.stepSize": {
           "type": "number",
           "default": 1,
           "minimum": 1,
           "maximum": 50,
-          "description": "Number of characters typed per Ctrl+D press in manual mode."
+          "description": "Number of characters typed per Ctrl+Shift+D press in manual mode."
         },
         "dtyp.typingDelayMs": {
           "type": "number",
@@ -331,29 +331,29 @@
       "view/title": [
         {
           "command": "dtyp.refreshViews",
-          "when": "view == dtyp.libraryView || view == dtyp.favoritesView || view == dtyp.historyView || view == dtyp.quickActionsView",
+          "when": "view == 'dtyp.libraryView' || view == 'dtyp.favoritesView' || view == 'dtyp.historyView' || view == 'dtyp.quickActionsView'",
           "group": "navigation"
         }
       ],
       "view/item/context": [
         {
           "command": "dtyp.insertComponentById",
-          "when": "view == dtyp.libraryView && viewItem == component",
+          "when": "view == 'dtyp.libraryView' && viewItem == 'component'",
           "group": "inline@1"
         },
         {
           "command": "dtyp.toggleFavorite",
-          "when": "view == dtyp.libraryView && viewItem == component",
+          "when": "view == 'dtyp.libraryView' && viewItem == 'component'",
           "group": "inline@2"
         },
         {
           "command": "dtyp.copyComponentCode",
-          "when": "view == dtyp.libraryView && viewItem == component",
+          "when": "view == 'dtyp.libraryView' && viewItem == 'component'",
           "group": "inline@3"
         },
         {
           "command": "dtyp.viewDocumentation",
-          "when": "view == dtyp.libraryView && viewItem == component",
+          "when": "view == 'dtyp.libraryView' && viewItem == 'component'",
           "group": "inline@4"
         }
       ]
@@ -368,7 +368,7 @@
           {
             "id": "welcome",
             "title": "Discover 500 C Components",
-            "description": "Explore the completely offline C library across 7 structured domains.\\n[Browse Offline Library](command:dtyp.browseLibrary)",
+            "description": "Explore the completely offline C library across 7 structured domains.\n[Browse Offline Library](command:dtyp.browseLibrary)",
             "media": {
               "markdown": "walkthroughs/welcome.md"
             },
@@ -378,8 +378,8 @@
           },
           {
             "id": "typingModes",
-            "title": "Dual Typing Modes (Ctrl+D Stealth)",
-            "description": "Simulate natural typing or queue code and step per Ctrl+D.\\n[Toggle Typing Mode](command:dtyp.toggleTypingMode)",
+            "title": "Dual Typing Modes (Ctrl+Shift+D Stealth)",
+            "description": "Simulate natural typing or queue code and step per Ctrl+Shift+D.\n[Toggle Typing Mode](command:dtyp.toggleTypingMode)",
             "media": {
               "markdown": "walkthroughs/typing-modes.md"
             },
@@ -390,7 +390,7 @@
           {
             "id": "snippets",
             "title": "Interactive Snippets & Tab Stops",
-            "description": "Use dtyp.* prefixes for quick function and struct templates.\\n[Insert Snippet](command:dtyp.insertSnippet)",
+            "description": "Use dtyp.* prefixes for quick function and struct templates.\n[Insert Snippet](command:dtyp.insertSnippet)",
             "media": {
               "markdown": "walkthroughs/snippets.md"
             },
@@ -401,7 +401,7 @@
           {
             "id": "safeGuards",
             "title": "Smart Header & Duplicate Guards",
-            "description": "Automatic header injection and duplicate definition detection.\\n[Run Health Check](command:dtyp.healthCheck)",
+            "description": "Automatic header injection and duplicate definition detection.\n[Run Health Check](command:dtyp.healthCheck)",
             "media": {
               "markdown": "walkthroughs/safe-guards.md"
             },

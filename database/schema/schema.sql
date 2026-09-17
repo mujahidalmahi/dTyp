@@ -1,4 +1,4 @@
--- dTyp SQLite Database Schema v2.0.0
+-- dTyp SQLite Database Schema v3.0.0
 -- Unlimited-Depth Hierarchical Taxonomy & High-Performance C Component Library
 
 CREATE TABLE IF NOT EXISTS metadata (
@@ -66,7 +66,7 @@ CREATE TABLE IF NOT EXISTS aliases (
     FOREIGN KEY(component_id) REFERENCES components(id) ON DELETE CASCADE
 );
 
--- Snippets & Templates
+-- Snippets
 CREATE TABLE IF NOT EXISTS snippets (
     id TEXT PRIMARY KEY,
     component_id TEXT,
@@ -76,7 +76,7 @@ CREATE TABLE IF NOT EXISTS snippets (
     category TEXT,
     tab_stops TEXT,
     scope TEXT DEFAULT 'c,cpp',
-    FOREIGN KEY(component_id) REFERENCES components(id) ON DELETE SET NULL
+    FOREIGN KEY(component_id) REFERENCES components(id) ON DELETE CASCADE
 );
 
 -- Tags
@@ -100,6 +100,7 @@ CREATE INDEX IF NOT EXISTS idx_categories_path ON categories(path);
 CREATE INDEX IF NOT EXISTS idx_components_name ON components(name);
 CREATE INDEX IF NOT EXISTS idx_components_cat_id ON components(category_id);
 CREATE INDEX IF NOT EXISTS idx_components_cat ON components(category);
+CREATE INDEX IF NOT EXISTS idx_components_subcategory ON components(subcategory);
 CREATE INDEX IF NOT EXISTS idx_components_path ON components(path);
 CREATE INDEX IF NOT EXISTS idx_components_type ON components(type);
 CREATE INDEX IF NOT EXISTS idx_aliases_alias ON aliases(alias);
@@ -107,4 +108,5 @@ CREATE INDEX IF NOT EXISTS idx_aliases_comp ON aliases(component_id);
 CREATE INDEX IF NOT EXISTS idx_dependencies_source ON dependencies(source_id);
 CREATE INDEX IF NOT EXISTS idx_dependencies_target ON dependencies(target_id);
 CREATE INDEX IF NOT EXISTS idx_snippets_prefix ON snippets(prefix);
+CREATE INDEX IF NOT EXISTS idx_snippets_comp ON snippets(component_id);
 CREATE INDEX IF NOT EXISTS idx_component_tags_comp ON component_tags(component_id);

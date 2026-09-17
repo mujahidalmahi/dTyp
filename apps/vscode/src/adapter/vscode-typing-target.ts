@@ -13,6 +13,7 @@ export class VSCodeTypingTarget implements TypingTarget {
   private cursorJumpPolicy: CursorJumpAction = "pause";
   private pauseOnTabSwitch = true;
   private undoChunkSize = 3;
+  private isSessionStart = true;
   private onCursorJumpCallback: ((expected: vscode.Position, actual: vscode.Position) => void) | null = null;
 
   constructor(editor?: vscode.TextEditor) {
@@ -45,6 +46,7 @@ export class VSCodeTypingTarget implements TypingTarget {
 
   public resetHead(pos?: vscode.Position): void {
     this.charCount = 0;
+    this.isSessionStart = true;
     const activeEditor = this.editor ?? vscode.window.activeTextEditor;
     if (activeEditor) {
       this.expectedHead = pos ?? activeEditor.selection.active;
@@ -62,7 +64,7 @@ export class VSCodeTypingTarget implements TypingTarget {
     }
   }
 
-  public async typeCharacter(character: string): Promise<void> {
+  public async typeCharacter(character: string, autoClose?: string): Promise<void> {
     const activeEditor = this.editor ?? vscode.window.activeTextEditor;
     if (!activeEditor) {
       throw new Error("No active text editor in VS Code to type character");
@@ -90,24 +92,40 @@ export class VSCodeTypingTarget implements TypingTarget {
     }
 
     this.charCount++;
-    // User Requirement: Configurable undo step chunks (defaults to 3 characters max)
     const isUndoStop = this.charCount % this.undoChunkSize === 0;
+    const undoBefore = this.isSessionStart;
+    this.isSessionStart = false;
+
+    const textToInsert = autoClose ? character + autoClose : character;
 
     await activeEditor.edit(
       (editBuilder) => {
-        editBuilder.insert(targetPos, character);
+        editBuilder.insert(targetPos, textToInsert);
       },
       {
-        undoStopBefore: false,
+        undoStopBefore: undoBefore,
         undoStopAfter: isUndoStop,
       }
     );
 
     // Calculate expected next position after insertion
     if (character === "\n") {
-      this.expectedHead = new vscode.Position(targetPos.line + 1, 0);
+      const postPos = activeEditor.selection.active;
+      if (postPos.line === targetPos.line + 1) {
+        this.expectedHead = postPos;
+      } else {
+        const nextPos = new vscode.Position(targetPos.line + 1, 0);
+        activeEditor.selection = new vscode.Selection(nextPos, nextPos);
+        this.expectedHead = nextPos;
+      }
+    } else if (autoClose) {
+      // Place cursor between character and autoClose
+      const nextPos = new vscode.Position(targetPos.line, targetPos.character + character.length);
+      activeEditor.selection = new vscode.Selection(nextPos, nextPos);
+      this.expectedHead = nextPos;
     } else {
-      this.expectedHead = new vscode.Position(targetPos.line, targetPos.character + character.length);
+      const nextPos = new vscode.Position(targetPos.line, targetPos.character + character.length);
+      this.expectedHead = nextPos;
     }
   }
 
@@ -148,6 +166,30 @@ export class VSCodeTypingTarget implements TypingTarget {
       this.expectedHead = nextPos;
       this.charCount++;
       return;
+    }
+
+    // Special handling for closing brace '}' that may be after indentation or on next line
+    if (character === "}") {
+      const remainingOnLine = lineText.slice(targetPos.character);
+      const idxOnLine = remainingOnLine.indexOf("}");
+      if (idxOnLine !== -1 && remainingOnLine.slice(0, idxOnLine).trim() === "") {
+        const nextPos = new vscode.Position(targetPos.line, targetPos.character + idxOnLine + 1);
+        activeEditor.selection = new vscode.Selection(nextPos, nextPos);
+        this.expectedHead = nextPos;
+        this.charCount++;
+        return;
+      }
+      if (targetPos.line + 1 < activeEditor.document.lineCount) {
+        const nextLineText = activeEditor.document.lineAt(targetPos.line + 1).text;
+        const idxNextLine = nextLineText.indexOf("}");
+        if (idxNextLine !== -1 && nextLineText.slice(0, idxNextLine).trim() === "") {
+          const nextPos = new vscode.Position(targetPos.line + 1, idxNextLine + 1);
+          activeEditor.selection = new vscode.Selection(nextPos, nextPos);
+          this.expectedHead = nextPos;
+          this.charCount++;
+          return;
+        }
+      }
     }
 
     // If delimiter is not already at cursor position, type it normally

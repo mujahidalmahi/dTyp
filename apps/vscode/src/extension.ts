@@ -23,6 +23,7 @@ import {
   HistoryTreeProvider,
   QuickActionsTreeProvider,
   ReleaseNotesPanel,
+  HierarchicalQuickPickBrowser,
 } from "./view/index.js";
 import { UpdateEngine } from "./engine/update-engine.js";
 import { DiagnosticsManager } from "./command/diagnostics-command.js";
@@ -46,7 +47,8 @@ let historyTreeProvider: HistoryTreeProvider | null = null;
 let quickActionsTreeProvider: QuickActionsTreeProvider | null = null;
 
 export async function activate(context: vscode.ExtensionContext): Promise<void> {
-  logger.info("Activating dTyp VS Code Extension v2.0.0");
+  const version = context.extension.packageJSON.version || "3.0.0";
+  logger.info(`Activating dTyp VS Code Extension v${version}`);
 
   const dbPath = path.join(context.extensionPath, "library", "dtyp.db");
   const locateWasm = (file: string): string => {
@@ -267,7 +269,7 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
         const endPos = editor.document.positionAt(editor.document.offsetAt(insertPos) + fullText.length);
         CursorEngine.jumpToFirstPlaceholder(editor, new vscode.Range(insertPos, endPos));
       } else {
-        vscode.window.showInformationMessage(`dTyp: ${comp.name} queued! Press Ctrl+D to step type characters.`);
+        vscode.window.showInformationMessage(`dTyp: ${comp.name} queued! Press Ctrl+Shift+D to step type characters.`);
       }
     } catch (err: any) {
       logger.error(`Typing execution error: ${err.message}`);
@@ -277,27 +279,13 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
   // Commands Registration
   const insertCmd = vscode.commands.registerCommand("dtyp.insertComponent", async () => {
     if (!libraryEngine) return;
-    const categories = await libraryEngine.getCategories();
-    const selectedCategory = await vscode.window.showQuickPick(categories, {
-      placeHolder: "Select a Category (e.g. boiler-plate, linked-list, sorting)...",
+    const browser = new HierarchicalQuickPickBrowser({
+      libraryEngine,
+      sessionEngine: sessionEngine ?? undefined,
+      onInsert: insertComponentPipeline,
+      onFavoriteChanged: () => favoritesTreeProvider?.refresh(),
     });
-    if (!selectedCategory) return;
-
-    const components = await libraryEngine.getByCategory(selectedCategory);
-    const compItems = components.map((c) => ({
-      label: `${c.name}()`,
-      description: `[${c.complexity.time}] ${c.subcategory || ""}`,
-      detail: c.signature,
-      componentId: c.id,
-    }));
-
-    const selected = await vscode.window.showQuickPick(compItems, {
-      placeHolder: `Select component in ${selectedCategory} (${components.length} available)...`,
-    });
-
-    if (selected) {
-      await insertComponentPipeline(selected.componentId);
-    }
+    await browser.show();
   });
   context.subscriptions.push(insertCmd);
 
@@ -492,134 +480,13 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
 
   const browseCmd = vscode.commands.registerCommand("dtyp.browseLibrary", async () => {
     if (!libraryEngine) return;
-
-    const DOMAIN_METADATA: Record<string, { icon: string; title: string; count: number }> = {
-      "boiler-plates": { icon: "repo", title: "Boilerplates & Fundamentals", count: 64 },
-      "data-structures": { icon: "layers", title: "Data Structures & Containers", count: 126 },
-      "algorithms": { icon: "symbol-event", title: "Algorithms & Problem-Solving", count: 120 },
-      "competitive-programming": { icon: "trophy", title: "Competitive Programming", count: 50 },
-      "academics-programming": { icon: "mortar-board", title: "Academic & Engineering Math", count: 46 },
-      "projects": { icon: "package", title: "Complete Projects & Systems", count: 30 },
-      "detection": { icon: "shield", title: "Algorithmic Detection Primitives", count: 64 },
-    };
-
-    const categories = await libraryEngine.getCategories();
-    const catItems = categories.map((cat) => {
-      const meta = DOMAIN_METADATA[cat] || { icon: "folder", title: cat.toUpperCase(), count: 0 };
-      return {
-        label: `$(${meta.icon}) ${meta.title}`,
-        description: `${meta.count} components`,
-        detail: `Domain: ${cat}`,
-        category: cat,
-      };
+    const browser = new HierarchicalQuickPickBrowser({
+      libraryEngine,
+      sessionEngine: sessionEngine ?? undefined,
+      onInsert: insertComponentPipeline,
+      onFavoriteChanged: () => favoritesTreeProvider?.refresh(),
     });
-
-    const selectedCat = await vscode.window.showQuickPick(catItems, {
-      placeHolder: "Select a Domain to browse components...",
-    });
-
-    if (!selectedCat) return;
-
-    const components = await libraryEngine.getByCategory(selectedCat.category);
-    const subcats = Array.from(new Set(components.map((c) => c.subcategory).filter(Boolean))).sort();
-
-    let filteredComponents = components;
-    if (subcats.length > 1) {
-      const subcatItems = [
-        {
-          label: `$(list-unordered) All ${selectedCat.label}`,
-          description: `View all ${components.length} components in this domain`,
-          subcat: "__ALL__",
-        },
-        ...subcats.map((sub) => {
-          const count = components.filter((c) => c.subcategory === sub).length;
-          const isLinkedList = ["singly", "doubly", "circular-singly", "circular-doubly"].includes(sub!);
-          const prefix = isLinkedList ? "Linked Lists > " : "";
-          return {
-            label: `$(symbol-folder) ${prefix}${sub}`,
-            description: `${count} components`,
-            subcat: sub!,
-          };
-        }),
-      ];
-
-      const selectedSub = await vscode.window.showQuickPick(subcatItems, {
-        placeHolder: `Filter ${selectedCat.label} by subcategory or view all...`,
-      });
-
-      if (!selectedSub) return;
-      if (selectedSub.subcat !== "__ALL__") {
-        filteredComponents = components.filter((c) => c.subcategory === selectedSub.subcat);
-      }
-    }
-
-    const compItems = filteredComponents.map((c) => {
-      const isFav = sessionEngine?.isFavorite(c.id) ?? false;
-      return {
-        label: `$(symbol-method) ${c.name}()`,
-        description: `[${c.complexity.time}] ${c.difficulty ? '• ' + c.difficulty : ''}`,
-        detail: `${c.description} | ${c.signature}`,
-        componentId: c.id,
-        component: c,
-        buttons: [
-          {
-            iconPath: new vscode.ThemeIcon("book"),
-            tooltip: "View Documentation",
-          },
-          {
-            iconPath: new vscode.ThemeIcon(isFav ? "star-full" : "star"),
-            tooltip: isFav ? "Remove Favorite" : "Add to Favorites",
-          },
-          {
-            iconPath: new vscode.ThemeIcon("copy"),
-            tooltip: "Copy Code",
-          },
-        ],
-      };
-    });
-
-    const compQuickPick = vscode.window.createQuickPick();
-    compQuickPick.placeholder = `${selectedCat.label} (${filteredComponents.length} available) — Select to insert...`;
-    compQuickPick.items = compItems;
-
-    compQuickPick.onDidTriggerItemButton(async (e) => {
-      const item = e.item as any;
-      if (!item || !item.component) return;
-      const comp: Component = item.component;
-
-      if (e.button.tooltip === "View Documentation") {
-        const docContent = comp.documentation || `# ${comp.name}\n\n${comp.description}\n\n\`\`\`c\n${comp.code}\n\`\`\``;
-        const doc = await vscode.workspace.openTextDocument({
-          content: docContent,
-          language: "markdown",
-        });
-        await vscode.window.showTextDocument(doc, { preview: true, viewColumn: vscode.ViewColumn.Beside });
-      } else if (e.button.tooltip?.includes("Favorite")) {
-        if (sessionEngine) {
-          sessionEngine.toggleFavorite(comp.id, comp.name, comp.category);
-          favoritesTreeProvider?.refresh();
-          const isNowFav = sessionEngine.isFavorite(comp.id);
-          vscode.window.setStatusBarMessage(
-            isNowFav ? `dTyp: Starred "${comp.name}" ★` : `dTyp: Removed "${comp.name}" from favorites`,
-            2500
-          );
-        }
-      } else if (e.button.tooltip === "Copy Code") {
-        await vscode.env.clipboard.writeText(comp.code);
-        vscode.window.setStatusBarMessage(`dTyp: Copied "${comp.name}" code to clipboard!`, 2500);
-      }
-    });
-
-    compQuickPick.onDidAccept(async () => {
-      const selected = compQuickPick.selectedItems[0] as any;
-      compQuickPick.hide();
-      if (selected && selected.componentId) {
-        await insertComponentPipeline(selected.componentId);
-      }
-    });
-
-    compQuickPick.onDidHide(() => compQuickPick.dispose());
-    compQuickPick.show();
+    await browser.show();
   });
   context.subscriptions.push(browseCmd);
 
@@ -784,7 +651,7 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
     updateEngine?.checkForUpdates(false).catch(() => {});
   }, 5000);
 
-  logger.info("dTyp Extension v2.0.0 activated successfully with all production engines & views");
+  logger.info("dTyp Extension v3.0.0 activated successfully with all production engines & views");
 }
 
 export function deactivate(): void {

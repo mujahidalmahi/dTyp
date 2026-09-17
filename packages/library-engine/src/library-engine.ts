@@ -1,4 +1,4 @@
-import { Component, Category, Snippet, Template, LibraryEngine } from "@dtyp/types";
+import { Component, Category, Snippet, LibraryEngine } from "@dtyp/types";
 import { defaultLogger } from "@dtyp/utilities";
 import { SqliteClient } from "./sqlite-client.js";
 import { DependencyResolver } from "./dependency-resolver.js";
@@ -130,16 +130,8 @@ export class DefaultLibraryEngine implements LibraryEngine {
         [id]
       );
       dependencies = Array.from(new Set(depRows.map((r) => r.target_id)));
-    } catch {
-      try {
-        const depRows = this.sqlite.query<{ dependency_id: string }>(
-          "SELECT dependency_id FROM dependencies WHERE component_id = ?",
-          [id]
-        );
-        dependencies = Array.from(new Set(depRows.map((r) => r.dependency_id)));
-      } catch {
-        // ignore
-      }
+    } catch (err: any) {
+      this.logger.warn(`Failed to fetch dependencies for ${id}: ${err.message}`);
     }
 
     // Fetch tags
@@ -152,8 +144,8 @@ export class DefaultLibraryEngine implements LibraryEngine {
         [id]
       );
       tags = tagRows.map((r) => r.name);
-    } catch {
-      // ignore
+    } catch (err: any) {
+      this.logger.warn(`Failed to fetch tags for ${id}: ${err.message}`);
     }
 
     // Fetch aliases
@@ -164,8 +156,8 @@ export class DefaultLibraryEngine implements LibraryEngine {
         [id]
       );
       aliases = aliasRows.map((r) => r.alias);
-    } catch {
-      // ignore
+    } catch (err: any) {
+      this.logger.warn(`Failed to fetch aliases for ${id}: ${err.message}`);
     }
 
     const comp = this.mapRowToComponent(row, dependencies, tags, aliases);
@@ -218,10 +210,45 @@ export class DefaultLibraryEngine implements LibraryEngine {
 
   public async getByCategoryId(categoryId: string): Promise<Component[]> {
     const rows = this.sqlite.query<ComponentRow>(
-      "SELECT * FROM components WHERE category_id = ? OR category = ? ORDER BY name ASC",
-      [categoryId, categoryId]
+      "SELECT * FROM components WHERE category_id = ? ORDER BY name ASC",
+      [categoryId]
     );
     return rows.map((row) => this.mapRowToComponent(row));
+  }
+
+  public async getByCategoryBranch(categoryIdOrSlug: string): Promise<Component[]> {
+    const trimmed = categoryIdOrSlug.trim();
+    if (!trimmed) return [];
+    try {
+      const rows = this.sqlite.query<ComponentRow>(
+        `SELECT * FROM components 
+         WHERE category = ? 
+            OR category_id = ? 
+            OR category_id LIKE ? 
+         ORDER BY name ASC`,
+        [trimmed, trimmed, `${trimmed}.%`]
+      );
+      return rows.map((row) => this.mapRowToComponent(row));
+    } catch {
+      return this.getByCategory(trimmed);
+    }
+  }
+
+  public async getCategoryBranchCount(categoryIdOrSlug: string): Promise<number> {
+    const trimmed = categoryIdOrSlug.trim();
+    if (!trimmed) return 0;
+    try {
+      const row = this.sqlite.queryOne<{ cnt: number }>(
+        `SELECT COUNT(*) as cnt FROM components 
+         WHERE category = ? 
+            OR category_id = ? 
+            OR category_id LIKE ?`,
+        [trimmed, trimmed, `${trimmed}.%`]
+      );
+      return row?.cnt ?? 0;
+    } catch {
+      return 0;
+    }
   }
 
   public async search(query: string, limit = 50): Promise<Component[]> {
@@ -298,12 +325,15 @@ export class DefaultLibraryEngine implements LibraryEngine {
     }
   }
 
-  public async getTemplate(id: string): Promise<Template | null> {
-    const row = this.sqlite.queryOne<Template>(
-      "SELECT * FROM templates WHERE id = ? OR name = ? LIMIT 1",
-      [id, id]
+  public async getCategoryCounts(): Promise<Record<string, number>> {
+    const rows = this.sqlite.query<{ category: string; count: number }>(
+      "SELECT category, COUNT(*) as count FROM components GROUP BY category"
     );
-    return row ?? null;
+    const counts: Record<string, number> = {};
+    for (const r of rows) {
+      counts[r.category] = Number(r.count);
+    }
+    return counts;
   }
 
   public async getCategories(): Promise<string[]> {

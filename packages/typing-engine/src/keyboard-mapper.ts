@@ -7,12 +7,12 @@ export class StandardKeyboardMapper implements KeyboardMapper {
     this.target = target;
   }
 
-  public async typeCharacter(character: string): Promise<void> {
+  public async typeCharacter(character: string, autoClose?: string): Promise<void> {
     if (!this.target) {
       throw new Error("Cannot type character: no typing target configured");
     }
     // Delegate directly to the target which knows how to send native or editor input
-    await this.target.typeCharacter(character);
+    await this.target.typeCharacter(character, autoClose);
   }
 
   public async overtypeCharacter(character: string): Promise<void> {

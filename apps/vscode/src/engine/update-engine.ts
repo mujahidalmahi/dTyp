@@ -49,7 +49,7 @@ export class UpdateEngine {
       return;
     }
 
-    const currentVersion = this.context.extension.packageJSON.version || "2.0.0";
+    const currentVersion = this.context.extension.packageJSON.version || "3.0.0";
 
     try {
       const release = await this.fetchLatestRelease();

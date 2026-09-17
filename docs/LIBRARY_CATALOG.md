@@ -30,7 +30,7 @@ Every component in dTyp is authored with 100% clean, self-documenting C code wit
 
 ---
 
-## 🔬 Parametric Variations Design
+## 🧬 Parametric Variations Design
 
 dTyp components are distinguished by **real-world algorithmic and signature variations**:
 

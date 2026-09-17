@@ -63,8 +63,8 @@ export const buildDatabase = async (): Promise<void> => {
   // 1. Insert metadata
   const metaStmt = db.prepare("INSERT OR REPLACE INTO metadata (key, value) VALUES (?, ?)");
   const nowStr = new Date().toISOString();
-  metaStmt.run(["schema_version", "2.0.0"]);
-  metaStmt.run(["library_version", "1.0.0"]);
+  metaStmt.run(["schema_version", "3.0.0"]);
+  metaStmt.run(["library_version", "3.0.0"]);
   metaStmt.run(["component_count", String(allComponents.length)]);
   metaStmt.run(["category_count", String(categories.length)]);
   metaStmt.run(["build_timestamp", nowStr]);

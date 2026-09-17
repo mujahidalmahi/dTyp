@@ -85,14 +85,6 @@ export interface FavoriteEntry {
   addedAt: number;
 }
 
-export interface Template {
-  id: string;
-  name: string;
-  category: string;
-  body: string;
-  description?: string;
-}
-
 export interface Tag {
   id?: number;
   name: string;
@@ -131,13 +123,15 @@ export interface LibraryEngine {
   search(query: string, limit?: number): Promise<Component[]>;
   getByCategory(category: string): Promise<Component[]>;
   getByCategoryId(categoryId: string): Promise<Component[]>;
+  getByCategoryBranch(categoryIdOrSlug: string): Promise<Component[]>;
+  getCategoryBranchCount(categoryIdOrSlug: string): Promise<number>;
   getChildren(parentId?: string | null): Promise<Category[]>;
   findCategoryByPath(path: string): Promise<Category | null>;
   getDependencies(id: string): Promise<Component[]>;
   getSnippet(id: string): Promise<Snippet | null>;
   getSnippets(): Promise<Snippet[]>;
-  getTemplate(id: string): Promise<Template | null>;
   getCategories(): Promise<string[]>;
+  getCategoryCounts(): Promise<Record<string, number>>;
   getAllComponents(limit?: number, offset?: number): Promise<Component[]>;
   count(): Promise<number>;
 }

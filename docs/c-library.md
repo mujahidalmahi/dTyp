@@ -32,31 +32,52 @@ The library is compiled into an indexed SQLite WebAssembly database (`dtyp.db`) 
 CREATE TABLE components (
     id TEXT PRIMARY KEY,
     name TEXT NOT NULL,
-    language TEXT NOT NULL,
+    language TEXT NOT NULL DEFAULT 'c',
+    type TEXT NOT NULL DEFAULT 'function',
+    category_id TEXT NOT NULL,
     category TEXT NOT NULL,
     subcategory TEXT,
-    description TEXT,
+    path TEXT NOT NULL,
+    description TEXT NOT NULL,
     signature TEXT NOT NULL,
     code TEXT NOT NULL,
-    time_complexity TEXT NOT NULL,
-    space_complexity TEXT NOT NULL,
+    input_type TEXT,
+    output_type TEXT,
+    data_type TEXT,
+    representation TEXT,
+    implementation_type TEXT,
+    difficulty TEXT,
+    time_complexity TEXT NOT NULL DEFAULT 'O(1)',
+    space_complexity TEXT NOT NULL DEFAULT 'O(1)',
     documentation TEXT,
-    version TEXT NOT NULL
+    version TEXT NOT NULL DEFAULT '1.0.0',
+    created_at TEXT NOT NULL,
+    updated_at TEXT NOT NULL,
+    FOREIGN KEY(category_id) REFERENCES categories(id) ON DELETE CASCADE
 );
 
 CREATE TABLE categories (
     id TEXT PRIMARY KEY,
-    domain TEXT NOT NULL,
+    parent_id TEXT,
     name TEXT NOT NULL,
+    slug TEXT NOT NULL,
+    path TEXT NOT NULL,
+    depth INTEGER NOT NULL DEFAULT 0,
+    type TEXT NOT NULL DEFAULT 'category',
     description TEXT,
-    icon TEXT
+    sort_order INTEGER DEFAULT 0,
+    FOREIGN KEY(parent_id) REFERENCES categories(id) ON DELETE CASCADE
 );
 
 CREATE TABLE snippets (
     id TEXT PRIMARY KEY,
+    component_id TEXT,
     prefix TEXT NOT NULL,
-    description TEXT NOT NULL,
     body TEXT NOT NULL,
-    component_id TEXT
+    description TEXT,
+    category TEXT,
+    tab_stops TEXT,
+    scope TEXT DEFAULT 'c,cpp',
+    FOREIGN KEY(component_id) REFERENCES components(id) ON DELETE CASCADE
 );
 ```

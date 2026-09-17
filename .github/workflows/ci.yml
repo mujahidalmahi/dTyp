@@ -37,7 +37,7 @@ jobs:
       - name: Run Test Suite
         run: npm test
 
-      - name: Validate 24,000+ Component Library & DAG
+      - name: Validate 500-Component Library & DAG
         run: npm run validate:library
 
       - name: Verify VS Code Extension Bundling

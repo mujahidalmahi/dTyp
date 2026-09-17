@@ -91,16 +91,15 @@ export class LibraryTreeProvider implements vscode.TreeDataProvider<LibraryTreeN
     if (element.kind === "category") {
       const catId = element.category.id;
       const subcategories = await this.libraryEngine.getChildren(catId);
-      const components = await this.libraryEngine.getByCategoryId(catId);
 
-      const nodes: LibraryTreeNode[] = [];
-      for (const sub of subcategories) {
-        nodes.push(new CategoryNode(sub, true));
+      // If this category has sub-divisions, show only those sub-divisions
+      if (subcategories.length > 0) {
+        return subcategories.map((sub) => new CategoryNode(sub, true));
       }
-      for (const comp of components) {
-        nodes.push(new ComponentNode(comp));
-      }
-      return nodes;
+
+      // Leaf division: show the components inside this division
+      const components = await this.libraryEngine.getByCategoryId(catId);
+      return components.map((comp) => new ComponentNode(comp));
     }
 
     return [];

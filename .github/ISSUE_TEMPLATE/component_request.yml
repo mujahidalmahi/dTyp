@@ -6,7 +6,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        Request new data structures, algorithms, numerical solvers, or academic boilerplate for the 24,000+ C library.
+        Request new data structures, algorithms, numerical solvers, or academic boilerplate for the 500-component C library.
   - type: input
     id: component_name
     attributes:

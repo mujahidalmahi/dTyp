@@ -27,11 +27,16 @@ export class HeaderEngine {
   }
 
   public static getMissingHeaders(documentText: string, codeToInsert: string): string[] {
-    const existing = this.getExistingHeaders(documentText);
+    const existingInDoc = this.getExistingHeaders(documentText);
+    const existingInCode = this.getExistingHeaders(codeToInsert);
     const missing: string[] = [];
 
     for (const detector of this.HEADER_DETECTORS) {
-      if (detector.pattern.test(codeToInsert) && !existing.has(detector.header)) {
+      // If header is already in the document OR already present in the code to insert, do not duplicate!
+      if (existingInDoc.has(detector.header) || existingInCode.has(detector.header)) {
+        continue;
+      }
+      if (detector.pattern.test(codeToInsert)) {
         missing.push(detector.header);
       }
     }
@@ -46,10 +51,18 @@ export class HeaderEngine {
     if (missing.length === 0) return [];
 
     const includeBlock = missing.map((h) => `#include <${h}>`).join("\n") + "\n";
+    const initialText = document.getText();
+    const wasEmpty = initialText.trim().length === 0;
 
     await editor.edit((builder) => {
       builder.insert(new vscode.Position(0, 0), includeBlock);
     });
+
+    if (wasEmpty) {
+      // If document was empty, place cursor on line below injected headers
+      const newPos = new vscode.Position(missing.length + 1, 0);
+      editor.selection = new vscode.Selection(newPos, newPos);
+    }
 
     this.logger.info(`Injected missing headers: ${missing.join(", ")}`);
     return missing;

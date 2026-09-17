@@ -10,10 +10,10 @@
   <a href="https://github.com/mujahidalmahi/dTyp/actions/workflows/ci.yml"><img src="https://img.shields.io/github/actions/workflow/status/mujahidalmahi/dTyp/ci.yml?branch=main&label=CI&logo=github" alt="CI Build Status" /></a>
   <a href="https://github.com/mujahidalmahi/dTyp/releases/latest"><img src="https://img.shields.io/badge/release-v3.0.0-blue?logo=semanticrelease" alt="Release Version" /></a>
   <a href="https://marketplace.visualstudio.com/items?itemName=1da7b1e6-01f1-6f58-9ef3-d95516c5e875.dtyp-vscode"><img src="https://img.shields.io/badge/VS%20Code-Marketplace-007ACC?logo=visualstudiocode&logoColor=white" alt="VS Code Marketplace" /></a>
-  <a href="docs/LIBRARY_CATALOG.md"><img src="https://img.shields.io/badge/library-500%20C%20Components-emerald?logo=c" alt="500 C Components" /></a>
-  <a href="#"><img src="https://img.shields.io/badge/runtime-SQLite%20WASM-blueviolet?logo=sqlite" alt="SQLite WASM" /></a>
-  <a href="SECURITY.md"><img src="https://img.shields.io/badge/privacy-100%25%20Offline-orange" alt="100% Offline" /></a>
-  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-green.svg" alt="License: MIT" /></a>
+  <a href="../../docs/LIBRARY_CATALOG.md"><img src="https://img.shields.io/badge/library-500%20C%20Components-emerald?logo=c" alt="500 C Components" /></a>
+  <a href="https://sql.js.org/"><img src="https://img.shields.io/badge/runtime-SQLite%20WASM-blueviolet?logo=sqlite" alt="SQLite WASM" /></a>
+  <a href="../../SECURITY.md"><img src="https://img.shields.io/badge/privacy-100%25%20Offline-orange" alt="100% Offline" /></a>
+  <a href="../../LICENSE"><img src="https://img.shields.io/badge/license-MIT-green.svg" alt="License: MIT" /></a>
 </p>
 
 ---
@@ -22,7 +22,7 @@
 
 **dTyp v3.0** is a zero-cloud, high-performance C/C++ developer companion and **humanized stealth typing assistant** built natively for Visual Studio Code. It packages **500 compilable, bloat-free C components** across 7 primary computer science domains inside an embedded SQLite WebAssembly database, accompanied by an advanced **humanized keystroke simulation engine**.
 
-Whether practicing complex algorithms, preparing academic lab assignments, or presenting real-world systems, dTyp types flawless, production-ready code directly into your editor—either continuously with muscle-memory bursts and intelligent auto-closing delimiter handling, or discreetly keystroke-by-keystroke via **`Ctrl+D`**.
+Whether practicing complex algorithms, preparing academic lab assignments, or presenting real-world systems, dTyp types flawless, production-ready code directly into your editor—either continuously with muscle-memory bursts and intelligent auto-closing delimiter handling, or discreetly keystroke-by-keystroke via **`Ctrl+Shift+D`**.
 
 ---
 
@@ -230,15 +230,15 @@ The offline database (`dtyp.db`) houses **500 components** across 7 primary doma
 
 | Domain | Count | Key Categories & Scope |
 |---|---|---|
-| **Boiler Plates** | 64 | CLI starters, entry points, argument parsing (`getopt`), REPLs, benchmarks, arena allocators, assertion test runners |
-| **Data Structures** | 126 | Singly/doubly/circular linked lists, stacks, queues, deques, BST, AVL, red-black trees, binary heaps, tries, segment trees, Fenwick trees, DSU, hash tables |
-| **Algorithms** | 120 | 10 sorting algorithms (3-way QuickSort, Merge, Heap, TimSort), binary search, graph traversals (BFS, DFS), shortest paths (Dijkstra, Bellman-Ford, Floyd-Warshall), MST (Kruskal, Prim), DP (Knapsack, LCS, LIS, Matrix Chain, Coin Change) |
-| **Competitive Programming** | 50 | Fast I/O buffers (`getchar_unlocked`), modular arithmetic, prime sieves, LCA binary lifting, string algorithms (KMP, Z-algorithm) |
-| **Academics Programming** | 46 | Numerical methods (Gauss-Jordan, LU, Newton-Raphson, Runge-Kutta RK4/RK45), discrete math truth tables, physics simulations |
+| **Boiler Plates** | 103 | CLI starters, entry points, argument parsing (`getopt`), REPLs, benchmarks, arena allocators, assertion test runners |
+| **Data Structures** | 113 | Singly/doubly/circular linked lists, stacks, queues, deques, BST, AVL, red-black trees, binary heaps, tries, segment trees, Fenwick trees, DSU, hash tables |
+| **Algorithms** | 64 | 10 sorting algorithms (3-way QuickSort, Merge, Heap, TimSort), binary search, graph traversals (BFS, DFS), shortest paths (Dijkstra, Bellman-Ford, Floyd-Warshall), MST (Kruskal, Prim), DP (Knapsack, LCS, LIS, Matrix Chain, Coin Change) |
+| **Competitive Programming** | 70 | Fast I/O buffers (`getchar_unlocked`), modular arithmetic, prime sieves, LCA binary lifting, string algorithms (KMP, Z-algorithm) |
+| **Academics Programming** | 56 | Numerical methods (Gauss-Jordan, LU, Newton-Raphson, Runge-Kutta RK4/RK45), discrete math truth tables, physics simulations |
 | **Projects** | 30 | Standalone systems (micro UNIX shell, HTTP parser, event loop, JSON parser, custom allocator, key-value store, chess, snake) |
 | **Detection** | 64 | Algorithmic detection primitives (graph cycles, linked-list cycles, palindromes, bipartiteness, integer overflow, memory leaks, endianness) |
 
-*For complete component breakdowns, sample signatures, and architectural patterns, see [docs/LIBRARY_CATALOG.md](docs/LIBRARY_CATALOG.md).*
+*For complete component breakdowns, sample signatures, and architectural patterns, see [docs/LIBRARY_CATALOG.md](../../docs/LIBRARY_CATALOG.md).*
 
 ---
 
@@ -324,15 +324,15 @@ dTyp/
 
 ## 🤝 Open Source Community & Governance
 
-- 📖 **[Contributing Guide](CONTRIBUTING.md)**: Setup instructions, coding standards, and C component conventions.
-- 🗺️ **[Project Roadmap](ROADMAP.md)**: Current v3.0 status and future milestones.
-- 🛡️ **[Security & Privacy Policy](SECURITY.md)**: Our commitment to zero telemetry and local-first computing.
-- 📜 **[Code of Conduct](CODE_OF_CONDUCT.md)**: Contributor Covenant v2.1 standards.
-- ❓ **[FAQ](docs/faq.md)**: Frequently asked questions about offline mechanics and exam stealth.
+- 📖 **[Contributing Guide](../../CONTRIBUTING.md)**: Setup instructions, coding standards, and C component conventions.
+- 🗺️ **[Project Roadmap](../../ROADMAP.md)**: Current v3.0 status and future milestones.
+- 🛡️ **[Security & Privacy Policy](../../SECURITY.md)**: Our commitment to zero telemetry and local-first computing.
+- 📜 **[Code of Conduct](../../CODE_OF_CONDUCT.md)**: Contributor Covenant v2.1 standards.
+- ❓ **[FAQ](../../docs/faq.md)**: Frequently asked questions about offline mechanics and exam stealth.
 
 ---
 
 ## 📄 License & Authors
 
 - **Author**: [Mujahid Al Mahi](https://github.com/mujahidalmahi)
-- **License**: Released under the open-source [MIT License](LICENSE).
+- **License**: Released under the open-source [MIT License](../../LICENSE).

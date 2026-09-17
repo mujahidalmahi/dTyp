@@ -8,6 +8,7 @@ export interface TypingAction {
   char?: string;
   delayMs?: number;
   description?: string;
+  autoClose?: string;
 }
 
 export interface TypingOptions {
@@ -42,24 +43,27 @@ export interface QueuedCharacter {
   delayOverrideMs?: number;
   action?: TypingActionType;
   description?: string;
+  autoClose?: string;
 }
 
 export interface TypingTarget {
   focus(): Promise<void>;
-  typeCharacter(character: string): Promise<void>;
+  typeCharacter(character: string, autoClose?: string): Promise<void>;
   releaseModifiers(): Promise<void>;
   overtypeCharacter?(character: string): Promise<void>;
   deleteBackward?(): Promise<void>;
 }
 
 export interface KeyboardMapper {
-  typeCharacter(character: string): Promise<void>;
+  typeCharacter(character: string, autoClose?: string): Promise<void>;
   releaseModifiers?(): Promise<void>;
+  overtypeCharacter?(character: string): Promise<void>;
+  deleteBackward?(): Promise<void>;
 }
 
 export interface TypingProgressEvent {
   stats: TypingStatistics;
-  char: string;
+  char?: string;
 }
 
 export interface TypingEngineEvents {

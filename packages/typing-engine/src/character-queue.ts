@@ -22,6 +22,7 @@ export class CharacterQueue {
         delayOverrideMs: act.delayMs,
         action: act.type,
         description: act.description,
+        autoClose: act.autoClose,
       });
     }
   }
@@ -57,7 +58,8 @@ export class CharacterQueue {
     isTab = false,
     delayOverrideMs?: number,
     action: QueuedCharacter["action"] = "type",
-    description?: string
+    description?: string,
+    autoClose?: string
   ): void {
     this.queue.push({
       id: this.nextId++,
@@ -67,6 +69,7 @@ export class CharacterQueue {
       delayOverrideMs,
       action,
       description,
+      autoClose,
     });
   }
 
