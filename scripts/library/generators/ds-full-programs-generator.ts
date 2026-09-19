@@ -616,7 +616,7 @@ int main(void) {
       subcategory: "linked-lists",
       categoryId: "data-structures.full-programs.linked-lists.singly",
       path: "data-structures/full-programs/linked-lists/singly/prog-singly-list",
-      description: "Interactive complete singly linked list program with insertions, deletions, reversing, search, count, and display",
+      description: "Interactive complete singly linked list program with 19 operations: beginning/end/positional/value/sorted insertions and deletions, reverse, bubble sort, deduplication, middle element, cycle detection, min/max, count, and display",
       signature: "int main(void)",
       code: `#include <stdio.h>
 #include <stdlib.h>
@@ -642,13 +642,18 @@ Node* create_node(int data) {
 
 void insert_beginning(Node** head, int data) {
     Node* n = create_node(data);
+    if (!n) return;
     n->next = *head;
     *head = n;
 }
 
 void insert_end(Node** head, int data) {
     Node* n = create_node(data);
-    if (!*head) { *head = n; return; }
+    if (!n) return;
+    if (!*head) {
+        *head = n;
+        return;
+    }
     Node* cur = *head;
     while (cur->next) cur = cur->next;
     cur->next = n;
@@ -666,9 +671,59 @@ bool insert_at_position(Node** head, int pos, int data) {
     }
     if (!cur) return false;
     Node* n = create_node(data);
+    if (!n) return false;
     n->next = cur->next;
     cur->next = n;
     return true;
+}
+
+bool insert_before_value(Node** head, int target, int data) {
+    if (!head || !*head) return false;
+    if ((*head)->data == target) {
+        insert_beginning(head, data);
+        return true;
+    }
+    Node* cur = *head;
+    while (cur->next && cur->next->data != target) {
+        cur = cur->next;
+    }
+    if (cur->next) {
+        Node* n = create_node(data);
+        if (!n) return false;
+        n->next = cur->next;
+        cur->next = n;
+        return true;
+    }
+    return false;
+}
+
+bool insert_after_value(Node* head, int target, int data) {
+    Node* cur = head;
+    while (cur && cur->data != target) {
+        cur = cur->next;
+    }
+    if (!cur) return false;
+    Node* n = create_node(data);
+    if (!n) return false;
+    n->next = cur->next;
+    cur->next = n;
+    return true;
+}
+
+void insert_sorted(Node** head, int data) {
+    Node* n = create_node(data);
+    if (!n) return;
+    if (!*head || (*head)->data >= data) {
+        n->next = *head;
+        *head = n;
+        return;
+    }
+    Node* cur = *head;
+    while (cur->next && cur->next->data < data) {
+        cur = cur->next;
+    }
+    n->next = cur->next;
+    cur->next = n;
 }
 
 bool delete_beginning(Node** head, int* val) {
@@ -696,6 +751,21 @@ bool delete_end(Node** head, int* val) {
     return true;
 }
 
+bool delete_at_position(Node** head, int pos, int* val) {
+    if (!*head || pos < 1) return false;
+    if (pos == 1) return delete_beginning(head, val);
+    Node* cur = *head;
+    for (int i = 1; cur && i < pos - 1; i++) {
+        cur = cur->next;
+    }
+    if (!cur || !cur->next) return false;
+    Node* tmp = cur->next;
+    *val = tmp->data;
+    cur->next = tmp->next;
+    free(tmp);
+    return true;
+}
+
 bool delete_by_value(Node** head, int val) {
     if (!*head) return false;
     if ((*head)->data == val) {
@@ -715,11 +785,9 @@ bool delete_by_value(Node** head, int val) {
     return true;
 }
 
-bool delete_at_position(Node** head, int pos, int* val) {
-    if (!*head || pos < 1) return false;
-    if (pos == 1) return delete_beginning(head, val);
-    Node* cur = *head;
-    for (int i = 1; cur && i < pos - 1; i++) {
+bool delete_after_value(Node* head, int target, int* val) {
+    Node* cur = head;
+    while (cur && cur->data != target) {
         cur = cur->next;
     }
     if (!cur || !cur->next) return false;
@@ -754,28 +822,92 @@ void reverse_list(Node** head) {
     *head = prev;
 }
 
-int count_nodes(const Node* head) {
-    int cnt = 0;
-    const Node* cur = head;
-    while (cur) {
-        cnt++;
-        cur = cur->next;
-    }
-    return cnt;
+void sort_list(Node* head) {
+    if (!head || !head->next) return;
+    int swapped;
+    do {
+        swapped = 0;
+        Node* cur = head;
+        while (cur->next) {
+            if (cur->data > cur->next->data) {
+                int tmp = cur->data;
+                cur->data = cur->next->data;
+                cur->next->data = tmp;
+                swapped = 1;
+            }
+            cur = cur->next;
+        }
+    } while (swapped);
 }
 
-void print_list(const Node* head) {
+void remove_duplicates(Node* head) {
+    Node* cur = head;
+    while (cur && cur->next) {
+        Node* runner = cur;
+        while (runner->next) {
+            if (runner->next->data == cur->data) {
+                Node* del = runner->next;
+                runner->next = del->next;
+                free(del);
+            } else {
+                runner = runner->next;
+            }
+        }
+        cur = cur->next;
+    }
+}
+
+bool find_middle(const Node* head, int* val) {
+    if (!head) return false;
+    const Node* slow = head;
+    const Node* fast = head;
+    while (fast->next && fast->next->next) {
+        slow = slow->next;
+        fast = fast->next->next;
+    }
+    *val = slow->data;
+    return true;
+}
+
+bool detect_cycle(const Node* head) {
+    if (!head || !head->next) return false;
+    const Node* slow = head;
+    const Node* fast = head;
+    while (fast && fast->next) {
+        slow = slow->next;
+        fast = fast->next->next;
+        if (slow == fast) return true;
+    }
+    return false;
+}
+
+bool min_and_max(const Node* head, int* min_val, int* max_val) {
+    if (!head) return false;
+    *min_val = head->data;
+    *max_val = head->data;
+    const Node* cur = head->next;
+    while (cur) {
+        if (cur->data < *min_val) *min_val = cur->data;
+        if (cur->data > *max_val) *max_val = cur->data;
+        cur = cur->next;
+    }
+    return true;
+}
+
+void display_list_and_count(const Node* head) {
     if (!head) {
-        printf("List is empty.\\n");
+        printf("List is empty (count: 0)\\n");
         return;
     }
-    printf("List (%d nodes): ", count_nodes(head));
+    printf("List: ");
+    int count = 0;
     const Node* cur = head;
     while (cur) {
         printf("%d -> ", cur->data);
+        count++;
         cur = cur->next;
     }
-    printf("NULL\\n");
+    printf("NULL (total: %d)\\n", count);
 }
 
 void free_list(Node** head) {
@@ -790,120 +922,190 @@ void free_list(Node** head) {
 
 int main(void) {
     Node* head = NULL;
-    int choice;
+    int choice = 0;
+    int val = 0;
+    int pos = 0;
+    int target = 0;
+    int min_val = 0;
+    int max_val = 0;
 
     do {
-        printf("\\n=== Singly Linked List Operations Menu ===\\n");
-        printf("1.  Insert at Beginning\\n");
-        printf("2.  Insert at End\\n");
-        printf("3.  Insert at Position (1-based)\\n");
-        printf("4.  Delete from Beginning\\n");
-        printf("5.  Delete from End\\n");
-        printf("6.  Delete by Value\\n");
-        printf("7.  Delete at Position (1-based)\\n");
-        printf("8.  Search Element\\n");
-        printf("9.  Reverse List\\n");
-        printf("10. Count Nodes\\n");
-        printf("11. Display List\\n");
-        printf("0.  Exit\\n");
-        printf("Enter choice: ");
+        printf("\\n--- Singly Linked List Operations ---\\n");
+        printf("1. Insert Beginning\\n");
+        printf("2. Insert End\\n");
+        printf("3. Insert at Position\\n");
+        printf("4. Insert Before Value\\n");
+        printf("5. Insert After Value\\n");
+        printf("6. Insert Sorted\\n");
+        printf("7. Delete Beginning\\n");
+        printf("8. Delete End\\n");
+        printf("9. Delete at Position\\n");
+        printf("10. Delete by Value\\n");
+        printf("11. Delete After Value\\n");
+        printf("12. Search Element\\n");
+        printf("13. Reverse List\\n");
+        printf("14. Sort List\\n");
+        printf("15. Remove Duplicates\\n");
+        printf("16. Find Middle\\n");
+        printf("17. Detect Cycle\\n");
+        printf("18. Min and Max\\n");
+        printf("19. Display List and Count\\n");
+        printf("0. Exit\\n");
+        printf("Enter your choice: ");
 
         if (scanf("%d", &choice) != 1) {
+            printf("Invalid input. Please enter an integer.\\n");
             clear_input();
             continue;
         }
 
         switch (choice) {
-            case 1: {
-                int val;
+            case 1:
                 printf("Enter value to insert at beginning: ");
                 if (scanf("%d", &val) == 1) {
                     insert_beginning(&head, val);
                     printf("Inserted %d at beginning.\\n", val);
                 } else clear_input();
                 break;
-            }
-            case 2: {
-                int val;
+            case 2:
                 printf("Enter value to insert at end: ");
                 if (scanf("%d", &val) == 1) {
                     insert_end(&head, val);
                     printf("Inserted %d at end.\\n", val);
                 } else clear_input();
                 break;
-            }
-            case 3: {
-                int pos, val;
-                printf("Enter position and value: ");
+            case 3:
+                printf("Enter position (1-based) and value: ");
                 if (scanf("%d %d", &pos, &val) == 2) {
-                    if (insert_at_position(&head, pos, val)) printf("Inserted %d at position %d.\\n", val, pos);
-                    else printf("Failed to insert. Invalid position.\\n");
+                    if (insert_at_position(&head, pos, val))
+                        printf("Inserted %d at position %d.\\n", val, pos);
+                    else
+                        printf("Invalid position %d.\\n", pos);
                 } else clear_input();
                 break;
-            }
-            case 4: {
-                int val;
-                if (delete_beginning(&head, &val)) printf("Deleted %d from beginning.\\n", val);
-                else printf("List is already empty.\\n");
+            case 4:
+                printf("Enter target value and new value: ");
+                if (scanf("%d %d", &target, &val) == 2) {
+                    if (insert_before_value(&head, target, val))
+                        printf("Inserted %d before %d.\\n", val, target);
+                    else
+                        printf("Target %d not found in list.\\n", target);
+                } else clear_input();
                 break;
-            }
-            case 5: {
-                int val;
-                if (delete_end(&head, &val)) printf("Deleted %d from end.\\n", val);
-                else printf("List is already empty.\\n");
+            case 5:
+                printf("Enter target value and new value: ");
+                if (scanf("%d %d", &target, &val) == 2) {
+                    if (insert_after_value(head, target, val))
+                        printf("Inserted %d after %d.\\n", val, target);
+                    else
+                        printf("Target %d not found in list.\\n", target);
+                } else clear_input();
                 break;
-            }
-            case 6: {
-                int val;
-                printf("Enter value to delete: ");
+            case 6:
+                printf("Enter value to insert in sorted order: ");
                 if (scanf("%d", &val) == 1) {
-                    if (delete_by_value(&head, val)) printf("Successfully deleted value %d.\\n", val);
-                    else printf("Value %d not found in list.\\n", val);
+                    insert_sorted(&head, val);
+                    printf("Inserted %d in sorted order.\\n", val);
                 } else clear_input();
                 break;
-            }
-            case 7: {
-                int pos, val;
-                printf("Enter position to delete: ");
-                if (scanf("%d", &pos) == 1) {
-                    if (delete_at_position(&head, pos, &val)) printf("Deleted %d from position %d.\\n", val, pos);
-                    else printf("Invalid position.\\n");
-                } else clear_input();
+            case 7:
+                if (delete_beginning(&head, &val))
+                    printf("Deleted %d from beginning.\\n", val);
+                else
+                    printf("List is empty.\\n");
                 break;
-            }
-            case 8: {
-                int val;
-                printf("Enter value to search: ");
-                if (scanf("%d", &val) == 1) {
-                    int pos = search_element(head, val);
-                    if (pos != -1) printf("Found %d at node position %d.\\n", val, pos);
-                    else printf("Value %d not found.\\n", val);
-                } else clear_input();
+            case 8:
+                if (delete_end(&head, &val))
+                    printf("Deleted %d from end.\\n", val);
+                else
+                    printf("List is empty.\\n");
                 break;
-            }
             case 9:
-                reverse_list(&head);
-                printf("List reversed successfully.\\n");
-                print_list(head);
+                printf("Enter position to delete (1-based): ");
+                if (scanf("%d", &pos) == 1) {
+                    if (delete_at_position(&head, pos, &val))
+                        printf("Deleted %d from position %d.\\n", val, pos);
+                    else
+                        printf("Invalid position %d.\\n", pos);
+                } else clear_input();
                 break;
             case 10:
-                printf("Total node count: %d\\n", count_nodes(head));
+                printf("Enter value to delete: ");
+                if (scanf("%d", &val) == 1) {
+                    if (delete_by_value(&head, val))
+                        printf("Deleted value %d from list.\\n", val);
+                    else
+                        printf("Value %d not found.\\n", val);
+                } else clear_input();
                 break;
             case 11:
-                print_list(head);
+                printf("Enter target value: ");
+                if (scanf("%d", &target) == 1) {
+                    if (delete_after_value(head, target, &val))
+                        printf("Deleted %d after target %d.\\n", val, target);
+                    else
+                        printf("No element after %d or target not found.\\n", target);
+                } else clear_input();
+                break;
+            case 12:
+                printf("Enter value to search: ");
+                if (scanf("%d", &val) == 1) {
+                    pos = search_element(head, val);
+                    if (pos != -1)
+                        printf("Value %d found at position %d.\\n", val, pos);
+                    else
+                        printf("Value %d not found in list.\\n", val);
+                } else clear_input();
+                break;
+            case 13:
+                reverse_list(&head);
+                printf("List reversed successfully.\\n");
+                display_list_and_count(head);
+                break;
+            case 14:
+                sort_list(head);
+                printf("List sorted in ascending order.\\n");
+                display_list_and_count(head);
+                break;
+            case 15:
+                remove_duplicates(head);
+                printf("Duplicate elements removed.\\n");
+                display_list_and_count(head);
+                break;
+            case 16:
+                if (find_middle(head, &val))
+                    printf("Middle node value: %d\\n", val);
+                else
+                    printf("List is empty.\\n");
+                break;
+            case 17:
+                if (detect_cycle(head))
+                    printf("Cycle detected in list.\\n");
+                else
+                    printf("No cycle detected (list is acyclic).\\n");
+                break;
+            case 18:
+                if (min_and_max(head, &min_val, &max_val))
+                    printf("Minimum value: %d, Maximum value: %d\\n", min_val, max_val);
+                else
+                    printf("List is empty.\\n");
+                break;
+            case 19:
+                display_list_and_count(head);
                 break;
             case 0:
-                printf("Exiting Singly Linked List Menu.\\n");
+                printf("Exiting singly linked list program.\\n");
                 break;
             default:
-                printf("Invalid choice. Please select from menu.\\n");
+                printf("Invalid option! Please choose between 0 and 19.\\n");
                 break;
         }
     } while (choice != 0);
 
     free_list(&head);
     return 0;
-}`,
+}
+`,
       tags: ["program", "linked-list", "singly"],
       aliases: ["prog_singly_linked_list", "programSinglyList"],
     })
@@ -919,7 +1121,7 @@ int main(void) {
       subcategory: "linked-lists",
       categoryId: "data-structures.full-programs.linked-lists.doubly",
       path: "data-structures/full-programs/linked-lists/doubly/prog-doubly-list",
-      description: "Interactive doubly linked list program with bidirectional traversals, positional insertions/deletions, reversing, and node counting",
+      description: "Interactive complete doubly linked list program with 19 operations: bidirectional traversals, positional insertions/deletions, before/after target, sorted insertion, reversing, sorting, deduplication, middle element, and min/max",
       signature: "int main(void)",
       code: `#include <stdio.h>
 #include <stdlib.h>
@@ -936,40 +1138,51 @@ typedef struct Node {
     struct Node* next;
 } Node;
 
-Node* d_create(int val) {
+Node* create_node(int data) {
     Node* n = (Node*)malloc(sizeof(Node));
-    n->data = val;
+    if (!n) return NULL;
+    n->data = data;
     n->prev = NULL;
     n->next = NULL;
     return n;
 }
 
-void d_insert_beginning(Node** head, int val) {
-    Node* n = d_create(val);
-    if (*head) (*head)->prev = n;
-    n->next = *head;
+void insert_beginning(Node** head, int data) {
+    Node* n = create_node(data);
+    if (!n) return;
+    if (*head) {
+        (*head)->prev = n;
+        n->next = *head;
+    }
     *head = n;
 }
 
-void d_insert_end(Node** head, int val) {
-    Node* n = d_create(val);
-    if (!*head) { *head = n; return; }
+void insert_end(Node** head, int data) {
+    Node* n = create_node(data);
+    if (!n) return;
+    if (!*head) {
+        *head = n;
+        return;
+    }
     Node* cur = *head;
     while (cur->next) cur = cur->next;
     cur->next = n;
     n->prev = cur;
 }
 
-bool d_insert_at_position(Node** head, int pos, int val) {
+bool insert_at_position(Node** head, int pos, int data) {
     if (pos < 1) return false;
     if (pos == 1) {
-        d_insert_beginning(head, val);
+        insert_beginning(head, data);
         return true;
     }
     Node* cur = *head;
-    for (int i = 1; cur && i < pos - 1; i++) cur = cur->next;
+    for (int i = 1; cur && i < pos - 1; i++) {
+        cur = cur->next;
+    }
     if (!cur) return false;
-    Node* n = d_create(val);
+    Node* n = create_node(data);
+    if (!n) return false;
     n->next = cur->next;
     n->prev = cur;
     if (cur->next) cur->next->prev = n;
@@ -977,7 +1190,55 @@ bool d_insert_at_position(Node** head, int pos, int val) {
     return true;
 }
 
-bool d_delete_beginning(Node** head, int* val) {
+bool insert_before_value(Node** head, int target, int data) {
+    if (!head || !*head) return false;
+    if ((*head)->data == target) {
+        insert_beginning(head, data);
+        return true;
+    }
+    Node* cur = *head;
+    while (cur && cur->data != target) cur = cur->next;
+    if (!cur) return false;
+    Node* n = create_node(data);
+    if (!n) return false;
+    n->prev = cur->prev;
+    n->next = cur;
+    if (cur->prev) cur->prev->next = n;
+    cur->prev = n;
+    return true;
+}
+
+bool insert_after_value(Node* head, int target, int data) {
+    Node* cur = head;
+    while (cur && cur->data != target) cur = cur->next;
+    if (!cur) return false;
+    Node* n = create_node(data);
+    if (!n) return false;
+    n->next = cur->next;
+    n->prev = cur;
+    if (cur->next) cur->next->prev = n;
+    cur->next = n;
+    return true;
+}
+
+void insert_sorted(Node** head, int data) {
+    Node* n = create_node(data);
+    if (!n) return;
+    if (!*head || (*head)->data >= data) {
+        n->next = *head;
+        if (*head) (*head)->prev = n;
+        *head = n;
+        return;
+    }
+    Node* cur = *head;
+    while (cur->next && cur->next->data < data) cur = cur->next;
+    n->next = cur->next;
+    n->prev = cur;
+    if (cur->next) cur->next->prev = n;
+    cur->next = n;
+}
+
+bool delete_beginning(Node** head, int* val) {
     if (!*head) return false;
     Node* tmp = *head;
     *val = tmp->data;
@@ -987,7 +1248,7 @@ bool d_delete_beginning(Node** head, int* val) {
     return true;
 }
 
-bool d_delete_end(Node** head, int* val) {
+bool delete_end(Node** head, int* val) {
     if (!*head) return false;
     Node* cur = *head;
     while (cur->next) cur = cur->next;
@@ -998,40 +1259,60 @@ bool d_delete_end(Node** head, int* val) {
     return true;
 }
 
-bool d_delete_by_value(Node** head, int val) {
-    if (!*head) return false;
+bool delete_at_position(Node** head, int pos, int* val) {
+    if (!*head || pos < 1) return false;
+    if (pos == 1) return delete_beginning(head, val);
     Node* cur = *head;
-    while (cur && cur->data != val) cur = cur->next;
+    for (int i = 1; cur && i < pos; i++) cur = cur->next;
     if (!cur) return false;
+    *val = cur->data;
     if (cur->prev) cur->prev->next = cur->next;
-    else *head = cur->next;
     if (cur->next) cur->next->prev = cur->prev;
     free(cur);
     return true;
 }
 
-void d_reverse(Node** head) {
-    Node* temp = NULL;
-    Node* current = *head;
-    while (current) {
-        temp = current->prev;
-        current->prev = current->next;
-        current->next = temp;
-        current = current->prev;
-    }
-    if (temp) *head = temp->prev;
+bool delete_by_value(Node** head, int val) {
+    if (!*head) return false;
+    Node* cur = *head;
+    while (cur && cur->data != val) cur = cur->next;
+    if (!cur) return false;
+    if (cur == *head) *head = cur->next;
+    if (cur->prev) cur->prev->next = cur->next;
+    if (cur->next) cur->next->prev = cur->prev;
+    free(cur);
+    return true;
 }
 
-int d_count(const Node* head) {
-    int cnt = 0;
+bool delete_after_value(Node* head, int target, int* val) {
+    Node* cur = head;
+    while (cur && cur->data != target) cur = cur->next;
+    if (!cur || !cur->next) return false;
+    Node* del = cur->next;
+    *val = del->data;
+    cur->next = del->next;
+    if (del->next) del->next->prev = cur;
+    free(del);
+    return true;
+}
+
+int search_element(const Node* head, int val) {
     const Node* cur = head;
-    while (cur) { cnt++; cur = cur->next; }
-    return cnt;
+    int pos = 1;
+    while (cur) {
+        if (cur->data == val) return pos;
+        cur = cur->next;
+        pos++;
+    }
+    return -1;
 }
 
-void d_print_forward(const Node* head) {
-    if (!head) { printf("Doubly list is empty.\\n"); return; }
-    printf("Forward  (%d nodes): ", d_count(head));
+void display_forward(const Node* head) {
+    if (!head) {
+        printf("List is empty.\\n");
+        return;
+    }
+    printf("Forward: ");
     const Node* cur = head;
     while (cur) {
         printf("%d <-> ", cur->data);
@@ -1040,11 +1321,14 @@ void d_print_forward(const Node* head) {
     printf("NULL\\n");
 }
 
-void d_print_backward(const Node* head) {
-    if (!head) { printf("Doubly list is empty.\\n"); return; }
+void display_backward(const Node* head) {
+    if (!head) {
+        printf("List is empty.\\n");
+        return;
+    }
     const Node* cur = head;
     while (cur->next) cur = cur->next;
-    printf("Backward (%d nodes): ", d_count(head));
+    printf("Backward: ");
     while (cur) {
         printf("%d <-> ", cur->data);
         cur = cur->prev;
@@ -1052,7 +1336,82 @@ void d_print_backward(const Node* head) {
     printf("NULL\\n");
 }
 
-void d_free(Node** head) {
+void reverse_list(Node** head) {
+    if (!*head) return;
+    Node* cur = *head;
+    Node* tmp = NULL;
+    while (cur) {
+        tmp = cur->prev;
+        cur->prev = cur->next;
+        cur->next = tmp;
+        cur = cur->prev;
+    }
+    if (tmp) *head = tmp->prev;
+}
+
+void sort_list(Node* head) {
+    if (!head || !head->next) return;
+    int swapped;
+    do {
+        swapped = 0;
+        Node* cur = head;
+        while (cur->next) {
+            if (cur->data > cur->next->data) {
+                int t = cur->data;
+                cur->data = cur->next->data;
+                cur->next->data = t;
+                swapped = 1;
+            }
+            cur = cur->next;
+        }
+    } while (swapped);
+}
+
+void remove_duplicates(Node* head) {
+    Node* cur = head;
+    while (cur && cur->next) {
+        Node* runner = cur->next;
+        while (runner) {
+            if (runner->data == cur->data) {
+                Node* del = runner;
+                runner = runner->next;
+                if (del->prev) del->prev->next = del->next;
+                if (del->next) del->next->prev = del->prev;
+                free(del);
+            } else {
+                runner = runner->next;
+            }
+        }
+        cur = cur->next;
+    }
+}
+
+bool find_middle(const Node* head, int* val) {
+    if (!head) return false;
+    const Node* slow = head;
+    const Node* fast = head;
+    while (fast->next && fast->next->next) {
+        slow = slow->next;
+        fast = fast->next->next;
+    }
+    *val = slow->data;
+    return true;
+}
+
+bool min_and_max(const Node* head, int* min_val, int* max_val) {
+    if (!head) return false;
+    *min_val = head->data;
+    *max_val = head->data;
+    const Node* cur = head->next;
+    while (cur) {
+        if (cur->data < *min_val) *min_val = cur->data;
+        if (cur->data > *max_val) *max_val = cur->data;
+        cur = cur->next;
+    }
+    return true;
+}
+
+void free_list(Node** head) {
     Node* cur = *head;
     while (cur) {
         Node* nxt = cur->next;
@@ -1064,98 +1423,187 @@ void d_free(Node** head) {
 
 int main(void) {
     Node* head = NULL;
-    int choice;
+    int choice = 0;
+    int val = 0;
+    int pos = 0;
+    int target = 0;
+    int min_val = 0;
+    int max_val = 0;
 
     do {
-        printf("\\n=== Doubly Linked List Operations Menu ===\\n");
-        printf("1.  Insert at Beginning\\n");
-        printf("2.  Insert at End\\n");
-        printf("3.  Insert at Position (1-based)\\n");
-        printf("4.  Delete from Beginning\\n");
-        printf("5.  Delete from End\\n");
-        printf("6.  Delete by Value\\n");
-        printf("7.  Display Forward\\n");
-        printf("8.  Display Backward\\n");
-        printf("9.  Reverse Doubly List\\n");
-        printf("10. Count Nodes\\n");
-        printf("0.  Exit\\n");
-        printf("Enter choice: ");
+        printf("\\n--- Doubly Linked List Operations ---\\n");
+        printf("1. Insert Beginning\\n");
+        printf("2. Insert End\\n");
+        printf("3. Insert at Position\\n");
+        printf("4. Insert Before Value\\n");
+        printf("5. Insert After Value\\n");
+        printf("6. Insert Sorted\\n");
+        printf("7. Delete Beginning\\n");
+        printf("8. Delete End\\n");
+        printf("9. Delete at Position\\n");
+        printf("10. Delete by Value\\n");
+        printf("11. Delete After Value\\n");
+        printf("12. Search Element\\n");
+        printf("13. Display Forward\\n");
+        printf("14. Display Backward\\n");
+        printf("15. Reverse List\\n");
+        printf("16. Sort List\\n");
+        printf("17. Remove Duplicates\\n");
+        printf("18. Find Middle\\n");
+        printf("19. Min and Max\\n");
+        printf("0. Exit\\n");
+        printf("Enter your choice: ");
 
         if (scanf("%d", &choice) != 1) {
+            printf("Invalid input. Please enter an integer.\\n");
             clear_input();
             continue;
         }
 
         switch (choice) {
-            case 1: {
-                int val;
+            case 1:
                 printf("Enter value to insert at beginning: ");
-                if (scanf("%d", &val) == 1) d_insert_beginning(&head, val);
-                else clear_input();
+                if (scanf("%d", &val) == 1) {
+                    insert_beginning(&head, val);
+                    printf("Inserted %d at beginning.\\n", val);
+                } else clear_input();
                 break;
-            }
-            case 2: {
-                int val;
+            case 2:
                 printf("Enter value to insert at end: ");
-                if (scanf("%d", &val) == 1) d_insert_end(&head, val);
-                else clear_input();
+                if (scanf("%d", &val) == 1) {
+                    insert_end(&head, val);
+                    printf("Inserted %d at end.\\n", val);
+                } else clear_input();
                 break;
-            }
-            case 3: {
-                int pos, val;
+            case 3:
                 printf("Enter position and value: ");
                 if (scanf("%d %d", &pos, &val) == 2) {
-                    if (!d_insert_at_position(&head, pos, val)) printf("Invalid position.\\n");
+                    if (insert_at_position(&head, pos, val))
+                        printf("Inserted %d at position %d.\\n", val, pos);
+                    else
+                        printf("Invalid position %d.\\n", pos);
                 } else clear_input();
                 break;
-            }
-            case 4: {
-                int val;
-                if (d_delete_beginning(&head, &val)) printf("Deleted %d from beginning.\\n", val);
-                else printf("List is empty.\\n");
+            case 4:
+                printf("Enter target value and new value: ");
+                if (scanf("%d %d", &target, &val) == 2) {
+                    if (insert_before_value(&head, target, val))
+                        printf("Inserted %d before %d.\\n", val, target);
+                    else
+                        printf("Target %d not found.\\n", target);
+                } else clear_input();
                 break;
-            }
-            case 5: {
-                int val;
-                if (d_delete_end(&head, &val)) printf("Deleted %d from end.\\n", val);
-                else printf("List is empty.\\n");
+            case 5:
+                printf("Enter target value and new value: ");
+                if (scanf("%d %d", &target, &val) == 2) {
+                    if (insert_after_value(head, target, val))
+                        printf("Inserted %d after %d.\\n", val, target);
+                    else
+                        printf("Target %d not found.\\n", target);
+                } else clear_input();
                 break;
-            }
-            case 6: {
-                int val;
-                printf("Enter value to delete: ");
+            case 6:
+                printf("Enter value to insert in sorted order: ");
                 if (scanf("%d", &val) == 1) {
-                    if (d_delete_by_value(&head, val)) printf("Deleted %d.\\n", val);
-                    else printf("Value not found.\\n");
+                    insert_sorted(&head, val);
+                    printf("Inserted %d in sorted order.\\n", val);
                 } else clear_input();
                 break;
-            }
             case 7:
-                d_print_forward(head);
+                if (delete_beginning(&head, &val))
+                    printf("Deleted %d from beginning.\\n", val);
+                else
+                    printf("List is empty.\\n");
                 break;
             case 8:
-                d_print_backward(head);
+                if (delete_end(&head, &val))
+                    printf("Deleted %d from end.\\n", val);
+                else
+                    printf("List is empty.\\n");
                 break;
             case 9:
-                d_reverse(&head);
-                printf("Reversed list successfully.\\n");
-                d_print_forward(head);
+                printf("Enter position to delete: ");
+                if (scanf("%d", &pos) == 1) {
+                    if (delete_at_position(&head, pos, &val))
+                        printf("Deleted %d from position %d.\\n", val, pos);
+                    else
+                        printf("Invalid position %d.\\n", pos);
+                } else clear_input();
                 break;
             case 10:
-                printf("Count: %d nodes\\n", d_count(head));
+                printf("Enter value to delete: ");
+                if (scanf("%d", &val) == 1) {
+                    if (delete_by_value(&head, val))
+                        printf("Deleted value %d.\\n", val);
+                    else
+                        printf("Value %d not found.\\n", val);
+                } else clear_input();
+                break;
+            case 11:
+                printf("Enter target value: ");
+                if (scanf("%d", &target) == 1) {
+                    if (delete_after_value(head, target, &val))
+                        printf("Deleted %d after target %d.\\n", val, target);
+                    else
+                        printf("No element after target %d.\\n", target);
+                } else clear_input();
+                break;
+            case 12:
+                printf("Enter value to search: ");
+                if (scanf("%d", &val) == 1) {
+                    pos = search_element(head, val);
+                    if (pos != -1)
+                        printf("Value %d found at position %d.\\n", val, pos);
+                    else
+                        printf("Value %d not found.\\n", val);
+                } else clear_input();
+                break;
+            case 13:
+                display_forward(head);
+                break;
+            case 14:
+                display_backward(head);
+                break;
+            case 15:
+                reverse_list(&head);
+                printf("Doubly linked list reversed.\\n");
+                display_forward(head);
+                break;
+            case 16:
+                sort_list(head);
+                printf("Doubly linked list sorted.\\n");
+                display_forward(head);
+                break;
+            case 17:
+                remove_duplicates(head);
+                printf("Duplicates removed.\\n");
+                display_forward(head);
+                break;
+            case 18:
+                if (find_middle(head, &val))
+                    printf("Middle node value: %d\\n", val);
+                else
+                    printf("List is empty.\\n");
+                break;
+            case 19:
+                if (min_and_max(head, &min_val, &max_val))
+                    printf("Minimum value: %d, Maximum value: %d\\n", min_val, max_val);
+                else
+                    printf("List is empty.\\n");
                 break;
             case 0:
-                printf("Exiting Doubly Linked List Menu.\\n");
+                printf("Exiting doubly linked list program.\\n");
                 break;
             default:
-                printf("Invalid choice.\\n");
+                printf("Invalid option! Please choose between 0 and 19.\\n");
                 break;
         }
     } while (choice != 0);
 
-    d_free(&head);
+    free_list(&head);
     return 0;
-}`,
+}
+`,
       tags: ["program", "linked-list", "doubly"],
       aliases: ["prog_doubly_linked_list", "programDoublyList"],
     })
@@ -1171,7 +1619,7 @@ int main(void) {
       subcategory: "linked-lists",
       categoryId: "data-structures.full-programs.linked-lists.singly-circular",
       path: "data-structures/full-programs/linked-lists/singly-circular/prog-circular-list",
-      description: "Interactive circular singly linked list program with beginning/end/position insertion, deletion, and cycle traversal",
+      description: "Interactive circular singly linked list program with 19 operations: beginning/end/position/before/after/sorted insertions and deletions, reverse, bubble sort, deduplication, middle element, min/max, and splitting into two halves",
       signature: "int main(void)",
       code: `#include <stdio.h>
 #include <stdlib.h>
@@ -1187,64 +1635,42 @@ typedef struct Node {
     struct Node* next;
 } Node;
 
-Node* c_create(int val) {
+Node* create_node(int data) {
     Node* n = (Node*)malloc(sizeof(Node));
-    n->data = val;
+    if (!n) return NULL;
+    n->data = data;
     n->next = n;
     return n;
 }
 
-void c_insert_end(Node** head, int val) {
-    Node* n = c_create(val);
-    if (!*head) { *head = n; return; }
-    Node* cur = *head;
-    while (cur->next != *head) cur = cur->next;
-    cur->next = n;
-    n->next = *head;
-}
-
-void c_insert_beginning(Node** head, int val) {
-    Node* n = c_create(val);
-    if (!*head) { *head = n; return; }
-    Node* cur = *head;
-    while (cur->next != *head) cur = cur->next;
-    cur->next = n;
-    n->next = *head;
-    *head = n;
-}
-
-bool c_delete_beginning(Node** head, int* val) {
-    if (!*head) return false;
-    if ((*head)->next == *head) {
-        *val = (*head)->data;
-        free(*head);
-        *head = NULL;
-        return true;
+void insert_beginning(Node** head, int data) {
+    Node* n = create_node(data);
+    if (!n) return;
+    if (!*head) {
+        *head = n;
+        return;
     }
     Node* cur = *head;
     while (cur->next != *head) cur = cur->next;
-    Node* tmp = *head;
-    *val = tmp->data;
-    cur->next = (*head)->next;
-    *head = (*head)->next;
-    free(tmp);
-    return true;
+    n->next = *head;
+    cur->next = n;
+    *head = n;
 }
 
-bool c_delete_by_value(Node** head, int val) {
-    if (!*head) return false;
-    int dummy;
-    if ((*head)->data == val) return c_delete_beginning(head, &dummy);
+void insert_end(Node** head, int data) {
+    Node* n = create_node(data);
+    if (!n) return;
+    if (!*head) {
+        *head = n;
+        return;
+    }
     Node* cur = *head;
-    while (cur->next != *head && cur->next->data != val) cur = cur->next;
-    if (cur->next == *head) return false;
-    Node* tmp = cur->next;
-    cur->next = tmp->next;
-    free(tmp);
-    return true;
+    while (cur->next != *head) cur = cur->next;
+    cur->next = n;
+    n->next = *head;
 }
 
-int c_count(const Node* head) {
+int count_nodes(const Node* head) {
     if (!head) return 0;
     int cnt = 0;
     const Node* cur = head;
@@ -1255,98 +1681,503 @@ int c_count(const Node* head) {
     return cnt;
 }
 
-void c_print(const Node* head) {
-    if (!head) { printf("Circular list is empty.\\n"); return; }
-    printf("Circular List (%d nodes): ", c_count(head));
-    const Node* cur = head;
-    do {
-        printf("%d -> ", cur->data);
-        cur = cur->next;
-    } while (cur != head);
-    printf("(head %d)\\n", head->data);
+bool insert_at_position(Node** head, int pos, int data) {
+    int total = count_nodes(*head);
+    if (pos < 1 || pos > total + 1) return false;
+    if (pos == 1) {
+        insert_beginning(head, data);
+        return true;
+    }
+    if (pos == total + 1) {
+        insert_end(head, data);
+        return true;
+    }
+    Node* cur = *head;
+    for (int i = 1; i < pos - 1; i++) cur = cur->next;
+    Node* n = (Node*)malloc(sizeof(Node));
+    if (!n) return false;
+    n->data = data;
+    n->next = cur->next;
+    cur->next = n;
+    return true;
 }
 
-void c_free(Node** head) {
-    if (!*head) return;
+bool insert_before_value(Node** head, int target, int data) {
+    if (!head || !*head) return false;
+    if ((*head)->data == target) {
+        insert_beginning(head, data);
+        return true;
+    }
+    Node* cur = *head;
+    while (cur->next != *head && cur->next->data != target) cur = cur->next;
+    if (cur->next != *head && cur->next->data == target) {
+        Node* n = (Node*)malloc(sizeof(Node));
+        if (!n) return false;
+        n->data = data;
+        n->next = cur->next;
+        cur->next = n;
+        return true;
+    }
+    return false;
+}
+
+bool insert_after_value(Node* head, int target, int data) {
+    if (!head) return false;
+    Node* cur = head;
+    do {
+        if (cur->data == target) {
+            Node* n = (Node*)malloc(sizeof(Node));
+            if (!n) return false;
+            n->data = data;
+            n->next = cur->next;
+            cur->next = n;
+            return true;
+        }
+        cur = cur->next;
+    } while (cur != head);
+    return false;
+}
+
+void insert_sorted(Node** head, int data) {
+    Node* n = create_node(data);
+    if (!n) return;
+    if (!*head) {
+        *head = n;
+        return;
+    }
+    if (data <= (*head)->data) {
+        Node* last = *head;
+        while (last->next != *head) last = last->next;
+        n->next = *head;
+        last->next = n;
+        *head = n;
+        return;
+    }
+    Node* cur = *head;
+    while (cur->next != *head && cur->next->data < data) cur = cur->next;
+    n->next = cur->next;
+    cur->next = n;
+}
+
+bool delete_beginning(Node** head, int* val) {
+    if (!*head) return false;
+    *val = (*head)->data;
+    if ((*head)->next == *head) {
+        free(*head);
+        *head = NULL;
+        return true;
+    }
+    Node* last = *head;
+    while (last->next != *head) last = last->next;
+    Node* tmp = *head;
+    *head = (*head)->next;
+    last->next = *head;
+    free(tmp);
+    return true;
+}
+
+bool delete_end(Node** head, int* val) {
+    if (!*head) return false;
+    if ((*head)->next == *head) {
+        *val = (*head)->data;
+        free(*head);
+        *head = NULL;
+        return true;
+    }
+    Node* prev = NULL;
+    Node* cur = *head;
+    while (cur->next != *head) {
+        prev = cur;
+        cur = cur->next;
+    }
+    *val = cur->data;
+    prev->next = *head;
+    free(cur);
+    return true;
+}
+
+bool delete_at_position(Node** head, int pos, int* val) {
+    int total = count_nodes(*head);
+    if (pos < 1 || pos > total) return false;
+    if (pos == 1) return delete_beginning(head, val);
+    Node* prev = *head;
+    for (int i = 1; i < pos - 1; i++) prev = prev->next;
+    Node* cur = prev->next;
+    *val = cur->data;
+    prev->next = cur->next;
+    free(cur);
+    return true;
+}
+
+bool delete_by_value(Node** head, int val) {
+    if (!*head) return false;
+    if ((*head)->data == val) {
+        int dummy;
+        return delete_beginning(head, &dummy);
+    }
+    Node* prev = *head;
+    Node* cur = (*head)->next;
+    while (cur != *head && cur->data != val) {
+        prev = cur;
+        cur = cur->next;
+    }
+    if (cur != *head) {
+        prev->next = cur->next;
+        free(cur);
+        return true;
+    }
+    return false;
+}
+
+bool delete_after_value(Node** head, int target, int* val) {
+    if (!*head) return false;
+    Node* cur = *head;
+    do {
+        if (cur->data == target) {
+            if (cur->next == *head) {
+                return delete_beginning(head, val);
+            }
+            Node* del = cur->next;
+            *val = del->data;
+            cur->next = del->next;
+            free(del);
+            return true;
+        }
+        cur = cur->next;
+    } while (cur != *head);
+    return false;
+}
+
+int search_element(const Node* head, int val) {
+    if (!head) return -1;
+    const Node* cur = head;
+    int pos = 1;
+    do {
+        if (cur->data == val) return pos;
+        cur = cur->next;
+        pos++;
+    } while (cur != head);
+    return -1;
+}
+
+void reverse_list(Node** head) {
+    if (!*head || (*head)->next == *head) return;
+    Node* prev = NULL;
     Node* cur = *head;
     Node* nxt = NULL;
-    while (cur->next != *head) {
+    do {
         nxt = cur->next;
+        cur->next = prev;
+        prev = cur;
+        cur = nxt;
+    } while (cur != *head);
+    (*head)->next = prev;
+    *head = prev;
+}
+
+void sort_list(Node* head) {
+    if (!head || head->next == head) return;
+    int swapped;
+    do {
+        swapped = 0;
+        Node* cur = head;
+        while (cur->next != head) {
+            if (cur->data > cur->next->data) {
+                int tmp = cur->data;
+                cur->data = cur->next->data;
+                cur->next->data = tmp;
+                swapped = 1;
+            }
+            cur = cur->next;
+        }
+    } while (swapped);
+}
+
+void remove_duplicates(Node* head) {
+    if (!head || head->next == head) return;
+    Node* cur = head;
+    do {
+        Node* prev = cur;
+        Node* runner = cur->next;
+        while (runner != head) {
+            if (runner->data == cur->data) {
+                prev->next = runner->next;
+                free(runner);
+                runner = prev->next;
+            } else {
+                prev = runner;
+                runner = runner->next;
+            }
+        }
+        cur = cur->next;
+    } while (cur != head && cur->next != head);
+}
+
+bool find_middle(const Node* head, int* val) {
+    if (!head) return false;
+    const Node* slow = head;
+    const Node* fast = head;
+    while (fast->next != head && fast->next->next != head) {
+        slow = slow->next;
+        fast = fast->next->next;
+    }
+    *val = slow->data;
+    return true;
+}
+
+bool min_and_max(const Node* head, int* min_val, int* max_val) {
+    if (!head) return false;
+    *min_val = head->data;
+    *max_val = head->data;
+    const Node* cur = head->next;
+    while (cur != head) {
+        if (cur->data < *min_val) *min_val = cur->data;
+        if (cur->data > *max_val) *max_val = cur->data;
+        cur = cur->next;
+    }
+    return true;
+}
+
+void split_halves(Node* head, Node** head1, Node** head2) {
+    *head1 = NULL;
+    *head2 = NULL;
+    if (!head) return;
+    Node* slow = head;
+    Node* fast = head;
+    while (fast->next != head && fast->next->next != head) {
+        slow = slow->next;
+        fast = fast->next->next;
+    }
+    if (fast->next->next == head) fast = fast->next;
+    *head1 = head;
+    if (head->next != head) *head2 = slow->next;
+    fast->next = slow->next;
+    slow->next = head;
+}
+
+void display_list_and_count(const Node* head) {
+    if (!head) {
+        printf("Circular list is empty (count: 0)\\n");
+        return;
+    }
+    printf("Circular List: ");
+    const Node* cur = head;
+    int cnt = 0;
+    do {
+        printf("%d -> ", cur->data);
+        cnt++;
+        cur = cur->next;
+    } while (cur != head);
+    printf("(head: %d) [total: %d]\\n", head->data, cnt);
+}
+
+void free_list(Node** head) {
+    if (!*head) return;
+    Node* cur = *head;
+    Node* last = *head;
+    while (last->next != *head) last = last->next;
+    last->next = NULL;
+    while (cur) {
+        Node* nxt = cur->next;
         free(cur);
         cur = nxt;
     }
-    free(cur);
     *head = NULL;
 }
 
 int main(void) {
     Node* head = NULL;
-    int choice;
+    int choice = 0;
+    int val = 0;
+    int pos = 0;
+    int target = 0;
+    int min_val = 0;
+    int max_val = 0;
+    Node* h1 = NULL;
+    Node* h2 = NULL;
 
     do {
-        printf("\\n=== Singly Circular Linked List Menu ===\\n");
-        printf("1. Insert at Beginning\\n");
-        printf("2. Insert at End\\n");
-        printf("3. Delete from Beginning\\n");
-        printf("4. Delete by Value\\n");
-        printf("5. Count Nodes\\n");
-        printf("6. Display Circular List\\n");
+        printf("\\n--- Circular Singly Linked List Operations ---\\n");
+        printf("1. Insert Beginning\\n");
+        printf("2. Insert End\\n");
+        printf("3. Insert at Position\\n");
+        printf("4. Insert Before Value\\n");
+        printf("5. Insert After Value\\n");
+        printf("6. Insert Sorted\\n");
+        printf("7. Delete Beginning\\n");
+        printf("8. Delete End\\n");
+        printf("9. Delete at Position\\n");
+        printf("10. Delete by Value\\n");
+        printf("11. Delete After Value\\n");
+        printf("12. Search Element\\n");
+        printf("13. Reverse List\\n");
+        printf("14. Sort List\\n");
+        printf("15. Remove Duplicates\\n");
+        printf("16. Find Middle\\n");
+        printf("17. Min and Max\\n");
+        printf("18. Split Halves\\n");
+        printf("19. Display List and Count\\n");
         printf("0. Exit\\n");
-        printf("Enter choice: ");
+        printf("Enter your choice: ");
 
         if (scanf("%d", &choice) != 1) {
+            printf("Invalid input. Please enter an integer.\\n");
             clear_input();
             continue;
         }
 
         switch (choice) {
-            case 1: {
-                int val;
+            case 1:
                 printf("Enter value to insert at beginning: ");
-                if (scanf("%d", &val) == 1) c_insert_beginning(&head, val);
-                else clear_input();
-                break;
-            }
-            case 2: {
-                int val;
-                printf("Enter value to insert at end: ");
-                if (scanf("%d", &val) == 1) c_insert_end(&head, val);
-                else clear_input();
-                break;
-            }
-            case 3: {
-                int val;
-                if (c_delete_beginning(&head, &val)) printf("Deleted %d from beginning.\\n", val);
-                else printf("List is empty.\\n");
-                break;
-            }
-            case 4: {
-                int val;
-                printf("Enter value to delete: ");
                 if (scanf("%d", &val) == 1) {
-                    if (c_delete_by_value(&head, val)) printf("Deleted %d successfully.\\n", val);
-                    else printf("Value not found.\\n");
+                    insert_beginning(&head, val);
+                    printf("Inserted %d at beginning.\\n", val);
                 } else clear_input();
                 break;
-            }
+            case 2:
+                printf("Enter value to insert at end: ");
+                if (scanf("%d", &val) == 1) {
+                    insert_end(&head, val);
+                    printf("Inserted %d at end.\\n", val);
+                } else clear_input();
+                break;
+            case 3:
+                printf("Enter position and value: ");
+                if (scanf("%d %d", &pos, &val) == 2) {
+                    if (insert_at_position(&head, pos, val))
+                        printf("Inserted %d at position %d.\\n", val, pos);
+                    else
+                        printf("Invalid position %d.\\n", pos);
+                } else clear_input();
+                break;
+            case 4:
+                printf("Enter target value and new value: ");
+                if (scanf("%d %d", &target, &val) == 2) {
+                    if (insert_before_value(&head, target, val))
+                        printf("Inserted %d before %d.\\n", val, target);
+                    else
+                        printf("Target %d not found.\\n", target);
+                } else clear_input();
+                break;
             case 5:
-                printf("Total nodes: %d\\n", c_count(head));
+                printf("Enter target value and new value: ");
+                if (scanf("%d %d", &target, &val) == 2) {
+                    if (insert_after_value(head, target, val))
+                        printf("Inserted %d after %d.\\n", val, target);
+                    else
+                        printf("Target %d not found.\\n", target);
+                } else clear_input();
                 break;
             case 6:
-                c_print(head);
+                printf("Enter value to insert in sorted order: ");
+                if (scanf("%d", &val) == 1) {
+                    insert_sorted(&head, val);
+                    printf("Inserted %d in sorted order.\\n", val);
+                } else clear_input();
+                break;
+            case 7:
+                if (delete_beginning(&head, &val))
+                    printf("Deleted %d from beginning.\\n", val);
+                else
+                    printf("Circular list is empty.\\n");
+                break;
+            case 8:
+                if (delete_end(&head, &val))
+                    printf("Deleted %d from end.\\n", val);
+                else
+                    printf("Circular list is empty.\\n");
+                break;
+            case 9:
+                printf("Enter position to delete: ");
+                if (scanf("%d", &pos) == 1) {
+                    if (delete_at_position(&head, pos, &val))
+                        printf("Deleted %d from position %d.\\n", val, pos);
+                    else
+                        printf("Invalid position %d.\\n", pos);
+                } else clear_input();
+                break;
+            case 10:
+                printf("Enter value to delete: ");
+                if (scanf("%d", &val) == 1) {
+                    if (delete_by_value(&head, val))
+                        printf("Deleted value %d.\\n", val);
+                    else
+                        printf("Value %d not found.\\n", val);
+                } else clear_input();
+                break;
+            case 11:
+                printf("Enter target value: ");
+                if (scanf("%d", &target) == 1) {
+                    if (delete_after_value(&head, target, &val))
+                        printf("Deleted %d after target %d.\\n", val, target);
+                    else
+                        printf("Target %d not found.\\n", target);
+                } else clear_input();
+                break;
+            case 12:
+                printf("Enter value to search: ");
+                if (scanf("%d", &val) == 1) {
+                    pos = search_element(head, val);
+                    if (pos != -1)
+                        printf("Value %d found at position %d.\\n", val, pos);
+                    else
+                        printf("Value %d not found in circular list.\\n", val);
+                } else clear_input();
+                break;
+            case 13:
+                reverse_list(&head);
+                printf("Circular list reversed successfully.\\n");
+                display_list_and_count(head);
+                break;
+            case 14:
+                sort_list(head);
+                printf("Circular list sorted in ascending order.\\n");
+                display_list_and_count(head);
+                break;
+            case 15:
+                remove_duplicates(head);
+                printf("Duplicate elements removed.\\n");
+                display_list_and_count(head);
+                break;
+            case 16:
+                if (find_middle(head, &val))
+                    printf("Middle node value: %d\\n", val);
+                else
+                    printf("Circular list is empty.\\n");
+                break;
+            case 17:
+                if (min_and_max(head, &min_val, &max_val))
+                    printf("Minimum value: %d, Maximum value: %d\\n", min_val, max_val);
+                else
+                    printf("Circular list is empty.\\n");
+                break;
+            case 18:
+                split_halves(head, &h1, &h2);
+                printf("List split into two halves:\\n");
+                printf("Half 1: ");
+                display_list_and_count(h1);
+                printf("Half 2: ");
+                display_list_and_count(h2);
+                free_list(&h1);
+                free_list(&h2);
+                head = NULL;
+                break;
+            case 19:
+                display_list_and_count(head);
                 break;
             case 0:
-                printf("Exiting Circular List Menu.\\n");
+                printf("Exiting circular linked list program.\\n");
                 break;
             default:
-                printf("Invalid choice.\\n");
+                printf("Invalid option! Please choose between 0 and 19.\\n");
                 break;
         }
     } while (choice != 0);
 
-    c_free(&head);
+    free_list(&head);
     return 0;
-}`,
+}
+`,
       tags: ["program", "linked-list", "circular"],
       aliases: ["prog_circular_list", "programCircularList"],
     })
@@ -1362,7 +2193,7 @@ int main(void) {
       subcategory: "linked-lists",
       categoryId: "data-structures.full-programs.linked-lists.doubly-circular",
       path: "data-structures/full-programs/linked-lists/doubly-circular/prog-doubly-circular",
-      description: "Interactive doubly circular linked list with bidirectional rotation, head/tail additions, and deletions",
+      description: "Interactive doubly circular linked list program with 20 operations: bidirectional forward/backward display, beginning/end/position/before/after/sorted insertions and deletions, reverse, bubble sort, deduplication, middle element, min/max, and splitting into halves",
       signature: "int main(void)",
       code: `#include <stdio.h>
 #include <stdlib.h>
@@ -1379,47 +2210,45 @@ typedef struct Node {
     struct Node* next;
 } Node;
 
-Node* dc_create(int val) {
+Node* create_node(int data) {
     Node* n = (Node*)malloc(sizeof(Node));
-    n->data = val;
+    if (!n) return NULL;
+    n->data = data;
     n->prev = n;
     n->next = n;
     return n;
 }
 
-void dc_insert_end(Node** head, int val) {
-    Node* n = dc_create(val);
-    if (!*head) { *head = n; return; }
-    Node* tail = (*head)->prev;
-    tail->next = n;
-    n->prev = tail;
+void insert_beginning(Node** head, int data) {
+    Node* n = create_node(data);
+    if (!n) return;
+    if (!*head) {
+        *head = n;
+        return;
+    }
+    Node* last = (*head)->prev;
     n->next = *head;
+    n->prev = last;
+    last->next = n;
+    (*head)->prev = n;
+    *head = n;
+}
+
+void insert_end(Node** head, int data) {
+    Node* n = create_node(data);
+    if (!n) return;
+    if (!*head) {
+        *head = n;
+        return;
+    }
+    Node* last = (*head)->prev;
+    n->next = *head;
+    n->prev = last;
+    last->next = n;
     (*head)->prev = n;
 }
 
-void dc_insert_beginning(Node** head, int val) {
-    dc_insert_end(head, val);
-    *head = (*head)->prev;
-}
-
-bool dc_delete_beginning(Node** head, int* val) {
-    if (!*head) return false;
-    Node* tail = (*head)->prev;
-    *val = (*head)->data;
-    if (*head == tail) {
-        free(*head);
-        *head = NULL;
-        return true;
-    }
-    Node* tmp = *head;
-    tail->next = (*head)->next;
-    (*head)->next->prev = tail;
-    *head = (*head)->next;
-    free(tmp);
-    return true;
-}
-
-int dc_count(const Node* head) {
+int count_nodes(const Node* head) {
     if (!head) return 0;
     int cnt = 0;
     const Node* cur = head;
@@ -1430,104 +2259,519 @@ int dc_count(const Node* head) {
     return cnt;
 }
 
-void dc_print_forward(const Node* head) {
-    if (!head) { printf("Doubly circular list is empty.\\n"); return; }
-    printf("Forward (%d nodes): ", dc_count(head));
-    const Node* cur = head;
+bool insert_at_position(Node** head, int pos, int data) {
+    int total = count_nodes(*head);
+    if (pos < 1 || pos > total + 1) return false;
+    if (pos == 1) {
+        insert_beginning(head, data);
+        return true;
+    }
+    if (pos == total + 1) {
+        insert_end(head, data);
+        return true;
+    }
+    Node* cur = *head;
+    for (int i = 1; i < pos - 1; i++) cur = cur->next;
+    Node* n = (Node*)malloc(sizeof(Node));
+    if (!n) return false;
+    n->data = data;
+    n->next = cur->next;
+    n->prev = cur;
+    cur->next->prev = n;
+    cur->next = n;
+    return true;
+}
+
+bool insert_before_value(Node** head, int target, int data) {
+    if (!head || !*head) return false;
+    if ((*head)->data == target) {
+        insert_beginning(head, data);
+        return true;
+    }
+    Node* cur = (*head)->next;
+    while (cur != *head && cur->data != target) cur = cur->next;
+    if (cur != *head) {
+        Node* n = (Node*)malloc(sizeof(Node));
+        if (!n) return false;
+        n->data = data;
+        n->prev = cur->prev;
+        n->next = cur;
+        cur->prev->next = n;
+        cur->prev = n;
+        return true;
+    }
+    return false;
+}
+
+bool insert_after_value(Node* head, int target, int data) {
+    if (!head) return false;
+    Node* cur = head;
     do {
-        printf("%d <=> ", cur->data);
+        if (cur->data == target) {
+            Node* n = (Node*)malloc(sizeof(Node));
+            if (!n) return false;
+            n->data = data;
+            n->next = cur->next;
+            n->prev = cur;
+            cur->next->prev = n;
+            cur->next = n;
+            return true;
+        }
         cur = cur->next;
     } while (cur != head);
-    printf("(head %d)\\n", head->data);
+    return false;
 }
 
-void dc_print_backward(const Node* head) {
-    if (!head) { printf("Doubly circular list is empty.\\n"); return; }
-    printf("Backward (%d nodes): ", dc_count(head));
-    const Node* tail = head->prev;
-    const Node* cur = tail;
-    do {
-        printf("%d <=> ", cur->data);
-        cur = cur->prev;
-    } while (cur != tail);
-    printf("(tail %d)\\n", tail->data);
-}
-
-void dc_free(Node** head) {
-    if (!*head) return;
+void insert_sorted(Node** head, int data) {
+    Node* n = create_node(data);
+    if (!n) return;
+    if (!*head) {
+        *head = n;
+        return;
+    }
+    if (data <= (*head)->data) {
+        Node* last = (*head)->prev;
+        n->next = *head;
+        n->prev = last;
+        last->next = n;
+        (*head)->prev = n;
+        *head = n;
+        return;
+    }
     Node* cur = *head;
-    Node* tail = (*head)->prev;
-    while (cur != tail) {
+    while (cur->next != *head && cur->next->data < data) cur = cur->next;
+    n->next = cur->next;
+    n->prev = cur;
+    cur->next->prev = n;
+    cur->next = n;
+}
+
+bool delete_beginning(Node** head, int* val) {
+    if (!*head) return false;
+    *val = (*head)->data;
+    if ((*head)->next == *head) {
+        free(*head);
+        *head = NULL;
+        return true;
+    }
+    Node* last = (*head)->prev;
+    Node* nxt = (*head)->next;
+    last->next = nxt;
+    nxt->prev = last;
+    free(*head);
+    *head = nxt;
+    return true;
+}
+
+bool delete_end(Node** head, int* val) {
+    if (!*head) return false;
+    if ((*head)->next == *head) {
+        *val = (*head)->data;
+        free(*head);
+        *head = NULL;
+        return true;
+    }
+    Node* last = (*head)->prev;
+    *val = last->data;
+    Node* prev = last->prev;
+    prev->next = *head;
+    (*head)->prev = prev;
+    free(last);
+    return true;
+}
+
+bool delete_at_position(Node** head, int pos, int* val) {
+    int total = count_nodes(*head);
+    if (pos < 1 || pos > total) return false;
+    if (pos == 1) return delete_beginning(head, val);
+    Node* cur = *head;
+    for (int i = 1; i < pos; i++) cur = cur->next;
+    *val = cur->data;
+    cur->prev->next = cur->next;
+    cur->next->prev = cur->prev;
+    free(cur);
+    return true;
+}
+
+bool delete_by_value(Node** head, int val) {
+    if (!*head) return false;
+    if ((*head)->data == val) {
+        int dummy;
+        return delete_beginning(head, &dummy);
+    }
+    Node* cur = (*head)->next;
+    while (cur != *head && cur->data != val) cur = cur->next;
+    if (cur != *head) {
+        cur->prev->next = cur->next;
+        cur->next->prev = cur->prev;
+        free(cur);
+        return true;
+    }
+    return false;
+}
+
+bool delete_after_value(Node** head, int target, int* val) {
+    if (!*head) return false;
+    Node* cur = *head;
+    do {
+        if (cur->data == target) {
+            if (cur->next == *head) return delete_beginning(head, val);
+            Node* del = cur->next;
+            *val = del->data;
+            cur->next = del->next;
+            del->next->prev = cur;
+            free(del);
+            return true;
+        }
+        cur = cur->next;
+    } while (cur != *head);
+    return false;
+}
+
+int search_element(const Node* head, int val) {
+    if (!head) return -1;
+    const Node* cur = head;
+    int pos = 1;
+    do {
+        if (cur->data == val) return pos;
+        cur = cur->next;
+        pos++;
+    } while (cur != head);
+    return -1;
+}
+
+void display_forward(const Node* head) {
+    if (!head) {
+        printf("Doubly circular list is empty.\\n");
+        return;
+    }
+    printf("Forward: ");
+    const Node* cur = head;
+    do {
+        printf("%d <-> ", cur->data);
+        cur = cur->next;
+    } while (cur != head);
+    printf("(head: %d)\\n", head->data);
+}
+
+void display_backward(const Node* head) {
+    if (!head) {
+        printf("Doubly circular list is empty.\\n");
+        return;
+    }
+    printf("Backward: ");
+    const Node* cur = head->prev;
+    do {
+        printf("%d <-> ", cur->data);
+        cur = cur->prev;
+    } while (cur != head->prev);
+    printf("(tail: %d)\\n", head->prev->data);
+}
+
+void reverse_list(Node** head) {
+    if (!*head || (*head)->next == *head) return;
+    Node* cur = *head;
+    do {
+        Node* tmp = cur->next;
+        cur->next = cur->prev;
+        cur->prev = tmp;
+        cur = tmp;
+    } while (cur != *head);
+    *head = (*head)->prev;
+}
+
+void sort_list(Node* head) {
+    if (!head || head->next == head) return;
+    int swapped;
+    do {
+        swapped = 0;
+        Node* cur = head;
+        while (cur->next != head) {
+            if (cur->data > cur->next->data) {
+                int tmp = cur->data;
+                cur->data = cur->next->data;
+                cur->next->data = tmp;
+                swapped = 1;
+            }
+            cur = cur->next;
+        }
+    } while (swapped);
+}
+
+void remove_duplicates(Node* head) {
+    if (!head || head->next == head) return;
+    Node* cur = head;
+    do {
+        Node* runner = cur->next;
+        while (runner != head) {
+            if (runner->data == cur->data) {
+                Node* del = runner;
+                runner = runner->next;
+                del->prev->next = del->next;
+                del->next->prev = del->prev;
+                free(del);
+            } else {
+                runner = runner->next;
+            }
+        }
+        cur = cur->next;
+    } while (cur != head && cur->next != head);
+}
+
+bool find_middle(const Node* head, int* val) {
+    if (!head) return false;
+    const Node* slow = head;
+    const Node* fast = head;
+    while (fast->next != head && fast->next->next != head) {
+        slow = slow->next;
+        fast = fast->next->next;
+    }
+    *val = slow->data;
+    return true;
+}
+
+bool min_and_max(const Node* head, int* min_val, int* max_val) {
+    if (!head) return false;
+    *min_val = head->data;
+    *max_val = head->data;
+    const Node* cur = head->next;
+    while (cur != head) {
+        if (cur->data < *min_val) *min_val = cur->data;
+        if (cur->data > *max_val) *max_val = cur->data;
+        cur = cur->next;
+    }
+    return true;
+}
+
+void split_halves(Node* head, Node** head1, Node** head2) {
+    *head1 = NULL;
+    *head2 = NULL;
+    if (!head) return;
+    Node* slow = head;
+    Node* fast = head;
+    while (fast->next != head && fast->next->next != head) {
+        slow = slow->next;
+        fast = fast->next->next;
+    }
+    if (fast->next->next == head) fast = fast->next;
+    *head1 = head;
+    if (head->next != head) *head2 = slow->next;
+    fast->next = slow->next;
+    slow->next->prev = fast;
+    slow->next = head;
+    head->prev = slow;
+}
+
+void free_list(Node** head) {
+    if (!*head) return;
+    Node* last = (*head)->prev;
+    last->next = NULL;
+    Node* cur = *head;
+    while (cur) {
         Node* nxt = cur->next;
         free(cur);
         cur = nxt;
     }
-    free(tail);
     *head = NULL;
 }
 
 int main(void) {
     Node* head = NULL;
-    int choice;
+    int choice = 0;
+    int val = 0;
+    int pos = 0;
+    int target = 0;
+    int min_val = 0;
+    int max_val = 0;
+    Node* h1 = NULL;
+    Node* h2 = NULL;
 
     do {
-        printf("\\n=== Doubly Circular Linked List Menu ===\\n");
-        printf("1. Insert at Beginning\\n");
-        printf("2. Insert at End\\n");
-        printf("3. Delete from Beginning\\n");
-        printf("4. Display Forward\\n");
-        printf("5. Display Backward\\n");
-        printf("6. Count Nodes\\n");
+        printf("\\n--- Doubly Circular Linked List Operations ---\\n");
+        printf("1. Insert Beginning\\n");
+        printf("2. Insert End\\n");
+        printf("3. Insert at Position\\n");
+        printf("4. Insert Before Value\\n");
+        printf("5. Insert After Value\\n");
+        printf("6. Insert Sorted\\n");
+        printf("7. Delete Beginning\\n");
+        printf("8. Delete End\\n");
+        printf("9. Delete at Position\\n");
+        printf("10. Delete by Value\\n");
+        printf("11. Delete After Value\\n");
+        printf("12. Search Element\\n");
+        printf("13. Display Forward\\n");
+        printf("14. Display Backward\\n");
+        printf("15. Reverse List\\n");
+        printf("16. Sort List\\n");
+        printf("17. Remove Duplicates\\n");
+        printf("18. Find Middle\\n");
+        printf("19. Min and Max\\n");
+        printf("20. Split Halves\\n");
         printf("0. Exit\\n");
-        printf("Enter choice: ");
+        printf("Enter your choice: ");
 
         if (scanf("%d", &choice) != 1) {
+            printf("Invalid input. Please enter an integer.\\n");
             clear_input();
             continue;
         }
 
         switch (choice) {
-            case 1: {
-                int val;
+            case 1:
                 printf("Enter value to insert at beginning: ");
-                if (scanf("%d", &val) == 1) dc_insert_beginning(&head, val);
-                else clear_input();
+                if (scanf("%d", &val) == 1) {
+                    insert_beginning(&head, val);
+                    printf("Inserted %d at beginning.\\n", val);
+                } else clear_input();
                 break;
-            }
-            case 2: {
-                int val;
+            case 2:
                 printf("Enter value to insert at end: ");
-                if (scanf("%d", &val) == 1) dc_insert_end(&head, val);
-                else clear_input();
+                if (scanf("%d", &val) == 1) {
+                    insert_end(&head, val);
+                    printf("Inserted %d at end.\\n", val);
+                } else clear_input();
                 break;
-            }
-            case 3: {
-                int val;
-                if (dc_delete_beginning(&head, &val)) printf("Deleted %d from beginning.\\n", val);
-                else printf("List is empty.\\n");
+            case 3:
+                printf("Enter position and value: ");
+                if (scanf("%d %d", &pos, &val) == 2) {
+                    if (insert_at_position(&head, pos, val))
+                        printf("Inserted %d at position %d.\\n", val, pos);
+                    else
+                        printf("Invalid position %d.\\n", pos);
+                } else clear_input();
                 break;
-            }
             case 4:
-                dc_print_forward(head);
+                printf("Enter target value and new value: ");
+                if (scanf("%d %d", &target, &val) == 2) {
+                    if (insert_before_value(&head, target, val))
+                        printf("Inserted %d before %d.\\n", val, target);
+                    else
+                        printf("Target %d not found.\\n", target);
+                } else clear_input();
                 break;
             case 5:
-                dc_print_backward(head);
+                printf("Enter target value and new value: ");
+                if (scanf("%d %d", &target, &val) == 2) {
+                    if (insert_after_value(head, target, val))
+                        printf("Inserted %d after %d.\\n", val, target);
+                    else
+                        printf("Target %d not found.\\n", target);
+                } else clear_input();
                 break;
             case 6:
-                printf("Count: %d nodes\\n", dc_count(head));
+                printf("Enter value to insert in sorted order: ");
+                if (scanf("%d", &val) == 1) {
+                    insert_sorted(&head, val);
+                    printf("Inserted %d in sorted order.\\n", val);
+                } else clear_input();
+                break;
+            case 7:
+                if (delete_beginning(&head, &val))
+                    printf("Deleted %d from beginning.\\n", val);
+                else
+                    printf("Doubly circular list is empty.\\n");
+                break;
+            case 8:
+                if (delete_end(&head, &val))
+                    printf("Deleted %d from end.\\n", val);
+                else
+                    printf("Doubly circular list is empty.\\n");
+                break;
+            case 9:
+                printf("Enter position to delete: ");
+                if (scanf("%d", &pos) == 1) {
+                    if (delete_at_position(&head, pos, &val))
+                        printf("Deleted %d from position %d.\\n", val, pos);
+                    else
+                        printf("Invalid position %d.\\n", pos);
+                } else clear_input();
+                break;
+            case 10:
+                printf("Enter value to delete: ");
+                if (scanf("%d", &val) == 1) {
+                    if (delete_by_value(&head, val))
+                        printf("Deleted value %d.\\n", val);
+                    else
+                        printf("Value %d not found.\\n", val);
+                } else clear_input();
+                break;
+            case 11:
+                printf("Enter target value: ");
+                if (scanf("%d", &target) == 1) {
+                    if (delete_after_value(&head, target, &val))
+                        printf("Deleted %d after target %d.\\n", val, target);
+                    else
+                        printf("Target %d not found.\\n", target);
+                } else clear_input();
+                break;
+            case 12:
+                printf("Enter value to search: ");
+                if (scanf("%d", &val) == 1) {
+                    pos = search_element(head, val);
+                    if (pos != -1)
+                        printf("Value %d found at position %d.\\n", val, pos);
+                    else
+                        printf("Value %d not found in list.\\n", val);
+                } else clear_input();
+                break;
+            case 13:
+                display_forward(head);
+                break;
+            case 14:
+                display_backward(head);
+                break;
+            case 15:
+                reverse_list(&head);
+                printf("Doubly circular list reversed.\\n");
+                display_forward(head);
+                break;
+            case 16:
+                sort_list(head);
+                printf("Doubly circular list sorted.\\n");
+                display_forward(head);
+                break;
+            case 17:
+                remove_duplicates(head);
+                printf("Duplicates removed.\\n");
+                display_forward(head);
+                break;
+            case 18:
+                if (find_middle(head, &val))
+                    printf("Middle node value: %d\\n", val);
+                else
+                    printf("List is empty.\\n");
+                break;
+            case 19:
+                if (min_and_max(head, &min_val, &max_val))
+                    printf("Minimum value: %d, Maximum value: %d\\n", min_val, max_val);
+                else
+                    printf("List is empty.\\n");
+                break;
+            case 20:
+                split_halves(head, &h1, &h2);
+                printf("List split into two halves:\\n");
+                printf("Half 1: ");
+                display_forward(h1);
+                printf("Half 2: ");
+                display_forward(h2);
+                free_list(&h1);
+                free_list(&h2);
+                head = NULL;
                 break;
             case 0:
-                printf("Exiting Doubly Circular List Menu.\\n");
+                printf("Exiting doubly circular linked list program.\\n");
                 break;
             default:
-                printf("Invalid choice.\\n");
+                printf("Invalid option! Please choose between 0 and 20.\\n");
                 break;
         }
     } while (choice != 0);
 
-    dc_free(&head);
+    free_list(&head);
     return 0;
-}`,
+}
+`,
       tags: ["program", "linked-list", "doubly-circular"],
       aliases: ["prog_doubly_circular", "programDoublyCircular"],
     })
@@ -2548,7 +3792,7 @@ int main(void) {
       subcategory: "trees",
       categoryId: "data-structures.full-programs.trees.bst",
       path: "data-structures/full-programs/trees/bst/prog-bst",
-      description: "Interactive Binary Search Tree program with insertion, deletion of all cases, traversals (in/pre/post), min/max, and node count",
+      description: "Interactive Binary Search Tree program with 20 operations: all node deletions, in/pre/post/level/zigzag/boundary/top/bottom traversals, Morris O(1) space traversal, iterative traversals, min/max, height, leaf count, and mirror",
       signature: "int main(void)",
       code: `#include <stdio.h>
 #include <stdlib.h>
@@ -2559,196 +3803,488 @@ void clear_input(void) {
     while ((c = getchar()) != '\\n' && c != EOF);
 }
 
-typedef struct TreeNode {
-    int val;
-    struct TreeNode* left;
-    struct TreeNode* right;
-} TreeNode;
+typedef struct Node {
+    int data;
+    struct Node* left;
+    struct Node* right;
+} Node;
 
-TreeNode* bst_create(int val) {
-    TreeNode* n = (TreeNode*)malloc(sizeof(TreeNode));
-    n->val = val;
+Node* create_node(int data) {
+    Node* n = (Node*)malloc(sizeof(Node));
+    if (!n) return NULL;
+    n->data = data;
     n->left = NULL;
     n->right = NULL;
     return n;
 }
 
-TreeNode* bst_insert(TreeNode* root, int val) {
-    if (!root) return bst_create(val);
-    if (val < root->val) root->left = bst_insert(root->left, val);
-    else if (val > root->val) root->right = bst_insert(root->right, val);
+Node* insert_node(Node* root, int data) {
+    if (!root) return create_node(data);
+    if (data < root->data) root->left = insert_node(root->left, data);
+    else if (data > root->data) root->right = insert_node(root->right, data);
     return root;
 }
 
-TreeNode* bst_find_min(TreeNode* root) {
+Node* find_min_node(Node* root) {
     while (root && root->left) root = root->left;
     return root;
 }
 
-TreeNode* bst_find_max(TreeNode* root) {
-    while (root && root->right) root = root->right;
-    return root;
-}
-
-bool bst_search(const TreeNode* root, int val) {
-    if (!root) return false;
-    if (root->val == val) return true;
-    if (val < root->val) return bst_search(root->left, val);
-    return bst_search(root->right, val);
-}
-
-TreeNode* bst_delete(TreeNode* root, int val, bool* deleted) {
+Node* delete_node(Node* root, int data, bool* deleted) {
     if (!root) return NULL;
-    if (val < root->val) root->left = bst_delete(root->left, val, deleted);
-    else if (val > root->val) root->right = bst_delete(root->right, val, deleted);
-    else {
+    if (data < root->data) {
+        root->left = delete_node(root->left, data, deleted);
+    } else if (data > root->data) {
+        root->right = delete_node(root->right, data, deleted);
+    } else {
         *deleted = true;
         if (!root->left) {
-            TreeNode* r = root->right;
+            Node* tmp = root->right;
             free(root);
-            return r;
+            return tmp;
         } else if (!root->right) {
-            TreeNode* l = root->left;
+            Node* tmp = root->left;
             free(root);
-            return l;
+            return tmp;
         }
-        TreeNode* succ = bst_find_min(root->right);
-        root->val = succ->val;
-        root->right = bst_delete(root->right, succ->val, deleted);
+        Node* succ = find_min_node(root->right);
+        root->data = succ->data;
+        root->right = delete_node(root->right, succ->data, deleted);
     }
     return root;
 }
 
-void bst_inorder(const TreeNode* root) {
-    if (!root) return;
-    bst_inorder(root->left);
-    printf("%d ", root->val);
-    bst_inorder(root->right);
+bool search_value(const Node* root, int data) {
+    if (!root) return false;
+    if (root->data == data) return true;
+    if (data < root->data) return search_value(root->left, data);
+    return search_value(root->right, data);
 }
 
-void bst_preorder(const TreeNode* root) {
+void inorder(const Node* root) {
     if (!root) return;
-    printf("%d ", root->val);
-    bst_preorder(root->left);
-    bst_preorder(root->right);
+    inorder(root->left);
+    printf("%d ", root->data);
+    inorder(root->right);
 }
 
-void bst_postorder(const TreeNode* root) {
+void preorder(const Node* root) {
     if (!root) return;
-    bst_postorder(root->left);
-    bst_postorder(root->right);
-    printf("%d ", root->val);
+    printf("%d ", root->data);
+    preorder(root->left);
+    preorder(root->right);
 }
 
-int bst_count(const TreeNode* root) {
+void postorder(const Node* root) {
+    if (!root) return;
+    postorder(root->left);
+    postorder(root->right);
+    printf("%d ", root->data);
+}
+
+void levelorder(const Node* root) {
+    if (!root) return;
+    const Node* queue[1024];
+    int front = 0, rear = 0;
+    queue[rear++] = root;
+    while (front < rear) {
+        const Node* cur = queue[front++];
+        printf("%d ", cur->data);
+        if (cur->left) queue[rear++] = cur->left;
+        if (cur->right) queue[rear++] = cur->right;
+    }
+}
+
+void zigzag(const Node* root) {
+    if (!root) return;
+    const Node* current_level[512];
+    const Node* next_level[512];
+    int c_count = 0, n_count = 0;
+    bool left_to_right = true;
+
+    current_level[c_count++] = root;
+    while (c_count > 0) {
+        for (int i = c_count - 1; i >= 0; i--) {
+            const Node* cur = current_level[i];
+            printf("%d ", cur->data);
+            if (left_to_right) {
+                if (cur->left) next_level[n_count++] = cur->left;
+                if (cur->right) next_level[n_count++] = cur->right;
+            } else {
+                if (cur->right) next_level[n_count++] = cur->right;
+                if (cur->left) next_level[n_count++] = cur->left;
+            }
+        }
+        for (int i = 0; i < n_count; i++) current_level[i] = next_level[i];
+        c_count = n_count;
+        n_count = 0;
+        left_to_right = !left_to_right;
+    }
+}
+
+static void print_leaves(const Node* root) {
+    if (!root) return;
+    print_leaves(root->left);
+    if (!root->left && !root->right) printf("%d ", root->data);
+    print_leaves(root->right);
+}
+
+static void print_left_boundary(const Node* root) {
+    if (!root) return;
+    if (root->left) {
+        printf("%d ", root->data);
+        print_left_boundary(root->left);
+    } else if (root->right) {
+        printf("%d ", root->data);
+        print_left_boundary(root->right);
+    }
+}
+
+static void print_right_boundary(const Node* root) {
+    if (!root) return;
+    if (root->right) {
+        print_right_boundary(root->right);
+        printf("%d ", root->data);
+    } else if (root->left) {
+        print_right_boundary(root->left);
+        printf("%d ", root->data);
+    }
+}
+
+void boundary_traversal(const Node* root) {
+    if (!root) return;
+    printf("%d ", root->data);
+    print_left_boundary(root->left);
+    print_leaves(root->left);
+    print_leaves(root->right);
+    print_right_boundary(root->right);
+}
+
+typedef struct QItem {
+    const Node* node;
+    int hd;
+} QItem;
+
+void top_view(const Node* root) {
+    if (!root) return;
+    int min_hd = 0, max_hd = 0;
+    int map[2001];
+    bool filled[2001];
+    for (int i = 0; i < 2001; i++) filled[i] = false;
+
+    QItem queue[1024];
+    int front = 0, rear = 0;
+    queue[rear++] = (QItem){ root, 0 };
+
+    while (front < rear) {
+        QItem item = queue[front++];
+        int idx = item.hd + 1000;
+        if (!filled[idx]) {
+            filled[idx] = true;
+            map[idx] = item.node->data;
+            if (item.hd < min_hd) min_hd = item.hd;
+            if (item.hd > max_hd) max_hd = item.hd;
+        }
+        if (item.node->left) queue[rear++] = (QItem){ item.node->left, item.hd - 1 };
+        if (item.node->right) queue[rear++] = (QItem){ item.node->right, item.hd + 1 };
+    }
+
+    for (int d = min_hd; d <= max_hd; d++) {
+        if (filled[d + 1000]) printf("%d ", map[d + 1000]);
+    }
+}
+
+void bottom_view(const Node* root) {
+    if (!root) return;
+    int min_hd = 0, max_hd = 0;
+    int map[2001];
+    bool filled[2001];
+    for (int i = 0; i < 2001; i++) filled[i] = false;
+
+    QItem queue[1024];
+    int front = 0, rear = 0;
+    queue[rear++] = (QItem){ root, 0 };
+
+    while (front < rear) {
+        QItem item = queue[front++];
+        int idx = item.hd + 1000;
+        filled[idx] = true;
+        map[idx] = item.node->data;
+        if (item.hd < min_hd) min_hd = item.hd;
+        if (item.hd > max_hd) max_hd = item.hd;
+        if (item.node->left) queue[rear++] = (QItem){ item.node->left, item.hd - 1 };
+        if (item.node->right) queue[rear++] = (QItem){ item.node->right, item.hd + 1 };
+    }
+
+    for (int d = min_hd; d <= max_hd; d++) {
+        if (filled[d + 1000]) printf("%d ", map[d + 1000]);
+    }
+}
+
+void morris_inorder(Node* root) {
+    Node* cur = root;
+    while (cur) {
+        if (!cur->left) {
+            printf("%d ", cur->data);
+            cur = cur->right;
+        } else {
+            Node* prev = cur->left;
+            while (prev->right && prev->right != cur) prev = prev->right;
+            if (!prev->right) {
+                prev->right = cur;
+                cur = cur->left;
+            } else {
+                prev->right = NULL;
+                printf("%d ", cur->data);
+                cur = cur->right;
+            }
+        }
+    }
+}
+
+void iterative_inorder(const Node* root) {
+    const Node* stack[512];
+    int top = -1;
+    const Node* cur = root;
+    while (cur || top != -1) {
+        while (cur) {
+            stack[++top] = cur;
+            cur = cur->left;
+        }
+        cur = stack[top--];
+        printf("%d ", cur->data);
+        cur = cur->right;
+    }
+}
+
+void iterative_preorder(const Node* root) {
+    if (!root) return;
+    const Node* stack[512];
+    int top = -1;
+    stack[++top] = root;
+    while (top != -1) {
+        const Node* cur = stack[top--];
+        printf("%d ", cur->data);
+        if (cur->right) stack[++top] = cur->right;
+        if (cur->left) stack[++top] = cur->left;
+    }
+}
+
+void iterative_postorder(const Node* root) {
+    if (!root) return;
+    const Node* s1[512];
+    const Node* s2[512];
+    int t1 = -1, t2 = -1;
+    s1[++t1] = root;
+    while (t1 != -1) {
+        const Node* cur = s1[t1--];
+        s2[++t2] = cur;
+        if (cur->left) s1[++t1] = cur->left;
+        if (cur->right) s1[++t1] = cur->right;
+    }
+    while (t2 != -1) {
+        printf("%d ", s2[t2--]->data);
+    }
+}
+
+bool find_min_max(const Node* root, int* min_val, int* max_val) {
+    if (!root) return false;
+    const Node* cur = root;
+    while (cur->left) cur = cur->left;
+    *min_val = cur->data;
+    cur = root;
+    while (cur->right) cur = cur->right;
+    *max_val = cur->data;
+    return true;
+}
+
+int tree_height(const Node* root) {
     if (!root) return 0;
-    return 1 + bst_count(root->left) + bst_count(root->right);
+    int lh = tree_height(root->left);
+    int rh = tree_height(root->right);
+    return (lh > rh ? lh : rh) + 1;
 }
 
-int bst_height(const TreeNode* root) {
+int count_nodes(const Node* root) {
     if (!root) return 0;
-    int lh = bst_height(root->left);
-    int rh = bst_height(root->right);
-    return 1 + (lh > rh ? lh : rh);
+    return 1 + count_nodes(root->left) + count_nodes(root->right);
 }
 
-void bst_free(TreeNode* root) {
+int count_leaf_nodes(const Node* root) {
+    if (!root) return 0;
+    if (!root->left && !root->right) return 1;
+    return count_leaf_nodes(root->left) + count_leaf_nodes(root->right);
+}
+
+void mirror_tree(Node* root) {
     if (!root) return;
-    bst_free(root->left);
-    bst_free(root->right);
+    Node* tmp = root->left;
+    root->left = root->right;
+    root->right = tmp;
+    mirror_tree(root->left);
+    mirror_tree(root->right);
+}
+
+void free_tree(Node* root) {
+    if (!root) return;
+    free_tree(root->left);
+    free_tree(root->right);
     free(root);
 }
 
 int main(void) {
-    TreeNode* root = NULL;
-    int choice;
+    Node* root = NULL;
+    int choice = 0;
+    int val = 0;
+    int min_val = 0;
+    int max_val = 0;
+    bool deleted = false;
 
     do {
-        printf("\\n=== Binary Search Tree (BST) Menu ===\\n");
+        printf("\\n--- Binary Search Tree (BST) Operations ---\\n");
         printf("1. Insert Node\\n");
         printf("2. Delete Node\\n");
         printf("3. Search Value\\n");
-        printf("4. Inorder Traversal (Sorted)\\n");
+        printf("4. Inorder Traversal\\n");
         printf("5. Preorder Traversal\\n");
         printf("6. Postorder Traversal\\n");
-        printf("7. Find Minimum & Maximum\\n");
-        printf("8. Tree Height and Node Count\\n");
+        printf("7. Level-order Traversal (BFS)\\n");
+        printf("8. Zigzag Traversal\\n");
+        printf("9. Boundary Traversal\\n");
+        printf("10. Top View\\n");
+        printf("11. Bottom View\\n");
+        printf("12. Morris Inorder Traversal [O(1) Space]\\n");
+        printf("13. Iterative Inorder\\n");
+        printf("14. Iterative Preorder\\n");
+        printf("15. Iterative Postorder\\n");
+        printf("16. Find Min and Max\\n");
+        printf("17. Tree Height and Count Nodes\\n");
+        printf("18. Count Leaf Nodes\\n");
+        printf("19. Mirror Tree\\n");
         printf("0. Exit\\n");
-        printf("Enter choice: ");
+        printf("Enter your choice: ");
 
         if (scanf("%d", &choice) != 1) {
+            printf("Invalid input. Please enter an integer.\\n");
             clear_input();
             continue;
         }
 
         switch (choice) {
-            case 1: {
-                int val;
+            case 1:
                 printf("Enter value to insert: ");
                 if (scanf("%d", &val) == 1) {
-                    root = bst_insert(root, val);
+                    root = insert_node(root, val);
                     printf("Inserted %d into BST.\\n", val);
                 } else clear_input();
                 break;
-            }
-            case 2: {
-                int val;
+            case 2:
                 printf("Enter value to delete: ");
                 if (scanf("%d", &val) == 1) {
-                    bool deleted = false;
-                    root = bst_delete(root, val, &deleted);
+                    deleted = false;
+                    root = delete_node(root, val, &deleted);
                     if (deleted) printf("Deleted %d from BST.\\n", val);
-                    else printf("Value %d not found.\\n", val);
+                    else printf("Value %d not found in BST.\\n", val);
                 } else clear_input();
                 break;
-            }
-            case 3: {
-                int val;
+            case 3:
                 printf("Enter value to search: ");
                 if (scanf("%d", &val) == 1) {
-                    if (bst_search(root, val)) printf("Found %d in BST.\\n", val);
-                    else printf("%d is not in the BST.\\n", val);
+                    if (search_value(root, val)) printf("Value %d exists in BST.\\n", val);
+                    else printf("Value %d does not exist in BST.\\n", val);
                 } else clear_input();
                 break;
-            }
             case 4:
-                printf("Inorder   : ");
-                bst_inorder(root);
+                printf("Inorder: ");
+                inorder(root);
                 printf("\\n");
                 break;
             case 5:
-                printf("Preorder  : ");
-                bst_preorder(root);
+                printf("Preorder: ");
+                preorder(root);
                 printf("\\n");
                 break;
             case 6:
-                printf("Postorder : ");
-                bst_postorder(root);
+                printf("Postorder: ");
+                postorder(root);
                 printf("\\n");
                 break;
-            case 7: {
-                if (!root) {
-                    printf("Tree is empty.\\n");
-                } else {
-                    printf("Min: %d | Max: %d\\n", bst_find_min(root)->val, bst_find_max(root)->val);
-                }
+            case 7:
+                printf("Level-order (BFS): ");
+                levelorder(root);
+                printf("\\n");
                 break;
-            }
             case 8:
-                printf("Height: %d | Total Nodes: %d\\n", bst_height(root), bst_count(root));
+                printf("Zigzag: ");
+                zigzag(root);
+                printf("\\n");
+                break;
+            case 9:
+                printf("Boundary: ");
+                boundary_traversal(root);
+                printf("\\n");
+                break;
+            case 10:
+                printf("Top View: ");
+                top_view(root);
+                printf("\\n");
+                break;
+            case 11:
+                printf("Bottom View: ");
+                bottom_view(root);
+                printf("\\n");
+                break;
+            case 12:
+                printf("Morris Inorder: ");
+                morris_inorder(root);
+                printf("\\n");
+                break;
+            case 13:
+                printf("Iterative Inorder: ");
+                iterative_inorder(root);
+                printf("\\n");
+                break;
+            case 14:
+                printf("Iterative Preorder: ");
+                iterative_preorder(root);
+                printf("\\n");
+                break;
+            case 15:
+                printf("Iterative Postorder: ");
+                iterative_postorder(root);
+                printf("\\n");
+                break;
+            case 16:
+                if (find_min_max(root, &min_val, &max_val))
+                    printf("Minimum value: %d, Maximum value: %d\\n", min_val, max_val);
+                else
+                    printf("Tree is empty.\\n");
+                break;
+            case 17:
+                printf("Tree Height: %d, Total Nodes: %d\\n", tree_height(root), count_nodes(root));
+                break;
+            case 18:
+                printf("Leaf Nodes Count: %d\\n", count_leaf_nodes(root));
+                break;
+            case 19:
+                mirror_tree(root);
+                printf("Tree mirrored successfully. New inorder: ");
+                inorder(root);
+                printf("\\n");
                 break;
             case 0:
-                printf("Exiting BST Menu.\\n");
+                printf("Exiting BST program.\\n");
                 break;
             default:
-                printf("Invalid choice.\\n");
+                printf("Invalid option! Please choose between 0 and 19.\\n");
                 break;
         }
     } while (choice != 0);
 
-    bst_free(root);
+    free_tree(root);
     return 0;
-}`,
+}
+`,
       tags: ["program", "trees", "bst"],
       aliases: ["prog_bst", "programBST"],
     })
@@ -2764,7 +4300,7 @@ int main(void) {
       subcategory: "trees",
       categoryId: "data-structures.full-programs.trees.avl",
       path: "data-structures/full-programs/trees/avl/prog-avl",
-      description: "Interactive self-balancing AVL tree program with automatic rotations (LL, RR, LR, RL), search, and inorder traversal",
+      description: "Interactive self-balancing AVL tree program with automatic LL, RR, LR, RL rotations, balanced node deletions, search, in/pre/post/level-order traversals, and min/max",
       signature: "int main(void)",
       code: `#include <stdio.h>
 #include <stdlib.h>
@@ -2775,150 +4311,273 @@ void clear_input(void) {
     while ((c = getchar()) != '\\n' && c != EOF);
 }
 
-typedef struct AVLNode {
-    int val;
-    struct AVLNode* left;
-    struct AVLNode* right;
+typedef struct Node {
+    int data;
     int height;
-} AVLNode;
+    struct Node* left;
+    struct Node* right;
+} Node;
 
-int avl_h(AVLNode* n) { return n ? n->height : 0; }
-int avl_max(int a, int b) { return a > b ? a : b; }
+int get_height(const Node* n) {
+    return n ? n->height : 0;
+}
 
-AVLNode* avl_create(int val) {
-    AVLNode* n = (AVLNode*)malloc(sizeof(AVLNode));
-    n->val = val;
+int max_val(int a, int b) {
+    return a > b ? a : b;
+}
+
+int get_balance(const Node* n) {
+    return n ? get_height(n->left) - get_height(n->right) : 0;
+}
+
+Node* create_node(int data) {
+    Node* n = (Node*)malloc(sizeof(Node));
+    if (!n) return NULL;
+    n->data = data;
+    n->height = 1;
     n->left = NULL;
     n->right = NULL;
-    n->height = 1;
     return n;
 }
 
-AVLNode* avl_rot_right(AVLNode* y) {
-    AVLNode* x = y->left;
-    AVLNode* t2 = x->right;
+Node* rotate_right(Node* y) {
+    Node* x = y->left;
+    Node* t2 = x->right;
     x->right = y;
     y->left = t2;
-    y->height = avl_max(avl_h(y->left), avl_h(y->right)) + 1;
-    x->height = avl_max(avl_h(x->left), avl_h(x->right)) + 1;
+    y->height = max_val(get_height(y->left), get_height(y->right)) + 1;
+    x->height = max_val(get_height(x->left), get_height(x->right)) + 1;
     return x;
 }
 
-AVLNode* avl_rot_left(AVLNode* x) {
-    AVLNode* y = x->right;
-    AVLNode* t2 = y->left;
+Node* rotate_left(Node* x) {
+    Node* y = x->right;
+    Node* t2 = y->left;
     y->left = x;
     x->right = t2;
-    x->height = avl_max(avl_h(x->left), avl_h(x->right)) + 1;
-    y->height = avl_max(avl_h(y->left), avl_h(y->right)) + 1;
+    x->height = max_val(get_height(x->left), get_height(x->right)) + 1;
+    y->height = max_val(get_height(y->left), get_height(y->right)) + 1;
     return y;
 }
 
-int avl_balance_factor(AVLNode* n) {
-    return n ? avl_h(n->left) - avl_h(n->right) : 0;
-}
-
-AVLNode* avl_insert(AVLNode* node, int val) {
-    if (!node) return avl_create(val);
-    if (val < node->val) node->left = avl_insert(node->left, val);
-    else if (val > node->val) node->right = avl_insert(node->right, val);
+Node* insert_node(Node* node, int data) {
+    if (!node) return create_node(data);
+    if (data < node->data) node->left = insert_node(node->left, data);
+    else if (data > node->data) node->right = insert_node(node->right, data);
     else return node;
 
-    node->height = 1 + avl_max(avl_h(node->left), avl_h(node->right));
-    int balance = avl_balance_factor(node);
+    node->height = 1 + max_val(get_height(node->left), get_height(node->right));
+    int balance = get_balance(node);
 
-    if (balance > 1 && val < node->left->val) return avl_rot_right(node);
-    if (balance < -1 && val > node->right->val) return avl_rot_left(node);
-    if (balance > 1 && val > node->left->val) {
-        node->left = avl_rot_left(node->left);
-        return avl_rot_right(node);
+    if (balance > 1 && data < node->left->data) return rotate_right(node);
+    if (balance < -1 && data > node->right->data) return rotate_left(node);
+    if (balance > 1 && data > node->left->data) {
+        node->left = rotate_left(node->left);
+        return rotate_right(node);
     }
-    if (balance < -1 && val < node->right->val) {
-        node->right = avl_rot_right(node->right);
-        return avl_rot_left(node);
+    if (balance < -1 && data < node->right->data) {
+        node->right = rotate_right(node->right);
+        return rotate_left(node);
     }
     return node;
 }
 
-bool avl_search(const AVLNode* root, int val) {
+Node* min_value_node(Node* node) {
+    Node* cur = node;
+    while (cur->left) cur = cur->left;
+    return cur;
+}
+
+Node* delete_node(Node* root, int data, bool* deleted) {
+    if (!root) return NULL;
+    if (data < root->data) {
+        root->left = delete_node(root->left, data, deleted);
+    } else if (data > root->data) {
+        root->right = delete_node(root->right, data, deleted);
+    } else {
+        *deleted = true;
+        if (!root->left || !root->right) {
+            Node* tmp = root->left ? root->left : root->right;
+            if (!tmp) {
+                tmp = root;
+                root = NULL;
+            } else {
+                *root = *tmp;
+            }
+            free(tmp);
+        } else {
+            Node* tmp = min_value_node(root->right);
+            root->data = tmp->data;
+            root->right = delete_node(root->right, tmp->data, deleted);
+        }
+    }
+    if (!root) return NULL;
+
+    root->height = 1 + max_val(get_height(root->left), get_height(root->right));
+    int balance = get_balance(root);
+
+    if (balance > 1 && get_balance(root->left) >= 0) return rotate_right(root);
+    if (balance > 1 && get_balance(root->left) < 0) {
+        root->left = rotate_left(root->left);
+        return rotate_right(root);
+    }
+    if (balance < -1 && get_balance(root->right) <= 0) return rotate_left(root);
+    if (balance < -1 && get_balance(root->right) > 0) {
+        root->right = rotate_right(root->right);
+        return rotate_left(root);
+    }
+    return root;
+}
+
+bool search_value(const Node* root, int data) {
     if (!root) return false;
-    if (root->val == val) return true;
-    if (val < root->val) return avl_search(root->left, val);
-    return avl_search(root->right, val);
+    if (root->data == data) return true;
+    if (data < root->data) return search_value(root->left, data);
+    return search_value(root->right, data);
 }
 
-void avl_inorder(const AVLNode* root) {
+void inorder(const Node* root) {
     if (!root) return;
-    avl_inorder(root->left);
-    printf("%d (BF:%d) ", root->val, avl_balance_factor((AVLNode*)root));
-    avl_inorder(root->right);
+    inorder(root->left);
+    printf("%d(bf:%d,h:%d) ", root->data, get_balance(root), root->height);
+    inorder(root->right);
 }
 
-void avl_free(AVLNode* root) {
+void preorder(const Node* root) {
     if (!root) return;
-    avl_free(root->left);
-    avl_free(root->right);
+    printf("%d ", root->data);
+    preorder(root->left);
+    preorder(root->right);
+}
+
+void postorder(const Node* root) {
+    if (!root) return;
+    postorder(root->left);
+    postorder(root->right);
+    printf("%d ", root->data);
+}
+
+void levelorder(const Node* root) {
+    if (!root) return;
+    const Node* queue[1024];
+    int front = 0, rear = 0;
+    queue[rear++] = root;
+    while (front < rear) {
+        const Node* cur = queue[front++];
+        printf("%d ", cur->data);
+        if (cur->left) queue[rear++] = cur->left;
+        if (cur->right) queue[rear++] = cur->right;
+    }
+}
+
+bool find_min_max(const Node* root, int* min_val, int* max_val) {
+    if (!root) return false;
+    const Node* cur = root;
+    while (cur->left) cur = cur->left;
+    *min_val = cur->data;
+    cur = root;
+    while (cur->right) cur = cur->right;
+    *max_val = cur->data;
+    return true;
+}
+
+void free_tree(Node* root) {
+    if (!root) return;
+    free_tree(root->left);
+    free_tree(root->right);
     free(root);
 }
 
 int main(void) {
-    AVLNode* root = NULL;
-    int choice;
+    Node* root = NULL;
+    int choice = 0;
+    int val = 0;
+    int min_val = 0;
+    int max_val = 0;
+    bool deleted = false;
 
     do {
-        printf("\\n=== AVL Self-Balancing Tree Menu ===\\n");
-        printf("1. Insert Node\\n");
-        printf("2. Search Value\\n");
-        printf("3. Inorder Traversal (Values with Balance Factors)\\n");
-        printf("4. Tree Root Height & Balance Factor\\n");
+        printf("\\n--- AVL Tree (Self-Balancing) Operations ---\\n");
+        printf("1. Insert Node (Auto Rebalance)\\n");
+        printf("2. Delete Node (Auto Rebalance)\\n");
+        printf("3. Search Value\\n");
+        printf("4. Inorder Traversal (with Balance Factors)\\n");
+        printf("5. Preorder Traversal\\n");
+        printf("6. Postorder Traversal\\n");
+        printf("7. Level-order Traversal (BFS)\\n");
+        printf("8. Find Min and Max\\n");
         printf("0. Exit\\n");
-        printf("Enter choice: ");
+        printf("Enter your choice: ");
 
         if (scanf("%d", &choice) != 1) {
+            printf("Invalid input. Please enter an integer.\\n");
             clear_input();
             continue;
         }
 
         switch (choice) {
-            case 1: {
-                int val;
-                printf("Enter value to insert into AVL tree: ");
+            case 1:
+                printf("Enter value to insert: ");
                 if (scanf("%d", &val) == 1) {
-                    root = avl_insert(root, val);
-                    printf("Inserted %d with automatic balancing.\\n", val);
+                    root = insert_node(root, val);
+                    printf("Inserted %d into AVL tree.\\n", val);
                 } else clear_input();
                 break;
-            }
-            case 2: {
-                int val;
+            case 2:
+                printf("Enter value to delete: ");
+                if (scanf("%d", &val) == 1) {
+                    deleted = false;
+                    root = delete_node(root, val, &deleted);
+                    if (deleted) printf("Deleted %d from AVL tree.\\n", val);
+                    else printf("Value %d not found.\\n", val);
+                } else clear_input();
+                break;
+            case 3:
                 printf("Enter value to search: ");
                 if (scanf("%d", &val) == 1) {
-                    if (avl_search(root, val)) printf("Found %d in AVL tree.\\n", val);
-                    else printf("%d is not in the tree.\\n", val);
+                    if (search_value(root, val)) printf("Value %d exists in AVL tree.\\n", val);
+                    else printf("Value %d does not exist in AVL tree.\\n", val);
                 } else clear_input();
                 break;
-            }
-            case 3:
-                printf("AVL Inorder: ");
-                avl_inorder(root);
+            case 4:
+                printf("Inorder: ");
+                inorder(root);
                 printf("\\n");
                 break;
-            case 4:
-                if (root) printf("Root: %d | Height: %d | Balance Factor: %d\\n", root->val, root->height, avl_balance_factor(root));
-                else printf("Tree is empty.\\n");
+            case 5:
+                printf("Preorder: ");
+                preorder(root);
+                printf("\\n");
+                break;
+            case 6:
+                printf("Postorder: ");
+                postorder(root);
+                printf("\\n");
+                break;
+            case 7:
+                printf("Level-order: ");
+                levelorder(root);
+                printf("\\n");
+                break;
+            case 8:
+                if (find_min_max(root, &min_val, &max_val))
+                    printf("Minimum: %d, Maximum: %d\\n", min_val, max_val);
+                else
+                    printf("AVL tree is empty.\\n");
                 break;
             case 0:
-                printf("Exiting AVL Tree Menu.\\n");
+                printf("Exiting AVL tree program.\\n");
                 break;
             default:
-                printf("Invalid choice.\\n");
+                printf("Invalid option! Please choose between 0 and 8.\\n");
                 break;
         }
     } while (choice != 0);
 
-    avl_free(root);
+    free_tree(root);
     return 0;
-}`,
+}
+`,
       tags: ["program", "trees", "avl"],
       aliases: ["prog_avl", "programAVL"],
     })
@@ -3180,131 +4839,305 @@ int main(void) {
       subcategory: "graphs",
       categoryId: "data-structures.full-programs.graphs.adjacency-matrix",
       path: "data-structures/full-programs/graphs/adjacency-matrix/prog-graph-adj-matrix",
-      description: "Interactive graph program using adjacency matrix with edge addition/removal, BFS, and DFS traversals",
+      description: "Interactive graph program using adjacency matrix with edge addition/removal, O(1) query, BFS, DFS, connected components, bipartiteness, cycle detection, and degrees",
       signature: "int main(void)",
       code: `#include <stdio.h>
+#include <stdlib.h>
 #include <stdbool.h>
-
-#define MAX_V 10
 
 void clear_input(void) {
     int c;
     while ((c = getchar()) != '\\n' && c != EOF);
 }
 
-void dfs_util(int matrix[MAX_V][MAX_V], int v, int num_v, bool* visited) {
-    visited[v] = true;
-    printf("%d ", v);
-    for (int i = 0; i < num_v; i++) {
-        if (matrix[v][i] && !visited[i]) {
-            dfs_util(matrix, i, num_v, visited);
-        }
+typedef struct GraphMat {
+    int vertices;
+    int** matrix;
+    bool directed;
+} GraphMat;
+
+GraphMat* create_graph(int v, bool directed) {
+    GraphMat* g = (GraphMat*)malloc(sizeof(GraphMat));
+    if (!g) return NULL;
+    g->vertices = v;
+    g->directed = directed;
+    g->matrix = (int**)malloc(v * sizeof(int*));
+    for (int i = 0; i < v; i++) {
+        g->matrix[i] = (int*)calloc(v, sizeof(int));
+    }
+    return g;
+}
+
+void add_edge(GraphMat* g, int u, int v) {
+    if (u >= 0 && u < g->vertices && v >= 0 && v < g->vertices) {
+        g->matrix[u][v] = 1;
+        if (!g->directed) g->matrix[v][u] = 1;
     }
 }
 
-void bfs_util(int matrix[MAX_V][MAX_V], int start_v, int num_v) {
-    bool visited[MAX_V] = {false};
-    int queue[MAX_V];
+void remove_edge(GraphMat* g, int u, int v) {
+    if (u >= 0 && u < g->vertices && v >= 0 && v < g->vertices) {
+        g->matrix[u][v] = 0;
+        if (!g->directed) g->matrix[v][u] = 0;
+    }
+}
+
+bool has_edge(const GraphMat* g, int u, int v) {
+    if (u >= 0 && u < g->vertices && v >= 0 && v < g->vertices) {
+        return g->matrix[u][v] != 0;
+    }
+    return false;
+}
+
+void bfs(const GraphMat* g, int start) {
+    if (start < 0 || start >= g->vertices) return;
+    bool* visited = (bool*)calloc(g->vertices, sizeof(bool));
+    int* queue = (int*)malloc(g->vertices * sizeof(int));
     int front = 0, rear = 0;
 
-    visited[start_v] = true;
-    queue[rear++] = start_v;
+    visited[start] = true;
+    queue[rear++] = start;
+    printf("BFS order: ");
 
-    printf("BFS Traversal from vertex %d: ", start_v);
     while (front < rear) {
         int u = queue[front++];
         printf("%d ", u);
-        for (int v = 0; v < num_v; v++) {
-            if (matrix[u][v] && !visited[v]) {
+        for (int v = 0; v < g->vertices; v++) {
+            if (g->matrix[u][v] && !visited[v]) {
                 visited[v] = true;
                 queue[rear++] = v;
             }
         }
     }
     printf("\\n");
+    free(visited);
+    free(queue);
+}
+
+static void dfs_util(const GraphMat* g, int u, bool* visited) {
+    visited[u] = true;
+    printf("%d ", u);
+    for (int v = 0; v < g->vertices; v++) {
+        if (g->matrix[u][v] && !visited[v]) {
+            dfs_util(g, v, visited);
+        }
+    }
+}
+
+void dfs(const GraphMat* g, int start) {
+    if (start < 0 || start >= g->vertices) return;
+    bool* visited = (bool*)calloc(g->vertices, sizeof(bool));
+    printf("DFS order: ");
+    dfs_util(g, start, visited);
+    printf("\\n");
+    free(visited);
+}
+
+void connected_components(const GraphMat* g) {
+    bool* visited = (bool*)calloc(g->vertices, sizeof(bool));
+    int comp = 0;
+    for (int i = 0; i < g->vertices; i++) {
+        if (!visited[i]) {
+            comp++;
+            printf("Component %d: ", comp);
+            dfs_util(g, i, visited);
+            printf("\\n");
+        }
+    }
+    printf("Total connected components: %d\\n", comp);
+    free(visited);
+}
+
+bool check_bipartite(const GraphMat* g) {
+    int* color = (int*)malloc(g->vertices * sizeof(int));
+    for (int i = 0; i < g->vertices; i++) color[i] = -1;
+
+    int* queue = (int*)malloc(g->vertices * sizeof(int));
+    bool is_bip = true;
+
+    for (int start = 0; start < g->vertices; start++) {
+        if (color[start] == -1) {
+            int front = 0, rear = 0;
+            color[start] = 1;
+            queue[rear++] = start;
+
+            while (front < rear) {
+                int u = queue[front++];
+                for (int v = 0; v < g->vertices; v++) {
+                    if (g->matrix[u][v]) {
+                        if (color[v] == -1) {
+                            color[v] = 1 - color[u];
+                            queue[rear++] = v;
+                        } else if (color[v] == color[u]) {
+                            is_bip = false;
+                            break;
+                        }
+                    }
+                }
+                if (!is_bip) break;
+            }
+        }
+        if (!is_bip) break;
+    }
+
+    free(color);
+    free(queue);
+    return is_bip;
+}
+
+static bool cycle_util(const GraphMat* g, int v, bool* visited, int parent) {
+    visited[v] = true;
+    for (int i = 0; i < g->vertices; i++) {
+        if (g->matrix[v][i]) {
+            if (!visited[i]) {
+                if (cycle_util(g, i, visited, v)) return true;
+            } else if (i != parent) {
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
+bool detect_cycle(const GraphMat* g) {
+    bool* visited = (bool*)calloc(g->vertices, sizeof(bool));
+    for (int u = 0; u < g->vertices; u++) {
+        if (!visited[u]) {
+            if (cycle_util(g, u, visited, -1)) {
+                free(visited);
+                return true;
+            }
+        }
+    }
+    free(visited);
+    return false;
+}
+
+void compute_degrees(const GraphMat* g) {
+    for (int i = 0; i < g->vertices; i++) {
+        int out_deg = 0;
+        int in_deg = 0;
+        for (int j = 0; j < g->vertices; j++) {
+            if (g->matrix[i][j]) out_deg++;
+            if (g->matrix[j][i]) in_deg++;
+        }
+        if (g->directed) {
+            printf("Vertex %d: In-degree = %d, Out-degree = %d\\n", i, in_deg, out_deg);
+        } else {
+            printf("Vertex %d: Degree = %d\\n", i, out_deg);
+        }
+    }
+}
+
+void display_matrix(const GraphMat* g) {
+    printf("Adjacency Matrix (%s, %d vertices):\\n   ", g->directed ? "Directed" : "Undirected", g->vertices);
+    for (int i = 0; i < g->vertices; i++) printf("%2d ", i);
+    printf("\\n");
+    for (int i = 0; i < g->vertices; i++) {
+        printf("%2d:", i);
+        for (int j = 0; j < g->vertices; j++) {
+            printf("%2d ", g->matrix[i][j]);
+        }
+        printf("\\n");
+    }
+}
+
+void free_graph(GraphMat* g) {
+    if (!g) return;
+    for (int i = 0; i < g->vertices; i++) free(g->matrix[i]);
+    free(g->matrix);
+    free(g);
 }
 
 int main(void) {
-    int num_v = 5;
-    int matrix[MAX_V][MAX_V] = {0};
-    int choice;
+    int v = 5;
+    GraphMat* g = create_graph(v, false);
+    int choice = 0;
+    int u = 0, target = 0;
 
     do {
-        printf("\\n=== Graph (Adjacency Matrix) Menu (Vertices: %d) ===\\n", num_v);
-        printf("1. Add Edge (u, v)\\n");
-        printf("2. Remove Edge (u, v)\\n");
-        printf("3. BFS Traversal\\n");
-        printf("4. DFS Traversal\\n");
-        printf("5. Display Adjacency Matrix\\n");
+        printf("\\n--- Graph Adjacency Matrix Operations ---\\n");
+        printf("1. Add Edge\\n");
+        printf("2. Remove Edge\\n");
+        printf("3. Has Edge\\n");
+        printf("4. BFS Traversal\\n");
+        printf("5. DFS Traversal\\n");
+        printf("6. Find Connected Components\\n");
+        printf("7. Check Bipartite\\n");
+        printf("8. Detect Cycle\\n");
+        printf("9. Compute Degrees\\n");
+        printf("10. Display Matrix\\n");
         printf("0. Exit\\n");
-        printf("Enter choice: ");
+        printf("Enter your choice: ");
 
         if (scanf("%d", &choice) != 1) {
+            printf("Invalid input. Please enter an integer.\\n");
             clear_input();
             continue;
         }
 
         switch (choice) {
-            case 1: {
-                int u, v;
-                printf("Enter edge endpoints (u v): ");
-                if (scanf("%d %d", &u, &v) == 2 && u >= 0 && u < num_v && v >= 0 && v < num_v) {
-                    matrix[u][v] = 1;
-                    matrix[v][u] = 1;
-                    printf("Edge (%d, %d) added.\\n", u, v);
+            case 1:
+                printf("Enter source and destination vertex: ");
+                if (scanf("%d %d", &u, &target) == 2) {
+                    add_edge(g, u, target);
+                    printf("Added edge (%d -> %d).\\n", u, target);
                 } else clear_input();
                 break;
-            }
-            case 2: {
-                int u, v;
-                printf("Enter edge endpoints to remove (u v): ");
-                if (scanf("%d %d", &u, &v) == 2 && u >= 0 && u < num_v && v >= 0 && v < num_v) {
-                    matrix[u][v] = 0;
-                    matrix[v][u] = 0;
-                    printf("Edge (%d, %d) removed.\\n", u, v);
+            case 2:
+                printf("Enter source and destination vertex: ");
+                if (scanf("%d %d", &u, &target) == 2) {
+                    remove_edge(g, u, target);
+                    printf("Removed edge (%d -> %d).\\n", u, target);
                 } else clear_input();
                 break;
-            }
-            case 3: {
-                int start;
-                printf("Enter start vertex (0-%d): ", num_v - 1);
-                if (scanf("%d", &start) == 1 && start >= 0 && start < num_v) {
-                    bfs_util(matrix, start, num_v);
+            case 3:
+                printf("Enter source and destination vertex: ");
+                if (scanf("%d %d", &u, &target) == 2) {
+                    if (has_edge(g, u, target)) printf("Edge (%d -> %d) exists.\\n", u, target);
+                    else printf("Edge (%d -> %d) does not exist.\\n", u, target);
                 } else clear_input();
                 break;
-            }
-            case 4: {
-                int start;
-                printf("Enter start vertex (0-%d): ", num_v - 1);
-                if (scanf("%d", &start) == 1 && start >= 0 && start < num_v) {
-                    bool visited[MAX_V] = {false};
-                    printf("DFS Traversal from vertex %d: ", start);
-                    dfs_util(matrix, start, num_v, visited);
-                    printf("\\n");
-                } else clear_input();
+            case 4:
+                printf("Enter start vertex: ");
+                if (scanf("%d", &u) == 1) bfs(g, u);
+                else clear_input();
                 break;
-            }
             case 5:
-                printf("Adjacency Matrix (%dx%d):\\n   ", num_v, num_v);
-                for (int j = 0; j < num_v; j++) printf("%2d ", j);
-                printf("\\n");
-                for (int i = 0; i < num_v; i++) {
-                    printf("%2d ", i);
-                    for (int j = 0; j < num_v; j++) printf("%2d ", matrix[i][j]);
-                    printf("\\n");
-                }
+                printf("Enter start vertex: ");
+                if (scanf("%d", &u) == 1) dfs(g, u);
+                else clear_input();
+                break;
+            case 6:
+                connected_components(g);
+                break;
+            case 7:
+                if (check_bipartite(g)) printf("Graph is bipartite (2-colorable).\\n");
+                else printf("Graph is NOT bipartite.\\n");
+                break;
+            case 8:
+                if (detect_cycle(g)) printf("Cycle detected in graph.\\n");
+                else printf("No cycle detected in graph.\\n");
+                break;
+            case 9:
+                compute_degrees(g);
+                break;
+            case 10:
+                display_matrix(g);
                 break;
             case 0:
-                printf("Exiting Graph Menu.\\n");
+                printf("Exiting graph matrix program.\\n");
                 break;
             default:
-                printf("Invalid choice.\\n");
+                printf("Invalid option! Please choose between 0 and 10.\\n");
                 break;
         }
     } while (choice != 0);
 
+    free_graph(g);
     return 0;
-}`,
+}
+`,
       tags: ["program", "graphs", "adjacency-matrix"],
       aliases: ["prog_graph_adj_matrix", "programGraphAdjMatrix"],
     })
@@ -3320,7 +5153,7 @@ int main(void) {
       subcategory: "graphs",
       categoryId: "data-structures.full-programs.graphs.adjacency-list",
       path: "data-structures/full-programs/graphs/adjacency-list/prog-graph-adj-list",
-      description: "Interactive graph program using adjacency linked list with dynamic edge additions, BFS, and DFS",
+      description: "Interactive graph program using adjacency linked list with dynamic edge additions/removals, BFS, DFS, unweighted shortest path with reconstruction, connected components, and cycle detection",
       signature: "int main(void)",
       code: `#include <stdio.h>
 #include <stdlib.h>
@@ -3331,41 +5164,201 @@ void clear_input(void) {
     while ((c = getchar()) != '\\n' && c != EOF);
 }
 
-typedef struct AdjNode {
+typedef struct Node {
     int dest;
-    struct AdjNode* next;
-} AdjNode;
+    struct Node* next;
+} Node;
 
-typedef struct Graph {
-    int num_v;
-    AdjNode** adj_lists;
-} Graph;
+typedef struct GraphList {
+    int vertices;
+    Node** adj;
+} GraphList;
 
-Graph* graph_create(int v) {
-    Graph* g = (Graph*)malloc(sizeof(Graph));
-    g->num_v = v;
-    g->adj_lists = (AdjNode**)malloc(v * sizeof(AdjNode*));
-    for (int i = 0; i < v; i++) g->adj_lists[i] = NULL;
+GraphList* create_graph(int v) {
+    GraphList* g = (GraphList*)malloc(sizeof(GraphList));
+    if (!g) return NULL;
+    g->vertices = v;
+    g->adj = (Node**)malloc(v * sizeof(Node*));
+    for (int i = 0; i < v; i++) g->adj[i] = NULL;
     return g;
 }
 
-void graph_add_edge(Graph* g, int src, int dest) {
-    AdjNode* n = (AdjNode*)malloc(sizeof(AdjNode));
-    n->dest = dest;
-    n->next = g->adj_lists[src];
-    g->adj_lists[src] = n;
-
-    n = (AdjNode*)malloc(sizeof(AdjNode));
-    n->dest = src;
-    n->next = g->adj_lists[dest];
-    g->adj_lists[dest] = n;
+void add_edge(GraphList* g, int u, int v) {
+    if (u < 0 || u >= g->vertices || v < 0 || v >= g->vertices) return;
+    Node* n = (Node*)malloc(sizeof(Node));
+    if (!n) return;
+    n->dest = v;
+    n->next = g->adj[u];
+    g->adj[u] = n;
 }
 
-void graph_print(const Graph* g) {
-    printf("Graph Adjacency Lists (%d vertices):\\n", g->num_v);
-    for (int v = 0; v < g->num_v; v++) {
-        printf("Vertex %d: ", v);
-        AdjNode* cur = g->adj_lists[v];
+bool remove_edge(GraphList* g, int u, int v) {
+    if (u < 0 || u >= g->vertices) return false;
+    Node* cur = g->adj[u];
+    Node* prev = NULL;
+    while (cur && cur->dest != v) {
+        prev = cur;
+        cur = cur->next;
+    }
+    if (!cur) return false;
+    if (prev) prev->next = cur->next;
+    else g->adj[u] = cur->next;
+    free(cur);
+    return true;
+}
+
+bool has_edge(const GraphList* g, int u, int v) {
+    if (u < 0 || u >= g->vertices) return false;
+    Node* cur = g->adj[u];
+    while (cur) {
+        if (cur->dest == v) return true;
+        cur = cur->next;
+    }
+    return false;
+}
+
+void bfs(const GraphList* g, int start) {
+    if (start < 0 || start >= g->vertices) return;
+    bool* visited = (bool*)calloc(g->vertices, sizeof(bool));
+    int* queue = (int*)malloc(g->vertices * sizeof(int));
+    int front = 0, rear = 0;
+
+    visited[start] = true;
+    queue[rear++] = start;
+    printf("BFS traversal: ");
+
+    while (front < rear) {
+        int u = queue[front++];
+        printf("%d ", u);
+        Node* cur = g->adj[u];
+        while (cur) {
+            if (!visited[cur->dest]) {
+                visited[cur->dest] = true;
+                queue[rear++] = cur->dest;
+            }
+            cur = cur->next;
+        }
+    }
+    printf("\\n");
+    free(visited);
+    free(queue);
+}
+
+static void dfs_util(const GraphList* g, int u, bool* visited) {
+    visited[u] = true;
+    printf("%d ", u);
+    Node* cur = g->adj[u];
+    while (cur) {
+        if (!visited[cur->dest]) {
+            dfs_util(g, cur->dest, visited);
+        }
+        cur = cur->next;
+    }
+}
+
+void dfs(const GraphList* g, int start) {
+    if (start < 0 || start >= g->vertices) return;
+    bool* visited = (bool*)calloc(g->vertices, sizeof(bool));
+    printf("DFS traversal: ");
+    dfs_util(g, start, visited);
+    printf("\\n");
+    free(visited);
+}
+
+void shortest_path(const GraphList* g, int start, int target) {
+    if (start < 0 || start >= g->vertices || target < 0 || target >= g->vertices) return;
+    int* dist = (int*)malloc(g->vertices * sizeof(int));
+    int* parent = (int*)malloc(g->vertices * sizeof(int));
+    for (int i = 0; i < g->vertices; i++) {
+        dist[i] = -1;
+        parent[i] = -1;
+    }
+    int* queue = (int*)malloc(g->vertices * sizeof(int));
+    int front = 0, rear = 0;
+
+    dist[start] = 0;
+    queue[rear++] = start;
+
+    while (front < rear) {
+        int u = queue[front++];
+        if (u == target) break;
+        Node* cur = g->adj[u];
+        while (cur) {
+            if (dist[cur->dest] == -1) {
+                dist[cur->dest] = dist[u] + 1;
+                parent[cur->dest] = u;
+                queue[rear++] = cur->dest;
+            }
+            cur = cur->next;
+        }
+    }
+
+    if (dist[target] == -1) {
+        printf("No path from %d to %d.\\n", start, target);
+    } else {
+        printf("Shortest distance: %d. Path: ", dist[target]);
+        int path[512];
+        int plen = 0;
+        int curr = target;
+        while (curr != -1) {
+            path[plen++] = curr;
+            curr = parent[curr];
+        }
+        for (int i = plen - 1; i >= 0; i--) {
+            printf("%d%s", path[i], i > 0 ? " -> " : "\\n");
+        }
+    }
+    free(dist);
+    free(parent);
+    free(queue);
+}
+
+void count_components(const GraphList* g) {
+    bool* visited = (bool*)calloc(g->vertices, sizeof(bool));
+    int comp = 0;
+    for (int i = 0; i < g->vertices; i++) {
+        if (!visited[i]) {
+            comp++;
+            dfs_util(g, i, visited);
+        }
+    }
+    printf("\\nTotal components: %d\\n", comp);
+    free(visited);
+}
+
+static bool cycle_util(const GraphList* g, int u, bool* visited, int parent) {
+    visited[u] = true;
+    Node* cur = g->adj[u];
+    while (cur) {
+        if (!visited[cur->dest]) {
+            if (cycle_util(g, cur->dest, visited, u)) return true;
+        } else if (cur->dest != parent) {
+            return true;
+        }
+        cur = cur->next;
+    }
+    return false;
+}
+
+bool detect_cycle(const GraphList* g) {
+    bool* visited = (bool*)calloc(g->vertices, sizeof(bool));
+    for (int i = 0; i < g->vertices; i++) {
+        if (!visited[i]) {
+            if (cycle_util(g, i, visited, -1)) {
+                free(visited);
+                return true;
+            }
+        }
+    }
+    free(visited);
+    return false;
+}
+
+void display_list(const GraphList* g) {
+    printf("Adjacency List (%d vertices):\\n", g->vertices);
+    for (int i = 0; i < g->vertices; i++) {
+        printf("[%d]: ", i);
+        Node* cur = g->adj[i];
         while (cur) {
             printf("%d -> ", cur->dest);
             cur = cur->next;
@@ -3374,60 +5367,106 @@ void graph_print(const Graph* g) {
     }
 }
 
-void graph_free(Graph* g) {
-    for (int i = 0; i < g->num_v; i++) {
-        AdjNode* cur = g->adj_lists[i];
+void free_graph(GraphList* g) {
+    if (!g) return;
+    for (int i = 0; i < g->vertices; i++) {
+        Node* cur = g->adj[i];
         while (cur) {
-            AdjNode* tmp = cur;
+            Node* tmp = cur;
             cur = cur->next;
             free(tmp);
         }
     }
-    free(g->adj_lists);
+    free(g->adj);
     free(g);
 }
 
 int main(void) {
-    Graph* g = graph_create(5);
-    int choice;
+    int v = 5;
+    GraphList* g = create_graph(v);
+    int choice = 0;
+    int src = 0, dest = 0;
 
     do {
-        printf("\\n=== Graph (Adjacency List) Menu ===\\n");
-        printf("1. Add Undirected Edge (u, v)\\n");
-        printf("2. Display Adjacency List\\n");
+        printf("\\n--- Graph Adjacency List Operations ---\\n");
+        printf("1. Add Edge\\n");
+        printf("2. Remove Edge\\n");
+        printf("3. Has Edge\\n");
+        printf("4. BFS Traversal\\n");
+        printf("5. DFS Traversal\\n");
+        printf("6. Shortest Path Unweighted\\n");
+        printf("7. Count Connected Components\\n");
+        printf("8. Detect Cycle\\n");
+        printf("9. Display Adjacency List\\n");
         printf("0. Exit\\n");
-        printf("Enter choice: ");
+        printf("Enter your choice: ");
 
         if (scanf("%d", &choice) != 1) {
+            printf("Invalid input. Please enter an integer.\\n");
             clear_input();
             continue;
         }
 
         switch (choice) {
-            case 1: {
-                int u, v;
-                printf("Enter endpoints (u v) between 0 and %d: ", g->num_v - 1);
-                if (scanf("%d %d", &u, &v) == 2 && u >= 0 && u < g->num_v && v >= 0 && v < g->num_v) {
-                    graph_add_edge(g, u, v);
-                    printf("Edge (%d, %d) added successfully.\\n", u, v);
+            case 1:
+                printf("Enter source and destination: ");
+                if (scanf("%d %d", &src, &dest) == 2) {
+                    add_edge(g, src, dest);
+                    printf("Added edge (%d -> %d).\\n", src, dest);
                 } else clear_input();
                 break;
-            }
             case 2:
-                graph_print(g);
+                printf("Enter source and destination: ");
+                if (scanf("%d %d", &src, &dest) == 2) {
+                    if (remove_edge(g, src, dest)) printf("Removed edge (%d -> %d).\\n", src, dest);
+                    else printf("Edge not found.\\n", src, dest);
+                } else clear_input();
+                break;
+            case 3:
+                printf("Enter source and destination: ");
+                if (scanf("%d %d", &src, &dest) == 2) {
+                    if (has_edge(g, src, dest)) printf("Edge (%d -> %d) exists.\\n", src, dest);
+                    else printf("Edge does not exist.\\n");
+                } else clear_input();
+                break;
+            case 4:
+                printf("Enter start vertex: ");
+                if (scanf("%d", &src) == 1) bfs(g, src);
+                else clear_input();
+                break;
+            case 5:
+                printf("Enter start vertex: ");
+                if (scanf("%d", &src) == 1) dfs(g, src);
+                else clear_input();
+                break;
+            case 6:
+                printf("Enter start and target: ");
+                if (scanf("%d %d", &src, &dest) == 2) shortest_path(g, src, dest);
+                else clear_input();
+                break;
+            case 7:
+                count_components(g);
+                break;
+            case 8:
+                if (detect_cycle(g)) printf("Cycle detected in graph.\\n");
+                else printf("No cycle detected in graph.\\n");
+                break;
+            case 9:
+                display_list(g);
                 break;
             case 0:
-                printf("Exiting Graph Adjacency List Menu.\\n");
+                printf("Exiting adjacency list program.\\n");
                 break;
             default:
-                printf("Invalid choice.\\n");
+                printf("Invalid option! Please choose between 0 and 9.\\n");
                 break;
         }
     } while (choice != 0);
 
-    graph_free(g);
+    free_graph(g);
     return 0;
-}`,
+}
+`,
       tags: ["program", "graphs", "adjacency-list"],
       aliases: ["prog_graph_adj_list", "programGraphAdjList"],
     })
@@ -3443,7 +5482,7 @@ int main(void) {
       subcategory: "graphs",
       categoryId: "data-structures.full-programs.graphs.dsu",
       path: "data-structures/full-programs/graphs/dsu/prog-graph-dsu",
-      description: "Interactive Disjoint Set Union (DSU) program with path compression and union by rank",
+      description: "Interactive Disjoint Set Union (DSU) program with path compression, union by rank, union by size, connected check, disjoint set counting, and component sizing",
       signature: "int main(void)",
       code: `#include <stdio.h>
 #include <stdlib.h>
@@ -3454,109 +5493,169 @@ void clear_input(void) {
     while ((c = getchar()) != '\\n' && c != EOF);
 }
 
-typedef struct DSU {
+typedef struct GraphDSU {
     int* parent;
     int* rank;
+    int* size;
     int n;
-} DSU;
+    int num_sets;
+} GraphDSU;
 
-DSU* dsu_create(int n) {
-    DSU* d = (DSU*)malloc(sizeof(DSU));
-    d->n = n;
-    d->parent = (int*)malloc(n * sizeof(int));
-    d->rank = (int*)calloc(n, sizeof(int));
-    for (int i = 0; i < n; i++) d->parent[i] = i;
-    return d;
-}
-
-int dsu_find(DSU* d, int i) {
-    if (d->parent[i] == i) return i;
-    return d->parent[i] = dsu_find(d, d->parent[i]);
-}
-
-bool dsu_union(DSU* d, int i, int j) {
-    int root_i = dsu_find(d, i);
-    int root_j = dsu_find(d, j);
-    if (root_i == root_j) return false;
-    if (d->rank[root_i] < d->rank[root_j]) d->parent[root_i] = root_j;
-    else if (d->rank[root_i] > d->rank[root_j]) d->parent[root_j] = root_i;
-    else {
-        d->parent[root_j] = root_i;
-        d->rank[root_i]++;
+GraphDSU* create_dsu(int n) {
+    GraphDSU* dsu = (GraphDSU*)malloc(sizeof(GraphDSU));
+    if (!dsu) return NULL;
+    dsu->n = n;
+    dsu->num_sets = n;
+    dsu->parent = (int*)malloc(n * sizeof(int));
+    dsu->rank = (int*)malloc(n * sizeof(int));
+    dsu->size = (int*)malloc(n * sizeof(int));
+    for (int i = 0; i < n; i++) {
+        dsu->parent[i] = i;
+        dsu->rank[i] = 0;
+        dsu->size[i] = 1;
     }
-    return true;
+    return dsu;
 }
 
-void dsu_free(DSU* d) {
-    if (d) {
-        free(d->parent);
-        free(d->rank);
-        free(d);
+int find_rep(GraphDSU* dsu, int i) {
+    if (dsu->parent[i] == i) return i;
+    return dsu->parent[i] = find_rep(dsu, dsu->parent[i]);
+}
+
+void union_by_rank(GraphDSU* dsu, int x, int y) {
+    int root_x = find_rep(dsu, x);
+    int root_y = find_rep(dsu, y);
+    if (root_x != root_y) {
+        if (dsu->rank[root_x] < dsu->rank[root_y]) {
+            dsu->parent[root_x] = root_y;
+            dsu->size[root_y] += dsu->size[root_x];
+        } else if (dsu->rank[root_x] > dsu->rank[root_y]) {
+            dsu->parent[root_y] = root_x;
+            dsu->size[root_x] += dsu->size[root_y];
+        } else {
+            dsu->parent[root_y] = root_x;
+            dsu->size[root_x] += dsu->size[root_y];
+            dsu->rank[root_x]++;
+        }
+        dsu->num_sets--;
     }
+}
+
+void union_by_size(GraphDSU* dsu, int x, int y) {
+    int root_x = find_rep(dsu, x);
+    int root_y = find_rep(dsu, y);
+    if (root_x != root_y) {
+        if (dsu->size[root_x] < dsu->size[root_y]) {
+            dsu->parent[root_x] = root_y;
+            dsu->size[root_y] += dsu->size[root_x];
+        } else {
+            dsu->parent[root_y] = root_x;
+            dsu->size[root_x] += dsu->size[root_y];
+        }
+        dsu->num_sets--;
+    }
+}
+
+bool check_connected(GraphDSU* dsu, int x, int y) {
+    return find_rep(dsu, x) == find_rep(dsu, y);
+}
+
+int get_component_size(GraphDSU* dsu, int x) {
+    return dsu->size[find_rep(dsu, x)];
+}
+
+void display_sets(GraphDSU* dsu) {
+    printf("DSU Sets (%d elements, %d disjoint sets):\\n", dsu->n, dsu->num_sets);
+    for (int i = 0; i < dsu->n; i++) {
+        printf("Element %d -> Representative %d (size: %d)\\n", i, find_rep(dsu, i), get_component_size(dsu, i));
+    }
+}
+
+void free_dsu(GraphDSU* dsu) {
+    if (!dsu) return;
+    free(dsu->parent);
+    free(dsu->rank);
+    free(dsu->size);
+    free(dsu);
 }
 
 int main(void) {
-    int n = 8;
-    DSU* d = dsu_create(n);
-    int choice;
+    int n = 6;
+    GraphDSU* dsu = create_dsu(n);
+    int choice = 0;
+    int u = 0, v = 0;
 
     do {
-        printf("\\n=== Disjoint Set Union (DSU) Menu (Elements: 0-%d) ===\\n", n - 1);
-        printf("1. Union Sets (u, v)\\n");
-        printf("2. Find Set Representative of x\\n");
-        printf("3. Check Connected (Are u and v in same set?)\\n");
-        printf("4. Display All Element Representatives\\n");
+        printf("\\n--- Disjoint Set Union (DSU) Operations ---\\n");
+        printf("1. Union by Rank\\n");
+        printf("2. Union by Size\\n");
+        printf("3. Find Representative\\n");
+        printf("4. Check Connected\\n");
+        printf("5. Count Disjoint Sets\\n");
+        printf("6. Get Component Size\\n");
+        printf("7. Display All Sets\\n");
         printf("0. Exit\\n");
-        printf("Enter choice: ");
+        printf("Enter your choice: ");
 
         if (scanf("%d", &choice) != 1) {
+            printf("Invalid input. Please enter an integer.\\n");
             clear_input();
             continue;
         }
 
         switch (choice) {
-            case 1: {
-                int u, v;
-                printf("Enter pair (u v): ");
+            case 1:
+                printf("Enter two elements (0 to %d): ", n - 1);
                 if (scanf("%d %d", &u, &v) == 2 && u >= 0 && u < n && v >= 0 && v < n) {
-                    if (dsu_union(d, u, v)) printf("Merged set containing %d and set containing %d.\\n", u, v);
-                    else printf("%d and %d were already in the same set.\\n", u, v);
+                    union_by_rank(dsu, u, v);
+                    printf("Union by rank applied to %d and %d.\\n", u, v);
                 } else clear_input();
                 break;
-            }
-            case 2: {
-                int x;
-                printf("Enter element x (0-%d): ", n - 1);
-                if (scanf("%d", &x) == 1 && x >= 0 && x < n) {
-                    printf("Representative (Leader) of %d is %d.\\n", x, dsu_find(d, x));
-                } else clear_input();
-                break;
-            }
-            case 3: {
-                int u, v;
-                printf("Enter pair to check (u v): ");
+            case 2:
+                printf("Enter two elements (0 to %d): ", n - 1);
                 if (scanf("%d %d", &u, &v) == 2 && u >= 0 && u < n && v >= 0 && v < n) {
-                    printf("Are %d and %d connected? %s\\n", u, v, dsu_find(d, u) == dsu_find(d, v) ? "YES" : "NO");
+                    union_by_size(dsu, u, v);
+                    printf("Union by size applied to %d and %d.\\n", u, v);
                 } else clear_input();
                 break;
-            }
+            case 3:
+                printf("Enter element (0 to %d): ", n - 1);
+                if (scanf("%d", &u) == 1 && u >= 0 && u < n) {
+                    printf("Representative of %d is: %d\\n", u, find_rep(dsu, u));
+                } else clear_input();
+                break;
             case 4:
-                printf("Element -> Leader: ");
-                for (int i = 0; i < n; i++) printf("[%d -> %d] ", i, dsu_find(d, i));
-                printf("\\n");
+                printf("Enter two elements (0 to %d): ", n - 1);
+                if (scanf("%d %d", &u, &v) == 2 && u >= 0 && u < n && v >= 0 && v < n) {
+                    if (check_connected(dsu, u, v)) printf("%d and %d are CONNECTED.\\n", u, v);
+                    else printf("%d and %d are NOT connected.\\n", u, v);
+                } else clear_input();
+                break;
+            case 5:
+                printf("Total disjoint sets: %d\\n", dsu->num_sets);
+                break;
+            case 6:
+                printf("Enter element (0 to %d): ", n - 1);
+                if (scanf("%d", &u) == 1 && u >= 0 && u < n) {
+                    printf("Size of component containing %d: %d\\n", u, get_component_size(dsu, u));
+                } else clear_input();
+                break;
+            case 7:
+                display_sets(dsu);
                 break;
             case 0:
-                printf("Exiting DSU Menu.\\n");
+                printf("Exiting DSU program.\\n");
                 break;
             default:
-                printf("Invalid choice.\\n");
+                printf("Invalid option! Please choose between 0 and 7.\\n");
                 break;
         }
     } while (choice != 0);
 
-    dsu_free(d);
+    free_dsu(dsu);
     return 0;
-}`,
+}
+`,
       tags: ["program", "graphs", "dsu"],
       aliases: ["prog_graph_dsu", "programGraphDSU"],
     })
@@ -3572,66 +5671,72 @@ int main(void) {
       subcategory: "hashing",
       categoryId: "data-structures.full-programs.hashing.chaining",
       path: "data-structures/full-programs/hashing/chaining/prog-chain-hash",
-      description: "Interactive separate chaining hash table program with dynamic string keys, integer values, collision handling, and deletions",
+      description: "Interactive separate chaining hash table program with dynamic string keys, integer values, collision handling, deletions, load factor, and automatic rehashing",
       signature: "int main(void)",
       code: `#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <stdbool.h>
 
-#define BUCKETS 7
-
 void clear_input(void) {
     int c;
     while ((c = getchar()) != '\\n' && c != EOF);
 }
 
-typedef struct HashNode {
-    char* key;
-    int val;
-    struct HashNode* next;
-} HashNode;
+typedef struct Node {
+    char key[32];
+    int value;
+    struct Node* next;
+} Node;
 
-typedef struct HashTable {
-    HashNode* buckets[BUCKETS];
-} HashTable;
+typedef struct ChainHashTable {
+    Node** buckets;
+    int size;
+    int count;
+} ChainHashTable;
 
-unsigned int hash_str(const char* key) {
+static unsigned long hash_func(const char* s, int mod) {
     unsigned long h = 5381;
     int c;
-    while ((c = *key++)) h = ((h << 5) + h) + c;
-    return (unsigned int)(h % BUCKETS);
+    while ((c = (unsigned char)*s++)) h = ((h << 5) + h) + c;
+    return h % mod;
 }
 
-HashTable* ht_create(void) {
-    HashTable* ht = (HashTable*)malloc(sizeof(HashTable));
-    for (int i = 0; i < BUCKETS; i++) ht->buckets[i] = NULL;
+ChainHashTable* create_table(int size) {
+    ChainHashTable* ht = (ChainHashTable*)malloc(sizeof(ChainHashTable));
+    if (!ht) return NULL;
+    ht->size = size;
+    ht->count = 0;
+    ht->buckets = (Node**)calloc(size, sizeof(Node*));
     return ht;
 }
 
-void ht_insert(HashTable* ht, const char* key, int val) {
-    unsigned int b = hash_str(key);
-    HashNode* cur = ht->buckets[b];
+void insert_or_update(ChainHashTable* ht, const char* key, int value) {
+    unsigned long b = hash_func(key, ht->size);
+    Node* cur = ht->buckets[b];
     while (cur) {
         if (strcmp(cur->key, key) == 0) {
-            cur->val = val;
+            cur->value = value;
             return;
         }
         cur = cur->next;
     }
-    HashNode* n = (HashNode*)malloc(sizeof(HashNode));
-    n->key = strdup(key);
-    n->val = val;
+    Node* n = (Node*)malloc(sizeof(Node));
+    if (!n) return;
+    strncpy(n->key, key, sizeof(n->key) - 1);
+    n->key[sizeof(n->key) - 1] = '\\0';
+    n->value = value;
     n->next = ht->buckets[b];
     ht->buckets[b] = n;
+    ht->count++;
 }
 
-bool ht_search(const HashTable* ht, const char* key, int* val) {
-    unsigned int b = hash_str(key);
-    HashNode* cur = ht->buckets[b];
+bool search_key(const ChainHashTable* ht, const char* key, int* val) {
+    unsigned long b = hash_func(key, ht->size);
+    Node* cur = ht->buckets[b];
     while (cur) {
         if (strcmp(cur->key, key) == 0) {
-            *val = cur->val;
+            *val = cur->value;
             return true;
         }
         cur = cur->next;
@@ -3639,16 +5744,17 @@ bool ht_search(const HashTable* ht, const char* key, int* val) {
     return false;
 }
 
-bool ht_delete(HashTable* ht, const char* key) {
-    unsigned int b = hash_str(key);
-    HashNode* cur = ht->buckets[b];
-    HashNode* prev = NULL;
+bool delete_key(ChainHashTable* ht, const char* key, int* val) {
+    unsigned long b = hash_func(key, ht->size);
+    Node* cur = ht->buckets[b];
+    Node* prev = NULL;
     while (cur) {
         if (strcmp(cur->key, key) == 0) {
+            *val = cur->value;
             if (prev) prev->next = cur->next;
             else ht->buckets[b] = cur->next;
-            free(cur->key);
             free(cur);
+            ht->count--;
             return true;
         }
         prev = cur;
@@ -3657,92 +5763,131 @@ bool ht_delete(HashTable* ht, const char* key) {
     return false;
 }
 
-void ht_display(const HashTable* ht) {
-    printf("Separate Chaining Hash Table (%d buckets):\\n", BUCKETS);
-    for (int i = 0; i < BUCKETS; i++) {
-        printf("[%d]: ", i);
-        HashNode* cur = ht->buckets[i];
+void display_table(const ChainHashTable* ht) {
+    printf("Separate Chaining Table (size: %d, count: %d, load factor: %.2f):\\n",
+           ht->size, ht->count, (float)ht->count / ht->size);
+    for (int i = 0; i < ht->size; i++) {
+        printf("Bucket [%d]: ", i);
+        Node* cur = ht->buckets[i];
         while (cur) {
-            printf("(%s: %d) -> ", cur->key, cur->val);
+            printf("(%s: %d) -> ", cur->key, cur->value);
             cur = cur->next;
         }
         printf("NULL\\n");
     }
 }
 
-void ht_free(HashTable* ht) {
-    for (int i = 0; i < BUCKETS; i++) {
-        HashNode* cur = ht->buckets[i];
+void rehash(ChainHashTable* ht) {
+    int old_size = ht->size;
+    Node** old_buckets = ht->buckets;
+
+    ht->size = old_size * 2;
+    ht->count = 0;
+    ht->buckets = (Node**)calloc(ht->size, sizeof(Node*));
+
+    for (int i = 0; i < old_size; i++) {
+        Node* cur = old_buckets[i];
         while (cur) {
-            HashNode* tmp = cur;
+            insert_or_update(ht, cur->key, cur->value);
+            Node* tmp = cur;
             cur = cur->next;
-            free(tmp->key);
             free(tmp);
         }
     }
+    free(old_buckets);
+    printf("Rehashed table to new size: %d\\n", ht->size);
+}
+
+void free_table(ChainHashTable* ht) {
+    if (!ht) return;
+    for (int i = 0; i < ht->size; i++) {
+        Node* cur = ht->buckets[i];
+        while (cur) {
+            Node* tmp = cur;
+            cur = cur->next;
+            free(tmp);
+        }
+    }
+    free(ht->buckets);
     free(ht);
 }
 
 int main(void) {
-    HashTable* ht = ht_create();
-    int choice;
-    char key_buf[64];
+    ChainHashTable* ht = create_table(7);
+    int choice = 0;
+    char key[32];
+    int val = 0;
 
     do {
-        printf("\\n=== Hash Table (Chaining) Menu ===\\n");
-        printf("1. Insert / Update (Key, Value)\\n");
+        printf("\\n--- Separate Chaining Hash Table Operations ---\\n");
+        printf("1. Insert or Update\\n");
         printf("2. Search Key\\n");
         printf("3. Delete Key\\n");
-        printf("4. Display Hash Table\\n");
+        printf("4. Display Table\\n");
+        printf("5. Count Total Elements\\n");
+        printf("6. Calculate Load Factor\\n");
+        printf("7. Rehash Table\\n");
         printf("0. Exit\\n");
-        printf("Enter choice: ");
+        printf("Enter your choice: ");
 
         if (scanf("%d", &choice) != 1) {
+            printf("Invalid input. Please enter an integer.\\n");
             clear_input();
             continue;
         }
 
         switch (choice) {
-            case 1: {
-                int val;
+            case 1:
                 printf("Enter string key and integer value: ");
-                if (scanf("%63s %d", key_buf, &val) == 2) {
-                    ht_insert(ht, key_buf, val);
-                    printf("Inserted (%s: %d).\\n", key_buf, val);
+                if (scanf("%31s %d", key, &val) == 2) {
+                    insert_or_update(ht, key, val);
+                    printf("Stored (%s: %d).\\n", key, val);
+                    if ((float)ht->count / ht->size > 0.75f) {
+                        printf("Load factor > 0.75; auto-rehashing...\\n");
+                        rehash(ht);
+                    }
                 } else clear_input();
                 break;
-            }
-            case 2: {
+            case 2:
                 printf("Enter string key to search: ");
-                if (scanf("%63s", key_buf) == 1) {
-                    int val;
-                    if (ht_search(ht, key_buf, &val)) printf("Found '%s' => %d\\n", key_buf, val);
-                    else printf("Key '%s' not found.\\n", key_buf);
+                if (scanf("%31s", key) == 1) {
+                    if (search_key(ht, key, &val)) printf("Key '%s' found with value %d.\\n", key, val);
+                    else printf("Key '%s' not found.\\n", key);
                 } else clear_input();
                 break;
-            }
             case 3:
                 printf("Enter string key to delete: ");
-                if (scanf("%63s", key_buf) == 1) {
-                    if (ht_delete(ht, key_buf)) printf("Deleted key '%s'.\\n", key_buf);
-                    else printf("Key '%s' not found.\\n", key_buf);
+                if (scanf("%31s", key) == 1) {
+                    if (delete_key(ht, key, &val)) printf("Deleted '%s' (value %d).\\n", key, val);
+                    else printf("Key '%s' not found.\\n", key);
                 } else clear_input();
                 break;
             case 4:
-                ht_display(ht);
+                display_table(ht);
+                break;
+            case 5:
+                printf("Total elements: %d\\n", ht->count);
+                break;
+            case 6:
+                printf("Current Load Factor: %.2f (Elements: %d, Capacity: %d)\\n",
+                       (float)ht->count / ht->size, ht->count, ht->size);
+                break;
+            case 7:
+                rehash(ht);
                 break;
             case 0:
-                printf("Exiting Hash Table Menu.\\n");
+                printf("Exiting separate chaining program.\\n");
                 break;
             default:
-                printf("Invalid choice.\\n");
+                printf("Invalid option! Please choose between 0 and 7.\\n");
                 break;
         }
     } while (choice != 0);
 
-    ht_free(ht);
+    free_table(ht);
     return 0;
-}`,
+}
+`,
       tags: ["program", "hashing", "chaining"],
       aliases: ["prog_chain_hash", "programChainHash"],
     })
@@ -3758,159 +5903,202 @@ int main(void) {
       subcategory: "hashing",
       categoryId: "data-structures.full-programs.hashing.open-addressing",
       path: "data-structures/full-programs/hashing/open-addressing/prog-open-hash",
-      description: "Interactive linear probing open-addressing hash table with slot display, collision resolution, and search",
+      description: "Interactive linear probing open-addressing hash table with slot display, tombstone deletion handling, collision resolution, search, and load factor",
       signature: "int main(void)",
       code: `#include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include <stdbool.h>
-
-#define OA_SIZE 11
 
 void clear_input(void) {
     int c;
     while ((c = getchar()) != '\\n' && c != EOF);
 }
 
-typedef struct Slot {
+typedef enum EntryState { EMPTY, OCCUPIED, DELETED } EntryState;
+
+typedef struct OpenEntry {
     char key[32];
-    int val;
-    bool occupied;
-    bool deleted;
-} Slot;
+    int value;
+    EntryState state;
+} OpenEntry;
 
-unsigned int oa_hash(const char* key) {
-    unsigned int h = 0;
-    while (*key) h = (h * 31) + (unsigned char)(*key++);
-    return h % OA_SIZE;
+typedef struct OpenHashTable {
+    OpenEntry* entries;
+    int capacity;
+    int count;
+} OpenHashTable;
+
+static unsigned long hash_func(const char* s, int mod) {
+    unsigned long h = 5381;
+    int c;
+    while ((c = (unsigned char)*s++)) h = ((h << 5) + h) + c;
+    return h % mod;
 }
 
-void oa_init(Slot* table) {
-    for (int i = 0; i < OA_SIZE; i++) {
-        table[i].occupied = false;
-        table[i].deleted = false;
-    }
+OpenHashTable* create_table(int cap) {
+    OpenHashTable* ht = (OpenHashTable*)malloc(sizeof(OpenHashTable));
+    if (!ht) return NULL;
+    ht->capacity = cap;
+    ht->count = 0;
+    ht->entries = (OpenEntry*)calloc(cap, sizeof(OpenEntry));
+    for (int i = 0; i < cap; i++) ht->entries[i].state = EMPTY;
+    return ht;
 }
 
-bool oa_insert(Slot* table, const char* key, int val) {
-    unsigned int start = oa_hash(key);
-    for (int i = 0; i < OA_SIZE; i++) {
-        unsigned int idx = (start + i) % OA_SIZE;
-        if (table[idx].occupied && strcmp(table[idx].key, key) == 0) {
-            table[idx].val = val;
-            return true;
-        }
-        if (!table[idx].occupied) {
-            strncpy(table[idx].key, key, 31);
-            table[idx].key[31] = '\\0';
-            table[idx].val = val;
-            table[idx].occupied = true;
-            table[idx].deleted = false;
-            return true;
-        }
-    }
-    return false;
-}
+bool insert_or_update(OpenHashTable* ht, const char* key, int value) {
+    if (ht->count >= ht->capacity) return false;
+    unsigned long idx = hash_func(key, ht->capacity);
+    int first_deleted = -1;
 
-bool oa_search(const Slot* table, const char* key, int* val) {
-    unsigned int start = oa_hash(key);
-    for (int i = 0; i < OA_SIZE; i++) {
-        unsigned int idx = (start + i) % OA_SIZE;
-        if (!table[idx].occupied && !table[idx].deleted) return false;
-        if (table[idx].occupied && strcmp(table[idx].key, key) == 0) {
-            *val = table[idx].val;
-            return true;
-        }
-    }
-    return false;
-}
-
-bool oa_delete(Slot* table, const char* key) {
-    unsigned int start = oa_hash(key);
-    for (int i = 0; i < OA_SIZE; i++) {
-        unsigned int idx = (start + i) % OA_SIZE;
-        if (!table[idx].occupied && !table[idx].deleted) return false;
-        if (table[idx].occupied && strcmp(table[idx].key, key) == 0) {
-            table[idx].occupied = false;
-            table[idx].deleted = true;
-            return true;
-        }
-    }
-    return false;
-}
-
-void oa_display(const Slot* table) {
-    printf("Open Addressing (Linear Probing) Slots (%d total):\\n", OA_SIZE);
-    for (int i = 0; i < OA_SIZE; i++) {
-        if (table[i].occupied) {
-            printf("Slot [%2d]: Key: %-12s | Val: %d\\n", i, table[i].key, table[i].val);
-        } else if (table[i].deleted) {
-            printf("Slot [%2d]: <DELETED TOMBSTONE>\\n", i);
+    for (int i = 0; i < ht->capacity; i++) {
+        int pos = (idx + i) % ht->capacity;
+        if (ht->entries[pos].state == OCCUPIED) {
+            if (strcmp(ht->entries[pos].key, key) == 0) {
+                ht->entries[pos].value = value;
+                return true;
+            }
+        } else if (ht->entries[pos].state == DELETED) {
+            if (first_deleted == -1) first_deleted = pos;
         } else {
-            printf("Slot [%2d]: <EMPTY>\\n", i);
+            int target = (first_deleted != -1) ? first_deleted : pos;
+            strncpy(ht->entries[target].key, key, sizeof(ht->entries[target].key) - 1);
+            ht->entries[target].key[sizeof(ht->entries[target].key) - 1] = '\\0';
+            ht->entries[target].value = value;
+            ht->entries[target].state = OCCUPIED;
+            ht->count++;
+            return true;
         }
     }
+    if (first_deleted != -1) {
+        strncpy(ht->entries[first_deleted].key, key, sizeof(ht->entries[first_deleted].key) - 1);
+        ht->entries[first_deleted].key[sizeof(ht->entries[first_deleted].key) - 1] = '\\0';
+        ht->entries[first_deleted].value = value;
+        ht->entries[first_deleted].state = OCCUPIED;
+        ht->count++;
+        return true;
+    }
+    return false;
+}
+
+bool search_key(const OpenHashTable* ht, const char* key, int* val) {
+    unsigned long idx = hash_func(key, ht->capacity);
+    for (int i = 0; i < ht->capacity; i++) {
+        int pos = (idx + i) % ht->capacity;
+        if (ht->entries[pos].state == EMPTY) return false;
+        if (ht->entries[pos].state == OCCUPIED && strcmp(ht->entries[pos].key, key) == 0) {
+            *val = ht->entries[pos].value;
+            return true;
+        }
+    }
+    return false;
+}
+
+bool delete_key(OpenHashTable* ht, const char* key, int* val) {
+    unsigned long idx = hash_func(key, ht->capacity);
+    for (int i = 0; i < ht->capacity; i++) {
+        int pos = (idx + i) % ht->capacity;
+        if (ht->entries[pos].state == EMPTY) return false;
+        if (ht->entries[pos].state == OCCUPIED && strcmp(ht->entries[pos].key, key) == 0) {
+            *val = ht->entries[pos].value;
+            ht->entries[pos].state = DELETED;
+            ht->count--;
+            return true;
+        }
+    }
+    return false;
+}
+
+void display_slots(const OpenHashTable* ht) {
+    printf("Open Addressing Table (%d slots, %d items, load: %.2f):\\n",
+           ht->capacity, ht->count, (float)ht->count / ht->capacity);
+    for (int i = 0; i < ht->capacity; i++) {
+        if (ht->entries[i].state == OCCUPIED) {
+            printf("[%d]: OCCUPIED (%s: %d)\\n", i, ht->entries[i].key, ht->entries[i].value);
+        } else if (ht->entries[i].state == DELETED) {
+            printf("[%d]: <DELETED / TOMBSTONE>\\n", i);
+        } else {
+            printf("[%d]: EMPTY\\n", i);
+        }
+    }
+}
+
+void free_table(OpenHashTable* ht) {
+    if (!ht) return;
+    free(ht->entries);
+    free(ht);
 }
 
 int main(void) {
-    Slot table[OA_SIZE];
-    oa_init(table);
-    int choice;
-    char key_buf[32];
+    OpenHashTable* ht = create_table(11);
+    int choice = 0;
+    char key[32];
+    int val = 0;
 
     do {
-        printf("\\n=== Open Addressing Hash Table Menu ===\\n");
-        printf("1. Insert (Key, Value)\\n");
+        printf("\\n--- Open Addressing (Linear Probing) Operations ---\\n");
+        printf("1. Insert or Update\\n");
         printf("2. Search Key\\n");
         printf("3. Delete Key\\n");
-        printf("4. Display All Slots\\n");
+        printf("4. Display Slots\\n");
+        printf("5. Count Elements\\n");
+        printf("6. Calculate Load Factor\\n");
         printf("0. Exit\\n");
-        printf("Enter choice: ");
+        printf("Enter your choice: ");
 
         if (scanf("%d", &choice) != 1) {
+            printf("Invalid input. Please enter an integer.\\n");
             clear_input();
             continue;
         }
 
         switch (choice) {
-            case 1: {
-                int val;
+            case 1:
                 printf("Enter string key and integer value: ");
-                if (scanf("%31s %d", key_buf, &val) == 2) {
-                    if (oa_insert(table, key_buf, val)) printf("Inserted (%s, %d).\\n", key_buf, val);
-                    else printf("Table is full! Collision probe exceeded.\\n");
+                if (scanf("%31s %d", key, &val) == 2) {
+                    if (insert_or_update(ht, key, val))
+                        printf("Inserted (%s: %d).\\n", key, val);
+                    else
+                        printf("Hash table is FULL!\\n");
                 } else clear_input();
                 break;
-            }
-            case 2: {
-                printf("Enter string key to search: ");
-                if (scanf("%31s", key_buf) == 1) {
-                    int val;
-                    if (oa_search(table, key_buf, &val)) printf("Found '%s' => %d\\n", key_buf, val);
-                    else printf("Key '%s' not found.\\n", key_buf);
+            case 2:
+                printf("Enter string key: ");
+                if (scanf("%31s", key) == 1) {
+                    if (search_key(ht, key, &val)) printf("Found '%s' -> %d.\\n", key, val);
+                    else printf("Key '%s' not found.\\n", key);
                 } else clear_input();
                 break;
-            }
             case 3:
-                printf("Enter string key to delete: ");
-                if (scanf("%31s", key_buf) == 1) {
-                    if (oa_delete(table, key_buf)) printf("Deleted key '%s'.\\n", key_buf);
-                    else printf("Key '%s' not found.\\n", key_buf);
+                printf("Enter string key: ");
+                if (scanf("%31s", key) == 1) {
+                    if (delete_key(ht, key, &val)) printf("Deleted '%s' (value %d).\\n", key, val);
+                    else printf("Key '%s' not found.\\n", key);
                 } else clear_input();
                 break;
             case 4:
-                oa_display(table);
+                display_slots(ht);
+                break;
+            case 5:
+                printf("Total elements: %d\\n", ht->count);
+                break;
+            case 6:
+                printf("Load Factor: %.2f (Elements: %d, Capacity: %d)\\n",
+                       (float)ht->count / ht->capacity, ht->count, ht->capacity);
                 break;
             case 0:
-                printf("Exiting Open Addressing Menu.\\n");
+                printf("Exiting open addressing program.\\n");
                 break;
             default:
-                printf("Invalid choice.\\n");
+                printf("Invalid option! Please choose between 0 and 6.\\n");
                 break;
         }
     } while (choice != 0);
 
+    free_table(ht);
     return 0;
-}`,
+}
+`,
       tags: ["program", "hashing", "open-addressing"],
       aliases: ["prog_open_hash", "programOpenHash"],
     })
@@ -3926,87 +6114,202 @@ int main(void) {
       subcategory: "hashing",
       categoryId: "data-structures.full-programs.hashing.hash-functions",
       path: "data-structures/full-programs/hashing/hash-functions/prog-hash-functions",
-      description: "Interactive string hash function benchmark comparing DJB2, FNV-1a, and SDBM hashes",
+      description: "Interactive hash workbench comparing DJB2, FNV-1a, MurmurHash3, SDBM, and Polynomial rolling hashes with benchmark and 1-bit mutation avalanche test",
       signature: "int main(void)",
       code: `#include <stdio.h>
-#include <stdint.h>
+#include <stdlib.h>
 #include <string.h>
+#include <stdint.h>
 
 void clear_input(void) {
     int c;
     while ((c = getchar()) != '\\n' && c != EOF);
 }
 
-unsigned long djb2(const char* s) {
-    unsigned long h = 5381;
+unsigned long hash_djb2(const char* str) {
+    unsigned long hash = 5381;
     int c;
-    while ((c = *s++)) h = ((h << 5) + h) + c;
-    return h;
-}
-
-uint32_t fnv1a(const char* s) {
-    uint32_t h = 2166136261u;
-    while (*s) {
-        h ^= (uint8_t)(*s++);
-        h *= 16777619u;
+    while ((c = (unsigned char)*str++)) {
+        hash = ((hash << 5) + hash) + c;
     }
+    return hash;
+}
+
+uint32_t hash_fnv1a(const char* str) {
+    uint32_t hash = 2166136261u;
+    while (*str) {
+        hash ^= (uint8_t)(*str++);
+        hash *= 16777619u;
+    }
+    return hash;
+}
+
+uint32_t hash_murmur32(const char* key, uint32_t seed) {
+    uint32_t h = seed;
+    uint32_t k;
+    size_t len = strlen(key);
+    const uint8_t* data = (const uint8_t*)key;
+    const size_t nblocks = len / 4;
+
+    for (size_t i = 0; i < nblocks; i++) {
+        k = (uint32_t)data[i*4] | ((uint32_t)data[i*4+1] << 8) |
+            ((uint32_t)data[i*4+2] << 16) | ((uint32_t)data[i*4+3] << 24);
+        k *= 0xcc9e2d51;
+        k = (k << 15) | (k >> 17);
+        k *= 0x1b873593;
+        h ^= k;
+        h = (h << 13) | (h >> 19);
+        h = h * 5 + 0xe6546b64;
+    }
+
+    k = 0;
+    const uint8_t* tail = data + (nblocks * 4);
+    switch (len & 3) {
+        case 3: k ^= (uint32_t)tail[2] << 16;
+        case 2: k ^= (uint32_t)tail[1] << 8;
+        case 1: k ^= (uint32_t)tail[0];
+                k *= 0xcc9e2d51;
+                k = (k << 15) | (k >> 17);
+                k *= 0x1b873593;
+                h ^= k;
+    }
+
+    h ^= (uint32_t)len;
+    h ^= h >> 16;
+    h *= 0x85ebca6b;
+    h ^= h >> 13;
+    h *= 0xc2b2ae35;
+    h ^= h >> 16;
     return h;
 }
 
-unsigned long sdbm(const char* s) {
-    unsigned long h = 0;
+unsigned long hash_sdbm(const char* str) {
+    unsigned long hash = 0;
     int c;
-    while ((c = *s++)) h = c + (h << 6) + (h << 16) - h;
-    return h;
+    while ((c = (unsigned char)*str++)) {
+        hash = c + (hash << 6) + (hash << 16) - hash;
+    }
+    return hash;
+}
+
+uint64_t hash_polynomial(const char* str) {
+    const int p = 31;
+    const uint64_t m = 1000000009;
+    uint64_t hash_val = 0;
+    uint64_t p_pow = 1;
+    while (*str) {
+        hash_val = (hash_val + (*str - 'a' + 1) * p_pow) % m;
+        p_pow = (p_pow * p) % m;
+        str++;
+    }
+    return hash_val;
+}
+
+static int count_differing_bits(uint32_t a, uint32_t b) {
+    uint32_t diff = a ^ b;
+    int cnt = 0;
+    while (diff) {
+        cnt += diff & 1;
+        diff >>= 1;
+    }
+    return cnt;
 }
 
 int main(void) {
-    int choice;
-    char buffer[128];
+    char input[128];
+    int choice = 0;
 
     do {
-        printf("\\n=== Hash Functions Comparison Menu ===\\n");
-        printf("1. Hash a Custom String (DJB2, FNV-1a, SDBM)\\n");
-        printf("2. Run Built-in Benchmark Strings\\n");
+        printf("\\n--- Hash Functions Workbench ---\\n");
+        printf("1. Hash String with DJB2\\n");
+        printf("2. Hash String with FNV-1a\\n");
+        printf("3. Hash String with MurmurHash3\\n");
+        printf("4. Hash String with SDBM\\n");
+        printf("5. Hash String with Polynomial Rolling Hash\\n");
+        printf("6. Benchmark All 5 on Input String\\n");
+        printf("7. Avalanche Effect Test (1-bit mutation comparison)\\n");
         printf("0. Exit\\n");
-        printf("Enter choice: ");
+        printf("Enter your choice: ");
 
         if (scanf("%d", &choice) != 1) {
+            printf("Invalid input. Please enter an integer.\\n");
             clear_input();
             continue;
         }
 
         switch (choice) {
             case 1:
-                printf("Enter text to hash: ");
-                if (scanf("%127s", buffer) == 1) {
-                    printf("Input: '%s'\\n", buffer);
-                    printf("  DJB2   : 0x%08lX (%lu)\\n", djb2(buffer), djb2(buffer));
-                    printf("  FNV-1a : 0x%08X (%u)\\n", fnv1a(buffer), fnv1a(buffer));
-                    printf("  SDBM   : 0x%08lX (%lu)\\n", sdbm(buffer), sdbm(buffer));
+                printf("Enter string: ");
+                if (scanf("%127s", input) == 1) {
+                    printf("DJB2 Hash: 0x%08lx (%lu)\\n", hash_djb2(input), hash_djb2(input));
                 } else clear_input();
                 break;
-            case 2: {
-                const char* sample[] = {"algorithm", "data_structure", "hash_map", "binary_tree"};
-                printf("%-16s | %-12s | %-12s | %-12s\\n", "String", "DJB2", "FNV-1a", "SDBM");
-                printf("-----------------+--------------+--------------+-------------\\n");
-                for (int i = 0; i < 4; i++) {
-                    printf("%-16s | 0x%08lX   | 0x%08X   | 0x%08lX\\n",
-                           sample[i], djb2(sample[i]), fnv1a(sample[i]), sdbm(sample[i]));
-                }
+            case 2:
+                printf("Enter string: ");
+                if (scanf("%127s", input) == 1) {
+                    printf("FNV-1a Hash: 0x%08x (%u)\\n", hash_fnv1a(input), hash_fnv1a(input));
+                } else clear_input();
+                break;
+            case 3:
+                printf("Enter string: ");
+                if (scanf("%127s", input) == 1) {
+                    printf("MurmurHash3: 0x%08x (%u)\\n", hash_murmur32(input, 42), hash_murmur32(input, 42));
+                } else clear_input();
+                break;
+            case 4:
+                printf("Enter string: ");
+                if (scanf("%127s", input) == 1) {
+                    printf("SDBM Hash: 0x%08lx (%lu)\\n", hash_sdbm(input), hash_sdbm(input));
+                } else clear_input();
+                break;
+            case 5:
+                printf("Enter string: ");
+                if (scanf("%127s", input) == 1) {
+                    printf("Polynomial Hash: %llu\\n", (unsigned long long)hash_polynomial(input));
+                } else clear_input();
+                break;
+            case 6:
+                printf("Enter string: ");
+                if (scanf("%127s", input) == 1) {
+                    printf("--- Benchmark Results for '%s' ---\\n", input);
+                    printf("DJB2       : 0x%08lx\\n", hash_djb2(input));
+                    printf("FNV-1a     : 0x%08x\\n", hash_fnv1a(input));
+                    printf("MurmurHash3: 0x%08x\\n", hash_murmur32(input, 42));
+                    printf("SDBM       : 0x%08lx\\n", hash_sdbm(input));
+                    printf("Polynomial : %llu\\n", (unsigned long long)hash_polynomial(input));
+                } else clear_input();
+                break;
+            case 7: {
+                char mutated[128];
+                printf("Enter base string: ");
+                if (scanf("%127s", input) == 1) {
+                    strncpy(mutated, input, sizeof(mutated) - 1);
+                    mutated[sizeof(mutated) - 1] = '\\0';
+                    mutated[0] ^= 1;
+                    printf("Original: '%s' | Mutated: '%s'\\n", input, mutated);
+                    uint32_t h1 = hash_fnv1a(input);
+                    uint32_t h2 = hash_fnv1a(mutated);
+                    int diff_fnv = count_differing_bits(h1, h2);
+                    uint32_t m1 = hash_murmur32(input, 42);
+                    uint32_t m2 = hash_murmur32(mutated, 42);
+                    int diff_mur = count_differing_bits(m1, m2);
+                    printf("FNV-1a Bit Flip: %d / 32 bits (%.1f%%)\\n", diff_fnv, (diff_fnv / 32.0f) * 100);
+                    printf("Murmur32 Bit Flip: %d / 32 bits (%.1f%%)\\n", diff_mur, (diff_mur / 32.0f) * 100);
+                } else clear_input();
                 break;
             }
             case 0:
-                printf("Exiting Hash Functions Menu.\\n");
+                printf("Exiting hash workbench.\\n");
                 break;
             default:
-                printf("Invalid choice.\\n");
+                printf("Invalid option! Please choose between 0 and 7.\\n");
                 break;
         }
     } while (choice != 0);
 
     return 0;
-}`,
+}
+`,
       tags: ["program", "hashing", "hash-functions"],
       aliases: ["prog_hash_functions", "programHashFunctions"],
     })

@@ -1,7 +1,7 @@
 # prog_graph_dsu
 > **Domain:** `data-structures` | **Subcategory:** `graphs` | **Type:** `program`
 ## Overview
-Interactive Disjoint Set Union (DSU) program with path compression and union by rank
+Interactive Disjoint Set Union (DSU) program with path compression, union by rank, union by size, connected check, disjoint set counting, and component sizing
 
 ## Signature
 ```c
@@ -28,107 +28,166 @@ void clear_input(void) {
     while ((c = getchar()) != '\n' && c != EOF);
 }
 
-typedef struct DSU {
+typedef struct GraphDSU {
     int* parent;
     int* rank;
+    int* size;
     int n;
-} DSU;
+    int num_sets;
+} GraphDSU;
 
-DSU* dsu_create(int n) {
-    DSU* d = (DSU*)malloc(sizeof(DSU));
-    d->n = n;
-    d->parent = (int*)malloc(n * sizeof(int));
-    d->rank = (int*)calloc(n, sizeof(int));
-    for (int i = 0; i < n; i++) d->parent[i] = i;
-    return d;
-}
-
-int dsu_find(DSU* d, int i) {
-    if (d->parent[i] == i) return i;
-    return d->parent[i] = dsu_find(d, d->parent[i]);
-}
-
-bool dsu_union(DSU* d, int i, int j) {
-    int root_i = dsu_find(d, i);
-    int root_j = dsu_find(d, j);
-    if (root_i == root_j) return false;
-    if (d->rank[root_i] < d->rank[root_j]) d->parent[root_i] = root_j;
-    else if (d->rank[root_i] > d->rank[root_j]) d->parent[root_j] = root_i;
-    else {
-        d->parent[root_j] = root_i;
-        d->rank[root_i]++;
+GraphDSU* create_dsu(int n) {
+    GraphDSU* dsu = (GraphDSU*)malloc(sizeof(GraphDSU));
+    if (!dsu) return NULL;
+    dsu->n = n;
+    dsu->num_sets = n;
+    dsu->parent = (int*)malloc(n * sizeof(int));
+    dsu->rank = (int*)malloc(n * sizeof(int));
+    dsu->size = (int*)malloc(n * sizeof(int));
+    for (int i = 0; i < n; i++) {
+        dsu->parent[i] = i;
+        dsu->rank[i] = 0;
+        dsu->size[i] = 1;
     }
-    return true;
+    return dsu;
 }
 
-void dsu_free(DSU* d) {
-    if (d) {
-        free(d->parent);
-        free(d->rank);
-        free(d);
+int find_rep(GraphDSU* dsu, int i) {
+    if (dsu->parent[i] == i) return i;
+    return dsu->parent[i] = find_rep(dsu, dsu->parent[i]);
+}
+
+void union_by_rank(GraphDSU* dsu, int x, int y) {
+    int root_x = find_rep(dsu, x);
+    int root_y = find_rep(dsu, y);
+    if (root_x != root_y) {
+        if (dsu->rank[root_x] < dsu->rank[root_y]) {
+            dsu->parent[root_x] = root_y;
+            dsu->size[root_y] += dsu->size[root_x];
+        } else if (dsu->rank[root_x] > dsu->rank[root_y]) {
+            dsu->parent[root_y] = root_x;
+            dsu->size[root_x] += dsu->size[root_y];
+        } else {
+            dsu->parent[root_y] = root_x;
+            dsu->size[root_x] += dsu->size[root_y];
+            dsu->rank[root_x]++;
+        }
+        dsu->num_sets--;
     }
+}
+
+void union_by_size(GraphDSU* dsu, int x, int y) {
+    int root_x = find_rep(dsu, x);
+    int root_y = find_rep(dsu, y);
+    if (root_x != root_y) {
+        if (dsu->size[root_x] < dsu->size[root_y]) {
+            dsu->parent[root_x] = root_y;
+            dsu->size[root_y] += dsu->size[root_x];
+        } else {
+            dsu->parent[root_y] = root_x;
+            dsu->size[root_x] += dsu->size[root_y];
+        }
+        dsu->num_sets--;
+    }
+}
+
+bool check_connected(GraphDSU* dsu, int x, int y) {
+    return find_rep(dsu, x) == find_rep(dsu, y);
+}
+
+int get_component_size(GraphDSU* dsu, int x) {
+    return dsu->size[find_rep(dsu, x)];
+}
+
+void display_sets(GraphDSU* dsu) {
+    printf("DSU Sets (%d elements, %d disjoint sets):\n", dsu->n, dsu->num_sets);
+    for (int i = 0; i < dsu->n; i++) {
+        printf("Element %d -> Representative %d (size: %d)\n", i, find_rep(dsu, i), get_component_size(dsu, i));
+    }
+}
+
+void free_dsu(GraphDSU* dsu) {
+    if (!dsu) return;
+    free(dsu->parent);
+    free(dsu->rank);
+    free(dsu->size);
+    free(dsu);
 }
 
 int main(void) {
-    int n = 8;
-    DSU* d = dsu_create(n);
-    int choice;
+    int n = 6;
+    GraphDSU* dsu = create_dsu(n);
+    int choice = 0;
+    int u = 0, v = 0;
 
     do {
-        printf("\n=== Disjoint Set Union (DSU) Menu (Elements: 0-%d) ===\n", n - 1);
-        printf("1. Union Sets (u, v)\n");
-        printf("2. Find Set Representative of x\n");
-        printf("3. Check Connected (Are u and v in same set?)\n");
-        printf("4. Display All Element Representatives\n");
+        printf("\n--- Disjoint Set Union (DSU) Operations ---\n");
+        printf("1. Union by Rank\n");
+        printf("2. Union by Size\n");
+        printf("3. Find Representative\n");
+        printf("4. Check Connected\n");
+        printf("5. Count Disjoint Sets\n");
+        printf("6. Get Component Size\n");
+        printf("7. Display All Sets\n");
         printf("0. Exit\n");
-        printf("Enter choice: ");
+        printf("Enter your choice: ");
 
         if (scanf("%d", &choice) != 1) {
+            printf("Invalid input. Please enter an integer.\n");
             clear_input();
             continue;
         }
 
         switch (choice) {
-            case 1: {
-                int u, v;
-                printf("Enter pair (u v): ");
+            case 1:
+                printf("Enter two elements (0 to %d): ", n - 1);
                 if (scanf("%d %d", &u, &v) == 2 && u >= 0 && u < n && v >= 0 && v < n) {
-                    if (dsu_union(d, u, v)) printf("Merged set containing %d and set containing %d.\n", u, v);
-                    else printf("%d and %d were already in the same set.\n", u, v);
+                    union_by_rank(dsu, u, v);
+                    printf("Union by rank applied to %d and %d.\n", u, v);
                 } else clear_input();
                 break;
-            }
-            case 2: {
-                int x;
-                printf("Enter element x (0-%d): ", n - 1);
-                if (scanf("%d", &x) == 1 && x >= 0 && x < n) {
-                    printf("Representative (Leader) of %d is %d.\n", x, dsu_find(d, x));
-                } else clear_input();
-                break;
-            }
-            case 3: {
-                int u, v;
-                printf("Enter pair to check (u v): ");
+            case 2:
+                printf("Enter two elements (0 to %d): ", n - 1);
                 if (scanf("%d %d", &u, &v) == 2 && u >= 0 && u < n && v >= 0 && v < n) {
-                    printf("Are %d and %d connected? %s\n", u, v, dsu_find(d, u) == dsu_find(d, v) ? "YES" : "NO");
+                    union_by_size(dsu, u, v);
+                    printf("Union by size applied to %d and %d.\n", u, v);
                 } else clear_input();
                 break;
-            }
+            case 3:
+                printf("Enter element (0 to %d): ", n - 1);
+                if (scanf("%d", &u) == 1 && u >= 0 && u < n) {
+                    printf("Representative of %d is: %d\n", u, find_rep(dsu, u));
+                } else clear_input();
+                break;
             case 4:
-                printf("Element -> Leader: ");
-                for (int i = 0; i < n; i++) printf("[%d -> %d] ", i, dsu_find(d, i));
-                printf("\n");
+                printf("Enter two elements (0 to %d): ", n - 1);
+                if (scanf("%d %d", &u, &v) == 2 && u >= 0 && u < n && v >= 0 && v < n) {
+                    if (check_connected(dsu, u, v)) printf("%d and %d are CONNECTED.\n", u, v);
+                    else printf("%d and %d are NOT connected.\n", u, v);
+                } else clear_input();
+                break;
+            case 5:
+                printf("Total disjoint sets: %d\n", dsu->num_sets);
+                break;
+            case 6:
+                printf("Enter element (0 to %d): ", n - 1);
+                if (scanf("%d", &u) == 1 && u >= 0 && u < n) {
+                    printf("Size of component containing %d: %d\n", u, get_component_size(dsu, u));
+                } else clear_input();
+                break;
+            case 7:
+                display_sets(dsu);
                 break;
             case 0:
-                printf("Exiting DSU Menu.\n");
+                printf("Exiting DSU program.\n");
                 break;
             default:
-                printf("Invalid choice.\n");
+                printf("Invalid option! Please choose between 0 and 7.\n");
                 break;
         }
     } while (choice != 0);
 
-    dsu_free(d);
+    free_dsu(dsu);
     return 0;
 }
 ```

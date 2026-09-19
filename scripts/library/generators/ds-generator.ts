@@ -1,6 +1,15 @@
 import { Component } from "@dtyp/types";
 import { createComponent } from "./component-factory.js";
 import { generateDataStructuresFullPrograms } from "./ds-full-programs-generator.js";
+import {
+  generateExpandedSinglyComponents,
+  generateExpandedDoublyComponents,
+  generateExpandedSinglyCircularComponents,
+  generateExpandedDoublyCircularComponents,
+  generateExpandedArrayStackQueueComponents,
+  generateExpandedTreeComponents,
+  generateExpandedGraphHashingComponents,
+} from "./ds-expansion-generator.js";
 
 export function generateDataStructuresComponents(): Component[] {
   const components: Component[] = [];
@@ -2173,6 +2182,15 @@ int open_hash_insert(OpenHashTable* ht, const char* key, int value) {
       aliases: ["hash_fnv1a", "fnv1aHash"],
     })
   );
+
+  // SUBDOMAIN 1 (CONT.): EXPANDED SEPARATE COMPONENTS
+  components.push(...generateExpandedSinglyComponents());
+  components.push(...generateExpandedDoublyComponents());
+  components.push(...generateExpandedSinglyCircularComponents());
+  components.push(...generateExpandedDoublyCircularComponents());
+  components.push(...generateExpandedArrayStackQueueComponents());
+  components.push(...generateExpandedTreeComponents());
+  components.push(...generateExpandedGraphHashingComponents());
 
   // =========================================================================
   // SUBDOMAIN 2: FULL PROGRAMS (data-structures.full-programs)

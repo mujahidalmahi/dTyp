@@ -41,8 +41,8 @@ export const validateLibrary = async (): Promise<boolean> => {
 
   logger.info(`Loaded ${allComponents.length} components, ${snippets.length} snippets, ${categories.length} categories`);
 
-  if (allComponents.length !== 500) {
-    logger.error(`Validation failed: Component count (${allComponents.length}) must be exactly 500!`);
+  if (allComponents.length < 500) {
+    logger.error(`Validation failed: Component count (${allComponents.length}) must be at least 500!`);
     return false;
   }
 

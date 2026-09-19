@@ -31,8 +31,8 @@
       "academics-programming>prog_acad_truth_tables()",
       "academics-programming>discrete-mathematics>logic-set-theory>truth-tables>prog-truth-tables>prog_acad_truth_tables()"
     ],
-    "createdAt": "2026-09-19T07:33:52.427Z",
-    "updatedAt": "2026-09-19T07:33:52.427Z"
+    "createdAt": "2026-09-19T08:12:29.928Z",
+    "updatedAt": "2026-09-19T08:12:29.928Z"
   },
   {
     "id": "academics-programming.discrete-mathematics.logic-set-theory.set-operations.prog-set-operations",
@@ -65,8 +65,8 @@
       "academics-programming>prog_acad_set_operations()",
       "academics-programming>discrete-mathematics>logic-set-theory>set-operations>prog-set-operations>prog_acad_set_operations()"
     ],
-    "createdAt": "2026-09-19T07:33:52.427Z",
-    "updatedAt": "2026-09-19T07:33:52.427Z"
+    "createdAt": "2026-09-19T08:12:29.928Z",
+    "updatedAt": "2026-09-19T08:12:29.928Z"
   },
   {
     "id": "academics-programming.discrete-mathematics.relations-combinatorics.equivalence-relations.prog-equivalence-relations",
@@ -99,8 +99,8 @@
       "academics-programming>prog_acad_equivalence_relations()",
       "academics-programming>discrete-mathematics>relations-combinatorics>equivalence-relations>prog-equivalence-relations>prog_acad_equivalence_relations()"
     ],
-    "createdAt": "2026-09-19T07:33:52.427Z",
-    "updatedAt": "2026-09-19T07:33:52.427Z"
+    "createdAt": "2026-09-19T08:12:29.928Z",
+    "updatedAt": "2026-09-19T08:12:29.928Z"
   },
   {
     "id": "academics-programming.discrete-mathematics.relations-combinatorics.permutations-combinations.prog-permutations-combinations",
@@ -133,8 +133,8 @@
       "academics-programming>prog_acad_permutations_combinations()",
       "academics-programming>discrete-mathematics>relations-combinatorics>permutations-combinations>prog-permutations-combinations>prog_acad_permutations_combinations()"
     ],
-    "createdAt": "2026-09-19T07:33:52.427Z",
-    "updatedAt": "2026-09-19T07:33:52.427Z"
+    "createdAt": "2026-09-19T08:12:29.928Z",
+    "updatedAt": "2026-09-19T08:12:29.928Z"
   },
   {
     "id": "academics-programming.discrete-mathematics.graph-theory.vertex-degrees.prog-vertex-degrees",
@@ -167,8 +167,8 @@
       "academics-programming>prog_acad_vertex_degrees()",
       "academics-programming>discrete-mathematics>graph-theory>vertex-degrees>prog-vertex-degrees>prog_acad_vertex_degrees()"
     ],
-    "createdAt": "2026-09-19T07:33:52.427Z",
-    "updatedAt": "2026-09-19T07:33:52.427Z"
+    "createdAt": "2026-09-19T08:12:29.928Z",
+    "updatedAt": "2026-09-19T08:12:29.928Z"
   },
   {
     "id": "academics-programming.discrete-mathematics.graph-theory.planar-euler.prog-planar-euler",
@@ -201,8 +201,8 @@
       "academics-programming>prog_acad_planar_euler()",
       "academics-programming>discrete-mathematics>graph-theory>planar-euler>prog-planar-euler>prog_acad_planar_euler()"
     ],
-    "createdAt": "2026-09-19T07:33:52.427Z",
-    "updatedAt": "2026-09-19T07:33:52.427Z"
+    "createdAt": "2026-09-19T08:12:29.928Z",
+    "updatedAt": "2026-09-19T08:12:29.928Z"
   },
   {
     "id": "academics-programming.numerical-methods.root-finding.bisection-method.prog-bisection",
@@ -236,8 +236,8 @@
       "academics-programming>prog_acad_bisection()",
       "academics-programming>numerical-methods>root-finding>bisection-method>prog-bisection>prog_acad_bisection()"
     ],
-    "createdAt": "2026-09-19T07:33:52.427Z",
-    "updatedAt": "2026-09-19T07:33:52.427Z"
+    "createdAt": "2026-09-19T08:12:29.928Z",
+    "updatedAt": "2026-09-19T08:12:29.928Z"
   },
   {
     "id": "academics-programming.numerical-methods.root-finding.false-position.prog-false-position",
@@ -270,8 +270,8 @@
       "academics-programming>prog_acad_false_position()",
       "academics-programming>numerical-methods>root-finding>false-position>prog-false-position>prog_acad_false_position()"
     ],
-    "createdAt": "2026-09-19T07:33:52.427Z",
-    "updatedAt": "2026-09-19T07:33:52.427Z"
+    "createdAt": "2026-09-19T08:12:29.928Z",
+    "updatedAt": "2026-09-19T08:12:29.928Z"
   },
   {
     "id": "academics-programming.numerical-methods.root-finding.fixed-point.prog-fixed-point",
@@ -304,8 +304,8 @@
       "academics-programming>prog_acad_fixed_point()",
       "academics-programming>numerical-methods>root-finding>fixed-point>prog-fixed-point>prog_acad_fixed_point()"
     ],
-    "createdAt": "2026-09-19T07:33:52.427Z",
-    "updatedAt": "2026-09-19T07:33:52.427Z"
+    "createdAt": "2026-09-19T08:12:29.928Z",
+    "updatedAt": "2026-09-19T08:12:29.928Z"
   },
   {
     "id": "academics-programming.numerical-methods.root-finding.newton-raphson.prog-newton-raphson",
@@ -338,8 +338,8 @@
       "academics-programming>prog_acad_newton_raphson()",
       "academics-programming>numerical-methods>root-finding>newton-raphson>prog-newton-raphson>prog_acad_newton_raphson()"
     ],
-    "createdAt": "2026-09-19T07:33:52.427Z",
-    "updatedAt": "2026-09-19T07:33:52.427Z"
+    "createdAt": "2026-09-19T08:12:29.928Z",
+    "updatedAt": "2026-09-19T08:12:29.928Z"
   },
   {
     "id": "academics-programming.numerical-methods.root-finding.secant-method.prog-secant",
@@ -372,8 +372,8 @@
       "academics-programming>prog_acad_secant()",
       "academics-programming>numerical-methods>root-finding>secant-method>prog-secant>prog_acad_secant()"
     ],
-    "createdAt": "2026-09-19T07:33:52.427Z",
-    "updatedAt": "2026-09-19T07:33:52.427Z"
+    "createdAt": "2026-09-19T08:12:29.929Z",
+    "updatedAt": "2026-09-19T08:12:29.929Z"
   },
   {
     "id": "academics-programming.numerical-methods.elimination-methods.naive-gauss.prog-naive-gauss",
@@ -406,8 +406,8 @@
       "academics-programming>prog_acad_naive_gauss()",
       "academics-programming>numerical-methods>elimination-methods>naive-gauss>prog-naive-gauss>prog_acad_naive_gauss()"
     ],
-    "createdAt": "2026-09-19T07:33:52.427Z",
-    "updatedAt": "2026-09-19T07:33:52.427Z"
+    "createdAt": "2026-09-19T08:12:29.929Z",
+    "updatedAt": "2026-09-19T08:12:29.929Z"
   },
   {
     "id": "academics-programming.numerical-methods.elimination-methods.gauss-pivoting.prog-gauss-pivoting",
@@ -440,8 +440,8 @@
       "academics-programming>prog_acad_gauss_pivoting()",
       "academics-programming>numerical-methods>elimination-methods>gauss-pivoting>prog-gauss-pivoting>prog_acad_gauss_pivoting()"
     ],
-    "createdAt": "2026-09-19T07:33:52.427Z",
-    "updatedAt": "2026-09-19T07:33:52.427Z"
+    "createdAt": "2026-09-19T08:12:29.929Z",
+    "updatedAt": "2026-09-19T08:12:29.929Z"
   },
   {
     "id": "academics-programming.numerical-methods.elimination-methods.gauss-jordan.prog-gauss-jordan",
@@ -474,8 +474,8 @@
       "academics-programming>prog_acad_gauss_jordan()",
       "academics-programming>numerical-methods>elimination-methods>gauss-jordan>prog-gauss-jordan>prog_acad_gauss_jordan()"
     ],
-    "createdAt": "2026-09-19T07:33:52.427Z",
-    "updatedAt": "2026-09-19T07:33:52.427Z"
+    "createdAt": "2026-09-19T08:12:29.929Z",
+    "updatedAt": "2026-09-19T08:12:29.929Z"
   },
   {
     "id": "academics-programming.numerical-methods.elimination-methods.lu-decomposition.prog-lu-decomposition",
@@ -508,8 +508,8 @@
       "academics-programming>prog_acad_lu_decomposition()",
       "academics-programming>numerical-methods>elimination-methods>lu-decomposition>prog-lu-decomposition>prog_acad_lu_decomposition()"
     ],
-    "createdAt": "2026-09-19T07:33:52.427Z",
-    "updatedAt": "2026-09-19T07:33:52.427Z"
+    "createdAt": "2026-09-19T08:12:29.929Z",
+    "updatedAt": "2026-09-19T08:12:29.929Z"
   },
   {
     "id": "academics-programming.numerical-methods.elimination-methods.jacobi-iteration.prog-jacobi-iteration",
@@ -542,8 +542,8 @@
       "academics-programming>prog_acad_jacobi_iteration()",
       "academics-programming>numerical-methods>elimination-methods>jacobi-iteration>prog-jacobi-iteration>prog_acad_jacobi_iteration()"
     ],
-    "createdAt": "2026-09-19T07:33:52.427Z",
-    "updatedAt": "2026-09-19T07:33:52.427Z"
+    "createdAt": "2026-09-19T08:12:29.929Z",
+    "updatedAt": "2026-09-19T08:12:29.929Z"
   },
   {
     "id": "academics-programming.numerical-methods.elimination-methods.gauss-seidel.prog-gauss-seidel",
@@ -576,8 +576,8 @@
       "academics-programming>prog_acad_gauss_seidel()",
       "academics-programming>numerical-methods>elimination-methods>gauss-seidel>prog-gauss-seidel>prog_acad_gauss_seidel()"
     ],
-    "createdAt": "2026-09-19T07:33:52.427Z",
-    "updatedAt": "2026-09-19T07:33:52.427Z"
+    "createdAt": "2026-09-19T08:12:29.929Z",
+    "updatedAt": "2026-09-19T08:12:29.929Z"
   },
   {
     "id": "academics-programming.numerical-methods.elimination-methods.elimination-pitfalls.prog-elimination-pitfalls",
@@ -610,8 +610,8 @@
       "academics-programming>prog_acad_elimination_pitfalls()",
       "academics-programming>numerical-methods>elimination-methods>elimination-pitfalls>prog-elimination-pitfalls>prog_acad_elimination_pitfalls()"
     ],
-    "createdAt": "2026-09-19T07:33:52.427Z",
-    "updatedAt": "2026-09-19T07:33:52.427Z"
+    "createdAt": "2026-09-19T08:12:29.929Z",
+    "updatedAt": "2026-09-19T08:12:29.929Z"
   },
   {
     "id": "academics-programming.numerical-methods.interpolation.lagrange-interpolation.prog-lagrange-interpolation",
@@ -645,8 +645,8 @@
       "academics-programming>prog_acad_lagrange_interpolation()",
       "academics-programming>numerical-methods>interpolation>lagrange-interpolation>prog-lagrange-interpolation>prog_acad_lagrange_interpolation()"
     ],
-    "createdAt": "2026-09-19T07:33:52.427Z",
-    "updatedAt": "2026-09-19T07:33:52.427Z"
+    "createdAt": "2026-09-19T08:12:29.929Z",
+    "updatedAt": "2026-09-19T08:12:29.929Z"
   },
   {
     "id": "academics-programming.numerical-methods.interpolation.newton-forward.prog-newton-forward",
@@ -680,8 +680,8 @@
       "academics-programming>prog_acad_newton_forward()",
       "academics-programming>numerical-methods>interpolation>newton-forward>prog-newton-forward>prog_acad_newton_forward()"
     ],
-    "createdAt": "2026-09-19T07:33:52.428Z",
-    "updatedAt": "2026-09-19T07:33:52.428Z"
+    "createdAt": "2026-09-19T08:12:29.929Z",
+    "updatedAt": "2026-09-19T08:12:29.929Z"
   },
   {
     "id": "academics-programming.numerical-methods.numerical-integration.trapezoidal-rule.prog-trapezoidal-rule",
@@ -715,8 +715,8 @@
       "academics-programming>prog_acad_trapezoidal_rule()",
       "academics-programming>numerical-methods>numerical-integration>trapezoidal-rule>prog-trapezoidal-rule>prog_acad_trapezoidal_rule()"
     ],
-    "createdAt": "2026-09-19T07:33:52.428Z",
-    "updatedAt": "2026-09-19T07:33:52.428Z"
+    "createdAt": "2026-09-19T08:12:29.929Z",
+    "updatedAt": "2026-09-19T08:12:29.929Z"
   },
   {
     "id": "academics-programming.numerical-methods.numerical-integration.simpsons-rules.prog-simpsons-rules",
@@ -750,8 +750,8 @@
       "academics-programming>prog_acad_simpsons_rules()",
       "academics-programming>numerical-methods>numerical-integration>simpsons-rules>prog-simpsons-rules>prog_acad_simpsons_rules()"
     ],
-    "createdAt": "2026-09-19T07:33:52.428Z",
-    "updatedAt": "2026-09-19T07:33:52.428Z"
+    "createdAt": "2026-09-19T08:12:29.929Z",
+    "updatedAt": "2026-09-19T08:12:29.929Z"
   },
   {
     "id": "academics-programming.calculus.differential-calculus.numerical-derivative.prog-numerical-derivative",
@@ -784,8 +784,8 @@
       "academics-programming>prog_acad_numerical_derivative()",
       "academics-programming>calculus>differential-calculus>numerical-derivative>prog-numerical-derivative>prog_acad_numerical_derivative()"
     ],
-    "createdAt": "2026-09-19T07:33:52.428Z",
-    "updatedAt": "2026-09-19T07:33:52.428Z"
+    "createdAt": "2026-09-19T08:12:29.929Z",
+    "updatedAt": "2026-09-19T08:12:29.929Z"
   },
   {
     "id": "academics-programming.calculus.differential-calculus.extrema-finder.prog-extrema-finder",
@@ -818,8 +818,8 @@
       "academics-programming>prog_acad_extrema_finder()",
       "academics-programming>calculus>differential-calculus>extrema-finder>prog-extrema-finder>prog_acad_extrema_finder()"
     ],
-    "createdAt": "2026-09-19T07:33:52.428Z",
-    "updatedAt": "2026-09-19T07:33:52.428Z"
+    "createdAt": "2026-09-19T08:12:29.929Z",
+    "updatedAt": "2026-09-19T08:12:29.929Z"
   },
   {
     "id": "academics-programming.calculus.integral-calculus.riemann-sums.prog-riemann-sums",
@@ -852,8 +852,8 @@
       "academics-programming>prog_acad_riemann_sums()",
       "academics-programming>calculus>integral-calculus>riemann-sums>prog-riemann-sums>prog_acad_riemann_sums()"
     ],
-    "createdAt": "2026-09-19T07:33:52.428Z",
-    "updatedAt": "2026-09-19T07:33:52.428Z"
+    "createdAt": "2026-09-19T08:12:29.929Z",
+    "updatedAt": "2026-09-19T08:12:29.929Z"
   },
   {
     "id": "academics-programming.calculus.integral-calculus.arc-length.prog-arc-length",
@@ -886,8 +886,8 @@
       "academics-programming>prog_acad_arc_length()",
       "academics-programming>calculus>integral-calculus>arc-length>prog-arc-length>prog_acad_arc_length()"
     ],
-    "createdAt": "2026-09-19T07:33:52.428Z",
-    "updatedAt": "2026-09-19T07:33:52.428Z"
+    "createdAt": "2026-09-19T08:12:29.929Z",
+    "updatedAt": "2026-09-19T08:12:29.929Z"
   },
   {
     "id": "academics-programming.calculus.multivariable-calculus.gradient-vector.prog-gradient-vector",
@@ -921,8 +921,8 @@
       "academics-programming>prog_acad_gradient_vector()",
       "academics-programming>calculus>multivariable-calculus>gradient-vector>prog-gradient-vector>prog_acad_gradient_vector()"
     ],
-    "createdAt": "2026-09-19T07:33:52.428Z",
-    "updatedAt": "2026-09-19T07:33:52.428Z"
+    "createdAt": "2026-09-19T08:12:29.929Z",
+    "updatedAt": "2026-09-19T08:12:29.929Z"
   },
   {
     "id": "academics-programming.calculus.multivariable-calculus.double-integral.prog-double-integral",
@@ -956,8 +956,8 @@
       "academics-programming>prog_acad_double_integral()",
       "academics-programming>calculus>multivariable-calculus>double-integral>prog-double-integral>prog_acad_double_integral()"
     ],
-    "createdAt": "2026-09-19T07:33:52.428Z",
-    "updatedAt": "2026-09-19T07:33:52.428Z"
+    "createdAt": "2026-09-19T08:12:29.929Z",
+    "updatedAt": "2026-09-19T08:12:29.929Z"
   },
   {
     "id": "academics-programming.geometry-linear-algebra.coordinate-geometry.line-intersection.prog-line-intersection",
@@ -990,8 +990,8 @@
       "academics-programming>prog_acad_line_intersection()",
       "academics-programming>geometry-linear-algebra>coordinate-geometry>line-intersection>prog-line-intersection>prog_acad_line_intersection()"
     ],
-    "createdAt": "2026-09-19T07:33:52.428Z",
-    "updatedAt": "2026-09-19T07:33:52.428Z"
+    "createdAt": "2026-09-19T08:12:29.929Z",
+    "updatedAt": "2026-09-19T08:12:29.929Z"
   },
   {
     "id": "academics-programming.geometry-linear-algebra.coordinate-geometry.conic-sections.prog-conic-sections",
@@ -1024,8 +1024,8 @@
       "academics-programming>prog_acad_conic_sections()",
       "academics-programming>geometry-linear-algebra>coordinate-geometry>conic-sections>prog-conic-sections>prog_acad_conic_sections()"
     ],
-    "createdAt": "2026-09-19T07:33:52.428Z",
-    "updatedAt": "2026-09-19T07:33:52.428Z"
+    "createdAt": "2026-09-19T08:12:29.929Z",
+    "updatedAt": "2026-09-19T08:12:29.929Z"
   },
   {
     "id": "academics-programming.geometry-linear-algebra.coordinate-geometry.planes-lines-3d.prog-planes-lines-3d",
@@ -1058,8 +1058,8 @@
       "academics-programming>prog_acad_planes_lines_3d()",
       "academics-programming>geometry-linear-algebra>coordinate-geometry>planes-lines-3d>prog-planes-lines-3d>prog_acad_planes_lines_3d()"
     ],
-    "createdAt": "2026-09-19T07:33:52.428Z",
-    "updatedAt": "2026-09-19T07:33:52.428Z"
+    "createdAt": "2026-09-19T08:12:29.929Z",
+    "updatedAt": "2026-09-19T08:12:29.929Z"
   },
   {
     "id": "academics-programming.geometry-linear-algebra.matrix-analysis.determinant-inverse.prog-determinant-inverse",
@@ -1093,8 +1093,8 @@
       "academics-programming>prog_acad_determinant_inverse()",
       "academics-programming>geometry-linear-algebra>matrix-analysis>determinant-inverse>prog-determinant-inverse>prog_acad_determinant_inverse()"
     ],
-    "createdAt": "2026-09-19T07:33:52.428Z",
-    "updatedAt": "2026-09-19T07:33:52.428Z"
+    "createdAt": "2026-09-19T08:12:29.929Z",
+    "updatedAt": "2026-09-19T08:12:29.929Z"
   },
   {
     "id": "academics-programming.geometry-linear-algebra.matrix-analysis.matrix-arithmetic.prog-matrix-arithmetic",
@@ -1127,8 +1127,8 @@
       "academics-programming>prog_acad_matrix_arithmetic()",
       "academics-programming>geometry-linear-algebra>matrix-analysis>matrix-arithmetic>prog-matrix-arithmetic>prog_acad_matrix_arithmetic()"
     ],
-    "createdAt": "2026-09-19T07:33:52.428Z",
-    "updatedAt": "2026-09-19T07:33:52.428Z"
+    "createdAt": "2026-09-19T08:12:29.929Z",
+    "updatedAt": "2026-09-19T08:12:29.929Z"
   },
   {
     "id": "academics-programming.geometry-linear-algebra.matrix-analysis.power-method-eigenvalue.prog-power-method",
@@ -1162,8 +1162,8 @@
       "academics-programming>prog_acad_power_method()",
       "academics-programming>geometry-linear-algebra>matrix-analysis>power-method-eigenvalue>prog-power-method>prog_acad_power_method()"
     ],
-    "createdAt": "2026-09-19T07:33:52.428Z",
-    "updatedAt": "2026-09-19T07:33:52.428Z"
+    "createdAt": "2026-09-19T08:12:29.929Z",
+    "updatedAt": "2026-09-19T08:12:29.929Z"
   },
   {
     "id": "academics-programming.differential-equations.first-order-ode.euler-method.prog-euler-ode",
@@ -1196,8 +1196,8 @@
       "academics-programming>prog_acad_euler_ode()",
       "academics-programming>differential-equations>first-order-ode>euler-method>prog-euler-ode>prog_acad_euler_ode()"
     ],
-    "createdAt": "2026-09-19T07:33:52.428Z",
-    "updatedAt": "2026-09-19T07:33:52.428Z"
+    "createdAt": "2026-09-19T08:12:29.929Z",
+    "updatedAt": "2026-09-19T08:12:29.929Z"
   },
   {
     "id": "academics-programming.differential-equations.first-order-ode.heun-method.prog-heun-ode",
@@ -1230,8 +1230,8 @@
       "academics-programming>prog_acad_heun_ode()",
       "academics-programming>differential-equations>first-order-ode>heun-method>prog-heun-ode>prog_acad_heun_ode()"
     ],
-    "createdAt": "2026-09-19T07:33:52.428Z",
-    "updatedAt": "2026-09-19T07:33:52.428Z"
+    "createdAt": "2026-09-19T08:12:29.929Z",
+    "updatedAt": "2026-09-19T08:12:29.929Z"
   },
   {
     "id": "academics-programming.differential-equations.first-order-ode.runge-kutta-4.prog-runge-kutta-4",
@@ -1264,8 +1264,8 @@
       "academics-programming>prog_acad_runge_kutta_4()",
       "academics-programming>differential-equations>first-order-ode>runge-kutta-4>prog-runge-kutta-4>prog_acad_runge_kutta_4()"
     ],
-    "createdAt": "2026-09-19T07:33:52.428Z",
-    "updatedAt": "2026-09-19T07:33:52.428Z"
+    "createdAt": "2026-09-19T08:12:29.929Z",
+    "updatedAt": "2026-09-19T08:12:29.929Z"
   },
   {
     "id": "academics-programming.differential-equations.second-order-bvp.harmonic-oscillator-rk4.prog-harmonic-oscillator",
@@ -1298,8 +1298,8 @@
       "academics-programming>prog_acad_harmonic_oscillator()",
       "academics-programming>differential-equations>second-order-bvp>harmonic-oscillator-rk4>prog-harmonic-oscillator>prog_acad_harmonic_oscillator()"
     ],
-    "createdAt": "2026-09-19T07:33:52.428Z",
-    "updatedAt": "2026-09-19T07:33:52.428Z"
+    "createdAt": "2026-09-19T08:12:29.929Z",
+    "updatedAt": "2026-09-19T08:12:29.929Z"
   },
   {
     "id": "academics-programming.differential-equations.second-order-bvp.bvp-finite-difference.prog-bvp-finite-difference",
@@ -1332,8 +1332,8 @@
       "academics-programming>prog_acad_bvp_finite_difference()",
       "academics-programming>differential-equations>second-order-bvp>bvp-finite-difference>prog-bvp-finite-difference>prog_acad_bvp_finite_difference()"
     ],
-    "createdAt": "2026-09-19T07:33:52.428Z",
-    "updatedAt": "2026-09-19T07:33:52.428Z"
+    "createdAt": "2026-09-19T08:12:29.929Z",
+    "updatedAt": "2026-09-19T08:12:29.929Z"
   },
   {
     "id": "academics-programming.physics.kinematics-gravity.projectile-motion.prog-projectile-motion",
@@ -1366,8 +1366,8 @@
       "academics-programming>prog_acad_projectile_motion()",
       "academics-programming>physics>kinematics-gravity>projectile-motion>prog-projectile-motion>prog_acad_projectile_motion()"
     ],
-    "createdAt": "2026-09-19T07:33:52.428Z",
-    "updatedAt": "2026-09-19T07:33:52.428Z"
+    "createdAt": "2026-09-19T08:12:29.929Z",
+    "updatedAt": "2026-09-19T08:12:29.929Z"
   },
   {
     "id": "academics-programming.physics.kinematics-gravity.orbital-mechanics.prog-orbital-mechanics",
@@ -1400,8 +1400,8 @@
       "academics-programming>prog_acad_orbital_mechanics()",
       "academics-programming>physics>kinematics-gravity>orbital-mechanics>prog-orbital-mechanics>prog_acad_orbital_mechanics()"
     ],
-    "createdAt": "2026-09-19T07:33:52.428Z",
-    "updatedAt": "2026-09-19T07:33:52.428Z"
+    "createdAt": "2026-09-19T08:12:29.929Z",
+    "updatedAt": "2026-09-19T08:12:29.929Z"
   },
   {
     "id": "academics-programming.physics.thermodynamics.ideal-gas-work.prog-ideal-gas-work",
@@ -1434,8 +1434,8 @@
       "academics-programming>prog_acad_ideal_gas_work()",
       "academics-programming>physics>thermodynamics>ideal-gas-work>prog-ideal-gas-work>prog_acad_ideal_gas_work()"
     ],
-    "createdAt": "2026-09-19T07:33:52.428Z",
-    "updatedAt": "2026-09-19T07:33:52.428Z"
+    "createdAt": "2026-09-19T08:12:29.929Z",
+    "updatedAt": "2026-09-19T08:12:29.929Z"
   },
   {
     "id": "academics-programming.physics.thermodynamics.heat-conduction.prog-heat-conduction",
@@ -1468,8 +1468,8 @@
       "academics-programming>prog_acad_heat_conduction()",
       "academics-programming>physics>thermodynamics>heat-conduction>prog-heat-conduction>prog_acad_heat_conduction()"
     ],
-    "createdAt": "2026-09-19T07:33:52.428Z",
-    "updatedAt": "2026-09-19T07:33:52.428Z"
+    "createdAt": "2026-09-19T08:12:29.929Z",
+    "updatedAt": "2026-09-19T08:12:29.929Z"
   },
   {
     "id": "academics-programming.physics.electromagnetism-optics.coulomb-field.prog-coulomb-field",
@@ -1502,8 +1502,8 @@
       "academics-programming>prog_acad_coulomb_field()",
       "academics-programming>physics>electromagnetism-optics>coulomb-field>prog-coulomb-field>prog_acad_coulomb_field()"
     ],
-    "createdAt": "2026-09-19T07:33:52.428Z",
-    "updatedAt": "2026-09-19T07:33:52.428Z"
+    "createdAt": "2026-09-19T08:12:29.929Z",
+    "updatedAt": "2026-09-19T08:12:29.929Z"
   },
   {
     "id": "academics-programming.physics.electromagnetism-optics.optics-refraction.prog-optics-refraction",
@@ -1536,8 +1536,8 @@
       "academics-programming>prog_acad_optics_refraction()",
       "academics-programming>physics>electromagnetism-optics>optics-refraction>prog-optics-refraction>prog_acad_optics_refraction()"
     ],
-    "createdAt": "2026-09-19T07:33:52.428Z",
-    "updatedAt": "2026-09-19T07:33:52.428Z"
+    "createdAt": "2026-09-19T08:12:29.929Z",
+    "updatedAt": "2026-09-19T08:12:29.929Z"
   },
   {
     "id": "academics-programming.mechanics.statics-beams.force-equilibrium.prog-force-equilibrium",
@@ -1571,8 +1571,8 @@
       "academics-programming>prog_acad_force_equilibrium()",
       "academics-programming>mechanics>statics-beams>force-equilibrium>prog-force-equilibrium>prog_acad_force_equilibrium()"
     ],
-    "createdAt": "2026-09-19T07:33:52.428Z",
-    "updatedAt": "2026-09-19T07:33:52.428Z"
+    "createdAt": "2026-09-19T08:12:29.929Z",
+    "updatedAt": "2026-09-19T08:12:29.929Z"
   },
   {
     "id": "academics-programming.mechanics.statics-beams.beam-analysis.prog-beam-analysis",
@@ -1605,8 +1605,8 @@
       "academics-programming>prog_acad_beam_analysis()",
       "academics-programming>mechanics>statics-beams>beam-analysis>prog-beam-analysis>prog_acad_beam_analysis()"
     ],
-    "createdAt": "2026-09-19T07:33:52.428Z",
-    "updatedAt": "2026-09-19T07:33:52.428Z"
+    "createdAt": "2026-09-19T08:12:29.929Z",
+    "updatedAt": "2026-09-19T08:12:29.929Z"
   },
   {
     "id": "academics-programming.mechanics.dynamics-collisions.momentum-collision.prog-momentum-collision",
@@ -1639,8 +1639,8 @@
       "academics-programming>prog_acad_momentum_collision()",
       "academics-programming>mechanics>dynamics-collisions>momentum-collision>prog-momentum-collision>prog_acad_momentum_collision()"
     ],
-    "createdAt": "2026-09-19T07:33:52.428Z",
-    "updatedAt": "2026-09-19T07:33:52.428Z"
+    "createdAt": "2026-09-19T08:12:29.929Z",
+    "updatedAt": "2026-09-19T08:12:29.929Z"
   },
   {
     "id": "academics-programming.mechanics.dynamics-collisions.inclined-plane-friction.prog-inclined-plane-friction",
@@ -1673,8 +1673,8 @@
       "academics-programming>prog_acad_inclined_plane()",
       "academics-programming>mechanics>dynamics-collisions>inclined-plane-friction>prog-inclined-plane-friction>prog_acad_inclined_plane()"
     ],
-    "createdAt": "2026-09-19T07:33:52.428Z",
-    "updatedAt": "2026-09-19T07:33:52.428Z"
+    "createdAt": "2026-09-19T08:12:29.929Z",
+    "updatedAt": "2026-09-19T08:12:29.929Z"
   },
   {
     "id": "academics-programming.mechanics.vibrations.damped-vibrations.prog-damped-vibrations",
@@ -1707,8 +1707,8 @@
       "academics-programming>prog_acad_damped_vibrations()",
       "academics-programming>mechanics>vibrations>damped-vibrations>prog-damped-vibrations>prog_acad_damped_vibrations()"
     ],
-    "createdAt": "2026-09-19T07:33:52.428Z",
-    "updatedAt": "2026-09-19T07:33:52.428Z"
+    "createdAt": "2026-09-19T08:12:29.929Z",
+    "updatedAt": "2026-09-19T08:12:29.929Z"
   },
   {
     "id": "academics-programming.statistics.descriptive-statistics.central-tendency-dispersion.prog-central-tendency",
@@ -1742,8 +1742,8 @@
       "academics-programming>prog_acad_central_tendency()",
       "academics-programming>statistics>descriptive-statistics>central-tendency-dispersion>prog-central-tendency>prog_acad_central_tendency()"
     ],
-    "createdAt": "2026-09-19T07:33:52.428Z",
-    "updatedAt": "2026-09-19T07:33:52.428Z"
+    "createdAt": "2026-09-19T08:12:29.929Z",
+    "updatedAt": "2026-09-19T08:12:29.929Z"
   },
   {
     "id": "academics-programming.statistics.descriptive-statistics.skewness-kurtosis.prog-skewness-kurtosis",
@@ -1777,8 +1777,8 @@
       "academics-programming>prog_acad_skewness_kurtosis()",
       "academics-programming>statistics>descriptive-statistics>skewness-kurtosis>prog-skewness-kurtosis>prog_acad_skewness_kurtosis()"
     ],
-    "createdAt": "2026-09-19T07:33:52.428Z",
-    "updatedAt": "2026-09-19T07:33:52.428Z"
+    "createdAt": "2026-09-19T08:12:29.929Z",
+    "updatedAt": "2026-09-19T08:12:29.929Z"
   },
   {
     "id": "academics-programming.statistics.probability-distributions.discrete-distributions.prog-discrete-distributions",
@@ -1813,8 +1813,8 @@
       "academics-programming>prog_acad_discrete_distributions()",
       "academics-programming>statistics>probability-distributions>discrete-distributions>prog-discrete-distributions>prog_acad_discrete_distributions()"
     ],
-    "createdAt": "2026-09-19T07:33:52.428Z",
-    "updatedAt": "2026-09-19T07:33:52.428Z"
+    "createdAt": "2026-09-19T08:12:29.929Z",
+    "updatedAt": "2026-09-19T08:12:29.929Z"
   },
   {
     "id": "academics-programming.statistics.probability-distributions.normal-distribution.prog-normal-distribution",
@@ -1847,8 +1847,8 @@
       "academics-programming>prog_acad_normal_distribution()",
       "academics-programming>statistics>probability-distributions>normal-distribution>prog-normal-distribution>prog_acad_normal_distribution()"
     ],
-    "createdAt": "2026-09-19T07:33:52.428Z",
-    "updatedAt": "2026-09-19T07:33:52.428Z"
+    "createdAt": "2026-09-19T08:12:29.929Z",
+    "updatedAt": "2026-09-19T08:12:29.929Z"
   },
   {
     "id": "academics-programming.statistics.regression-hypothesis.linear-regression.prog-linear-regression",
@@ -1881,8 +1881,8 @@
       "academics-programming>prog_acad_linear_regression()",
       "academics-programming>statistics>regression-hypothesis>linear-regression>prog-linear-regression>prog_acad_linear_regression()"
     ],
-    "createdAt": "2026-09-19T07:33:52.428Z",
-    "updatedAt": "2026-09-19T07:33:52.428Z"
+    "createdAt": "2026-09-19T08:12:29.929Z",
+    "updatedAt": "2026-09-19T08:12:29.929Z"
   },
   {
     "id": "academics-programming.statistics.regression-hypothesis.students-t-test.prog-students-t-test",
@@ -1916,7 +1916,7 @@
       "academics-programming>prog_acad_students_t_test()",
       "academics-programming>statistics>regression-hypothesis>students-t-test>prog-students-t-test>prog_acad_students_t_test()"
     ],
-    "createdAt": "2026-09-19T07:33:52.428Z",
-    "updatedAt": "2026-09-19T07:33:52.428Z"
+    "createdAt": "2026-09-19T08:12:29.929Z",
+    "updatedAt": "2026-09-19T08:12:29.929Z"
   }
 ]
