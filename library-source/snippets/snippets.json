@@ -18184,6 +18184,1050 @@
     "scope": "c,cpp"
   },
   {
+    "id": "snip.invoke.competitive-programming.full-programs.cp-data-structures.monotonic-structures.prog-cp-stl-vector",
+    "component_id": "competitive-programming.full-programs.cp-data-structures.monotonic-structures.prog-cp-stl-vector",
+    "prefix": "dtyp.cp.program.full_programs.cp_data_structures.monotonic_structures.prog_cp_stl_vector",
+    "body": "prog_cp_stl_vector()$0",
+    "description": "C dynamic vector container emulator applied to competitive graph adjacency lists and BFS [prog_cp_stl_vector call]",
+    "category": "competitive-programming",
+    "tabStops": [
+      "$0"
+    ],
+    "scope": "c,cpp"
+  },
+  {
+    "id": "snip.short.competitive-programming.full-programs.cp-data-structures.monotonic-structures.prog-cp-stl-vector",
+    "component_id": "competitive-programming.full-programs.cp-data-structures.monotonic-structures.prog-cp-stl-vector",
+    "prefix": "dtyp.prog_cp_stl_vector",
+    "body": "prog_cp_stl_vector()$0",
+    "description": "C dynamic vector container emulator applied to competitive graph adjacency lists and BFS [prog_cp_stl_vector]",
+    "category": "competitive-programming",
+    "tabStops": [
+      "$0"
+    ],
+    "scope": "c,cpp"
+  },
+  {
+    "id": "snip.def.competitive-programming.full-programs.cp-data-structures.monotonic-structures.prog-cp-stl-vector",
+    "component_id": "competitive-programming.full-programs.cp-data-structures.monotonic-structures.prog-cp-stl-vector",
+    "prefix": "dtyp.cp.program.full_programs.cp_data_structures.monotonic_structures.prog_cp_stl_vector.code",
+    "body": "#include <stdio.h>\n#include <stdlib.h>\n\ntypedef struct {\n    int* data;\n    int size;\n    int capacity;\n} Vector;\n\nstatic void vec_init(Vector* v) {\n    v->size = 0;\n    v->capacity = 4;\n    v->data = (int*)malloc(v->capacity * sizeof(int));\n}\n\nstatic void vec_push(Vector* v, int val) {\n    if (v->size >= v->capacity) {\n        v->capacity *= 2;\n        v->data = (int*)realloc(v->data, v->capacity * sizeof(int));\n    }\n    v->data[v->size++] = val;\n}\n\nstatic void vec_free(Vector* v) {\n    if (v->data) {\n        free(v->data);\n        v->data = NULL;\n    }\n    v->size = 0;\n    v->capacity = 0;\n}\n\nstatic void solve(void) {\n    int n, m;\n    if (scanf(\"%d %d\", &n, &m) != 2) return;\n\n    Vector* adj = (Vector*)malloc((n + 1) * sizeof(Vector));\n    for (int i = 1; i <= n; i++) vec_init(&adj[i]);\n\n    for (int i = 0; i < m; i++) {\n        int u, v;\n        if (scanf(\"%d %d\", &u, &v) == 2) {\n            vec_push(&adj[u], v);\n            vec_push(&adj[v], u);\n        }\n    }\n\n    int* dist = (int*)malloc((n + 1) * sizeof(int));\n    int* queue = (int*)malloc((n + 1) * sizeof(int));\n    for (int i = 1; i <= n; i++) dist[i] = -1;\n\n    int head = 0, tail = 0;\n    dist[1] = 0;\n    queue[tail++] = 1;\n\n    while (head < tail) {\n        int curr = queue[head++];\n        for (int i = 0; i < adj[curr].size; i++) {\n            int nxt = adj[curr].data[i];\n            if (dist[nxt] == -1) {\n                dist[nxt] = dist[curr] + 1;\n                queue[tail++] = nxt;\n            }\n        }\n    }\n\n    for (int i = 1; i <= n; i++) {\n        printf(\"%d%c\", dist[i], (i == n ? '\\n' : ' '));\n    }\n\n    for (int i = 1; i <= n; i++) vec_free(&adj[i]);\n    free(adj);\n    free(dist);\n    free(queue);\n}\n\nint main(void) {\n    int t;\n    if (scanf(\"%d\", &t) != 1) t = 1;\n    while (t--) {\n        solve();\n    }\n    return 0;\n}",
+    "description": "Complete clean C implementation of prog_cp_stl_vector",
+    "category": "competitive-programming",
+    "tabStops": [
+      "$0"
+    ],
+    "scope": "c,cpp"
+  },
+  {
+    "id": "snip.invoke.competitive-programming.full-programs.cp-data-structures.monotonic-structures.prog-cp-stl-priority-queue",
+    "component_id": "competitive-programming.full-programs.cp-data-structures.monotonic-structures.prog-cp-stl-priority-queue",
+    "prefix": "dtyp.cp.program.full_programs.cp_data_structures.monotonic_structures.prog_cp_stl_priority_queue",
+    "body": "prog_cp_stl_priority_queue()$0",
+    "description": "C binary min-heap priority queue emulator applied to Dijkstra shortest paths [prog_cp_stl_priority_queue call]",
+    "category": "competitive-programming",
+    "tabStops": [
+      "$0"
+    ],
+    "scope": "c,cpp"
+  },
+  {
+    "id": "snip.short.competitive-programming.full-programs.cp-data-structures.monotonic-structures.prog-cp-stl-priority-queue",
+    "component_id": "competitive-programming.full-programs.cp-data-structures.monotonic-structures.prog-cp-stl-priority-queue",
+    "prefix": "dtyp.prog_cp_stl_priority_queue",
+    "body": "prog_cp_stl_priority_queue()$0",
+    "description": "C binary min-heap priority queue emulator applied to Dijkstra shortest paths [prog_cp_stl_priority_queue]",
+    "category": "competitive-programming",
+    "tabStops": [
+      "$0"
+    ],
+    "scope": "c,cpp"
+  },
+  {
+    "id": "snip.def.competitive-programming.full-programs.cp-data-structures.monotonic-structures.prog-cp-stl-priority-queue",
+    "component_id": "competitive-programming.full-programs.cp-data-structures.monotonic-structures.prog-cp-stl-priority-queue",
+    "prefix": "dtyp.cp.program.full_programs.cp_data_structures.monotonic_structures.prog_cp_stl_priority_queue.code",
+    "body": "#include <stdio.h>\n#include <stdlib.h>\n\n#define INF 1000000000000000LL\n\ntypedef struct {\n    long long dist;\n    int u;\n} HeapNode;\n\ntypedef struct {\n    HeapNode* data;\n    int size;\n    int capacity;\n} PriorityQueue;\n\nstatic void pq_init(PriorityQueue* pq, int cap) {\n    pq->size = 0;\n    pq->capacity = cap;\n    pq->data = (HeapNode*)malloc(cap * sizeof(HeapNode));\n}\n\nstatic void pq_push(PriorityQueue* pq, long long dist, int u) {\n    if (pq->size >= pq->capacity) {\n        pq->capacity *= 2;\n        pq->data = (HeapNode*)realloc(pq->data, pq->capacity * sizeof(HeapNode));\n    }\n    int idx = pq->size++;\n    while (idx > 0) {\n        int parent = (idx - 1) / 2;\n        if (pq->data[parent].dist <= dist) break;\n        pq->data[idx] = pq->data[parent];\n        idx = parent;\n    }\n    pq->data[idx].dist = dist;\n    pq->data[idx].u = u;\n}\n\nstatic HeapNode pq_pop(PriorityQueue* pq) {\n    HeapNode top = pq->data[0];\n    HeapNode last = pq->data[--pq->size];\n    if (pq->size == 0) return top;\n    int idx = 0;\n    while (idx * 2 + 1 < pq->size) {\n        int left = idx * 2 + 1;\n        int right = idx * 2 + 2;\n        int smallest = left;\n        if (right < pq->size && pq->data[right].dist < pq->data[left].dist) smallest = right;\n        if (last.dist <= pq->data[smallest].dist) break;\n        pq->data[idx] = pq->data[smallest];\n        idx = smallest;\n    }\n    pq->data[idx] = last;\n    return top;\n}\n\nstatic void pq_free(PriorityQueue* pq) {\n    if (pq->data) free(pq->data);\n    pq->size = 0;\n    pq->capacity = 0;\n}\n\ntypedef struct Edge {\n    int to;\n    long long weight;\n    struct Edge* next;\n} Edge;\n\nstatic void solve(void) {\n    int n, m;\n    if (scanf(\"%d %d\", &n, &m) != 2) return;\n\n    Edge** head = (Edge**)calloc(n + 1, sizeof(Edge*));\n    for (int i = 0; i < m; i++) {\n        int u, v;\n        long long w;\n        if (scanf(\"%d %d %lld\", &u, &v, &w) == 3) {\n            Edge* e1 = (Edge*)malloc(sizeof(Edge));\n            e1->to = v; e1->weight = w; e1->next = head[u]; head[u] = e1;\n            Edge* e2 = (Edge*)malloc(sizeof(Edge));\n            e2->to = u; e2->weight = w; e2->next = head[v]; head[v] = e2;\n        }\n    }\n\n    long long* dist = (long long*)malloc((n + 1) * sizeof(long long));\n    for (int i = 1; i <= n; i++) dist[i] = INF;\n\n    PriorityQueue pq;\n    pq_init(&pq, 16);\n\n    dist[1] = 0;\n    pq_push(&pq, 0, 1);\n\n    while (pq.size > 0) {\n        HeapNode top = pq_pop(&pq);\n        long long d = top.dist;\n        int u = top.u;\n        if (d > dist[u]) continue;\n\n        for (Edge* e = head[u]; e != NULL; e = e->next) {\n            if (dist[u] + e->weight < dist[e->to]) {\n                dist[e->to] = dist[u] + e->weight;\n                pq_push(&pq, dist[e->to], e->to);\n            }\n        }\n    }\n\n    for (int i = 1; i <= n; i++) {\n        long long ans = (dist[i] == INF) ? -1 : dist[i];\n        printf(\"%lld%c\", ans, (i == n ? '\\n' : ' '));\n    }\n\n    for (int i = 1; i <= n; i++) {\n        Edge* curr = head[i];\n        while (curr) {\n            Edge* tmp = curr;\n            curr = curr->next;\n            free(tmp);\n        }\n    }\n    free(head);\n    free(dist);\n    pq_free(&pq);\n}\n\nint main(void) {\n    int t;\n    if (scanf(\"%d\", &t) != 1) t = 1;\n    while (t--) {\n        solve();\n    }\n    return 0;\n}",
+    "description": "Complete clean C implementation of prog_cp_stl_priority_queue",
+    "category": "competitive-programming",
+    "tabStops": [
+      "$0"
+    ],
+    "scope": "c,cpp"
+  },
+  {
+    "id": "snip.invoke.competitive-programming.full-programs.cp-data-structures.monotonic-structures.prog-cp-stl-deque",
+    "component_id": "competitive-programming.full-programs.cp-data-structures.monotonic-structures.prog-cp-stl-deque",
+    "prefix": "dtyp.cp.program.full_programs.cp_data_structures.monotonic_structures.prog_cp_stl_deque",
+    "body": "prog_cp_stl_deque()$0",
+    "description": "C double-ended deque emulator applied to linear-time sliding window maximum [prog_cp_stl_deque call]",
+    "category": "competitive-programming",
+    "tabStops": [
+      "$0"
+    ],
+    "scope": "c,cpp"
+  },
+  {
+    "id": "snip.short.competitive-programming.full-programs.cp-data-structures.monotonic-structures.prog-cp-stl-deque",
+    "component_id": "competitive-programming.full-programs.cp-data-structures.monotonic-structures.prog-cp-stl-deque",
+    "prefix": "dtyp.prog_cp_stl_deque",
+    "body": "prog_cp_stl_deque()$0",
+    "description": "C double-ended deque emulator applied to linear-time sliding window maximum [prog_cp_stl_deque]",
+    "category": "competitive-programming",
+    "tabStops": [
+      "$0"
+    ],
+    "scope": "c,cpp"
+  },
+  {
+    "id": "snip.def.competitive-programming.full-programs.cp-data-structures.monotonic-structures.prog-cp-stl-deque",
+    "component_id": "competitive-programming.full-programs.cp-data-structures.monotonic-structures.prog-cp-stl-deque",
+    "prefix": "dtyp.cp.program.full_programs.cp_data_structures.monotonic_structures.prog_cp_stl_deque.code",
+    "body": "#include <stdio.h>\n#include <stdlib.h>\n\ntypedef struct {\n    int* data;\n    int head;\n    int tail;\n    int size;\n    int capacity;\n} Deque;\n\nstatic void deque_init(Deque* dq, int cap) {\n    dq->capacity = cap;\n    dq->size = 0;\n    dq->head = 0;\n    dq->tail = 0;\n    dq->data = (int*)malloc(cap * sizeof(int));\n}\n\nstatic void deque_push_back(Deque* dq, int val) {\n    dq->data[dq->tail] = val;\n    dq->tail = (dq->tail + 1) % dq->capacity;\n    dq->size++;\n}\n\nstatic void deque_pop_back(Deque* dq) {\n    dq->tail = (dq->tail - 1 + dq->capacity) % dq->capacity;\n    dq->size--;\n}\n\nstatic void deque_pop_front(Deque* dq) {\n    dq->head = (dq->head + 1) % dq->capacity;\n    dq->size--;\n}\n\nstatic int deque_front(const Deque* dq) {\n    return dq->data[dq->head];\n}\n\nstatic int deque_back(const Deque* dq) {\n    return dq->data[(dq->tail - 1 + dq->capacity) % dq->capacity];\n}\n\nstatic void deque_free(Deque* dq) {\n    if (dq->data) free(dq->data);\n    dq->size = 0;\n}\n\nstatic void solve(void) {\n    int n, k;\n    if (scanf(\"%d %d\", &n, &k) != 2) return;\n\n    int* arr = (int*)malloc(n * sizeof(int));\n    for (int i = 0; i < n; i++) scanf(\"%d\", &arr[i]);\n\n    Deque dq;\n    deque_init(&dq, n + 4);\n\n    for (int i = 0; i < n; i++) {\n        while (dq.size > 0 && deque_front(&dq) <= i - k) {\n            deque_pop_front(&dq);\n        }\n        while (dq.size > 0 && arr[deque_back(&dq)] <= arr[i]) {\n            deque_pop_back(&dq);\n        }\n        deque_push_back(&dq, i);\n\n        if (i >= k - 1) {\n            printf(\"%d%c\", arr[deque_front(&dq)], (i == n - 1 ? '\\n' : ' '));\n        }\n    }\n\n    deque_free(&dq);\n    free(arr);\n}\n\nint main(void) {\n    int t;\n    if (scanf(\"%d\", &t) != 1) t = 1;\n    while (t--) {\n        solve();\n    }\n    return 0;\n}",
+    "description": "Complete clean C implementation of prog_cp_stl_deque",
+    "category": "competitive-programming",
+    "tabStops": [
+      "$0"
+    ],
+    "scope": "c,cpp"
+  },
+  {
+    "id": "snip.invoke.competitive-programming.full-programs.cp-data-structures.monotonic-structures.prog-cp-stl-hash-map",
+    "component_id": "competitive-programming.full-programs.cp-data-structures.monotonic-structures.prog-cp-stl-hash-map",
+    "prefix": "dtyp.cp.program.full_programs.cp_data_structures.monotonic_structures.prog_cp_stl_hash_map",
+    "body": "prog_cp_stl_hash_map()$0",
+    "description": "Anti-hack splitmix64 fast open-addressing hash table in C for competitive frequency queries [prog_cp_stl_hash_map call]",
+    "category": "competitive-programming",
+    "tabStops": [
+      "$0"
+    ],
+    "scope": "c,cpp"
+  },
+  {
+    "id": "snip.short.competitive-programming.full-programs.cp-data-structures.monotonic-structures.prog-cp-stl-hash-map",
+    "component_id": "competitive-programming.full-programs.cp-data-structures.monotonic-structures.prog-cp-stl-hash-map",
+    "prefix": "dtyp.prog_cp_stl_hash_map",
+    "body": "prog_cp_stl_hash_map()$0",
+    "description": "Anti-hack splitmix64 fast open-addressing hash table in C for competitive frequency queries [prog_cp_stl_hash_map]",
+    "category": "competitive-programming",
+    "tabStops": [
+      "$0"
+    ],
+    "scope": "c,cpp"
+  },
+  {
+    "id": "snip.def.competitive-programming.full-programs.cp-data-structures.monotonic-structures.prog-cp-stl-hash-map",
+    "component_id": "competitive-programming.full-programs.cp-data-structures.monotonic-structures.prog-cp-stl-hash-map",
+    "prefix": "dtyp.cp.program.full_programs.cp_data_structures.monotonic_structures.prog_cp_stl_hash_map.code",
+    "body": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n#include <stdint.h>\n\n#define TABLE_SIZE 262144\n#define MASK (TABLE_SIZE - 1)\n\nstatic uint64_t splitmix64(uint64_t x) {\n    x += 0x9e3779b97f4a7c15ULL;\n    x = (x ^ (x >> 30)) * 0xbf58476d1ce4e5b9ULL;\n    x = (x ^ (x >> 27)) * 0x94d049bb133111ebULL;\n    return x ^ (x >> 31);\n}\n\ntypedef struct {\n    long long key;\n    int count;\n    int occupied;\n} HashEntry;\n\nstatic HashEntry table[TABLE_SIZE];\n\nstatic void hash_clear(void) {\n    memset(table, 0, sizeof(table));\n}\n\nstatic void hash_insert(long long key) {\n    uint32_t idx = (uint32_t)(splitmix64((uint64_t)key) & MASK);\n    while (table[idx].occupied) {\n        if (table[idx].key == key) {\n            table[idx].count++;\n            return;\n        }\n        idx = (idx + 1) & MASK;\n    }\n    table[idx].occupied = 1;\n    table[idx].key = key;\n    table[idx].count = 1;\n}\n\nstatic int hash_query(long long key) {\n    uint32_t idx = (uint32_t)(splitmix64((uint64_t)key) & MASK);\n    while (table[idx].occupied) {\n        if (table[idx].key == key) return table[idx].count;\n        idx = (idx + 1) & MASK;\n    }\n    return 0;\n}\n\nstatic void solve(void) {\n    int n, q;\n    if (scanf(\"%d %d\", &n, &q) != 2) return;\n\n    hash_clear();\n    for (int i = 0; i < n; i++) {\n        long long val;\n        if (scanf(\"%lld\", &val) == 1) {\n            hash_insert(val);\n        }\n    }\n\n    for (int i = 0; i < q; i++) {\n        long long query_key;\n        if (scanf(\"%lld\", &query_key) == 1) {\n            printf(\"%d%c\", hash_query(query_key), (i == q - 1 ? '\\n' : ' '));\n        }\n    }\n}\n\nint main(void) {\n    int t;\n    if (scanf(\"%d\", &t) != 1) t = 1;\n    while (t--) {\n        solve();\n    }\n    return 0;\n}",
+    "description": "Complete clean C implementation of prog_cp_stl_hash_map",
+    "category": "competitive-programming",
+    "tabStops": [
+      "$0"
+    ],
+    "scope": "c,cpp"
+  },
+  {
+    "id": "snip.invoke.competitive-programming.full-programs.cp-data-structures.segment-tree.prog-cp-lazy-segment-tree",
+    "component_id": "competitive-programming.full-programs.cp-data-structures.segment-tree.prog-cp-lazy-segment-tree",
+    "prefix": "dtyp.cp.program.full_programs.cp_data_structures.segment_tree.prog_cp_lazy_segment_tree",
+    "body": "prog_cp_lazy_segment_tree()$0",
+    "description": "Segment Tree with Lazy Propagation supporting range addition and range sum queries [prog_cp_lazy_segment_tree call]",
+    "category": "competitive-programming",
+    "tabStops": [
+      "$0"
+    ],
+    "scope": "c,cpp"
+  },
+  {
+    "id": "snip.short.competitive-programming.full-programs.cp-data-structures.segment-tree.prog-cp-lazy-segment-tree",
+    "component_id": "competitive-programming.full-programs.cp-data-structures.segment-tree.prog-cp-lazy-segment-tree",
+    "prefix": "dtyp.prog_cp_lazy_segment_tree",
+    "body": "prog_cp_lazy_segment_tree()$0",
+    "description": "Segment Tree with Lazy Propagation supporting range addition and range sum queries [prog_cp_lazy_segment_tree]",
+    "category": "competitive-programming",
+    "tabStops": [
+      "$0"
+    ],
+    "scope": "c,cpp"
+  },
+  {
+    "id": "snip.def.competitive-programming.full-programs.cp-data-structures.segment-tree.prog-cp-lazy-segment-tree",
+    "component_id": "competitive-programming.full-programs.cp-data-structures.segment-tree.prog-cp-lazy-segment-tree",
+    "prefix": "dtyp.cp.program.full_programs.cp_data_structures.segment_tree.prog_cp_lazy_segment_tree.code",
+    "body": "#include <stdio.h>\n#include <stdlib.h>\n\ntypedef struct {\n    long long sum;\n    long long lazy;\n} SegNode;\n\nstatic SegNode tree[400005];\nstatic long long arr[100005];\n\nstatic void push(int node, int start, int end) {\n    if (tree[node].lazy != 0) {\n        long long val = tree[node].lazy;\n        int mid = (start + end) / 2;\n        tree[2 * node].sum += (mid - start + 1) * val;\n        tree[2 * node].lazy += val;\n        tree[2 * node + 1].sum += (end - mid) * val;\n        tree[2 * node + 1].lazy += val;\n        tree[node].lazy = 0;\n    }\n}\n\nstatic void build(int node, int start, int end) {\n    tree[node].lazy = 0;\n    if (start == end) {\n        tree[node].sum = arr[start];\n        return;\n    }\n    int mid = (start + end) / 2;\n    build(2 * node, start, mid);\n    build(2 * node + 1, mid + 1, end);\n    tree[node].sum = tree[2 * node].sum + tree[2 * node + 1].sum;\n}\n\nstatic void update_range(int node, int start, int end, int l, int r, long long val) {\n    if (r < start || end < l) return;\n    if (l <= start && end <= r) {\n        tree[node].sum += (end - start + 1) * val;\n        tree[node].lazy += val;\n        return;\n    }\n    push(node, start, end);\n    int mid = (start + end) / 2;\n    update_range(2 * node, start, mid, l, r, val);\n    update_range(2 * node + 1, mid + 1, end, l, r, val);\n    tree[node].sum = tree[2 * node].sum + tree[2 * node + 1].sum;\n}\n\nstatic long long query_range(int node, int start, int end, int l, int r) {\n    if (r < start || end < l) return 0;\n    if (l <= start && end <= r) return tree[node].sum;\n    push(node, start, end);\n    int mid = (start + end) / 2;\n    return query_range(2 * node, start, mid, l, r) +\n           query_range(2 * node + 1, mid + 1, end, l, r);\n}\n\nstatic void solve(void) {\n    int n, q;\n    if (scanf(\"%d %d\", &n, &q) != 2) return;\n\n    for (int i = 1; i <= n; i++) scanf(\"%lld\", &arr[i]);\n    build(1, 1, n);\n\n    for (int i = 0; i < q; i++) {\n        int type;\n        if (scanf(\"%d\", &type) != 1) continue;\n        if (type == 1) {\n            int l, r;\n            long long v;\n            if (scanf(\"%d %d %lld\", &l, &r, &v) == 3) {\n                update_range(1, 1, n, l, r, v);\n            }\n        } else {\n            int l, r;\n            if (scanf(\"%d %d\", &l, &r) == 2) {\n                printf(\"%lld\\n\", query_range(1, 1, n, l, r));\n            }\n        }\n    }\n}\n\nint main(void) {\n    int t;\n    if (scanf(\"%d\", &t) != 1) t = 1;\n    while (t--) {\n        solve();\n    }\n    return 0;\n}",
+    "description": "Complete clean C implementation of prog_cp_lazy_segment_tree",
+    "category": "competitive-programming",
+    "tabStops": [
+      "$0"
+    ],
+    "scope": "c,cpp"
+  },
+  {
+    "id": "snip.invoke.competitive-programming.full-programs.cp-data-structures.disjoint-set.prog-cp-dsu-rollback",
+    "component_id": "competitive-programming.full-programs.cp-data-structures.disjoint-set.prog-cp-dsu-rollback",
+    "prefix": "dtyp.cp.program.full_programs.cp_data_structures.disjoint_set.prog_cp_dsu_rollback",
+    "body": "prog_cp_dsu_rollback()$0",
+    "description": "Disjoint Set Union with stack-based rollback operations for offline dynamic connectivity [prog_cp_dsu_rollback call]",
+    "category": "competitive-programming",
+    "tabStops": [
+      "$0"
+    ],
+    "scope": "c,cpp"
+  },
+  {
+    "id": "snip.short.competitive-programming.full-programs.cp-data-structures.disjoint-set.prog-cp-dsu-rollback",
+    "component_id": "competitive-programming.full-programs.cp-data-structures.disjoint-set.prog-cp-dsu-rollback",
+    "prefix": "dtyp.prog_cp_dsu_rollback",
+    "body": "prog_cp_dsu_rollback()$0",
+    "description": "Disjoint Set Union with stack-based rollback operations for offline dynamic connectivity [prog_cp_dsu_rollback]",
+    "category": "competitive-programming",
+    "tabStops": [
+      "$0"
+    ],
+    "scope": "c,cpp"
+  },
+  {
+    "id": "snip.def.competitive-programming.full-programs.cp-data-structures.disjoint-set.prog-cp-dsu-rollback",
+    "component_id": "competitive-programming.full-programs.cp-data-structures.disjoint-set.prog-cp-dsu-rollback",
+    "prefix": "dtyp.cp.program.full_programs.cp_data_structures.disjoint_set.prog_cp_dsu_rollback.code",
+    "body": "#include <stdio.h>\n#include <stdlib.h>\n\ntypedef struct {\n    int u;\n    int v;\n    int rank_increased;\n} RollbackEntry;\n\nstatic int parent[100005];\nstatic int rank_arr[100005];\nstatic RollbackEntry history[100005];\nstatic int history_top = 0;\nstatic int component_count = 0;\n\nstatic void dsu_init(int n) {\n    for (int i = 1; i <= n; i++) {\n        parent[i] = i;\n        rank_arr[i] = 0;\n    }\n    history_top = 0;\n    component_count = n;\n}\n\nstatic int dsu_find(int i) {\n    while (i != parent[i]) i = parent[i];\n    return i;\n}\n\nstatic int dsu_union(int u, int v) {\n    int root_u = dsu_find(u);\n    int root_v = dsu_find(v);\n    if (root_u == root_v) return 0;\n\n    if (rank_arr[root_u] < rank_arr[root_v]) {\n        int tmp = root_u; root_u = root_v; root_v = tmp;\n    }\n\n    history[history_top].u = root_u;\n    history[history_top].v = root_v;\n    history[history_top].rank_increased = 0;\n\n    parent[root_v] = root_u;\n    if (rank_arr[root_u] == rank_arr[root_v]) {\n        rank_arr[root_u]++;\n        history[history_top].rank_increased = 1;\n    }\n    history_top++;\n    component_count--;\n    return 1;\n}\n\nstatic void dsu_rollback(int target_size) {\n    while (history_top > target_size) {\n        history_top--;\n        int root_u = history[history_top].u;\n        int root_v = history[history_top].v;\n        if (history[history_top].rank_increased) {\n            rank_arr[root_u]--;\n        }\n        parent[root_v] = root_v;\n        component_count++;\n    }\n}\n\nstatic void solve(void) {\n    int n, q;\n    if (scanf(\"%d %d\", &n, &q) != 2) return;\n\n    dsu_init(n);\n\n    for (int i = 0; i < q; i++) {\n        int op;\n        if (scanf(\"%d\", &op) != 1) continue;\n        if (op == 1) {\n            int u, v;\n            if (scanf(\"%d %d\", &u, &v) == 2) {\n                dsu_union(u, v);\n                printf(\"Components: %d\\n\", component_count);\n            }\n        } else if (op == 2) {\n            int target;\n            if (scanf(\"%d\", &target) == 1) {\n                dsu_rollback(target);\n                printf(\"Rollback to snapshot %d -> Components: %d\\n\", target, component_count);\n            }\n        } else if (op == 3) {\n            int u, v;\n            if (scanf(\"%d %d\", &u, &v) == 2) {\n                printf(\"%s\\n\", (dsu_find(u) == dsu_find(v)) ? \"YES\" : \"NO\");\n            }\n        }\n    }\n}\n\nint main(void) {\n    int t;\n    if (scanf(\"%d\", &t) != 1) t = 1;\n    while (t--) {\n        solve();\n    }\n    return 0;\n}",
+    "description": "Complete clean C implementation of prog_cp_dsu_rollback",
+    "category": "competitive-programming",
+    "tabStops": [
+      "$0"
+    ],
+    "scope": "c,cpp"
+  },
+  {
+    "id": "snip.invoke.competitive-programming.full-programs.cp-data-structures.fenwick-tree.prog-cp-fenwick-2d",
+    "component_id": "competitive-programming.full-programs.cp-data-structures.fenwick-tree.prog-cp-fenwick-2d",
+    "prefix": "dtyp.cp.program.full_programs.cp_data_structures.fenwick_tree.prog_cp_fenwick_2d",
+    "body": "prog_cp_fenwick_2d()$0",
+    "description": "2D Binary Indexed Tree for submatrix point updates and subgrid range queries [prog_cp_fenwick_2d call]",
+    "category": "competitive-programming",
+    "tabStops": [
+      "$0"
+    ],
+    "scope": "c,cpp"
+  },
+  {
+    "id": "snip.short.competitive-programming.full-programs.cp-data-structures.fenwick-tree.prog-cp-fenwick-2d",
+    "component_id": "competitive-programming.full-programs.cp-data-structures.fenwick-tree.prog-cp-fenwick-2d",
+    "prefix": "dtyp.prog_cp_fenwick_2d",
+    "body": "prog_cp_fenwick_2d()$0",
+    "description": "2D Binary Indexed Tree for submatrix point updates and subgrid range queries [prog_cp_fenwick_2d]",
+    "category": "competitive-programming",
+    "tabStops": [
+      "$0"
+    ],
+    "scope": "c,cpp"
+  },
+  {
+    "id": "snip.def.competitive-programming.full-programs.cp-data-structures.fenwick-tree.prog-cp-fenwick-2d",
+    "component_id": "competitive-programming.full-programs.cp-data-structures.fenwick-tree.prog-cp-fenwick-2d",
+    "prefix": "dtyp.cp.program.full_programs.cp_data_structures.fenwick_tree.prog_cp_fenwick_2d.code",
+    "body": "#include <stdio.h>\n#include <string.h>\n\n#define MAX_DIM 1024\n\nstatic long long bit[MAX_DIM][MAX_DIM];\nstatic int n_rows = 0, n_cols = 0;\n\nstatic void bit2d_add(int r, int c, long long val) {\n    for (int i = r; i <= n_rows; i += (i & -i)) {\n        for (int j = c; j <= n_cols; j += (j & -j)) {\n            bit[i][j] += val;\n        }\n    }\n}\n\nstatic long long bit2d_query(int r, int c) {\n    long long sum = 0;\n    for (int i = r; i > 0; i -= (i & -i)) {\n        for (int j = c; j > 0; j -= (j & -j)) {\n            sum += bit[i][j];\n        }\n    }\n    return sum;\n}\n\nstatic long long bit2d_range(int r1, int c1, int r2, int c2) {\n    return bit2d_query(r2, c2)\n         - bit2d_query(r1 - 1, c2)\n         - bit2d_query(r2, c1 - 1)\n         + bit2d_query(r1 - 1, c1 - 1);\n}\n\nstatic void solve(void) {\n    int q;\n    if (scanf(\"%d %d %d\", &n_rows, &n_cols, &q) != 3) return;\n\n    memset(bit, 0, sizeof(bit));\n\n    for (int i = 0; i < q; i++) {\n        int type;\n        if (scanf(\"%d\", &type) != 1) continue;\n        if (type == 1) {\n            int r, c;\n            long long v;\n            if (scanf(\"%d %d %lld\", &r, &c, &v) == 3) {\n                bit2d_add(r, c, v);\n            }\n        } else {\n            int r1, c1, r2, c2;\n            if (scanf(\"%d %d %d %d\", &r1, &c1, &r2, &c2) == 4) {\n                printf(\"%lld\\n\", bit2d_range(r1, c1, r2, c2));\n            }\n        }\n    }\n}\n\nint main(void) {\n    int t;\n    if (scanf(\"%d\", &t) != 1) t = 1;\n    while (t--) {\n        solve();\n    }\n    return 0;\n}",
+    "description": "Complete clean C implementation of prog_cp_fenwick_2d",
+    "category": "competitive-programming",
+    "tabStops": [
+      "$0"
+    ],
+    "scope": "c,cpp"
+  },
+  {
+    "id": "snip.invoke.competitive-programming.full-programs.cp-data-structures.segment-tree.prog-cp-segment-tree-beats",
+    "component_id": "competitive-programming.full-programs.cp-data-structures.segment-tree.prog-cp-segment-tree-beats",
+    "prefix": "dtyp.cp.program.full_programs.cp_data_structures.segment_tree.prog_cp_segment_tree_beats",
+    "body": "prog_cp_segment_tree_beats()$0",
+    "description": "Segment Tree Beats algorithm for range min updates and range sum queries [prog_cp_segment_tree_beats call]",
+    "category": "competitive-programming",
+    "tabStops": [
+      "$0"
+    ],
+    "scope": "c,cpp"
+  },
+  {
+    "id": "snip.short.competitive-programming.full-programs.cp-data-structures.segment-tree.prog-cp-segment-tree-beats",
+    "component_id": "competitive-programming.full-programs.cp-data-structures.segment-tree.prog-cp-segment-tree-beats",
+    "prefix": "dtyp.prog_cp_segment_tree_beats",
+    "body": "prog_cp_segment_tree_beats()$0",
+    "description": "Segment Tree Beats algorithm for range min updates and range sum queries [prog_cp_segment_tree_beats]",
+    "category": "competitive-programming",
+    "tabStops": [
+      "$0"
+    ],
+    "scope": "c,cpp"
+  },
+  {
+    "id": "snip.def.competitive-programming.full-programs.cp-data-structures.segment-tree.prog-cp-segment-tree-beats",
+    "component_id": "competitive-programming.full-programs.cp-data-structures.segment-tree.prog-cp-segment-tree-beats",
+    "prefix": "dtyp.cp.program.full_programs.cp_data_structures.segment_tree.prog_cp_segment_tree_beats.code",
+    "body": "#include <stdio.h>\n#include <stdlib.h>\n\n#define INF 2000000000\n\ntypedef struct {\n    long long sum;\n    int max1;\n    int max2;\n    int max_cnt;\n} BeatsNode;\n\nstatic BeatsNode tree[400005];\nstatic int arr[100005];\n\nstatic void merge_nodes(int node) {\n    int lc = 2 * node, rc = 2 * node + 1;\n    tree[node].sum = tree[lc].sum + tree[rc].sum;\n\n    if (tree[lc].max1 == tree[rc].max1) {\n        tree[node].max1 = tree[lc].max1;\n        tree[node].max_cnt = tree[lc].max_cnt + tree[rc].max_cnt;\n        tree[node].max2 = (tree[lc].max2 > tree[rc].max2) ? tree[lc].max2 : tree[rc].max2;\n    } else if (tree[lc].max1 > tree[rc].max1) {\n        tree[node].max1 = tree[lc].max1;\n        tree[node].max_cnt = tree[lc].max_cnt;\n        tree[node].max2 = (tree[lc].max2 > tree[rc].max1) ? tree[lc].max2 : tree[rc].max1;\n    } else {\n        tree[node].max1 = tree[rc].max1;\n        tree[node].max_cnt = tree[rc].max_cnt;\n        tree[node].max2 = (tree[lc].max1 > tree[rc].max2) ? tree[lc].max1 : tree[rc].max2;\n    }\n}\n\nstatic void apply_chmin(int node, int limit) {\n    if (limit >= tree[node].max1) return;\n    tree[node].sum -= (long long)(tree[node].max1 - limit) * tree[node].max_cnt;\n    tree[node].max1 = limit;\n}\n\nstatic void push_down(int node) {\n    apply_chmin(2 * node, tree[node].max1);\n    apply_chmin(2 * node + 1, tree[node].max1);\n}\n\nstatic void build(int node, int start, int end) {\n    if (start == end) {\n        tree[node].sum = arr[start];\n        tree[node].max1 = arr[start];\n        tree[node].max2 = -INF;\n        tree[node].max_cnt = 1;\n        return;\n    }\n    int mid = (start + end) / 2;\n    build(2 * node, start, mid);\n    build(2 * node + 1, mid + 1, end);\n    merge_nodes(node);\n}\n\nstatic void update_chmin(int node, int start, int end, int l, int r, int val) {\n    if (r < start || end < l || val >= tree[node].max1) return;\n    if (l <= start && end <= r && val > tree[node].max2) {\n        apply_chmin(node, val);\n        return;\n    }\n    push_down(node);\n    int mid = (start + end) / 2;\n    update_chmin(2 * node, start, mid, l, r, val);\n    update_chmin(2 * node + 1, mid + 1, end, l, r, val);\n    merge_nodes(node);\n}\n\nstatic long long query_sum(int node, int start, int end, int l, int r) {\n    if (r < start || end < l) return 0;\n    if (l <= start && end <= r) return tree[node].sum;\n    push_down(node);\n    int mid = (start + end) / 2;\n    return query_sum(2 * node, start, mid, l, r) + query_sum(2 * node + 1, mid + 1, end, l, r);\n}\n\nstatic void solve(void) {\n    int n, q;\n    if (scanf(\"%d %d\", &n, &q) != 2) return;\n\n    for (int i = 1; i <= n; i++) scanf(\"%d\", &arr[i]);\n    build(1, 1, n);\n\n    for (int i = 0; i < q; i++) {\n        int type;\n        if (scanf(\"%d\", &type) != 1) continue;\n        if (type == 1) {\n            int l, r, x;\n            if (scanf(\"%d %d %d\", &l, &r, &x) == 3) {\n                update_chmin(1, 1, n, l, r, x);\n            }\n        } else {\n            int l, r;\n            if (scanf(\"%d %d\", &l, &r) == 2) {\n                printf(\"%lld\\n\", query_sum(1, 1, n, l, r));\n            }\n        }\n    }\n}\n\nint main(void) {\n    int t;\n    if (scanf(\"%d\", &t) != 1) t = 1;\n    while (t--) {\n        solve();\n    }\n    return 0;\n}",
+    "description": "Complete clean C implementation of prog_cp_segment_tree_beats",
+    "category": "competitive-programming",
+    "tabStops": [
+      "$0"
+    ],
+    "scope": "c,cpp"
+  },
+  {
+    "id": "snip.invoke.competitive-programming.full-programs.range-queries.prefix-sums.prog-cp-sparse-table-rmq",
+    "component_id": "competitive-programming.full-programs.range-queries.prefix-sums.prog-cp-sparse-table-rmq",
+    "prefix": "dtyp.cp.program.full_programs.range_queries.prefix_sums.prog_cp_sparse_table_rmq",
+    "body": "prog_cp_sparse_table_rmq()$0",
+    "description": "Static Range Minimum Query Sparse Table answering static range queries in O(1) [prog_cp_sparse_table_rmq call]",
+    "category": "competitive-programming",
+    "tabStops": [
+      "$0"
+    ],
+    "scope": "c,cpp"
+  },
+  {
+    "id": "snip.short.competitive-programming.full-programs.range-queries.prefix-sums.prog-cp-sparse-table-rmq",
+    "component_id": "competitive-programming.full-programs.range-queries.prefix-sums.prog-cp-sparse-table-rmq",
+    "prefix": "dtyp.prog_cp_sparse_table_rmq",
+    "body": "prog_cp_sparse_table_rmq()$0",
+    "description": "Static Range Minimum Query Sparse Table answering static range queries in O(1) [prog_cp_sparse_table_rmq]",
+    "category": "competitive-programming",
+    "tabStops": [
+      "$0"
+    ],
+    "scope": "c,cpp"
+  },
+  {
+    "id": "snip.def.competitive-programming.full-programs.range-queries.prefix-sums.prog-cp-sparse-table-rmq",
+    "component_id": "competitive-programming.full-programs.range-queries.prefix-sums.prog-cp-sparse-table-rmq",
+    "prefix": "dtyp.cp.program.full_programs.range_queries.prefix_sums.prog_cp_sparse_table_rmq.code",
+    "body": "#include <stdio.h>\n#include <stdlib.h>\n\n#define MAXN 100005\n#define LOGN 18\n\nstatic int st[MAXN][LOGN];\nstatic int log_table[MAXN];\n\nstatic int min_val(int a, int b) {\n    return (a < b) ? a : b;\n}\n\nstatic void solve(void) {\n    int n, q;\n    if (scanf(\"%d %d\", &n, &q) != 2) return;\n\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &st[i][0]);\n    }\n\n    log_table[1] = 0;\n    for (int i = 2; i <= n; i++) {\n        log_table[i] = log_table[i / 2] + 1;\n    }\n\n    for (int j = 1; j < LOGN; j++) {\n        for (int i = 0; i + (1 << j) <= n; i++) {\n            st[i][j] = min_val(st[i][j - 1], st[i + (1 << (j - 1))][j - 1]);\n        }\n    }\n\n    for (int k = 0; k < q; k++) {\n        int l, r;\n        if (scanf(\"%d %d\", &l, &r) == 2) {\n            int j = log_table[r - l + 1];\n            int ans = min_val(st[l][j], st[r - (1 << j) + 1][j]);\n            printf(\"%d%c\", ans, (k == q - 1 ? '\\n' : ' '));\n        }\n    }\n}\n\nint main(void) {\n    int t;\n    if (scanf(\"%d\", &t) != 1) t = 1;\n    while (t--) {\n        solve();\n    }\n    return 0;\n}",
+    "description": "Complete clean C implementation of prog_cp_sparse_table_rmq",
+    "category": "competitive-programming",
+    "tabStops": [
+      "$0"
+    ],
+    "scope": "c,cpp"
+  },
+  {
+    "id": "snip.invoke.competitive-programming.full-programs.cp-data-structures.monotonic-structures.prog-cp-monotonic-queue-dp",
+    "component_id": "competitive-programming.full-programs.cp-data-structures.monotonic-structures.prog-cp-monotonic-queue-dp",
+    "prefix": "dtyp.cp.program.full_programs.cp_data_structures.monotonic_structures.prog_cp_monotonic_queue_dp",
+    "body": "prog_cp_monotonic_queue_dp()$0",
+    "description": "Linear-time dynamic programming optimization using a monotonic minimum queue [prog_cp_monotonic_queue_dp call]",
+    "category": "competitive-programming",
+    "tabStops": [
+      "$0"
+    ],
+    "scope": "c,cpp"
+  },
+  {
+    "id": "snip.short.competitive-programming.full-programs.cp-data-structures.monotonic-structures.prog-cp-monotonic-queue-dp",
+    "component_id": "competitive-programming.full-programs.cp-data-structures.monotonic-structures.prog-cp-monotonic-queue-dp",
+    "prefix": "dtyp.prog_cp_monotonic_queue_dp",
+    "body": "prog_cp_monotonic_queue_dp()$0",
+    "description": "Linear-time dynamic programming optimization using a monotonic minimum queue [prog_cp_monotonic_queue_dp]",
+    "category": "competitive-programming",
+    "tabStops": [
+      "$0"
+    ],
+    "scope": "c,cpp"
+  },
+  {
+    "id": "snip.def.competitive-programming.full-programs.cp-data-structures.monotonic-structures.prog-cp-monotonic-queue-dp",
+    "component_id": "competitive-programming.full-programs.cp-data-structures.monotonic-structures.prog-cp-monotonic-queue-dp",
+    "prefix": "dtyp.cp.program.full_programs.cp_data_structures.monotonic_structures.prog_cp_monotonic_queue_dp.code",
+    "body": "#include <stdio.h>\n#include <stdlib.h>\n\n#define INF 1000000000000000LL\n\nstatic void solve(void) {\n    int n, k;\n    if (scanf(\"%d %d\", &n, &k) != 2) return;\n\n    long long* cost = (long long*)malloc((n + 1) * sizeof(long long));\n    for (int i = 1; i <= n; i++) scanf(\"%lld\", &cost[i]);\n\n    long long* dp = (long long*)malloc((n + 1) * sizeof(long long));\n    int* dq = (int*)malloc((n + 1) * sizeof(int));\n    int head = 0, tail = 0;\n\n    dp[0] = 0;\n    dq[tail++] = 0;\n\n    for (int i = 1; i <= n; i++) {\n        while (head < tail && dq[head] < i - k) {\n            head++;\n        }\n        dp[i] = dp[dq[head]] + cost[i];\n\n        while (head < tail && dp[dq[tail - 1]] >= dp[i]) {\n            tail--;\n        }\n        dq[tail++] = i;\n    }\n\n    printf(\"%lld\\n\", dp[n]);\n\n    free(cost);\n    free(dp);\n    free(dq);\n}\n\nint main(void) {\n    int t;\n    if (scanf(\"%d\", &t) != 1) t = 1;\n    while (t--) {\n        solve();\n    }\n    return 0;\n}",
+    "description": "Complete clean C implementation of prog_cp_monotonic_queue_dp",
+    "category": "competitive-programming",
+    "tabStops": [
+      "$0"
+    ],
+    "scope": "c,cpp"
+  },
+  {
+    "id": "snip.invoke.competitive-programming.full-programs.range-queries.two-pointers.prog-cp-two-pointers-trapping-rainwater",
+    "component_id": "competitive-programming.full-programs.range-queries.two-pointers.prog-cp-two-pointers-trapping-rainwater",
+    "prefix": "dtyp.cp.program.full_programs.range_queries.two_pointers.prog_cp_two_pointers_trapping_rainwater",
+    "body": "prog_cp_two_pointers_trapping_rainwater()$0",
+    "description": "Trapping Rainwater classic solved in O(N) time and O(1) auxiliary space using two pointers [prog_cp_two_pointers_trapping_rainwater call]",
+    "category": "competitive-programming",
+    "tabStops": [
+      "$0"
+    ],
+    "scope": "c,cpp"
+  },
+  {
+    "id": "snip.short.competitive-programming.full-programs.range-queries.two-pointers.prog-cp-two-pointers-trapping-rainwater",
+    "component_id": "competitive-programming.full-programs.range-queries.two-pointers.prog-cp-two-pointers-trapping-rainwater",
+    "prefix": "dtyp.prog_cp_two_pointers_trapping_rainwater",
+    "body": "prog_cp_two_pointers_trapping_rainwater()$0",
+    "description": "Trapping Rainwater classic solved in O(N) time and O(1) auxiliary space using two pointers [prog_cp_two_pointers_trapping_rainwater]",
+    "category": "competitive-programming",
+    "tabStops": [
+      "$0"
+    ],
+    "scope": "c,cpp"
+  },
+  {
+    "id": "snip.def.competitive-programming.full-programs.range-queries.two-pointers.prog-cp-two-pointers-trapping-rainwater",
+    "component_id": "competitive-programming.full-programs.range-queries.two-pointers.prog-cp-two-pointers-trapping-rainwater",
+    "prefix": "dtyp.cp.program.full_programs.range_queries.two_pointers.prog_cp_two_pointers_trapping_rainwater.code",
+    "body": "#include <stdio.h>\n#include <stdlib.h>\n\nstatic void solve(void) {\n    int n;\n    if (scanf(\"%d\", &n) != 1) return;\n\n    int* height = (int*)malloc(n * sizeof(int));\n    for (int i = 0; i < n; i++) scanf(\"%d\", &height[i]);\n\n    int left = 0, right = n - 1;\n    int left_max = 0, right_max = 0;\n    long long trapped_water = 0;\n\n    while (left < right) {\n        if (height[left] < height[right]) {\n            if (height[left] >= left_max) {\n                left_max = height[left];\n            } else {\n                trapped_water += left_max - height[left];\n            }\n            left++;\n        } else {\n            if (height[right] >= right_max) {\n                right_max = height[right];\n            } else {\n                trapped_water += right_max - height[right];\n            }\n            right--;\n        }\n    }\n\n    printf(\"%lld\\n\", trapped_water);\n    free(height);\n}\n\nint main(void) {\n    int t;\n    if (scanf(\"%d\", &t) != 1) t = 1;\n    while (t--) {\n        solve();\n    }\n    return 0;\n}",
+    "description": "Complete clean C implementation of prog_cp_two_pointers_trapping_rainwater",
+    "category": "competitive-programming",
+    "tabStops": [
+      "$0"
+    ],
+    "scope": "c,cpp"
+  },
+  {
+    "id": "snip.invoke.competitive-programming.full-programs.range-queries.two-pointers.prog-cp-two-pointers-3sum",
+    "component_id": "competitive-programming.full-programs.range-queries.two-pointers.prog-cp-two-pointers-3sum",
+    "prefix": "dtyp.cp.program.full_programs.range_queries.two_pointers.prog_cp_two_pointers_3sum",
+    "body": "prog_cp_two_pointers_3sum()$0",
+    "description": "3-Sum target triplet search in O(N^2) using sorting and convergent two-pointer scans [prog_cp_two_pointers_3sum call]",
+    "category": "competitive-programming",
+    "tabStops": [
+      "$0"
+    ],
+    "scope": "c,cpp"
+  },
+  {
+    "id": "snip.short.competitive-programming.full-programs.range-queries.two-pointers.prog-cp-two-pointers-3sum",
+    "component_id": "competitive-programming.full-programs.range-queries.two-pointers.prog-cp-two-pointers-3sum",
+    "prefix": "dtyp.prog_cp_two_pointers_3sum",
+    "body": "prog_cp_two_pointers_3sum()$0",
+    "description": "3-Sum target triplet search in O(N^2) using sorting and convergent two-pointer scans [prog_cp_two_pointers_3sum]",
+    "category": "competitive-programming",
+    "tabStops": [
+      "$0"
+    ],
+    "scope": "c,cpp"
+  },
+  {
+    "id": "snip.def.competitive-programming.full-programs.range-queries.two-pointers.prog-cp-two-pointers-3sum",
+    "component_id": "competitive-programming.full-programs.range-queries.two-pointers.prog-cp-two-pointers-3sum",
+    "prefix": "dtyp.cp.program.full_programs.range_queries.two_pointers.prog_cp_two_pointers_3sum.code",
+    "body": "#include <stdio.h>\n#include <stdlib.h>\n\nstatic int cmp_ints(const void* a, const void* b) {\n    long long diff = (long long)(*(const int*)a) - (long long)(*(const int*)b);\n    return (diff > 0) - (diff < 0);\n}\n\nstatic void solve(void) {\n    int n;\n    long long target;\n    if (scanf(\"%d %lld\", &n, &target) != 2) return;\n\n    int* arr = (int*)malloc(n * sizeof(int));\n    for (int i = 0; i < n; i++) scanf(\"%d\", &arr[i]);\n\n    qsort(arr, n, sizeof(int), cmp_ints);\n\n    long long count = 0;\n    for (int i = 0; i < n - 2; i++) {\n        if (i > 0 && arr[i] == arr[i - 1]) continue;\n        int left = i + 1;\n        int right = n - 1;\n        while (left < right) {\n            long long sum = (long long)arr[i] + arr[left] + arr[right];\n            if (sum == target) {\n                count++;\n                left++;\n                right--;\n                while (left < right && arr[left] == arr[left - 1]) left++;\n                while (left < right && arr[right] == arr[right + 1]) right--;\n            } else if (sum < target) {\n                left++;\n            } else {\n                right--;\n            }\n        }\n    }\n\n    printf(\"%lld\\n\", count);\n    free(arr);\n}\n\nint main(void) {\n    int t;\n    if (scanf(\"%d\", &t) != 1) t = 1;\n    while (t--) {\n        solve();\n    }\n    return 0;\n}",
+    "description": "Complete clean C implementation of prog_cp_two_pointers_3sum",
+    "category": "competitive-programming",
+    "tabStops": [
+      "$0"
+    ],
+    "scope": "c,cpp"
+  },
+  {
+    "id": "snip.invoke.competitive-programming.full-programs.range-queries.sliding-window.prog-cp-two-pointers-k-distinct",
+    "component_id": "competitive-programming.full-programs.range-queries.sliding-window.prog-cp-two-pointers-k-distinct",
+    "prefix": "dtyp.cp.program.full_programs.range_queries.sliding_window.prog_cp_two_pointers_k_distinct",
+    "body": "prog_cp_two_pointers_k_distinct()$0",
+    "description": "Longest contiguous subarray with at most K distinct elements using two pointers [prog_cp_two_pointers_k_distinct call]",
+    "category": "competitive-programming",
+    "tabStops": [
+      "$0"
+    ],
+    "scope": "c,cpp"
+  },
+  {
+    "id": "snip.short.competitive-programming.full-programs.range-queries.sliding-window.prog-cp-two-pointers-k-distinct",
+    "component_id": "competitive-programming.full-programs.range-queries.sliding-window.prog-cp-two-pointers-k-distinct",
+    "prefix": "dtyp.prog_cp_two_pointers_k_distinct",
+    "body": "prog_cp_two_pointers_k_distinct()$0",
+    "description": "Longest contiguous subarray with at most K distinct elements using two pointers [prog_cp_two_pointers_k_distinct]",
+    "category": "competitive-programming",
+    "tabStops": [
+      "$0"
+    ],
+    "scope": "c,cpp"
+  },
+  {
+    "id": "snip.def.competitive-programming.full-programs.range-queries.sliding-window.prog-cp-two-pointers-k-distinct",
+    "component_id": "competitive-programming.full-programs.range-queries.sliding-window.prog-cp-two-pointers-k-distinct",
+    "prefix": "dtyp.cp.program.full_programs.range_queries.sliding_window.prog_cp_two_pointers_k_distinct.code",
+    "body": "#include <stdio.h>\n#include <stdlib.h>\n\n#define MAX_VAL 100005\n\nstatic int freq[MAX_VAL];\n\nstatic void solve(void) {\n    int n, k;\n    if (scanf(\"%d %d\", &n, &k) != 2) return;\n\n    int* arr = (int*)malloc(n * sizeof(int));\n    for (int i = 0; i < n; i++) scanf(\"%d\", &arr[i]);\n\n    for (int i = 0; i < MAX_VAL; i++) freq[i] = 0;\n\n    int left = 0;\n    int distinct = 0;\n    int max_len = 0;\n    int best_l = 0, best_r = 0;\n\n    for (int right = 0; right < n; right++) {\n        if (freq[arr[right]] == 0) {\n            distinct++;\n        }\n        freq[arr[right]]++;\n\n        while (distinct > k) {\n            freq[arr[left]]--;\n            if (freq[arr[left]] == 0) {\n                distinct--;\n            }\n            left++;\n        }\n\n        if (right - left + 1 > max_len) {\n            max_len = right - left + 1;\n            best_l = left;\n            best_r = right;\n        }\n    }\n\n    printf(\"%d %d %d\\n\", max_len, best_l + 1, best_r + 1);\n    free(arr);\n}\n\nint main(void) {\n    int t;\n    if (scanf(\"%d\", &t) != 1) t = 1;\n    while (t--) {\n        solve();\n    }\n    return 0;\n}",
+    "description": "Complete clean C implementation of prog_cp_two_pointers_k_distinct",
+    "category": "competitive-programming",
+    "tabStops": [
+      "$0"
+    ],
+    "scope": "c,cpp"
+  },
+  {
+    "id": "snip.invoke.competitive-programming.full-programs.range-queries.two-pointers.prog-cp-two-pointers-container-water",
+    "component_id": "competitive-programming.full-programs.range-queries.two-pointers.prog-cp-two-pointers-container-water",
+    "prefix": "dtyp.cp.program.full_programs.range_queries.two_pointers.prog_cp_two_pointers_container_water",
+    "body": "prog_cp_two_pointers_container_water()$0",
+    "description": "Container With Most Water area maximization in O(N) using convergent pointers [prog_cp_two_pointers_container_water call]",
+    "category": "competitive-programming",
+    "tabStops": [
+      "$0"
+    ],
+    "scope": "c,cpp"
+  },
+  {
+    "id": "snip.short.competitive-programming.full-programs.range-queries.two-pointers.prog-cp-two-pointers-container-water",
+    "component_id": "competitive-programming.full-programs.range-queries.two-pointers.prog-cp-two-pointers-container-water",
+    "prefix": "dtyp.prog_cp_two_pointers_container_water",
+    "body": "prog_cp_two_pointers_container_water()$0",
+    "description": "Container With Most Water area maximization in O(N) using convergent pointers [prog_cp_two_pointers_container_water]",
+    "category": "competitive-programming",
+    "tabStops": [
+      "$0"
+    ],
+    "scope": "c,cpp"
+  },
+  {
+    "id": "snip.def.competitive-programming.full-programs.range-queries.two-pointers.prog-cp-two-pointers-container-water",
+    "component_id": "competitive-programming.full-programs.range-queries.two-pointers.prog-cp-two-pointers-container-water",
+    "prefix": "dtyp.cp.program.full_programs.range_queries.two_pointers.prog_cp_two_pointers_container_water.code",
+    "body": "#include <stdio.h>\n#include <stdlib.h>\n\nstatic void solve(void) {\n    int n;\n    if (scanf(\"%d\", &n) != 1) return;\n\n    int* height = (int*)malloc(n * sizeof(int));\n    for (int i = 0; i < n; i++) scanf(\"%d\", &height[i]);\n\n    int left = 0, right = n - 1;\n    long long max_area = 0;\n\n    while (left < right) {\n        long long h = (height[left] < height[right]) ? height[left] : height[right];\n        long long current_area = h * (right - left);\n        if (current_area > max_area) max_area = current_area;\n\n        if (height[left] < height[right]) {\n            left++;\n        } else {\n            right--;\n        }\n    }\n\n    printf(\"%lld\\n\", max_area);\n    free(height);\n}\n\nint main(void) {\n    int t;\n    if (scanf(\"%d\", &t) != 1) t = 1;\n    while (t--) {\n        solve();\n    }\n    return 0;\n}",
+    "description": "Complete clean C implementation of prog_cp_two_pointers_container_water",
+    "category": "competitive-programming",
+    "tabStops": [
+      "$0"
+    ],
+    "scope": "c,cpp"
+  },
+  {
+    "id": "snip.invoke.competitive-programming.full-programs.range-queries.sliding-window.prog-cp-two-pointers-min-window",
+    "component_id": "competitive-programming.full-programs.range-queries.sliding-window.prog-cp-two-pointers-min-window",
+    "prefix": "dtyp.cp.program.full_programs.range_queries.sliding_window.prog_cp_two_pointers_min_window",
+    "body": "prog_cp_two_pointers_min_window()$0",
+    "description": "Minimum window subarray containing all elements of required multiset [prog_cp_two_pointers_min_window call]",
+    "category": "competitive-programming",
+    "tabStops": [
+      "$0"
+    ],
+    "scope": "c,cpp"
+  },
+  {
+    "id": "snip.short.competitive-programming.full-programs.range-queries.sliding-window.prog-cp-two-pointers-min-window",
+    "component_id": "competitive-programming.full-programs.range-queries.sliding-window.prog-cp-two-pointers-min-window",
+    "prefix": "dtyp.prog_cp_two_pointers_min_window",
+    "body": "prog_cp_two_pointers_min_window()$0",
+    "description": "Minimum window subarray containing all elements of required multiset [prog_cp_two_pointers_min_window]",
+    "category": "competitive-programming",
+    "tabStops": [
+      "$0"
+    ],
+    "scope": "c,cpp"
+  },
+  {
+    "id": "snip.def.competitive-programming.full-programs.range-queries.sliding-window.prog-cp-two-pointers-min-window",
+    "component_id": "competitive-programming.full-programs.range-queries.sliding-window.prog-cp-two-pointers-min-window",
+    "prefix": "dtyp.cp.program.full_programs.range_queries.sliding_window.prog_cp_two_pointers_min_window.code",
+    "body": "#include <stdio.h>\n#include <string.h>\n\nstatic void solve(void) {\n    char s[100005];\n    char p[100005];\n    if (scanf(\"%s %s\", s, p) != 2) return;\n\n    int p_freq[256] = {0};\n    int s_freq[256] = {0};\n    int p_len = (int)strlen(p);\n    int s_len = (int)strlen(s);\n\n    for (int i = 0; i < p_len; i++) p_freq[(unsigned char)p[i]]++;\n\n    int required_chars = 0;\n    for (int i = 0; i < 256; i++) {\n        if (p_freq[i] > 0) required_chars++;\n    }\n\n    int left = 0;\n    int formed_chars = 0;\n    int min_len = s_len + 1;\n    int best_start = -1;\n\n    for (int right = 0; right < s_len; right++) {\n        unsigned char c = (unsigned char)s[right];\n        s_freq[c]++;\n        if (p_freq[c] > 0 && s_freq[c] == p_freq[c]) {\n            formed_chars++;\n        }\n\n        while (left <= right && formed_chars == required_chars) {\n            if (right - left + 1 < min_len) {\n                min_len = right - left + 1;\n                best_start = left;\n            }\n            unsigned char left_c = (unsigned char)s[left];\n            s_freq[left_c]--;\n            if (p_freq[left_c] > 0 && s_freq[left_c] < p_freq[left_c]) {\n                formed_chars--;\n            }\n            left++;\n        }\n    }\n\n    if (best_start == -1) {\n        printf(\"-1\\n\");\n    } else {\n        printf(\"%d %d\\n\", min_len, best_start);\n    }\n}\n\nint main(void) {\n    int t;\n    if (scanf(\"%d\", &t) != 1) t = 1;\n    while (t--) {\n        solve();\n    }\n    return 0;\n}",
+    "description": "Complete clean C implementation of prog_cp_two_pointers_min_window",
+    "category": "competitive-programming",
+    "tabStops": [
+      "$0"
+    ],
+    "scope": "c,cpp"
+  },
+  {
+    "id": "snip.invoke.competitive-programming.full-programs.binary-search-techniques.binary-search-answer.prog-cp-binary-search-aggressive-cows",
+    "component_id": "competitive-programming.full-programs.binary-search-techniques.binary-search-answer.prog-cp-binary-search-aggressive-cows",
+    "prefix": "dtyp.cp.program.full_programs.binary_search_techniques.binary_search_answer.prog_cp_binary_search_aggressive_cows",
+    "body": "prog_cp_binary_search_aggressive_cows()$0",
+    "description": "Binary search on answer space: Aggressive Cows maximizing the minimum distance between items [prog_cp_binary_search_aggressive_cows call]",
+    "category": "competitive-programming",
+    "tabStops": [
+      "$0"
+    ],
+    "scope": "c,cpp"
+  },
+  {
+    "id": "snip.short.competitive-programming.full-programs.binary-search-techniques.binary-search-answer.prog-cp-binary-search-aggressive-cows",
+    "component_id": "competitive-programming.full-programs.binary-search-techniques.binary-search-answer.prog-cp-binary-search-aggressive-cows",
+    "prefix": "dtyp.prog_cp_binary_search_aggressive_cows",
+    "body": "prog_cp_binary_search_aggressive_cows()$0",
+    "description": "Binary search on answer space: Aggressive Cows maximizing the minimum distance between items [prog_cp_binary_search_aggressive_cows]",
+    "category": "competitive-programming",
+    "tabStops": [
+      "$0"
+    ],
+    "scope": "c,cpp"
+  },
+  {
+    "id": "snip.def.competitive-programming.full-programs.binary-search-techniques.binary-search-answer.prog-cp-binary-search-aggressive-cows",
+    "component_id": "competitive-programming.full-programs.binary-search-techniques.binary-search-answer.prog-cp-binary-search-aggressive-cows",
+    "prefix": "dtyp.cp.program.full_programs.binary_search_techniques.binary_search_answer.prog_cp_binary_search_aggressive_cows.code",
+    "body": "#include <stdio.h>\n#include <stdlib.h>\n\nstatic int cmp_ints(const void* a, const void* b) {\n    long long diff = (long long)(*(const int*)a) - (long long)(*(const int*)b);\n    return (diff > 0) - (diff < 0);\n}\n\nstatic int can_place(const int arr[], int n, int c, int dist) {\n    int placed = 1;\n    int last_pos = arr[0];\n    for (int i = 1; i < n; i++) {\n        if (arr[i] - last_pos >= dist) {\n            placed++;\n            last_pos = arr[i];\n            if (placed >= c) return 1;\n        }\n    }\n    return placed >= c;\n}\n\nstatic void solve(void) {\n    int n, c;\n    if (scanf(\"%d %d\", &n, &c) != 2) return;\n\n    int* arr = (int*)malloc(n * sizeof(int));\n    for (int i = 0; i < n; i++) scanf(\"%d\", &arr[i]);\n\n    qsort(arr, n, sizeof(int), cmp_ints);\n\n    int low = 1, high = arr[n - 1] - arr[0];\n    int ans = 0;\n\n    while (low <= high) {\n        int mid = low + (high - low) / 2;\n        if (can_place(arr, n, c, mid)) {\n            ans = mid;\n            low = mid + 1;\n        } else {\n            high = mid - 1;\n        }\n    }\n\n    printf(\"%d\\n\", ans);\n    free(arr);\n}\n\nint main(void) {\n    int t;\n    if (scanf(\"%d\", &t) != 1) t = 1;\n    while (t--) {\n        solve();\n    }\n    return 0;\n}",
+    "description": "Complete clean C implementation of prog_cp_binary_search_aggressive_cows",
+    "category": "competitive-programming",
+    "tabStops": [
+      "$0"
+    ],
+    "scope": "c,cpp"
+  },
+  {
+    "id": "snip.invoke.competitive-programming.full-programs.binary-search-techniques.binary-search-answer.prog-cp-binary-search-painters-partition",
+    "component_id": "competitive-programming.full-programs.binary-search-techniques.binary-search-answer.prog-cp-binary-search-painters-partition",
+    "prefix": "dtyp.cp.program.full_programs.binary_search_techniques.binary_search_answer.prog_cp_binary_search_painters_partition",
+    "body": "prog_cp_binary_search_painters_partition()$0",
+    "description": "Binary search on answer space: Painter's Partition minimizing maximum partition workload [prog_cp_binary_search_painters_partition call]",
+    "category": "competitive-programming",
+    "tabStops": [
+      "$0"
+    ],
+    "scope": "c,cpp"
+  },
+  {
+    "id": "snip.short.competitive-programming.full-programs.binary-search-techniques.binary-search-answer.prog-cp-binary-search-painters-partition",
+    "component_id": "competitive-programming.full-programs.binary-search-techniques.binary-search-answer.prog-cp-binary-search-painters-partition",
+    "prefix": "dtyp.prog_cp_binary_search_painters_partition",
+    "body": "prog_cp_binary_search_painters_partition()$0",
+    "description": "Binary search on answer space: Painter's Partition minimizing maximum partition workload [prog_cp_binary_search_painters_partition]",
+    "category": "competitive-programming",
+    "tabStops": [
+      "$0"
+    ],
+    "scope": "c,cpp"
+  },
+  {
+    "id": "snip.def.competitive-programming.full-programs.binary-search-techniques.binary-search-answer.prog-cp-binary-search-painters-partition",
+    "component_id": "competitive-programming.full-programs.binary-search-techniques.binary-search-answer.prog-cp-binary-search-painters-partition",
+    "prefix": "dtyp.cp.program.full_programs.binary_search_techniques.binary_search_answer.prog_cp_binary_search_painters_partition.code",
+    "body": "#include <stdio.h>\n#include <stdlib.h>\n\nstatic int can_allocate(const long long arr[], int n, int k, long long max_cap) {\n    int painters = 1;\n    long long current = 0;\n    for (int i = 0; i < n; i++) {\n        if (arr[i] > max_cap) return 0;\n        if (current + arr[i] > max_cap) {\n            painters++;\n            current = arr[i];\n            if (painters > k) return 0;\n        } else {\n            current += arr[i];\n        }\n    }\n    return 1;\n}\n\nstatic void solve(void) {\n    int n, k;\n    if (scanf(\"%d %d\", &n, &k) != 2) return;\n\n    long long* arr = (long long*)malloc(n * sizeof(long long));\n    long long sum = 0;\n    long long max_elem = 0;\n\n    for (int i = 0; i < n; i++) {\n        scanf(\"%lld\", &arr[i]);\n        sum += arr[i];\n        if (arr[i] > max_elem) max_elem = arr[i];\n    }\n\n    long long low = max_elem, high = sum;\n    long long ans = sum;\n\n    while (low <= high) {\n        long long mid = low + (high - low) / 2;\n        if (can_allocate(arr, n, k, mid)) {\n            ans = mid;\n            high = mid - 1;\n        } else {\n            low = mid + 1;\n        }\n    }\n\n    printf(\"%lld\\n\", ans);\n    free(arr);\n}\n\nint main(void) {\n    int t;\n    if (scanf(\"%d\", &t) != 1) t = 1;\n    while (t--) {\n        solve();\n    }\n    return 0;\n}",
+    "description": "Complete clean C implementation of prog_cp_binary_search_painters_partition",
+    "category": "competitive-programming",
+    "tabStops": [
+      "$0"
+    ],
+    "scope": "c,cpp"
+  },
+  {
+    "id": "snip.invoke.competitive-programming.full-programs.binary-search-techniques.binary-search-answer.prog-cp-binary-search-kth-two-arrays",
+    "component_id": "competitive-programming.full-programs.binary-search-techniques.binary-search-answer.prog-cp-binary-search-kth-two-arrays",
+    "prefix": "dtyp.cp.program.full_programs.binary_search_techniques.binary_search_answer.prog_cp_binary_search_kth_two_arrays",
+    "body": "prog_cp_binary_search_kth_two_arrays()$0",
+    "description": "Finding K-th element of two sorted arrays in O(log(min(N, M))) time [prog_cp_binary_search_kth_two_arrays call]",
+    "category": "competitive-programming",
+    "tabStops": [
+      "$0"
+    ],
+    "scope": "c,cpp"
+  },
+  {
+    "id": "snip.short.competitive-programming.full-programs.binary-search-techniques.binary-search-answer.prog-cp-binary-search-kth-two-arrays",
+    "component_id": "competitive-programming.full-programs.binary-search-techniques.binary-search-answer.prog-cp-binary-search-kth-two-arrays",
+    "prefix": "dtyp.prog_cp_binary_search_kth_two_arrays",
+    "body": "prog_cp_binary_search_kth_two_arrays()$0",
+    "description": "Finding K-th element of two sorted arrays in O(log(min(N, M))) time [prog_cp_binary_search_kth_two_arrays]",
+    "category": "competitive-programming",
+    "tabStops": [
+      "$0"
+    ],
+    "scope": "c,cpp"
+  },
+  {
+    "id": "snip.def.competitive-programming.full-programs.binary-search-techniques.binary-search-answer.prog-cp-binary-search-kth-two-arrays",
+    "component_id": "competitive-programming.full-programs.binary-search-techniques.binary-search-answer.prog-cp-binary-search-kth-two-arrays",
+    "prefix": "dtyp.cp.program.full_programs.binary_search_techniques.binary_search_answer.prog_cp_binary_search_kth_two_arrays.code",
+    "body": "#include <stdio.h>\n#include <stdlib.h>\n\n#define INF 2000000000\n\nstatic int max_val(int a, int b) { return (a > b) ? a : b; }\nstatic int min_val(int a, int b) { return (a < b) ? a : b; }\n\nstatic int find_kth(const int a[], int n, const int b[], int m, int k) {\n    if (n > m) return find_kth(b, m, a, n, k);\n\n    int low = max_val(0, k - m);\n    int high = min_val(k, n);\n\n    while (low <= high) {\n        int cut1 = (low + high) / 2;\n        int cut2 = k - cut1;\n\n        int l1 = (cut1 == 0) ? -INF : a[cut1 - 1];\n        int l2 = (cut2 == 0) ? -INF : b[cut2 - 1];\n        int r1 = (cut1 == n) ? INF : a[cut1];\n        int r2 = (cut2 == m) ? INF : b[cut2];\n\n        if (l1 <= r2 && l2 <= r1) {\n            return max_val(l1, l2);\n        } else if (l1 > r2) {\n            high = cut1 - 1;\n        } else {\n            low = cut1 + 1;\n        }\n    }\n    return -1;\n}\n\nstatic void solve(void) {\n    int n, m, k;\n    if (scanf(\"%d %d %d\", &n, &m, &k) != 3) return;\n\n    int* a = (int*)malloc(n * sizeof(int));\n    for (int i = 0; i < n; i++) scanf(\"%d\", &a[i]);\n\n    int* b = (int*)malloc(m * sizeof(int));\n    for (int i = 0; i < m; i++) scanf(\"%d\", &b[i]);\n\n    printf(\"%d\\n\", find_kth(a, n, b, m, k));\n\n    free(a);\n    free(b);\n}\n\nint main(void) {\n    int t;\n    if (scanf(\"%d\", &t) != 1) t = 1;\n    while (t--) {\n        solve();\n    }\n    return 0;\n}",
+    "description": "Complete clean C implementation of prog_cp_binary_search_kth_two_arrays",
+    "category": "competitive-programming",
+    "tabStops": [
+      "$0"
+    ],
+    "scope": "c,cpp"
+  },
+  {
+    "id": "snip.invoke.competitive-programming.full-programs.binary-search-techniques.ternary-search.prog-cp-ternary-search-continuous",
+    "component_id": "competitive-programming.full-programs.binary-search-techniques.ternary-search.prog-cp-ternary-search-continuous",
+    "prefix": "dtyp.cp.program.full_programs.binary_search_techniques.ternary_search.prog_cp_ternary_search_continuous",
+    "body": "prog_cp_ternary_search_continuous()$0",
+    "description": "Real-number continuous ternary search for global minimum of convex function [prog_cp_ternary_search_continuous call]",
+    "category": "competitive-programming",
+    "tabStops": [
+      "$0"
+    ],
+    "scope": "c,cpp"
+  },
+  {
+    "id": "snip.short.competitive-programming.full-programs.binary-search-techniques.ternary-search.prog-cp-ternary-search-continuous",
+    "component_id": "competitive-programming.full-programs.binary-search-techniques.ternary-search.prog-cp-ternary-search-continuous",
+    "prefix": "dtyp.prog_cp_ternary_search_continuous",
+    "body": "prog_cp_ternary_search_continuous()$0",
+    "description": "Real-number continuous ternary search for global minimum of convex function [prog_cp_ternary_search_continuous]",
+    "category": "competitive-programming",
+    "tabStops": [
+      "$0"
+    ],
+    "scope": "c,cpp"
+  },
+  {
+    "id": "snip.def.competitive-programming.full-programs.binary-search-techniques.ternary-search.prog-cp-ternary-search-continuous",
+    "component_id": "competitive-programming.full-programs.binary-search-techniques.ternary-search.prog-cp-ternary-search-continuous",
+    "prefix": "dtyp.cp.program.full_programs.binary_search_techniques.ternary_search.prog_cp_ternary_search_continuous.code",
+    "body": "#include <stdio.h>\n#include <math.h>\n\nstatic double poly_eval(double x, double a, double b, double c) {\n    return a * x * x + b * x + c;\n}\n\nstatic void solve(void) {\n    double a, b, c;\n    double l, r;\n    if (scanf(\"%lf %lf %lf %lf %lf\", &a, &b, &c, &l, &r) != 5) return;\n\n    for (int iter = 0; iter < 100; iter++) {\n        double m1 = l + (r - l) / 3.0;\n        double m2 = r - (r - l) / 3.0;\n        double f1 = poly_eval(m1, a, b, c);\n        double f2 = poly_eval(m2, a, b, c);\n\n        if (f1 < f2) {\n            r = m2;\n        } else {\n            l = m1;\n        }\n    }\n\n    double optimal_x = (l + r) / 2.0;\n    double min_val = poly_eval(optimal_x, a, b, c);\n    printf(\"%.6f %.6f\\n\", optimal_x, min_val);\n}\n\nint main(void) {\n    int t;\n    if (scanf(\"%d\", &t) != 1) t = 1;\n    while (t--) {\n        solve();\n    }\n    return 0;\n}",
+    "description": "Complete clean C implementation of prog_cp_ternary_search_continuous",
+    "category": "competitive-programming",
+    "tabStops": [
+      "$0"
+    ],
+    "scope": "c,cpp"
+  },
+  {
+    "id": "snip.invoke.competitive-programming.full-programs.binary-search-techniques.binary-search-answer.prog-cp-dp-lis-fast",
+    "component_id": "competitive-programming.full-programs.binary-search-techniques.binary-search-answer.prog-cp-dp-lis-fast",
+    "prefix": "dtyp.cp.program.full_programs.binary_search_techniques.binary_search_answer.prog_cp_dp_lis_fast",
+    "body": "prog_cp_dp_lis_fast()$0",
+    "description": "O(N log N) Longest Increasing Subsequence with patience binary search and reconstruction [prog_cp_dp_lis_fast call]",
+    "category": "competitive-programming",
+    "tabStops": [
+      "$0"
+    ],
+    "scope": "c,cpp"
+  },
+  {
+    "id": "snip.short.competitive-programming.full-programs.binary-search-techniques.binary-search-answer.prog-cp-dp-lis-fast",
+    "component_id": "competitive-programming.full-programs.binary-search-techniques.binary-search-answer.prog-cp-dp-lis-fast",
+    "prefix": "dtyp.prog_cp_dp_lis_fast",
+    "body": "prog_cp_dp_lis_fast()$0",
+    "description": "O(N log N) Longest Increasing Subsequence with patience binary search and reconstruction [prog_cp_dp_lis_fast]",
+    "category": "competitive-programming",
+    "tabStops": [
+      "$0"
+    ],
+    "scope": "c,cpp"
+  },
+  {
+    "id": "snip.def.competitive-programming.full-programs.binary-search-techniques.binary-search-answer.prog-cp-dp-lis-fast",
+    "component_id": "competitive-programming.full-programs.binary-search-techniques.binary-search-answer.prog-cp-dp-lis-fast",
+    "prefix": "dtyp.cp.program.full_programs.binary_search_techniques.binary_search_answer.prog_cp_dp_lis_fast.code",
+    "body": "#include <stdio.h>\n#include <stdlib.h>\n\nstatic int lower_bound(const int tails[], int len, int val) {\n    int l = 0, r = len;\n    while (l < r) {\n        int mid = l + (r - l) / 2;\n        if (tails[mid] >= val) r = mid;\n        else l = mid + 1;\n    }\n    return l;\n}\n\nstatic void solve(void) {\n    int n;\n    if (scanf(\"%d\", &n) != 1) return;\n\n    int* arr = (int*)malloc(n * sizeof(int));\n    for (int i = 0; i < n; i++) scanf(\"%d\", &arr[i]);\n\n    int* tails = (int*)malloc(n * sizeof(int));\n    int* tail_idx = (int*)malloc(n * sizeof(int));\n    int* parent = (int*)malloc(n * sizeof(int));\n\n    int lis_len = 0;\n\n    for (int i = 0; i < n; i++) {\n        int pos = lower_bound(tails, lis_len, arr[i]);\n        tails[pos] = arr[i];\n        tail_idx[pos] = i;\n        parent[i] = (pos > 0) ? tail_idx[pos - 1] : -1;\n\n        if (pos == lis_len) lis_len++;\n    }\n\n    printf(\"%d\\n\", lis_len);\n\n    int* result = (int*)malloc(lis_len * sizeof(int));\n    int curr = tail_idx[lis_len - 1];\n    for (int i = lis_len - 1; i >= 0; i--) {\n        result[i] = arr[curr];\n        curr = parent[curr];\n    }\n\n    for (int i = 0; i < lis_len; i++) {\n        printf(\"%d%c\", result[i], (i == lis_len - 1 ? '\\n' : ' '));\n    }\n\n    free(arr);\n    free(tails);\n    free(tail_idx);\n    free(parent);\n    free(result);\n}\n\nint main(void) {\n    int t;\n    if (scanf(\"%d\", &t) != 1) t = 1;\n    while (t--) {\n        solve();\n    }\n    return 0;\n}",
+    "description": "Complete clean C implementation of prog_cp_dp_lis_fast",
+    "category": "competitive-programming",
+    "tabStops": [
+      "$0"
+    ],
+    "scope": "c,cpp"
+  },
+  {
+    "id": "snip.invoke.competitive-programming.full-programs.graph-techniques.lowest-common-ancestor.prog-cp-tree-diameter",
+    "component_id": "competitive-programming.full-programs.graph-techniques.lowest-common-ancestor.prog-cp-tree-diameter",
+    "prefix": "dtyp.cp.program.full_programs.graph_techniques.lowest_common_ancestor.prog_cp_tree_diameter",
+    "body": "prog_cp_tree_diameter()$0",
+    "description": "Finding tree diameter and center nodes via two BFS passes [prog_cp_tree_diameter call]",
+    "category": "competitive-programming",
+    "tabStops": [
+      "$0"
+    ],
+    "scope": "c,cpp"
+  },
+  {
+    "id": "snip.short.competitive-programming.full-programs.graph-techniques.lowest-common-ancestor.prog-cp-tree-diameter",
+    "component_id": "competitive-programming.full-programs.graph-techniques.lowest-common-ancestor.prog-cp-tree-diameter",
+    "prefix": "dtyp.prog_cp_tree_diameter",
+    "body": "prog_cp_tree_diameter()$0",
+    "description": "Finding tree diameter and center nodes via two BFS passes [prog_cp_tree_diameter]",
+    "category": "competitive-programming",
+    "tabStops": [
+      "$0"
+    ],
+    "scope": "c,cpp"
+  },
+  {
+    "id": "snip.def.competitive-programming.full-programs.graph-techniques.lowest-common-ancestor.prog-cp-tree-diameter",
+    "component_id": "competitive-programming.full-programs.graph-techniques.lowest-common-ancestor.prog-cp-tree-diameter",
+    "prefix": "dtyp.cp.program.full_programs.graph_techniques.lowest_common_ancestor.prog_cp_tree_diameter.code",
+    "body": "#include <stdio.h>\n#include <stdlib.h>\n\ntypedef struct Edge {\n    int to;\n    struct Edge* next;\n} Edge;\n\nstatic int bfs_farthest(int start, int n, Edge** head, int* parent, int* dist) {\n    for (int i = 1; i <= n; i++) {\n        dist[i] = -1;\n        parent[i] = 0;\n    }\n\n    int* queue = (int*)malloc((n + 1) * sizeof(int));\n    int h = 0, t = 0;\n\n    dist[start] = 0;\n    queue[t++] = start;\n\n    int farthest = start;\n    int max_dist = 0;\n\n    while (h < t) {\n        int u = queue[h++];\n        if (dist[u] > max_dist) {\n            max_dist = dist[u];\n            farthest = u;\n        }\n\n        for (Edge* e = head[u]; e != NULL; e = e->next) {\n            int v = e->to;\n            if (dist[v] == -1) {\n                dist[v] = dist[u] + 1;\n                parent[v] = u;\n                queue[t++] = v;\n            }\n        }\n    }\n\n    free(queue);\n    return farthest;\n}\n\nstatic void solve(void) {\n    int n;\n    if (scanf(\"%d\", &n) != 1) return;\n\n    Edge** head = (Edge**)calloc(n + 1, sizeof(Edge*));\n    for (int i = 0; i < n - 1; i++) {\n        int u, v;\n        if (scanf(\"%d %d\", &u, &v) == 2) {\n            Edge* e1 = (Edge*)malloc(sizeof(Edge));\n            e1->to = v; e1->next = head[u]; head[u] = e1;\n            Edge* e2 = (Edge*)malloc(sizeof(Edge));\n            e2->to = u; e2->next = head[v]; head[v] = e2;\n        }\n    }\n\n    int* parent = (int*)malloc((n + 1) * sizeof(int));\n    int* dist = (int*)malloc((n + 1) * sizeof(int));\n\n    int u = bfs_farthest(1, n, head, parent, dist);\n    int v = bfs_farthest(u, n, head, parent, dist);\n\n    int diameter = dist[v];\n    printf(\"Diameter: %d (Endpoints: %d -> %d)\\n\", diameter, u, v);\n\n    int curr = v;\n    for (int step = 0; step < diameter / 2; step++) {\n        curr = parent[curr];\n    }\n    printf(\"Center node: %d\\n\", curr);\n\n    for (int i = 1; i <= n; i++) {\n        Edge* curr_e = head[i];\n        while (curr_e) {\n            Edge* tmp = curr_e;\n            curr_e = curr_e->next;\n            free(tmp);\n        }\n    }\n    free(head);\n    free(parent);\n    free(dist);\n}\n\nint main(void) {\n    int t;\n    if (scanf(\"%d\", &t) != 1) t = 1;\n    while (t--) {\n        solve();\n    }\n    return 0;\n}",
+    "description": "Complete clean C implementation of prog_cp_tree_diameter",
+    "category": "competitive-programming",
+    "tabStops": [
+      "$0"
+    ],
+    "scope": "c,cpp"
+  },
+  {
+    "id": "snip.invoke.competitive-programming.full-programs.graph-techniques.lowest-common-ancestor.prog-cp-euler-tour-subtree",
+    "component_id": "competitive-programming.full-programs.graph-techniques.lowest-common-ancestor.prog-cp-euler-tour-subtree",
+    "prefix": "dtyp.cp.program.full_programs.graph_techniques.lowest_common_ancestor.prog_cp_euler_tour_subtree",
+    "body": "prog_cp_euler_tour_subtree()$0",
+    "description": "Euler Tour tree flattening for O(log N) subtree updates and queries via Fenwick tree [prog_cp_euler_tour_subtree call]",
+    "category": "competitive-programming",
+    "tabStops": [
+      "$0"
+    ],
+    "scope": "c,cpp"
+  },
+  {
+    "id": "snip.short.competitive-programming.full-programs.graph-techniques.lowest-common-ancestor.prog-cp-euler-tour-subtree",
+    "component_id": "competitive-programming.full-programs.graph-techniques.lowest-common-ancestor.prog-cp-euler-tour-subtree",
+    "prefix": "dtyp.prog_cp_euler_tour_subtree",
+    "body": "prog_cp_euler_tour_subtree()$0",
+    "description": "Euler Tour tree flattening for O(log N) subtree updates and queries via Fenwick tree [prog_cp_euler_tour_subtree]",
+    "category": "competitive-programming",
+    "tabStops": [
+      "$0"
+    ],
+    "scope": "c,cpp"
+  },
+  {
+    "id": "snip.def.competitive-programming.full-programs.graph-techniques.lowest-common-ancestor.prog-cp-euler-tour-subtree",
+    "component_id": "competitive-programming.full-programs.graph-techniques.lowest-common-ancestor.prog-cp-euler-tour-subtree",
+    "prefix": "dtyp.cp.program.full_programs.graph_techniques.lowest_common_ancestor.prog_cp_euler_tour_subtree.code",
+    "body": "#include <stdio.h>\n#include <stdlib.h>\n\ntypedef struct Edge {\n    int to;\n    struct Edge* next;\n} Edge;\n\nstatic int timer = 0;\nstatic int tin[100005];\nstatic int tout[100005];\nstatic long long bit[200005];\nstatic int bit_size = 0;\n\nstatic void bit_add(int idx, long long val) {\n    for (; idx <= bit_size; idx += (idx & -idx)) bit[idx] += val;\n}\n\nstatic long long bit_query(int idx) {\n    long long sum = 0;\n    for (; idx > 0; idx -= (idx & -idx)) sum += bit[idx];\n    return sum;\n}\n\nstatic void dfs_euler(int u, int p, Edge** head) {\n    tin[u] = ++timer;\n    for (Edge* e = head[u]; e != NULL; e = e->next) {\n        if (e->to != p) dfs_euler(e->to, u, head);\n    }\n    tout[u] = timer;\n}\n\nstatic void solve(void) {\n    int n, q;\n    if (scanf(\"%d %d\", &n, &q) != 2) return;\n\n    long long* vals = (long long*)malloc((n + 1) * sizeof(long long));\n    for (int i = 1; i <= n; i++) scanf(\"%lld\", &vals[i]);\n\n    Edge** head = (Edge**)calloc(n + 1, sizeof(Edge*));\n    for (int i = 0; i < n - 1; i++) {\n        int u, v;\n        if (scanf(\"%d %d\", &u, &v) == 2) {\n            Edge* e1 = (Edge*)malloc(sizeof(Edge));\n            e1->to = v; e1->next = head[u]; head[u] = e1;\n            Edge* e2 = (Edge*)malloc(sizeof(Edge));\n            e2->to = u; e2->next = head[v]; head[v] = e2;\n        }\n    }\n\n    timer = 0;\n    dfs_euler(1, 0, head);\n\n    bit_size = timer;\n    for (int i = 1; i <= bit_size; i++) bit[i] = 0;\n\n    for (int i = 1; i <= n; i++) {\n        bit_add(tin[i], vals[i]);\n    }\n\n    for (int i = 0; i < q; i++) {\n        int type;\n        if (scanf(\"%d\", &type) != 1) continue;\n        if (type == 1) {\n            int node;\n            long long delta;\n            if (scanf(\"%d %lld\", &node, &delta) == 2) {\n                bit_add(tin[node], delta);\n            }\n        } else {\n            int node;\n            if (scanf(\"%d\", &node) == 1) {\n                long long subtree_sum = bit_query(tout[node]) - bit_query(tin[node] - 1);\n                printf(\"%lld\\n\", subtree_sum);\n            }\n        }\n    }\n\n    for (int i = 1; i <= n; i++) {\n        Edge* curr = head[i];\n        while (curr) {\n            Edge* tmp = curr;\n            curr = curr->next;\n            free(tmp);\n        }\n    }\n    free(head);\n    free(vals);\n}\n\nint main(void) {\n    int t;\n    if (scanf(\"%d\", &t) != 1) t = 1;\n    while (t--) {\n        solve();\n    }\n    return 0;\n}",
+    "description": "Complete clean C implementation of prog_cp_euler_tour_subtree",
+    "category": "competitive-programming",
+    "tabStops": [
+      "$0"
+    ],
+    "scope": "c,cpp"
+  },
+  {
+    "id": "snip.invoke.competitive-programming.full-programs.graph-techniques.zero-one-bfs.prog-cp-floyd-warshall",
+    "component_id": "competitive-programming.full-programs.graph-techniques.zero-one-bfs.prog-cp-floyd-warshall",
+    "prefix": "dtyp.cp.program.full_programs.graph_techniques.zero_one_bfs.prog_cp_floyd_warshall",
+    "body": "prog_cp_floyd_warshall()$0",
+    "description": "Floyd-Warshall All-Pairs Shortest Path with intermediate path reconstruction and negative cycle check [prog_cp_floyd_warshall call]",
+    "category": "competitive-programming",
+    "tabStops": [
+      "$0"
+    ],
+    "scope": "c,cpp"
+  },
+  {
+    "id": "snip.short.competitive-programming.full-programs.graph-techniques.zero-one-bfs.prog-cp-floyd-warshall",
+    "component_id": "competitive-programming.full-programs.graph-techniques.zero-one-bfs.prog-cp-floyd-warshall",
+    "prefix": "dtyp.prog_cp_floyd_warshall",
+    "body": "prog_cp_floyd_warshall()$0",
+    "description": "Floyd-Warshall All-Pairs Shortest Path with intermediate path reconstruction and negative cycle check [prog_cp_floyd_warshall]",
+    "category": "competitive-programming",
+    "tabStops": [
+      "$0"
+    ],
+    "scope": "c,cpp"
+  },
+  {
+    "id": "snip.def.competitive-programming.full-programs.graph-techniques.zero-one-bfs.prog-cp-floyd-warshall",
+    "component_id": "competitive-programming.full-programs.graph-techniques.zero-one-bfs.prog-cp-floyd-warshall",
+    "prefix": "dtyp.cp.program.full_programs.graph_techniques.zero_one_bfs.prog_cp_floyd_warshall.code",
+    "body": "#include <stdio.h>\n#include <stdlib.h>\n\n#define INF 1000000000LL\n\nstatic long long dist[405][405];\nstatic int next_node[405][405];\n\nstatic void print_path(int u, int v) {\n    if (dist[u][v] >= INF) {\n        printf(\"NO PATH\\n\");\n        return;\n    }\n    printf(\"Path: %d\", u);\n    while (u != v) {\n        u = next_node[u][v];\n        printf(\" -> %d\", u);\n    }\n    printf(\"\\n\");\n}\n\nstatic void solve(void) {\n    int n, m;\n    if (scanf(\"%d %d\", &n, &m) != 2) return;\n\n    for (int i = 1; i <= n; i++) {\n        for (int j = 1; j <= n; j++) {\n            dist[i][j] = (i == j) ? 0 : INF;\n            next_node[i][j] = (i == j) ? j : -1;\n        }\n    }\n\n    for (int i = 0; i < m; i++) {\n        int u, v;\n        long long w;\n        if (scanf(\"%d %d %lld\", &u, &v, &w) == 3) {\n            if (w < dist[u][v]) {\n                dist[u][v] = w;\n                next_node[u][v] = v;\n            }\n        }\n    }\n\n    for (int k = 1; k <= n; k++) {\n        for (int i = 1; i <= n; i++) {\n            for (int j = 1; j <= n; j++) {\n                if (dist[i][k] < INF && dist[k][j] < INF) {\n                    if (dist[i][k] + dist[k][j] < dist[i][j]) {\n                        dist[i][j] = dist[i][k] + dist[k][j];\n                        next_node[i][j] = next_node[i][k];\n                    }\n                }\n            }\n        }\n    }\n\n    int has_neg_cycle = 0;\n    for (int i = 1; i <= n; i++) {\n        if (dist[i][i] < 0) {\n            has_neg_cycle = 1;\n            break;\n        }\n    }\n\n    if (has_neg_cycle) {\n        printf(\"NEGATIVE CYCLE DETECTED\\n\");\n    } else {\n        printf(\"All-pairs shortest paths computed.\\n\");\n        if (n >= 2) {\n            printf(\"Distance 1 to %d: %lld\\n\", n, dist[1][n]);\n            print_path(1, n);\n        }\n    }\n}\n\nint main(void) {\n    int t;\n    if (scanf(\"%d\", &t) != 1) t = 1;\n    while (t--) {\n        solve();\n    }\n    return 0;\n}",
+    "description": "Complete clean C implementation of prog_cp_floyd_warshall",
+    "category": "competitive-programming",
+    "tabStops": [
+      "$0"
+    ],
+    "scope": "c,cpp"
+  },
+  {
+    "id": "snip.invoke.competitive-programming.full-programs.graph-techniques.strongly-connected.prog-cp-topological-kahn-cycle",
+    "component_id": "competitive-programming.full-programs.graph-techniques.strongly-connected.prog-cp-topological-kahn-cycle",
+    "prefix": "dtyp.cp.program.full_programs.graph_techniques.strongly_connected.prog_cp_topological_kahn_cycle",
+    "body": "prog_cp_topological_kahn_cycle()$0",
+    "description": "Kahn's topological sort producing lexicographically smallest order via Min-Heap and cycle detection [prog_cp_topological_kahn_cycle call]",
+    "category": "competitive-programming",
+    "tabStops": [
+      "$0"
+    ],
+    "scope": "c,cpp"
+  },
+  {
+    "id": "snip.short.competitive-programming.full-programs.graph-techniques.strongly-connected.prog-cp-topological-kahn-cycle",
+    "component_id": "competitive-programming.full-programs.graph-techniques.strongly-connected.prog-cp-topological-kahn-cycle",
+    "prefix": "dtyp.prog_cp_topological_kahn_cycle",
+    "body": "prog_cp_topological_kahn_cycle()$0",
+    "description": "Kahn's topological sort producing lexicographically smallest order via Min-Heap and cycle detection [prog_cp_topological_kahn_cycle]",
+    "category": "competitive-programming",
+    "tabStops": [
+      "$0"
+    ],
+    "scope": "c,cpp"
+  },
+  {
+    "id": "snip.def.competitive-programming.full-programs.graph-techniques.strongly-connected.prog-cp-topological-kahn-cycle",
+    "component_id": "competitive-programming.full-programs.graph-techniques.strongly-connected.prog-cp-topological-kahn-cycle",
+    "prefix": "dtyp.cp.program.full_programs.graph_techniques.strongly_connected.prog_cp_topological_kahn_cycle.code",
+    "body": "#include <stdio.h>\n#include <stdlib.h>\n\ntypedef struct {\n    int* data;\n    int size;\n    int capacity;\n} MinHeap;\n\nstatic void heap_init(MinHeap* h, int cap) {\n    h->size = 0;\n    h->capacity = cap;\n    h->data = (int*)malloc(cap * sizeof(int));\n}\n\nstatic void heap_push(MinHeap* h, int val) {\n    int idx = h->size++;\n    while (idx > 0) {\n        int p = (idx - 1) / 2;\n        if (h->data[p] <= val) break;\n        h->data[idx] = h->data[p];\n        idx = p;\n    }\n    h->data[idx] = val;\n}\n\nstatic int heap_pop(MinHeap* h) {\n    int top = h->data[0];\n    int last = h->data[--h->size];\n    if (h->size == 0) return top;\n    int idx = 0;\n    while (idx * 2 + 1 < h->size) {\n        int l = idx * 2 + 1;\n        int r = idx * 2 + 2;\n        int smallest = l;\n        if (r < h->size && h->data[r] < h->data[l]) smallest = r;\n        if (last <= h->data[smallest]) break;\n        h->data[idx] = h->data[smallest];\n        idx = smallest;\n    }\n    h->data[idx] = last;\n    return top;\n}\n\ntypedef struct Edge {\n    int to;\n    struct Edge* next;\n} Edge;\n\nstatic void solve(void) {\n    int n, m;\n    if (scanf(\"%d %d\", &n, &m) != 2) return;\n\n    Edge** head = (Edge**)calloc(n + 1, sizeof(Edge*));\n    int* indegree = (int*)calloc(n + 1, sizeof(int));\n\n    for (int i = 0; i < m; i++) {\n        int u, v;\n        if (scanf(\"%d %d\", &u, &v) == 2) {\n            Edge* e = (Edge*)malloc(sizeof(Edge));\n            e->to = v; e->next = head[u]; head[u] = e;\n            indegree[v]++;\n        }\n    }\n\n    MinHeap heap;\n    heap_init(&heap, n + 2);\n\n    for (int i = 1; i <= n; i++) {\n        if (indegree[i] == 0) heap_push(&heap, i);\n    }\n\n    int* order = (int*)malloc(n * sizeof(int));\n    int order_cnt = 0;\n\n    while (heap.size > 0) {\n        int u = heap_pop(&heap);\n        order[order_cnt++] = u;\n\n        for (Edge* e = head[u]; e != NULL; e = e->next) {\n            indegree[e->to]--;\n            if (indegree[e->to] == 0) {\n                heap_push(&heap, e->to);\n            }\n        }\n    }\n\n    if (order_cnt < n) {\n        printf(\"-1\\n\");\n    } else {\n        for (int i = 0; i < n; i++) {\n            printf(\"%d%c\", order[i], (i == n - 1 ? '\\n' : ' '));\n        }\n    }\n\n    for (int i = 1; i <= n; i++) {\n        Edge* curr = head[i];\n        while (curr) {\n            Edge* tmp = curr;\n            curr = curr->next;\n            free(tmp);\n        }\n    }\n    free(head);\n    free(indegree);\n    free(order);\n    free(heap.data);\n}\n\nint main(void) {\n    int t;\n    if (scanf(\"%d\", &t) != 1) t = 1;\n    while (t--) {\n        solve();\n    }\n    return 0;\n}",
+    "description": "Complete clean C implementation of prog_cp_topological_kahn_cycle",
+    "category": "competitive-programming",
+    "tabStops": [
+      "$0"
+    ],
+    "scope": "c,cpp"
+  },
+  {
+    "id": "snip.invoke.competitive-programming.full-programs.number-theory.combinatorics.prog-cp-dp-digit",
+    "component_id": "competitive-programming.full-programs.number-theory.combinatorics.prog-cp-dp-digit",
+    "prefix": "dtyp.cp.program.full_programs.number_theory.combinatorics.prog_cp_dp_digit",
+    "body": "prog_cp_dp_digit()$0",
+    "description": "Digit DP counting integers in range [L, R] with target digit sum constraints [prog_cp_dp_digit call]",
+    "category": "competitive-programming",
+    "tabStops": [
+      "$0"
+    ],
+    "scope": "c,cpp"
+  },
+  {
+    "id": "snip.short.competitive-programming.full-programs.number-theory.combinatorics.prog-cp-dp-digit",
+    "component_id": "competitive-programming.full-programs.number-theory.combinatorics.prog-cp-dp-digit",
+    "prefix": "dtyp.prog_cp_dp_digit",
+    "body": "prog_cp_dp_digit()$0",
+    "description": "Digit DP counting integers in range [L, R] with target digit sum constraints [prog_cp_dp_digit]",
+    "category": "competitive-programming",
+    "tabStops": [
+      "$0"
+    ],
+    "scope": "c,cpp"
+  },
+  {
+    "id": "snip.def.competitive-programming.full-programs.number-theory.combinatorics.prog-cp-dp-digit",
+    "component_id": "competitive-programming.full-programs.number-theory.combinatorics.prog-cp-dp-digit",
+    "prefix": "dtyp.cp.program.full_programs.number_theory.combinatorics.prog_cp_dp_digit.code",
+    "body": "#include <stdio.h>\n#include <string.h>\n\nstatic long long memo[20][180][2];\nstatic int digits[20];\nstatic int num_len = 0;\n\nstatic long long count_valid(int idx, int sum, int tight) {\n    if (idx == num_len) return (sum == 0) ? 1 : 0;\n    if (memo[idx][sum][tight] != -1) return memo[idx][sum][tight];\n\n    int limit = tight ? digits[idx] : 9;\n    long long total = 0;\n\n    for (int d = 0; d <= limit; d++) {\n        if (d <= sum) {\n            total += count_valid(idx + 1, sum - d, tight && (d == limit));\n        }\n    }\n\n    return memo[idx][sum][tight] = total;\n}\n\nstatic long long solve_range(long long val, int target_sum) {\n    if (val < 0) return 0;\n    if (val == 0) return (target_sum == 0) ? 1 : 0;\n\n    char buf[32];\n    snprintf(buf, sizeof(buf), \"%lld\", val);\n    num_len = (int)strlen(buf);\n    for (int i = 0; i < num_len; i++) digits[i] = buf[i] - '0';\n\n    memset(memo, -1, sizeof(memo));\n    return count_valid(0, target_sum, 1);\n}\n\nstatic void solve(void) {\n    long long l, r;\n    int target_sum;\n    if (scanf(\"%lld %lld %d\", &l, &r, &target_sum) != 3) return;\n\n    long long ans = solve_range(r, target_sum) - solve_range(l - 1, target_sum);\n    printf(\"%lld\\n\", ans);\n}\n\nint main(void) {\n    int t;\n    if (scanf(\"%d\", &t) != 1) t = 1;\n    while (t--) {\n        solve();\n    }\n    return 0;\n}",
+    "description": "Complete clean C implementation of prog_cp_dp_digit",
+    "category": "competitive-programming",
+    "tabStops": [
+      "$0"
+    ],
+    "scope": "c,cpp"
+  },
+  {
+    "id": "snip.invoke.competitive-programming.full-programs.bit-manipulation.bitmasking.prog-cp-dp-bitmask-tsp",
+    "component_id": "competitive-programming.full-programs.bit-manipulation.bitmasking.prog-cp-dp-bitmask-tsp",
+    "prefix": "dtyp.cp.program.full_programs.bit_manipulation.bitmasking.prog_cp_dp_bitmask_tsp",
+    "body": "prog_cp_dp_bitmask_tsp()$0",
+    "description": "Bitmask DP solving Traveling Salesperson Problem in O(N^2 2^N) with tour reconstruction [prog_cp_dp_bitmask_tsp call]",
+    "category": "competitive-programming",
+    "tabStops": [
+      "$0"
+    ],
+    "scope": "c,cpp"
+  },
+  {
+    "id": "snip.short.competitive-programming.full-programs.bit-manipulation.bitmasking.prog-cp-dp-bitmask-tsp",
+    "component_id": "competitive-programming.full-programs.bit-manipulation.bitmasking.prog-cp-dp-bitmask-tsp",
+    "prefix": "dtyp.prog_cp_dp_bitmask_tsp",
+    "body": "prog_cp_dp_bitmask_tsp()$0",
+    "description": "Bitmask DP solving Traveling Salesperson Problem in O(N^2 2^N) with tour reconstruction [prog_cp_dp_bitmask_tsp]",
+    "category": "competitive-programming",
+    "tabStops": [
+      "$0"
+    ],
+    "scope": "c,cpp"
+  },
+  {
+    "id": "snip.def.competitive-programming.full-programs.bit-manipulation.bitmasking.prog-cp-dp-bitmask-tsp",
+    "component_id": "competitive-programming.full-programs.bit-manipulation.bitmasking.prog-cp-dp-bitmask-tsp",
+    "prefix": "dtyp.cp.program.full_programs.bit_manipulation.bitmasking.prog_cp_dp_bitmask_tsp.code",
+    "body": "#include <stdio.h>\n#include <string.h>\n\n#define INF 1000000000\n\nstatic int dist[16][16];\nstatic int dp[1 << 16][16];\nstatic int parent[1 << 16][16];\n\nstatic void solve(void) {\n    int n;\n    if (scanf(\"%d\", &n) != 1 || n > 16) return;\n\n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n; j++) {\n            scanf(\"%d\", &dist[i][j]);\n        }\n    }\n\n    int full_mask = (1 << n);\n    for (int mask = 0; mask < full_mask; mask++) {\n        for (int u = 0; u < n; u++) {\n            dp[mask][u] = INF;\n            parent[mask][u] = -1;\n        }\n    }\n\n    dp[1][0] = 0;\n\n    for (int mask = 1; mask < full_mask; mask++) {\n        for (int u = 0; u < n; u++) {\n            if (!(mask & (1 << u)) || dp[mask][u] == INF) continue;\n\n            for (int v = 0; v < n; v++) {\n                if (mask & (1 << v)) continue;\n                int next_mask = mask | (1 << v);\n                int cost = dp[mask][u] + dist[u][v];\n                if (cost < dp[next_mask][v]) {\n                    dp[next_mask][v] = cost;\n                    parent[next_mask][v] = u;\n                }\n            }\n        }\n    }\n\n    int best_cost = INF;\n    int best_last = -1;\n    for (int u = 1; u < n; u++) {\n        if (dp[full_mask - 1][u] + dist[u][0] < best_cost) {\n            best_cost = dp[full_mask - 1][u] + dist[u][0];\n            best_last = u;\n        }\n    }\n\n    printf(\"Minimum Tour Cost: %d\\n\", best_cost);\n\n    int tour[18];\n    int tour_cnt = 0;\n    int curr_mask = full_mask - 1;\n    int curr_node = best_last;\n\n    while (curr_node != -1) {\n        tour[tour_cnt++] = curr_node;\n        int p = parent[curr_mask][curr_node];\n        curr_mask ^= (1 << curr_node);\n        curr_node = p;\n    }\n\n    printf(\"Tour: \");\n    for (int i = tour_cnt - 1; i >= 0; i--) printf(\"%d -> \", tour[i]);\n    printf(\"0\\n\");\n}\n\nint main(void) {\n    int t;\n    if (scanf(\"%d\", &t) != 1) t = 1;\n    while (t--) {\n        solve();\n    }\n    return 0;\n}",
+    "description": "Complete clean C implementation of prog_cp_dp_bitmask_tsp",
+    "category": "competitive-programming",
+    "tabStops": [
+      "$0"
+    ],
+    "scope": "c,cpp"
+  },
+  {
+    "id": "snip.invoke.competitive-programming.full-programs.number-theory.modular-arithmetic.prog-cp-string-double-hash",
+    "component_id": "competitive-programming.full-programs.number-theory.modular-arithmetic.prog-cp-string-double-hash",
+    "prefix": "dtyp.cp.program.full_programs.number_theory.modular_arithmetic.prog_cp_string_double_hash",
+    "body": "prog_cp_string_double_hash()$0",
+    "description": "Double polynomial rolling string hashing with O(1) substring queries and collision immunity [prog_cp_string_double_hash call]",
+    "category": "competitive-programming",
+    "tabStops": [
+      "$0"
+    ],
+    "scope": "c,cpp"
+  },
+  {
+    "id": "snip.short.competitive-programming.full-programs.number-theory.modular-arithmetic.prog-cp-string-double-hash",
+    "component_id": "competitive-programming.full-programs.number-theory.modular-arithmetic.prog-cp-string-double-hash",
+    "prefix": "dtyp.prog_cp_string_double_hash",
+    "body": "prog_cp_string_double_hash()$0",
+    "description": "Double polynomial rolling string hashing with O(1) substring queries and collision immunity [prog_cp_string_double_hash]",
+    "category": "competitive-programming",
+    "tabStops": [
+      "$0"
+    ],
+    "scope": "c,cpp"
+  },
+  {
+    "id": "snip.def.competitive-programming.full-programs.number-theory.modular-arithmetic.prog-cp-string-double-hash",
+    "component_id": "competitive-programming.full-programs.number-theory.modular-arithmetic.prog-cp-string-double-hash",
+    "prefix": "dtyp.cp.program.full_programs.number_theory.modular_arithmetic.prog_cp_string_double_hash.code",
+    "body": "#include <stdio.h>\n#include <string.h>\n\n#define MAX_LEN 100005\n#define MOD1 1000000007LL\n#define MOD2 1000000009LL\n#define BASE1 31LL\n#define BASE2 37LL\n\nstatic long long pow1[MAX_LEN];\nstatic long long pow2[MAX_LEN];\nstatic long long h1[MAX_LEN];\nstatic long long h2[MAX_LEN];\n\nstatic void init_powers(int n) {\n    pow1[0] = 1; pow2[0] = 1;\n    for (int i = 1; i <= n; i++) {\n        pow1[i] = (pow1[i - 1] * BASE1) % MOD1;\n        pow2[i] = (pow2[i - 1] * BASE2) % MOD2;\n    }\n}\n\nstatic void compute_prefix_hashes(const char* s, int n) {\n    h1[0] = 0; h2[0] = 0;\n    for (int i = 0; i < n; i++) {\n        long long val = s[i] - 'a' + 1;\n        h1[i + 1] = (h1[i] * BASE1 + val) % MOD1;\n        h2[i + 1] = (h2[i] * BASE2 + val) % MOD2;\n    }\n}\n\nstatic long long get_hash1(int l, int r) {\n    long long res = (h1[r] - h1[l - 1] * pow1[r - l + 1]) % MOD1;\n    return (res + MOD1) % MOD1;\n}\n\nstatic long long get_hash2(int l, int r) {\n    long long res = (h2[r] - h2[l - 1] * pow2[r - l + 1]) % MOD2;\n    return (res + MOD2) % MOD2;\n}\n\nstatic int are_substrings_equal(int l1, int r1, int l2, int r2) {\n    if ((r1 - l1) != (r2 - l2)) return 0;\n    return (get_hash1(l1, r1) == get_hash1(l2, r2)) &&\n           (get_hash2(l1, r2) == get_hash2(l2, r2));\n}\n\nstatic void solve(void) {\n    char s[MAX_LEN];\n    int q;\n    if (scanf(\"%s %d\", s, &q) != 2) return;\n\n    int n = (int)strlen(s);\n    init_powers(n);\n    compute_prefix_hashes(s, n);\n\n    for (int i = 0; i < q; i++) {\n        int l1, r1, l2, r2;\n        if (scanf(\"%d %d %d %d\", &l1, &r1, &l2, &r2) == 4) {\n            printf(\"%s\\n\", are_substrings_equal(l1, r1, l2, r2) ? \"EQUAL\" : \"DIFFERENT\");\n        }\n    }\n}\n\nint main(void) {\n    int t;\n    if (scanf(\"%d\", &t) != 1) t = 1;\n    while (t--) {\n        solve();\n    }\n    return 0;\n}",
+    "description": "Complete clean C implementation of prog_cp_string_double_hash",
+    "category": "competitive-programming",
+    "tabStops": [
+      "$0"
+    ],
+    "scope": "c,cpp"
+  },
+  {
+    "id": "snip.invoke.competitive-programming.full-programs.fast-io-utilities.fast-io.prog-cp-string-z-algorithm",
+    "component_id": "competitive-programming.full-programs.fast-io-utilities.fast-io.prog-cp-string-z-algorithm",
+    "prefix": "dtyp.cp.program.full_programs.fast_io_utilities.fast_io.prog_cp_string_z_algorithm",
+    "body": "prog_cp_string_z_algorithm()$0",
+    "description": "Linear-time Z-Algorithm computing longest common prefix array for exact string matching [prog_cp_string_z_algorithm call]",
+    "category": "competitive-programming",
+    "tabStops": [
+      "$0"
+    ],
+    "scope": "c,cpp"
+  },
+  {
+    "id": "snip.short.competitive-programming.full-programs.fast-io-utilities.fast-io.prog-cp-string-z-algorithm",
+    "component_id": "competitive-programming.full-programs.fast-io-utilities.fast-io.prog-cp-string-z-algorithm",
+    "prefix": "dtyp.prog_cp_string_z_algorithm",
+    "body": "prog_cp_string_z_algorithm()$0",
+    "description": "Linear-time Z-Algorithm computing longest common prefix array for exact string matching [prog_cp_string_z_algorithm]",
+    "category": "competitive-programming",
+    "tabStops": [
+      "$0"
+    ],
+    "scope": "c,cpp"
+  },
+  {
+    "id": "snip.def.competitive-programming.full-programs.fast-io-utilities.fast-io.prog-cp-string-z-algorithm",
+    "component_id": "competitive-programming.full-programs.fast-io-utilities.fast-io.prog-cp-string-z-algorithm",
+    "prefix": "dtyp.cp.program.full_programs.fast_io_utilities.fast_io.prog_cp_string_z_algorithm.code",
+    "body": "#include <stdio.h>\n#include <string.h>\n#include <stdlib.h>\n\nstatic void compute_z(const char* s, int n, int* z) {\n    int l = 0, r = 0;\n    z[0] = n;\n    for (int i = 1; i < n; i++) {\n        if (i <= r) {\n            z[i] = (r - i + 1 < z[i - l]) ? (r - i + 1) : z[i - l];\n        } else {\n            z[i] = 0;\n        }\n        while (i + z[i] < n && s[z[i]] == s[i + z[i]]) {\n            z[i]++;\n        }\n        if (i + z[i] - 1 > r) {\n            l = i;\n            r = i + z[i] - 1;\n        }\n    }\n}\n\nstatic void solve(void) {\n    char pat[100005];\n    char text[100005];\n    if (scanf(\"%s %s\", pat, text) != 2) return;\n\n    int p_len = (int)strlen(pat);\n    int t_len = (int)strlen(text);\n    int total_len = p_len + 1 + t_len;\n\n    char* concat = (char*)malloc(total_len + 1);\n    memcpy(concat, pat, p_len);\n    concat[p_len] = '$';\n    memcpy(concat + p_len + 1, text, t_len);\n    concat[total_len] = '\\0';\n\n    int* z = (int*)malloc(total_len * sizeof(int));\n    compute_z(concat, total_len, z);\n\n    int matches = 0;\n    for (int i = p_len + 1; i < total_len; i++) {\n        if (z[i] == p_len) {\n            matches++;\n        }\n    }\n\n    printf(\"Occurrences: %d\\n\", matches);\n    for (int i = p_len + 1; i < total_len; i++) {\n        if (z[i] == p_len) {\n            printf(\"%d \", i - (p_len + 1) + 1);\n        }\n    }\n    printf(\"\\n\");\n\n    free(concat);\n    free(z);\n}\n\nint main(void) {\n    int t;\n    if (scanf(\"%d\", &t) != 1) t = 1;\n    while (t--) {\n        solve();\n    }\n    return 0;\n}",
+    "description": "Complete clean C implementation of prog_cp_string_z_algorithm",
+    "category": "competitive-programming",
+    "tabStops": [
+      "$0"
+    ],
+    "scope": "c,cpp"
+  },
+  {
+    "id": "snip.invoke.competitive-programming.full-programs.bit-manipulation.bitwise-tricks.prog-cp-trie-xor-max",
+    "component_id": "competitive-programming.full-programs.bit-manipulation.bitwise-tricks.prog-cp-trie-xor-max",
+    "prefix": "dtyp.cp.program.full_programs.bit_manipulation.bitwise_tricks.prog_cp_trie_xor_max",
+    "body": "prog_cp_trie_xor_max()$0",
+    "description": "Binary bitwise Trie inserting integers and querying Maximum XOR Pair in O(31) time [prog_cp_trie_xor_max call]",
+    "category": "competitive-programming",
+    "tabStops": [
+      "$0"
+    ],
+    "scope": "c,cpp"
+  },
+  {
+    "id": "snip.short.competitive-programming.full-programs.bit-manipulation.bitwise-tricks.prog-cp-trie-xor-max",
+    "component_id": "competitive-programming.full-programs.bit-manipulation.bitwise-tricks.prog-cp-trie-xor-max",
+    "prefix": "dtyp.prog_cp_trie_xor_max",
+    "body": "prog_cp_trie_xor_max()$0",
+    "description": "Binary bitwise Trie inserting integers and querying Maximum XOR Pair in O(31) time [prog_cp_trie_xor_max]",
+    "category": "competitive-programming",
+    "tabStops": [
+      "$0"
+    ],
+    "scope": "c,cpp"
+  },
+  {
+    "id": "snip.def.competitive-programming.full-programs.bit-manipulation.bitwise-tricks.prog-cp-trie-xor-max",
+    "component_id": "competitive-programming.full-programs.bit-manipulation.bitwise-tricks.prog-cp-trie-xor-max",
+    "prefix": "dtyp.cp.program.full_programs.bit_manipulation.bitwise_tricks.prog_cp_trie_xor_max.code",
+    "body": "#include <stdio.h>\n#include <stdlib.h>\n\ntypedef struct TrieNode {\n    int next[2];\n} TrieNode;\n\nstatic TrieNode nodes[3100005];\nstatic int node_count = 0;\n\nstatic int new_node(void) {\n    nodes[node_count].next[0] = -1;\n    nodes[node_count].next[1] = -1;\n    return node_count++;\n}\n\nstatic void trie_insert(int val) {\n    int curr = 0;\n    for (int i = 30; i >= 0; i--) {\n        int bit = (val >> i) & 1;\n        if (nodes[curr].next[bit] == -1) {\n            nodes[curr].next[bit] = new_node();\n        }\n        curr = nodes[curr].next[bit];\n    }\n}\n\nstatic int query_max_xor(int val) {\n    int curr = 0;\n    int max_xor = 0;\n    for (int i = 30; i >= 0; i--) {\n        int bit = (val >> i) & 1;\n        int opp_bit = 1 - bit;\n        if (nodes[curr].next[opp_bit] != -1) {\n            max_xor |= (1 << i);\n            curr = nodes[curr].next[opp_bit];\n        } else {\n            curr = nodes[curr].next[bit];\n        }\n    }\n    return max_xor;\n}\n\nstatic void solve(void) {\n    int n;\n    if (scanf(\"%d\", &n) != 1) return;\n\n    node_count = 0;\n    new_node();\n\n    int* arr = (int*)malloc(n * sizeof(int));\n    for (int i = 0; i < n; i++) {\n        scanf(\"%d\", &arr[i]);\n        trie_insert(arr[i]);\n    }\n\n    int best_xor = 0;\n    for (int i = 0; i < n; i++) {\n        int candidate = query_max_xor(arr[i]);\n        if (candidate > best_xor) best_xor = candidate;\n    }\n\n    printf(\"%d\\n\", best_xor);\n    free(arr);\n}\n\nint main(void) {\n    int t;\n    if (scanf(\"%d\", &t) != 1) t = 1;\n    while (t--) {\n        solve();\n    }\n    return 0;\n}",
+    "description": "Complete clean C implementation of prog_cp_trie_xor_max",
+    "category": "competitive-programming",
+    "tabStops": [
+      "$0"
+    ],
+    "scope": "c,cpp"
+  },
+  {
     "id": "snip.invoke.academics-programming.discrete-mathematics.logic-set-theory.truth-tables.prog-truth-tables",
     "component_id": "academics-programming.discrete-mathematics.logic-set-theory.truth-tables.prog-truth-tables",
     "prefix": "dtyp.acad.program.discrete_mathematics.logic_set_theory.truth_tables.prog_truth_tables",

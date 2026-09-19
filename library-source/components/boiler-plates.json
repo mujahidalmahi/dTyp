@@ -33,8 +33,8 @@
       "mainVoid",
       "main()"
     ],
-    "createdAt": "2026-09-19T09:56:40.385Z",
-    "updatedAt": "2026-09-19T09:56:40.385Z"
+    "createdAt": "2026-09-19T10:08:39.569Z",
+    "updatedAt": "2026-09-19T10:08:39.569Z"
   },
   {
     "id": "boiler-plates.separate-components.basic-templates.main-args",
@@ -70,8 +70,8 @@
       "mainArgs",
       "main(argc, argv)"
     ],
-    "createdAt": "2026-09-19T09:56:40.385Z",
-    "updatedAt": "2026-09-19T09:56:40.385Z"
+    "createdAt": "2026-09-19T10:08:39.569Z",
+    "updatedAt": "2026-09-19T10:08:39.569Z"
   },
   {
     "id": "boiler-plates.separate-components.basic-templates.common-headers",
@@ -107,8 +107,8 @@
       "includes",
       "stdheaders"
     ],
-    "createdAt": "2026-09-19T09:56:40.385Z",
-    "updatedAt": "2026-09-19T09:56:40.385Z"
+    "createdAt": "2026-09-19T10:08:39.569Z",
+    "updatedAt": "2026-09-19T10:08:39.569Z"
   },
   {
     "id": "boiler-plates.separate-components.basic-templates.main-env",
@@ -142,8 +142,8 @@
       "boiler-plates>separate-components>basic-templates>main-env>main_env()",
       "mainEnv"
     ],
-    "createdAt": "2026-09-19T09:56:40.385Z",
-    "updatedAt": "2026-09-19T09:56:40.385Z"
+    "createdAt": "2026-09-19T10:08:39.569Z",
+    "updatedAt": "2026-09-19T10:08:39.569Z"
   },
   {
     "id": "boiler-plates.separate-components.conditionals.if-else-basic",
@@ -177,8 +177,8 @@
       "boiler-plates>separate-components>conditionals>if-else-basic>if_else_basic()",
       "ifElse"
     ],
-    "createdAt": "2026-09-19T09:56:40.385Z",
-    "updatedAt": "2026-09-19T09:56:40.385Z"
+    "createdAt": "2026-09-19T10:08:39.569Z",
+    "updatedAt": "2026-09-19T10:08:39.569Z"
   },
   {
     "id": "boiler-plates.separate-components.conditionals.if-else-ladder",
@@ -212,8 +212,8 @@
       "boiler-plates>separate-components>conditionals>if-else-ladder>if_else_ladder()",
       "ifElseLadder"
     ],
-    "createdAt": "2026-09-19T09:56:40.385Z",
-    "updatedAt": "2026-09-19T09:56:40.385Z"
+    "createdAt": "2026-09-19T10:08:39.569Z",
+    "updatedAt": "2026-09-19T10:08:39.569Z"
   },
   {
     "id": "boiler-plates.separate-components.conditionals.switch-case-dispatch",
@@ -247,8 +247,8 @@
       "boiler-plates>separate-components>conditionals>switch-case-dispatch>switch_case_dispatch()",
       "switchCase"
     ],
-    "createdAt": "2026-09-19T09:56:40.385Z",
-    "updatedAt": "2026-09-19T09:56:40.385Z"
+    "createdAt": "2026-09-19T10:08:39.569Z",
+    "updatedAt": "2026-09-19T10:08:39.569Z"
   },
   {
     "id": "boiler-plates.separate-components.conditionals.ternary-max",
@@ -281,8 +281,8 @@
       "boiler-plates>separate-components>conditionals>ternary-max>ternary_max()",
       "ternaryAssign"
     ],
-    "createdAt": "2026-09-19T09:56:40.385Z",
-    "updatedAt": "2026-09-19T09:56:40.385Z"
+    "createdAt": "2026-09-19T10:08:39.569Z",
+    "updatedAt": "2026-09-19T10:08:39.569Z"
   },
   {
     "id": "boiler-plates.separate-components.loops.for-loop-counter",
@@ -316,8 +316,8 @@
       "boiler-plates>separate-components>loops>for-loop-counter>for_loop_counter()",
       "forLoop"
     ],
-    "createdAt": "2026-09-19T09:56:40.385Z",
-    "updatedAt": "2026-09-19T09:56:40.385Z"
+    "createdAt": "2026-09-19T10:08:39.569Z",
+    "updatedAt": "2026-09-19T10:08:39.569Z"
   },
   {
     "id": "boiler-plates.separate-components.loops.for-loop-reverse",
@@ -351,8 +351,8 @@
       "boiler-plates>separate-components>loops>for-loop-reverse>for_loop_reverse()",
       "reverseForLoop"
     ],
-    "createdAt": "2026-09-19T09:56:40.385Z",
-    "updatedAt": "2026-09-19T09:56:40.385Z"
+    "createdAt": "2026-09-19T10:08:39.569Z",
+    "updatedAt": "2026-09-19T10:08:39.569Z"
   },
   {
     "id": "boiler-plates.separate-components.loops.while-loop-scanner",
@@ -386,8 +386,8 @@
       "boiler-plates>separate-components>loops>while-loop-scanner>while_loop_scanner()",
       "whileLoop"
     ],
-    "createdAt": "2026-09-19T09:56:40.385Z",
-    "updatedAt": "2026-09-19T09:56:40.385Z"
+    "createdAt": "2026-09-19T10:08:39.569Z",
+    "updatedAt": "2026-09-19T10:08:39.569Z"
   },
   {
     "id": "boiler-plates.separate-components.loops.do-while-input",
@@ -421,8 +421,8 @@
       "boiler-plates>separate-components>loops>do-while-input>do_while_input()",
       "doWhileLoop"
     ],
-    "createdAt": "2026-09-19T09:56:40.385Z",
-    "updatedAt": "2026-09-19T09:56:40.385Z"
+    "createdAt": "2026-09-19T10:08:39.569Z",
+    "updatedAt": "2026-09-19T10:08:39.569Z"
   },
   {
     "id": "boiler-plates.separate-components.patterns.print-right-triangle",
@@ -456,8 +456,8 @@
       "boiler-plates>separate-components>patterns>print-right-triangle>print_right_triangle()",
       "printRightTriangle"
     ],
-    "createdAt": "2026-09-19T09:56:40.385Z",
-    "updatedAt": "2026-09-19T09:56:40.385Z"
+    "createdAt": "2026-09-19T10:08:39.569Z",
+    "updatedAt": "2026-09-19T10:08:39.569Z"
   },
   {
     "id": "boiler-plates.separate-components.patterns.print-pyramid",
@@ -491,8 +491,8 @@
       "boiler-plates>separate-components>patterns>print-pyramid>print_pyramid()",
       "printPyramid"
     ],
-    "createdAt": "2026-09-19T09:56:40.385Z",
-    "updatedAt": "2026-09-19T09:56:40.385Z"
+    "createdAt": "2026-09-19T10:08:39.569Z",
+    "updatedAt": "2026-09-19T10:08:39.569Z"
   },
   {
     "id": "boiler-plates.separate-components.patterns.print-diamond",
@@ -526,8 +526,8 @@
       "boiler-plates>separate-components>patterns>print-diamond>print_diamond()",
       "printDiamond"
     ],
-    "createdAt": "2026-09-19T09:56:40.385Z",
-    "updatedAt": "2026-09-19T09:56:40.385Z"
+    "createdAt": "2026-09-19T10:08:39.570Z",
+    "updatedAt": "2026-09-19T10:08:39.570Z"
   },
   {
     "id": "boiler-plates.separate-components.patterns.print-hollow-square",
@@ -561,8 +561,8 @@
       "boiler-plates>separate-components>patterns>print-hollow-square>print_hollow_square()",
       "printHollowSquare"
     ],
-    "createdAt": "2026-09-19T09:56:40.385Z",
-    "updatedAt": "2026-09-19T09:56:40.385Z"
+    "createdAt": "2026-09-19T10:08:39.570Z",
+    "updatedAt": "2026-09-19T10:08:39.570Z"
   },
   {
     "id": "boiler-plates.separate-components.functions.func-swap",
@@ -596,8 +596,8 @@
       "boiler-plates>separate-components>functions>func-swap>swap_ints()",
       "swapInts"
     ],
-    "createdAt": "2026-09-19T09:56:40.385Z",
-    "updatedAt": "2026-09-19T09:56:40.385Z"
+    "createdAt": "2026-09-19T10:08:39.570Z",
+    "updatedAt": "2026-09-19T10:08:39.570Z"
   },
   {
     "id": "boiler-plates.separate-components.functions.func-callback-def",
@@ -631,8 +631,8 @@
       "boiler-plates>separate-components>functions>func-callback-def>int_mapper_callback()",
       "IntMapper"
     ],
-    "createdAt": "2026-09-19T09:56:40.385Z",
-    "updatedAt": "2026-09-19T09:56:40.385Z"
+    "createdAt": "2026-09-19T10:08:39.570Z",
+    "updatedAt": "2026-09-19T10:08:39.570Z"
   },
   {
     "id": "boiler-plates.separate-components.functions.apply-mapper",
@@ -668,8 +668,8 @@
       "boiler-plates>separate-components>functions>apply-mapper>apply_mapper()",
       "applyMapper"
     ],
-    "createdAt": "2026-09-19T09:56:40.385Z",
-    "updatedAt": "2026-09-19T09:56:40.385Z"
+    "createdAt": "2026-09-19T10:08:39.570Z",
+    "updatedAt": "2026-09-19T10:08:39.570Z"
   },
   {
     "id": "boiler-plates.separate-components.recursion.factorial-recursive",
@@ -703,8 +703,8 @@
       "boiler-plates>separate-components>recursion>factorial-recursive>factorial_recursive()",
       "factorial"
     ],
-    "createdAt": "2026-09-19T09:56:40.385Z",
-    "updatedAt": "2026-09-19T09:56:40.385Z"
+    "createdAt": "2026-09-19T10:08:39.570Z",
+    "updatedAt": "2026-09-19T10:08:39.570Z"
   },
   {
     "id": "boiler-plates.separate-components.recursion.fibonacci-recursive",
@@ -738,8 +738,8 @@
       "boiler-plates>separate-components>recursion>fibonacci-recursive>fibonacci_recursive()",
       "fibonacci"
     ],
-    "createdAt": "2026-09-19T09:56:40.385Z",
-    "updatedAt": "2026-09-19T09:56:40.385Z"
+    "createdAt": "2026-09-19T10:08:39.570Z",
+    "updatedAt": "2026-09-19T10:08:39.570Z"
   },
   {
     "id": "boiler-plates.separate-components.recursion.power-recursive",
@@ -773,8 +773,8 @@
       "boiler-plates>separate-components>recursion>power-recursive>power_recursive()",
       "power"
     ],
-    "createdAt": "2026-09-19T09:56:40.385Z",
-    "updatedAt": "2026-09-19T09:56:40.385Z"
+    "createdAt": "2026-09-19T10:08:39.570Z",
+    "updatedAt": "2026-09-19T10:08:39.570Z"
   },
   {
     "id": "boiler-plates.separate-components.recursion.sum-digits-recursive",
@@ -808,8 +808,8 @@
       "boiler-plates>separate-components>recursion>sum-digits-recursive>sum_digits_recursive()",
       "sumDigits"
     ],
-    "createdAt": "2026-09-19T09:56:40.385Z",
-    "updatedAt": "2026-09-19T09:56:40.385Z"
+    "createdAt": "2026-09-19T10:08:39.570Z",
+    "updatedAt": "2026-09-19T10:08:39.570Z"
   },
   {
     "id": "boiler-plates.separate-components.pointers.ptr-rebind",
@@ -843,8 +843,8 @@
       "boiler-plates>separate-components>pointers>ptr-rebind>rebind_ptr()",
       "rebindPtr"
     ],
-    "createdAt": "2026-09-19T09:56:40.386Z",
-    "updatedAt": "2026-09-19T09:56:40.386Z"
+    "createdAt": "2026-09-19T10:08:39.570Z",
+    "updatedAt": "2026-09-19T10:08:39.570Z"
   },
   {
     "id": "boiler-plates.separate-components.pointers.ptr-strlen",
@@ -878,8 +878,8 @@
       "boiler-plates>separate-components>pointers>ptr-strlen>ptr_strlen()",
       "ptrStrlen"
     ],
-    "createdAt": "2026-09-19T09:56:40.386Z",
-    "updatedAt": "2026-09-19T09:56:40.386Z"
+    "createdAt": "2026-09-19T10:08:39.570Z",
+    "updatedAt": "2026-09-19T10:08:39.570Z"
   },
   {
     "id": "boiler-plates.separate-components.pointers.ptr-array-copy",
@@ -913,8 +913,8 @@
       "boiler-plates>separate-components>pointers>ptr-array-copy>ptr_array_copy()",
       "ptrArrayCopy"
     ],
-    "createdAt": "2026-09-19T09:56:40.386Z",
-    "updatedAt": "2026-09-19T09:56:40.386Z"
+    "createdAt": "2026-09-19T10:08:39.570Z",
+    "updatedAt": "2026-09-19T10:08:39.570Z"
   },
   {
     "id": "boiler-plates.separate-components.dynamic-memory.alloc-int-array",
@@ -948,8 +948,8 @@
       "boiler-plates>separate-components>dynamic-memory>alloc-int-array>alloc_int_array()",
       "allocIntArray"
     ],
-    "createdAt": "2026-09-19T09:56:40.386Z",
-    "updatedAt": "2026-09-19T09:56:40.386Z"
+    "createdAt": "2026-09-19T10:08:39.570Z",
+    "updatedAt": "2026-09-19T10:08:39.570Z"
   },
   {
     "id": "boiler-plates.separate-components.dynamic-memory.alloc-zero-array",
@@ -983,8 +983,8 @@
       "boiler-plates>separate-components>dynamic-memory>alloc-zero-array>alloc_zero_array()",
       "allocZeroArray"
     ],
-    "createdAt": "2026-09-19T09:56:40.386Z",
-    "updatedAt": "2026-09-19T09:56:40.386Z"
+    "createdAt": "2026-09-19T10:08:39.570Z",
+    "updatedAt": "2026-09-19T10:08:39.570Z"
   },
   {
     "id": "boiler-plates.separate-components.dynamic-memory.grow-int-array",
@@ -1018,8 +1018,8 @@
       "boiler-plates>separate-components>dynamic-memory>grow-int-array>grow_int_array()",
       "growIntArray"
     ],
-    "createdAt": "2026-09-19T09:56:40.386Z",
-    "updatedAt": "2026-09-19T09:56:40.386Z"
+    "createdAt": "2026-09-19T10:08:39.570Z",
+    "updatedAt": "2026-09-19T10:08:39.570Z"
   },
   {
     "id": "boiler-plates.separate-components.dynamic-memory.safe-free",
@@ -1053,8 +1053,8 @@
       "boiler-plates>separate-components>dynamic-memory>safe-free>safe_free()",
       "safeFree"
     ],
-    "createdAt": "2026-09-19T09:56:40.386Z",
-    "updatedAt": "2026-09-19T09:56:40.386Z"
+    "createdAt": "2026-09-19T10:08:39.570Z",
+    "updatedAt": "2026-09-19T10:08:39.570Z"
   },
   {
     "id": "boiler-plates.separate-components.structures.person-struct",
@@ -1088,8 +1088,8 @@
       "boiler-plates>separate-components>structures>person-struct>Person()",
       "person_struct"
     ],
-    "createdAt": "2026-09-19T09:56:40.386Z",
-    "updatedAt": "2026-09-19T09:56:40.386Z"
+    "createdAt": "2026-09-19T10:08:39.570Z",
+    "updatedAt": "2026-09-19T10:08:39.570Z"
   },
   {
     "id": "boiler-plates.separate-components.structures.create-person",
@@ -1125,8 +1125,8 @@
       "boiler-plates>separate-components>structures>create-person>create_person()",
       "createPerson"
     ],
-    "createdAt": "2026-09-19T09:56:40.386Z",
-    "updatedAt": "2026-09-19T09:56:40.386Z"
+    "createdAt": "2026-09-19T10:08:39.570Z",
+    "updatedAt": "2026-09-19T10:08:39.570Z"
   },
   {
     "id": "boiler-plates.separate-components.structures.print-person",
@@ -1162,8 +1162,8 @@
       "boiler-plates>separate-components>structures>print-person>print_person()",
       "printPerson"
     ],
-    "createdAt": "2026-09-19T09:56:40.386Z",
-    "updatedAt": "2026-09-19T09:56:40.386Z"
+    "createdAt": "2026-09-19T10:08:39.570Z",
+    "updatedAt": "2026-09-19T10:08:39.570Z"
   },
   {
     "id": "boiler-plates.separate-components.structures.free-person",
@@ -1199,8 +1199,8 @@
       "boiler-plates>separate-components>structures>free-person>free_person()",
       "freePerson"
     ],
-    "createdAt": "2026-09-19T09:56:40.386Z",
-    "updatedAt": "2026-09-19T09:56:40.386Z"
+    "createdAt": "2026-09-19T10:08:39.570Z",
+    "updatedAt": "2026-09-19T10:08:39.570Z"
   },
   {
     "id": "boiler-plates.separate-components.structures.point2d-struct",
@@ -1234,8 +1234,8 @@
       "boiler-plates>separate-components>structures>point2d-struct>Point2D()",
       "point2d_struct"
     ],
-    "createdAt": "2026-09-19T09:56:40.386Z",
-    "updatedAt": "2026-09-19T09:56:40.386Z"
+    "createdAt": "2026-09-19T10:08:39.570Z",
+    "updatedAt": "2026-09-19T10:08:39.570Z"
   },
   {
     "id": "boiler-plates.separate-components.structures.point2d-distance",
@@ -1271,8 +1271,8 @@
       "boiler-plates>separate-components>structures>point2d-distance>point2d_distance()",
       "point2dDistance"
     ],
-    "createdAt": "2026-09-19T09:56:40.386Z",
-    "updatedAt": "2026-09-19T09:56:40.386Z"
+    "createdAt": "2026-09-19T10:08:39.570Z",
+    "updatedAt": "2026-09-19T10:08:39.570Z"
   },
   {
     "id": "boiler-plates.separate-components.unions.datavalue-union",
@@ -1306,8 +1306,8 @@
       "boiler-plates>separate-components>unions>datavalue-union>DataValue()",
       "data_value_union"
     ],
-    "createdAt": "2026-09-19T09:56:40.386Z",
-    "updatedAt": "2026-09-19T09:56:40.386Z"
+    "createdAt": "2026-09-19T10:08:39.570Z",
+    "updatedAt": "2026-09-19T10:08:39.570Z"
   },
   {
     "id": "boiler-plates.separate-components.unions.tagged-union-struct",
@@ -1343,8 +1343,8 @@
       "boiler-plates>separate-components>unions>tagged-union-struct>VarValue()",
       "tagged_union"
     ],
-    "createdAt": "2026-09-19T09:56:40.386Z",
-    "updatedAt": "2026-09-19T09:56:40.386Z"
+    "createdAt": "2026-09-19T10:08:39.570Z",
+    "updatedAt": "2026-09-19T10:08:39.570Z"
   },
   {
     "id": "boiler-plates.separate-components.unions.print-var-value",
@@ -1380,8 +1380,8 @@
       "boiler-plates>separate-components>unions>print-var-value>print_var_value()",
       "printVarValue"
     ],
-    "createdAt": "2026-09-19T09:56:40.386Z",
-    "updatedAt": "2026-09-19T09:56:40.386Z"
+    "createdAt": "2026-09-19T10:08:39.570Z",
+    "updatedAt": "2026-09-19T10:08:39.570Z"
   },
   {
     "id": "boiler-plates.separate-components.enums.status-enum",
@@ -1415,8 +1415,8 @@
       "boiler-plates>separate-components>enums>status-enum>Status()",
       "status_enum"
     ],
-    "createdAt": "2026-09-19T09:56:40.386Z",
-    "updatedAt": "2026-09-19T09:56:40.386Z"
+    "createdAt": "2026-09-19T10:08:39.570Z",
+    "updatedAt": "2026-09-19T10:08:39.570Z"
   },
   {
     "id": "boiler-plates.separate-components.enums.status-to-string",
@@ -1452,8 +1452,8 @@
       "boiler-plates>separate-components>enums>status-to-string>status_to_str()",
       "statusToString"
     ],
-    "createdAt": "2026-09-19T09:56:40.386Z",
-    "updatedAt": "2026-09-19T09:56:40.386Z"
+    "createdAt": "2026-09-19T10:08:39.570Z",
+    "updatedAt": "2026-09-19T10:08:39.570Z"
   },
   {
     "id": "boiler-plates.separate-components.enums.loglevel-enum",
@@ -1487,8 +1487,8 @@
       "boiler-plates>separate-components>enums>loglevel-enum>LogLevel()",
       "loglevel_enum"
     ],
-    "createdAt": "2026-09-19T09:56:40.386Z",
-    "updatedAt": "2026-09-19T09:56:40.386Z"
+    "createdAt": "2026-09-19T10:08:39.570Z",
+    "updatedAt": "2026-09-19T10:08:39.570Z"
   },
   {
     "id": "boiler-plates.separate-components.file-io.file-open-read",
@@ -1522,8 +1522,8 @@
       "boiler-plates>separate-components>file-io>file-open-read>open_file_read()",
       "openFileRead"
     ],
-    "createdAt": "2026-09-19T09:56:40.386Z",
-    "updatedAt": "2026-09-19T09:56:40.386Z"
+    "createdAt": "2026-09-19T10:08:39.570Z",
+    "updatedAt": "2026-09-19T10:08:39.570Z"
   },
   {
     "id": "boiler-plates.separate-components.file-io.file-read-lines",
@@ -1557,8 +1557,8 @@
       "boiler-plates>separate-components>file-io>file-read-lines>read_file_lines()",
       "readFileLines"
     ],
-    "createdAt": "2026-09-19T09:56:40.386Z",
-    "updatedAt": "2026-09-19T09:56:40.386Z"
+    "createdAt": "2026-09-19T10:08:39.570Z",
+    "updatedAt": "2026-09-19T10:08:39.570Z"
   },
   {
     "id": "boiler-plates.separate-components.file-io.file-write-text",
@@ -1592,8 +1592,8 @@
       "boiler-plates>separate-components>file-io>file-write-text>write_file_text()",
       "writeFileText"
     ],
-    "createdAt": "2026-09-19T09:56:40.386Z",
-    "updatedAt": "2026-09-19T09:56:40.386Z"
+    "createdAt": "2026-09-19T10:08:39.570Z",
+    "updatedAt": "2026-09-19T10:08:39.570Z"
   },
   {
     "id": "boiler-plates.separate-components.file-io.file-append-text",
@@ -1627,8 +1627,8 @@
       "boiler-plates>separate-components>file-io>file-append-text>append_file_text()",
       "appendFileText"
     ],
-    "createdAt": "2026-09-19T09:56:40.386Z",
-    "updatedAt": "2026-09-19T09:56:40.386Z"
+    "createdAt": "2026-09-19T10:08:39.570Z",
+    "updatedAt": "2026-09-19T10:08:39.570Z"
   },
   {
     "id": "boiler-plates.separate-components.file-io.binary-write-records",
@@ -1662,8 +1662,8 @@
       "boiler-plates>separate-components>file-io>binary-write-records>write_binary_records()",
       "writeBinaryRecords"
     ],
-    "createdAt": "2026-09-19T09:56:40.386Z",
-    "updatedAt": "2026-09-19T09:56:40.386Z"
+    "createdAt": "2026-09-19T10:08:39.570Z",
+    "updatedAt": "2026-09-19T10:08:39.570Z"
   },
   {
     "id": "boiler-plates.separate-components.macros.macro-include-guard",
@@ -1697,8 +1697,8 @@
       "boiler-plates>separate-components>macros>macro-include-guard>macro_include_guard()",
       "includeGuard"
     ],
-    "createdAt": "2026-09-19T09:56:40.386Z",
-    "updatedAt": "2026-09-19T09:56:40.386Z"
+    "createdAt": "2026-09-19T10:08:39.570Z",
+    "updatedAt": "2026-09-19T10:08:39.570Z"
   },
   {
     "id": "boiler-plates.separate-components.macros.macro-min-max",
@@ -1732,8 +1732,8 @@
       "boiler-plates>separate-components>macros>macro-min-max>macro_min_max()",
       "minMaxMacros"
     ],
-    "createdAt": "2026-09-19T09:56:40.386Z",
-    "updatedAt": "2026-09-19T09:56:40.386Z"
+    "createdAt": "2026-09-19T10:08:39.570Z",
+    "updatedAt": "2026-09-19T10:08:39.570Z"
   },
   {
     "id": "boiler-plates.separate-components.macros.macro-array-size",
@@ -1767,8 +1767,8 @@
       "boiler-plates>separate-components>macros>macro-array-size>macro_array_len()",
       "arrayLen"
     ],
-    "createdAt": "2026-09-19T09:56:40.386Z",
-    "updatedAt": "2026-09-19T09:56:40.386Z"
+    "createdAt": "2026-09-19T10:08:39.570Z",
+    "updatedAt": "2026-09-19T10:08:39.570Z"
   },
   {
     "id": "boiler-plates.separate-components.macros.macro-debug-print",
@@ -1802,8 +1802,8 @@
       "boiler-plates>separate-components>macros>macro-debug-print>macro_debug_print()",
       "debugPrint"
     ],
-    "createdAt": "2026-09-19T09:56:40.386Z",
-    "updatedAt": "2026-09-19T09:56:40.386Z"
+    "createdAt": "2026-09-19T10:08:39.570Z",
+    "updatedAt": "2026-09-19T10:08:39.570Z"
   },
   {
     "id": "boiler-plates.separate-components.strings.length",
@@ -1837,8 +1837,8 @@
       "boiler-plates>separate-components>strings>length>string_length()",
       "strLen"
     ],
-    "createdAt": "2026-09-19T09:56:40.386Z",
-    "updatedAt": "2026-09-19T09:56:40.386Z"
+    "createdAt": "2026-09-19T10:08:39.570Z",
+    "updatedAt": "2026-09-19T10:08:39.570Z"
   },
   {
     "id": "boiler-plates.separate-components.strings.copy",
@@ -1872,8 +1872,8 @@
       "boiler-plates>separate-components>strings>copy>string_copy()",
       "strCopy"
     ],
-    "createdAt": "2026-09-19T09:56:40.386Z",
-    "updatedAt": "2026-09-19T09:56:40.386Z"
+    "createdAt": "2026-09-19T10:08:39.570Z",
+    "updatedAt": "2026-09-19T10:08:39.570Z"
   },
   {
     "id": "boiler-plates.separate-components.strings.concat",
@@ -1907,8 +1907,8 @@
       "boiler-plates>separate-components>strings>concat>string_concat()",
       "strConcat"
     ],
-    "createdAt": "2026-09-19T09:56:40.386Z",
-    "updatedAt": "2026-09-19T09:56:40.386Z"
+    "createdAt": "2026-09-19T10:08:39.570Z",
+    "updatedAt": "2026-09-19T10:08:39.570Z"
   },
   {
     "id": "boiler-plates.separate-components.strings.compare",
@@ -1942,8 +1942,8 @@
       "boiler-plates>separate-components>strings>compare>string_compare()",
       "strCompare"
     ],
-    "createdAt": "2026-09-19T09:56:40.386Z",
-    "updatedAt": "2026-09-19T09:56:40.386Z"
+    "createdAt": "2026-09-19T10:08:39.570Z",
+    "updatedAt": "2026-09-19T10:08:39.570Z"
   },
   {
     "id": "boiler-plates.separate-components.strings.reverse",
@@ -1977,8 +1977,8 @@
       "boiler-plates>separate-components>strings>reverse>string_reverse()",
       "strReverse"
     ],
-    "createdAt": "2026-09-19T09:56:40.386Z",
-    "updatedAt": "2026-09-19T09:56:40.386Z"
+    "createdAt": "2026-09-19T10:08:39.570Z",
+    "updatedAt": "2026-09-19T10:08:39.570Z"
   },
   {
     "id": "boiler-plates.separate-components.strings.to-lower",
@@ -2012,8 +2012,8 @@
       "boiler-plates>separate-components>strings>to-lower>string_to_lower()",
       "strToLower"
     ],
-    "createdAt": "2026-09-19T09:56:40.386Z",
-    "updatedAt": "2026-09-19T09:56:40.386Z"
+    "createdAt": "2026-09-19T10:08:39.570Z",
+    "updatedAt": "2026-09-19T10:08:39.570Z"
   },
   {
     "id": "boiler-plates.separate-components.strings.to-upper",
@@ -2047,8 +2047,8 @@
       "boiler-plates>separate-components>strings>to-upper>string_to_upper()",
       "strToUpper"
     ],
-    "createdAt": "2026-09-19T09:56:40.387Z",
-    "updatedAt": "2026-09-19T09:56:40.387Z"
+    "createdAt": "2026-09-19T10:08:39.570Z",
+    "updatedAt": "2026-09-19T10:08:39.570Z"
   },
   {
     "id": "boiler-plates.separate-components.strings.substring",
@@ -2082,8 +2082,8 @@
       "boiler-plates>separate-components>strings>substring>string_substring()",
       "strSubstr"
     ],
-    "createdAt": "2026-09-19T09:56:40.387Z",
-    "updatedAt": "2026-09-19T09:56:40.387Z"
+    "createdAt": "2026-09-19T10:08:39.570Z",
+    "updatedAt": "2026-09-19T10:08:39.570Z"
   },
   {
     "id": "boiler-plates.separate-components.strings.find",
@@ -2118,8 +2118,8 @@
       "boiler-plates>separate-components>strings>find>string_find()",
       "strFind"
     ],
-    "createdAt": "2026-09-19T09:56:40.387Z",
-    "updatedAt": "2026-09-19T09:56:40.387Z"
+    "createdAt": "2026-09-19T10:08:39.570Z",
+    "updatedAt": "2026-09-19T10:08:39.570Z"
   },
   {
     "id": "boiler-plates.separate-components.strings.trim",
@@ -2153,8 +2153,8 @@
       "boiler-plates>separate-components>strings>trim>string_trim()",
       "strTrim"
     ],
-    "createdAt": "2026-09-19T09:56:40.387Z",
-    "updatedAt": "2026-09-19T09:56:40.387Z"
+    "createdAt": "2026-09-19T10:08:39.571Z",
+    "updatedAt": "2026-09-19T10:08:39.571Z"
   },
   {
     "id": "boiler-plates.separate-components.strings.word-count",
@@ -2187,8 +2187,8 @@
       "boiler-plates>separate-components>strings>word-count>string_word_count()",
       "strWordCount"
     ],
-    "createdAt": "2026-09-19T09:56:40.387Z",
-    "updatedAt": "2026-09-19T09:56:40.387Z"
+    "createdAt": "2026-09-19T10:08:39.571Z",
+    "updatedAt": "2026-09-19T10:08:39.571Z"
   },
   {
     "id": "boiler-plates.separate-components.strings.from-int",
@@ -2222,8 +2222,8 @@
       "boiler-plates>separate-components>strings>from-int>string_from_int()",
       "strFromInt"
     ],
-    "createdAt": "2026-09-19T09:56:40.387Z",
-    "updatedAt": "2026-09-19T09:56:40.387Z"
+    "createdAt": "2026-09-19T10:08:39.571Z",
+    "updatedAt": "2026-09-19T10:08:39.571Z"
   },
   {
     "id": "boiler-plates.separate-components.strings.to-int",
@@ -2257,8 +2257,8 @@
       "boiler-plates>separate-components>strings>to-int>string_to_int()",
       "strToInt"
     ],
-    "createdAt": "2026-09-19T09:56:40.387Z",
-    "updatedAt": "2026-09-19T09:56:40.387Z"
+    "createdAt": "2026-09-19T10:08:39.571Z",
+    "updatedAt": "2026-09-19T10:08:39.571Z"
   },
   {
     "id": "boiler-plates.full-programs.basic-templates.prog-hello-world",
@@ -2293,8 +2293,8 @@
       "boiler-plates>full-programs>basic-templates>prog-hello-world>prog_hello_world()",
       "helloWorldProgram"
     ],
-    "createdAt": "2026-09-19T09:56:40.388Z",
-    "updatedAt": "2026-09-19T09:56:40.388Z"
+    "createdAt": "2026-09-19T10:08:39.571Z",
+    "updatedAt": "2026-09-19T10:08:39.571Z"
   },
   {
     "id": "boiler-plates.full-programs.basic-templates.prog-cli-echo",
@@ -2329,8 +2329,8 @@
       "boiler-plates>full-programs>basic-templates>prog-cli-echo>prog_cli_echo()",
       "cliEchoProgram"
     ],
-    "createdAt": "2026-09-19T09:56:40.388Z",
-    "updatedAt": "2026-09-19T09:56:40.388Z"
+    "createdAt": "2026-09-19T10:08:39.571Z",
+    "updatedAt": "2026-09-19T10:08:39.571Z"
   },
   {
     "id": "boiler-plates.full-programs.conditionals.prog-grade-evaluator",
@@ -2365,8 +2365,8 @@
       "boiler-plates>full-programs>conditionals>prog-grade-evaluator>prog_grade_evaluator()",
       "gradeEvaluatorProgram"
     ],
-    "createdAt": "2026-09-19T09:56:40.388Z",
-    "updatedAt": "2026-09-19T09:56:40.388Z"
+    "createdAt": "2026-09-19T10:08:39.572Z",
+    "updatedAt": "2026-09-19T10:08:39.572Z"
   },
   {
     "id": "boiler-plates.full-programs.conditionals.prog-leap-year",
@@ -2401,8 +2401,8 @@
       "boiler-plates>full-programs>conditionals>prog-leap-year>prog_leap_year()",
       "leapYearProgram"
     ],
-    "createdAt": "2026-09-19T09:56:40.388Z",
-    "updatedAt": "2026-09-19T09:56:40.388Z"
+    "createdAt": "2026-09-19T10:08:39.572Z",
+    "updatedAt": "2026-09-19T10:08:39.572Z"
   },
   {
     "id": "boiler-plates.full-programs.loops.prog-multiplication-table",
@@ -2437,8 +2437,8 @@
       "boiler-plates>full-programs>loops>prog-multiplication-table>prog_multiplication_table()",
       "multiplicationTableProgram"
     ],
-    "createdAt": "2026-09-19T09:56:40.389Z",
-    "updatedAt": "2026-09-19T09:56:40.389Z"
+    "createdAt": "2026-09-19T10:08:39.572Z",
+    "updatedAt": "2026-09-19T10:08:39.572Z"
   },
   {
     "id": "boiler-plates.full-programs.loops.prog-collatz-sequence",
@@ -2473,8 +2473,8 @@
       "boiler-plates>full-programs>loops>prog-collatz-sequence>prog_collatz_sequence()",
       "collatzSequenceProgram"
     ],
-    "createdAt": "2026-09-19T09:56:40.389Z",
-    "updatedAt": "2026-09-19T09:56:40.389Z"
+    "createdAt": "2026-09-19T10:08:39.572Z",
+    "updatedAt": "2026-09-19T10:08:39.572Z"
   },
   {
     "id": "boiler-plates.full-programs.patterns.prog-star-pyramid",
@@ -2509,8 +2509,8 @@
       "boiler-plates>full-programs>patterns>prog-star-pyramid>prog_star_pyramid()",
       "starPyramidProgram"
     ],
-    "createdAt": "2026-09-19T09:56:40.389Z",
-    "updatedAt": "2026-09-19T09:56:40.389Z"
+    "createdAt": "2026-09-19T10:08:39.572Z",
+    "updatedAt": "2026-09-19T10:08:39.572Z"
   },
   {
     "id": "boiler-plates.full-programs.patterns.prog-diamond-pattern",
@@ -2545,8 +2545,8 @@
       "boiler-plates>full-programs>patterns>prog-diamond-pattern>prog_diamond_pattern()",
       "diamondPatternProgram"
     ],
-    "createdAt": "2026-09-19T09:56:40.389Z",
-    "updatedAt": "2026-09-19T09:56:40.389Z"
+    "createdAt": "2026-09-19T10:08:39.572Z",
+    "updatedAt": "2026-09-19T10:08:39.572Z"
   },
   {
     "id": "boiler-plates.full-programs.functions.prog-calculator-dispatch",
@@ -2581,8 +2581,8 @@
       "boiler-plates>full-programs>functions>prog-calculator-dispatch>prog_calculator_dispatch()",
       "calculatorDispatchProgram"
     ],
-    "createdAt": "2026-09-19T09:56:40.389Z",
-    "updatedAt": "2026-09-19T09:56:40.389Z"
+    "createdAt": "2026-09-19T10:08:39.572Z",
+    "updatedAt": "2026-09-19T10:08:39.572Z"
   },
   {
     "id": "boiler-plates.full-programs.functions.prog-array-map-callback",
@@ -2617,8 +2617,8 @@
       "boiler-plates>full-programs>functions>prog-array-map-callback>prog_array_map_callback()",
       "arrayMapCallbackProgram"
     ],
-    "createdAt": "2026-09-19T09:56:40.389Z",
-    "updatedAt": "2026-09-19T09:56:40.389Z"
+    "createdAt": "2026-09-19T10:08:39.572Z",
+    "updatedAt": "2026-09-19T10:08:39.572Z"
   },
   {
     "id": "boiler-plates.full-programs.recursion.prog-tower-of-hanoi",
@@ -2653,8 +2653,8 @@
       "boiler-plates>full-programs>recursion>prog-tower-of-hanoi>prog_tower_of_hanoi()",
       "towerOfHanoiProgram"
     ],
-    "createdAt": "2026-09-19T09:56:40.389Z",
-    "updatedAt": "2026-09-19T09:56:40.389Z"
+    "createdAt": "2026-09-19T10:08:39.572Z",
+    "updatedAt": "2026-09-19T10:08:39.572Z"
   },
   {
     "id": "boiler-plates.full-programs.recursion.prog-fibonacci-memoized",
@@ -2689,8 +2689,8 @@
       "boiler-plates>full-programs>recursion>prog-fibonacci-memoized>prog_fibonacci_memoized()",
       "fibonacciMemoizedProgram"
     ],
-    "createdAt": "2026-09-19T09:56:40.389Z",
-    "updatedAt": "2026-09-19T09:56:40.389Z"
+    "createdAt": "2026-09-19T10:08:39.572Z",
+    "updatedAt": "2026-09-19T10:08:39.572Z"
   },
   {
     "id": "boiler-plates.full-programs.pointers.prog-string-reversal",
@@ -2725,8 +2725,8 @@
       "boiler-plates>full-programs>pointers>prog-string-reversal>prog_string_reversal()",
       "stringReversalProgram"
     ],
-    "createdAt": "2026-09-19T09:56:40.389Z",
-    "updatedAt": "2026-09-19T09:56:40.389Z"
+    "createdAt": "2026-09-19T10:08:39.572Z",
+    "updatedAt": "2026-09-19T10:08:39.572Z"
   },
   {
     "id": "boiler-plates.full-programs.pointers.prog-pointer-arithmetic",
@@ -2761,8 +2761,8 @@
       "boiler-plates>full-programs>pointers>prog-pointer-arithmetic>prog_pointer_arithmetic()",
       "pointerArithmeticProgram"
     ],
-    "createdAt": "2026-09-19T09:56:40.389Z",
-    "updatedAt": "2026-09-19T09:56:40.389Z"
+    "createdAt": "2026-09-19T10:08:39.572Z",
+    "updatedAt": "2026-09-19T10:08:39.572Z"
   },
   {
     "id": "boiler-plates.full-programs.dynamic-memory.prog-dynamic-array-stats",
@@ -2797,8 +2797,8 @@
       "boiler-plates>full-programs>dynamic-memory>prog-dynamic-array-stats>prog_dynamic_array_stats()",
       "dynamicArrayStatsProgram"
     ],
-    "createdAt": "2026-09-19T09:56:40.389Z",
-    "updatedAt": "2026-09-19T09:56:40.389Z"
+    "createdAt": "2026-09-19T10:08:39.572Z",
+    "updatedAt": "2026-09-19T10:08:39.572Z"
   },
   {
     "id": "boiler-plates.full-programs.dynamic-memory.prog-dynamic-buffer-growth",
@@ -2833,8 +2833,8 @@
       "boiler-plates>full-programs>dynamic-memory>prog-dynamic-buffer-growth>prog_dynamic_buffer_growth()",
       "dynamicBufferGrowthProgram"
     ],
-    "createdAt": "2026-09-19T09:56:40.389Z",
-    "updatedAt": "2026-09-19T09:56:40.389Z"
+    "createdAt": "2026-09-19T10:08:39.572Z",
+    "updatedAt": "2026-09-19T10:08:39.572Z"
   },
   {
     "id": "boiler-plates.full-programs.structures.prog-student-records",
@@ -2869,8 +2869,8 @@
       "boiler-plates>full-programs>structures>prog-student-records>prog_student_records()",
       "studentRecordsProgram"
     ],
-    "createdAt": "2026-09-19T09:56:40.390Z",
-    "updatedAt": "2026-09-19T09:56:40.390Z"
+    "createdAt": "2026-09-19T10:08:39.573Z",
+    "updatedAt": "2026-09-19T10:08:39.573Z"
   },
   {
     "id": "boiler-plates.full-programs.structures.prog-2d-geometry",
@@ -2905,8 +2905,8 @@
       "boiler-plates>full-programs>structures>prog-2d-geometry>prog_2d_geometry()",
       "twoDGeometryProgram"
     ],
-    "createdAt": "2026-09-19T09:56:40.390Z",
-    "updatedAt": "2026-09-19T09:56:40.390Z"
+    "createdAt": "2026-09-19T10:08:39.573Z",
+    "updatedAt": "2026-09-19T10:08:39.573Z"
   },
   {
     "id": "boiler-plates.full-programs.unions.prog-variant-display",
@@ -2941,8 +2941,8 @@
       "boiler-plates>full-programs>unions>prog-variant-display>prog_variant_display()",
       "variantDisplayProgram"
     ],
-    "createdAt": "2026-09-19T09:56:40.390Z",
-    "updatedAt": "2026-09-19T09:56:40.390Z"
+    "createdAt": "2026-09-19T10:08:39.573Z",
+    "updatedAt": "2026-09-19T10:08:39.573Z"
   },
   {
     "id": "boiler-plates.full-programs.unions.prog-ip-address-union",
@@ -2977,8 +2977,8 @@
       "boiler-plates>full-programs>unions>prog-ip-address-union>prog_ip_address_union()",
       "ipAddressUnionProgram"
     ],
-    "createdAt": "2026-09-19T09:56:40.390Z",
-    "updatedAt": "2026-09-19T09:56:40.390Z"
+    "createdAt": "2026-09-19T10:08:39.573Z",
+    "updatedAt": "2026-09-19T10:08:39.573Z"
   },
   {
     "id": "boiler-plates.full-programs.enums.prog-traffic-light",
@@ -3013,8 +3013,8 @@
       "boiler-plates>full-programs>enums>prog-traffic-light>prog_traffic_light()",
       "trafficLightProgram"
     ],
-    "createdAt": "2026-09-19T09:56:40.390Z",
-    "updatedAt": "2026-09-19T09:56:40.390Z"
+    "createdAt": "2026-09-19T10:08:39.573Z",
+    "updatedAt": "2026-09-19T10:08:39.573Z"
   },
   {
     "id": "boiler-plates.full-programs.enums.prog-order-lifecycle",
@@ -3049,8 +3049,8 @@
       "boiler-plates>full-programs>enums>prog-order-lifecycle>prog_order_lifecycle()",
       "orderLifecycleProgram"
     ],
-    "createdAt": "2026-09-19T09:56:40.390Z",
-    "updatedAt": "2026-09-19T09:56:40.390Z"
+    "createdAt": "2026-09-19T10:08:39.573Z",
+    "updatedAt": "2026-09-19T10:08:39.573Z"
   },
   {
     "id": "boiler-plates.full-programs.file-io.prog-file-copy",
@@ -3085,8 +3085,8 @@
       "boiler-plates>full-programs>file-io>prog-file-copy>prog_file_copy()",
       "fileCopyProgram"
     ],
-    "createdAt": "2026-09-19T09:56:40.390Z",
-    "updatedAt": "2026-09-19T09:56:40.390Z"
+    "createdAt": "2026-09-19T10:08:39.573Z",
+    "updatedAt": "2026-09-19T10:08:39.573Z"
   },
   {
     "id": "boiler-plates.full-programs.file-io.prog-file-line-counter",
@@ -3121,8 +3121,8 @@
       "boiler-plates>full-programs>file-io>prog-file-line-counter>prog_file_line_counter()",
       "fileLineCounterProgram"
     ],
-    "createdAt": "2026-09-19T09:56:40.390Z",
-    "updatedAt": "2026-09-19T09:56:40.390Z"
+    "createdAt": "2026-09-19T10:08:39.573Z",
+    "updatedAt": "2026-09-19T10:08:39.573Z"
   },
   {
     "id": "boiler-plates.full-programs.macros.prog-logging-macros",
@@ -3157,8 +3157,8 @@
       "boiler-plates>full-programs>macros>prog-logging-macros>prog_logging_macros()",
       "loggingMacrosProgram"
     ],
-    "createdAt": "2026-09-19T09:56:40.390Z",
-    "updatedAt": "2026-09-19T09:56:40.390Z"
+    "createdAt": "2026-09-19T10:08:39.573Z",
+    "updatedAt": "2026-09-19T10:08:39.573Z"
   },
   {
     "id": "boiler-plates.full-programs.macros.prog-macro-metaprogramming",
@@ -3193,8 +3193,8 @@
       "boiler-plates>full-programs>macros>prog-macro-metaprogramming>prog_macro_metaprogramming()",
       "macroMetaprogrammingProgram"
     ],
-    "createdAt": "2026-09-19T09:56:40.390Z",
-    "updatedAt": "2026-09-19T09:56:40.390Z"
+    "createdAt": "2026-09-19T10:08:39.574Z",
+    "updatedAt": "2026-09-19T10:08:39.574Z"
   },
   {
     "id": "boiler-plates.full-programs.strings.prog-core-operations",
@@ -3229,8 +3229,8 @@
       "boiler-plates>full-programs>strings>prog-core-operations>prog_core_operations()",
       "coreOperationsProgram"
     ],
-    "createdAt": "2026-09-19T09:56:40.390Z",
-    "updatedAt": "2026-09-19T09:56:40.390Z"
+    "createdAt": "2026-09-19T10:08:39.574Z",
+    "updatedAt": "2026-09-19T10:08:39.574Z"
   },
   {
     "id": "boiler-plates.full-programs.strings.prog-search-substring",
@@ -3265,8 +3265,8 @@
       "boiler-plates>full-programs>strings>prog-search-substring>prog_search_substring()",
       "searchSubstringProgram"
     ],
-    "createdAt": "2026-09-19T09:56:40.391Z",
-    "updatedAt": "2026-09-19T09:56:40.391Z"
+    "createdAt": "2026-09-19T10:08:39.574Z",
+    "updatedAt": "2026-09-19T10:08:39.574Z"
   },
   {
     "id": "boiler-plates.full-programs.strings.prog-conversions-trim",
@@ -3301,8 +3301,8 @@
       "boiler-plates>full-programs>strings>prog-conversions-trim>prog_conversions_trim()",
       "conversionsTrimProgram"
     ],
-    "createdAt": "2026-09-19T09:56:40.391Z",
-    "updatedAt": "2026-09-19T09:56:40.391Z"
+    "createdAt": "2026-09-19T10:08:39.574Z",
+    "updatedAt": "2026-09-19T10:08:39.574Z"
   },
   {
     "id": "boiler-plates.full-programs.complex-programs.complex-student-management",
@@ -3338,8 +3338,8 @@
       "boiler-plates>full-programs>complex-programs>complex-student-management>complex_student_management()",
       "studentManagementProgram"
     ],
-    "createdAt": "2026-09-19T09:56:40.391Z",
-    "updatedAt": "2026-09-19T09:56:40.391Z"
+    "createdAt": "2026-09-19T10:08:39.575Z",
+    "updatedAt": "2026-09-19T10:08:39.575Z"
   },
   {
     "id": "boiler-plates.full-programs.complex-programs.complex-banking-ledger",
@@ -3375,8 +3375,8 @@
       "boiler-plates>full-programs>complex-programs>complex-banking-ledger>complex_banking_ledger()",
       "bankingLedgerProgram"
     ],
-    "createdAt": "2026-09-19T09:56:40.391Z",
-    "updatedAt": "2026-09-19T09:56:40.391Z"
+    "createdAt": "2026-09-19T10:08:39.575Z",
+    "updatedAt": "2026-09-19T10:08:39.575Z"
   },
   {
     "id": "boiler-plates.full-programs.complex-programs.complex-string-builder",
@@ -3411,8 +3411,8 @@
       "boiler-plates>full-programs>complex-programs>complex-string-builder>complex_string_builder()",
       "stringBuilderProgram"
     ],
-    "createdAt": "2026-09-19T09:56:40.391Z",
-    "updatedAt": "2026-09-19T09:56:40.391Z"
+    "createdAt": "2026-09-19T10:08:39.575Z",
+    "updatedAt": "2026-09-19T10:08:39.575Z"
   },
   {
     "id": "boiler-plates.full-programs.complex-programs.complex-file-analyzer",
@@ -3448,8 +3448,8 @@
       "boiler-plates>full-programs>complex-programs>complex-file-analyzer>complex_file_analyzer()",
       "fileAnalyzerProgram"
     ],
-    "createdAt": "2026-09-19T09:56:40.391Z",
-    "updatedAt": "2026-09-19T09:56:40.391Z"
+    "createdAt": "2026-09-19T10:08:39.575Z",
+    "updatedAt": "2026-09-19T10:08:39.575Z"
   },
   {
     "id": "boiler-plates.full-programs.complex-programs.complex-inventory-catalog",
@@ -3485,8 +3485,8 @@
       "boiler-plates>full-programs>complex-programs>complex-inventory-catalog>complex_inventory_catalog()",
       "inventoryCatalogProgram"
     ],
-    "createdAt": "2026-09-19T09:56:40.391Z",
-    "updatedAt": "2026-09-19T09:56:40.391Z"
+    "createdAt": "2026-09-19T10:08:39.575Z",
+    "updatedAt": "2026-09-19T10:08:39.575Z"
   },
   {
     "id": "boiler-plates.full-programs.complex-programs.complex-task-tracker",
@@ -3522,8 +3522,8 @@
       "boiler-plates>full-programs>complex-programs>complex-task-tracker>complex_task_tracker()",
       "taskTrackerProgram"
     ],
-    "createdAt": "2026-09-19T09:56:40.392Z",
-    "updatedAt": "2026-09-19T09:56:40.392Z"
+    "createdAt": "2026-09-19T10:08:39.575Z",
+    "updatedAt": "2026-09-19T10:08:39.575Z"
   },
   {
     "id": "boiler-plates.full-programs.complex-programs.complex-expression-evaluator",
@@ -3559,8 +3559,8 @@
       "boiler-plates>full-programs>complex-programs>complex-expression-evaluator>complex_expression_evaluator()",
       "expressionEvaluatorProgram"
     ],
-    "createdAt": "2026-09-19T09:56:40.392Z",
-    "updatedAt": "2026-09-19T09:56:40.392Z"
+    "createdAt": "2026-09-19T10:08:39.575Z",
+    "updatedAt": "2026-09-19T10:08:39.575Z"
   },
   {
     "id": "boiler-plates.full-programs.complex-programs.complex-binary-record-store",
@@ -3596,8 +3596,8 @@
       "boiler-plates>full-programs>complex-programs>complex-binary-record-store>complex_binary_record_store()",
       "binaryRecordStoreProgram"
     ],
-    "createdAt": "2026-09-19T09:56:40.392Z",
-    "updatedAt": "2026-09-19T09:56:40.392Z"
+    "createdAt": "2026-09-19T10:08:39.575Z",
+    "updatedAt": "2026-09-19T10:08:39.575Z"
   },
   {
     "id": "boiler-plates.full-programs.complex-programs.complex-multilevel-logger",
@@ -3633,8 +3633,8 @@
       "boiler-plates>full-programs>complex-programs>complex-multilevel-logger>complex_multilevel_logger()",
       "multilevelLoggerProgram"
     ],
-    "createdAt": "2026-09-19T09:56:40.392Z",
-    "updatedAt": "2026-09-19T09:56:40.392Z"
+    "createdAt": "2026-09-19T10:08:39.575Z",
+    "updatedAt": "2026-09-19T10:08:39.575Z"
   },
   {
     "id": "boiler-plates.full-programs.complex-programs.complex-matrix-suite",
@@ -3669,7 +3669,7 @@
       "boiler-plates>full-programs>complex-programs>complex-matrix-suite>complex_matrix_suite()",
       "matrixSuiteProgram"
     ],
-    "createdAt": "2026-09-19T09:56:40.392Z",
-    "updatedAt": "2026-09-19T09:56:40.392Z"
+    "createdAt": "2026-09-19T10:08:39.575Z",
+    "updatedAt": "2026-09-19T10:08:39.575Z"
   }
 ]
