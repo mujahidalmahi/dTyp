@@ -57,12 +57,9 @@ int main(void) {
     int depth[]  = { 0, 1, 1, 2, 2, 2, 2};
     int up[7 * 4];
     build_up(n, max_log, parent, up);
-    printf("LCA(3, 4) = %d
-", query_lca(3, 4, max_log, depth, up));
-    printf("LCA(3, 5) = %d
-", query_lca(3, 5, max_log, depth, up));
-    printf("LCA(4, 1) = %d
-", query_lca(4, 1, max_log, depth, up));
+    printf("LCA(3, 4) = %d\n", query_lca(3, 4, max_log, depth, up));
+    printf("LCA(3, 5) = %d\n", query_lca(3, 5, max_log, depth, up));
+    printf("LCA(4, 1) = %d\n", query_lca(4, 1, max_log, depth, up));
     return 0;
 }
 ```

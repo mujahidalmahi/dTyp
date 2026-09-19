@@ -41,8 +41,7 @@ double compute_double_integral(double x1, double x2, double y1, double y2, int n
 
 int main(void) {
     double vol = compute_double_integral(0.0, 2.0, 0.0, 1.0, 200, 200);
-    printf("Double integral volume over [0,2] x [0,1]: %.6f
-", vol);
+    printf("Double integral volume over [0,2] x [0,1]: %.6f\n", vol);
     return 0;
 }
 ```

@@ -30,10 +30,8 @@ void analyze_beam(double L, int n_loads, const double P[], const double a[]) {
     double R_B = moment_A / L;
     double R_A = total_load - R_B;
 
-    printf("Reaction at A: %.2f N
-", R_A);
-    printf("Reaction at B: %.2f N
-", R_B);
+    printf("Reaction at A: %.2f N\n", R_A);
+    printf("Reaction at B: %.2f N\n", R_B);
 
     double max_moment = 0.0;
     for (int i = 0; i < n_loads; i++) {
@@ -43,8 +41,7 @@ void analyze_beam(double L, int n_loads, const double P[], const double a[]) {
         }
         if (m > max_moment) max_moment = m;
     }
-    printf("Max Bending Moment under point loads: %.2f N*m
-", max_moment);
+    printf("Max Bending Moment under point loads: %.2f N*m\n", max_moment);
 }
 
 int main(void) {

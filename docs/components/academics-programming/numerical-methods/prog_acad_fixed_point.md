@@ -39,8 +39,7 @@ double solve_fixed_point(double x0, double tol, int max_iter) {
 int main(void) {
     double x0 = 2.5, tol = 1e-6;
     double root = solve_fixed_point(x0, tol, 100);
-    printf("Fixed Point Root: %.6f
-", root);
+    printf("Fixed Point Root: %.6f\n", root);
     return 0;
 }
 ```

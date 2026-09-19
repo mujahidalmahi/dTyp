@@ -59,16 +59,12 @@ int main(void) {
     };
     int count = sizeof(tasks) / sizeof(tasks[0]);
 
-    printf("=== Task Management Dashboard ===
-");
-    printf("%-4s %-40s %-8s %-12s
-", "ID", "Title", "Prio", "Status");
-    printf("------------------------------------------------------------------
-");
+    printf("=== Task Management Dashboard ===\n");
+    printf("%-4s %-40s %-8s %-12s\n", "ID", "Title", "Prio", "Status");
+    printf("------------------------------------------------------------------\n");
 
     for (int i = 0; i < count; i++) {
-        printf("#%-3d %-40s %-8s %-12s
-",
+        printf("#%-3d %-40s %-8s %-12s\n",
                tasks[i].id, tasks[i].title, prio_name(tasks[i].priority), state_name(tasks[i].state));
     }
     return 0;

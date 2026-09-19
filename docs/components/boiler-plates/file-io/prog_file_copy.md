@@ -23,8 +23,7 @@ int main(int argc, char* argv[])
 
 int main(int argc, char* argv[]) {
     if (argc < 3) {
-        printf("Usage: %s <source> <destination>
-", argv[0]);
+        printf("Usage: %s <source> <destination>\n", argv[0]);
         return 1;
     }
 

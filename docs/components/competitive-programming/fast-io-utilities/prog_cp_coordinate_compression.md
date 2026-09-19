@@ -59,8 +59,7 @@ int main(void) {
     int u_size = coordinate_compress(coords, n, unique_arr);
     for (int i = 0; i < n; i++) {
         int r = get_rank(unique_arr, u_size, coords[i]);
-        printf("%d -> rank %d
-", coords[i], r);
+        printf("%d -> rank %d\n", coords[i], r);
     }
     return 0;
 }

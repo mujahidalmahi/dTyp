@@ -30,8 +30,8 @@
       "algorithms>separate-components>sorting>elementary-sorts>bubble-sort>bubble_sort()",
       "bubbleSort"
     ],
-    "createdAt": "2026-09-17T09:35:42.928Z",
-    "updatedAt": "2026-09-17T09:35:42.928Z"
+    "createdAt": "2026-09-19T07:33:52.422Z",
+    "updatedAt": "2026-09-19T07:33:52.422Z"
   },
   {
     "id": "algorithms.separate-components.sorting.elementary-sorts.selection-sort",
@@ -64,8 +64,8 @@
       "algorithms>separate-components>sorting>elementary-sorts>selection-sort>selection_sort()",
       "selectionSort"
     ],
-    "createdAt": "2026-09-17T09:35:42.928Z",
-    "updatedAt": "2026-09-17T09:35:42.928Z"
+    "createdAt": "2026-09-19T07:33:52.422Z",
+    "updatedAt": "2026-09-19T07:33:52.422Z"
   },
   {
     "id": "algorithms.separate-components.sorting.elementary-sorts.insertion-sort",
@@ -98,8 +98,8 @@
       "algorithms>separate-components>sorting>elementary-sorts>insertion-sort>insertion_sort()",
       "insertionSort"
     ],
-    "createdAt": "2026-09-17T09:35:42.928Z",
-    "updatedAt": "2026-09-17T09:35:42.928Z"
+    "createdAt": "2026-09-19T07:33:52.422Z",
+    "updatedAt": "2026-09-19T07:33:52.422Z"
   },
   {
     "id": "algorithms.separate-components.sorting.quick-sort.lomuto-partition",
@@ -134,8 +134,8 @@
       "algorithms>separate-components>sorting>quick-sort>lomuto-partition>quick_sort_lomuto_partition()",
       "lomutoPartition"
     ],
-    "createdAt": "2026-09-17T09:35:42.928Z",
-    "updatedAt": "2026-09-17T09:35:42.928Z"
+    "createdAt": "2026-09-19T07:33:52.422Z",
+    "updatedAt": "2026-09-19T07:33:52.422Z"
   },
   {
     "id": "algorithms.separate-components.sorting.quick-sort.sort",
@@ -170,8 +170,8 @@
       "algorithms>separate-components>sorting>quick-sort>sort>quick_sort()",
       "quickSort"
     ],
-    "createdAt": "2026-09-17T09:35:42.928Z",
-    "updatedAt": "2026-09-17T09:35:42.928Z"
+    "createdAt": "2026-09-19T07:33:52.422Z",
+    "updatedAt": "2026-09-19T07:33:52.422Z"
   },
   {
     "id": "algorithms.separate-components.sorting.merge-sort.merge-subarrays",
@@ -205,8 +205,8 @@
       "algorithms>separate-components>sorting>merge-sort>merge-subarrays>merge_sorted_subarrays()",
       "mergeArrays"
     ],
-    "createdAt": "2026-09-17T09:35:42.928Z",
-    "updatedAt": "2026-09-17T09:35:42.928Z"
+    "createdAt": "2026-09-19T07:33:52.422Z",
+    "updatedAt": "2026-09-19T07:33:52.422Z"
   },
   {
     "id": "algorithms.separate-components.sorting.merge-sort.sort",
@@ -241,8 +241,8 @@
       "algorithms>separate-components>sorting>merge-sort>sort>merge_sort()",
       "mergeSort"
     ],
-    "createdAt": "2026-09-17T09:35:42.928Z",
-    "updatedAt": "2026-09-17T09:35:42.928Z"
+    "createdAt": "2026-09-19T07:33:52.422Z",
+    "updatedAt": "2026-09-19T07:33:52.422Z"
   },
   {
     "id": "algorithms.separate-components.sorting.heap-sort.max-heapify-down",
@@ -276,8 +276,8 @@
       "algorithms>separate-components>sorting>heap-sort>max-heapify-down>max_heapify_down()",
       "maxHeapifyDown"
     ],
-    "createdAt": "2026-09-17T09:35:42.928Z",
-    "updatedAt": "2026-09-17T09:35:42.928Z"
+    "createdAt": "2026-09-19T07:33:52.422Z",
+    "updatedAt": "2026-09-19T07:33:52.422Z"
   },
   {
     "id": "algorithms.separate-components.sorting.heap-sort.sort",
@@ -312,8 +312,8 @@
       "algorithms>separate-components>sorting>heap-sort>sort>heap_sort()",
       "heapSort"
     ],
-    "createdAt": "2026-09-17T09:35:42.928Z",
-    "updatedAt": "2026-09-17T09:35:42.928Z"
+    "createdAt": "2026-09-19T07:33:52.422Z",
+    "updatedAt": "2026-09-19T07:33:52.422Z"
   },
   {
     "id": "algorithms.separate-components.sorting.non-comparison-sorts.counting-sort",
@@ -346,8 +346,8 @@
       "algorithms>separate-components>sorting>non-comparison-sorts>counting-sort>counting_sort()",
       "countingSort"
     ],
-    "createdAt": "2026-09-17T09:35:42.928Z",
-    "updatedAt": "2026-09-17T09:35:42.928Z"
+    "createdAt": "2026-09-19T07:33:52.422Z",
+    "updatedAt": "2026-09-19T07:33:52.422Z"
   },
   {
     "id": "algorithms.separate-components.sorting.non-comparison-sorts.radix-sort",
@@ -380,8 +380,8 @@
       "algorithms>separate-components>sorting>non-comparison-sorts>radix-sort>radix_sort()",
       "radixSort"
     ],
-    "createdAt": "2026-09-17T09:35:42.928Z",
-    "updatedAt": "2026-09-17T09:35:42.928Z"
+    "createdAt": "2026-09-19T07:33:52.422Z",
+    "updatedAt": "2026-09-19T07:33:52.422Z"
   },
   {
     "id": "algorithms.separate-components.searching.linear-search.standard",
@@ -414,8 +414,8 @@
       "algorithms>separate-components>searching>linear-search>standard>linear_search()",
       "linearSearch"
     ],
-    "createdAt": "2026-09-17T09:35:42.928Z",
-    "updatedAt": "2026-09-17T09:35:42.928Z"
+    "createdAt": "2026-09-19T07:33:52.422Z",
+    "updatedAt": "2026-09-19T07:33:52.422Z"
   },
   {
     "id": "algorithms.separate-components.searching.binary-search.lower-bound",
@@ -449,8 +449,8 @@
       "algorithms>separate-components>searching>binary-search>lower-bound>binary_search_lower_bound()",
       "lowerBound"
     ],
-    "createdAt": "2026-09-17T09:35:42.928Z",
-    "updatedAt": "2026-09-17T09:35:42.928Z"
+    "createdAt": "2026-09-19T07:33:52.422Z",
+    "updatedAt": "2026-09-19T07:33:52.422Z"
   },
   {
     "id": "algorithms.separate-components.searching.binary-search.upper-bound",
@@ -484,8 +484,8 @@
       "algorithms>separate-components>searching>binary-search>upper-bound>binary_search_upper_bound()",
       "upperBound"
     ],
-    "createdAt": "2026-09-17T09:35:42.928Z",
-    "updatedAt": "2026-09-17T09:35:42.928Z"
+    "createdAt": "2026-09-19T07:33:52.422Z",
+    "updatedAt": "2026-09-19T07:33:52.422Z"
   },
   {
     "id": "algorithms.separate-components.searching.jump-interpolation.jump-search",
@@ -518,8 +518,8 @@
       "algorithms>separate-components>searching>jump-interpolation>jump-search>jump_search()",
       "jumpSearch"
     ],
-    "createdAt": "2026-09-17T09:35:42.928Z",
-    "updatedAt": "2026-09-17T09:35:42.928Z"
+    "createdAt": "2026-09-19T07:33:52.422Z",
+    "updatedAt": "2026-09-19T07:33:52.422Z"
   },
   {
     "id": "algorithms.separate-components.searching.two-pointers.two-sum",
@@ -553,8 +553,8 @@
       "algorithms>separate-components>searching>two-pointers>two-sum>two_sum_sorted()",
       "twoSumSorted"
     ],
-    "createdAt": "2026-09-17T09:35:42.928Z",
-    "updatedAt": "2026-09-17T09:35:42.928Z"
+    "createdAt": "2026-09-19T07:33:52.422Z",
+    "updatedAt": "2026-09-19T07:33:52.422Z"
   },
   {
     "id": "algorithms.separate-components.graph-algorithms.graph-traversals.bfs",
@@ -588,8 +588,8 @@
       "algorithms>separate-components>graph-algorithms>graph-traversals>bfs>graph_bfs_traversal()",
       "graphBFS"
     ],
-    "createdAt": "2026-09-17T09:35:42.928Z",
-    "updatedAt": "2026-09-17T09:35:42.928Z"
+    "createdAt": "2026-09-19T07:33:52.422Z",
+    "updatedAt": "2026-09-19T07:33:52.422Z"
   },
   {
     "id": "algorithms.separate-components.graph-algorithms.graph-traversals.dfs",
@@ -623,8 +623,8 @@
       "algorithms>separate-components>graph-algorithms>graph-traversals>dfs>graph_dfs_traversal()",
       "graphDFS"
     ],
-    "createdAt": "2026-09-17T09:35:42.928Z",
-    "updatedAt": "2026-09-17T09:35:42.928Z"
+    "createdAt": "2026-09-19T07:33:52.422Z",
+    "updatedAt": "2026-09-19T07:33:52.422Z"
   },
   {
     "id": "algorithms.separate-components.graph-algorithms.shortest-paths.dijkstra",
@@ -658,8 +658,8 @@
       "algorithms>separate-components>graph-algorithms>shortest-paths>dijkstra>dijkstra_shortest_path()",
       "dijkstra"
     ],
-    "createdAt": "2026-09-17T09:35:42.928Z",
-    "updatedAt": "2026-09-17T09:35:42.928Z"
+    "createdAt": "2026-09-19T07:33:52.422Z",
+    "updatedAt": "2026-09-19T07:33:52.422Z"
   },
   {
     "id": "algorithms.separate-components.graph-algorithms.minimum-spanning-tree.kruskal",
@@ -693,8 +693,8 @@
       "algorithms>separate-components>graph-algorithms>minimum-spanning-tree>kruskal>kruskal_mst()",
       "kruskalMST"
     ],
-    "createdAt": "2026-09-17T09:35:42.928Z",
-    "updatedAt": "2026-09-17T09:35:42.928Z"
+    "createdAt": "2026-09-19T07:33:52.422Z",
+    "updatedAt": "2026-09-19T07:33:52.422Z"
   },
   {
     "id": "algorithms.separate-components.graph-algorithms.topological-sort.kahn",
@@ -728,8 +728,8 @@
       "algorithms>separate-components>graph-algorithms>topological-sort>kahn>topological_sort_kahn()",
       "kahnTopologicalSort"
     ],
-    "createdAt": "2026-09-17T09:35:42.928Z",
-    "updatedAt": "2026-09-17T09:35:42.928Z"
+    "createdAt": "2026-09-19T07:33:52.422Z",
+    "updatedAt": "2026-09-19T07:33:52.422Z"
   },
   {
     "id": "algorithms.separate-components.dynamic-programming.1d-dp.kadane",
@@ -763,8 +763,8 @@
       "algorithms>separate-components>dynamic-programming>1d-dp>kadane>kadane_max_subarray()",
       "kadane"
     ],
-    "createdAt": "2026-09-17T09:35:42.928Z",
-    "updatedAt": "2026-09-17T09:35:42.928Z"
+    "createdAt": "2026-09-19T07:33:52.422Z",
+    "updatedAt": "2026-09-19T07:33:52.422Z"
   },
   {
     "id": "algorithms.separate-components.dynamic-programming.1d-dp.climb-stairs",
@@ -798,8 +798,8 @@
       "algorithms>separate-components>dynamic-programming>1d-dp>climb-stairs>climb_stairs_dp()",
       "climbStairs"
     ],
-    "createdAt": "2026-09-17T09:35:42.928Z",
-    "updatedAt": "2026-09-17T09:35:42.928Z"
+    "createdAt": "2026-09-19T07:33:52.422Z",
+    "updatedAt": "2026-09-19T07:33:52.422Z"
   },
   {
     "id": "algorithms.separate-components.dynamic-programming.knapsack.knapsack-01",
@@ -833,8 +833,8 @@
       "algorithms>separate-components>dynamic-programming>knapsack>knapsack-01>knapsack_01_tabulated()",
       "knapsack01"
     ],
-    "createdAt": "2026-09-17T09:35:42.928Z",
-    "updatedAt": "2026-09-17T09:35:42.928Z"
+    "createdAt": "2026-09-19T07:33:52.422Z",
+    "updatedAt": "2026-09-19T07:33:52.422Z"
   },
   {
     "id": "algorithms.separate-components.dynamic-programming.knapsack.coin-change",
@@ -867,8 +867,8 @@
       "algorithms>separate-components>dynamic-programming>knapsack>coin-change>coin_change_min_coins()",
       "coinChangeMin"
     ],
-    "createdAt": "2026-09-17T09:35:42.928Z",
-    "updatedAt": "2026-09-17T09:35:42.928Z"
+    "createdAt": "2026-09-19T07:33:52.422Z",
+    "updatedAt": "2026-09-19T07:33:52.422Z"
   },
   {
     "id": "algorithms.separate-components.dynamic-programming.subsequences.lcs",
@@ -902,8 +902,8 @@
       "algorithms>separate-components>dynamic-programming>subsequences>lcs>lcs_length()",
       "lcsLength"
     ],
-    "createdAt": "2026-09-17T09:35:42.928Z",
-    "updatedAt": "2026-09-17T09:35:42.928Z"
+    "createdAt": "2026-09-19T07:33:52.422Z",
+    "updatedAt": "2026-09-19T07:33:52.422Z"
   },
   {
     "id": "algorithms.separate-components.dynamic-programming.subsequences.lis",
@@ -937,8 +937,8 @@
       "algorithms>separate-components>dynamic-programming>subsequences>lis>lis_length()",
       "lisLength"
     ],
-    "createdAt": "2026-09-17T09:35:42.928Z",
-    "updatedAt": "2026-09-17T09:35:42.928Z"
+    "createdAt": "2026-09-19T07:33:52.422Z",
+    "updatedAt": "2026-09-19T07:33:52.422Z"
   },
   {
     "id": "algorithms.separate-components.dynamic-programming.string-dp.edit-distance",
@@ -972,8 +972,8 @@
       "algorithms>separate-components>dynamic-programming>string-dp>edit-distance>edit_distance_levenshtein()",
       "editDistance"
     ],
-    "createdAt": "2026-09-17T09:35:42.928Z",
-    "updatedAt": "2026-09-17T09:35:42.928Z"
+    "createdAt": "2026-09-19T07:33:52.422Z",
+    "updatedAt": "2026-09-19T07:33:52.422Z"
   },
   {
     "id": "algorithms.separate-components.greedy.activity-selection.select",
@@ -1007,8 +1007,8 @@
       "algorithms>separate-components>greedy>activity-selection>select>activity_selection_greedy()",
       "activitySelection"
     ],
-    "createdAt": "2026-09-17T09:35:42.928Z",
-    "updatedAt": "2026-09-17T09:35:42.928Z"
+    "createdAt": "2026-09-19T07:33:52.422Z",
+    "updatedAt": "2026-09-19T07:33:52.422Z"
   },
   {
     "id": "algorithms.separate-components.greedy.fractional-knapsack.greedy",
@@ -1041,8 +1041,8 @@
       "algorithms>separate-components>greedy>fractional-knapsack>greedy>fractional_knapsack_greedy()",
       "fractionalKnapsack"
     ],
-    "createdAt": "2026-09-17T09:35:42.928Z",
-    "updatedAt": "2026-09-17T09:35:42.928Z"
+    "createdAt": "2026-09-19T07:33:52.422Z",
+    "updatedAt": "2026-09-19T07:33:52.422Z"
   },
   {
     "id": "algorithms.separate-components.greedy.job-sequencing.schedule",
@@ -1076,8 +1076,8 @@
       "algorithms>separate-components>greedy>job-sequencing>schedule>job_sequencing_deadlines()",
       "jobSequencing"
     ],
-    "createdAt": "2026-09-17T09:35:42.928Z",
-    "updatedAt": "2026-09-17T09:35:42.928Z"
+    "createdAt": "2026-09-19T07:33:52.422Z",
+    "updatedAt": "2026-09-19T07:33:52.422Z"
   },
   {
     "id": "algorithms.separate-components.backtracking.n-queens.solve",
@@ -1110,8 +1110,8 @@
       "algorithms>separate-components>backtracking>n-queens>solve>n_queens_solve()",
       "nQueensSolve"
     ],
-    "createdAt": "2026-09-17T09:35:42.928Z",
-    "updatedAt": "2026-09-17T09:35:42.928Z"
+    "createdAt": "2026-09-19T07:33:52.422Z",
+    "updatedAt": "2026-09-19T07:33:52.422Z"
   },
   {
     "id": "algorithms.separate-components.backtracking.maze-solver.solve",
@@ -1144,8 +1144,8 @@
       "algorithms>separate-components>backtracking>maze-solver>solve>rat_in_maze_solve()",
       "ratInMaze"
     ],
-    "createdAt": "2026-09-17T09:35:42.928Z",
-    "updatedAt": "2026-09-17T09:35:42.928Z"
+    "createdAt": "2026-09-19T07:33:52.422Z",
+    "updatedAt": "2026-09-19T07:33:52.422Z"
   },
   {
     "id": "algorithms.separate-components.backtracking.combinatorial.permutations",
@@ -1179,8 +1179,8 @@
       "algorithms>separate-components>backtracking>combinatorial>permutations>generate_permutations()",
       "permutations"
     ],
-    "createdAt": "2026-09-17T09:35:42.929Z",
-    "updatedAt": "2026-09-17T09:35:42.929Z"
+    "createdAt": "2026-09-19T07:33:52.422Z",
+    "updatedAt": "2026-09-19T07:33:52.422Z"
   },
   {
     "id": "algorithms.separate-components.string-algorithms.kmp.compute-lps",
@@ -1214,8 +1214,8 @@
       "algorithms>separate-components>string-algorithms>kmp>compute-lps>kmp_compute_lps()",
       "kmpLPS"
     ],
-    "createdAt": "2026-09-17T09:35:42.929Z",
-    "updatedAt": "2026-09-17T09:35:42.929Z"
+    "createdAt": "2026-09-19T07:33:52.422Z",
+    "updatedAt": "2026-09-19T07:33:52.422Z"
   },
   {
     "id": "algorithms.separate-components.string-algorithms.kmp.search",
@@ -1251,8 +1251,8 @@
       "algorithms>separate-components>string-algorithms>kmp>search>kmp_search_pattern()",
       "kmpSearch"
     ],
-    "createdAt": "2026-09-17T09:35:42.929Z",
-    "updatedAt": "2026-09-17T09:35:42.929Z"
+    "createdAt": "2026-09-19T07:33:52.422Z",
+    "updatedAt": "2026-09-19T07:33:52.422Z"
   },
   {
     "id": "algorithms.separate-components.string-algorithms.rabin-karp.search",
@@ -1286,8 +1286,8 @@
       "algorithms>separate-components>string-algorithms>rabin-karp>search>rabin_karp_search()",
       "rabinKarp"
     ],
-    "createdAt": "2026-09-17T09:35:42.929Z",
-    "updatedAt": "2026-09-17T09:35:42.929Z"
+    "createdAt": "2026-09-19T07:33:52.422Z",
+    "updatedAt": "2026-09-19T07:33:52.422Z"
   },
   {
     "id": "algorithms.separate-components.string-algorithms.palindromes.longest",
@@ -1300,13 +1300,13 @@
     "path": "algorithms/separate-components/string-algorithms/palindromes/longest",
     "description": "Finds longest palindromic substring by expanding around centers",
     "signature": "void longest_palindromic_substring(const char* str, char* dest);",
-    "code": "static int expand_center(const char* s, int len, int left, int right) {\n    while (left >= 0 && right < len && s[left] == s[right]) {\n        left--;\n        right++;\n    }\n    return right - left - 1;\n}\n\nvoid longest_palindromic_substring(const char* str, char* dest) {\n    int n = (int)strlen(str);\n    if (n <= 0) { dest[0] = '\u0000'; return; }\n    int start = 0, max_len = 1;\n    for (int i = 0; i < n; i++) {\n        int len1 = expand_center(str, n, i, i);\n        int len2 = expand_center(str, n, i, i + 1);\n        int len = len1 > len2 ? len1 : len2;\n        if (len > max_len) {\n            max_len = len;\n            start = i - (len - 1) / 2;\n        }\n    }\n    strncpy(dest, str + start, max_len);\n    dest[max_len] = '\u0000';\n}",
+    "code": "static int expand_center(const char* s, int len, int left, int right) {\n    while (left >= 0 && right < len && s[left] == s[right]) {\n        left--;\n        right++;\n    }\n    return right - left - 1;\n}\n\nvoid longest_palindromic_substring(const char* str, char* dest) {\n    int n = (int)strlen(str);\n    if (n <= 0) { dest[0] = '\\0'; return; }\n    int start = 0, max_len = 1;\n    for (int i = 0; i < n; i++) {\n        int len1 = expand_center(str, n, i, i);\n        int len2 = expand_center(str, n, i, i + 1);\n        int len = len1 > len2 ? len1 : len2;\n        if (len > max_len) {\n            max_len = len;\n            start = i - (len - 1) / 2;\n        }\n    }\n    strncpy(dest, str + start, max_len);\n    dest[max_len] = '\\0';\n}",
     "complexity": {
       "time": "O(1)",
       "space": "O(1)"
     },
     "difficulty": "intermediate",
-    "documentation": "# longest_palindromic_substring\n> **Domain:** `algorithms` | **Subcategory:** `string-algorithms` | **Type:** `function`\n## Overview\nFinds longest palindromic substring by expanding around centers\n\n## Signature\n```c\nvoid longest_palindromic_substring(const char* str, char* dest);\n```\n\n## Complexity Analysis\n- **Time Complexity:** `O(1)`\n- **Space Complexity:** `O(1)`\n\n## Edge Cases & Constraints\n- **NULL / Empty Input:** Function handles zero/NULL pointers gracefully without segfaulting.\n- **Boundary Conditions:** Bounds-checked against buffer boundaries and integer limits.\n- **Zero-Comment Invariant:** Code is 100% executable clean C code adhering strictly to library standards.\n\n## Implementation\n```c\nstatic int expand_center(const char* s, int len, int left, int right) {\n    while (left >= 0 && right < len && s[left] == s[right]) {\n        left--;\n        right++;\n    }\n    return right - left - 1;\n}\n\nvoid longest_palindromic_substring(const char* str, char* dest) {\n    int n = (int)strlen(str);\n    if (n <= 0) { dest[0] = '\u0000'; return; }\n    int start = 0, max_len = 1;\n    for (int i = 0; i < n; i++) {\n        int len1 = expand_center(str, n, i, i);\n        int len2 = expand_center(str, n, i, i + 1);\n        int len = len1 > len2 ? len1 : len2;\n        if (len > max_len) {\n            max_len = len;\n            start = i - (len - 1) / 2;\n        }\n    }\n    strncpy(dest, str + start, max_len);\n    dest[max_len] = '\u0000';\n}\n```\n\n## Aliases & Shorthands\nAvailable via: `longest_palindromic_substring`, `algorithms.separate-components.string-algorithms.palindromes.longest`, `algorithms>longest_palindromic_substring()`, `algorithms>separate-components>string-algorithms>palindromes>longest>longest_palindromic_substring()`, `longestPalindrome`\n",
+    "documentation": "# longest_palindromic_substring\n> **Domain:** `algorithms` | **Subcategory:** `string-algorithms` | **Type:** `function`\n## Overview\nFinds longest palindromic substring by expanding around centers\n\n## Signature\n```c\nvoid longest_palindromic_substring(const char* str, char* dest);\n```\n\n## Complexity Analysis\n- **Time Complexity:** `O(1)`\n- **Space Complexity:** `O(1)`\n\n## Edge Cases & Constraints\n- **NULL / Empty Input:** Function handles zero/NULL pointers gracefully without segfaulting.\n- **Boundary Conditions:** Bounds-checked against buffer boundaries and integer limits.\n- **Zero-Comment Invariant:** Code is 100% executable clean C code adhering strictly to library standards.\n\n## Implementation\n```c\nstatic int expand_center(const char* s, int len, int left, int right) {\n    while (left >= 0 && right < len && s[left] == s[right]) {\n        left--;\n        right++;\n    }\n    return right - left - 1;\n}\n\nvoid longest_palindromic_substring(const char* str, char* dest) {\n    int n = (int)strlen(str);\n    if (n <= 0) { dest[0] = '\\0'; return; }\n    int start = 0, max_len = 1;\n    for (int i = 0; i < n; i++) {\n        int len1 = expand_center(str, n, i, i);\n        int len2 = expand_center(str, n, i, i + 1);\n        int len = len1 > len2 ? len1 : len2;\n        if (len > max_len) {\n            max_len = len;\n            start = i - (len - 1) / 2;\n        }\n    }\n    strncpy(dest, str + start, max_len);\n    dest[max_len] = '\\0';\n}\n```\n\n## Aliases & Shorthands\nAvailable via: `longest_palindromic_substring`, `algorithms.separate-components.string-algorithms.palindromes.longest`, `algorithms>longest_palindromic_substring()`, `algorithms>separate-components>string-algorithms>palindromes>longest>longest_palindromic_substring()`, `longestPalindrome`\n",
     "version": "1.0.0",
     "dependencies": [],
     "tags": [
@@ -1320,8 +1320,8 @@
       "algorithms>separate-components>string-algorithms>palindromes>longest>longest_palindromic_substring()",
       "longestPalindrome"
     ],
-    "createdAt": "2026-09-17T09:35:42.929Z",
-    "updatedAt": "2026-09-17T09:35:42.929Z"
+    "createdAt": "2026-09-19T07:33:52.422Z",
+    "updatedAt": "2026-09-19T07:33:52.422Z"
   },
   {
     "id": "algorithms.full-programs.sorting.elementary-sorts.prog-elementary-sorts",
@@ -1334,13 +1334,13 @@
     "path": "algorithms/full-programs/sorting/elementary-sorts/prog-elementary-sorts",
     "description": "Complete program running Bubble, Selection, and Insertion sorts on unsorted arrays",
     "signature": "int main(void)",
-    "code": "#include <stdio.h>\n\nvoid insertion_sort(int* arr, int n) {\n    for (int i = 1; i < n; i++) {\n        int key = arr[i];\n        int j = i - 1;\n        while (j >= 0 && arr[j] > key) {\n            arr[j + 1] = arr[j];\n            j--;\n        }\n        arr[j + 1] = key;\n    }\n}\n\nint main(void) {\n    int arr[] = {64, 25, 12, 22, 11};\n    int n = sizeof(arr) / sizeof(arr[0]);\n\n    printf(\"Original: \");\n    for (int i = 0; i < n; i++) printf(\"%d \", arr[i]);\n    putchar('\n');\n\n    insertion_sort(arr, n);\n\n    printf(\"Sorted:   \");\n    for (int i = 0; i < n; i++) printf(\"%d \", arr[i]);\n    putchar('\n');\n\n    return 0;\n}",
+    "code": "#include <stdio.h>\n\nvoid insertion_sort(int* arr, int n) {\n    for (int i = 1; i < n; i++) {\n        int key = arr[i];\n        int j = i - 1;\n        while (j >= 0 && arr[j] > key) {\n            arr[j + 1] = arr[j];\n            j--;\n        }\n        arr[j + 1] = key;\n    }\n}\n\nint main(void) {\n    int arr[] = {64, 25, 12, 22, 11};\n    int n = sizeof(arr) / sizeof(arr[0]);\n\n    printf(\"Original: \");\n    for (int i = 0; i < n; i++) printf(\"%d \", arr[i]);\n    putchar('\\n');\n\n    insertion_sort(arr, n);\n\n    printf(\"Sorted:   \");\n    for (int i = 0; i < n; i++) printf(\"%d \", arr[i]);\n    putchar('\\n');\n\n    return 0;\n}",
     "complexity": {
       "time": "O(1)",
       "space": "O(1)"
     },
     "difficulty": "intermediate",
-    "documentation": "# prog_sort_elementary\n> **Domain:** `algorithms` | **Subcategory:** `sorting` | **Type:** `program`\n## Overview\nComplete program running Bubble, Selection, and Insertion sorts on unsorted arrays\n\n## Signature\n```c\nint main(void)\n```\n\n## Complexity Analysis\n- **Time Complexity:** `O(1)`\n- **Space Complexity:** `O(1)`\n\n## Edge Cases & Constraints\n- **NULL / Empty Input:** Function handles zero/NULL pointers gracefully without segfaulting.\n- **Boundary Conditions:** Bounds-checked against buffer boundaries and integer limits.\n- **Zero-Comment Invariant:** Code is 100% executable clean C code adhering strictly to library standards.\n\n## Implementation\n```c\n#include <stdio.h>\n\nvoid insertion_sort(int* arr, int n) {\n    for (int i = 1; i < n; i++) {\n        int key = arr[i];\n        int j = i - 1;\n        while (j >= 0 && arr[j] > key) {\n            arr[j + 1] = arr[j];\n            j--;\n        }\n        arr[j + 1] = key;\n    }\n}\n\nint main(void) {\n    int arr[] = {64, 25, 12, 22, 11};\n    int n = sizeof(arr) / sizeof(arr[0]);\n\n    printf(\"Original: \");\n    for (int i = 0; i < n; i++) printf(\"%d \", arr[i]);\n    putchar('\n');\n\n    insertion_sort(arr, n);\n\n    printf(\"Sorted:   \");\n    for (int i = 0; i < n; i++) printf(\"%d \", arr[i]);\n    putchar('\n');\n\n    return 0;\n}\n```\n\n## Aliases & Shorthands\nAvailable via: `prog_sort_elementary`, `algorithms.full-programs.sorting.elementary-sorts.prog-elementary-sorts`, `algorithms>prog_sort_elementary()`, `algorithms>full-programs>sorting>elementary-sorts>prog-elementary-sorts>prog_sort_elementary()`, `programElementarySorts`\n",
+    "documentation": "# prog_sort_elementary\n> **Domain:** `algorithms` | **Subcategory:** `sorting` | **Type:** `program`\n## Overview\nComplete program running Bubble, Selection, and Insertion sorts on unsorted arrays\n\n## Signature\n```c\nint main(void)\n```\n\n## Complexity Analysis\n- **Time Complexity:** `O(1)`\n- **Space Complexity:** `O(1)`\n\n## Edge Cases & Constraints\n- **NULL / Empty Input:** Function handles zero/NULL pointers gracefully without segfaulting.\n- **Boundary Conditions:** Bounds-checked against buffer boundaries and integer limits.\n- **Zero-Comment Invariant:** Code is 100% executable clean C code adhering strictly to library standards.\n\n## Implementation\n```c\n#include <stdio.h>\n\nvoid insertion_sort(int* arr, int n) {\n    for (int i = 1; i < n; i++) {\n        int key = arr[i];\n        int j = i - 1;\n        while (j >= 0 && arr[j] > key) {\n            arr[j + 1] = arr[j];\n            j--;\n        }\n        arr[j + 1] = key;\n    }\n}\n\nint main(void) {\n    int arr[] = {64, 25, 12, 22, 11};\n    int n = sizeof(arr) / sizeof(arr[0]);\n\n    printf(\"Original: \");\n    for (int i = 0; i < n; i++) printf(\"%d \", arr[i]);\n    putchar('\\n');\n\n    insertion_sort(arr, n);\n\n    printf(\"Sorted:   \");\n    for (int i = 0; i < n; i++) printf(\"%d \", arr[i]);\n    putchar('\\n');\n\n    return 0;\n}\n```\n\n## Aliases & Shorthands\nAvailable via: `prog_sort_elementary`, `algorithms.full-programs.sorting.elementary-sorts.prog-elementary-sorts`, `algorithms>prog_sort_elementary()`, `algorithms>full-programs>sorting>elementary-sorts>prog-elementary-sorts>prog_sort_elementary()`, `programElementarySorts`\n",
     "version": "1.0.0",
     "dependencies": [],
     "tags": [
@@ -1355,8 +1355,8 @@
       "algorithms>full-programs>sorting>elementary-sorts>prog-elementary-sorts>prog_sort_elementary()",
       "programElementarySorts"
     ],
-    "createdAt": "2026-09-17T09:35:42.929Z",
-    "updatedAt": "2026-09-17T09:35:42.929Z"
+    "createdAt": "2026-09-19T07:33:52.422Z",
+    "updatedAt": "2026-09-19T07:33:52.422Z"
   },
   {
     "id": "algorithms.full-programs.sorting.quick-sort.prog-quick-sort",
@@ -1369,13 +1369,13 @@
     "path": "algorithms/full-programs/sorting/quick-sort/prog-quick-sort",
     "description": "Complete Quick Sort program with Lomuto partitioning",
     "signature": "int main(void)",
-    "code": "#include <stdio.h>\n\nint partition(int* arr, int low, int high) {\n    int pivot = arr[high];\n    int i = low - 1;\n    for (int j = low; j < high; j++) {\n        if (arr[j] <= pivot) {\n            i++;\n            int t = arr[i]; arr[i] = arr[j]; arr[j] = t;\n        }\n    }\n    int t = arr[i + 1]; arr[i + 1] = arr[high]; arr[high] = t;\n    return i + 1;\n}\n\nvoid quick_sort(int* arr, int low, int high) {\n    if (low < high) {\n        int pi = partition(arr, low, high);\n        quick_sort(arr, low, pi - 1);\n        quick_sort(arr, pi + 1, high);\n    }\n}\n\nint main(void) {\n    int arr[] = {10, 80, 30, 90, 40, 50, 70};\n    int n = sizeof(arr) / sizeof(arr[0]);\n\n    quick_sort(arr, 0, n - 1);\n\n    printf(\"Quick Sorted: \");\n    for (int i = 0; i < n; i++) printf(\"%d \", arr[i]);\n    putchar('\n');\n\n    return 0;\n}",
+    "code": "#include <stdio.h>\n\nint partition(int* arr, int low, int high) {\n    int pivot = arr[high];\n    int i = low - 1;\n    for (int j = low; j < high; j++) {\n        if (arr[j] <= pivot) {\n            i++;\n            int t = arr[i]; arr[i] = arr[j]; arr[j] = t;\n        }\n    }\n    int t = arr[i + 1]; arr[i + 1] = arr[high]; arr[high] = t;\n    return i + 1;\n}\n\nvoid quick_sort(int* arr, int low, int high) {\n    if (low < high) {\n        int pi = partition(arr, low, high);\n        quick_sort(arr, low, pi - 1);\n        quick_sort(arr, pi + 1, high);\n    }\n}\n\nint main(void) {\n    int arr[] = {10, 80, 30, 90, 40, 50, 70};\n    int n = sizeof(arr) / sizeof(arr[0]);\n\n    quick_sort(arr, 0, n - 1);\n\n    printf(\"Quick Sorted: \");\n    for (int i = 0; i < n; i++) printf(\"%d \", arr[i]);\n    putchar('\\n');\n\n    return 0;\n}",
     "complexity": {
       "time": "O(1)",
       "space": "O(1)"
     },
     "difficulty": "intermediate",
-    "documentation": "# prog_sort_quick\n> **Domain:** `algorithms` | **Subcategory:** `sorting` | **Type:** `program`\n## Overview\nComplete Quick Sort program with Lomuto partitioning\n\n## Signature\n```c\nint main(void)\n```\n\n## Complexity Analysis\n- **Time Complexity:** `O(1)`\n- **Space Complexity:** `O(1)`\n\n## Edge Cases & Constraints\n- **NULL / Empty Input:** Function handles zero/NULL pointers gracefully without segfaulting.\n- **Boundary Conditions:** Bounds-checked against buffer boundaries and integer limits.\n- **Zero-Comment Invariant:** Code is 100% executable clean C code adhering strictly to library standards.\n\n## Implementation\n```c\n#include <stdio.h>\n\nint partition(int* arr, int low, int high) {\n    int pivot = arr[high];\n    int i = low - 1;\n    for (int j = low; j < high; j++) {\n        if (arr[j] <= pivot) {\n            i++;\n            int t = arr[i]; arr[i] = arr[j]; arr[j] = t;\n        }\n    }\n    int t = arr[i + 1]; arr[i + 1] = arr[high]; arr[high] = t;\n    return i + 1;\n}\n\nvoid quick_sort(int* arr, int low, int high) {\n    if (low < high) {\n        int pi = partition(arr, low, high);\n        quick_sort(arr, low, pi - 1);\n        quick_sort(arr, pi + 1, high);\n    }\n}\n\nint main(void) {\n    int arr[] = {10, 80, 30, 90, 40, 50, 70};\n    int n = sizeof(arr) / sizeof(arr[0]);\n\n    quick_sort(arr, 0, n - 1);\n\n    printf(\"Quick Sorted: \");\n    for (int i = 0; i < n; i++) printf(\"%d \", arr[i]);\n    putchar('\n');\n\n    return 0;\n}\n```\n\n## Aliases & Shorthands\nAvailable via: `prog_sort_quick`, `algorithms.full-programs.sorting.quick-sort.prog-quick-sort`, `algorithms>prog_sort_quick()`, `algorithms>full-programs>sorting>quick-sort>prog-quick-sort>prog_sort_quick()`, `programQuickSort`\n",
+    "documentation": "# prog_sort_quick\n> **Domain:** `algorithms` | **Subcategory:** `sorting` | **Type:** `program`\n## Overview\nComplete Quick Sort program with Lomuto partitioning\n\n## Signature\n```c\nint main(void)\n```\n\n## Complexity Analysis\n- **Time Complexity:** `O(1)`\n- **Space Complexity:** `O(1)`\n\n## Edge Cases & Constraints\n- **NULL / Empty Input:** Function handles zero/NULL pointers gracefully without segfaulting.\n- **Boundary Conditions:** Bounds-checked against buffer boundaries and integer limits.\n- **Zero-Comment Invariant:** Code is 100% executable clean C code adhering strictly to library standards.\n\n## Implementation\n```c\n#include <stdio.h>\n\nint partition(int* arr, int low, int high) {\n    int pivot = arr[high];\n    int i = low - 1;\n    for (int j = low; j < high; j++) {\n        if (arr[j] <= pivot) {\n            i++;\n            int t = arr[i]; arr[i] = arr[j]; arr[j] = t;\n        }\n    }\n    int t = arr[i + 1]; arr[i + 1] = arr[high]; arr[high] = t;\n    return i + 1;\n}\n\nvoid quick_sort(int* arr, int low, int high) {\n    if (low < high) {\n        int pi = partition(arr, low, high);\n        quick_sort(arr, low, pi - 1);\n        quick_sort(arr, pi + 1, high);\n    }\n}\n\nint main(void) {\n    int arr[] = {10, 80, 30, 90, 40, 50, 70};\n    int n = sizeof(arr) / sizeof(arr[0]);\n\n    quick_sort(arr, 0, n - 1);\n\n    printf(\"Quick Sorted: \");\n    for (int i = 0; i < n; i++) printf(\"%d \", arr[i]);\n    putchar('\\n');\n\n    return 0;\n}\n```\n\n## Aliases & Shorthands\nAvailable via: `prog_sort_quick`, `algorithms.full-programs.sorting.quick-sort.prog-quick-sort`, `algorithms>prog_sort_quick()`, `algorithms>full-programs>sorting>quick-sort>prog-quick-sort>prog_sort_quick()`, `programQuickSort`\n",
     "version": "1.0.0",
     "dependencies": [],
     "tags": [
@@ -1390,8 +1390,8 @@
       "algorithms>full-programs>sorting>quick-sort>prog-quick-sort>prog_sort_quick()",
       "programQuickSort"
     ],
-    "createdAt": "2026-09-17T09:35:42.929Z",
-    "updatedAt": "2026-09-17T09:35:42.929Z"
+    "createdAt": "2026-09-19T07:33:52.422Z",
+    "updatedAt": "2026-09-19T07:33:52.422Z"
   },
   {
     "id": "algorithms.full-programs.sorting.merge-sort.prog-merge-sort",
@@ -1404,13 +1404,13 @@
     "path": "algorithms/full-programs/sorting/merge-sort/prog-merge-sort",
     "description": "Complete Merge Sort program with dynamic split and conquer merging",
     "signature": "int main(void)",
-    "code": "#include <stdio.h>\n#include <stdlib.h>\n\nvoid merge(int* arr, int l, int m, int r) {\n    int n1 = m - l + 1, n2 = r - m;\n    int* left = (int*)malloc(n1 * sizeof(int));\n    int* right = (int*)malloc(n2 * sizeof(int));\n    for (int i = 0; i < n1; i++) left[i] = arr[l + i];\n    for (int j = 0; j < n2; j++) right[j] = arr[m + 1 + j];\n    int i = 0, j = 0, k = l;\n    while (i < n1 && j < n2) {\n        if (left[i] <= right[j]) arr[k++] = left[i++];\n        else arr[k++] = right[j++];\n    }\n    while (i < n1) arr[k++] = left[i++];\n    while (j < n2) arr[k++] = right[j++];\n    free(left);\n    free(right);\n}\n\nvoid merge_sort(int* arr, int l, int r) {\n    if (l < r) {\n        int m = l + (r - l) / 2;\n        merge_sort(arr, l, m);\n        merge_sort(arr, m + 1, r);\n        merge(arr, l, m, r);\n    }\n}\n\nint main(void) {\n    int arr[] = {38, 27, 43, 3, 9, 82, 10};\n    int n = sizeof(arr) / sizeof(arr[0]);\n\n    merge_sort(arr, 0, n - 1);\n\n    printf(\"Merge Sorted: \");\n    for (int i = 0; i < n; i++) printf(\"%d \", arr[i]);\n    putchar('\n');\n\n    return 0;\n}",
+    "code": "#include <stdio.h>\n#include <stdlib.h>\n\nvoid merge(int* arr, int l, int m, int r) {\n    int n1 = m - l + 1, n2 = r - m;\n    int* left = (int*)malloc(n1 * sizeof(int));\n    int* right = (int*)malloc(n2 * sizeof(int));\n    for (int i = 0; i < n1; i++) left[i] = arr[l + i];\n    for (int j = 0; j < n2; j++) right[j] = arr[m + 1 + j];\n    int i = 0, j = 0, k = l;\n    while (i < n1 && j < n2) {\n        if (left[i] <= right[j]) arr[k++] = left[i++];\n        else arr[k++] = right[j++];\n    }\n    while (i < n1) arr[k++] = left[i++];\n    while (j < n2) arr[k++] = right[j++];\n    free(left);\n    free(right);\n}\n\nvoid merge_sort(int* arr, int l, int r) {\n    if (l < r) {\n        int m = l + (r - l) / 2;\n        merge_sort(arr, l, m);\n        merge_sort(arr, m + 1, r);\n        merge(arr, l, m, r);\n    }\n}\n\nint main(void) {\n    int arr[] = {38, 27, 43, 3, 9, 82, 10};\n    int n = sizeof(arr) / sizeof(arr[0]);\n\n    merge_sort(arr, 0, n - 1);\n\n    printf(\"Merge Sorted: \");\n    for (int i = 0; i < n; i++) printf(\"%d \", arr[i]);\n    putchar('\\n');\n\n    return 0;\n}",
     "complexity": {
       "time": "O(1)",
       "space": "O(1)"
     },
     "difficulty": "intermediate",
-    "documentation": "# prog_sort_merge\n> **Domain:** `algorithms` | **Subcategory:** `sorting` | **Type:** `program`\n## Overview\nComplete Merge Sort program with dynamic split and conquer merging\n\n## Signature\n```c\nint main(void)\n```\n\n## Complexity Analysis\n- **Time Complexity:** `O(1)`\n- **Space Complexity:** `O(1)`\n\n## Edge Cases & Constraints\n- **NULL / Empty Input:** Function handles zero/NULL pointers gracefully without segfaulting.\n- **Boundary Conditions:** Bounds-checked against buffer boundaries and integer limits.\n- **Zero-Comment Invariant:** Code is 100% executable clean C code adhering strictly to library standards.\n\n## Implementation\n```c\n#include <stdio.h>\n#include <stdlib.h>\n\nvoid merge(int* arr, int l, int m, int r) {\n    int n1 = m - l + 1, n2 = r - m;\n    int* left = (int*)malloc(n1 * sizeof(int));\n    int* right = (int*)malloc(n2 * sizeof(int));\n    for (int i = 0; i < n1; i++) left[i] = arr[l + i];\n    for (int j = 0; j < n2; j++) right[j] = arr[m + 1 + j];\n    int i = 0, j = 0, k = l;\n    while (i < n1 && j < n2) {\n        if (left[i] <= right[j]) arr[k++] = left[i++];\n        else arr[k++] = right[j++];\n    }\n    while (i < n1) arr[k++] = left[i++];\n    while (j < n2) arr[k++] = right[j++];\n    free(left);\n    free(right);\n}\n\nvoid merge_sort(int* arr, int l, int r) {\n    if (l < r) {\n        int m = l + (r - l) / 2;\n        merge_sort(arr, l, m);\n        merge_sort(arr, m + 1, r);\n        merge(arr, l, m, r);\n    }\n}\n\nint main(void) {\n    int arr[] = {38, 27, 43, 3, 9, 82, 10};\n    int n = sizeof(arr) / sizeof(arr[0]);\n\n    merge_sort(arr, 0, n - 1);\n\n    printf(\"Merge Sorted: \");\n    for (int i = 0; i < n; i++) printf(\"%d \", arr[i]);\n    putchar('\n');\n\n    return 0;\n}\n```\n\n## Aliases & Shorthands\nAvailable via: `prog_sort_merge`, `algorithms.full-programs.sorting.merge-sort.prog-merge-sort`, `algorithms>prog_sort_merge()`, `algorithms>full-programs>sorting>merge-sort>prog-merge-sort>prog_sort_merge()`, `programMergeSort`\n",
+    "documentation": "# prog_sort_merge\n> **Domain:** `algorithms` | **Subcategory:** `sorting` | **Type:** `program`\n## Overview\nComplete Merge Sort program with dynamic split and conquer merging\n\n## Signature\n```c\nint main(void)\n```\n\n## Complexity Analysis\n- **Time Complexity:** `O(1)`\n- **Space Complexity:** `O(1)`\n\n## Edge Cases & Constraints\n- **NULL / Empty Input:** Function handles zero/NULL pointers gracefully without segfaulting.\n- **Boundary Conditions:** Bounds-checked against buffer boundaries and integer limits.\n- **Zero-Comment Invariant:** Code is 100% executable clean C code adhering strictly to library standards.\n\n## Implementation\n```c\n#include <stdio.h>\n#include <stdlib.h>\n\nvoid merge(int* arr, int l, int m, int r) {\n    int n1 = m - l + 1, n2 = r - m;\n    int* left = (int*)malloc(n1 * sizeof(int));\n    int* right = (int*)malloc(n2 * sizeof(int));\n    for (int i = 0; i < n1; i++) left[i] = arr[l + i];\n    for (int j = 0; j < n2; j++) right[j] = arr[m + 1 + j];\n    int i = 0, j = 0, k = l;\n    while (i < n1 && j < n2) {\n        if (left[i] <= right[j]) arr[k++] = left[i++];\n        else arr[k++] = right[j++];\n    }\n    while (i < n1) arr[k++] = left[i++];\n    while (j < n2) arr[k++] = right[j++];\n    free(left);\n    free(right);\n}\n\nvoid merge_sort(int* arr, int l, int r) {\n    if (l < r) {\n        int m = l + (r - l) / 2;\n        merge_sort(arr, l, m);\n        merge_sort(arr, m + 1, r);\n        merge(arr, l, m, r);\n    }\n}\n\nint main(void) {\n    int arr[] = {38, 27, 43, 3, 9, 82, 10};\n    int n = sizeof(arr) / sizeof(arr[0]);\n\n    merge_sort(arr, 0, n - 1);\n\n    printf(\"Merge Sorted: \");\n    for (int i = 0; i < n; i++) printf(\"%d \", arr[i]);\n    putchar('\\n');\n\n    return 0;\n}\n```\n\n## Aliases & Shorthands\nAvailable via: `prog_sort_merge`, `algorithms.full-programs.sorting.merge-sort.prog-merge-sort`, `algorithms>prog_sort_merge()`, `algorithms>full-programs>sorting>merge-sort>prog-merge-sort>prog_sort_merge()`, `programMergeSort`\n",
     "version": "1.0.0",
     "dependencies": [],
     "tags": [
@@ -1425,8 +1425,8 @@
       "algorithms>full-programs>sorting>merge-sort>prog-merge-sort>prog_sort_merge()",
       "programMergeSort"
     ],
-    "createdAt": "2026-09-17T09:35:42.929Z",
-    "updatedAt": "2026-09-17T09:35:42.929Z"
+    "createdAt": "2026-09-19T07:33:52.422Z",
+    "updatedAt": "2026-09-19T07:33:52.422Z"
   },
   {
     "id": "algorithms.full-programs.sorting.heap-sort.prog-heap-sort",
@@ -1439,13 +1439,13 @@
     "path": "algorithms/full-programs/sorting/heap-sort/prog-heap-sort",
     "description": "Complete in-place Heap Sort program using binary max-heap",
     "signature": "int main(void)",
-    "code": "#include <stdio.h>\n\nvoid heapify(int* arr, int n, int i) {\n    int largest = i;\n    int l = 2 * i + 1, r = 2 * i + 2;\n    if (l < n && arr[l] > arr[largest]) largest = l;\n    if (r < n && arr[r] > arr[largest]) largest = r;\n    if (largest != i) {\n        int t = arr[i]; arr[i] = arr[largest]; arr[largest] = t;\n        heapify(arr, n, largest);\n    }\n}\n\nvoid heap_sort(int* arr, int n) {\n    for (int i = n / 2 - 1; i >= 0; i--) heapify(arr, n, i);\n    for (int i = n - 1; i > 0; i--) {\n        int t = arr[0]; arr[0] = arr[i]; arr[i] = t;\n        heapify(arr, i, 0);\n    }\n}\n\nint main(void) {\n    int arr[] = {12, 11, 13, 5, 6, 7};\n    int n = sizeof(arr) / sizeof(arr[0]);\n\n    heap_sort(arr, n);\n\n    printf(\"Heap Sorted: \");\n    for (int i = 0; i < n; i++) printf(\"%d \", arr[i]);\n    putchar('\n');\n\n    return 0;\n}",
+    "code": "#include <stdio.h>\n\nvoid heapify(int* arr, int n, int i) {\n    int largest = i;\n    int l = 2 * i + 1, r = 2 * i + 2;\n    if (l < n && arr[l] > arr[largest]) largest = l;\n    if (r < n && arr[r] > arr[largest]) largest = r;\n    if (largest != i) {\n        int t = arr[i]; arr[i] = arr[largest]; arr[largest] = t;\n        heapify(arr, n, largest);\n    }\n}\n\nvoid heap_sort(int* arr, int n) {\n    for (int i = n / 2 - 1; i >= 0; i--) heapify(arr, n, i);\n    for (int i = n - 1; i > 0; i--) {\n        int t = arr[0]; arr[0] = arr[i]; arr[i] = t;\n        heapify(arr, i, 0);\n    }\n}\n\nint main(void) {\n    int arr[] = {12, 11, 13, 5, 6, 7};\n    int n = sizeof(arr) / sizeof(arr[0]);\n\n    heap_sort(arr, n);\n\n    printf(\"Heap Sorted: \");\n    for (int i = 0; i < n; i++) printf(\"%d \", arr[i]);\n    putchar('\\n');\n\n    return 0;\n}",
     "complexity": {
       "time": "O(1)",
       "space": "O(1)"
     },
     "difficulty": "intermediate",
-    "documentation": "# prog_sort_heap\n> **Domain:** `algorithms` | **Subcategory:** `sorting` | **Type:** `program`\n## Overview\nComplete in-place Heap Sort program using binary max-heap\n\n## Signature\n```c\nint main(void)\n```\n\n## Complexity Analysis\n- **Time Complexity:** `O(1)`\n- **Space Complexity:** `O(1)`\n\n## Edge Cases & Constraints\n- **NULL / Empty Input:** Function handles zero/NULL pointers gracefully without segfaulting.\n- **Boundary Conditions:** Bounds-checked against buffer boundaries and integer limits.\n- **Zero-Comment Invariant:** Code is 100% executable clean C code adhering strictly to library standards.\n\n## Implementation\n```c\n#include <stdio.h>\n\nvoid heapify(int* arr, int n, int i) {\n    int largest = i;\n    int l = 2 * i + 1, r = 2 * i + 2;\n    if (l < n && arr[l] > arr[largest]) largest = l;\n    if (r < n && arr[r] > arr[largest]) largest = r;\n    if (largest != i) {\n        int t = arr[i]; arr[i] = arr[largest]; arr[largest] = t;\n        heapify(arr, n, largest);\n    }\n}\n\nvoid heap_sort(int* arr, int n) {\n    for (int i = n / 2 - 1; i >= 0; i--) heapify(arr, n, i);\n    for (int i = n - 1; i > 0; i--) {\n        int t = arr[0]; arr[0] = arr[i]; arr[i] = t;\n        heapify(arr, i, 0);\n    }\n}\n\nint main(void) {\n    int arr[] = {12, 11, 13, 5, 6, 7};\n    int n = sizeof(arr) / sizeof(arr[0]);\n\n    heap_sort(arr, n);\n\n    printf(\"Heap Sorted: \");\n    for (int i = 0; i < n; i++) printf(\"%d \", arr[i]);\n    putchar('\n');\n\n    return 0;\n}\n```\n\n## Aliases & Shorthands\nAvailable via: `prog_sort_heap`, `algorithms.full-programs.sorting.heap-sort.prog-heap-sort`, `algorithms>prog_sort_heap()`, `algorithms>full-programs>sorting>heap-sort>prog-heap-sort>prog_sort_heap()`, `programHeapSort`\n",
+    "documentation": "# prog_sort_heap\n> **Domain:** `algorithms` | **Subcategory:** `sorting` | **Type:** `program`\n## Overview\nComplete in-place Heap Sort program using binary max-heap\n\n## Signature\n```c\nint main(void)\n```\n\n## Complexity Analysis\n- **Time Complexity:** `O(1)`\n- **Space Complexity:** `O(1)`\n\n## Edge Cases & Constraints\n- **NULL / Empty Input:** Function handles zero/NULL pointers gracefully without segfaulting.\n- **Boundary Conditions:** Bounds-checked against buffer boundaries and integer limits.\n- **Zero-Comment Invariant:** Code is 100% executable clean C code adhering strictly to library standards.\n\n## Implementation\n```c\n#include <stdio.h>\n\nvoid heapify(int* arr, int n, int i) {\n    int largest = i;\n    int l = 2 * i + 1, r = 2 * i + 2;\n    if (l < n && arr[l] > arr[largest]) largest = l;\n    if (r < n && arr[r] > arr[largest]) largest = r;\n    if (largest != i) {\n        int t = arr[i]; arr[i] = arr[largest]; arr[largest] = t;\n        heapify(arr, n, largest);\n    }\n}\n\nvoid heap_sort(int* arr, int n) {\n    for (int i = n / 2 - 1; i >= 0; i--) heapify(arr, n, i);\n    for (int i = n - 1; i > 0; i--) {\n        int t = arr[0]; arr[0] = arr[i]; arr[i] = t;\n        heapify(arr, i, 0);\n    }\n}\n\nint main(void) {\n    int arr[] = {12, 11, 13, 5, 6, 7};\n    int n = sizeof(arr) / sizeof(arr[0]);\n\n    heap_sort(arr, n);\n\n    printf(\"Heap Sorted: \");\n    for (int i = 0; i < n; i++) printf(\"%d \", arr[i]);\n    putchar('\\n');\n\n    return 0;\n}\n```\n\n## Aliases & Shorthands\nAvailable via: `prog_sort_heap`, `algorithms.full-programs.sorting.heap-sort.prog-heap-sort`, `algorithms>prog_sort_heap()`, `algorithms>full-programs>sorting>heap-sort>prog-heap-sort>prog_sort_heap()`, `programHeapSort`\n",
     "version": "1.0.0",
     "dependencies": [],
     "tags": [
@@ -1460,8 +1460,8 @@
       "algorithms>full-programs>sorting>heap-sort>prog-heap-sort>prog_sort_heap()",
       "programHeapSort"
     ],
-    "createdAt": "2026-09-17T09:35:42.929Z",
-    "updatedAt": "2026-09-17T09:35:42.929Z"
+    "createdAt": "2026-09-19T07:33:52.422Z",
+    "updatedAt": "2026-09-19T07:33:52.422Z"
   },
   {
     "id": "algorithms.full-programs.sorting.non-comparison-sorts.prog-counting-radix",
@@ -1474,13 +1474,13 @@
     "path": "algorithms/full-programs/sorting/non-comparison-sorts/prog-counting-radix",
     "description": "Complete Counting Sort program sorting bounded integer frequencies",
     "signature": "int main(void)",
-    "code": "#include <stdio.h>\n#include <stdlib.h>\n\nvoid counting_sort(int* arr, int n, int max_val) {\n    int* count = (int*)calloc(max_val + 1, sizeof(int));\n    int* output = (int*)malloc(n * sizeof(int));\n    for (int i = 0; i < n; i++) count[arr[i]]++;\n    for (int i = 1; i <= max_val; i++) count[i] += count[i - 1];\n    for (int i = n - 1; i >= 0; i--) {\n        output[count[arr[i]] - 1] = arr[i];\n        count[arr[i]]--;\n    }\n    for (int i = 0; i < n; i++) arr[i] = output[i];\n    free(count);\n    free(output);\n}\n\nint main(void) {\n    int arr[] = {4, 2, 2, 8, 3, 3, 1};\n    int n = sizeof(arr) / sizeof(arr[0]);\n\n    counting_sort(arr, n, 8);\n\n    printf(\"Counting Sorted: \");\n    for (int i = 0; i < n; i++) printf(\"%d \", arr[i]);\n    putchar('\n');\n\n    return 0;\n}",
+    "code": "#include <stdio.h>\n#include <stdlib.h>\n\nvoid counting_sort(int* arr, int n, int max_val) {\n    int* count = (int*)calloc(max_val + 1, sizeof(int));\n    int* output = (int*)malloc(n * sizeof(int));\n    for (int i = 0; i < n; i++) count[arr[i]]++;\n    for (int i = 1; i <= max_val; i++) count[i] += count[i - 1];\n    for (int i = n - 1; i >= 0; i--) {\n        output[count[arr[i]] - 1] = arr[i];\n        count[arr[i]]--;\n    }\n    for (int i = 0; i < n; i++) arr[i] = output[i];\n    free(count);\n    free(output);\n}\n\nint main(void) {\n    int arr[] = {4, 2, 2, 8, 3, 3, 1};\n    int n = sizeof(arr) / sizeof(arr[0]);\n\n    counting_sort(arr, n, 8);\n\n    printf(\"Counting Sorted: \");\n    for (int i = 0; i < n; i++) printf(\"%d \", arr[i]);\n    putchar('\\n');\n\n    return 0;\n}",
     "complexity": {
       "time": "O(1)",
       "space": "O(1)"
     },
     "difficulty": "intermediate",
-    "documentation": "# prog_sort_counting_radix\n> **Domain:** `algorithms` | **Subcategory:** `sorting` | **Type:** `program`\n## Overview\nComplete Counting Sort program sorting bounded integer frequencies\n\n## Signature\n```c\nint main(void)\n```\n\n## Complexity Analysis\n- **Time Complexity:** `O(1)`\n- **Space Complexity:** `O(1)`\n\n## Edge Cases & Constraints\n- **NULL / Empty Input:** Function handles zero/NULL pointers gracefully without segfaulting.\n- **Boundary Conditions:** Bounds-checked against buffer boundaries and integer limits.\n- **Zero-Comment Invariant:** Code is 100% executable clean C code adhering strictly to library standards.\n\n## Implementation\n```c\n#include <stdio.h>\n#include <stdlib.h>\n\nvoid counting_sort(int* arr, int n, int max_val) {\n    int* count = (int*)calloc(max_val + 1, sizeof(int));\n    int* output = (int*)malloc(n * sizeof(int));\n    for (int i = 0; i < n; i++) count[arr[i]]++;\n    for (int i = 1; i <= max_val; i++) count[i] += count[i - 1];\n    for (int i = n - 1; i >= 0; i--) {\n        output[count[arr[i]] - 1] = arr[i];\n        count[arr[i]]--;\n    }\n    for (int i = 0; i < n; i++) arr[i] = output[i];\n    free(count);\n    free(output);\n}\n\nint main(void) {\n    int arr[] = {4, 2, 2, 8, 3, 3, 1};\n    int n = sizeof(arr) / sizeof(arr[0]);\n\n    counting_sort(arr, n, 8);\n\n    printf(\"Counting Sorted: \");\n    for (int i = 0; i < n; i++) printf(\"%d \", arr[i]);\n    putchar('\n');\n\n    return 0;\n}\n```\n\n## Aliases & Shorthands\nAvailable via: `prog_sort_counting_radix`, `algorithms.full-programs.sorting.non-comparison-sorts.prog-counting-radix`, `algorithms>prog_sort_counting_radix()`, `algorithms>full-programs>sorting>non-comparison-sorts>prog-counting-radix>prog_sort_counting_radix()`, `programCountingSort`\n",
+    "documentation": "# prog_sort_counting_radix\n> **Domain:** `algorithms` | **Subcategory:** `sorting` | **Type:** `program`\n## Overview\nComplete Counting Sort program sorting bounded integer frequencies\n\n## Signature\n```c\nint main(void)\n```\n\n## Complexity Analysis\n- **Time Complexity:** `O(1)`\n- **Space Complexity:** `O(1)`\n\n## Edge Cases & Constraints\n- **NULL / Empty Input:** Function handles zero/NULL pointers gracefully without segfaulting.\n- **Boundary Conditions:** Bounds-checked against buffer boundaries and integer limits.\n- **Zero-Comment Invariant:** Code is 100% executable clean C code adhering strictly to library standards.\n\n## Implementation\n```c\n#include <stdio.h>\n#include <stdlib.h>\n\nvoid counting_sort(int* arr, int n, int max_val) {\n    int* count = (int*)calloc(max_val + 1, sizeof(int));\n    int* output = (int*)malloc(n * sizeof(int));\n    for (int i = 0; i < n; i++) count[arr[i]]++;\n    for (int i = 1; i <= max_val; i++) count[i] += count[i - 1];\n    for (int i = n - 1; i >= 0; i--) {\n        output[count[arr[i]] - 1] = arr[i];\n        count[arr[i]]--;\n    }\n    for (int i = 0; i < n; i++) arr[i] = output[i];\n    free(count);\n    free(output);\n}\n\nint main(void) {\n    int arr[] = {4, 2, 2, 8, 3, 3, 1};\n    int n = sizeof(arr) / sizeof(arr[0]);\n\n    counting_sort(arr, n, 8);\n\n    printf(\"Counting Sorted: \");\n    for (int i = 0; i < n; i++) printf(\"%d \", arr[i]);\n    putchar('\\n');\n\n    return 0;\n}\n```\n\n## Aliases & Shorthands\nAvailable via: `prog_sort_counting_radix`, `algorithms.full-programs.sorting.non-comparison-sorts.prog-counting-radix`, `algorithms>prog_sort_counting_radix()`, `algorithms>full-programs>sorting>non-comparison-sorts>prog-counting-radix>prog_sort_counting_radix()`, `programCountingSort`\n",
     "version": "1.0.0",
     "dependencies": [],
     "tags": [
@@ -1495,8 +1495,8 @@
       "algorithms>full-programs>sorting>non-comparison-sorts>prog-counting-radix>prog_sort_counting_radix()",
       "programCountingSort"
     ],
-    "createdAt": "2026-09-17T09:35:42.929Z",
-    "updatedAt": "2026-09-17T09:35:42.929Z"
+    "createdAt": "2026-09-19T07:33:52.422Z",
+    "updatedAt": "2026-09-19T07:33:52.422Z"
   },
   {
     "id": "algorithms.full-programs.searching.linear-search.prog-linear-search",
@@ -1509,13 +1509,13 @@
     "path": "algorithms/full-programs/searching/linear-search/prog-linear-search",
     "description": "Complete Linear Search program scanning elements sequentially",
     "signature": "int main(void)",
-    "code": "#include <stdio.h>\n\nint linear_search(const int* arr, int n, int target) {\n    for (int i = 0; i < n; i++) {\n        if (arr[i] == target) return i;\n    }\n    return -1;\n}\n\nint main(void) {\n    int arr[] = {15, 34, 27, 89, 42, 61};\n    int n = sizeof(arr) / sizeof(arr[0]);\n\n    int idx = linear_search(arr, n, 42);\n    printf(\"Linear search for 42 found at index: %d\n\", idx);\n\n    return 0;\n}",
+    "code": "#include <stdio.h>\n\nint linear_search(const int* arr, int n, int target) {\n    for (int i = 0; i < n; i++) {\n        if (arr[i] == target) return i;\n    }\n    return -1;\n}\n\nint main(void) {\n    int arr[] = {15, 34, 27, 89, 42, 61};\n    int n = sizeof(arr) / sizeof(arr[0]);\n\n    int idx = linear_search(arr, n, 42);\n    printf(\"Linear search for 42 found at index: %d\\n\", idx);\n\n    return 0;\n}",
     "complexity": {
       "time": "O(1)",
       "space": "O(1)"
     },
     "difficulty": "intermediate",
-    "documentation": "# prog_search_linear\n> **Domain:** `algorithms` | **Subcategory:** `searching` | **Type:** `program`\n## Overview\nComplete Linear Search program scanning elements sequentially\n\n## Signature\n```c\nint main(void)\n```\n\n## Complexity Analysis\n- **Time Complexity:** `O(1)`\n- **Space Complexity:** `O(1)`\n\n## Edge Cases & Constraints\n- **NULL / Empty Input:** Function handles zero/NULL pointers gracefully without segfaulting.\n- **Boundary Conditions:** Bounds-checked against buffer boundaries and integer limits.\n- **Zero-Comment Invariant:** Code is 100% executable clean C code adhering strictly to library standards.\n\n## Implementation\n```c\n#include <stdio.h>\n\nint linear_search(const int* arr, int n, int target) {\n    for (int i = 0; i < n; i++) {\n        if (arr[i] == target) return i;\n    }\n    return -1;\n}\n\nint main(void) {\n    int arr[] = {15, 34, 27, 89, 42, 61};\n    int n = sizeof(arr) / sizeof(arr[0]);\n\n    int idx = linear_search(arr, n, 42);\n    printf(\"Linear search for 42 found at index: %d\n\", idx);\n\n    return 0;\n}\n```\n\n## Aliases & Shorthands\nAvailable via: `prog_search_linear`, `algorithms.full-programs.searching.linear-search.prog-linear-search`, `algorithms>prog_search_linear()`, `algorithms>full-programs>searching>linear-search>prog-linear-search>prog_search_linear()`, `programLinearSearch`\n",
+    "documentation": "# prog_search_linear\n> **Domain:** `algorithms` | **Subcategory:** `searching` | **Type:** `program`\n## Overview\nComplete Linear Search program scanning elements sequentially\n\n## Signature\n```c\nint main(void)\n```\n\n## Complexity Analysis\n- **Time Complexity:** `O(1)`\n- **Space Complexity:** `O(1)`\n\n## Edge Cases & Constraints\n- **NULL / Empty Input:** Function handles zero/NULL pointers gracefully without segfaulting.\n- **Boundary Conditions:** Bounds-checked against buffer boundaries and integer limits.\n- **Zero-Comment Invariant:** Code is 100% executable clean C code adhering strictly to library standards.\n\n## Implementation\n```c\n#include <stdio.h>\n\nint linear_search(const int* arr, int n, int target) {\n    for (int i = 0; i < n; i++) {\n        if (arr[i] == target) return i;\n    }\n    return -1;\n}\n\nint main(void) {\n    int arr[] = {15, 34, 27, 89, 42, 61};\n    int n = sizeof(arr) / sizeof(arr[0]);\n\n    int idx = linear_search(arr, n, 42);\n    printf(\"Linear search for 42 found at index: %d\\n\", idx);\n\n    return 0;\n}\n```\n\n## Aliases & Shorthands\nAvailable via: `prog_search_linear`, `algorithms.full-programs.searching.linear-search.prog-linear-search`, `algorithms>prog_search_linear()`, `algorithms>full-programs>searching>linear-search>prog-linear-search>prog_search_linear()`, `programLinearSearch`\n",
     "version": "1.0.0",
     "dependencies": [],
     "tags": [
@@ -1530,8 +1530,8 @@
       "algorithms>full-programs>searching>linear-search>prog-linear-search>prog_search_linear()",
       "programLinearSearch"
     ],
-    "createdAt": "2026-09-17T09:35:42.929Z",
-    "updatedAt": "2026-09-17T09:35:42.929Z"
+    "createdAt": "2026-09-19T07:33:52.422Z",
+    "updatedAt": "2026-09-19T07:33:52.422Z"
   },
   {
     "id": "algorithms.full-programs.searching.binary-search.prog-binary-search",
@@ -1544,13 +1544,13 @@
     "path": "algorithms/full-programs/searching/binary-search/prog-binary-search",
     "description": "Complete Binary Search program testing exact find, lower bound, and upper bound",
     "signature": "int main(void)",
-    "code": "#include <stdio.h>\n\nint lower_bound(const int* arr, int n, int target) {\n    int l = 0, h = n;\n    while (l < h) {\n        int m = l + (h - l) / 2;\n        if (arr[m] >= target) h = m;\n        else l = m + 1;\n    }\n    return l;\n}\n\nint main(void) {\n    int arr[] = {10, 20, 20, 20, 30, 40, 50};\n    int n = sizeof(arr) / sizeof(arr[0]);\n\n    int lb = lower_bound(arr, n, 20);\n    printf(\"Lower bound for 20: index %d (value %d)\n\", lb, arr[lb]);\n\n    return 0;\n}",
+    "code": "#include <stdio.h>\n\nint lower_bound(const int* arr, int n, int target) {\n    int l = 0, h = n;\n    while (l < h) {\n        int m = l + (h - l) / 2;\n        if (arr[m] >= target) h = m;\n        else l = m + 1;\n    }\n    return l;\n}\n\nint main(void) {\n    int arr[] = {10, 20, 20, 20, 30, 40, 50};\n    int n = sizeof(arr) / sizeof(arr[0]);\n\n    int lb = lower_bound(arr, n, 20);\n    printf(\"Lower bound for 20: index %d (value %d)\\n\", lb, arr[lb]);\n\n    return 0;\n}",
     "complexity": {
       "time": "O(1)",
       "space": "O(1)"
     },
     "difficulty": "intermediate",
-    "documentation": "# prog_search_binary\n> **Domain:** `algorithms` | **Subcategory:** `searching` | **Type:** `program`\n## Overview\nComplete Binary Search program testing exact find, lower bound, and upper bound\n\n## Signature\n```c\nint main(void)\n```\n\n## Complexity Analysis\n- **Time Complexity:** `O(1)`\n- **Space Complexity:** `O(1)`\n\n## Edge Cases & Constraints\n- **NULL / Empty Input:** Function handles zero/NULL pointers gracefully without segfaulting.\n- **Boundary Conditions:** Bounds-checked against buffer boundaries and integer limits.\n- **Zero-Comment Invariant:** Code is 100% executable clean C code adhering strictly to library standards.\n\n## Implementation\n```c\n#include <stdio.h>\n\nint lower_bound(const int* arr, int n, int target) {\n    int l = 0, h = n;\n    while (l < h) {\n        int m = l + (h - l) / 2;\n        if (arr[m] >= target) h = m;\n        else l = m + 1;\n    }\n    return l;\n}\n\nint main(void) {\n    int arr[] = {10, 20, 20, 20, 30, 40, 50};\n    int n = sizeof(arr) / sizeof(arr[0]);\n\n    int lb = lower_bound(arr, n, 20);\n    printf(\"Lower bound for 20: index %d (value %d)\n\", lb, arr[lb]);\n\n    return 0;\n}\n```\n\n## Aliases & Shorthands\nAvailable via: `prog_search_binary`, `algorithms.full-programs.searching.binary-search.prog-binary-search`, `algorithms>prog_search_binary()`, `algorithms>full-programs>searching>binary-search>prog-binary-search>prog_search_binary()`, `programBinarySearch`\n",
+    "documentation": "# prog_search_binary\n> **Domain:** `algorithms` | **Subcategory:** `searching` | **Type:** `program`\n## Overview\nComplete Binary Search program testing exact find, lower bound, and upper bound\n\n## Signature\n```c\nint main(void)\n```\n\n## Complexity Analysis\n- **Time Complexity:** `O(1)`\n- **Space Complexity:** `O(1)`\n\n## Edge Cases & Constraints\n- **NULL / Empty Input:** Function handles zero/NULL pointers gracefully without segfaulting.\n- **Boundary Conditions:** Bounds-checked against buffer boundaries and integer limits.\n- **Zero-Comment Invariant:** Code is 100% executable clean C code adhering strictly to library standards.\n\n## Implementation\n```c\n#include <stdio.h>\n\nint lower_bound(const int* arr, int n, int target) {\n    int l = 0, h = n;\n    while (l < h) {\n        int m = l + (h - l) / 2;\n        if (arr[m] >= target) h = m;\n        else l = m + 1;\n    }\n    return l;\n}\n\nint main(void) {\n    int arr[] = {10, 20, 20, 20, 30, 40, 50};\n    int n = sizeof(arr) / sizeof(arr[0]);\n\n    int lb = lower_bound(arr, n, 20);\n    printf(\"Lower bound for 20: index %d (value %d)\\n\", lb, arr[lb]);\n\n    return 0;\n}\n```\n\n## Aliases & Shorthands\nAvailable via: `prog_search_binary`, `algorithms.full-programs.searching.binary-search.prog-binary-search`, `algorithms>prog_search_binary()`, `algorithms>full-programs>searching>binary-search>prog-binary-search>prog_search_binary()`, `programBinarySearch`\n",
     "version": "1.0.0",
     "dependencies": [],
     "tags": [
@@ -1565,8 +1565,8 @@
       "algorithms>full-programs>searching>binary-search>prog-binary-search>prog_search_binary()",
       "programBinarySearch"
     ],
-    "createdAt": "2026-09-17T09:35:42.929Z",
-    "updatedAt": "2026-09-17T09:35:42.929Z"
+    "createdAt": "2026-09-19T07:33:52.422Z",
+    "updatedAt": "2026-09-19T07:33:52.422Z"
   },
   {
     "id": "algorithms.full-programs.searching.jump-interpolation.prog-jump-search",
@@ -1579,13 +1579,13 @@
     "path": "algorithms/full-programs/searching/jump-interpolation/prog-jump-search",
     "description": "Complete Jump Search program on uniformly sorted array",
     "signature": "int main(void)",
-    "code": "#include <stdio.h>\n#include <math.h>\n\nint jump_search(const int* arr, int n, int target) {\n    int step = (int)sqrt((double)n);\n    int prev = 0;\n    while (arr[(step < n ? step : n) - 1] < target) {\n        prev = step;\n        step += (int)sqrt((double)n);\n        if (prev >= n) return -1;\n    }\n    while (arr[prev] < target) {\n        prev++;\n        if (prev == (step < n ? step : n)) return -1;\n    }\n    if (arr[prev] == target) return prev;\n    return -1;\n}\n\nint main(void) {\n    int arr[] = {0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144};\n    int n = sizeof(arr) / sizeof(arr[0]);\n\n    int idx = jump_search(arr, n, 55);\n    printf(\"Jump search for 55 found at index: %d\n\", idx);\n\n    return 0;\n}",
+    "code": "#include <stdio.h>\n#include <math.h>\n\nint jump_search(const int* arr, int n, int target) {\n    int step = (int)sqrt((double)n);\n    int prev = 0;\n    while (arr[(step < n ? step : n) - 1] < target) {\n        prev = step;\n        step += (int)sqrt((double)n);\n        if (prev >= n) return -1;\n    }\n    while (arr[prev] < target) {\n        prev++;\n        if (prev == (step < n ? step : n)) return -1;\n    }\n    if (arr[prev] == target) return prev;\n    return -1;\n}\n\nint main(void) {\n    int arr[] = {0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144};\n    int n = sizeof(arr) / sizeof(arr[0]);\n\n    int idx = jump_search(arr, n, 55);\n    printf(\"Jump search for 55 found at index: %d\\n\", idx);\n\n    return 0;\n}",
     "complexity": {
       "time": "O(1)",
       "space": "O(1)"
     },
     "difficulty": "intermediate",
-    "documentation": "# prog_search_jump_interpolation\n> **Domain:** `algorithms` | **Subcategory:** `searching` | **Type:** `program`\n## Overview\nComplete Jump Search program on uniformly sorted array\n\n## Signature\n```c\nint main(void)\n```\n\n## Complexity Analysis\n- **Time Complexity:** `O(1)`\n- **Space Complexity:** `O(1)`\n\n## Edge Cases & Constraints\n- **NULL / Empty Input:** Function handles zero/NULL pointers gracefully without segfaulting.\n- **Boundary Conditions:** Bounds-checked against buffer boundaries and integer limits.\n- **Zero-Comment Invariant:** Code is 100% executable clean C code adhering strictly to library standards.\n\n## Implementation\n```c\n#include <stdio.h>\n#include <math.h>\n\nint jump_search(const int* arr, int n, int target) {\n    int step = (int)sqrt((double)n);\n    int prev = 0;\n    while (arr[(step < n ? step : n) - 1] < target) {\n        prev = step;\n        step += (int)sqrt((double)n);\n        if (prev >= n) return -1;\n    }\n    while (arr[prev] < target) {\n        prev++;\n        if (prev == (step < n ? step : n)) return -1;\n    }\n    if (arr[prev] == target) return prev;\n    return -1;\n}\n\nint main(void) {\n    int arr[] = {0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144};\n    int n = sizeof(arr) / sizeof(arr[0]);\n\n    int idx = jump_search(arr, n, 55);\n    printf(\"Jump search for 55 found at index: %d\n\", idx);\n\n    return 0;\n}\n```\n\n## Aliases & Shorthands\nAvailable via: `prog_search_jump_interpolation`, `algorithms.full-programs.searching.jump-interpolation.prog-jump-search`, `algorithms>prog_search_jump_interpolation()`, `algorithms>full-programs>searching>jump-interpolation>prog-jump-search>prog_search_jump_interpolation()`, `programJumpSearch`\n",
+    "documentation": "# prog_search_jump_interpolation\n> **Domain:** `algorithms` | **Subcategory:** `searching` | **Type:** `program`\n## Overview\nComplete Jump Search program on uniformly sorted array\n\n## Signature\n```c\nint main(void)\n```\n\n## Complexity Analysis\n- **Time Complexity:** `O(1)`\n- **Space Complexity:** `O(1)`\n\n## Edge Cases & Constraints\n- **NULL / Empty Input:** Function handles zero/NULL pointers gracefully without segfaulting.\n- **Boundary Conditions:** Bounds-checked against buffer boundaries and integer limits.\n- **Zero-Comment Invariant:** Code is 100% executable clean C code adhering strictly to library standards.\n\n## Implementation\n```c\n#include <stdio.h>\n#include <math.h>\n\nint jump_search(const int* arr, int n, int target) {\n    int step = (int)sqrt((double)n);\n    int prev = 0;\n    while (arr[(step < n ? step : n) - 1] < target) {\n        prev = step;\n        step += (int)sqrt((double)n);\n        if (prev >= n) return -1;\n    }\n    while (arr[prev] < target) {\n        prev++;\n        if (prev == (step < n ? step : n)) return -1;\n    }\n    if (arr[prev] == target) return prev;\n    return -1;\n}\n\nint main(void) {\n    int arr[] = {0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144};\n    int n = sizeof(arr) / sizeof(arr[0]);\n\n    int idx = jump_search(arr, n, 55);\n    printf(\"Jump search for 55 found at index: %d\\n\", idx);\n\n    return 0;\n}\n```\n\n## Aliases & Shorthands\nAvailable via: `prog_search_jump_interpolation`, `algorithms.full-programs.searching.jump-interpolation.prog-jump-search`, `algorithms>prog_search_jump_interpolation()`, `algorithms>full-programs>searching>jump-interpolation>prog-jump-search>prog_search_jump_interpolation()`, `programJumpSearch`\n",
     "version": "1.0.0",
     "dependencies": [],
     "tags": [
@@ -1600,8 +1600,8 @@
       "algorithms>full-programs>searching>jump-interpolation>prog-jump-search>prog_search_jump_interpolation()",
       "programJumpSearch"
     ],
-    "createdAt": "2026-09-17T09:35:42.929Z",
-    "updatedAt": "2026-09-17T09:35:42.929Z"
+    "createdAt": "2026-09-19T07:33:52.422Z",
+    "updatedAt": "2026-09-19T07:33:52.422Z"
   },
   {
     "id": "algorithms.full-programs.searching.two-pointers.prog-two-pointers",
@@ -1614,13 +1614,13 @@
     "path": "algorithms/full-programs/searching/two-pointers/prog-two-pointers",
     "description": "Complete Two Pointers search program finding pair with target sum",
     "signature": "int main(void)",
-    "code": "#include <stdio.h>\n\nint two_sum(const int* arr, int n, int target, int* out_l, int* out_r) {\n    int l = 0, r = n - 1;\n    while (l < r) {\n        int sum = arr[l] + arr[r];\n        if (sum == target) {\n            *out_l = l; *out_r = r;\n            return 1;\n        }\n        if (sum < target) l++;\n        else r--;\n    }\n    return 0;\n}\n\nint main(void) {\n    int arr[] = {2, 7, 11, 15, 18, 22};\n    int n = sizeof(arr) / sizeof(arr[0]);\n    int l, r;\n\n    if (two_sum(arr, n, 25, &l, &r)) {\n        printf(\"Found pair for sum 25: arr[%d] (%d) + arr[%d] (%d) = 25\n\",\n               l, arr[l], r, arr[r]);\n    }\n    return 0;\n}",
+    "code": "#include <stdio.h>\n\nint two_sum(const int* arr, int n, int target, int* out_l, int* out_r) {\n    int l = 0, r = n - 1;\n    while (l < r) {\n        int sum = arr[l] + arr[r];\n        if (sum == target) {\n            *out_l = l; *out_r = r;\n            return 1;\n        }\n        if (sum < target) l++;\n        else r--;\n    }\n    return 0;\n}\n\nint main(void) {\n    int arr[] = {2, 7, 11, 15, 18, 22};\n    int n = sizeof(arr) / sizeof(arr[0]);\n    int l, r;\n\n    if (two_sum(arr, n, 25, &l, &r)) {\n        printf(\"Found pair for sum 25: arr[%d] (%d) + arr[%d] (%d) = 25\\n\",\n               l, arr[l], r, arr[r]);\n    }\n    return 0;\n}",
     "complexity": {
       "time": "O(1)",
       "space": "O(1)"
     },
     "difficulty": "intermediate",
-    "documentation": "# prog_search_two_pointers\n> **Domain:** `algorithms` | **Subcategory:** `searching` | **Type:** `program`\n## Overview\nComplete Two Pointers search program finding pair with target sum\n\n## Signature\n```c\nint main(void)\n```\n\n## Complexity Analysis\n- **Time Complexity:** `O(1)`\n- **Space Complexity:** `O(1)`\n\n## Edge Cases & Constraints\n- **NULL / Empty Input:** Function handles zero/NULL pointers gracefully without segfaulting.\n- **Boundary Conditions:** Bounds-checked against buffer boundaries and integer limits.\n- **Zero-Comment Invariant:** Code is 100% executable clean C code adhering strictly to library standards.\n\n## Implementation\n```c\n#include <stdio.h>\n\nint two_sum(const int* arr, int n, int target, int* out_l, int* out_r) {\n    int l = 0, r = n - 1;\n    while (l < r) {\n        int sum = arr[l] + arr[r];\n        if (sum == target) {\n            *out_l = l; *out_r = r;\n            return 1;\n        }\n        if (sum < target) l++;\n        else r--;\n    }\n    return 0;\n}\n\nint main(void) {\n    int arr[] = {2, 7, 11, 15, 18, 22};\n    int n = sizeof(arr) / sizeof(arr[0]);\n    int l, r;\n\n    if (two_sum(arr, n, 25, &l, &r)) {\n        printf(\"Found pair for sum 25: arr[%d] (%d) + arr[%d] (%d) = 25\n\",\n               l, arr[l], r, arr[r]);\n    }\n    return 0;\n}\n```\n\n## Aliases & Shorthands\nAvailable via: `prog_search_two_pointers`, `algorithms.full-programs.searching.two-pointers.prog-two-pointers`, `algorithms>prog_search_two_pointers()`, `algorithms>full-programs>searching>two-pointers>prog-two-pointers>prog_search_two_pointers()`, `programTwoPointers`\n",
+    "documentation": "# prog_search_two_pointers\n> **Domain:** `algorithms` | **Subcategory:** `searching` | **Type:** `program`\n## Overview\nComplete Two Pointers search program finding pair with target sum\n\n## Signature\n```c\nint main(void)\n```\n\n## Complexity Analysis\n- **Time Complexity:** `O(1)`\n- **Space Complexity:** `O(1)`\n\n## Edge Cases & Constraints\n- **NULL / Empty Input:** Function handles zero/NULL pointers gracefully without segfaulting.\n- **Boundary Conditions:** Bounds-checked against buffer boundaries and integer limits.\n- **Zero-Comment Invariant:** Code is 100% executable clean C code adhering strictly to library standards.\n\n## Implementation\n```c\n#include <stdio.h>\n\nint two_sum(const int* arr, int n, int target, int* out_l, int* out_r) {\n    int l = 0, r = n - 1;\n    while (l < r) {\n        int sum = arr[l] + arr[r];\n        if (sum == target) {\n            *out_l = l; *out_r = r;\n            return 1;\n        }\n        if (sum < target) l++;\n        else r--;\n    }\n    return 0;\n}\n\nint main(void) {\n    int arr[] = {2, 7, 11, 15, 18, 22};\n    int n = sizeof(arr) / sizeof(arr[0]);\n    int l, r;\n\n    if (two_sum(arr, n, 25, &l, &r)) {\n        printf(\"Found pair for sum 25: arr[%d] (%d) + arr[%d] (%d) = 25\\n\",\n               l, arr[l], r, arr[r]);\n    }\n    return 0;\n}\n```\n\n## Aliases & Shorthands\nAvailable via: `prog_search_two_pointers`, `algorithms.full-programs.searching.two-pointers.prog-two-pointers`, `algorithms>prog_search_two_pointers()`, `algorithms>full-programs>searching>two-pointers>prog-two-pointers>prog_search_two_pointers()`, `programTwoPointers`\n",
     "version": "1.0.0",
     "dependencies": [],
     "tags": [
@@ -1635,8 +1635,8 @@
       "algorithms>full-programs>searching>two-pointers>prog-two-pointers>prog_search_two_pointers()",
       "programTwoPointers"
     ],
-    "createdAt": "2026-09-17T09:35:42.929Z",
-    "updatedAt": "2026-09-17T09:35:42.929Z"
+    "createdAt": "2026-09-19T07:33:52.422Z",
+    "updatedAt": "2026-09-19T07:33:52.422Z"
   },
   {
     "id": "algorithms.full-programs.graph-algorithms.graph-traversals.prog-graph-traversals",
@@ -1649,13 +1649,13 @@
     "path": "algorithms/full-programs/graph-algorithms/graph-traversals/prog-graph-traversals",
     "description": "Complete graph program executing Breadth-First and Depth-First traversals",
     "signature": "int main(void)",
-    "code": "#include <stdio.h>\n#include <stdlib.h>\n\nvoid bfs(const int matrix[][4], int v, int start) {\n    int visited[4] = {0};\n    int queue[4];\n    int f = 0, r = 0;\n    visited[start] = 1;\n    queue[r++] = start;\n    printf(\"BFS Order: \");\n    while (f < r) {\n        int u = queue[f++];\n        printf(\"%d \", u);\n        for (int i = 0; i < v; i++) {\n            if (matrix[u][i] && !visited[i]) {\n                visited[i] = 1;\n                queue[r++] = i;\n            }\n        }\n    }\n    putchar('\n');\n}\n\nint main(void) {\n    int graph[4][4] = {\n        {0, 1, 1, 0},\n        {1, 0, 1, 1},\n        {1, 1, 0, 1},\n        {0, 1, 1, 0}\n    };\n    bfs(graph, 4, 0);\n    return 0;\n}",
+    "code": "#include <stdio.h>\n#include <stdlib.h>\n\nvoid bfs(const int matrix[][4], int v, int start) {\n    int visited[4] = {0};\n    int queue[4];\n    int f = 0, r = 0;\n    visited[start] = 1;\n    queue[r++] = start;\n    printf(\"BFS Order: \");\n    while (f < r) {\n        int u = queue[f++];\n        printf(\"%d \", u);\n        for (int i = 0; i < v; i++) {\n            if (matrix[u][i] && !visited[i]) {\n                visited[i] = 1;\n                queue[r++] = i;\n            }\n        }\n    }\n    putchar('\\n');\n}\n\nint main(void) {\n    int graph[4][4] = {\n        {0, 1, 1, 0},\n        {1, 0, 1, 1},\n        {1, 1, 0, 1},\n        {0, 1, 1, 0}\n    };\n    bfs(graph, 4, 0);\n    return 0;\n}",
     "complexity": {
       "time": "O(1)",
       "space": "O(1)"
     },
     "difficulty": "intermediate",
-    "documentation": "# prog_graph_traversals\n> **Domain:** `algorithms` | **Subcategory:** `graph-algorithms` | **Type:** `program`\n## Overview\nComplete graph program executing Breadth-First and Depth-First traversals\n\n## Signature\n```c\nint main(void)\n```\n\n## Complexity Analysis\n- **Time Complexity:** `O(1)`\n- **Space Complexity:** `O(1)`\n\n## Edge Cases & Constraints\n- **NULL / Empty Input:** Function handles zero/NULL pointers gracefully without segfaulting.\n- **Boundary Conditions:** Bounds-checked against buffer boundaries and integer limits.\n- **Zero-Comment Invariant:** Code is 100% executable clean C code adhering strictly to library standards.\n\n## Implementation\n```c\n#include <stdio.h>\n#include <stdlib.h>\n\nvoid bfs(const int matrix[][4], int v, int start) {\n    int visited[4] = {0};\n    int queue[4];\n    int f = 0, r = 0;\n    visited[start] = 1;\n    queue[r++] = start;\n    printf(\"BFS Order: \");\n    while (f < r) {\n        int u = queue[f++];\n        printf(\"%d \", u);\n        for (int i = 0; i < v; i++) {\n            if (matrix[u][i] && !visited[i]) {\n                visited[i] = 1;\n                queue[r++] = i;\n            }\n        }\n    }\n    putchar('\n');\n}\n\nint main(void) {\n    int graph[4][4] = {\n        {0, 1, 1, 0},\n        {1, 0, 1, 1},\n        {1, 1, 0, 1},\n        {0, 1, 1, 0}\n    };\n    bfs(graph, 4, 0);\n    return 0;\n}\n```\n\n## Aliases & Shorthands\nAvailable via: `prog_graph_traversals`, `algorithms.full-programs.graph-algorithms.graph-traversals.prog-graph-traversals`, `algorithms>prog_graph_traversals()`, `algorithms>full-programs>graph-algorithms>graph-traversals>prog-graph-traversals>prog_graph_traversals()`, `programGraphTraversals`\n",
+    "documentation": "# prog_graph_traversals\n> **Domain:** `algorithms` | **Subcategory:** `graph-algorithms` | **Type:** `program`\n## Overview\nComplete graph program executing Breadth-First and Depth-First traversals\n\n## Signature\n```c\nint main(void)\n```\n\n## Complexity Analysis\n- **Time Complexity:** `O(1)`\n- **Space Complexity:** `O(1)`\n\n## Edge Cases & Constraints\n- **NULL / Empty Input:** Function handles zero/NULL pointers gracefully without segfaulting.\n- **Boundary Conditions:** Bounds-checked against buffer boundaries and integer limits.\n- **Zero-Comment Invariant:** Code is 100% executable clean C code adhering strictly to library standards.\n\n## Implementation\n```c\n#include <stdio.h>\n#include <stdlib.h>\n\nvoid bfs(const int matrix[][4], int v, int start) {\n    int visited[4] = {0};\n    int queue[4];\n    int f = 0, r = 0;\n    visited[start] = 1;\n    queue[r++] = start;\n    printf(\"BFS Order: \");\n    while (f < r) {\n        int u = queue[f++];\n        printf(\"%d \", u);\n        for (int i = 0; i < v; i++) {\n            if (matrix[u][i] && !visited[i]) {\n                visited[i] = 1;\n                queue[r++] = i;\n            }\n        }\n    }\n    putchar('\\n');\n}\n\nint main(void) {\n    int graph[4][4] = {\n        {0, 1, 1, 0},\n        {1, 0, 1, 1},\n        {1, 1, 0, 1},\n        {0, 1, 1, 0}\n    };\n    bfs(graph, 4, 0);\n    return 0;\n}\n```\n\n## Aliases & Shorthands\nAvailable via: `prog_graph_traversals`, `algorithms.full-programs.graph-algorithms.graph-traversals.prog-graph-traversals`, `algorithms>prog_graph_traversals()`, `algorithms>full-programs>graph-algorithms>graph-traversals>prog-graph-traversals>prog_graph_traversals()`, `programGraphTraversals`\n",
     "version": "1.0.0",
     "dependencies": [],
     "tags": [
@@ -1671,8 +1671,8 @@
       "algorithms>full-programs>graph-algorithms>graph-traversals>prog-graph-traversals>prog_graph_traversals()",
       "programGraphTraversals"
     ],
-    "createdAt": "2026-09-17T09:35:42.929Z",
-    "updatedAt": "2026-09-17T09:35:42.929Z"
+    "createdAt": "2026-09-19T07:33:52.422Z",
+    "updatedAt": "2026-09-19T07:33:52.422Z"
   },
   {
     "id": "algorithms.full-programs.graph-algorithms.shortest-paths.prog-dijkstra",
@@ -1685,13 +1685,13 @@
     "path": "algorithms/full-programs/graph-algorithms/shortest-paths/prog-dijkstra",
     "description": "Complete Dijkstra shortest path program on weighted graph",
     "signature": "int main(void)",
-    "code": "#include <stdio.h>\n\n#define V 5\n#define INF 1000000\n\nint min_distance(const int* dist, const int* spt) {\n    int min = INF, min_idx = -1;\n    for (int v = 0; v < V; v++) {\n        if (!spt[v] && dist[v] <= min) {\n            min = dist[v];\n            min_idx = v;\n        }\n    }\n    return min_idx;\n}\n\nint main(void) {\n    int graph[V][V] = {\n        {0, 10, 0, 5, 0},\n        {0, 0, 1, 2, 0},\n        {0, 0, 0, 0, 4},\n        {0, 3, 9, 0, 2},\n        {7, 0, 6, 0, 0}\n    };\n\n    int dist[V];\n    int spt[V] = {0};\n    for (int i = 0; i < V; i++) dist[i] = INF;\n    dist[0] = 0;\n\n    for (int c = 0; c < V - 1; c++) {\n        int u = min_distance(dist, spt);\n        if (u == -1) break;\n        spt[u] = 1;\n        for (int v = 0; v < V; v++) {\n            if (!spt[v] && graph[u][v] && dist[u] != INF && dist[u] + graph[u][v] < dist[v]) {\n                dist[v] = dist[u] + graph[u][v];\n            }\n        }\n    }\n\n    printf(\"Dijkstra Shortest Paths from Source 0:\n\");\n    for (int i = 0; i < V; i++) {\n        printf(\"To vertex %d: %d\n\", i, dist[i]);\n    }\n    return 0;\n}",
+    "code": "#include <stdio.h>\n\n#define V 5\n#define INF 1000000\n\nint min_distance(const int* dist, const int* spt) {\n    int min = INF, min_idx = -1;\n    for (int v = 0; v < V; v++) {\n        if (!spt[v] && dist[v] <= min) {\n            min = dist[v];\n            min_idx = v;\n        }\n    }\n    return min_idx;\n}\n\nint main(void) {\n    int graph[V][V] = {\n        {0, 10, 0, 5, 0},\n        {0, 0, 1, 2, 0},\n        {0, 0, 0, 0, 4},\n        {0, 3, 9, 0, 2},\n        {7, 0, 6, 0, 0}\n    };\n\n    int dist[V];\n    int spt[V] = {0};\n    for (int i = 0; i < V; i++) dist[i] = INF;\n    dist[0] = 0;\n\n    for (int c = 0; c < V - 1; c++) {\n        int u = min_distance(dist, spt);\n        if (u == -1) break;\n        spt[u] = 1;\n        for (int v = 0; v < V; v++) {\n            if (!spt[v] && graph[u][v] && dist[u] != INF && dist[u] + graph[u][v] < dist[v]) {\n                dist[v] = dist[u] + graph[u][v];\n            }\n        }\n    }\n\n    printf(\"Dijkstra Shortest Paths from Source 0:\\n\");\n    for (int i = 0; i < V; i++) {\n        printf(\"To vertex %d: %d\\n\", i, dist[i]);\n    }\n    return 0;\n}",
     "complexity": {
       "time": "O(1)",
       "space": "O(1)"
     },
     "difficulty": "intermediate",
-    "documentation": "# prog_graph_dijkstra\n> **Domain:** `algorithms` | **Subcategory:** `graph-algorithms` | **Type:** `program`\n## Overview\nComplete Dijkstra shortest path program on weighted graph\n\n## Signature\n```c\nint main(void)\n```\n\n## Complexity Analysis\n- **Time Complexity:** `O(1)`\n- **Space Complexity:** `O(1)`\n\n## Edge Cases & Constraints\n- **NULL / Empty Input:** Function handles zero/NULL pointers gracefully without segfaulting.\n- **Boundary Conditions:** Bounds-checked against buffer boundaries and integer limits.\n- **Zero-Comment Invariant:** Code is 100% executable clean C code adhering strictly to library standards.\n\n## Implementation\n```c\n#include <stdio.h>\n\n#define V 5\n#define INF 1000000\n\nint min_distance(const int* dist, const int* spt) {\n    int min = INF, min_idx = -1;\n    for (int v = 0; v < V; v++) {\n        if (!spt[v] && dist[v] <= min) {\n            min = dist[v];\n            min_idx = v;\n        }\n    }\n    return min_idx;\n}\n\nint main(void) {\n    int graph[V][V] = {\n        {0, 10, 0, 5, 0},\n        {0, 0, 1, 2, 0},\n        {0, 0, 0, 0, 4},\n        {0, 3, 9, 0, 2},\n        {7, 0, 6, 0, 0}\n    };\n\n    int dist[V];\n    int spt[V] = {0};\n    for (int i = 0; i < V; i++) dist[i] = INF;\n    dist[0] = 0;\n\n    for (int c = 0; c < V - 1; c++) {\n        int u = min_distance(dist, spt);\n        if (u == -1) break;\n        spt[u] = 1;\n        for (int v = 0; v < V; v++) {\n            if (!spt[v] && graph[u][v] && dist[u] != INF && dist[u] + graph[u][v] < dist[v]) {\n                dist[v] = dist[u] + graph[u][v];\n            }\n        }\n    }\n\n    printf(\"Dijkstra Shortest Paths from Source 0:\n\");\n    for (int i = 0; i < V; i++) {\n        printf(\"To vertex %d: %d\n\", i, dist[i]);\n    }\n    return 0;\n}\n```\n\n## Aliases & Shorthands\nAvailable via: `prog_graph_dijkstra`, `algorithms.full-programs.graph-algorithms.shortest-paths.prog-dijkstra`, `algorithms>prog_graph_dijkstra()`, `algorithms>full-programs>graph-algorithms>shortest-paths>prog-dijkstra>prog_graph_dijkstra()`, `programDijkstra`\n",
+    "documentation": "# prog_graph_dijkstra\n> **Domain:** `algorithms` | **Subcategory:** `graph-algorithms` | **Type:** `program`\n## Overview\nComplete Dijkstra shortest path program on weighted graph\n\n## Signature\n```c\nint main(void)\n```\n\n## Complexity Analysis\n- **Time Complexity:** `O(1)`\n- **Space Complexity:** `O(1)`\n\n## Edge Cases & Constraints\n- **NULL / Empty Input:** Function handles zero/NULL pointers gracefully without segfaulting.\n- **Boundary Conditions:** Bounds-checked against buffer boundaries and integer limits.\n- **Zero-Comment Invariant:** Code is 100% executable clean C code adhering strictly to library standards.\n\n## Implementation\n```c\n#include <stdio.h>\n\n#define V 5\n#define INF 1000000\n\nint min_distance(const int* dist, const int* spt) {\n    int min = INF, min_idx = -1;\n    for (int v = 0; v < V; v++) {\n        if (!spt[v] && dist[v] <= min) {\n            min = dist[v];\n            min_idx = v;\n        }\n    }\n    return min_idx;\n}\n\nint main(void) {\n    int graph[V][V] = {\n        {0, 10, 0, 5, 0},\n        {0, 0, 1, 2, 0},\n        {0, 0, 0, 0, 4},\n        {0, 3, 9, 0, 2},\n        {7, 0, 6, 0, 0}\n    };\n\n    int dist[V];\n    int spt[V] = {0};\n    for (int i = 0; i < V; i++) dist[i] = INF;\n    dist[0] = 0;\n\n    for (int c = 0; c < V - 1; c++) {\n        int u = min_distance(dist, spt);\n        if (u == -1) break;\n        spt[u] = 1;\n        for (int v = 0; v < V; v++) {\n            if (!spt[v] && graph[u][v] && dist[u] != INF && dist[u] + graph[u][v] < dist[v]) {\n                dist[v] = dist[u] + graph[u][v];\n            }\n        }\n    }\n\n    printf(\"Dijkstra Shortest Paths from Source 0:\\n\");\n    for (int i = 0; i < V; i++) {\n        printf(\"To vertex %d: %d\\n\", i, dist[i]);\n    }\n    return 0;\n}\n```\n\n## Aliases & Shorthands\nAvailable via: `prog_graph_dijkstra`, `algorithms.full-programs.graph-algorithms.shortest-paths.prog-dijkstra`, `algorithms>prog_graph_dijkstra()`, `algorithms>full-programs>graph-algorithms>shortest-paths>prog-dijkstra>prog_graph_dijkstra()`, `programDijkstra`\n",
     "version": "1.0.0",
     "dependencies": [],
     "tags": [
@@ -1707,8 +1707,8 @@
       "algorithms>full-programs>graph-algorithms>shortest-paths>prog-dijkstra>prog_graph_dijkstra()",
       "programDijkstra"
     ],
-    "createdAt": "2026-09-17T09:35:42.929Z",
-    "updatedAt": "2026-09-17T09:35:42.929Z"
+    "createdAt": "2026-09-19T07:33:52.422Z",
+    "updatedAt": "2026-09-19T07:33:52.422Z"
   },
   {
     "id": "algorithms.full-programs.graph-algorithms.minimum-spanning-tree.prog-kruskal",
@@ -1721,13 +1721,13 @@
     "path": "algorithms/full-programs/graph-algorithms/minimum-spanning-tree/prog-kruskal",
     "description": "Complete Kruskal Minimum Spanning Tree program with Disjoint Set Union",
     "signature": "int main(void)",
-    "code": "#include <stdio.h>\n\nint parent[10];\n\nint find_root(int i) {\n    if (parent[i] == i) return i;\n    return parent[i] = find_root(parent[i]);\n}\n\nint main(void) {\n    int u[] = {0, 1, 0, 1, 2};\n    int v[] = {1, 2, 2, 3, 3};\n    int w[] = {1, 2, 4, 3, 5};\n    int e = 5, n = 4;\n\n    for (int i = 0; i < n; i++) parent[i] = i;\n\n    int total_w = 0;\n    printf(\"Kruskal MST Selected Edges:\n\");\n    for (int i = 0; i < e; i++) {\n        int ru = find_root(u[i]);\n        int rv = find_root(v[i]);\n        if (ru != rv) {\n            parent[ru] = rv;\n            total_w += w[i];\n            printf(\"Edge (%d, %d) with weight %d\n\", u[i], v[i], w[i]);\n        }\n    }\n    printf(\"Total Spanning Tree Weight: %d\n\", total_w);\n    return 0;\n}",
+    "code": "#include <stdio.h>\n\nint parent[10];\n\nint find_root(int i) {\n    if (parent[i] == i) return i;\n    return parent[i] = find_root(parent[i]);\n}\n\nint main(void) {\n    int u[] = {0, 1, 0, 1, 2};\n    int v[] = {1, 2, 2, 3, 3};\n    int w[] = {1, 2, 4, 3, 5};\n    int e = 5, n = 4;\n\n    for (int i = 0; i < n; i++) parent[i] = i;\n\n    int total_w = 0;\n    printf(\"Kruskal MST Selected Edges:\\n\");\n    for (int i = 0; i < e; i++) {\n        int ru = find_root(u[i]);\n        int rv = find_root(v[i]);\n        if (ru != rv) {\n            parent[ru] = rv;\n            total_w += w[i];\n            printf(\"Edge (%d, %d) with weight %d\\n\", u[i], v[i], w[i]);\n        }\n    }\n    printf(\"Total Spanning Tree Weight: %d\\n\", total_w);\n    return 0;\n}",
     "complexity": {
       "time": "O(1)",
       "space": "O(1)"
     },
     "difficulty": "intermediate",
-    "documentation": "# prog_graph_mst\n> **Domain:** `algorithms` | **Subcategory:** `graph-algorithms` | **Type:** `program`\n## Overview\nComplete Kruskal Minimum Spanning Tree program with Disjoint Set Union\n\n## Signature\n```c\nint main(void)\n```\n\n## Complexity Analysis\n- **Time Complexity:** `O(1)`\n- **Space Complexity:** `O(1)`\n\n## Edge Cases & Constraints\n- **NULL / Empty Input:** Function handles zero/NULL pointers gracefully without segfaulting.\n- **Boundary Conditions:** Bounds-checked against buffer boundaries and integer limits.\n- **Zero-Comment Invariant:** Code is 100% executable clean C code adhering strictly to library standards.\n\n## Implementation\n```c\n#include <stdio.h>\n\nint parent[10];\n\nint find_root(int i) {\n    if (parent[i] == i) return i;\n    return parent[i] = find_root(parent[i]);\n}\n\nint main(void) {\n    int u[] = {0, 1, 0, 1, 2};\n    int v[] = {1, 2, 2, 3, 3};\n    int w[] = {1, 2, 4, 3, 5};\n    int e = 5, n = 4;\n\n    for (int i = 0; i < n; i++) parent[i] = i;\n\n    int total_w = 0;\n    printf(\"Kruskal MST Selected Edges:\n\");\n    for (int i = 0; i < e; i++) {\n        int ru = find_root(u[i]);\n        int rv = find_root(v[i]);\n        if (ru != rv) {\n            parent[ru] = rv;\n            total_w += w[i];\n            printf(\"Edge (%d, %d) with weight %d\n\", u[i], v[i], w[i]);\n        }\n    }\n    printf(\"Total Spanning Tree Weight: %d\n\", total_w);\n    return 0;\n}\n```\n\n## Aliases & Shorthands\nAvailable via: `prog_graph_mst`, `algorithms.full-programs.graph-algorithms.minimum-spanning-tree.prog-kruskal`, `algorithms>prog_graph_mst()`, `algorithms>full-programs>graph-algorithms>minimum-spanning-tree>prog-kruskal>prog_graph_mst()`, `programKruskalMST`\n",
+    "documentation": "# prog_graph_mst\n> **Domain:** `algorithms` | **Subcategory:** `graph-algorithms` | **Type:** `program`\n## Overview\nComplete Kruskal Minimum Spanning Tree program with Disjoint Set Union\n\n## Signature\n```c\nint main(void)\n```\n\n## Complexity Analysis\n- **Time Complexity:** `O(1)`\n- **Space Complexity:** `O(1)`\n\n## Edge Cases & Constraints\n- **NULL / Empty Input:** Function handles zero/NULL pointers gracefully without segfaulting.\n- **Boundary Conditions:** Bounds-checked against buffer boundaries and integer limits.\n- **Zero-Comment Invariant:** Code is 100% executable clean C code adhering strictly to library standards.\n\n## Implementation\n```c\n#include <stdio.h>\n\nint parent[10];\n\nint find_root(int i) {\n    if (parent[i] == i) return i;\n    return parent[i] = find_root(parent[i]);\n}\n\nint main(void) {\n    int u[] = {0, 1, 0, 1, 2};\n    int v[] = {1, 2, 2, 3, 3};\n    int w[] = {1, 2, 4, 3, 5};\n    int e = 5, n = 4;\n\n    for (int i = 0; i < n; i++) parent[i] = i;\n\n    int total_w = 0;\n    printf(\"Kruskal MST Selected Edges:\\n\");\n    for (int i = 0; i < e; i++) {\n        int ru = find_root(u[i]);\n        int rv = find_root(v[i]);\n        if (ru != rv) {\n            parent[ru] = rv;\n            total_w += w[i];\n            printf(\"Edge (%d, %d) with weight %d\\n\", u[i], v[i], w[i]);\n        }\n    }\n    printf(\"Total Spanning Tree Weight: %d\\n\", total_w);\n    return 0;\n}\n```\n\n## Aliases & Shorthands\nAvailable via: `prog_graph_mst`, `algorithms.full-programs.graph-algorithms.minimum-spanning-tree.prog-kruskal`, `algorithms>prog_graph_mst()`, `algorithms>full-programs>graph-algorithms>minimum-spanning-tree>prog-kruskal>prog_graph_mst()`, `programKruskalMST`\n",
     "version": "1.0.0",
     "dependencies": [],
     "tags": [
@@ -1743,8 +1743,8 @@
       "algorithms>full-programs>graph-algorithms>minimum-spanning-tree>prog-kruskal>prog_graph_mst()",
       "programKruskalMST"
     ],
-    "createdAt": "2026-09-17T09:35:42.929Z",
-    "updatedAt": "2026-09-17T09:35:42.929Z"
+    "createdAt": "2026-09-19T07:33:52.422Z",
+    "updatedAt": "2026-09-19T07:33:52.422Z"
   },
   {
     "id": "algorithms.full-programs.graph-algorithms.topological-sort.prog-topological-sort",
@@ -1757,13 +1757,13 @@
     "path": "algorithms/full-programs/graph-algorithms/topological-sort/prog-topological-sort",
     "description": "Complete Kahn's DAG topological sorting program",
     "signature": "int main(void)",
-    "code": "#include <stdio.h>\n\nint main(void) {\n    int v = 4;\n    int adj[4][4] = {\n        {0, 1, 1, 0},\n        {0, 0, 0, 1},\n        {0, 0, 0, 1},\n        {0, 0, 0, 0}\n    };\n\n    int in_deg[4] = {0};\n    for (int i = 0; i < v; i++) {\n        for (int j = 0; j < v; j++) {\n            if (adj[i][j]) in_deg[j]++;\n        }\n    }\n\n    int q[4], f = 0, r = 0;\n    for (int i = 0; i < v; i++) if (in_deg[i] == 0) q[r++] = i;\n\n    printf(\"Topological Order: \");\n    while (f < r) {\n        int u = q[f++];\n        printf(\"%d \", u);\n        for (int i = 0; i < v; i++) {\n            if (adj[u][i] && --in_deg[i] == 0) {\n                q[r++] = i;\n            }\n        }\n    }\n    putchar('\n');\n    return 0;\n}",
+    "code": "#include <stdio.h>\n\nint main(void) {\n    int v = 4;\n    int adj[4][4] = {\n        {0, 1, 1, 0},\n        {0, 0, 0, 1},\n        {0, 0, 0, 1},\n        {0, 0, 0, 0}\n    };\n\n    int in_deg[4] = {0};\n    for (int i = 0; i < v; i++) {\n        for (int j = 0; j < v; j++) {\n            if (adj[i][j]) in_deg[j]++;\n        }\n    }\n\n    int q[4], f = 0, r = 0;\n    for (int i = 0; i < v; i++) if (in_deg[i] == 0) q[r++] = i;\n\n    printf(\"Topological Order: \");\n    while (f < r) {\n        int u = q[f++];\n        printf(\"%d \", u);\n        for (int i = 0; i < v; i++) {\n            if (adj[u][i] && --in_deg[i] == 0) {\n                q[r++] = i;\n            }\n        }\n    }\n    putchar('\\n');\n    return 0;\n}",
     "complexity": {
       "time": "O(1)",
       "space": "O(1)"
     },
     "difficulty": "intermediate",
-    "documentation": "# prog_graph_topological_sort\n> **Domain:** `algorithms` | **Subcategory:** `graph-algorithms` | **Type:** `program`\n## Overview\nComplete Kahn's DAG topological sorting program\n\n## Signature\n```c\nint main(void)\n```\n\n## Complexity Analysis\n- **Time Complexity:** `O(1)`\n- **Space Complexity:** `O(1)`\n\n## Edge Cases & Constraints\n- **NULL / Empty Input:** Function handles zero/NULL pointers gracefully without segfaulting.\n- **Boundary Conditions:** Bounds-checked against buffer boundaries and integer limits.\n- **Zero-Comment Invariant:** Code is 100% executable clean C code adhering strictly to library standards.\n\n## Implementation\n```c\n#include <stdio.h>\n\nint main(void) {\n    int v = 4;\n    int adj[4][4] = {\n        {0, 1, 1, 0},\n        {0, 0, 0, 1},\n        {0, 0, 0, 1},\n        {0, 0, 0, 0}\n    };\n\n    int in_deg[4] = {0};\n    for (int i = 0; i < v; i++) {\n        for (int j = 0; j < v; j++) {\n            if (adj[i][j]) in_deg[j]++;\n        }\n    }\n\n    int q[4], f = 0, r = 0;\n    for (int i = 0; i < v; i++) if (in_deg[i] == 0) q[r++] = i;\n\n    printf(\"Topological Order: \");\n    while (f < r) {\n        int u = q[f++];\n        printf(\"%d \", u);\n        for (int i = 0; i < v; i++) {\n            if (adj[u][i] && --in_deg[i] == 0) {\n                q[r++] = i;\n            }\n        }\n    }\n    putchar('\n');\n    return 0;\n}\n```\n\n## Aliases & Shorthands\nAvailable via: `prog_graph_topological_sort`, `algorithms.full-programs.graph-algorithms.topological-sort.prog-topological-sort`, `algorithms>prog_graph_topological_sort()`, `algorithms>full-programs>graph-algorithms>topological-sort>prog-topological-sort>prog_graph_topological_sort()`, `programTopologicalSort`\n",
+    "documentation": "# prog_graph_topological_sort\n> **Domain:** `algorithms` | **Subcategory:** `graph-algorithms` | **Type:** `program`\n## Overview\nComplete Kahn's DAG topological sorting program\n\n## Signature\n```c\nint main(void)\n```\n\n## Complexity Analysis\n- **Time Complexity:** `O(1)`\n- **Space Complexity:** `O(1)`\n\n## Edge Cases & Constraints\n- **NULL / Empty Input:** Function handles zero/NULL pointers gracefully without segfaulting.\n- **Boundary Conditions:** Bounds-checked against buffer boundaries and integer limits.\n- **Zero-Comment Invariant:** Code is 100% executable clean C code adhering strictly to library standards.\n\n## Implementation\n```c\n#include <stdio.h>\n\nint main(void) {\n    int v = 4;\n    int adj[4][4] = {\n        {0, 1, 1, 0},\n        {0, 0, 0, 1},\n        {0, 0, 0, 1},\n        {0, 0, 0, 0}\n    };\n\n    int in_deg[4] = {0};\n    for (int i = 0; i < v; i++) {\n        for (int j = 0; j < v; j++) {\n            if (adj[i][j]) in_deg[j]++;\n        }\n    }\n\n    int q[4], f = 0, r = 0;\n    for (int i = 0; i < v; i++) if (in_deg[i] == 0) q[r++] = i;\n\n    printf(\"Topological Order: \");\n    while (f < r) {\n        int u = q[f++];\n        printf(\"%d \", u);\n        for (int i = 0; i < v; i++) {\n            if (adj[u][i] && --in_deg[i] == 0) {\n                q[r++] = i;\n            }\n        }\n    }\n    putchar('\\n');\n    return 0;\n}\n```\n\n## Aliases & Shorthands\nAvailable via: `prog_graph_topological_sort`, `algorithms.full-programs.graph-algorithms.topological-sort.prog-topological-sort`, `algorithms>prog_graph_topological_sort()`, `algorithms>full-programs>graph-algorithms>topological-sort>prog-topological-sort>prog_graph_topological_sort()`, `programTopologicalSort`\n",
     "version": "1.0.0",
     "dependencies": [],
     "tags": [
@@ -1778,8 +1778,8 @@
       "algorithms>full-programs>graph-algorithms>topological-sort>prog-topological-sort>prog_graph_topological_sort()",
       "programTopologicalSort"
     ],
-    "createdAt": "2026-09-17T09:35:42.929Z",
-    "updatedAt": "2026-09-17T09:35:42.929Z"
+    "createdAt": "2026-09-19T07:33:52.422Z",
+    "updatedAt": "2026-09-19T07:33:52.422Z"
   },
   {
     "id": "algorithms.full-programs.dynamic-programming.1d-dp.prog-kadane",
@@ -1792,13 +1792,13 @@
     "path": "algorithms/full-programs/dynamic-programming/1d-dp/prog-kadane",
     "description": "Complete Kadane maximum contiguous subarray sum program",
     "signature": "int main(void)",
-    "code": "#include <stdio.h>\n\nint main(void) {\n    int arr[] = {-2, 1, -3, 4, -1, 2, 1, -5, 4};\n    int n = sizeof(arr) / sizeof(arr[0]);\n\n    int max_so_far = arr[0];\n    int curr_max = arr[0];\n    for (int i = 1; i < n; i++) {\n        curr_max = (arr[i] > curr_max + arr[i]) ? arr[i] : (curr_max + arr[i]);\n        if (curr_max > max_so_far) max_so_far = curr_max;\n    }\n\n    printf(\"Maximum Subarray Sum: %d\n\", max_so_far);\n    return 0;\n}",
+    "code": "#include <stdio.h>\n\nint main(void) {\n    int arr[] = {-2, 1, -3, 4, -1, 2, 1, -5, 4};\n    int n = sizeof(arr) / sizeof(arr[0]);\n\n    int max_so_far = arr[0];\n    int curr_max = arr[0];\n    for (int i = 1; i < n; i++) {\n        curr_max = (arr[i] > curr_max + arr[i]) ? arr[i] : (curr_max + arr[i]);\n        if (curr_max > max_so_far) max_so_far = curr_max;\n    }\n\n    printf(\"Maximum Subarray Sum: %d\\n\", max_so_far);\n    return 0;\n}",
     "complexity": {
       "time": "O(1)",
       "space": "O(1)"
     },
     "difficulty": "intermediate",
-    "documentation": "# prog_dp_1d_kadane\n> **Domain:** `algorithms` | **Subcategory:** `dynamic-programming` | **Type:** `program`\n## Overview\nComplete Kadane maximum contiguous subarray sum program\n\n## Signature\n```c\nint main(void)\n```\n\n## Complexity Analysis\n- **Time Complexity:** `O(1)`\n- **Space Complexity:** `O(1)`\n\n## Edge Cases & Constraints\n- **NULL / Empty Input:** Function handles zero/NULL pointers gracefully without segfaulting.\n- **Boundary Conditions:** Bounds-checked against buffer boundaries and integer limits.\n- **Zero-Comment Invariant:** Code is 100% executable clean C code adhering strictly to library standards.\n\n## Implementation\n```c\n#include <stdio.h>\n\nint main(void) {\n    int arr[] = {-2, 1, -3, 4, -1, 2, 1, -5, 4};\n    int n = sizeof(arr) / sizeof(arr[0]);\n\n    int max_so_far = arr[0];\n    int curr_max = arr[0];\n    for (int i = 1; i < n; i++) {\n        curr_max = (arr[i] > curr_max + arr[i]) ? arr[i] : (curr_max + arr[i]);\n        if (curr_max > max_so_far) max_so_far = curr_max;\n    }\n\n    printf(\"Maximum Subarray Sum: %d\n\", max_so_far);\n    return 0;\n}\n```\n\n## Aliases & Shorthands\nAvailable via: `prog_dp_1d_kadane`, `algorithms.full-programs.dynamic-programming.1d-dp.prog-kadane`, `algorithms>prog_dp_1d_kadane()`, `algorithms>full-programs>dynamic-programming>1d-dp>prog-kadane>prog_dp_1d_kadane()`, `programKadane`\n",
+    "documentation": "# prog_dp_1d_kadane\n> **Domain:** `algorithms` | **Subcategory:** `dynamic-programming` | **Type:** `program`\n## Overview\nComplete Kadane maximum contiguous subarray sum program\n\n## Signature\n```c\nint main(void)\n```\n\n## Complexity Analysis\n- **Time Complexity:** `O(1)`\n- **Space Complexity:** `O(1)`\n\n## Edge Cases & Constraints\n- **NULL / Empty Input:** Function handles zero/NULL pointers gracefully without segfaulting.\n- **Boundary Conditions:** Bounds-checked against buffer boundaries and integer limits.\n- **Zero-Comment Invariant:** Code is 100% executable clean C code adhering strictly to library standards.\n\n## Implementation\n```c\n#include <stdio.h>\n\nint main(void) {\n    int arr[] = {-2, 1, -3, 4, -1, 2, 1, -5, 4};\n    int n = sizeof(arr) / sizeof(arr[0]);\n\n    int max_so_far = arr[0];\n    int curr_max = arr[0];\n    for (int i = 1; i < n; i++) {\n        curr_max = (arr[i] > curr_max + arr[i]) ? arr[i] : (curr_max + arr[i]);\n        if (curr_max > max_so_far) max_so_far = curr_max;\n    }\n\n    printf(\"Maximum Subarray Sum: %d\\n\", max_so_far);\n    return 0;\n}\n```\n\n## Aliases & Shorthands\nAvailable via: `prog_dp_1d_kadane`, `algorithms.full-programs.dynamic-programming.1d-dp.prog-kadane`, `algorithms>prog_dp_1d_kadane()`, `algorithms>full-programs>dynamic-programming>1d-dp>prog-kadane>prog_dp_1d_kadane()`, `programKadane`\n",
     "version": "1.0.0",
     "dependencies": [],
     "tags": [
@@ -1813,8 +1813,8 @@
       "algorithms>full-programs>dynamic-programming>1d-dp>prog-kadane>prog_dp_1d_kadane()",
       "programKadane"
     ],
-    "createdAt": "2026-09-17T09:35:42.929Z",
-    "updatedAt": "2026-09-17T09:35:42.929Z"
+    "createdAt": "2026-09-19T07:33:52.422Z",
+    "updatedAt": "2026-09-19T07:33:52.422Z"
   },
   {
     "id": "algorithms.full-programs.dynamic-programming.knapsack.prog-knapsack",
@@ -1827,13 +1827,13 @@
     "path": "algorithms/full-programs/dynamic-programming/knapsack/prog-knapsack",
     "description": "Complete 0/1 Knapsack problem dynamic programming program",
     "signature": "int main(void)",
-    "code": "#include <stdio.h>\n\nint main(void) {\n    int val[] = {60, 100, 120};\n    int wt[] = {10, 20, 30};\n    int W = 50;\n    int n = 3;\n\n    int dp[4][51] = {0};\n    for (int i = 1; i <= n; i++) {\n        for (int w = 0; w <= W; w++) {\n            if (wt[i - 1] <= w) {\n                int take = val[i - 1] + dp[i - 1][w - wt[i - 1]];\n                int skip = dp[i - 1][w];\n                dp[i][w] = (take > skip) ? take : skip;\n            } else {\n                dp[i][w] = dp[i - 1][w];\n            }\n        }\n    }\n\n    printf(\"0/1 Knapsack Optimal Value: %d\n\", dp[n][W]);\n    return 0;\n}",
+    "code": "#include <stdio.h>\n\nint main(void) {\n    int val[] = {60, 100, 120};\n    int wt[] = {10, 20, 30};\n    int W = 50;\n    int n = 3;\n\n    int dp[4][51] = {0};\n    for (int i = 1; i <= n; i++) {\n        for (int w = 0; w <= W; w++) {\n            if (wt[i - 1] <= w) {\n                int take = val[i - 1] + dp[i - 1][w - wt[i - 1]];\n                int skip = dp[i - 1][w];\n                dp[i][w] = (take > skip) ? take : skip;\n            } else {\n                dp[i][w] = dp[i - 1][w];\n            }\n        }\n    }\n\n    printf(\"0/1 Knapsack Optimal Value: %d\\n\", dp[n][W]);\n    return 0;\n}",
     "complexity": {
       "time": "O(1)",
       "space": "O(1)"
     },
     "difficulty": "intermediate",
-    "documentation": "# prog_dp_knapsack\n> **Domain:** `algorithms` | **Subcategory:** `dynamic-programming` | **Type:** `program`\n## Overview\nComplete 0/1 Knapsack problem dynamic programming program\n\n## Signature\n```c\nint main(void)\n```\n\n## Complexity Analysis\n- **Time Complexity:** `O(1)`\n- **Space Complexity:** `O(1)`\n\n## Edge Cases & Constraints\n- **NULL / Empty Input:** Function handles zero/NULL pointers gracefully without segfaulting.\n- **Boundary Conditions:** Bounds-checked against buffer boundaries and integer limits.\n- **Zero-Comment Invariant:** Code is 100% executable clean C code adhering strictly to library standards.\n\n## Implementation\n```c\n#include <stdio.h>\n\nint main(void) {\n    int val[] = {60, 100, 120};\n    int wt[] = {10, 20, 30};\n    int W = 50;\n    int n = 3;\n\n    int dp[4][51] = {0};\n    for (int i = 1; i <= n; i++) {\n        for (int w = 0; w <= W; w++) {\n            if (wt[i - 1] <= w) {\n                int take = val[i - 1] + dp[i - 1][w - wt[i - 1]];\n                int skip = dp[i - 1][w];\n                dp[i][w] = (take > skip) ? take : skip;\n            } else {\n                dp[i][w] = dp[i - 1][w];\n            }\n        }\n    }\n\n    printf(\"0/1 Knapsack Optimal Value: %d\n\", dp[n][W]);\n    return 0;\n}\n```\n\n## Aliases & Shorthands\nAvailable via: `prog_dp_knapsack`, `algorithms.full-programs.dynamic-programming.knapsack.prog-knapsack`, `algorithms>prog_dp_knapsack()`, `algorithms>full-programs>dynamic-programming>knapsack>prog-knapsack>prog_dp_knapsack()`, `programKnapsack`\n",
+    "documentation": "# prog_dp_knapsack\n> **Domain:** `algorithms` | **Subcategory:** `dynamic-programming` | **Type:** `program`\n## Overview\nComplete 0/1 Knapsack problem dynamic programming program\n\n## Signature\n```c\nint main(void)\n```\n\n## Complexity Analysis\n- **Time Complexity:** `O(1)`\n- **Space Complexity:** `O(1)`\n\n## Edge Cases & Constraints\n- **NULL / Empty Input:** Function handles zero/NULL pointers gracefully without segfaulting.\n- **Boundary Conditions:** Bounds-checked against buffer boundaries and integer limits.\n- **Zero-Comment Invariant:** Code is 100% executable clean C code adhering strictly to library standards.\n\n## Implementation\n```c\n#include <stdio.h>\n\nint main(void) {\n    int val[] = {60, 100, 120};\n    int wt[] = {10, 20, 30};\n    int W = 50;\n    int n = 3;\n\n    int dp[4][51] = {0};\n    for (int i = 1; i <= n; i++) {\n        for (int w = 0; w <= W; w++) {\n            if (wt[i - 1] <= w) {\n                int take = val[i - 1] + dp[i - 1][w - wt[i - 1]];\n                int skip = dp[i - 1][w];\n                dp[i][w] = (take > skip) ? take : skip;\n            } else {\n                dp[i][w] = dp[i - 1][w];\n            }\n        }\n    }\n\n    printf(\"0/1 Knapsack Optimal Value: %d\\n\", dp[n][W]);\n    return 0;\n}\n```\n\n## Aliases & Shorthands\nAvailable via: `prog_dp_knapsack`, `algorithms.full-programs.dynamic-programming.knapsack.prog-knapsack`, `algorithms>prog_dp_knapsack()`, `algorithms>full-programs>dynamic-programming>knapsack>prog-knapsack>prog_dp_knapsack()`, `programKnapsack`\n",
     "version": "1.0.0",
     "dependencies": [],
     "tags": [
@@ -1848,8 +1848,8 @@
       "algorithms>full-programs>dynamic-programming>knapsack>prog-knapsack>prog_dp_knapsack()",
       "programKnapsack"
     ],
-    "createdAt": "2026-09-17T09:35:42.929Z",
-    "updatedAt": "2026-09-17T09:35:42.929Z"
+    "createdAt": "2026-09-19T07:33:52.422Z",
+    "updatedAt": "2026-09-19T07:33:52.422Z"
   },
   {
     "id": "algorithms.full-programs.dynamic-programming.subsequences.prog-lcs",
@@ -1862,13 +1862,13 @@
     "path": "algorithms/full-programs/dynamic-programming/subsequences/prog-lcs",
     "description": "Complete Longest Common Subsequence dynamic programming program",
     "signature": "int main(void)",
-    "code": "#include <stdio.h>\n#include <string.h>\n\nint main(void) {\n    const char* s1 = \"AGGTAB\";\n    const char* s2 = \"GXTXAYB\";\n    int m = (int)strlen(s1);\n    int n = (int)strlen(s2);\n\n    int dp[32][32] = {0};\n    for (int i = 1; i <= m; i++) {\n        for (int j = 1; j <= n; j++) {\n            if (s1[i - 1] == s2[j - 1]) dp[i][j] = dp[i - 1][j - 1] + 1;\n            else {\n                int top = dp[i - 1][j], left = dp[i][j - 1];\n                dp[i][j] = (top > left) ? top : left;\n            }\n        }\n    }\n\n    printf(\"Length of LCS between '%s' and '%s': %d\n\", s1, s2, dp[m][n]);\n    return 0;\n}",
+    "code": "#include <stdio.h>\n#include <string.h>\n\nint main(void) {\n    const char* s1 = \"AGGTAB\";\n    const char* s2 = \"GXTXAYB\";\n    int m = (int)strlen(s1);\n    int n = (int)strlen(s2);\n\n    int dp[32][32] = {0};\n    for (int i = 1; i <= m; i++) {\n        for (int j = 1; j <= n; j++) {\n            if (s1[i - 1] == s2[j - 1]) dp[i][j] = dp[i - 1][j - 1] + 1;\n            else {\n                int top = dp[i - 1][j], left = dp[i][j - 1];\n                dp[i][j] = (top > left) ? top : left;\n            }\n        }\n    }\n\n    printf(\"Length of LCS between '%s' and '%s': %d\\n\", s1, s2, dp[m][n]);\n    return 0;\n}",
     "complexity": {
       "time": "O(1)",
       "space": "O(1)"
     },
     "difficulty": "intermediate",
-    "documentation": "# prog_dp_lcs\n> **Domain:** `algorithms` | **Subcategory:** `dynamic-programming` | **Type:** `program`\n## Overview\nComplete Longest Common Subsequence dynamic programming program\n\n## Signature\n```c\nint main(void)\n```\n\n## Complexity Analysis\n- **Time Complexity:** `O(1)`\n- **Space Complexity:** `O(1)`\n\n## Edge Cases & Constraints\n- **NULL / Empty Input:** Function handles zero/NULL pointers gracefully without segfaulting.\n- **Boundary Conditions:** Bounds-checked against buffer boundaries and integer limits.\n- **Zero-Comment Invariant:** Code is 100% executable clean C code adhering strictly to library standards.\n\n## Implementation\n```c\n#include <stdio.h>\n#include <string.h>\n\nint main(void) {\n    const char* s1 = \"AGGTAB\";\n    const char* s2 = \"GXTXAYB\";\n    int m = (int)strlen(s1);\n    int n = (int)strlen(s2);\n\n    int dp[32][32] = {0};\n    for (int i = 1; i <= m; i++) {\n        for (int j = 1; j <= n; j++) {\n            if (s1[i - 1] == s2[j - 1]) dp[i][j] = dp[i - 1][j - 1] + 1;\n            else {\n                int top = dp[i - 1][j], left = dp[i][j - 1];\n                dp[i][j] = (top > left) ? top : left;\n            }\n        }\n    }\n\n    printf(\"Length of LCS between '%s' and '%s': %d\n\", s1, s2, dp[m][n]);\n    return 0;\n}\n```\n\n## Aliases & Shorthands\nAvailable via: `prog_dp_lcs`, `algorithms.full-programs.dynamic-programming.subsequences.prog-lcs`, `algorithms>prog_dp_lcs()`, `algorithms>full-programs>dynamic-programming>subsequences>prog-lcs>prog_dp_lcs()`, `programLCS`\n",
+    "documentation": "# prog_dp_lcs\n> **Domain:** `algorithms` | **Subcategory:** `dynamic-programming` | **Type:** `program`\n## Overview\nComplete Longest Common Subsequence dynamic programming program\n\n## Signature\n```c\nint main(void)\n```\n\n## Complexity Analysis\n- **Time Complexity:** `O(1)`\n- **Space Complexity:** `O(1)`\n\n## Edge Cases & Constraints\n- **NULL / Empty Input:** Function handles zero/NULL pointers gracefully without segfaulting.\n- **Boundary Conditions:** Bounds-checked against buffer boundaries and integer limits.\n- **Zero-Comment Invariant:** Code is 100% executable clean C code adhering strictly to library standards.\n\n## Implementation\n```c\n#include <stdio.h>\n#include <string.h>\n\nint main(void) {\n    const char* s1 = \"AGGTAB\";\n    const char* s2 = \"GXTXAYB\";\n    int m = (int)strlen(s1);\n    int n = (int)strlen(s2);\n\n    int dp[32][32] = {0};\n    for (int i = 1; i <= m; i++) {\n        for (int j = 1; j <= n; j++) {\n            if (s1[i - 1] == s2[j - 1]) dp[i][j] = dp[i - 1][j - 1] + 1;\n            else {\n                int top = dp[i - 1][j], left = dp[i][j - 1];\n                dp[i][j] = (top > left) ? top : left;\n            }\n        }\n    }\n\n    printf(\"Length of LCS between '%s' and '%s': %d\\n\", s1, s2, dp[m][n]);\n    return 0;\n}\n```\n\n## Aliases & Shorthands\nAvailable via: `prog_dp_lcs`, `algorithms.full-programs.dynamic-programming.subsequences.prog-lcs`, `algorithms>prog_dp_lcs()`, `algorithms>full-programs>dynamic-programming>subsequences>prog-lcs>prog_dp_lcs()`, `programLCS`\n",
     "version": "1.0.0",
     "dependencies": [],
     "tags": [
@@ -1883,8 +1883,8 @@
       "algorithms>full-programs>dynamic-programming>subsequences>prog-lcs>prog_dp_lcs()",
       "programLCS"
     ],
-    "createdAt": "2026-09-17T09:35:42.929Z",
-    "updatedAt": "2026-09-17T09:35:42.929Z"
+    "createdAt": "2026-09-19T07:33:52.422Z",
+    "updatedAt": "2026-09-19T07:33:52.422Z"
   },
   {
     "id": "algorithms.full-programs.dynamic-programming.string-dp.prog-edit-distance",
@@ -1897,13 +1897,13 @@
     "path": "algorithms/full-programs/dynamic-programming/string-dp/prog-edit-distance",
     "description": "Complete Levenshtein Edit Distance calculation program",
     "signature": "int main(void)",
-    "code": "#include <stdio.h>\n#include <string.h>\n\nstatic int min3(int a, int b, int c) {\n    int m = a < b ? a : b;\n    return m < c ? m : c;\n}\n\nint main(void) {\n    const char* s1 = \"kitten\";\n    const char* s2 = \"sitting\";\n    int m = (int)strlen(s1);\n    int n = (int)strlen(s2);\n\n    int dp[32][32];\n    for (int i = 0; i <= m; i++) dp[i][0] = i;\n    for (int j = 0; j <= n; j++) dp[0][j] = j;\n\n    for (int i = 1; i <= m; i++) {\n        for (int j = 1; j <= n; j++) {\n            if (s1[i - 1] == s2[j - 1]) dp[i][j] = dp[i - 1][j - 1];\n            else dp[i][j] = 1 + min3(dp[i - 1][j], dp[i][j - 1], dp[i - 1][j - 1]);\n        }\n    }\n\n    printf(\"Edit Distance between '%s' and '%s': %d\n\", s1, s2, dp[m][n]);\n    return 0;\n}",
+    "code": "#include <stdio.h>\n#include <string.h>\n\nstatic int min3(int a, int b, int c) {\n    int m = a < b ? a : b;\n    return m < c ? m : c;\n}\n\nint main(void) {\n    const char* s1 = \"kitten\";\n    const char* s2 = \"sitting\";\n    int m = (int)strlen(s1);\n    int n = (int)strlen(s2);\n\n    int dp[32][32];\n    for (int i = 0; i <= m; i++) dp[i][0] = i;\n    for (int j = 0; j <= n; j++) dp[0][j] = j;\n\n    for (int i = 1; i <= m; i++) {\n        for (int j = 1; j <= n; j++) {\n            if (s1[i - 1] == s2[j - 1]) dp[i][j] = dp[i - 1][j - 1];\n            else dp[i][j] = 1 + min3(dp[i - 1][j], dp[i][j - 1], dp[i - 1][j - 1]);\n        }\n    }\n\n    printf(\"Edit Distance between '%s' and '%s': %d\\n\", s1, s2, dp[m][n]);\n    return 0;\n}",
     "complexity": {
       "time": "O(1)",
       "space": "O(1)"
     },
     "difficulty": "intermediate",
-    "documentation": "# prog_dp_edit_distance\n> **Domain:** `algorithms` | **Subcategory:** `dynamic-programming` | **Type:** `program`\n## Overview\nComplete Levenshtein Edit Distance calculation program\n\n## Signature\n```c\nint main(void)\n```\n\n## Complexity Analysis\n- **Time Complexity:** `O(1)`\n- **Space Complexity:** `O(1)`\n\n## Edge Cases & Constraints\n- **NULL / Empty Input:** Function handles zero/NULL pointers gracefully without segfaulting.\n- **Boundary Conditions:** Bounds-checked against buffer boundaries and integer limits.\n- **Zero-Comment Invariant:** Code is 100% executable clean C code adhering strictly to library standards.\n\n## Implementation\n```c\n#include <stdio.h>\n#include <string.h>\n\nstatic int min3(int a, int b, int c) {\n    int m = a < b ? a : b;\n    return m < c ? m : c;\n}\n\nint main(void) {\n    const char* s1 = \"kitten\";\n    const char* s2 = \"sitting\";\n    int m = (int)strlen(s1);\n    int n = (int)strlen(s2);\n\n    int dp[32][32];\n    for (int i = 0; i <= m; i++) dp[i][0] = i;\n    for (int j = 0; j <= n; j++) dp[0][j] = j;\n\n    for (int i = 1; i <= m; i++) {\n        for (int j = 1; j <= n; j++) {\n            if (s1[i - 1] == s2[j - 1]) dp[i][j] = dp[i - 1][j - 1];\n            else dp[i][j] = 1 + min3(dp[i - 1][j], dp[i][j - 1], dp[i - 1][j - 1]);\n        }\n    }\n\n    printf(\"Edit Distance between '%s' and '%s': %d\n\", s1, s2, dp[m][n]);\n    return 0;\n}\n```\n\n## Aliases & Shorthands\nAvailable via: `prog_dp_edit_distance`, `algorithms.full-programs.dynamic-programming.string-dp.prog-edit-distance`, `algorithms>prog_dp_edit_distance()`, `algorithms>full-programs>dynamic-programming>string-dp>prog-edit-distance>prog_dp_edit_distance()`, `programEditDistance`\n",
+    "documentation": "# prog_dp_edit_distance\n> **Domain:** `algorithms` | **Subcategory:** `dynamic-programming` | **Type:** `program`\n## Overview\nComplete Levenshtein Edit Distance calculation program\n\n## Signature\n```c\nint main(void)\n```\n\n## Complexity Analysis\n- **Time Complexity:** `O(1)`\n- **Space Complexity:** `O(1)`\n\n## Edge Cases & Constraints\n- **NULL / Empty Input:** Function handles zero/NULL pointers gracefully without segfaulting.\n- **Boundary Conditions:** Bounds-checked against buffer boundaries and integer limits.\n- **Zero-Comment Invariant:** Code is 100% executable clean C code adhering strictly to library standards.\n\n## Implementation\n```c\n#include <stdio.h>\n#include <string.h>\n\nstatic int min3(int a, int b, int c) {\n    int m = a < b ? a : b;\n    return m < c ? m : c;\n}\n\nint main(void) {\n    const char* s1 = \"kitten\";\n    const char* s2 = \"sitting\";\n    int m = (int)strlen(s1);\n    int n = (int)strlen(s2);\n\n    int dp[32][32];\n    for (int i = 0; i <= m; i++) dp[i][0] = i;\n    for (int j = 0; j <= n; j++) dp[0][j] = j;\n\n    for (int i = 1; i <= m; i++) {\n        for (int j = 1; j <= n; j++) {\n            if (s1[i - 1] == s2[j - 1]) dp[i][j] = dp[i - 1][j - 1];\n            else dp[i][j] = 1 + min3(dp[i - 1][j], dp[i][j - 1], dp[i - 1][j - 1]);\n        }\n    }\n\n    printf(\"Edit Distance between '%s' and '%s': %d\\n\", s1, s2, dp[m][n]);\n    return 0;\n}\n```\n\n## Aliases & Shorthands\nAvailable via: `prog_dp_edit_distance`, `algorithms.full-programs.dynamic-programming.string-dp.prog-edit-distance`, `algorithms>prog_dp_edit_distance()`, `algorithms>full-programs>dynamic-programming>string-dp>prog-edit-distance>prog_dp_edit_distance()`, `programEditDistance`\n",
     "version": "1.0.0",
     "dependencies": [],
     "tags": [
@@ -1918,8 +1918,8 @@
       "algorithms>full-programs>dynamic-programming>string-dp>prog-edit-distance>prog_dp_edit_distance()",
       "programEditDistance"
     ],
-    "createdAt": "2026-09-17T09:35:42.929Z",
-    "updatedAt": "2026-09-17T09:35:42.929Z"
+    "createdAt": "2026-09-19T07:33:52.422Z",
+    "updatedAt": "2026-09-19T07:33:52.422Z"
   },
   {
     "id": "algorithms.full-programs.greedy.activity-selection.prog-activity-selection",
@@ -1932,13 +1932,13 @@
     "path": "algorithms/full-programs/greedy/activity-selection/prog-activity-selection",
     "description": "Complete greedy interval activity selection program",
     "signature": "int main(void)",
-    "code": "#include <stdio.h>\n\nint main(void) {\n    int start[] = {1, 3, 0, 5, 8, 5};\n    int finish[] = {2, 4, 6, 7, 9, 9};\n    int n = sizeof(start) / sizeof(start[0]);\n\n    printf(\"Selected Activities: 0 \");\n    int last = finish[0];\n    for (int i = 1; i < n; i++) {\n        if (start[i] >= last) {\n            printf(\"%d \", i);\n            last = finish[i];\n        }\n    }\n    putchar('\n');\n    return 0;\n}",
+    "code": "#include <stdio.h>\n\nint main(void) {\n    int start[] = {1, 3, 0, 5, 8, 5};\n    int finish[] = {2, 4, 6, 7, 9, 9};\n    int n = sizeof(start) / sizeof(start[0]);\n\n    printf(\"Selected Activities: 0 \");\n    int last = finish[0];\n    for (int i = 1; i < n; i++) {\n        if (start[i] >= last) {\n            printf(\"%d \", i);\n            last = finish[i];\n        }\n    }\n    putchar('\\n');\n    return 0;\n}",
     "complexity": {
       "time": "O(1)",
       "space": "O(1)"
     },
     "difficulty": "intermediate",
-    "documentation": "# prog_greedy_activity_selection\n> **Domain:** `algorithms` | **Subcategory:** `greedy` | **Type:** `program`\n## Overview\nComplete greedy interval activity selection program\n\n## Signature\n```c\nint main(void)\n```\n\n## Complexity Analysis\n- **Time Complexity:** `O(1)`\n- **Space Complexity:** `O(1)`\n\n## Edge Cases & Constraints\n- **NULL / Empty Input:** Function handles zero/NULL pointers gracefully without segfaulting.\n- **Boundary Conditions:** Bounds-checked against buffer boundaries and integer limits.\n- **Zero-Comment Invariant:** Code is 100% executable clean C code adhering strictly to library standards.\n\n## Implementation\n```c\n#include <stdio.h>\n\nint main(void) {\n    int start[] = {1, 3, 0, 5, 8, 5};\n    int finish[] = {2, 4, 6, 7, 9, 9};\n    int n = sizeof(start) / sizeof(start[0]);\n\n    printf(\"Selected Activities: 0 \");\n    int last = finish[0];\n    for (int i = 1; i < n; i++) {\n        if (start[i] >= last) {\n            printf(\"%d \", i);\n            last = finish[i];\n        }\n    }\n    putchar('\n');\n    return 0;\n}\n```\n\n## Aliases & Shorthands\nAvailable via: `prog_greedy_activity_selection`, `algorithms.full-programs.greedy.activity-selection.prog-activity-selection`, `algorithms>prog_greedy_activity_selection()`, `algorithms>full-programs>greedy>activity-selection>prog-activity-selection>prog_greedy_activity_selection()`, `programActivitySelection`\n",
+    "documentation": "# prog_greedy_activity_selection\n> **Domain:** `algorithms` | **Subcategory:** `greedy` | **Type:** `program`\n## Overview\nComplete greedy interval activity selection program\n\n## Signature\n```c\nint main(void)\n```\n\n## Complexity Analysis\n- **Time Complexity:** `O(1)`\n- **Space Complexity:** `O(1)`\n\n## Edge Cases & Constraints\n- **NULL / Empty Input:** Function handles zero/NULL pointers gracefully without segfaulting.\n- **Boundary Conditions:** Bounds-checked against buffer boundaries and integer limits.\n- **Zero-Comment Invariant:** Code is 100% executable clean C code adhering strictly to library standards.\n\n## Implementation\n```c\n#include <stdio.h>\n\nint main(void) {\n    int start[] = {1, 3, 0, 5, 8, 5};\n    int finish[] = {2, 4, 6, 7, 9, 9};\n    int n = sizeof(start) / sizeof(start[0]);\n\n    printf(\"Selected Activities: 0 \");\n    int last = finish[0];\n    for (int i = 1; i < n; i++) {\n        if (start[i] >= last) {\n            printf(\"%d \", i);\n            last = finish[i];\n        }\n    }\n    putchar('\\n');\n    return 0;\n}\n```\n\n## Aliases & Shorthands\nAvailable via: `prog_greedy_activity_selection`, `algorithms.full-programs.greedy.activity-selection.prog-activity-selection`, `algorithms>prog_greedy_activity_selection()`, `algorithms>full-programs>greedy>activity-selection>prog-activity-selection>prog_greedy_activity_selection()`, `programActivitySelection`\n",
     "version": "1.0.0",
     "dependencies": [],
     "tags": [
@@ -1953,8 +1953,8 @@
       "algorithms>full-programs>greedy>activity-selection>prog-activity-selection>prog_greedy_activity_selection()",
       "programActivitySelection"
     ],
-    "createdAt": "2026-09-17T09:35:42.929Z",
-    "updatedAt": "2026-09-17T09:35:42.929Z"
+    "createdAt": "2026-09-19T07:33:52.422Z",
+    "updatedAt": "2026-09-19T07:33:52.422Z"
   },
   {
     "id": "algorithms.full-programs.greedy.fractional-knapsack.prog-fractional-knapsack",
@@ -1967,13 +1967,13 @@
     "path": "algorithms/full-programs/greedy/fractional-knapsack/prog-fractional-knapsack",
     "description": "Complete Fractional Knapsack greedy value optimization program",
     "signature": "int main(void)",
-    "code": "#include <stdio.h>\n\nint main(void) {\n    double wt[] = {10, 20, 30};\n    double val[] = {60, 100, 120};\n    int n = 3;\n    double cap = 50;\n\n    double total_val = 0.0;\n    for (int i = 0; i < n; i++) {\n        if (wt[i] <= cap) {\n            cap -= wt[i];\n            total_val += val[i];\n        } else {\n            total_val += val[i] * (cap / wt[i]);\n            break;\n        }\n    }\n\n    printf(\"Max Fractional Knapsack Value: %.2f\n\", total_val);\n    return 0;\n}",
+    "code": "#include <stdio.h>\n\nint main(void) {\n    double wt[] = {10, 20, 30};\n    double val[] = {60, 100, 120};\n    int n = 3;\n    double cap = 50;\n\n    double total_val = 0.0;\n    for (int i = 0; i < n; i++) {\n        if (wt[i] <= cap) {\n            cap -= wt[i];\n            total_val += val[i];\n        } else {\n            total_val += val[i] * (cap / wt[i]);\n            break;\n        }\n    }\n\n    printf(\"Max Fractional Knapsack Value: %.2f\\n\", total_val);\n    return 0;\n}",
     "complexity": {
       "time": "O(1)",
       "space": "O(1)"
     },
     "difficulty": "intermediate",
-    "documentation": "# prog_greedy_fractional_knapsack\n> **Domain:** `algorithms` | **Subcategory:** `greedy` | **Type:** `program`\n## Overview\nComplete Fractional Knapsack greedy value optimization program\n\n## Signature\n```c\nint main(void)\n```\n\n## Complexity Analysis\n- **Time Complexity:** `O(1)`\n- **Space Complexity:** `O(1)`\n\n## Edge Cases & Constraints\n- **NULL / Empty Input:** Function handles zero/NULL pointers gracefully without segfaulting.\n- **Boundary Conditions:** Bounds-checked against buffer boundaries and integer limits.\n- **Zero-Comment Invariant:** Code is 100% executable clean C code adhering strictly to library standards.\n\n## Implementation\n```c\n#include <stdio.h>\n\nint main(void) {\n    double wt[] = {10, 20, 30};\n    double val[] = {60, 100, 120};\n    int n = 3;\n    double cap = 50;\n\n    double total_val = 0.0;\n    for (int i = 0; i < n; i++) {\n        if (wt[i] <= cap) {\n            cap -= wt[i];\n            total_val += val[i];\n        } else {\n            total_val += val[i] * (cap / wt[i]);\n            break;\n        }\n    }\n\n    printf(\"Max Fractional Knapsack Value: %.2f\n\", total_val);\n    return 0;\n}\n```\n\n## Aliases & Shorthands\nAvailable via: `prog_greedy_fractional_knapsack`, `algorithms.full-programs.greedy.fractional-knapsack.prog-fractional-knapsack`, `algorithms>prog_greedy_fractional_knapsack()`, `algorithms>full-programs>greedy>fractional-knapsack>prog-fractional-knapsack>prog_greedy_fractional_knapsack()`, `programFractionalKnapsack`\n",
+    "documentation": "# prog_greedy_fractional_knapsack\n> **Domain:** `algorithms` | **Subcategory:** `greedy` | **Type:** `program`\n## Overview\nComplete Fractional Knapsack greedy value optimization program\n\n## Signature\n```c\nint main(void)\n```\n\n## Complexity Analysis\n- **Time Complexity:** `O(1)`\n- **Space Complexity:** `O(1)`\n\n## Edge Cases & Constraints\n- **NULL / Empty Input:** Function handles zero/NULL pointers gracefully without segfaulting.\n- **Boundary Conditions:** Bounds-checked against buffer boundaries and integer limits.\n- **Zero-Comment Invariant:** Code is 100% executable clean C code adhering strictly to library standards.\n\n## Implementation\n```c\n#include <stdio.h>\n\nint main(void) {\n    double wt[] = {10, 20, 30};\n    double val[] = {60, 100, 120};\n    int n = 3;\n    double cap = 50;\n\n    double total_val = 0.0;\n    for (int i = 0; i < n; i++) {\n        if (wt[i] <= cap) {\n            cap -= wt[i];\n            total_val += val[i];\n        } else {\n            total_val += val[i] * (cap / wt[i]);\n            break;\n        }\n    }\n\n    printf(\"Max Fractional Knapsack Value: %.2f\\n\", total_val);\n    return 0;\n}\n```\n\n## Aliases & Shorthands\nAvailable via: `prog_greedy_fractional_knapsack`, `algorithms.full-programs.greedy.fractional-knapsack.prog-fractional-knapsack`, `algorithms>prog_greedy_fractional_knapsack()`, `algorithms>full-programs>greedy>fractional-knapsack>prog-fractional-knapsack>prog_greedy_fractional_knapsack()`, `programFractionalKnapsack`\n",
     "version": "1.0.0",
     "dependencies": [],
     "tags": [
@@ -1988,8 +1988,8 @@
       "algorithms>full-programs>greedy>fractional-knapsack>prog-fractional-knapsack>prog_greedy_fractional_knapsack()",
       "programFractionalKnapsack"
     ],
-    "createdAt": "2026-09-17T09:35:42.929Z",
-    "updatedAt": "2026-09-17T09:35:42.929Z"
+    "createdAt": "2026-09-19T07:33:52.422Z",
+    "updatedAt": "2026-09-19T07:33:52.422Z"
   },
   {
     "id": "algorithms.full-programs.greedy.job-sequencing.prog-job-sequencing",
@@ -2002,13 +2002,13 @@
     "path": "algorithms/full-programs/greedy/job-sequencing/prog-job-sequencing",
     "description": "Complete job sequencing program maximizing profit within deadlines",
     "signature": "int main(void)",
-    "code": "#include <stdio.h>\n\nint main(void) {\n    int deadline[] = {4, 1, 1, 1};\n    int profit[] = {20, 10, 40, 30};\n    int n = 4;\n\n    for (int i = 0; i < n - 1; i++) {\n        for (int j = 0; j < n - i - 1; j++) {\n            if (profit[j] < profit[j + 1]) {\n                int tp = profit[j]; profit[j] = profit[j + 1]; profit[j + 1] = tp;\n                int td = deadline[j]; deadline[j] = deadline[j + 1]; deadline[j + 1] = td;\n            }\n        }\n    }\n\n    int slots[5] = {0};\n    int total_p = 0;\n    for (int i = 0; i < n; i++) {\n        for (int j = deadline[i]; j > 0; j--) {\n            if (!slots[j]) {\n                slots[j] = 1;\n                total_p += profit[i];\n                break;\n            }\n        }\n    }\n\n    printf(\"Max Job Scheduling Profit: %d\n\", total_p);\n    return 0;\n}",
+    "code": "#include <stdio.h>\n\nint main(void) {\n    int deadline[] = {4, 1, 1, 1};\n    int profit[] = {20, 10, 40, 30};\n    int n = 4;\n\n    for (int i = 0; i < n - 1; i++) {\n        for (int j = 0; j < n - i - 1; j++) {\n            if (profit[j] < profit[j + 1]) {\n                int tp = profit[j]; profit[j] = profit[j + 1]; profit[j + 1] = tp;\n                int td = deadline[j]; deadline[j] = deadline[j + 1]; deadline[j + 1] = td;\n            }\n        }\n    }\n\n    int slots[5] = {0};\n    int total_p = 0;\n    for (int i = 0; i < n; i++) {\n        for (int j = deadline[i]; j > 0; j--) {\n            if (!slots[j]) {\n                slots[j] = 1;\n                total_p += profit[i];\n                break;\n            }\n        }\n    }\n\n    printf(\"Max Job Scheduling Profit: %d\\n\", total_p);\n    return 0;\n}",
     "complexity": {
       "time": "O(1)",
       "space": "O(1)"
     },
     "difficulty": "intermediate",
-    "documentation": "# prog_greedy_job_sequencing\n> **Domain:** `algorithms` | **Subcategory:** `greedy` | **Type:** `program`\n## Overview\nComplete job sequencing program maximizing profit within deadlines\n\n## Signature\n```c\nint main(void)\n```\n\n## Complexity Analysis\n- **Time Complexity:** `O(1)`\n- **Space Complexity:** `O(1)`\n\n## Edge Cases & Constraints\n- **NULL / Empty Input:** Function handles zero/NULL pointers gracefully without segfaulting.\n- **Boundary Conditions:** Bounds-checked against buffer boundaries and integer limits.\n- **Zero-Comment Invariant:** Code is 100% executable clean C code adhering strictly to library standards.\n\n## Implementation\n```c\n#include <stdio.h>\n\nint main(void) {\n    int deadline[] = {4, 1, 1, 1};\n    int profit[] = {20, 10, 40, 30};\n    int n = 4;\n\n    for (int i = 0; i < n - 1; i++) {\n        for (int j = 0; j < n - i - 1; j++) {\n            if (profit[j] < profit[j + 1]) {\n                int tp = profit[j]; profit[j] = profit[j + 1]; profit[j + 1] = tp;\n                int td = deadline[j]; deadline[j] = deadline[j + 1]; deadline[j + 1] = td;\n            }\n        }\n    }\n\n    int slots[5] = {0};\n    int total_p = 0;\n    for (int i = 0; i < n; i++) {\n        for (int j = deadline[i]; j > 0; j--) {\n            if (!slots[j]) {\n                slots[j] = 1;\n                total_p += profit[i];\n                break;\n            }\n        }\n    }\n\n    printf(\"Max Job Scheduling Profit: %d\n\", total_p);\n    return 0;\n}\n```\n\n## Aliases & Shorthands\nAvailable via: `prog_greedy_job_sequencing`, `algorithms.full-programs.greedy.job-sequencing.prog-job-sequencing`, `algorithms>prog_greedy_job_sequencing()`, `algorithms>full-programs>greedy>job-sequencing>prog-job-sequencing>prog_greedy_job_sequencing()`, `programJobSequencing`\n",
+    "documentation": "# prog_greedy_job_sequencing\n> **Domain:** `algorithms` | **Subcategory:** `greedy` | **Type:** `program`\n## Overview\nComplete job sequencing program maximizing profit within deadlines\n\n## Signature\n```c\nint main(void)\n```\n\n## Complexity Analysis\n- **Time Complexity:** `O(1)`\n- **Space Complexity:** `O(1)`\n\n## Edge Cases & Constraints\n- **NULL / Empty Input:** Function handles zero/NULL pointers gracefully without segfaulting.\n- **Boundary Conditions:** Bounds-checked against buffer boundaries and integer limits.\n- **Zero-Comment Invariant:** Code is 100% executable clean C code adhering strictly to library standards.\n\n## Implementation\n```c\n#include <stdio.h>\n\nint main(void) {\n    int deadline[] = {4, 1, 1, 1};\n    int profit[] = {20, 10, 40, 30};\n    int n = 4;\n\n    for (int i = 0; i < n - 1; i++) {\n        for (int j = 0; j < n - i - 1; j++) {\n            if (profit[j] < profit[j + 1]) {\n                int tp = profit[j]; profit[j] = profit[j + 1]; profit[j + 1] = tp;\n                int td = deadline[j]; deadline[j] = deadline[j + 1]; deadline[j + 1] = td;\n            }\n        }\n    }\n\n    int slots[5] = {0};\n    int total_p = 0;\n    for (int i = 0; i < n; i++) {\n        for (int j = deadline[i]; j > 0; j--) {\n            if (!slots[j]) {\n                slots[j] = 1;\n                total_p += profit[i];\n                break;\n            }\n        }\n    }\n\n    printf(\"Max Job Scheduling Profit: %d\\n\", total_p);\n    return 0;\n}\n```\n\n## Aliases & Shorthands\nAvailable via: `prog_greedy_job_sequencing`, `algorithms.full-programs.greedy.job-sequencing.prog-job-sequencing`, `algorithms>prog_greedy_job_sequencing()`, `algorithms>full-programs>greedy>job-sequencing>prog-job-sequencing>prog_greedy_job_sequencing()`, `programJobSequencing`\n",
     "version": "1.0.0",
     "dependencies": [],
     "tags": [
@@ -2023,8 +2023,8 @@
       "algorithms>full-programs>greedy>job-sequencing>prog-job-sequencing>prog_greedy_job_sequencing()",
       "programJobSequencing"
     ],
-    "createdAt": "2026-09-17T09:35:42.929Z",
-    "updatedAt": "2026-09-17T09:35:42.929Z"
+    "createdAt": "2026-09-19T07:33:52.422Z",
+    "updatedAt": "2026-09-19T07:33:52.422Z"
   },
   {
     "id": "algorithms.full-programs.backtracking.n-queens.prog-n-queens",
@@ -2037,13 +2037,13 @@
     "path": "algorithms/full-programs/backtracking/n-queens/prog-n-queens",
     "description": "Complete 4-Queens backtracking solver printing ASCII chessboard",
     "signature": "int main(void)",
-    "code": "#include <stdio.h>\n\n#define N 4\n\nint is_safe(int board[N][N], int row, int col) {\n    for (int i = 0; i < col; i++) if (board[row][i]) return 0;\n    for (int i = row, j = col; i >= 0 && j >= 0; i--, j--) if (board[i][j]) return 0;\n    for (int i = row, j = col; j >= 0 && i < N; i++, j--) if (board[i][j]) return 0;\n    return 1;\n}\n\nint solve(int board[N][N], int col) {\n    if (col >= N) return 1;\n    for (int i = 0; i < N; i++) {\n        if (is_safe(board, i, col)) {\n            board[i][col] = 1;\n            if (solve(board, col + 1)) return 1;\n            board[i][col] = 0;\n        }\n    }\n    return 0;\n}\n\nint main(void) {\n    int board[N][N] = {0};\n    solve(board, 0);\n\n    printf(\"N-Queens Solution (N=%d):\n\", N);\n    for (int i = 0; i < N; i++) {\n        for (int j = 0; j < N; j++) {\n            printf(\"%c \", board[i][j] ? 'Q' : '.');\n        }\n        putchar('\n');\n    }\n    return 0;\n}",
+    "code": "#include <stdio.h>\n\n#define N 4\n\nint is_safe(int board[N][N], int row, int col) {\n    for (int i = 0; i < col; i++) if (board[row][i]) return 0;\n    for (int i = row, j = col; i >= 0 && j >= 0; i--, j--) if (board[i][j]) return 0;\n    for (int i = row, j = col; j >= 0 && i < N; i++, j--) if (board[i][j]) return 0;\n    return 1;\n}\n\nint solve(int board[N][N], int col) {\n    if (col >= N) return 1;\n    for (int i = 0; i < N; i++) {\n        if (is_safe(board, i, col)) {\n            board[i][col] = 1;\n            if (solve(board, col + 1)) return 1;\n            board[i][col] = 0;\n        }\n    }\n    return 0;\n}\n\nint main(void) {\n    int board[N][N] = {0};\n    solve(board, 0);\n\n    printf(\"N-Queens Solution (N=%d):\\n\", N);\n    for (int i = 0; i < N; i++) {\n        for (int j = 0; j < N; j++) {\n            printf(\"%c \", board[i][j] ? 'Q' : '.');\n        }\n        putchar('\\n');\n    }\n    return 0;\n}",
     "complexity": {
       "time": "O(1)",
       "space": "O(1)"
     },
     "difficulty": "intermediate",
-    "documentation": "# prog_backtracking_n_queens\n> **Domain:** `algorithms` | **Subcategory:** `backtracking` | **Type:** `program`\n## Overview\nComplete 4-Queens backtracking solver printing ASCII chessboard\n\n## Signature\n```c\nint main(void)\n```\n\n## Complexity Analysis\n- **Time Complexity:** `O(1)`\n- **Space Complexity:** `O(1)`\n\n## Edge Cases & Constraints\n- **NULL / Empty Input:** Function handles zero/NULL pointers gracefully without segfaulting.\n- **Boundary Conditions:** Bounds-checked against buffer boundaries and integer limits.\n- **Zero-Comment Invariant:** Code is 100% executable clean C code adhering strictly to library standards.\n\n## Implementation\n```c\n#include <stdio.h>\n\n#define N 4\n\nint is_safe(int board[N][N], int row, int col) {\n    for (int i = 0; i < col; i++) if (board[row][i]) return 0;\n    for (int i = row, j = col; i >= 0 && j >= 0; i--, j--) if (board[i][j]) return 0;\n    for (int i = row, j = col; j >= 0 && i < N; i++, j--) if (board[i][j]) return 0;\n    return 1;\n}\n\nint solve(int board[N][N], int col) {\n    if (col >= N) return 1;\n    for (int i = 0; i < N; i++) {\n        if (is_safe(board, i, col)) {\n            board[i][col] = 1;\n            if (solve(board, col + 1)) return 1;\n            board[i][col] = 0;\n        }\n    }\n    return 0;\n}\n\nint main(void) {\n    int board[N][N] = {0};\n    solve(board, 0);\n\n    printf(\"N-Queens Solution (N=%d):\n\", N);\n    for (int i = 0; i < N; i++) {\n        for (int j = 0; j < N; j++) {\n            printf(\"%c \", board[i][j] ? 'Q' : '.');\n        }\n        putchar('\n');\n    }\n    return 0;\n}\n```\n\n## Aliases & Shorthands\nAvailable via: `prog_backtracking_n_queens`, `algorithms.full-programs.backtracking.n-queens.prog-n-queens`, `algorithms>prog_backtracking_n_queens()`, `algorithms>full-programs>backtracking>n-queens>prog-n-queens>prog_backtracking_n_queens()`, `programNQueens`\n",
+    "documentation": "# prog_backtracking_n_queens\n> **Domain:** `algorithms` | **Subcategory:** `backtracking` | **Type:** `program`\n## Overview\nComplete 4-Queens backtracking solver printing ASCII chessboard\n\n## Signature\n```c\nint main(void)\n```\n\n## Complexity Analysis\n- **Time Complexity:** `O(1)`\n- **Space Complexity:** `O(1)`\n\n## Edge Cases & Constraints\n- **NULL / Empty Input:** Function handles zero/NULL pointers gracefully without segfaulting.\n- **Boundary Conditions:** Bounds-checked against buffer boundaries and integer limits.\n- **Zero-Comment Invariant:** Code is 100% executable clean C code adhering strictly to library standards.\n\n## Implementation\n```c\n#include <stdio.h>\n\n#define N 4\n\nint is_safe(int board[N][N], int row, int col) {\n    for (int i = 0; i < col; i++) if (board[row][i]) return 0;\n    for (int i = row, j = col; i >= 0 && j >= 0; i--, j--) if (board[i][j]) return 0;\n    for (int i = row, j = col; j >= 0 && i < N; i++, j--) if (board[i][j]) return 0;\n    return 1;\n}\n\nint solve(int board[N][N], int col) {\n    if (col >= N) return 1;\n    for (int i = 0; i < N; i++) {\n        if (is_safe(board, i, col)) {\n            board[i][col] = 1;\n            if (solve(board, col + 1)) return 1;\n            board[i][col] = 0;\n        }\n    }\n    return 0;\n}\n\nint main(void) {\n    int board[N][N] = {0};\n    solve(board, 0);\n\n    printf(\"N-Queens Solution (N=%d):\\n\", N);\n    for (int i = 0; i < N; i++) {\n        for (int j = 0; j < N; j++) {\n            printf(\"%c \", board[i][j] ? 'Q' : '.');\n        }\n        putchar('\\n');\n    }\n    return 0;\n}\n```\n\n## Aliases & Shorthands\nAvailable via: `prog_backtracking_n_queens`, `algorithms.full-programs.backtracking.n-queens.prog-n-queens`, `algorithms>prog_backtracking_n_queens()`, `algorithms>full-programs>backtracking>n-queens>prog-n-queens>prog_backtracking_n_queens()`, `programNQueens`\n",
     "version": "1.0.0",
     "dependencies": [],
     "tags": [
@@ -2058,8 +2058,8 @@
       "algorithms>full-programs>backtracking>n-queens>prog-n-queens>prog_backtracking_n_queens()",
       "programNQueens"
     ],
-    "createdAt": "2026-09-17T09:35:42.929Z",
-    "updatedAt": "2026-09-17T09:35:42.929Z"
+    "createdAt": "2026-09-19T07:33:52.422Z",
+    "updatedAt": "2026-09-19T07:33:52.422Z"
   },
   {
     "id": "algorithms.full-programs.backtracking.maze-solver.prog-maze-solver",
@@ -2072,13 +2072,13 @@
     "path": "algorithms/full-programs/backtracking/maze-solver/prog-maze-solver",
     "description": "Complete Rat in a Maze backtracking solver navigating obstacle grid",
     "signature": "int main(void)",
-    "code": "#include <stdio.h>\n\n#define N 4\n\nint solve_maze(int maze[N][N], int x, int y, int sol[N][N]) {\n    if (x == N - 1 && y == N - 1 && maze[x][y] == 1) {\n        sol[x][y] = 1;\n        return 1;\n    }\n    if (x >= 0 && x < N && y >= 0 && y < N && maze[x][y] == 1) {\n        if (sol[x][y]) return 0;\n        sol[x][y] = 1;\n        if (solve_maze(maze, x + 1, y, sol)) return 1;\n        if (solve_maze(maze, x, y + 1, sol)) return 1;\n        sol[x][y] = 0;\n        return 0;\n    }\n    return 0;\n}\n\nint main(void) {\n    int maze[N][N] = {\n        {1, 0, 0, 0},\n        {1, 1, 0, 1},\n        {0, 1, 0, 0},\n        {1, 1, 1, 1}\n    };\n    int sol[N][N] = {0};\n    solve_maze(maze, 0, 0, sol);\n\n    printf(\"Maze Solution Path:\n\");\n    for (int i = 0; i < N; i++) {\n        for (int j = 0; j < N; j++) printf(\"%d \", sol[i][j]);\n        putchar('\n');\n    }\n    return 0;\n}",
+    "code": "#include <stdio.h>\n\n#define N 4\n\nint solve_maze(int maze[N][N], int x, int y, int sol[N][N]) {\n    if (x == N - 1 && y == N - 1 && maze[x][y] == 1) {\n        sol[x][y] = 1;\n        return 1;\n    }\n    if (x >= 0 && x < N && y >= 0 && y < N && maze[x][y] == 1) {\n        if (sol[x][y]) return 0;\n        sol[x][y] = 1;\n        if (solve_maze(maze, x + 1, y, sol)) return 1;\n        if (solve_maze(maze, x, y + 1, sol)) return 1;\n        sol[x][y] = 0;\n        return 0;\n    }\n    return 0;\n}\n\nint main(void) {\n    int maze[N][N] = {\n        {1, 0, 0, 0},\n        {1, 1, 0, 1},\n        {0, 1, 0, 0},\n        {1, 1, 1, 1}\n    };\n    int sol[N][N] = {0};\n    solve_maze(maze, 0, 0, sol);\n\n    printf(\"Maze Solution Path:\\n\");\n    for (int i = 0; i < N; i++) {\n        for (int j = 0; j < N; j++) printf(\"%d \", sol[i][j]);\n        putchar('\\n');\n    }\n    return 0;\n}",
     "complexity": {
       "time": "O(1)",
       "space": "O(1)"
     },
     "difficulty": "intermediate",
-    "documentation": "# prog_backtracking_maze\n> **Domain:** `algorithms` | **Subcategory:** `backtracking` | **Type:** `program`\n## Overview\nComplete Rat in a Maze backtracking solver navigating obstacle grid\n\n## Signature\n```c\nint main(void)\n```\n\n## Complexity Analysis\n- **Time Complexity:** `O(1)`\n- **Space Complexity:** `O(1)`\n\n## Edge Cases & Constraints\n- **NULL / Empty Input:** Function handles zero/NULL pointers gracefully without segfaulting.\n- **Boundary Conditions:** Bounds-checked against buffer boundaries and integer limits.\n- **Zero-Comment Invariant:** Code is 100% executable clean C code adhering strictly to library standards.\n\n## Implementation\n```c\n#include <stdio.h>\n\n#define N 4\n\nint solve_maze(int maze[N][N], int x, int y, int sol[N][N]) {\n    if (x == N - 1 && y == N - 1 && maze[x][y] == 1) {\n        sol[x][y] = 1;\n        return 1;\n    }\n    if (x >= 0 && x < N && y >= 0 && y < N && maze[x][y] == 1) {\n        if (sol[x][y]) return 0;\n        sol[x][y] = 1;\n        if (solve_maze(maze, x + 1, y, sol)) return 1;\n        if (solve_maze(maze, x, y + 1, sol)) return 1;\n        sol[x][y] = 0;\n        return 0;\n    }\n    return 0;\n}\n\nint main(void) {\n    int maze[N][N] = {\n        {1, 0, 0, 0},\n        {1, 1, 0, 1},\n        {0, 1, 0, 0},\n        {1, 1, 1, 1}\n    };\n    int sol[N][N] = {0};\n    solve_maze(maze, 0, 0, sol);\n\n    printf(\"Maze Solution Path:\n\");\n    for (int i = 0; i < N; i++) {\n        for (int j = 0; j < N; j++) printf(\"%d \", sol[i][j]);\n        putchar('\n');\n    }\n    return 0;\n}\n```\n\n## Aliases & Shorthands\nAvailable via: `prog_backtracking_maze`, `algorithms.full-programs.backtracking.maze-solver.prog-maze-solver`, `algorithms>prog_backtracking_maze()`, `algorithms>full-programs>backtracking>maze-solver>prog-maze-solver>prog_backtracking_maze()`, `programMazeSolver`\n",
+    "documentation": "# prog_backtracking_maze\n> **Domain:** `algorithms` | **Subcategory:** `backtracking` | **Type:** `program`\n## Overview\nComplete Rat in a Maze backtracking solver navigating obstacle grid\n\n## Signature\n```c\nint main(void)\n```\n\n## Complexity Analysis\n- **Time Complexity:** `O(1)`\n- **Space Complexity:** `O(1)`\n\n## Edge Cases & Constraints\n- **NULL / Empty Input:** Function handles zero/NULL pointers gracefully without segfaulting.\n- **Boundary Conditions:** Bounds-checked against buffer boundaries and integer limits.\n- **Zero-Comment Invariant:** Code is 100% executable clean C code adhering strictly to library standards.\n\n## Implementation\n```c\n#include <stdio.h>\n\n#define N 4\n\nint solve_maze(int maze[N][N], int x, int y, int sol[N][N]) {\n    if (x == N - 1 && y == N - 1 && maze[x][y] == 1) {\n        sol[x][y] = 1;\n        return 1;\n    }\n    if (x >= 0 && x < N && y >= 0 && y < N && maze[x][y] == 1) {\n        if (sol[x][y]) return 0;\n        sol[x][y] = 1;\n        if (solve_maze(maze, x + 1, y, sol)) return 1;\n        if (solve_maze(maze, x, y + 1, sol)) return 1;\n        sol[x][y] = 0;\n        return 0;\n    }\n    return 0;\n}\n\nint main(void) {\n    int maze[N][N] = {\n        {1, 0, 0, 0},\n        {1, 1, 0, 1},\n        {0, 1, 0, 0},\n        {1, 1, 1, 1}\n    };\n    int sol[N][N] = {0};\n    solve_maze(maze, 0, 0, sol);\n\n    printf(\"Maze Solution Path:\\n\");\n    for (int i = 0; i < N; i++) {\n        for (int j = 0; j < N; j++) printf(\"%d \", sol[i][j]);\n        putchar('\\n');\n    }\n    return 0;\n}\n```\n\n## Aliases & Shorthands\nAvailable via: `prog_backtracking_maze`, `algorithms.full-programs.backtracking.maze-solver.prog-maze-solver`, `algorithms>prog_backtracking_maze()`, `algorithms>full-programs>backtracking>maze-solver>prog-maze-solver>prog_backtracking_maze()`, `programMazeSolver`\n",
     "version": "1.0.0",
     "dependencies": [],
     "tags": [
@@ -2093,8 +2093,8 @@
       "algorithms>full-programs>backtracking>maze-solver>prog-maze-solver>prog_backtracking_maze()",
       "programMazeSolver"
     ],
-    "createdAt": "2026-09-17T09:35:42.929Z",
-    "updatedAt": "2026-09-17T09:35:42.929Z"
+    "createdAt": "2026-09-19T07:33:52.422Z",
+    "updatedAt": "2026-09-19T07:33:52.422Z"
   },
   {
     "id": "algorithms.full-programs.backtracking.combinatorial.prog-permutations",
@@ -2107,13 +2107,13 @@
     "path": "algorithms/full-programs/backtracking/combinatorial/prog-permutations",
     "description": "Complete recursive array permutation generator program",
     "signature": "int main(void)",
-    "code": "#include <stdio.h>\n\nvoid swap(int* a, int* b) { int t = *a; *a = *b; *b = t; }\n\nvoid permute(int* a, int l, int r) {\n    if (l == r) {\n        for (int i = 0; i <= r; i++) printf(\"%d \", a[i]);\n        putchar('\n');\n    } else {\n        for (int i = l; i <= r; i++) {\n            swap(&a[l], &a[i]);\n            permute(a, l + 1, r);\n            swap(&a[l], &a[i]);\n        }\n    }\n}\n\nint main(void) {\n    int arr[] = {1, 2, 3};\n    printf(\"Permutations of {1, 2, 3}:\n\");\n    permute(arr, 0, 2);\n    return 0;\n}",
+    "code": "#include <stdio.h>\n\nvoid swap(int* a, int* b) { int t = *a; *a = *b; *b = t; }\n\nvoid permute(int* a, int l, int r) {\n    if (l == r) {\n        for (int i = 0; i <= r; i++) printf(\"%d \", a[i]);\n        putchar('\\n');\n    } else {\n        for (int i = l; i <= r; i++) {\n            swap(&a[l], &a[i]);\n            permute(a, l + 1, r);\n            swap(&a[l], &a[i]);\n        }\n    }\n}\n\nint main(void) {\n    int arr[] = {1, 2, 3};\n    printf(\"Permutations of {1, 2, 3}:\\n\");\n    permute(arr, 0, 2);\n    return 0;\n}",
     "complexity": {
       "time": "O(1)",
       "space": "O(1)"
     },
     "difficulty": "intermediate",
-    "documentation": "# prog_backtracking_permutations\n> **Domain:** `algorithms` | **Subcategory:** `backtracking` | **Type:** `program`\n## Overview\nComplete recursive array permutation generator program\n\n## Signature\n```c\nint main(void)\n```\n\n## Complexity Analysis\n- **Time Complexity:** `O(1)`\n- **Space Complexity:** `O(1)`\n\n## Edge Cases & Constraints\n- **NULL / Empty Input:** Function handles zero/NULL pointers gracefully without segfaulting.\n- **Boundary Conditions:** Bounds-checked against buffer boundaries and integer limits.\n- **Zero-Comment Invariant:** Code is 100% executable clean C code adhering strictly to library standards.\n\n## Implementation\n```c\n#include <stdio.h>\n\nvoid swap(int* a, int* b) { int t = *a; *a = *b; *b = t; }\n\nvoid permute(int* a, int l, int r) {\n    if (l == r) {\n        for (int i = 0; i <= r; i++) printf(\"%d \", a[i]);\n        putchar('\n');\n    } else {\n        for (int i = l; i <= r; i++) {\n            swap(&a[l], &a[i]);\n            permute(a, l + 1, r);\n            swap(&a[l], &a[i]);\n        }\n    }\n}\n\nint main(void) {\n    int arr[] = {1, 2, 3};\n    printf(\"Permutations of {1, 2, 3}:\n\");\n    permute(arr, 0, 2);\n    return 0;\n}\n```\n\n## Aliases & Shorthands\nAvailable via: `prog_backtracking_permutations`, `algorithms.full-programs.backtracking.combinatorial.prog-permutations`, `algorithms>prog_backtracking_permutations()`, `algorithms>full-programs>backtracking>combinatorial>prog-permutations>prog_backtracking_permutations()`, `programPermutations`\n",
+    "documentation": "# prog_backtracking_permutations\n> **Domain:** `algorithms` | **Subcategory:** `backtracking` | **Type:** `program`\n## Overview\nComplete recursive array permutation generator program\n\n## Signature\n```c\nint main(void)\n```\n\n## Complexity Analysis\n- **Time Complexity:** `O(1)`\n- **Space Complexity:** `O(1)`\n\n## Edge Cases & Constraints\n- **NULL / Empty Input:** Function handles zero/NULL pointers gracefully without segfaulting.\n- **Boundary Conditions:** Bounds-checked against buffer boundaries and integer limits.\n- **Zero-Comment Invariant:** Code is 100% executable clean C code adhering strictly to library standards.\n\n## Implementation\n```c\n#include <stdio.h>\n\nvoid swap(int* a, int* b) { int t = *a; *a = *b; *b = t; }\n\nvoid permute(int* a, int l, int r) {\n    if (l == r) {\n        for (int i = 0; i <= r; i++) printf(\"%d \", a[i]);\n        putchar('\\n');\n    } else {\n        for (int i = l; i <= r; i++) {\n            swap(&a[l], &a[i]);\n            permute(a, l + 1, r);\n            swap(&a[l], &a[i]);\n        }\n    }\n}\n\nint main(void) {\n    int arr[] = {1, 2, 3};\n    printf(\"Permutations of {1, 2, 3}:\\n\");\n    permute(arr, 0, 2);\n    return 0;\n}\n```\n\n## Aliases & Shorthands\nAvailable via: `prog_backtracking_permutations`, `algorithms.full-programs.backtracking.combinatorial.prog-permutations`, `algorithms>prog_backtracking_permutations()`, `algorithms>full-programs>backtracking>combinatorial>prog-permutations>prog_backtracking_permutations()`, `programPermutations`\n",
     "version": "1.0.0",
     "dependencies": [],
     "tags": [
@@ -2128,8 +2128,8 @@
       "algorithms>full-programs>backtracking>combinatorial>prog-permutations>prog_backtracking_permutations()",
       "programPermutations"
     ],
-    "createdAt": "2026-09-17T09:35:42.929Z",
-    "updatedAt": "2026-09-17T09:35:42.929Z"
+    "createdAt": "2026-09-19T07:33:52.422Z",
+    "updatedAt": "2026-09-19T07:33:52.422Z"
   },
   {
     "id": "algorithms.full-programs.string-algorithms.kmp.prog-kmp",
@@ -2142,13 +2142,13 @@
     "path": "algorithms/full-programs/string-algorithms/kmp/prog-kmp",
     "description": "Complete Knuth-Morris-Pratt pattern matching program",
     "signature": "int main(void)",
-    "code": "#include <stdio.h>\n#include <string.h>\n\nvoid compute_lps(const char* pat, int m, int* lps) {\n    int len = 0; lps[0] = 0; int i = 1;\n    while (i < m) {\n        if (pat[i] == pat[len]) lps[i++] = ++len;\n        else if (len) len = lps[len - 1];\n        else lps[i++] = 0;\n    }\n}\n\nint main(void) {\n    const char* text = \"ABABDABACDABABCABAB\";\n    const char* pat = \"ABABCABAB\";\n    int n = (int)strlen(text), m = (int)strlen(pat);\n    int lps[32];\n    compute_lps(pat, m, lps);\n\n    int i = 0, j = 0;\n    while (i < n) {\n        if (pat[j] == text[i]) { i++; j++; }\n        if (j == m) {\n            printf(\"Found pattern at index %d\n\", i - j);\n            j = lps[j - 1];\n        } else if (i < n && pat[j] != text[i]) {\n            if (j) j = lps[j - 1];\n            else i++;\n        }\n    }\n    return 0;\n}",
+    "code": "#include <stdio.h>\n#include <string.h>\n\nvoid compute_lps(const char* pat, int m, int* lps) {\n    int len = 0; lps[0] = 0; int i = 1;\n    while (i < m) {\n        if (pat[i] == pat[len]) lps[i++] = ++len;\n        else if (len) len = lps[len - 1];\n        else lps[i++] = 0;\n    }\n}\n\nint main(void) {\n    const char* text = \"ABABDABACDABABCABAB\";\n    const char* pat = \"ABABCABAB\";\n    int n = (int)strlen(text), m = (int)strlen(pat);\n    int lps[32];\n    compute_lps(pat, m, lps);\n\n    int i = 0, j = 0;\n    while (i < n) {\n        if (pat[j] == text[i]) { i++; j++; }\n        if (j == m) {\n            printf(\"Found pattern at index %d\\n\", i - j);\n            j = lps[j - 1];\n        } else if (i < n && pat[j] != text[i]) {\n            if (j) j = lps[j - 1];\n            else i++;\n        }\n    }\n    return 0;\n}",
     "complexity": {
       "time": "O(1)",
       "space": "O(1)"
     },
     "difficulty": "intermediate",
-    "documentation": "# prog_string_kmp\n> **Domain:** `algorithms` | **Subcategory:** `string-algorithms` | **Type:** `program`\n## Overview\nComplete Knuth-Morris-Pratt pattern matching program\n\n## Signature\n```c\nint main(void)\n```\n\n## Complexity Analysis\n- **Time Complexity:** `O(1)`\n- **Space Complexity:** `O(1)`\n\n## Edge Cases & Constraints\n- **NULL / Empty Input:** Function handles zero/NULL pointers gracefully without segfaulting.\n- **Boundary Conditions:** Bounds-checked against buffer boundaries and integer limits.\n- **Zero-Comment Invariant:** Code is 100% executable clean C code adhering strictly to library standards.\n\n## Implementation\n```c\n#include <stdio.h>\n#include <string.h>\n\nvoid compute_lps(const char* pat, int m, int* lps) {\n    int len = 0; lps[0] = 0; int i = 1;\n    while (i < m) {\n        if (pat[i] == pat[len]) lps[i++] = ++len;\n        else if (len) len = lps[len - 1];\n        else lps[i++] = 0;\n    }\n}\n\nint main(void) {\n    const char* text = \"ABABDABACDABABCABAB\";\n    const char* pat = \"ABABCABAB\";\n    int n = (int)strlen(text), m = (int)strlen(pat);\n    int lps[32];\n    compute_lps(pat, m, lps);\n\n    int i = 0, j = 0;\n    while (i < n) {\n        if (pat[j] == text[i]) { i++; j++; }\n        if (j == m) {\n            printf(\"Found pattern at index %d\n\", i - j);\n            j = lps[j - 1];\n        } else if (i < n && pat[j] != text[i]) {\n            if (j) j = lps[j - 1];\n            else i++;\n        }\n    }\n    return 0;\n}\n```\n\n## Aliases & Shorthands\nAvailable via: `prog_string_kmp`, `algorithms.full-programs.string-algorithms.kmp.prog-kmp`, `algorithms>prog_string_kmp()`, `algorithms>full-programs>string-algorithms>kmp>prog-kmp>prog_string_kmp()`, `programKMP`\n",
+    "documentation": "# prog_string_kmp\n> **Domain:** `algorithms` | **Subcategory:** `string-algorithms` | **Type:** `program`\n## Overview\nComplete Knuth-Morris-Pratt pattern matching program\n\n## Signature\n```c\nint main(void)\n```\n\n## Complexity Analysis\n- **Time Complexity:** `O(1)`\n- **Space Complexity:** `O(1)`\n\n## Edge Cases & Constraints\n- **NULL / Empty Input:** Function handles zero/NULL pointers gracefully without segfaulting.\n- **Boundary Conditions:** Bounds-checked against buffer boundaries and integer limits.\n- **Zero-Comment Invariant:** Code is 100% executable clean C code adhering strictly to library standards.\n\n## Implementation\n```c\n#include <stdio.h>\n#include <string.h>\n\nvoid compute_lps(const char* pat, int m, int* lps) {\n    int len = 0; lps[0] = 0; int i = 1;\n    while (i < m) {\n        if (pat[i] == pat[len]) lps[i++] = ++len;\n        else if (len) len = lps[len - 1];\n        else lps[i++] = 0;\n    }\n}\n\nint main(void) {\n    const char* text = \"ABABDABACDABABCABAB\";\n    const char* pat = \"ABABCABAB\";\n    int n = (int)strlen(text), m = (int)strlen(pat);\n    int lps[32];\n    compute_lps(pat, m, lps);\n\n    int i = 0, j = 0;\n    while (i < n) {\n        if (pat[j] == text[i]) { i++; j++; }\n        if (j == m) {\n            printf(\"Found pattern at index %d\\n\", i - j);\n            j = lps[j - 1];\n        } else if (i < n && pat[j] != text[i]) {\n            if (j) j = lps[j - 1];\n            else i++;\n        }\n    }\n    return 0;\n}\n```\n\n## Aliases & Shorthands\nAvailable via: `prog_string_kmp`, `algorithms.full-programs.string-algorithms.kmp.prog-kmp`, `algorithms>prog_string_kmp()`, `algorithms>full-programs>string-algorithms>kmp>prog-kmp>prog_string_kmp()`, `programKMP`\n",
     "version": "1.0.0",
     "dependencies": [],
     "tags": [
@@ -2163,8 +2163,8 @@
       "algorithms>full-programs>string-algorithms>kmp>prog-kmp>prog_string_kmp()",
       "programKMP"
     ],
-    "createdAt": "2026-09-17T09:35:42.929Z",
-    "updatedAt": "2026-09-17T09:35:42.929Z"
+    "createdAt": "2026-09-19T07:33:52.422Z",
+    "updatedAt": "2026-09-19T07:33:52.422Z"
   },
   {
     "id": "algorithms.full-programs.string-algorithms.rabin-karp.prog-rabin-karp",
@@ -2177,13 +2177,13 @@
     "path": "algorithms/full-programs/string-algorithms/rabin-karp/prog-rabin-karp",
     "description": "Complete Rabin-Karp rolling hash string search program",
     "signature": "int main(void)",
-    "code": "#include <stdio.h>\n#include <string.h>\n\nint main(void) {\n    const char* txt = \"GEEKS FOR GEEKS\";\n    const char* pat = \"GEEK\";\n    int q = 101, d = 256;\n    int n = (int)strlen(txt), m = (int)strlen(pat);\n    int p = 0, t = 0, h = 1;\n\n    for (int i = 0; i < m - 1; i++) h = (h * d) % q;\n    for (int i = 0; i < m; i++) {\n        p = (d * p + pat[i]) % q;\n        t = (d * t + txt[i]) % q;\n    }\n\n    for (int i = 0; i <= n - m; i++) {\n        if (p == t) {\n            int match = 1;\n            for (int j = 0; j < m; j++) {\n                if (txt[i + j] != pat[j]) { match = 0; break; }\n            }\n            if (match) printf(\"Pattern found at index %d\n\", i);\n        }\n        if (i < n - m) {\n            t = (d * (t - txt[i] * h) + txt[i + m]) % q;\n            if (t < 0) t += q;\n        }\n    }\n    return 0;\n}",
+    "code": "#include <stdio.h>\n#include <string.h>\n\nint main(void) {\n    const char* txt = \"GEEKS FOR GEEKS\";\n    const char* pat = \"GEEK\";\n    int q = 101, d = 256;\n    int n = (int)strlen(txt), m = (int)strlen(pat);\n    int p = 0, t = 0, h = 1;\n\n    for (int i = 0; i < m - 1; i++) h = (h * d) % q;\n    for (int i = 0; i < m; i++) {\n        p = (d * p + pat[i]) % q;\n        t = (d * t + txt[i]) % q;\n    }\n\n    for (int i = 0; i <= n - m; i++) {\n        if (p == t) {\n            int match = 1;\n            for (int j = 0; j < m; j++) {\n                if (txt[i + j] != pat[j]) { match = 0; break; }\n            }\n            if (match) printf(\"Pattern found at index %d\\n\", i);\n        }\n        if (i < n - m) {\n            t = (d * (t - txt[i] * h) + txt[i + m]) % q;\n            if (t < 0) t += q;\n        }\n    }\n    return 0;\n}",
     "complexity": {
       "time": "O(1)",
       "space": "O(1)"
     },
     "difficulty": "intermediate",
-    "documentation": "# prog_string_rabin_karp\n> **Domain:** `algorithms` | **Subcategory:** `string-algorithms` | **Type:** `program`\n## Overview\nComplete Rabin-Karp rolling hash string search program\n\n## Signature\n```c\nint main(void)\n```\n\n## Complexity Analysis\n- **Time Complexity:** `O(1)`\n- **Space Complexity:** `O(1)`\n\n## Edge Cases & Constraints\n- **NULL / Empty Input:** Function handles zero/NULL pointers gracefully without segfaulting.\n- **Boundary Conditions:** Bounds-checked against buffer boundaries and integer limits.\n- **Zero-Comment Invariant:** Code is 100% executable clean C code adhering strictly to library standards.\n\n## Implementation\n```c\n#include <stdio.h>\n#include <string.h>\n\nint main(void) {\n    const char* txt = \"GEEKS FOR GEEKS\";\n    const char* pat = \"GEEK\";\n    int q = 101, d = 256;\n    int n = (int)strlen(txt), m = (int)strlen(pat);\n    int p = 0, t = 0, h = 1;\n\n    for (int i = 0; i < m - 1; i++) h = (h * d) % q;\n    for (int i = 0; i < m; i++) {\n        p = (d * p + pat[i]) % q;\n        t = (d * t + txt[i]) % q;\n    }\n\n    for (int i = 0; i <= n - m; i++) {\n        if (p == t) {\n            int match = 1;\n            for (int j = 0; j < m; j++) {\n                if (txt[i + j] != pat[j]) { match = 0; break; }\n            }\n            if (match) printf(\"Pattern found at index %d\n\", i);\n        }\n        if (i < n - m) {\n            t = (d * (t - txt[i] * h) + txt[i + m]) % q;\n            if (t < 0) t += q;\n        }\n    }\n    return 0;\n}\n```\n\n## Aliases & Shorthands\nAvailable via: `prog_string_rabin_karp`, `algorithms.full-programs.string-algorithms.rabin-karp.prog-rabin-karp`, `algorithms>prog_string_rabin_karp()`, `algorithms>full-programs>string-algorithms>rabin-karp>prog-rabin-karp>prog_string_rabin_karp()`, `programRabinKarp`\n",
+    "documentation": "# prog_string_rabin_karp\n> **Domain:** `algorithms` | **Subcategory:** `string-algorithms` | **Type:** `program`\n## Overview\nComplete Rabin-Karp rolling hash string search program\n\n## Signature\n```c\nint main(void)\n```\n\n## Complexity Analysis\n- **Time Complexity:** `O(1)`\n- **Space Complexity:** `O(1)`\n\n## Edge Cases & Constraints\n- **NULL / Empty Input:** Function handles zero/NULL pointers gracefully without segfaulting.\n- **Boundary Conditions:** Bounds-checked against buffer boundaries and integer limits.\n- **Zero-Comment Invariant:** Code is 100% executable clean C code adhering strictly to library standards.\n\n## Implementation\n```c\n#include <stdio.h>\n#include <string.h>\n\nint main(void) {\n    const char* txt = \"GEEKS FOR GEEKS\";\n    const char* pat = \"GEEK\";\n    int q = 101, d = 256;\n    int n = (int)strlen(txt), m = (int)strlen(pat);\n    int p = 0, t = 0, h = 1;\n\n    for (int i = 0; i < m - 1; i++) h = (h * d) % q;\n    for (int i = 0; i < m; i++) {\n        p = (d * p + pat[i]) % q;\n        t = (d * t + txt[i]) % q;\n    }\n\n    for (int i = 0; i <= n - m; i++) {\n        if (p == t) {\n            int match = 1;\n            for (int j = 0; j < m; j++) {\n                if (txt[i + j] != pat[j]) { match = 0; break; }\n            }\n            if (match) printf(\"Pattern found at index %d\\n\", i);\n        }\n        if (i < n - m) {\n            t = (d * (t - txt[i] * h) + txt[i + m]) % q;\n            if (t < 0) t += q;\n        }\n    }\n    return 0;\n}\n```\n\n## Aliases & Shorthands\nAvailable via: `prog_string_rabin_karp`, `algorithms.full-programs.string-algorithms.rabin-karp.prog-rabin-karp`, `algorithms>prog_string_rabin_karp()`, `algorithms>full-programs>string-algorithms>rabin-karp>prog-rabin-karp>prog_string_rabin_karp()`, `programRabinKarp`\n",
     "version": "1.0.0",
     "dependencies": [],
     "tags": [
@@ -2198,8 +2198,8 @@
       "algorithms>full-programs>string-algorithms>rabin-karp>prog-rabin-karp>prog_string_rabin_karp()",
       "programRabinKarp"
     ],
-    "createdAt": "2026-09-17T09:35:42.929Z",
-    "updatedAt": "2026-09-17T09:35:42.929Z"
+    "createdAt": "2026-09-19T07:33:52.422Z",
+    "updatedAt": "2026-09-19T07:33:52.422Z"
   },
   {
     "id": "algorithms.full-programs.string-algorithms.palindromes.prog-palindromes",
@@ -2212,13 +2212,13 @@
     "path": "algorithms/full-programs/string-algorithms/palindromes/prog-palindromes",
     "description": "Complete program finding Longest Palindromic Substring",
     "signature": "int main(void)",
-    "code": "#include <stdio.h>\n#include <string.h>\n\nstatic int expand(const char* s, int n, int l, int r) {\n    while (l >= 0 && r < n && s[l] == s[r]) { l--; r++; }\n    return r - l - 1;\n}\n\nint main(void) {\n    const char* str = \"babad\";\n    int n = (int)strlen(str);\n    int start = 0, max_len = 1;\n\n    for (int i = 0; i < n; i++) {\n        int l1 = expand(str, n, i, i);\n        int l2 = expand(str, n, i, i + 1);\n        int l = l1 > l2 ? l1 : l2;\n        if (l > max_len) {\n            max_len = l;\n            start = i - (l - 1) / 2;\n        }\n    }\n\n    char res[32];\n    strncpy(res, str + start, max_len);\n    res[max_len] = '\u0000';\n    printf(\"Longest Palindromic Substring in '%s': %s\n\", str, res);\n\n    return 0;\n}",
+    "code": "#include <stdio.h>\n#include <string.h>\n\nstatic int expand(const char* s, int n, int l, int r) {\n    while (l >= 0 && r < n && s[l] == s[r]) { l--; r++; }\n    return r - l - 1;\n}\n\nint main(void) {\n    const char* str = \"babad\";\n    int n = (int)strlen(str);\n    int start = 0, max_len = 1;\n\n    for (int i = 0; i < n; i++) {\n        int l1 = expand(str, n, i, i);\n        int l2 = expand(str, n, i, i + 1);\n        int l = l1 > l2 ? l1 : l2;\n        if (l > max_len) {\n            max_len = l;\n            start = i - (l - 1) / 2;\n        }\n    }\n\n    char res[32];\n    strncpy(res, str + start, max_len);\n    res[max_len] = '\\0';\n    printf(\"Longest Palindromic Substring in '%s': %s\\n\", str, res);\n\n    return 0;\n}",
     "complexity": {
       "time": "O(1)",
       "space": "O(1)"
     },
     "difficulty": "intermediate",
-    "documentation": "# prog_string_longest_palindrome\n> **Domain:** `algorithms` | **Subcategory:** `string-algorithms` | **Type:** `program`\n## Overview\nComplete program finding Longest Palindromic Substring\n\n## Signature\n```c\nint main(void)\n```\n\n## Complexity Analysis\n- **Time Complexity:** `O(1)`\n- **Space Complexity:** `O(1)`\n\n## Edge Cases & Constraints\n- **NULL / Empty Input:** Function handles zero/NULL pointers gracefully without segfaulting.\n- **Boundary Conditions:** Bounds-checked against buffer boundaries and integer limits.\n- **Zero-Comment Invariant:** Code is 100% executable clean C code adhering strictly to library standards.\n\n## Implementation\n```c\n#include <stdio.h>\n#include <string.h>\n\nstatic int expand(const char* s, int n, int l, int r) {\n    while (l >= 0 && r < n && s[l] == s[r]) { l--; r++; }\n    return r - l - 1;\n}\n\nint main(void) {\n    const char* str = \"babad\";\n    int n = (int)strlen(str);\n    int start = 0, max_len = 1;\n\n    for (int i = 0; i < n; i++) {\n        int l1 = expand(str, n, i, i);\n        int l2 = expand(str, n, i, i + 1);\n        int l = l1 > l2 ? l1 : l2;\n        if (l > max_len) {\n            max_len = l;\n            start = i - (l - 1) / 2;\n        }\n    }\n\n    char res[32];\n    strncpy(res, str + start, max_len);\n    res[max_len] = '\u0000';\n    printf(\"Longest Palindromic Substring in '%s': %s\n\", str, res);\n\n    return 0;\n}\n```\n\n## Aliases & Shorthands\nAvailable via: `prog_string_longest_palindrome`, `algorithms.full-programs.string-algorithms.palindromes.prog-palindromes`, `algorithms>prog_string_longest_palindrome()`, `algorithms>full-programs>string-algorithms>palindromes>prog-palindromes>prog_string_longest_palindrome()`, `programLongestPalindrome`\n",
+    "documentation": "# prog_string_longest_palindrome\n> **Domain:** `algorithms` | **Subcategory:** `string-algorithms` | **Type:** `program`\n## Overview\nComplete program finding Longest Palindromic Substring\n\n## Signature\n```c\nint main(void)\n```\n\n## Complexity Analysis\n- **Time Complexity:** `O(1)`\n- **Space Complexity:** `O(1)`\n\n## Edge Cases & Constraints\n- **NULL / Empty Input:** Function handles zero/NULL pointers gracefully without segfaulting.\n- **Boundary Conditions:** Bounds-checked against buffer boundaries and integer limits.\n- **Zero-Comment Invariant:** Code is 100% executable clean C code adhering strictly to library standards.\n\n## Implementation\n```c\n#include <stdio.h>\n#include <string.h>\n\nstatic int expand(const char* s, int n, int l, int r) {\n    while (l >= 0 && r < n && s[l] == s[r]) { l--; r++; }\n    return r - l - 1;\n}\n\nint main(void) {\n    const char* str = \"babad\";\n    int n = (int)strlen(str);\n    int start = 0, max_len = 1;\n\n    for (int i = 0; i < n; i++) {\n        int l1 = expand(str, n, i, i);\n        int l2 = expand(str, n, i, i + 1);\n        int l = l1 > l2 ? l1 : l2;\n        if (l > max_len) {\n            max_len = l;\n            start = i - (l - 1) / 2;\n        }\n    }\n\n    char res[32];\n    strncpy(res, str + start, max_len);\n    res[max_len] = '\\0';\n    printf(\"Longest Palindromic Substring in '%s': %s\\n\", str, res);\n\n    return 0;\n}\n```\n\n## Aliases & Shorthands\nAvailable via: `prog_string_longest_palindrome`, `algorithms.full-programs.string-algorithms.palindromes.prog-palindromes`, `algorithms>prog_string_longest_palindrome()`, `algorithms>full-programs>string-algorithms>palindromes>prog-palindromes>prog_string_longest_palindrome()`, `programLongestPalindrome`\n",
     "version": "1.0.0",
     "dependencies": [],
     "tags": [
@@ -2233,7 +2233,7 @@
       "algorithms>full-programs>string-algorithms>palindromes>prog-palindromes>prog_string_longest_palindrome()",
       "programLongestPalindrome"
     ],
-    "createdAt": "2026-09-17T09:35:42.929Z",
-    "updatedAt": "2026-09-17T09:35:42.929Z"
+    "createdAt": "2026-09-19T07:33:52.422Z",
+    "updatedAt": "2026-09-19T07:33:52.422Z"
   }
 ]

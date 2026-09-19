@@ -37,11 +37,9 @@ void reverse_string(char* str) {
 
 int main(void) {
     char text[] = "Modern C Language";
-    printf("Original: %s
-", text);
+    printf("Original: %s\n", text);
     reverse_string(text);
-    printf("Reversed: %s
-", text);
+    printf("Reversed: %s\n", text);
     return 0;
 }
 ```

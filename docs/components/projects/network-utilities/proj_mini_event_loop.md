@@ -30,10 +30,8 @@ typedef struct {
     void* data;
 } TimerEvent;
 
-void on_timer_1(void* data) { printf("[Tick Event] Timer 1 fired! (data=%d)
-", *(int*)data); }
-void on_timer_2(void* data) { printf("[Tick Event] Timer 2 fired! (data=%d)
-", *(int*)data); }
+void on_timer_1(void* data) { printf("[Tick Event] Timer 1 fired! (data=%d)\n", *(int*)data); }
+void on_timer_2(void* data) { printf("[Tick Event] Timer 2 fired! (data=%d)\n", *(int*)data); }
 
 int main(void) {
     TimerEvent queue[2];
@@ -42,8 +40,7 @@ int main(void) {
     queue[1] = (TimerEvent){2, 4, on_timer_2, &d2};
     int completed[2] = {0, 0};
 
-    printf("Starting Event Loop (5 ticks):
-");
+    printf("Starting Event Loop (5 ticks):\n");
     for (int tick = 1; tick <= 5; tick++) {
         for (int i = 0; i < 2; i++) {
             if (!completed[i] && queue[i].trigger_tick <= tick) {
@@ -52,8 +49,7 @@ int main(void) {
             }
         }
     }
-    printf("Event loop completed.
-");
+    printf("Event loop completed.\n");
     return 0;
 }
 ```

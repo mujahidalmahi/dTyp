@@ -52,8 +52,7 @@ int main(void) {
         }
     }
     for (int i = 0; i < n; i++) {
-        printf("dist to %d = %d
-", i, dist[i]);
+        printf("dist to %d = %d\n", i, dist[i]);
     }
     return 0;
 }

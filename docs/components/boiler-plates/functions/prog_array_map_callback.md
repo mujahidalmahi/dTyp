@@ -38,13 +38,11 @@ int main(void) {
 
     map_array(items, n, square);
     for (int i = 0; i < n; i++) printf("%d ", items[i]);
-    putchar('
-');
+    putchar('\n');
 
     map_array(items, n, increment);
     for (int i = 0; i < n; i++) printf("%d ", items[i]);
-    putchar('
-');
+    putchar('\n');
 
     return 0;
 }

@@ -30,8 +30,7 @@ int main(void) {
         for (int j = 0; j < (2 * i - 1); j++) {
             putchar('*');
         }
-        putchar('
-');
+        putchar('\n');
     }
     return 0;
 }

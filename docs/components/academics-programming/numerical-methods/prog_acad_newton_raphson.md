@@ -47,8 +47,7 @@ double solve_newton_raphson(double x0, double tol, int max_iter) {
 int main(void) {
     double x0 = 2.0, tol = 1e-6;
     double root = solve_newton_raphson(x0, tol, 100);
-    printf("Newton-Raphson Root (sqrt(5)): %.6f
-", root);
+    printf("Newton-Raphson Root (sqrt(5)): %.6f\n", root);
     return 0;
 }
 ```

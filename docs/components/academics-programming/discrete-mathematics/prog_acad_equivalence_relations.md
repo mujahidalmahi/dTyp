@@ -62,8 +62,7 @@ void print_equivalence_classes(int n, const int rel[n][n]) {
                     printf("%d ", j);
                 }
             }
-            printf("}
-");
+            printf("}\n");
         }
     }
 }
@@ -79,19 +78,14 @@ int main(void) {
     int r = check_reflexive(n, rel);
     int s = check_symmetric(n, rel);
     int t = check_transitive(n, rel);
-    printf("Reflexive: %s
-", r ? "Yes" : "No");
-    printf("Symmetric: %s
-", s ? "Yes" : "No");
-    printf("Transitive: %s
-", t ? "Yes" : "No");
+    printf("Reflexive: %s\n", r ? "Yes" : "No");
+    printf("Symmetric: %s\n", s ? "Yes" : "No");
+    printf("Transitive: %s\n", t ? "Yes" : "No");
     if (r && s && t) {
-        printf("Equivalence Relation: Yes
-");
+        printf("Equivalence Relation: Yes\n");
         print_equivalence_classes(n, rel);
     } else {
-        printf("Equivalence Relation: No
-");
+        printf("Equivalence Relation: No\n");
     }
     return 0;
 }

@@ -30,8 +30,8 @@
       "competitive-programming>programming-technics>fast-io-utilities>fast-io>fast-read-int>cp_fast_read_int()",
       "fastReadInt"
     ],
-    "createdAt": "2026-09-17T09:35:42.933Z",
-    "updatedAt": "2026-09-17T09:35:42.933Z"
+    "createdAt": "2026-09-19T07:33:52.424Z",
+    "updatedAt": "2026-09-19T07:33:52.424Z"
   },
   {
     "id": "competitive-programming.programming-technics.fast-io-utilities.fast-io.fast-write-int",
@@ -64,8 +64,8 @@
       "competitive-programming>programming-technics>fast-io-utilities>fast-io>fast-write-int>cp_fast_write_int()",
       "fastWriteInt"
     ],
-    "createdAt": "2026-09-17T09:35:42.933Z",
-    "updatedAt": "2026-09-17T09:35:42.933Z"
+    "createdAt": "2026-09-19T07:33:52.424Z",
+    "updatedAt": "2026-09-19T07:33:52.424Z"
   },
   {
     "id": "competitive-programming.programming-technics.fast-io-utilities.fast-io.fast-read-long",
@@ -98,8 +98,8 @@
       "competitive-programming>programming-technics>fast-io-utilities>fast-io>fast-read-long>cp_fast_read_long()",
       "fastReadLong"
     ],
-    "createdAt": "2026-09-17T09:35:42.933Z",
-    "updatedAt": "2026-09-17T09:35:42.933Z"
+    "createdAt": "2026-09-19T07:33:52.424Z",
+    "updatedAt": "2026-09-19T07:33:52.424Z"
   },
   {
     "id": "competitive-programming.programming-technics.fast-io-utilities.coordinate-compression.compress",
@@ -132,8 +132,8 @@
       "competitive-programming>programming-technics>fast-io-utilities>coordinate-compression>compress>cp_coordinate_compress()",
       "coordCompress"
     ],
-    "createdAt": "2026-09-17T09:35:42.933Z",
-    "updatedAt": "2026-09-17T09:35:42.933Z"
+    "createdAt": "2026-09-19T07:33:52.424Z",
+    "updatedAt": "2026-09-19T07:33:52.424Z"
   },
   {
     "id": "competitive-programming.programming-technics.fast-io-utilities.coordinate-compression.get-rank",
@@ -166,8 +166,8 @@
       "competitive-programming>programming-technics>fast-io-utilities>coordinate-compression>get-rank>cp_compressed_rank()",
       "coordRank"
     ],
-    "createdAt": "2026-09-17T09:35:42.933Z",
-    "updatedAt": "2026-09-17T09:35:42.933Z"
+    "createdAt": "2026-09-19T07:33:52.424Z",
+    "updatedAt": "2026-09-19T07:33:52.424Z"
   },
   {
     "id": "competitive-programming.programming-technics.bit-manipulation.bitwise-tricks.count-set",
@@ -200,8 +200,8 @@
       "competitive-programming>programming-technics>bit-manipulation>bitwise-tricks>count-set>cp_bit_count_set()",
       "bitCountSet"
     ],
-    "createdAt": "2026-09-17T09:35:42.933Z",
-    "updatedAt": "2026-09-17T09:35:42.933Z"
+    "createdAt": "2026-09-19T07:33:52.424Z",
+    "updatedAt": "2026-09-19T07:33:52.424Z"
   },
   {
     "id": "competitive-programming.programming-technics.bit-manipulation.bitwise-tricks.lowest-set",
@@ -234,8 +234,8 @@
       "competitive-programming>programming-technics>bit-manipulation>bitwise-tricks>lowest-set>cp_bit_lowest_set()",
       "bitLowestSet"
     ],
-    "createdAt": "2026-09-17T09:35:42.933Z",
-    "updatedAt": "2026-09-17T09:35:42.933Z"
+    "createdAt": "2026-09-19T07:33:52.424Z",
+    "updatedAt": "2026-09-19T07:33:52.424Z"
   },
   {
     "id": "competitive-programming.programming-technics.bit-manipulation.bitwise-tricks.is-power-of-two",
@@ -268,8 +268,8 @@
       "competitive-programming>programming-technics>bit-manipulation>bitwise-tricks>is-power-of-two>cp_bit_is_power_of_two()",
       "bitIsPowerOfTwo"
     ],
-    "createdAt": "2026-09-17T09:35:42.933Z",
-    "updatedAt": "2026-09-17T09:35:42.933Z"
+    "createdAt": "2026-09-19T07:33:52.424Z",
+    "updatedAt": "2026-09-19T07:33:52.424Z"
   },
   {
     "id": "competitive-programming.programming-technics.bit-manipulation.bitmasking.iterate-submasks",
@@ -302,8 +302,8 @@
       "competitive-programming>programming-technics>bit-manipulation>bitmasking>iterate-submasks>cp_bit_iterate_submasks()",
       "bitIterateSubmasks"
     ],
-    "createdAt": "2026-09-17T09:35:42.933Z",
-    "updatedAt": "2026-09-17T09:35:42.933Z"
+    "createdAt": "2026-09-19T07:33:52.424Z",
+    "updatedAt": "2026-09-19T07:33:52.424Z"
   },
   {
     "id": "competitive-programming.programming-technics.bit-manipulation.bitmasking.has-subset",
@@ -336,8 +336,8 @@
       "competitive-programming>programming-technics>bit-manipulation>bitmasking>has-subset>cp_bitmask_has_subset()",
       "bitmaskHasSubset"
     ],
-    "createdAt": "2026-09-17T09:35:42.933Z",
-    "updatedAt": "2026-09-17T09:35:42.933Z"
+    "createdAt": "2026-09-19T07:33:52.424Z",
+    "updatedAt": "2026-09-19T07:33:52.424Z"
   },
   {
     "id": "competitive-programming.programming-technics.number-theory.prime-sieve.sieve-eratosthenes",
@@ -370,8 +370,8 @@
       "competitive-programming>programming-technics>number-theory>prime-sieve>sieve-eratosthenes>cp_sieve_eratosthenes()",
       "sieveEratosthenes"
     ],
-    "createdAt": "2026-09-17T09:35:42.933Z",
-    "updatedAt": "2026-09-17T09:35:42.933Z"
+    "createdAt": "2026-09-19T07:33:52.424Z",
+    "updatedAt": "2026-09-19T07:33:52.424Z"
   },
   {
     "id": "competitive-programming.programming-technics.number-theory.prime-sieve.factorization",
@@ -404,8 +404,8 @@
       "competitive-programming>programming-technics>number-theory>prime-sieve>factorization>cp_prime_factorization()",
       "primeFactorization"
     ],
-    "createdAt": "2026-09-17T09:35:42.933Z",
-    "updatedAt": "2026-09-17T09:35:42.933Z"
+    "createdAt": "2026-09-19T07:33:52.424Z",
+    "updatedAt": "2026-09-19T07:33:52.424Z"
   },
   {
     "id": "competitive-programming.programming-technics.number-theory.modular-arithmetic.mod-pow",
@@ -438,8 +438,8 @@
       "competitive-programming>programming-technics>number-theory>modular-arithmetic>mod-pow>cp_mod_pow()",
       "modPow"
     ],
-    "createdAt": "2026-09-17T09:35:42.933Z",
-    "updatedAt": "2026-09-17T09:35:42.933Z"
+    "createdAt": "2026-09-19T07:33:52.424Z",
+    "updatedAt": "2026-09-19T07:33:52.424Z"
   },
   {
     "id": "competitive-programming.programming-technics.number-theory.modular-arithmetic.extended-gcd",
@@ -472,8 +472,8 @@
       "competitive-programming>programming-technics>number-theory>modular-arithmetic>extended-gcd>cp_extended_gcd()",
       "extendedGcd"
     ],
-    "createdAt": "2026-09-17T09:35:42.933Z",
-    "updatedAt": "2026-09-17T09:35:42.933Z"
+    "createdAt": "2026-09-19T07:33:52.424Z",
+    "updatedAt": "2026-09-19T07:33:52.424Z"
   },
   {
     "id": "competitive-programming.programming-technics.number-theory.modular-arithmetic.mod-inverse",
@@ -508,8 +508,8 @@
       "competitive-programming>programming-technics>number-theory>modular-arithmetic>mod-inverse>cp_mod_inverse()",
       "modInverse"
     ],
-    "createdAt": "2026-09-17T09:35:42.933Z",
-    "updatedAt": "2026-09-17T09:35:42.933Z"
+    "createdAt": "2026-09-19T07:33:52.425Z",
+    "updatedAt": "2026-09-19T07:33:52.425Z"
   },
   {
     "id": "competitive-programming.programming-technics.number-theory.combinatorics.precompute-factorials",
@@ -544,8 +544,8 @@
       "competitive-programming>programming-technics>number-theory>combinatorics>precompute-factorials>cp_precompute_factorials()",
       "precomputeFactorials"
     ],
-    "createdAt": "2026-09-17T09:35:42.933Z",
-    "updatedAt": "2026-09-17T09:35:42.933Z"
+    "createdAt": "2026-09-19T07:33:52.425Z",
+    "updatedAt": "2026-09-19T07:33:52.425Z"
   },
   {
     "id": "competitive-programming.programming-technics.number-theory.combinatorics.ncr-modulo",
@@ -578,8 +578,8 @@
       "competitive-programming>programming-technics>number-theory>combinatorics>ncr-modulo>cp_ncr_modulo()",
       "ncrModulo"
     ],
-    "createdAt": "2026-09-17T09:35:42.933Z",
-    "updatedAt": "2026-09-17T09:35:42.933Z"
+    "createdAt": "2026-09-19T07:33:52.425Z",
+    "updatedAt": "2026-09-19T07:33:52.425Z"
   },
   {
     "id": "competitive-programming.programming-technics.number-theory.matrix-exponentiation.multiply-2x2",
@@ -612,8 +612,8 @@
       "competitive-programming>programming-technics>number-theory>matrix-exponentiation>multiply-2x2>cp_matrix_multiply_2x2()",
       "matrixMultiply2x2"
     ],
-    "createdAt": "2026-09-17T09:35:42.933Z",
-    "updatedAt": "2026-09-17T09:35:42.933Z"
+    "createdAt": "2026-09-19T07:33:52.425Z",
+    "updatedAt": "2026-09-19T07:33:52.425Z"
   },
   {
     "id": "competitive-programming.programming-technics.number-theory.matrix-exponentiation.fibonacci",
@@ -648,8 +648,8 @@
       "competitive-programming>programming-technics>number-theory>matrix-exponentiation>fibonacci>cp_matrix_power_fibonacci()",
       "matrixFibonacci"
     ],
-    "createdAt": "2026-09-17T09:35:42.933Z",
-    "updatedAt": "2026-09-17T09:35:42.933Z"
+    "createdAt": "2026-09-19T07:33:52.425Z",
+    "updatedAt": "2026-09-19T07:33:52.425Z"
   },
   {
     "id": "competitive-programming.programming-technics.range-queries.prefix-sums.build-1d",
@@ -682,8 +682,8 @@
       "competitive-programming>programming-technics>range-queries>prefix-sums>build-1d>cp_prefix_sum_1d_build()",
       "prefSum1dBuild"
     ],
-    "createdAt": "2026-09-17T09:35:42.933Z",
-    "updatedAt": "2026-09-17T09:35:42.933Z"
+    "createdAt": "2026-09-19T07:33:52.425Z",
+    "updatedAt": "2026-09-19T07:33:52.425Z"
   },
   {
     "id": "competitive-programming.programming-technics.range-queries.prefix-sums.query-1d",
@@ -716,8 +716,8 @@
       "competitive-programming>programming-technics>range-queries>prefix-sums>query-1d>cp_prefix_sum_1d_query()",
       "prefSum1dQuery"
     ],
-    "createdAt": "2026-09-17T09:35:42.933Z",
-    "updatedAt": "2026-09-17T09:35:42.933Z"
+    "createdAt": "2026-09-19T07:33:52.425Z",
+    "updatedAt": "2026-09-19T07:33:52.425Z"
   },
   {
     "id": "competitive-programming.programming-technics.range-queries.prefix-sums.query-2d",
@@ -750,8 +750,8 @@
       "competitive-programming>programming-technics>range-queries>prefix-sums>query-2d>cp_prefix_sum_2d_query()",
       "prefSum2dQuery"
     ],
-    "createdAt": "2026-09-17T09:35:42.933Z",
-    "updatedAt": "2026-09-17T09:35:42.933Z"
+    "createdAt": "2026-09-19T07:33:52.425Z",
+    "updatedAt": "2026-09-19T07:33:52.425Z"
   },
   {
     "id": "competitive-programming.programming-technics.range-queries.difference-array.range-add",
@@ -784,8 +784,8 @@
       "competitive-programming>programming-technics>range-queries>difference-array>range-add>cp_difference_array_range_add()",
       "diffRangeAdd"
     ],
-    "createdAt": "2026-09-17T09:35:42.933Z",
-    "updatedAt": "2026-09-17T09:35:42.933Z"
+    "createdAt": "2026-09-19T07:33:52.425Z",
+    "updatedAt": "2026-09-19T07:33:52.425Z"
   },
   {
     "id": "competitive-programming.programming-technics.range-queries.difference-array.compute",
@@ -818,8 +818,8 @@
       "competitive-programming>programming-technics>range-queries>difference-array>compute>cp_difference_array_compute()",
       "diffCompute"
     ],
-    "createdAt": "2026-09-17T09:35:42.933Z",
-    "updatedAt": "2026-09-17T09:35:42.933Z"
+    "createdAt": "2026-09-19T07:33:52.425Z",
+    "updatedAt": "2026-09-19T07:33:52.425Z"
   },
   {
     "id": "competitive-programming.programming-technics.range-queries.two-pointers.pair-sum",
@@ -852,8 +852,8 @@
       "competitive-programming>programming-technics>range-queries>two-pointers>pair-sum>cp_two_pointers_pair_sum()",
       "twoPointersPairSum"
     ],
-    "createdAt": "2026-09-17T09:35:42.933Z",
-    "updatedAt": "2026-09-17T09:35:42.933Z"
+    "createdAt": "2026-09-19T07:33:52.425Z",
+    "updatedAt": "2026-09-19T07:33:52.425Z"
   },
   {
     "id": "competitive-programming.programming-technics.range-queries.two-pointers.remove-duplicates",
@@ -886,8 +886,8 @@
       "competitive-programming>programming-technics>range-queries>two-pointers>remove-duplicates>cp_two_pointers_remove_duplicates()",
       "twoPointersDedup"
     ],
-    "createdAt": "2026-09-17T09:35:42.933Z",
-    "updatedAt": "2026-09-17T09:35:42.933Z"
+    "createdAt": "2026-09-19T07:33:52.425Z",
+    "updatedAt": "2026-09-19T07:33:52.425Z"
   },
   {
     "id": "competitive-programming.programming-technics.range-queries.two-pointers.trapping-rain-water",
@@ -920,8 +920,8 @@
       "competitive-programming>programming-technics>range-queries>two-pointers>trapping-rain-water>cp_two_pointers_trapping_rain_water()",
       "twoPointersTrappingWater"
     ],
-    "createdAt": "2026-09-17T09:35:42.933Z",
-    "updatedAt": "2026-09-17T09:35:42.933Z"
+    "createdAt": "2026-09-19T07:33:52.425Z",
+    "updatedAt": "2026-09-19T07:33:52.425Z"
   },
   {
     "id": "competitive-programming.programming-technics.range-queries.sliding-window.fixed-sum",
@@ -954,8 +954,8 @@
       "competitive-programming>programming-technics>range-queries>sliding-window>fixed-sum>cp_sliding_window_fixed_sum()",
       "slidingWindowFixedSum"
     ],
-    "createdAt": "2026-09-17T09:35:42.933Z",
-    "updatedAt": "2026-09-17T09:35:42.933Z"
+    "createdAt": "2026-09-19T07:33:52.425Z",
+    "updatedAt": "2026-09-19T07:33:52.425Z"
   },
   {
     "id": "competitive-programming.programming-technics.range-queries.sliding-window.min-subarray-len",
@@ -988,8 +988,8 @@
       "competitive-programming>programming-technics>range-queries>sliding-window>min-subarray-len>cp_sliding_window_min_subarray_len()",
       "slidingWindowMinLen"
     ],
-    "createdAt": "2026-09-17T09:35:42.933Z",
-    "updatedAt": "2026-09-17T09:35:42.933Z"
+    "createdAt": "2026-09-19T07:33:52.425Z",
+    "updatedAt": "2026-09-19T07:33:52.425Z"
   },
   {
     "id": "competitive-programming.programming-technics.cp-data-structures.fenwick-tree.struct",
@@ -1022,8 +1022,8 @@
       "competitive-programming>programming-technics>cp-data-structures>fenwick-tree>struct>CpFenwickTree()",
       "FenwickTree"
     ],
-    "createdAt": "2026-09-17T09:35:42.933Z",
-    "updatedAt": "2026-09-17T09:35:42.933Z"
+    "createdAt": "2026-09-19T07:33:52.425Z",
+    "updatedAt": "2026-09-19T07:33:52.425Z"
   },
   {
     "id": "competitive-programming.programming-technics.cp-data-structures.fenwick-tree.update",
@@ -1058,8 +1058,8 @@
       "competitive-programming>programming-technics>cp-data-structures>fenwick-tree>update>cp_fenwick_update()",
       "fenwickUpdate"
     ],
-    "createdAt": "2026-09-17T09:35:42.933Z",
-    "updatedAt": "2026-09-17T09:35:42.933Z"
+    "createdAt": "2026-09-19T07:33:52.425Z",
+    "updatedAt": "2026-09-19T07:33:52.425Z"
   },
   {
     "id": "competitive-programming.programming-technics.cp-data-structures.fenwick-tree.query",
@@ -1094,8 +1094,8 @@
       "competitive-programming>programming-technics>cp-data-structures>fenwick-tree>query>cp_fenwick_query()",
       "fenwickQuery"
     ],
-    "createdAt": "2026-09-17T09:35:42.933Z",
-    "updatedAt": "2026-09-17T09:35:42.933Z"
+    "createdAt": "2026-09-19T07:33:52.425Z",
+    "updatedAt": "2026-09-19T07:33:52.425Z"
   },
   {
     "id": "competitive-programming.programming-technics.cp-data-structures.segment-tree.struct",
@@ -1128,8 +1128,8 @@
       "competitive-programming>programming-technics>cp-data-structures>segment-tree>struct>CpSegmentTree()",
       "SegmentTree"
     ],
-    "createdAt": "2026-09-17T09:35:42.933Z",
-    "updatedAt": "2026-09-17T09:35:42.933Z"
+    "createdAt": "2026-09-19T07:33:52.425Z",
+    "updatedAt": "2026-09-19T07:33:52.425Z"
   },
   {
     "id": "competitive-programming.programming-technics.cp-data-structures.segment-tree.build",
@@ -1164,8 +1164,8 @@
       "competitive-programming>programming-technics>cp-data-structures>segment-tree>build>cp_seg_tree_build()",
       "segTreeBuild"
     ],
-    "createdAt": "2026-09-17T09:35:42.933Z",
-    "updatedAt": "2026-09-17T09:35:42.933Z"
+    "createdAt": "2026-09-19T07:33:52.425Z",
+    "updatedAt": "2026-09-19T07:33:52.425Z"
   },
   {
     "id": "competitive-programming.programming-technics.cp-data-structures.segment-tree.update",
@@ -1200,8 +1200,8 @@
       "competitive-programming>programming-technics>cp-data-structures>segment-tree>update>cp_seg_tree_update()",
       "segTreeUpdate"
     ],
-    "createdAt": "2026-09-17T09:35:42.933Z",
-    "updatedAt": "2026-09-17T09:35:42.933Z"
+    "createdAt": "2026-09-19T07:33:52.425Z",
+    "updatedAt": "2026-09-19T07:33:52.425Z"
   },
   {
     "id": "competitive-programming.programming-technics.cp-data-structures.segment-tree.query",
@@ -1236,8 +1236,8 @@
       "competitive-programming>programming-technics>cp-data-structures>segment-tree>query>cp_seg_tree_query()",
       "segTreeQuery"
     ],
-    "createdAt": "2026-09-17T09:35:42.933Z",
-    "updatedAt": "2026-09-17T09:35:42.933Z"
+    "createdAt": "2026-09-19T07:33:52.425Z",
+    "updatedAt": "2026-09-19T07:33:52.425Z"
   },
   {
     "id": "competitive-programming.programming-technics.cp-data-structures.disjoint-set.struct",
@@ -1270,8 +1270,8 @@
       "competitive-programming>programming-technics>cp-data-structures>disjoint-set>struct>CpDsu()",
       "DisjointSet"
     ],
-    "createdAt": "2026-09-17T09:35:42.933Z",
-    "updatedAt": "2026-09-17T09:35:42.933Z"
+    "createdAt": "2026-09-19T07:33:52.425Z",
+    "updatedAt": "2026-09-19T07:33:52.425Z"
   },
   {
     "id": "competitive-programming.programming-technics.cp-data-structures.disjoint-set.init",
@@ -1306,8 +1306,8 @@
       "competitive-programming>programming-technics>cp-data-structures>disjoint-set>init>cp_dsu_init()",
       "dsuInit"
     ],
-    "createdAt": "2026-09-17T09:35:42.933Z",
-    "updatedAt": "2026-09-17T09:35:42.933Z"
+    "createdAt": "2026-09-19T07:33:52.425Z",
+    "updatedAt": "2026-09-19T07:33:52.425Z"
   },
   {
     "id": "competitive-programming.programming-technics.cp-data-structures.disjoint-set.find",
@@ -1342,8 +1342,8 @@
       "competitive-programming>programming-technics>cp-data-structures>disjoint-set>find>cp_dsu_find()",
       "dsuFind"
     ],
-    "createdAt": "2026-09-17T09:35:42.933Z",
-    "updatedAt": "2026-09-17T09:35:42.933Z"
+    "createdAt": "2026-09-19T07:33:52.425Z",
+    "updatedAt": "2026-09-19T07:33:52.425Z"
   },
   {
     "id": "competitive-programming.programming-technics.cp-data-structures.disjoint-set.union",
@@ -1378,8 +1378,8 @@
       "competitive-programming>programming-technics>cp-data-structures>disjoint-set>union>cp_dsu_union()",
       "dsuUnion"
     ],
-    "createdAt": "2026-09-17T09:35:42.933Z",
-    "updatedAt": "2026-09-17T09:35:42.933Z"
+    "createdAt": "2026-09-19T07:33:52.425Z",
+    "updatedAt": "2026-09-19T07:33:52.425Z"
   },
   {
     "id": "competitive-programming.programming-technics.cp-data-structures.monotonic-structures.next-greater",
@@ -1412,8 +1412,8 @@
       "competitive-programming>programming-technics>cp-data-structures>monotonic-structures>next-greater>cp_monotonic_stack_next_greater()",
       "monotonicNextGreater"
     ],
-    "createdAt": "2026-09-17T09:35:42.933Z",
-    "updatedAt": "2026-09-17T09:35:42.933Z"
+    "createdAt": "2026-09-19T07:33:52.425Z",
+    "updatedAt": "2026-09-19T07:33:52.425Z"
   },
   {
     "id": "competitive-programming.programming-technics.cp-data-structures.monotonic-structures.window-max",
@@ -1446,8 +1446,8 @@
       "competitive-programming>programming-technics>cp-data-structures>monotonic-structures>window-max>cp_monotonic_sliding_window_max()",
       "monotonicWindowMax"
     ],
-    "createdAt": "2026-09-17T09:35:42.933Z",
-    "updatedAt": "2026-09-17T09:35:42.933Z"
+    "createdAt": "2026-09-19T07:33:52.425Z",
+    "updatedAt": "2026-09-19T07:33:52.425Z"
   },
   {
     "id": "competitive-programming.programming-technics.binary-search-techniques.binary-search-answer.min",
@@ -1480,8 +1480,8 @@
       "competitive-programming>programming-technics>binary-search-techniques>binary-search-answer>min>cp_binary_search_answer_min()",
       "bsAnswerMin"
     ],
-    "createdAt": "2026-09-17T09:35:42.933Z",
-    "updatedAt": "2026-09-17T09:35:42.933Z"
+    "createdAt": "2026-09-19T07:33:52.425Z",
+    "updatedAt": "2026-09-19T07:33:52.425Z"
   },
   {
     "id": "competitive-programming.programming-technics.binary-search-techniques.binary-search-answer.max",
@@ -1514,8 +1514,8 @@
       "competitive-programming>programming-technics>binary-search-techniques>binary-search-answer>max>cp_binary_search_answer_max()",
       "bsAnswerMax"
     ],
-    "createdAt": "2026-09-17T09:35:42.934Z",
-    "updatedAt": "2026-09-17T09:35:42.934Z"
+    "createdAt": "2026-09-19T07:33:52.425Z",
+    "updatedAt": "2026-09-19T07:33:52.425Z"
   },
   {
     "id": "competitive-programming.programming-technics.binary-search-techniques.ternary-search.unimodal-max",
@@ -1548,8 +1548,8 @@
       "competitive-programming>programming-technics>binary-search-techniques>ternary-search>unimodal-max>cp_ternary_search_unimodal_max()",
       "ternarySearchMax"
     ],
-    "createdAt": "2026-09-17T09:35:42.934Z",
-    "updatedAt": "2026-09-17T09:35:42.934Z"
+    "createdAt": "2026-09-19T07:33:52.425Z",
+    "updatedAt": "2026-09-19T07:33:52.425Z"
   },
   {
     "id": "competitive-programming.programming-technics.graph-techniques.zero-one-bfs.shortest-path",
@@ -1582,8 +1582,8 @@
       "competitive-programming>programming-technics>graph-techniques>zero-one-bfs>shortest-path>cp_zero_one_bfs()",
       "zeroOneBfs"
     ],
-    "createdAt": "2026-09-17T09:35:42.934Z",
-    "updatedAt": "2026-09-17T09:35:42.934Z"
+    "createdAt": "2026-09-19T07:33:52.425Z",
+    "updatedAt": "2026-09-19T07:33:52.425Z"
   },
   {
     "id": "competitive-programming.programming-technics.graph-techniques.lowest-common-ancestor.build",
@@ -1616,8 +1616,8 @@
       "competitive-programming>programming-technics>graph-techniques>lowest-common-ancestor>build>cp_lca_binary_lifting_build()",
       "lcaBuild"
     ],
-    "createdAt": "2026-09-17T09:35:42.934Z",
-    "updatedAt": "2026-09-17T09:35:42.934Z"
+    "createdAt": "2026-09-19T07:33:52.425Z",
+    "updatedAt": "2026-09-19T07:33:52.425Z"
   },
   {
     "id": "competitive-programming.programming-technics.graph-techniques.lowest-common-ancestor.query",
@@ -1650,8 +1650,8 @@
       "competitive-programming>programming-technics>graph-techniques>lowest-common-ancestor>query>cp_lca_query()",
       "lcaQuery"
     ],
-    "createdAt": "2026-09-17T09:35:42.934Z",
-    "updatedAt": "2026-09-17T09:35:42.934Z"
+    "createdAt": "2026-09-19T07:33:52.425Z",
+    "updatedAt": "2026-09-19T07:33:52.425Z"
   },
   {
     "id": "competitive-programming.programming-technics.graph-techniques.strongly-connected.tarjan-scc",
@@ -1684,8 +1684,8 @@
       "competitive-programming>programming-technics>graph-techniques>strongly-connected>tarjan-scc>cp_tarjan_scc()",
       "tarjanScc"
     ],
-    "createdAt": "2026-09-17T09:35:42.934Z",
-    "updatedAt": "2026-09-17T09:35:42.934Z"
+    "createdAt": "2026-09-19T07:33:52.425Z",
+    "updatedAt": "2026-09-19T07:33:52.425Z"
   },
   {
     "id": "competitive-programming.full-programs.fast-io-utilities.fast-io.prog-fast-io",
@@ -1698,13 +1698,13 @@
     "path": "competitive-programming/full-programs/fast-io-utilities/fast-io/prog-fast-io",
     "description": "Complete competitive programming program testing high-speed buffered integer I/O",
     "signature": "int main(void);",
-    "code": "#include <stdio.h>\n\nvoid fast_write_int(int n) {\n    if (n == 0) {\n        putchar('0');\n        return;\n    }\n    if (n < 0) {\n        putchar('-');\n        n = -n;\n    }\n    char buf[12];\n    int idx = 0;\n    while (n > 0) {\n        buf[idx++] = (char)('0' + (n % 10));\n        n /= 10;\n    }\n    while (idx > 0) {\n        putchar(buf[--idx]);\n    }\n}\n\nint main(void) {\n    int sample_inputs[] = {42, -1337, 0, 999999, -5};\n    int n = 5;\n    for (int i = 0; i < n; i++) {\n        fast_write_int(sample_inputs[i]);\n        putchar('\n');\n    }\n    return 0;\n}",
+    "code": "#include <stdio.h>\n\nvoid fast_write_int(int n) {\n    if (n == 0) {\n        putchar('0');\n        return;\n    }\n    if (n < 0) {\n        putchar('-');\n        n = -n;\n    }\n    char buf[12];\n    int idx = 0;\n    while (n > 0) {\n        buf[idx++] = (char)('0' + (n % 10));\n        n /= 10;\n    }\n    while (idx > 0) {\n        putchar(buf[--idx]);\n    }\n}\n\nint main(void) {\n    int sample_inputs[] = {42, -1337, 0, 999999, -5};\n    int n = 5;\n    for (int i = 0; i < n; i++) {\n        fast_write_int(sample_inputs[i]);\n        putchar('\\n');\n    }\n    return 0;\n}",
     "complexity": {
       "time": "O(1)",
       "space": "O(1)"
     },
     "difficulty": "intermediate",
-    "documentation": "# prog_cp_fast_io\n> **Domain:** `competitive-programming` | **Subcategory:** `fast-io-utilities` | **Type:** `program`\n## Overview\nComplete competitive programming program testing high-speed buffered integer I/O\n\n## Signature\n```c\nint main(void);\n```\n\n## Complexity Analysis\n- **Time Complexity:** `O(1)`\n- **Space Complexity:** `O(1)`\n\n## Edge Cases & Constraints\n- **NULL / Empty Input:** Function handles zero/NULL pointers gracefully without segfaulting.\n- **Boundary Conditions:** Bounds-checked against buffer boundaries and integer limits.\n- **Zero-Comment Invariant:** Code is 100% executable clean C code adhering strictly to library standards.\n\n## Implementation\n```c\n#include <stdio.h>\n\nvoid fast_write_int(int n) {\n    if (n == 0) {\n        putchar('0');\n        return;\n    }\n    if (n < 0) {\n        putchar('-');\n        n = -n;\n    }\n    char buf[12];\n    int idx = 0;\n    while (n > 0) {\n        buf[idx++] = (char)('0' + (n % 10));\n        n /= 10;\n    }\n    while (idx > 0) {\n        putchar(buf[--idx]);\n    }\n}\n\nint main(void) {\n    int sample_inputs[] = {42, -1337, 0, 999999, -5};\n    int n = 5;\n    for (int i = 0; i < n; i++) {\n        fast_write_int(sample_inputs[i]);\n        putchar('\n');\n    }\n    return 0;\n}\n```\n\n## Aliases & Shorthands\nAvailable via: `prog_cp_fast_io`, `competitive-programming.full-programs.fast-io-utilities.fast-io.prog-fast-io`, `competitive-programming>prog_cp_fast_io()`, `competitive-programming>full-programs>fast-io-utilities>fast-io>prog-fast-io>prog_cp_fast_io()`\n",
+    "documentation": "# prog_cp_fast_io\n> **Domain:** `competitive-programming` | **Subcategory:** `fast-io-utilities` | **Type:** `program`\n## Overview\nComplete competitive programming program testing high-speed buffered integer I/O\n\n## Signature\n```c\nint main(void);\n```\n\n## Complexity Analysis\n- **Time Complexity:** `O(1)`\n- **Space Complexity:** `O(1)`\n\n## Edge Cases & Constraints\n- **NULL / Empty Input:** Function handles zero/NULL pointers gracefully without segfaulting.\n- **Boundary Conditions:** Bounds-checked against buffer boundaries and integer limits.\n- **Zero-Comment Invariant:** Code is 100% executable clean C code adhering strictly to library standards.\n\n## Implementation\n```c\n#include <stdio.h>\n\nvoid fast_write_int(int n) {\n    if (n == 0) {\n        putchar('0');\n        return;\n    }\n    if (n < 0) {\n        putchar('-');\n        n = -n;\n    }\n    char buf[12];\n    int idx = 0;\n    while (n > 0) {\n        buf[idx++] = (char)('0' + (n % 10));\n        n /= 10;\n    }\n    while (idx > 0) {\n        putchar(buf[--idx]);\n    }\n}\n\nint main(void) {\n    int sample_inputs[] = {42, -1337, 0, 999999, -5};\n    int n = 5;\n    for (int i = 0; i < n; i++) {\n        fast_write_int(sample_inputs[i]);\n        putchar('\\n');\n    }\n    return 0;\n}\n```\n\n## Aliases & Shorthands\nAvailable via: `prog_cp_fast_io`, `competitive-programming.full-programs.fast-io-utilities.fast-io.prog-fast-io`, `competitive-programming>prog_cp_fast_io()`, `competitive-programming>full-programs>fast-io-utilities>fast-io>prog-fast-io>prog_cp_fast_io()`\n",
     "version": "1.0.0",
     "dependencies": [],
     "tags": [
@@ -1718,8 +1718,8 @@
       "competitive-programming>prog_cp_fast_io()",
       "competitive-programming>full-programs>fast-io-utilities>fast-io>prog-fast-io>prog_cp_fast_io()"
     ],
-    "createdAt": "2026-09-17T09:35:42.934Z",
-    "updatedAt": "2026-09-17T09:35:42.934Z"
+    "createdAt": "2026-09-19T07:33:52.425Z",
+    "updatedAt": "2026-09-19T07:33:52.425Z"
   },
   {
     "id": "competitive-programming.full-programs.fast-io-utilities.coordinate-compression.prog-coordinate-compression",
@@ -1732,13 +1732,13 @@
     "path": "competitive-programming/full-programs/fast-io-utilities/coordinate-compression/prog-coordinate-compression",
     "description": "Complete competitive programming program sorting and mapping coordinates to dense ranks",
     "signature": "int main(void);",
-    "code": "#include <stdio.h>\n\nint coordinate_compress(int* arr, int n, int* unique_arr) {\n    for (int i = 0; i < n; i++) unique_arr[i] = arr[i];\n    for (int i = 0; i < n - 1; i++) {\n        for (int j = 0; j < n - i - 1; j++) {\n            if (unique_arr[j] > unique_arr[j + 1]) {\n                int tmp = unique_arr[j];\n                unique_arr[j] = unique_arr[j + 1];\n                unique_arr[j + 1] = tmp;\n            }\n        }\n    }\n    int u = 0;\n    for (int i = 0; i < n; i++) {\n        if (i == 0 || unique_arr[i] != unique_arr[i - 1]) {\n            unique_arr[u++] = unique_arr[i];\n        }\n    }\n    return u;\n}\n\nint get_rank(const int* unique_arr, int size, int val) {\n    int low = 0, high = size - 1;\n    while (low <= high) {\n        int mid = low + (high - low) / 2;\n        if (unique_arr[mid] == val) return mid;\n        if (unique_arr[mid] < val) low = mid + 1;\n        else high = mid - 1;\n    }\n    return -1;\n}\n\nint main(void) {\n    int coords[] = {1000000000, -500, 42, 1000000000, -500, 300};\n    int n = 6;\n    int unique_arr[6];\n    int u_size = coordinate_compress(coords, n, unique_arr);\n    for (int i = 0; i < n; i++) {\n        int r = get_rank(unique_arr, u_size, coords[i]);\n        printf(\"%d -> rank %d\n\", coords[i], r);\n    }\n    return 0;\n}",
+    "code": "#include <stdio.h>\n\nint coordinate_compress(int* arr, int n, int* unique_arr) {\n    for (int i = 0; i < n; i++) unique_arr[i] = arr[i];\n    for (int i = 0; i < n - 1; i++) {\n        for (int j = 0; j < n - i - 1; j++) {\n            if (unique_arr[j] > unique_arr[j + 1]) {\n                int tmp = unique_arr[j];\n                unique_arr[j] = unique_arr[j + 1];\n                unique_arr[j + 1] = tmp;\n            }\n        }\n    }\n    int u = 0;\n    for (int i = 0; i < n; i++) {\n        if (i == 0 || unique_arr[i] != unique_arr[i - 1]) {\n            unique_arr[u++] = unique_arr[i];\n        }\n    }\n    return u;\n}\n\nint get_rank(const int* unique_arr, int size, int val) {\n    int low = 0, high = size - 1;\n    while (low <= high) {\n        int mid = low + (high - low) / 2;\n        if (unique_arr[mid] == val) return mid;\n        if (unique_arr[mid] < val) low = mid + 1;\n        else high = mid - 1;\n    }\n    return -1;\n}\n\nint main(void) {\n    int coords[] = {1000000000, -500, 42, 1000000000, -500, 300};\n    int n = 6;\n    int unique_arr[6];\n    int u_size = coordinate_compress(coords, n, unique_arr);\n    for (int i = 0; i < n; i++) {\n        int r = get_rank(unique_arr, u_size, coords[i]);\n        printf(\"%d -> rank %d\\n\", coords[i], r);\n    }\n    return 0;\n}",
     "complexity": {
       "time": "O(1)",
       "space": "O(1)"
     },
     "difficulty": "intermediate",
-    "documentation": "# prog_cp_coordinate_compression\n> **Domain:** `competitive-programming` | **Subcategory:** `fast-io-utilities` | **Type:** `program`\n## Overview\nComplete competitive programming program sorting and mapping coordinates to dense ranks\n\n## Signature\n```c\nint main(void);\n```\n\n## Complexity Analysis\n- **Time Complexity:** `O(1)`\n- **Space Complexity:** `O(1)`\n\n## Edge Cases & Constraints\n- **NULL / Empty Input:** Function handles zero/NULL pointers gracefully without segfaulting.\n- **Boundary Conditions:** Bounds-checked against buffer boundaries and integer limits.\n- **Zero-Comment Invariant:** Code is 100% executable clean C code adhering strictly to library standards.\n\n## Implementation\n```c\n#include <stdio.h>\n\nint coordinate_compress(int* arr, int n, int* unique_arr) {\n    for (int i = 0; i < n; i++) unique_arr[i] = arr[i];\n    for (int i = 0; i < n - 1; i++) {\n        for (int j = 0; j < n - i - 1; j++) {\n            if (unique_arr[j] > unique_arr[j + 1]) {\n                int tmp = unique_arr[j];\n                unique_arr[j] = unique_arr[j + 1];\n                unique_arr[j + 1] = tmp;\n            }\n        }\n    }\n    int u = 0;\n    for (int i = 0; i < n; i++) {\n        if (i == 0 || unique_arr[i] != unique_arr[i - 1]) {\n            unique_arr[u++] = unique_arr[i];\n        }\n    }\n    return u;\n}\n\nint get_rank(const int* unique_arr, int size, int val) {\n    int low = 0, high = size - 1;\n    while (low <= high) {\n        int mid = low + (high - low) / 2;\n        if (unique_arr[mid] == val) return mid;\n        if (unique_arr[mid] < val) low = mid + 1;\n        else high = mid - 1;\n    }\n    return -1;\n}\n\nint main(void) {\n    int coords[] = {1000000000, -500, 42, 1000000000, -500, 300};\n    int n = 6;\n    int unique_arr[6];\n    int u_size = coordinate_compress(coords, n, unique_arr);\n    for (int i = 0; i < n; i++) {\n        int r = get_rank(unique_arr, u_size, coords[i]);\n        printf(\"%d -> rank %d\n\", coords[i], r);\n    }\n    return 0;\n}\n```\n\n## Aliases & Shorthands\nAvailable via: `prog_cp_coordinate_compression`, `competitive-programming.full-programs.fast-io-utilities.coordinate-compression.prog-coordinate-compression`, `competitive-programming>prog_cp_coordinate_compression()`, `competitive-programming>full-programs>fast-io-utilities>coordinate-compression>prog-coordinate-compression>prog_cp_coordinate_compression()`\n",
+    "documentation": "# prog_cp_coordinate_compression\n> **Domain:** `competitive-programming` | **Subcategory:** `fast-io-utilities` | **Type:** `program`\n## Overview\nComplete competitive programming program sorting and mapping coordinates to dense ranks\n\n## Signature\n```c\nint main(void);\n```\n\n## Complexity Analysis\n- **Time Complexity:** `O(1)`\n- **Space Complexity:** `O(1)`\n\n## Edge Cases & Constraints\n- **NULL / Empty Input:** Function handles zero/NULL pointers gracefully without segfaulting.\n- **Boundary Conditions:** Bounds-checked against buffer boundaries and integer limits.\n- **Zero-Comment Invariant:** Code is 100% executable clean C code adhering strictly to library standards.\n\n## Implementation\n```c\n#include <stdio.h>\n\nint coordinate_compress(int* arr, int n, int* unique_arr) {\n    for (int i = 0; i < n; i++) unique_arr[i] = arr[i];\n    for (int i = 0; i < n - 1; i++) {\n        for (int j = 0; j < n - i - 1; j++) {\n            if (unique_arr[j] > unique_arr[j + 1]) {\n                int tmp = unique_arr[j];\n                unique_arr[j] = unique_arr[j + 1];\n                unique_arr[j + 1] = tmp;\n            }\n        }\n    }\n    int u = 0;\n    for (int i = 0; i < n; i++) {\n        if (i == 0 || unique_arr[i] != unique_arr[i - 1]) {\n            unique_arr[u++] = unique_arr[i];\n        }\n    }\n    return u;\n}\n\nint get_rank(const int* unique_arr, int size, int val) {\n    int low = 0, high = size - 1;\n    while (low <= high) {\n        int mid = low + (high - low) / 2;\n        if (unique_arr[mid] == val) return mid;\n        if (unique_arr[mid] < val) low = mid + 1;\n        else high = mid - 1;\n    }\n    return -1;\n}\n\nint main(void) {\n    int coords[] = {1000000000, -500, 42, 1000000000, -500, 300};\n    int n = 6;\n    int unique_arr[6];\n    int u_size = coordinate_compress(coords, n, unique_arr);\n    for (int i = 0; i < n; i++) {\n        int r = get_rank(unique_arr, u_size, coords[i]);\n        printf(\"%d -> rank %d\\n\", coords[i], r);\n    }\n    return 0;\n}\n```\n\n## Aliases & Shorthands\nAvailable via: `prog_cp_coordinate_compression`, `competitive-programming.full-programs.fast-io-utilities.coordinate-compression.prog-coordinate-compression`, `competitive-programming>prog_cp_coordinate_compression()`, `competitive-programming>full-programs>fast-io-utilities>coordinate-compression>prog-coordinate-compression>prog_cp_coordinate_compression()`\n",
     "version": "1.0.0",
     "dependencies": [],
     "tags": [
@@ -1752,8 +1752,8 @@
       "competitive-programming>prog_cp_coordinate_compression()",
       "competitive-programming>full-programs>fast-io-utilities>coordinate-compression>prog-coordinate-compression>prog_cp_coordinate_compression()"
     ],
-    "createdAt": "2026-09-17T09:35:42.934Z",
-    "updatedAt": "2026-09-17T09:35:42.934Z"
+    "createdAt": "2026-09-19T07:33:52.425Z",
+    "updatedAt": "2026-09-19T07:33:52.425Z"
   },
   {
     "id": "competitive-programming.full-programs.bit-manipulation.bitwise-tricks.prog-bitwise-tricks",
@@ -1766,13 +1766,13 @@
     "path": "competitive-programming/full-programs/bit-manipulation/bitwise-tricks/prog-bitwise-tricks",
     "description": "Complete competitive programming program testing popcount, lowest set bit, and powers of two",
     "signature": "int main(void);",
-    "code": "#include <stdio.h>\n\nint count_set_bits(unsigned int n) {\n    int count = 0;\n    while (n > 0) {\n        n &= (n - 1);\n        count++;\n    }\n    return count;\n}\n\nint lowest_set_bit(int x) {\n    return x & (-x);\n}\n\nint is_power_of_two(unsigned int x) {\n    return (x > 0) && ((x & (x - 1)) == 0);\n}\n\nint main(void) {\n    unsigned int vals[] = {1, 2, 7, 16, 29, 64};\n    for (int i = 0; i < 6; i++) {\n        unsigned int v = vals[i];\n        printf(\"v=%u: set_bits=%d, lsb=%d, pow2=%d\n\",\n               v, count_set_bits(v), lowest_set_bit((int)v), is_power_of_two(v));\n    }\n    return 0;\n}",
+    "code": "#include <stdio.h>\n\nint count_set_bits(unsigned int n) {\n    int count = 0;\n    while (n > 0) {\n        n &= (n - 1);\n        count++;\n    }\n    return count;\n}\n\nint lowest_set_bit(int x) {\n    return x & (-x);\n}\n\nint is_power_of_two(unsigned int x) {\n    return (x > 0) && ((x & (x - 1)) == 0);\n}\n\nint main(void) {\n    unsigned int vals[] = {1, 2, 7, 16, 29, 64};\n    for (int i = 0; i < 6; i++) {\n        unsigned int v = vals[i];\n        printf(\"v=%u: set_bits=%d, lsb=%d, pow2=%d\\n\",\n               v, count_set_bits(v), lowest_set_bit((int)v), is_power_of_two(v));\n    }\n    return 0;\n}",
     "complexity": {
       "time": "O(1)",
       "space": "O(1)"
     },
     "difficulty": "intermediate",
-    "documentation": "# prog_cp_bitwise_tricks\n> **Domain:** `competitive-programming` | **Subcategory:** `bit-manipulation` | **Type:** `program`\n## Overview\nComplete competitive programming program testing popcount, lowest set bit, and powers of two\n\n## Signature\n```c\nint main(void);\n```\n\n## Complexity Analysis\n- **Time Complexity:** `O(1)`\n- **Space Complexity:** `O(1)`\n\n## Edge Cases & Constraints\n- **NULL / Empty Input:** Function handles zero/NULL pointers gracefully without segfaulting.\n- **Boundary Conditions:** Bounds-checked against buffer boundaries and integer limits.\n- **Zero-Comment Invariant:** Code is 100% executable clean C code adhering strictly to library standards.\n\n## Implementation\n```c\n#include <stdio.h>\n\nint count_set_bits(unsigned int n) {\n    int count = 0;\n    while (n > 0) {\n        n &= (n - 1);\n        count++;\n    }\n    return count;\n}\n\nint lowest_set_bit(int x) {\n    return x & (-x);\n}\n\nint is_power_of_two(unsigned int x) {\n    return (x > 0) && ((x & (x - 1)) == 0);\n}\n\nint main(void) {\n    unsigned int vals[] = {1, 2, 7, 16, 29, 64};\n    for (int i = 0; i < 6; i++) {\n        unsigned int v = vals[i];\n        printf(\"v=%u: set_bits=%d, lsb=%d, pow2=%d\n\",\n               v, count_set_bits(v), lowest_set_bit((int)v), is_power_of_two(v));\n    }\n    return 0;\n}\n```\n\n## Aliases & Shorthands\nAvailable via: `prog_cp_bitwise_tricks`, `competitive-programming.full-programs.bit-manipulation.bitwise-tricks.prog-bitwise-tricks`, `competitive-programming>prog_cp_bitwise_tricks()`, `competitive-programming>full-programs>bit-manipulation>bitwise-tricks>prog-bitwise-tricks>prog_cp_bitwise_tricks()`\n",
+    "documentation": "# prog_cp_bitwise_tricks\n> **Domain:** `competitive-programming` | **Subcategory:** `bit-manipulation` | **Type:** `program`\n## Overview\nComplete competitive programming program testing popcount, lowest set bit, and powers of two\n\n## Signature\n```c\nint main(void);\n```\n\n## Complexity Analysis\n- **Time Complexity:** `O(1)`\n- **Space Complexity:** `O(1)`\n\n## Edge Cases & Constraints\n- **NULL / Empty Input:** Function handles zero/NULL pointers gracefully without segfaulting.\n- **Boundary Conditions:** Bounds-checked against buffer boundaries and integer limits.\n- **Zero-Comment Invariant:** Code is 100% executable clean C code adhering strictly to library standards.\n\n## Implementation\n```c\n#include <stdio.h>\n\nint count_set_bits(unsigned int n) {\n    int count = 0;\n    while (n > 0) {\n        n &= (n - 1);\n        count++;\n    }\n    return count;\n}\n\nint lowest_set_bit(int x) {\n    return x & (-x);\n}\n\nint is_power_of_two(unsigned int x) {\n    return (x > 0) && ((x & (x - 1)) == 0);\n}\n\nint main(void) {\n    unsigned int vals[] = {1, 2, 7, 16, 29, 64};\n    for (int i = 0; i < 6; i++) {\n        unsigned int v = vals[i];\n        printf(\"v=%u: set_bits=%d, lsb=%d, pow2=%d\\n\",\n               v, count_set_bits(v), lowest_set_bit((int)v), is_power_of_two(v));\n    }\n    return 0;\n}\n```\n\n## Aliases & Shorthands\nAvailable via: `prog_cp_bitwise_tricks`, `competitive-programming.full-programs.bit-manipulation.bitwise-tricks.prog-bitwise-tricks`, `competitive-programming>prog_cp_bitwise_tricks()`, `competitive-programming>full-programs>bit-manipulation>bitwise-tricks>prog-bitwise-tricks>prog_cp_bitwise_tricks()`\n",
     "version": "1.0.0",
     "dependencies": [],
     "tags": [
@@ -1786,8 +1786,8 @@
       "competitive-programming>prog_cp_bitwise_tricks()",
       "competitive-programming>full-programs>bit-manipulation>bitwise-tricks>prog-bitwise-tricks>prog_cp_bitwise_tricks()"
     ],
-    "createdAt": "2026-09-17T09:35:42.934Z",
-    "updatedAt": "2026-09-17T09:35:42.934Z"
+    "createdAt": "2026-09-19T07:33:52.425Z",
+    "updatedAt": "2026-09-19T07:33:52.425Z"
   },
   {
     "id": "competitive-programming.full-programs.bit-manipulation.bitmasking.prog-bitmasking",
@@ -1800,13 +1800,13 @@
     "path": "competitive-programming/full-programs/bit-manipulation/bitmasking/prog-bitmasking",
     "description": "Complete competitive programming program enumerating all submasks of a bitmask",
     "signature": "int main(void);",
-    "code": "#include <stdio.h>\n\nint main(void) {\n    int mask = 13;\n    printf(\"Submasks of %d:\n\", mask);\n    for (int sub = mask; sub > 0; sub = (sub - 1) & mask) {\n        printf(\"%d\n\", sub);\n    }\n    printf(\"0\n\");\n    return 0;\n}",
+    "code": "#include <stdio.h>\n\nint main(void) {\n    int mask = 13;\n    printf(\"Submasks of %d:\\n\", mask);\n    for (int sub = mask; sub > 0; sub = (sub - 1) & mask) {\n        printf(\"%d\\n\", sub);\n    }\n    printf(\"0\\n\");\n    return 0;\n}",
     "complexity": {
       "time": "O(1)",
       "space": "O(1)"
     },
     "difficulty": "intermediate",
-    "documentation": "# prog_cp_bitmasking\n> **Domain:** `competitive-programming` | **Subcategory:** `bit-manipulation` | **Type:** `program`\n## Overview\nComplete competitive programming program enumerating all submasks of a bitmask\n\n## Signature\n```c\nint main(void);\n```\n\n## Complexity Analysis\n- **Time Complexity:** `O(1)`\n- **Space Complexity:** `O(1)`\n\n## Edge Cases & Constraints\n- **NULL / Empty Input:** Function handles zero/NULL pointers gracefully without segfaulting.\n- **Boundary Conditions:** Bounds-checked against buffer boundaries and integer limits.\n- **Zero-Comment Invariant:** Code is 100% executable clean C code adhering strictly to library standards.\n\n## Implementation\n```c\n#include <stdio.h>\n\nint main(void) {\n    int mask = 13;\n    printf(\"Submasks of %d:\n\", mask);\n    for (int sub = mask; sub > 0; sub = (sub - 1) & mask) {\n        printf(\"%d\n\", sub);\n    }\n    printf(\"0\n\");\n    return 0;\n}\n```\n\n## Aliases & Shorthands\nAvailable via: `prog_cp_bitmasking`, `competitive-programming.full-programs.bit-manipulation.bitmasking.prog-bitmasking`, `competitive-programming>prog_cp_bitmasking()`, `competitive-programming>full-programs>bit-manipulation>bitmasking>prog-bitmasking>prog_cp_bitmasking()`\n",
+    "documentation": "# prog_cp_bitmasking\n> **Domain:** `competitive-programming` | **Subcategory:** `bit-manipulation` | **Type:** `program`\n## Overview\nComplete competitive programming program enumerating all submasks of a bitmask\n\n## Signature\n```c\nint main(void);\n```\n\n## Complexity Analysis\n- **Time Complexity:** `O(1)`\n- **Space Complexity:** `O(1)`\n\n## Edge Cases & Constraints\n- **NULL / Empty Input:** Function handles zero/NULL pointers gracefully without segfaulting.\n- **Boundary Conditions:** Bounds-checked against buffer boundaries and integer limits.\n- **Zero-Comment Invariant:** Code is 100% executable clean C code adhering strictly to library standards.\n\n## Implementation\n```c\n#include <stdio.h>\n\nint main(void) {\n    int mask = 13;\n    printf(\"Submasks of %d:\\n\", mask);\n    for (int sub = mask; sub > 0; sub = (sub - 1) & mask) {\n        printf(\"%d\\n\", sub);\n    }\n    printf(\"0\\n\");\n    return 0;\n}\n```\n\n## Aliases & Shorthands\nAvailable via: `prog_cp_bitmasking`, `competitive-programming.full-programs.bit-manipulation.bitmasking.prog-bitmasking`, `competitive-programming>prog_cp_bitmasking()`, `competitive-programming>full-programs>bit-manipulation>bitmasking>prog-bitmasking>prog_cp_bitmasking()`\n",
     "version": "1.0.0",
     "dependencies": [],
     "tags": [
@@ -1820,8 +1820,8 @@
       "competitive-programming>prog_cp_bitmasking()",
       "competitive-programming>full-programs>bit-manipulation>bitmasking>prog-bitmasking>prog_cp_bitmasking()"
     ],
-    "createdAt": "2026-09-17T09:35:42.934Z",
-    "updatedAt": "2026-09-17T09:35:42.934Z"
+    "createdAt": "2026-09-19T07:33:52.425Z",
+    "updatedAt": "2026-09-19T07:33:52.425Z"
   },
   {
     "id": "competitive-programming.full-programs.number-theory.prime-sieve.prog-sieve-primes",
@@ -1834,13 +1834,13 @@
     "path": "competitive-programming/full-programs/number-theory/prime-sieve/prog-sieve-primes",
     "description": "Complete competitive programming program computing primes and prime factorizations",
     "signature": "int main(void);",
-    "code": "#include <stdio.h>\n\nvoid sieve(int n, char* is_prime) {\n    for (int i = 0; i <= n; i++) is_prime[i] = 1;\n    is_prime[0] = 0;\n    if (n >= 1) is_prime[1] = 0;\n    for (int p = 2; p * p <= n; p++) {\n        if (is_prime[p]) {\n            for (int i = p * p; i <= n; i += p) {\n                is_prime[i] = 0;\n            }\n        }\n    }\n}\n\nint factorize(long long n, long long* primes, int* exponents) {\n    int count = 0;\n    for (long long d = 2; d * d <= n; d++) {\n        if (n % d == 0) {\n            primes[count] = d;\n            exponents[count] = 0;\n            while (n % d == 0) {\n                exponents[count]++;\n                n /= d;\n            }\n            count++;\n        }\n    }\n    if (n > 1) {\n        primes[count] = n;\n        exponents[count] = 1;\n        count++;\n    }\n    return count;\n}\n\nint main(void) {\n    char prime_flags[51];\n    sieve(50, prime_flags);\n    printf(\"Primes <= 50:\n\");\n    for (int i = 2; i <= 50; i++) {\n        if (prime_flags[i]) printf(\"%d \", i);\n    }\n    printf(\"\n\");\n    long long p[10];\n    int exp[10];\n    int k = factorize(360, p, exp);\n    printf(\"Prime factors of 360:\n\");\n    for (int i = 0; i < k; i++) {\n        printf(\"%lld^%d \", p[i], exp[i]);\n    }\n    printf(\"\n\");\n    return 0;\n}",
+    "code": "#include <stdio.h>\n\nvoid sieve(int n, char* is_prime) {\n    for (int i = 0; i <= n; i++) is_prime[i] = 1;\n    is_prime[0] = 0;\n    if (n >= 1) is_prime[1] = 0;\n    for (int p = 2; p * p <= n; p++) {\n        if (is_prime[p]) {\n            for (int i = p * p; i <= n; i += p) {\n                is_prime[i] = 0;\n            }\n        }\n    }\n}\n\nint factorize(long long n, long long* primes, int* exponents) {\n    int count = 0;\n    for (long long d = 2; d * d <= n; d++) {\n        if (n % d == 0) {\n            primes[count] = d;\n            exponents[count] = 0;\n            while (n % d == 0) {\n                exponents[count]++;\n                n /= d;\n            }\n            count++;\n        }\n    }\n    if (n > 1) {\n        primes[count] = n;\n        exponents[count] = 1;\n        count++;\n    }\n    return count;\n}\n\nint main(void) {\n    char prime_flags[51];\n    sieve(50, prime_flags);\n    printf(\"Primes <= 50:\\n\");\n    for (int i = 2; i <= 50; i++) {\n        if (prime_flags[i]) printf(\"%d \", i);\n    }\n    printf(\"\\n\");\n    long long p[10];\n    int exp[10];\n    int k = factorize(360, p, exp);\n    printf(\"Prime factors of 360:\\n\");\n    for (int i = 0; i < k; i++) {\n        printf(\"%lld^%d \", p[i], exp[i]);\n    }\n    printf(\"\\n\");\n    return 0;\n}",
     "complexity": {
       "time": "O(1)",
       "space": "O(1)"
     },
     "difficulty": "intermediate",
-    "documentation": "# prog_cp_sieve_primes\n> **Domain:** `competitive-programming` | **Subcategory:** `number-theory` | **Type:** `program`\n## Overview\nComplete competitive programming program computing primes and prime factorizations\n\n## Signature\n```c\nint main(void);\n```\n\n## Complexity Analysis\n- **Time Complexity:** `O(1)`\n- **Space Complexity:** `O(1)`\n\n## Edge Cases & Constraints\n- **NULL / Empty Input:** Function handles zero/NULL pointers gracefully without segfaulting.\n- **Boundary Conditions:** Bounds-checked against buffer boundaries and integer limits.\n- **Zero-Comment Invariant:** Code is 100% executable clean C code adhering strictly to library standards.\n\n## Implementation\n```c\n#include <stdio.h>\n\nvoid sieve(int n, char* is_prime) {\n    for (int i = 0; i <= n; i++) is_prime[i] = 1;\n    is_prime[0] = 0;\n    if (n >= 1) is_prime[1] = 0;\n    for (int p = 2; p * p <= n; p++) {\n        if (is_prime[p]) {\n            for (int i = p * p; i <= n; i += p) {\n                is_prime[i] = 0;\n            }\n        }\n    }\n}\n\nint factorize(long long n, long long* primes, int* exponents) {\n    int count = 0;\n    for (long long d = 2; d * d <= n; d++) {\n        if (n % d == 0) {\n            primes[count] = d;\n            exponents[count] = 0;\n            while (n % d == 0) {\n                exponents[count]++;\n                n /= d;\n            }\n            count++;\n        }\n    }\n    if (n > 1) {\n        primes[count] = n;\n        exponents[count] = 1;\n        count++;\n    }\n    return count;\n}\n\nint main(void) {\n    char prime_flags[51];\n    sieve(50, prime_flags);\n    printf(\"Primes <= 50:\n\");\n    for (int i = 2; i <= 50; i++) {\n        if (prime_flags[i]) printf(\"%d \", i);\n    }\n    printf(\"\n\");\n    long long p[10];\n    int exp[10];\n    int k = factorize(360, p, exp);\n    printf(\"Prime factors of 360:\n\");\n    for (int i = 0; i < k; i++) {\n        printf(\"%lld^%d \", p[i], exp[i]);\n    }\n    printf(\"\n\");\n    return 0;\n}\n```\n\n## Aliases & Shorthands\nAvailable via: `prog_cp_sieve_primes`, `competitive-programming.full-programs.number-theory.prime-sieve.prog-sieve-primes`, `competitive-programming>prog_cp_sieve_primes()`, `competitive-programming>full-programs>number-theory>prime-sieve>prog-sieve-primes>prog_cp_sieve_primes()`\n",
+    "documentation": "# prog_cp_sieve_primes\n> **Domain:** `competitive-programming` | **Subcategory:** `number-theory` | **Type:** `program`\n## Overview\nComplete competitive programming program computing primes and prime factorizations\n\n## Signature\n```c\nint main(void);\n```\n\n## Complexity Analysis\n- **Time Complexity:** `O(1)`\n- **Space Complexity:** `O(1)`\n\n## Edge Cases & Constraints\n- **NULL / Empty Input:** Function handles zero/NULL pointers gracefully without segfaulting.\n- **Boundary Conditions:** Bounds-checked against buffer boundaries and integer limits.\n- **Zero-Comment Invariant:** Code is 100% executable clean C code adhering strictly to library standards.\n\n## Implementation\n```c\n#include <stdio.h>\n\nvoid sieve(int n, char* is_prime) {\n    for (int i = 0; i <= n; i++) is_prime[i] = 1;\n    is_prime[0] = 0;\n    if (n >= 1) is_prime[1] = 0;\n    for (int p = 2; p * p <= n; p++) {\n        if (is_prime[p]) {\n            for (int i = p * p; i <= n; i += p) {\n                is_prime[i] = 0;\n            }\n        }\n    }\n}\n\nint factorize(long long n, long long* primes, int* exponents) {\n    int count = 0;\n    for (long long d = 2; d * d <= n; d++) {\n        if (n % d == 0) {\n            primes[count] = d;\n            exponents[count] = 0;\n            while (n % d == 0) {\n                exponents[count]++;\n                n /= d;\n            }\n            count++;\n        }\n    }\n    if (n > 1) {\n        primes[count] = n;\n        exponents[count] = 1;\n        count++;\n    }\n    return count;\n}\n\nint main(void) {\n    char prime_flags[51];\n    sieve(50, prime_flags);\n    printf(\"Primes <= 50:\\n\");\n    for (int i = 2; i <= 50; i++) {\n        if (prime_flags[i]) printf(\"%d \", i);\n    }\n    printf(\"\\n\");\n    long long p[10];\n    int exp[10];\n    int k = factorize(360, p, exp);\n    printf(\"Prime factors of 360:\\n\");\n    for (int i = 0; i < k; i++) {\n        printf(\"%lld^%d \", p[i], exp[i]);\n    }\n    printf(\"\\n\");\n    return 0;\n}\n```\n\n## Aliases & Shorthands\nAvailable via: `prog_cp_sieve_primes`, `competitive-programming.full-programs.number-theory.prime-sieve.prog-sieve-primes`, `competitive-programming>prog_cp_sieve_primes()`, `competitive-programming>full-programs>number-theory>prime-sieve>prog-sieve-primes>prog_cp_sieve_primes()`\n",
     "version": "1.0.0",
     "dependencies": [],
     "tags": [
@@ -1854,8 +1854,8 @@
       "competitive-programming>prog_cp_sieve_primes()",
       "competitive-programming>full-programs>number-theory>prime-sieve>prog-sieve-primes>prog_cp_sieve_primes()"
     ],
-    "createdAt": "2026-09-17T09:35:42.934Z",
-    "updatedAt": "2026-09-17T09:35:42.934Z"
+    "createdAt": "2026-09-19T07:33:52.425Z",
+    "updatedAt": "2026-09-19T07:33:52.425Z"
   },
   {
     "id": "competitive-programming.full-programs.number-theory.modular-arithmetic.prog-modular-arithmetic",
@@ -1868,13 +1868,13 @@
     "path": "competitive-programming/full-programs/number-theory/modular-arithmetic/prog-modular-arithmetic",
     "description": "Complete competitive programming program computing modular exponentiation and inverse",
     "signature": "int main(void);",
-    "code": "#include <stdio.h>\n\nlong long mod_pow(long long base, long long exp, long long mod) {\n    long long res = 1;\n    base %= mod;\n    while (exp > 0) {\n        if (exp & 1) res = (res * base) % mod;\n        base = (base * base) % mod;\n        exp >>= 1;\n    }\n    return res;\n}\n\nlong long ext_gcd(long long a, long long b, long long* x, long long* y) {\n    if (b == 0) {\n        *x = 1;\n        *y = 0;\n        return a;\n    }\n    long long x1, y1;\n    long long g = ext_gcd(b, a % b, &x1, &y1);\n    *x = y1;\n    *y = x1 - (a / b) * y1;\n    return g;\n}\n\nlong long mod_inv(long long a, long long mod) {\n    long long x, y;\n    long long g = ext_gcd(a, mod, &x, &y);\n    if (g != 1) return -1;\n    return (x % mod + mod) % mod;\n}\n\nint main(void) {\n    long long mod = 1000000007LL;\n    long long p = mod_pow(3, 10, mod);\n    long long inv = mod_inv(3, mod);\n    printf(\"3^10 mod 1e9+7 = %lld\n\", p);\n    printf(\"inv(3) mod 1e9+7 = %lld\n\", inv);\n    printf(\"(3 * inv) mod 1e9+7 = %lld\n\", (3 * inv) % mod);\n    return 0;\n}",
+    "code": "#include <stdio.h>\n\nlong long mod_pow(long long base, long long exp, long long mod) {\n    long long res = 1;\n    base %= mod;\n    while (exp > 0) {\n        if (exp & 1) res = (res * base) % mod;\n        base = (base * base) % mod;\n        exp >>= 1;\n    }\n    return res;\n}\n\nlong long ext_gcd(long long a, long long b, long long* x, long long* y) {\n    if (b == 0) {\n        *x = 1;\n        *y = 0;\n        return a;\n    }\n    long long x1, y1;\n    long long g = ext_gcd(b, a % b, &x1, &y1);\n    *x = y1;\n    *y = x1 - (a / b) * y1;\n    return g;\n}\n\nlong long mod_inv(long long a, long long mod) {\n    long long x, y;\n    long long g = ext_gcd(a, mod, &x, &y);\n    if (g != 1) return -1;\n    return (x % mod + mod) % mod;\n}\n\nint main(void) {\n    long long mod = 1000000007LL;\n    long long p = mod_pow(3, 10, mod);\n    long long inv = mod_inv(3, mod);\n    printf(\"3^10 mod 1e9+7 = %lld\\n\", p);\n    printf(\"inv(3) mod 1e9+7 = %lld\\n\", inv);\n    printf(\"(3 * inv) mod 1e9+7 = %lld\\n\", (3 * inv) % mod);\n    return 0;\n}",
     "complexity": {
       "time": "O(1)",
       "space": "O(1)"
     },
     "difficulty": "intermediate",
-    "documentation": "# prog_cp_modular_arithmetic\n> **Domain:** `competitive-programming` | **Subcategory:** `number-theory` | **Type:** `program`\n## Overview\nComplete competitive programming program computing modular exponentiation and inverse\n\n## Signature\n```c\nint main(void);\n```\n\n## Complexity Analysis\n- **Time Complexity:** `O(1)`\n- **Space Complexity:** `O(1)`\n\n## Edge Cases & Constraints\n- **NULL / Empty Input:** Function handles zero/NULL pointers gracefully without segfaulting.\n- **Boundary Conditions:** Bounds-checked against buffer boundaries and integer limits.\n- **Zero-Comment Invariant:** Code is 100% executable clean C code adhering strictly to library standards.\n\n## Implementation\n```c\n#include <stdio.h>\n\nlong long mod_pow(long long base, long long exp, long long mod) {\n    long long res = 1;\n    base %= mod;\n    while (exp > 0) {\n        if (exp & 1) res = (res * base) % mod;\n        base = (base * base) % mod;\n        exp >>= 1;\n    }\n    return res;\n}\n\nlong long ext_gcd(long long a, long long b, long long* x, long long* y) {\n    if (b == 0) {\n        *x = 1;\n        *y = 0;\n        return a;\n    }\n    long long x1, y1;\n    long long g = ext_gcd(b, a % b, &x1, &y1);\n    *x = y1;\n    *y = x1 - (a / b) * y1;\n    return g;\n}\n\nlong long mod_inv(long long a, long long mod) {\n    long long x, y;\n    long long g = ext_gcd(a, mod, &x, &y);\n    if (g != 1) return -1;\n    return (x % mod + mod) % mod;\n}\n\nint main(void) {\n    long long mod = 1000000007LL;\n    long long p = mod_pow(3, 10, mod);\n    long long inv = mod_inv(3, mod);\n    printf(\"3^10 mod 1e9+7 = %lld\n\", p);\n    printf(\"inv(3) mod 1e9+7 = %lld\n\", inv);\n    printf(\"(3 * inv) mod 1e9+7 = %lld\n\", (3 * inv) % mod);\n    return 0;\n}\n```\n\n## Aliases & Shorthands\nAvailable via: `prog_cp_modular_arithmetic`, `competitive-programming.full-programs.number-theory.modular-arithmetic.prog-modular-arithmetic`, `competitive-programming>prog_cp_modular_arithmetic()`, `competitive-programming>full-programs>number-theory>modular-arithmetic>prog-modular-arithmetic>prog_cp_modular_arithmetic()`\n",
+    "documentation": "# prog_cp_modular_arithmetic\n> **Domain:** `competitive-programming` | **Subcategory:** `number-theory` | **Type:** `program`\n## Overview\nComplete competitive programming program computing modular exponentiation and inverse\n\n## Signature\n```c\nint main(void);\n```\n\n## Complexity Analysis\n- **Time Complexity:** `O(1)`\n- **Space Complexity:** `O(1)`\n\n## Edge Cases & Constraints\n- **NULL / Empty Input:** Function handles zero/NULL pointers gracefully without segfaulting.\n- **Boundary Conditions:** Bounds-checked against buffer boundaries and integer limits.\n- **Zero-Comment Invariant:** Code is 100% executable clean C code adhering strictly to library standards.\n\n## Implementation\n```c\n#include <stdio.h>\n\nlong long mod_pow(long long base, long long exp, long long mod) {\n    long long res = 1;\n    base %= mod;\n    while (exp > 0) {\n        if (exp & 1) res = (res * base) % mod;\n        base = (base * base) % mod;\n        exp >>= 1;\n    }\n    return res;\n}\n\nlong long ext_gcd(long long a, long long b, long long* x, long long* y) {\n    if (b == 0) {\n        *x = 1;\n        *y = 0;\n        return a;\n    }\n    long long x1, y1;\n    long long g = ext_gcd(b, a % b, &x1, &y1);\n    *x = y1;\n    *y = x1 - (a / b) * y1;\n    return g;\n}\n\nlong long mod_inv(long long a, long long mod) {\n    long long x, y;\n    long long g = ext_gcd(a, mod, &x, &y);\n    if (g != 1) return -1;\n    return (x % mod + mod) % mod;\n}\n\nint main(void) {\n    long long mod = 1000000007LL;\n    long long p = mod_pow(3, 10, mod);\n    long long inv = mod_inv(3, mod);\n    printf(\"3^10 mod 1e9+7 = %lld\\n\", p);\n    printf(\"inv(3) mod 1e9+7 = %lld\\n\", inv);\n    printf(\"(3 * inv) mod 1e9+7 = %lld\\n\", (3 * inv) % mod);\n    return 0;\n}\n```\n\n## Aliases & Shorthands\nAvailable via: `prog_cp_modular_arithmetic`, `competitive-programming.full-programs.number-theory.modular-arithmetic.prog-modular-arithmetic`, `competitive-programming>prog_cp_modular_arithmetic()`, `competitive-programming>full-programs>number-theory>modular-arithmetic>prog-modular-arithmetic>prog_cp_modular_arithmetic()`\n",
     "version": "1.0.0",
     "dependencies": [],
     "tags": [
@@ -1888,8 +1888,8 @@
       "competitive-programming>prog_cp_modular_arithmetic()",
       "competitive-programming>full-programs>number-theory>modular-arithmetic>prog-modular-arithmetic>prog_cp_modular_arithmetic()"
     ],
-    "createdAt": "2026-09-17T09:35:42.934Z",
-    "updatedAt": "2026-09-17T09:35:42.934Z"
+    "createdAt": "2026-09-19T07:33:52.425Z",
+    "updatedAt": "2026-09-19T07:33:52.425Z"
   },
   {
     "id": "competitive-programming.full-programs.number-theory.combinatorics.prog-combinatorics",
@@ -1902,13 +1902,13 @@
     "path": "competitive-programming/full-programs/number-theory/combinatorics/prog-combinatorics",
     "description": "Complete competitive programming program precomputing factorials and querying nCr modulo 1e9+7",
     "signature": "int main(void);",
-    "code": "#include <stdio.h>\n\nlong long mod_pow(long long base, long long exp, long long mod) {\n    long long res = 1;\n    base %= mod;\n    while (exp > 0) {\n        if (exp & 1) res = (res * base) % mod;\n        base = (base * base) % mod;\n        exp >>= 1;\n    }\n    return res;\n}\n\nvoid precompute_fact(int n, long long mod, long long* fact, long long* inv_fact) {\n    fact[0] = 1;\n    for (int i = 1; i <= n; i++) fact[i] = (fact[i - 1] * i) % mod;\n    inv_fact[n] = mod_pow(fact[n], mod - 2, mod);\n    for (int i = n - 1; i >= 0; i--) inv_fact[i] = (inv_fact[i + 1] * (i + 1)) % mod;\n}\n\nlong long ncr(int n, int r, long long mod, const long long* fact, const long long* inv_fact) {\n    if (r < 0 || r > n) return 0;\n    long long num = fact[n];\n    long long den = (inv_fact[r] * inv_fact[n - r]) % mod;\n    return (num * den) % mod;\n}\n\nint main(void) {\n    long long mod = 1000000007LL;\n    long long fact[101], inv_fact[101];\n    precompute_fact(100, mod, fact, inv_fact);\n    printf(\"10C3 mod 1e9+7 = %lld\n\", ncr(10, 3, mod, fact, inv_fact));\n    printf(\"50C5 mod 1e9+7 = %lld\n\", ncr(50, 5, mod, fact, inv_fact));\n    return 0;\n}",
+    "code": "#include <stdio.h>\n\nlong long mod_pow(long long base, long long exp, long long mod) {\n    long long res = 1;\n    base %= mod;\n    while (exp > 0) {\n        if (exp & 1) res = (res * base) % mod;\n        base = (base * base) % mod;\n        exp >>= 1;\n    }\n    return res;\n}\n\nvoid precompute_fact(int n, long long mod, long long* fact, long long* inv_fact) {\n    fact[0] = 1;\n    for (int i = 1; i <= n; i++) fact[i] = (fact[i - 1] * i) % mod;\n    inv_fact[n] = mod_pow(fact[n], mod - 2, mod);\n    for (int i = n - 1; i >= 0; i--) inv_fact[i] = (inv_fact[i + 1] * (i + 1)) % mod;\n}\n\nlong long ncr(int n, int r, long long mod, const long long* fact, const long long* inv_fact) {\n    if (r < 0 || r > n) return 0;\n    long long num = fact[n];\n    long long den = (inv_fact[r] * inv_fact[n - r]) % mod;\n    return (num * den) % mod;\n}\n\nint main(void) {\n    long long mod = 1000000007LL;\n    long long fact[101], inv_fact[101];\n    precompute_fact(100, mod, fact, inv_fact);\n    printf(\"10C3 mod 1e9+7 = %lld\\n\", ncr(10, 3, mod, fact, inv_fact));\n    printf(\"50C5 mod 1e9+7 = %lld\\n\", ncr(50, 5, mod, fact, inv_fact));\n    return 0;\n}",
     "complexity": {
       "time": "O(1)",
       "space": "O(1)"
     },
     "difficulty": "intermediate",
-    "documentation": "# prog_cp_combinatorics\n> **Domain:** `competitive-programming` | **Subcategory:** `number-theory` | **Type:** `program`\n## Overview\nComplete competitive programming program precomputing factorials and querying nCr modulo 1e9+7\n\n## Signature\n```c\nint main(void);\n```\n\n## Complexity Analysis\n- **Time Complexity:** `O(1)`\n- **Space Complexity:** `O(1)`\n\n## Edge Cases & Constraints\n- **NULL / Empty Input:** Function handles zero/NULL pointers gracefully without segfaulting.\n- **Boundary Conditions:** Bounds-checked against buffer boundaries and integer limits.\n- **Zero-Comment Invariant:** Code is 100% executable clean C code adhering strictly to library standards.\n\n## Implementation\n```c\n#include <stdio.h>\n\nlong long mod_pow(long long base, long long exp, long long mod) {\n    long long res = 1;\n    base %= mod;\n    while (exp > 0) {\n        if (exp & 1) res = (res * base) % mod;\n        base = (base * base) % mod;\n        exp >>= 1;\n    }\n    return res;\n}\n\nvoid precompute_fact(int n, long long mod, long long* fact, long long* inv_fact) {\n    fact[0] = 1;\n    for (int i = 1; i <= n; i++) fact[i] = (fact[i - 1] * i) % mod;\n    inv_fact[n] = mod_pow(fact[n], mod - 2, mod);\n    for (int i = n - 1; i >= 0; i--) inv_fact[i] = (inv_fact[i + 1] * (i + 1)) % mod;\n}\n\nlong long ncr(int n, int r, long long mod, const long long* fact, const long long* inv_fact) {\n    if (r < 0 || r > n) return 0;\n    long long num = fact[n];\n    long long den = (inv_fact[r] * inv_fact[n - r]) % mod;\n    return (num * den) % mod;\n}\n\nint main(void) {\n    long long mod = 1000000007LL;\n    long long fact[101], inv_fact[101];\n    precompute_fact(100, mod, fact, inv_fact);\n    printf(\"10C3 mod 1e9+7 = %lld\n\", ncr(10, 3, mod, fact, inv_fact));\n    printf(\"50C5 mod 1e9+7 = %lld\n\", ncr(50, 5, mod, fact, inv_fact));\n    return 0;\n}\n```\n\n## Aliases & Shorthands\nAvailable via: `prog_cp_combinatorics`, `competitive-programming.full-programs.number-theory.combinatorics.prog-combinatorics`, `competitive-programming>prog_cp_combinatorics()`, `competitive-programming>full-programs>number-theory>combinatorics>prog-combinatorics>prog_cp_combinatorics()`\n",
+    "documentation": "# prog_cp_combinatorics\n> **Domain:** `competitive-programming` | **Subcategory:** `number-theory` | **Type:** `program`\n## Overview\nComplete competitive programming program precomputing factorials and querying nCr modulo 1e9+7\n\n## Signature\n```c\nint main(void);\n```\n\n## Complexity Analysis\n- **Time Complexity:** `O(1)`\n- **Space Complexity:** `O(1)`\n\n## Edge Cases & Constraints\n- **NULL / Empty Input:** Function handles zero/NULL pointers gracefully without segfaulting.\n- **Boundary Conditions:** Bounds-checked against buffer boundaries and integer limits.\n- **Zero-Comment Invariant:** Code is 100% executable clean C code adhering strictly to library standards.\n\n## Implementation\n```c\n#include <stdio.h>\n\nlong long mod_pow(long long base, long long exp, long long mod) {\n    long long res = 1;\n    base %= mod;\n    while (exp > 0) {\n        if (exp & 1) res = (res * base) % mod;\n        base = (base * base) % mod;\n        exp >>= 1;\n    }\n    return res;\n}\n\nvoid precompute_fact(int n, long long mod, long long* fact, long long* inv_fact) {\n    fact[0] = 1;\n    for (int i = 1; i <= n; i++) fact[i] = (fact[i - 1] * i) % mod;\n    inv_fact[n] = mod_pow(fact[n], mod - 2, mod);\n    for (int i = n - 1; i >= 0; i--) inv_fact[i] = (inv_fact[i + 1] * (i + 1)) % mod;\n}\n\nlong long ncr(int n, int r, long long mod, const long long* fact, const long long* inv_fact) {\n    if (r < 0 || r > n) return 0;\n    long long num = fact[n];\n    long long den = (inv_fact[r] * inv_fact[n - r]) % mod;\n    return (num * den) % mod;\n}\n\nint main(void) {\n    long long mod = 1000000007LL;\n    long long fact[101], inv_fact[101];\n    precompute_fact(100, mod, fact, inv_fact);\n    printf(\"10C3 mod 1e9+7 = %lld\\n\", ncr(10, 3, mod, fact, inv_fact));\n    printf(\"50C5 mod 1e9+7 = %lld\\n\", ncr(50, 5, mod, fact, inv_fact));\n    return 0;\n}\n```\n\n## Aliases & Shorthands\nAvailable via: `prog_cp_combinatorics`, `competitive-programming.full-programs.number-theory.combinatorics.prog-combinatorics`, `competitive-programming>prog_cp_combinatorics()`, `competitive-programming>full-programs>number-theory>combinatorics>prog-combinatorics>prog_cp_combinatorics()`\n",
     "version": "1.0.0",
     "dependencies": [],
     "tags": [
@@ -1922,8 +1922,8 @@
       "competitive-programming>prog_cp_combinatorics()",
       "competitive-programming>full-programs>number-theory>combinatorics>prog-combinatorics>prog_cp_combinatorics()"
     ],
-    "createdAt": "2026-09-17T09:35:42.934Z",
-    "updatedAt": "2026-09-17T09:35:42.934Z"
+    "createdAt": "2026-09-19T07:33:52.425Z",
+    "updatedAt": "2026-09-19T07:33:52.425Z"
   },
   {
     "id": "competitive-programming.full-programs.number-theory.matrix-exponentiation.prog-matrix-exponentiation",
@@ -1936,13 +1936,13 @@
     "path": "competitive-programming/full-programs/number-theory/matrix-exponentiation/prog-matrix-exponentiation",
     "description": "Complete competitive programming program calculating N-th Fibonacci via 2x2 matrix fast power",
     "signature": "int main(void);",
-    "code": "#include <stdio.h>\n\nvoid mat_mul_2x2(const long long A[2][2], const long long B[2][2], long long C[2][2], long long mod) {\n    long long r00 = (A[0][0] * B[0][0] + A[0][1] * B[1][0]) % mod;\n    long long r01 = (A[0][0] * B[0][1] + A[0][1] * B[1][1]) % mod;\n    long long r10 = (A[1][0] * B[0][0] + A[1][1] * B[1][0]) % mod;\n    long long r11 = (A[1][0] * B[0][1] + A[1][1] * B[1][1]) % mod;\n    C[0][0] = r00; C[0][1] = r01;\n    C[1][0] = r10; C[1][1] = r11;\n}\n\nlong long fib_matrix(long long n, long long mod) {\n    if (n <= 0) return 0;\n    if (n == 1) return 1;\n    long long res[2][2] = {{1, 0}, {0, 1}};\n    long long base[2][2] = {{1, 1}, {1, 0}};\n    long long p = n - 1;\n    while (p > 0) {\n        if (p & 1) {\n            long long tmp[2][2];\n            mat_mul_2x2(res, base, tmp, mod);\n            res[0][0] = tmp[0][0]; res[0][1] = tmp[0][1];\n            res[1][0] = tmp[1][0]; res[1][1] = tmp[1][1];\n        }\n        long long tmp_base[2][2];\n        mat_mul_2x2(base, base, tmp_base, mod);\n        base[0][0] = tmp_base[0][0]; base[0][1] = tmp_base[0][1];\n        base[1][0] = tmp_base[1][0]; base[1][1] = tmp_base[1][1];\n        p >>= 1;\n    }\n    return res[0][0];\n}\n\nint main(void) {\n    long long mod = 1000000007LL;\n    printf(\"Fib(10) mod 1e9+7 = %lld\n\", fib_matrix(10, mod));\n    printf(\"Fib(50) mod 1e9+7 = %lld\n\", fib_matrix(50, mod));\n    return 0;\n}",
+    "code": "#include <stdio.h>\n\nvoid mat_mul_2x2(const long long A[2][2], const long long B[2][2], long long C[2][2], long long mod) {\n    long long r00 = (A[0][0] * B[0][0] + A[0][1] * B[1][0]) % mod;\n    long long r01 = (A[0][0] * B[0][1] + A[0][1] * B[1][1]) % mod;\n    long long r10 = (A[1][0] * B[0][0] + A[1][1] * B[1][0]) % mod;\n    long long r11 = (A[1][0] * B[0][1] + A[1][1] * B[1][1]) % mod;\n    C[0][0] = r00; C[0][1] = r01;\n    C[1][0] = r10; C[1][1] = r11;\n}\n\nlong long fib_matrix(long long n, long long mod) {\n    if (n <= 0) return 0;\n    if (n == 1) return 1;\n    long long res[2][2] = {{1, 0}, {0, 1}};\n    long long base[2][2] = {{1, 1}, {1, 0}};\n    long long p = n - 1;\n    while (p > 0) {\n        if (p & 1) {\n            long long tmp[2][2];\n            mat_mul_2x2(res, base, tmp, mod);\n            res[0][0] = tmp[0][0]; res[0][1] = tmp[0][1];\n            res[1][0] = tmp[1][0]; res[1][1] = tmp[1][1];\n        }\n        long long tmp_base[2][2];\n        mat_mul_2x2(base, base, tmp_base, mod);\n        base[0][0] = tmp_base[0][0]; base[0][1] = tmp_base[0][1];\n        base[1][0] = tmp_base[1][0]; base[1][1] = tmp_base[1][1];\n        p >>= 1;\n    }\n    return res[0][0];\n}\n\nint main(void) {\n    long long mod = 1000000007LL;\n    printf(\"Fib(10) mod 1e9+7 = %lld\\n\", fib_matrix(10, mod));\n    printf(\"Fib(50) mod 1e9+7 = %lld\\n\", fib_matrix(50, mod));\n    return 0;\n}",
     "complexity": {
       "time": "O(1)",
       "space": "O(1)"
     },
     "difficulty": "intermediate",
-    "documentation": "# prog_cp_matrix_exponentiation\n> **Domain:** `competitive-programming` | **Subcategory:** `number-theory` | **Type:** `program`\n## Overview\nComplete competitive programming program calculating N-th Fibonacci via 2x2 matrix fast power\n\n## Signature\n```c\nint main(void);\n```\n\n## Complexity Analysis\n- **Time Complexity:** `O(1)`\n- **Space Complexity:** `O(1)`\n\n## Edge Cases & Constraints\n- **NULL / Empty Input:** Function handles zero/NULL pointers gracefully without segfaulting.\n- **Boundary Conditions:** Bounds-checked against buffer boundaries and integer limits.\n- **Zero-Comment Invariant:** Code is 100% executable clean C code adhering strictly to library standards.\n\n## Implementation\n```c\n#include <stdio.h>\n\nvoid mat_mul_2x2(const long long A[2][2], const long long B[2][2], long long C[2][2], long long mod) {\n    long long r00 = (A[0][0] * B[0][0] + A[0][1] * B[1][0]) % mod;\n    long long r01 = (A[0][0] * B[0][1] + A[0][1] * B[1][1]) % mod;\n    long long r10 = (A[1][0] * B[0][0] + A[1][1] * B[1][0]) % mod;\n    long long r11 = (A[1][0] * B[0][1] + A[1][1] * B[1][1]) % mod;\n    C[0][0] = r00; C[0][1] = r01;\n    C[1][0] = r10; C[1][1] = r11;\n}\n\nlong long fib_matrix(long long n, long long mod) {\n    if (n <= 0) return 0;\n    if (n == 1) return 1;\n    long long res[2][2] = {{1, 0}, {0, 1}};\n    long long base[2][2] = {{1, 1}, {1, 0}};\n    long long p = n - 1;\n    while (p > 0) {\n        if (p & 1) {\n            long long tmp[2][2];\n            mat_mul_2x2(res, base, tmp, mod);\n            res[0][0] = tmp[0][0]; res[0][1] = tmp[0][1];\n            res[1][0] = tmp[1][0]; res[1][1] = tmp[1][1];\n        }\n        long long tmp_base[2][2];\n        mat_mul_2x2(base, base, tmp_base, mod);\n        base[0][0] = tmp_base[0][0]; base[0][1] = tmp_base[0][1];\n        base[1][0] = tmp_base[1][0]; base[1][1] = tmp_base[1][1];\n        p >>= 1;\n    }\n    return res[0][0];\n}\n\nint main(void) {\n    long long mod = 1000000007LL;\n    printf(\"Fib(10) mod 1e9+7 = %lld\n\", fib_matrix(10, mod));\n    printf(\"Fib(50) mod 1e9+7 = %lld\n\", fib_matrix(50, mod));\n    return 0;\n}\n```\n\n## Aliases & Shorthands\nAvailable via: `prog_cp_matrix_exponentiation`, `competitive-programming.full-programs.number-theory.matrix-exponentiation.prog-matrix-exponentiation`, `competitive-programming>prog_cp_matrix_exponentiation()`, `competitive-programming>full-programs>number-theory>matrix-exponentiation>prog-matrix-exponentiation>prog_cp_matrix_exponentiation()`\n",
+    "documentation": "# prog_cp_matrix_exponentiation\n> **Domain:** `competitive-programming` | **Subcategory:** `number-theory` | **Type:** `program`\n## Overview\nComplete competitive programming program calculating N-th Fibonacci via 2x2 matrix fast power\n\n## Signature\n```c\nint main(void);\n```\n\n## Complexity Analysis\n- **Time Complexity:** `O(1)`\n- **Space Complexity:** `O(1)`\n\n## Edge Cases & Constraints\n- **NULL / Empty Input:** Function handles zero/NULL pointers gracefully without segfaulting.\n- **Boundary Conditions:** Bounds-checked against buffer boundaries and integer limits.\n- **Zero-Comment Invariant:** Code is 100% executable clean C code adhering strictly to library standards.\n\n## Implementation\n```c\n#include <stdio.h>\n\nvoid mat_mul_2x2(const long long A[2][2], const long long B[2][2], long long C[2][2], long long mod) {\n    long long r00 = (A[0][0] * B[0][0] + A[0][1] * B[1][0]) % mod;\n    long long r01 = (A[0][0] * B[0][1] + A[0][1] * B[1][1]) % mod;\n    long long r10 = (A[1][0] * B[0][0] + A[1][1] * B[1][0]) % mod;\n    long long r11 = (A[1][0] * B[0][1] + A[1][1] * B[1][1]) % mod;\n    C[0][0] = r00; C[0][1] = r01;\n    C[1][0] = r10; C[1][1] = r11;\n}\n\nlong long fib_matrix(long long n, long long mod) {\n    if (n <= 0) return 0;\n    if (n == 1) return 1;\n    long long res[2][2] = {{1, 0}, {0, 1}};\n    long long base[2][2] = {{1, 1}, {1, 0}};\n    long long p = n - 1;\n    while (p > 0) {\n        if (p & 1) {\n            long long tmp[2][2];\n            mat_mul_2x2(res, base, tmp, mod);\n            res[0][0] = tmp[0][0]; res[0][1] = tmp[0][1];\n            res[1][0] = tmp[1][0]; res[1][1] = tmp[1][1];\n        }\n        long long tmp_base[2][2];\n        mat_mul_2x2(base, base, tmp_base, mod);\n        base[0][0] = tmp_base[0][0]; base[0][1] = tmp_base[0][1];\n        base[1][0] = tmp_base[1][0]; base[1][1] = tmp_base[1][1];\n        p >>= 1;\n    }\n    return res[0][0];\n}\n\nint main(void) {\n    long long mod = 1000000007LL;\n    printf(\"Fib(10) mod 1e9+7 = %lld\\n\", fib_matrix(10, mod));\n    printf(\"Fib(50) mod 1e9+7 = %lld\\n\", fib_matrix(50, mod));\n    return 0;\n}\n```\n\n## Aliases & Shorthands\nAvailable via: `prog_cp_matrix_exponentiation`, `competitive-programming.full-programs.number-theory.matrix-exponentiation.prog-matrix-exponentiation`, `competitive-programming>prog_cp_matrix_exponentiation()`, `competitive-programming>full-programs>number-theory>matrix-exponentiation>prog-matrix-exponentiation>prog_cp_matrix_exponentiation()`\n",
     "version": "1.0.0",
     "dependencies": [],
     "tags": [
@@ -1956,8 +1956,8 @@
       "competitive-programming>prog_cp_matrix_exponentiation()",
       "competitive-programming>full-programs>number-theory>matrix-exponentiation>prog-matrix-exponentiation>prog_cp_matrix_exponentiation()"
     ],
-    "createdAt": "2026-09-17T09:35:42.934Z",
-    "updatedAt": "2026-09-17T09:35:42.934Z"
+    "createdAt": "2026-09-19T07:33:52.425Z",
+    "updatedAt": "2026-09-19T07:33:52.425Z"
   },
   {
     "id": "competitive-programming.full-programs.range-queries.prefix-sums.prog-prefix-sums",
@@ -1970,13 +1970,13 @@
     "path": "competitive-programming/full-programs/range-queries/prefix-sums/prog-prefix-sums",
     "description": "Complete competitive programming program answering 1D and 2D prefix sum range queries",
     "signature": "int main(void);",
-    "code": "#include <stdio.h>\n\nint main(void) {\n    int arr[] = {3, 1, 4, 1, 5, 9, 2};\n    int n = 7;\n    long long pref[8];\n    pref[0] = 0;\n    for (int i = 0; i < n; i++) pref[i + 1] = pref[i] + arr[i];\n    printf(\"Range sum [1, 4]: %lld\n\", pref[5] - pref[1]);\n    printf(\"Range sum [0, 6]: %lld\n\", pref[7] - pref[0]);\n    return 0;\n}",
+    "code": "#include <stdio.h>\n\nint main(void) {\n    int arr[] = {3, 1, 4, 1, 5, 9, 2};\n    int n = 7;\n    long long pref[8];\n    pref[0] = 0;\n    for (int i = 0; i < n; i++) pref[i + 1] = pref[i] + arr[i];\n    printf(\"Range sum [1, 4]: %lld\\n\", pref[5] - pref[1]);\n    printf(\"Range sum [0, 6]: %lld\\n\", pref[7] - pref[0]);\n    return 0;\n}",
     "complexity": {
       "time": "O(1)",
       "space": "O(1)"
     },
     "difficulty": "intermediate",
-    "documentation": "# prog_cp_prefix_sums\n> **Domain:** `competitive-programming` | **Subcategory:** `range-queries` | **Type:** `program`\n## Overview\nComplete competitive programming program answering 1D and 2D prefix sum range queries\n\n## Signature\n```c\nint main(void);\n```\n\n## Complexity Analysis\n- **Time Complexity:** `O(1)`\n- **Space Complexity:** `O(1)`\n\n## Edge Cases & Constraints\n- **NULL / Empty Input:** Function handles zero/NULL pointers gracefully without segfaulting.\n- **Boundary Conditions:** Bounds-checked against buffer boundaries and integer limits.\n- **Zero-Comment Invariant:** Code is 100% executable clean C code adhering strictly to library standards.\n\n## Implementation\n```c\n#include <stdio.h>\n\nint main(void) {\n    int arr[] = {3, 1, 4, 1, 5, 9, 2};\n    int n = 7;\n    long long pref[8];\n    pref[0] = 0;\n    for (int i = 0; i < n; i++) pref[i + 1] = pref[i] + arr[i];\n    printf(\"Range sum [1, 4]: %lld\n\", pref[5] - pref[1]);\n    printf(\"Range sum [0, 6]: %lld\n\", pref[7] - pref[0]);\n    return 0;\n}\n```\n\n## Aliases & Shorthands\nAvailable via: `prog_cp_prefix_sums`, `competitive-programming.full-programs.range-queries.prefix-sums.prog-prefix-sums`, `competitive-programming>prog_cp_prefix_sums()`, `competitive-programming>full-programs>range-queries>prefix-sums>prog-prefix-sums>prog_cp_prefix_sums()`\n",
+    "documentation": "# prog_cp_prefix_sums\n> **Domain:** `competitive-programming` | **Subcategory:** `range-queries` | **Type:** `program`\n## Overview\nComplete competitive programming program answering 1D and 2D prefix sum range queries\n\n## Signature\n```c\nint main(void);\n```\n\n## Complexity Analysis\n- **Time Complexity:** `O(1)`\n- **Space Complexity:** `O(1)`\n\n## Edge Cases & Constraints\n- **NULL / Empty Input:** Function handles zero/NULL pointers gracefully without segfaulting.\n- **Boundary Conditions:** Bounds-checked against buffer boundaries and integer limits.\n- **Zero-Comment Invariant:** Code is 100% executable clean C code adhering strictly to library standards.\n\n## Implementation\n```c\n#include <stdio.h>\n\nint main(void) {\n    int arr[] = {3, 1, 4, 1, 5, 9, 2};\n    int n = 7;\n    long long pref[8];\n    pref[0] = 0;\n    for (int i = 0; i < n; i++) pref[i + 1] = pref[i] + arr[i];\n    printf(\"Range sum [1, 4]: %lld\\n\", pref[5] - pref[1]);\n    printf(\"Range sum [0, 6]: %lld\\n\", pref[7] - pref[0]);\n    return 0;\n}\n```\n\n## Aliases & Shorthands\nAvailable via: `prog_cp_prefix_sums`, `competitive-programming.full-programs.range-queries.prefix-sums.prog-prefix-sums`, `competitive-programming>prog_cp_prefix_sums()`, `competitive-programming>full-programs>range-queries>prefix-sums>prog-prefix-sums>prog_cp_prefix_sums()`\n",
     "version": "1.0.0",
     "dependencies": [],
     "tags": [
@@ -1990,8 +1990,8 @@
       "competitive-programming>prog_cp_prefix_sums()",
       "competitive-programming>full-programs>range-queries>prefix-sums>prog-prefix-sums>prog_cp_prefix_sums()"
     ],
-    "createdAt": "2026-09-17T09:35:42.934Z",
-    "updatedAt": "2026-09-17T09:35:42.934Z"
+    "createdAt": "2026-09-19T07:33:52.425Z",
+    "updatedAt": "2026-09-19T07:33:52.425Z"
   },
   {
     "id": "competitive-programming.full-programs.range-queries.difference-array.prog-difference-array",
@@ -2004,13 +2004,13 @@
     "path": "competitive-programming/full-programs/range-queries/difference-array/prog-difference-array",
     "description": "Complete competitive programming program applying O(1) range updates and generating final array",
     "signature": "int main(void);",
-    "code": "#include <stdio.h>\n\nint main(void) {\n    int n = 6;\n    long long diff[8] = {0};\n    diff[1] += 5; diff[4] -= 5;\n    diff[2] += 3; diff[6] -= 3;\n    diff[0] += 10; diff[2] -= 10;\n    long long res[6];\n    long long running = 0;\n    for (int i = 0; i < n; i++) {\n        running += diff[i];\n        res[i] = running;\n        printf(\"idx %d: %lld\n\", i, res[i]);\n    }\n    return 0;\n}",
+    "code": "#include <stdio.h>\n\nint main(void) {\n    int n = 6;\n    long long diff[8] = {0};\n    diff[1] += 5; diff[4] -= 5;\n    diff[2] += 3; diff[6] -= 3;\n    diff[0] += 10; diff[2] -= 10;\n    long long res[6];\n    long long running = 0;\n    for (int i = 0; i < n; i++) {\n        running += diff[i];\n        res[i] = running;\n        printf(\"idx %d: %lld\\n\", i, res[i]);\n    }\n    return 0;\n}",
     "complexity": {
       "time": "O(1)",
       "space": "O(1)"
     },
     "difficulty": "intermediate",
-    "documentation": "# prog_cp_difference_array\n> **Domain:** `competitive-programming` | **Subcategory:** `range-queries` | **Type:** `program`\n## Overview\nComplete competitive programming program applying O(1) range updates and generating final array\n\n## Signature\n```c\nint main(void);\n```\n\n## Complexity Analysis\n- **Time Complexity:** `O(1)`\n- **Space Complexity:** `O(1)`\n\n## Edge Cases & Constraints\n- **NULL / Empty Input:** Function handles zero/NULL pointers gracefully without segfaulting.\n- **Boundary Conditions:** Bounds-checked against buffer boundaries and integer limits.\n- **Zero-Comment Invariant:** Code is 100% executable clean C code adhering strictly to library standards.\n\n## Implementation\n```c\n#include <stdio.h>\n\nint main(void) {\n    int n = 6;\n    long long diff[8] = {0};\n    diff[1] += 5; diff[4] -= 5;\n    diff[2] += 3; diff[6] -= 3;\n    diff[0] += 10; diff[2] -= 10;\n    long long res[6];\n    long long running = 0;\n    for (int i = 0; i < n; i++) {\n        running += diff[i];\n        res[i] = running;\n        printf(\"idx %d: %lld\n\", i, res[i]);\n    }\n    return 0;\n}\n```\n\n## Aliases & Shorthands\nAvailable via: `prog_cp_difference_array`, `competitive-programming.full-programs.range-queries.difference-array.prog-difference-array`, `competitive-programming>prog_cp_difference_array()`, `competitive-programming>full-programs>range-queries>difference-array>prog-difference-array>prog_cp_difference_array()`\n",
+    "documentation": "# prog_cp_difference_array\n> **Domain:** `competitive-programming` | **Subcategory:** `range-queries` | **Type:** `program`\n## Overview\nComplete competitive programming program applying O(1) range updates and generating final array\n\n## Signature\n```c\nint main(void);\n```\n\n## Complexity Analysis\n- **Time Complexity:** `O(1)`\n- **Space Complexity:** `O(1)`\n\n## Edge Cases & Constraints\n- **NULL / Empty Input:** Function handles zero/NULL pointers gracefully without segfaulting.\n- **Boundary Conditions:** Bounds-checked against buffer boundaries and integer limits.\n- **Zero-Comment Invariant:** Code is 100% executable clean C code adhering strictly to library standards.\n\n## Implementation\n```c\n#include <stdio.h>\n\nint main(void) {\n    int n = 6;\n    long long diff[8] = {0};\n    diff[1] += 5; diff[4] -= 5;\n    diff[2] += 3; diff[6] -= 3;\n    diff[0] += 10; diff[2] -= 10;\n    long long res[6];\n    long long running = 0;\n    for (int i = 0; i < n; i++) {\n        running += diff[i];\n        res[i] = running;\n        printf(\"idx %d: %lld\\n\", i, res[i]);\n    }\n    return 0;\n}\n```\n\n## Aliases & Shorthands\nAvailable via: `prog_cp_difference_array`, `competitive-programming.full-programs.range-queries.difference-array.prog-difference-array`, `competitive-programming>prog_cp_difference_array()`, `competitive-programming>full-programs>range-queries>difference-array>prog-difference-array>prog_cp_difference_array()`\n",
     "version": "1.0.0",
     "dependencies": [],
     "tags": [
@@ -2024,8 +2024,8 @@
       "competitive-programming>prog_cp_difference_array()",
       "competitive-programming>full-programs>range-queries>difference-array>prog-difference-array>prog_cp_difference_array()"
     ],
-    "createdAt": "2026-09-17T09:35:42.934Z",
-    "updatedAt": "2026-09-17T09:35:42.934Z"
+    "createdAt": "2026-09-19T07:33:52.425Z",
+    "updatedAt": "2026-09-19T07:33:52.425Z"
   },
   {
     "id": "competitive-programming.full-programs.range-queries.two-pointers.prog-two-pointers",
@@ -2038,13 +2038,13 @@
     "path": "competitive-programming/full-programs/range-queries/two-pointers/prog-two-pointers",
     "description": "Complete competitive programming program demonstrating two pointers: pair sum and trapping water",
     "signature": "int main(void);",
-    "code": "#include <stdio.h>\n\nint pair_sum(const int* arr, int n, int target, int* out_i, int* out_j) {\n    int left = 0, right = n - 1;\n    while (left < right) {\n        int sum = arr[left] + arr[right];\n        if (sum == target) {\n            *out_i = left;\n            *out_j = right;\n            return 1;\n        }\n        if (sum < target) left++;\n        else right--;\n    }\n    return 0;\n}\n\nlong long trap_water(const int* h, int n) {\n    if (n <= 2) return 0;\n    int left = 0, right = n - 1;\n    int left_max = 0, right_max = 0;\n    long long water = 0;\n    while (left <= right) {\n        if (h[left] <= h[right]) {\n            if (h[left] >= left_max) left_max = h[left];\n            else water += (left_max - h[left]);\n            left++;\n        } else {\n            if (h[right] >= right_max) right_max = h[right];\n            else water += (right_max - h[right]);\n            right--;\n        }\n    }\n    return water;\n}\n\nint main(void) {\n    int arr[] = {2, 4, 7, 11, 15};\n    int i, j;\n    if (pair_sum(arr, 5, 15, &i, &j)) {\n        printf(\"Pair sum 15 found at indices %d and %d\n\", i, j);\n    }\n    int heights[] = {0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1};\n    printf(\"Trapped water: %lld\n\", trap_water(heights, 12));\n    return 0;\n}",
+    "code": "#include <stdio.h>\n\nint pair_sum(const int* arr, int n, int target, int* out_i, int* out_j) {\n    int left = 0, right = n - 1;\n    while (left < right) {\n        int sum = arr[left] + arr[right];\n        if (sum == target) {\n            *out_i = left;\n            *out_j = right;\n            return 1;\n        }\n        if (sum < target) left++;\n        else right--;\n    }\n    return 0;\n}\n\nlong long trap_water(const int* h, int n) {\n    if (n <= 2) return 0;\n    int left = 0, right = n - 1;\n    int left_max = 0, right_max = 0;\n    long long water = 0;\n    while (left <= right) {\n        if (h[left] <= h[right]) {\n            if (h[left] >= left_max) left_max = h[left];\n            else water += (left_max - h[left]);\n            left++;\n        } else {\n            if (h[right] >= right_max) right_max = h[right];\n            else water += (right_max - h[right]);\n            right--;\n        }\n    }\n    return water;\n}\n\nint main(void) {\n    int arr[] = {2, 4, 7, 11, 15};\n    int i, j;\n    if (pair_sum(arr, 5, 15, &i, &j)) {\n        printf(\"Pair sum 15 found at indices %d and %d\\n\", i, j);\n    }\n    int heights[] = {0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1};\n    printf(\"Trapped water: %lld\\n\", trap_water(heights, 12));\n    return 0;\n}",
     "complexity": {
       "time": "O(1)",
       "space": "O(1)"
     },
     "difficulty": "intermediate",
-    "documentation": "# prog_cp_two_pointers\n> **Domain:** `competitive-programming` | **Subcategory:** `range-queries` | **Type:** `program`\n## Overview\nComplete competitive programming program demonstrating two pointers: pair sum and trapping water\n\n## Signature\n```c\nint main(void);\n```\n\n## Complexity Analysis\n- **Time Complexity:** `O(1)`\n- **Space Complexity:** `O(1)`\n\n## Edge Cases & Constraints\n- **NULL / Empty Input:** Function handles zero/NULL pointers gracefully without segfaulting.\n- **Boundary Conditions:** Bounds-checked against buffer boundaries and integer limits.\n- **Zero-Comment Invariant:** Code is 100% executable clean C code adhering strictly to library standards.\n\n## Implementation\n```c\n#include <stdio.h>\n\nint pair_sum(const int* arr, int n, int target, int* out_i, int* out_j) {\n    int left = 0, right = n - 1;\n    while (left < right) {\n        int sum = arr[left] + arr[right];\n        if (sum == target) {\n            *out_i = left;\n            *out_j = right;\n            return 1;\n        }\n        if (sum < target) left++;\n        else right--;\n    }\n    return 0;\n}\n\nlong long trap_water(const int* h, int n) {\n    if (n <= 2) return 0;\n    int left = 0, right = n - 1;\n    int left_max = 0, right_max = 0;\n    long long water = 0;\n    while (left <= right) {\n        if (h[left] <= h[right]) {\n            if (h[left] >= left_max) left_max = h[left];\n            else water += (left_max - h[left]);\n            left++;\n        } else {\n            if (h[right] >= right_max) right_max = h[right];\n            else water += (right_max - h[right]);\n            right--;\n        }\n    }\n    return water;\n}\n\nint main(void) {\n    int arr[] = {2, 4, 7, 11, 15};\n    int i, j;\n    if (pair_sum(arr, 5, 15, &i, &j)) {\n        printf(\"Pair sum 15 found at indices %d and %d\n\", i, j);\n    }\n    int heights[] = {0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1};\n    printf(\"Trapped water: %lld\n\", trap_water(heights, 12));\n    return 0;\n}\n```\n\n## Aliases & Shorthands\nAvailable via: `prog_cp_two_pointers`, `competitive-programming.full-programs.range-queries.two-pointers.prog-two-pointers`, `competitive-programming>prog_cp_two_pointers()`, `competitive-programming>full-programs>range-queries>two-pointers>prog-two-pointers>prog_cp_two_pointers()`\n",
+    "documentation": "# prog_cp_two_pointers\n> **Domain:** `competitive-programming` | **Subcategory:** `range-queries` | **Type:** `program`\n## Overview\nComplete competitive programming program demonstrating two pointers: pair sum and trapping water\n\n## Signature\n```c\nint main(void);\n```\n\n## Complexity Analysis\n- **Time Complexity:** `O(1)`\n- **Space Complexity:** `O(1)`\n\n## Edge Cases & Constraints\n- **NULL / Empty Input:** Function handles zero/NULL pointers gracefully without segfaulting.\n- **Boundary Conditions:** Bounds-checked against buffer boundaries and integer limits.\n- **Zero-Comment Invariant:** Code is 100% executable clean C code adhering strictly to library standards.\n\n## Implementation\n```c\n#include <stdio.h>\n\nint pair_sum(const int* arr, int n, int target, int* out_i, int* out_j) {\n    int left = 0, right = n - 1;\n    while (left < right) {\n        int sum = arr[left] + arr[right];\n        if (sum == target) {\n            *out_i = left;\n            *out_j = right;\n            return 1;\n        }\n        if (sum < target) left++;\n        else right--;\n    }\n    return 0;\n}\n\nlong long trap_water(const int* h, int n) {\n    if (n <= 2) return 0;\n    int left = 0, right = n - 1;\n    int left_max = 0, right_max = 0;\n    long long water = 0;\n    while (left <= right) {\n        if (h[left] <= h[right]) {\n            if (h[left] >= left_max) left_max = h[left];\n            else water += (left_max - h[left]);\n            left++;\n        } else {\n            if (h[right] >= right_max) right_max = h[right];\n            else water += (right_max - h[right]);\n            right--;\n        }\n    }\n    return water;\n}\n\nint main(void) {\n    int arr[] = {2, 4, 7, 11, 15};\n    int i, j;\n    if (pair_sum(arr, 5, 15, &i, &j)) {\n        printf(\"Pair sum 15 found at indices %d and %d\\n\", i, j);\n    }\n    int heights[] = {0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1};\n    printf(\"Trapped water: %lld\\n\", trap_water(heights, 12));\n    return 0;\n}\n```\n\n## Aliases & Shorthands\nAvailable via: `prog_cp_two_pointers`, `competitive-programming.full-programs.range-queries.two-pointers.prog-two-pointers`, `competitive-programming>prog_cp_two_pointers()`, `competitive-programming>full-programs>range-queries>two-pointers>prog-two-pointers>prog_cp_two_pointers()`\n",
     "version": "1.0.0",
     "dependencies": [],
     "tags": [
@@ -2058,8 +2058,8 @@
       "competitive-programming>prog_cp_two_pointers()",
       "competitive-programming>full-programs>range-queries>two-pointers>prog-two-pointers>prog_cp_two_pointers()"
     ],
-    "createdAt": "2026-09-17T09:35:42.934Z",
-    "updatedAt": "2026-09-17T09:35:42.934Z"
+    "createdAt": "2026-09-19T07:33:52.425Z",
+    "updatedAt": "2026-09-19T07:33:52.425Z"
   },
   {
     "id": "competitive-programming.full-programs.range-queries.sliding-window.prog-sliding-window",
@@ -2072,13 +2072,13 @@
     "path": "competitive-programming/full-programs/range-queries/sliding-window/prog-sliding-window",
     "description": "Complete competitive programming program executing fixed and variable sliding windows",
     "signature": "int main(void);",
-    "code": "#include <stdio.h>\n\nlong long max_fixed_window(const int* arr, int n, int k) {\n    if (n < k || k <= 0) return 0;\n    long long cur = 0;\n    for (int i = 0; i < k; i++) cur += arr[i];\n    long long max_sum = cur;\n    for (int i = k; i < n; i++) {\n        cur += arr[i] - arr[i - k];\n        if (cur > max_sum) max_sum = cur;\n    }\n    return max_sum;\n}\n\nint min_len_subarray(const int* arr, int n, long long target) {\n    int min_len = n + 1;\n    long long cur = 0;\n    int left = 0;\n    for (int right = 0; right < n; right++) {\n        cur += arr[right];\n        while (cur >= target) {\n            int len = right - left + 1;\n            if (len < min_len) min_len = len;\n            cur -= arr[left++];\n        }\n    }\n    return (min_len <= n) ? min_len : 0;\n}\n\nint main(void) {\n    int arr[] = {2, 3, 1, 2, 4, 3};\n    int n = 6;\n    printf(\"Max sum of window 3: %lld\n\", max_fixed_window(arr, n, 3));\n    printf(\"Min len for sum >= 7: %d\n\", min_len_subarray(arr, n, 7));\n    return 0;\n}",
+    "code": "#include <stdio.h>\n\nlong long max_fixed_window(const int* arr, int n, int k) {\n    if (n < k || k <= 0) return 0;\n    long long cur = 0;\n    for (int i = 0; i < k; i++) cur += arr[i];\n    long long max_sum = cur;\n    for (int i = k; i < n; i++) {\n        cur += arr[i] - arr[i - k];\n        if (cur > max_sum) max_sum = cur;\n    }\n    return max_sum;\n}\n\nint min_len_subarray(const int* arr, int n, long long target) {\n    int min_len = n + 1;\n    long long cur = 0;\n    int left = 0;\n    for (int right = 0; right < n; right++) {\n        cur += arr[right];\n        while (cur >= target) {\n            int len = right - left + 1;\n            if (len < min_len) min_len = len;\n            cur -= arr[left++];\n        }\n    }\n    return (min_len <= n) ? min_len : 0;\n}\n\nint main(void) {\n    int arr[] = {2, 3, 1, 2, 4, 3};\n    int n = 6;\n    printf(\"Max sum of window 3: %lld\\n\", max_fixed_window(arr, n, 3));\n    printf(\"Min len for sum >= 7: %d\\n\", min_len_subarray(arr, n, 7));\n    return 0;\n}",
     "complexity": {
       "time": "O(1)",
       "space": "O(1)"
     },
     "difficulty": "intermediate",
-    "documentation": "# prog_cp_sliding_window\n> **Domain:** `competitive-programming` | **Subcategory:** `range-queries` | **Type:** `program`\n## Overview\nComplete competitive programming program executing fixed and variable sliding windows\n\n## Signature\n```c\nint main(void);\n```\n\n## Complexity Analysis\n- **Time Complexity:** `O(1)`\n- **Space Complexity:** `O(1)`\n\n## Edge Cases & Constraints\n- **NULL / Empty Input:** Function handles zero/NULL pointers gracefully without segfaulting.\n- **Boundary Conditions:** Bounds-checked against buffer boundaries and integer limits.\n- **Zero-Comment Invariant:** Code is 100% executable clean C code adhering strictly to library standards.\n\n## Implementation\n```c\n#include <stdio.h>\n\nlong long max_fixed_window(const int* arr, int n, int k) {\n    if (n < k || k <= 0) return 0;\n    long long cur = 0;\n    for (int i = 0; i < k; i++) cur += arr[i];\n    long long max_sum = cur;\n    for (int i = k; i < n; i++) {\n        cur += arr[i] - arr[i - k];\n        if (cur > max_sum) max_sum = cur;\n    }\n    return max_sum;\n}\n\nint min_len_subarray(const int* arr, int n, long long target) {\n    int min_len = n + 1;\n    long long cur = 0;\n    int left = 0;\n    for (int right = 0; right < n; right++) {\n        cur += arr[right];\n        while (cur >= target) {\n            int len = right - left + 1;\n            if (len < min_len) min_len = len;\n            cur -= arr[left++];\n        }\n    }\n    return (min_len <= n) ? min_len : 0;\n}\n\nint main(void) {\n    int arr[] = {2, 3, 1, 2, 4, 3};\n    int n = 6;\n    printf(\"Max sum of window 3: %lld\n\", max_fixed_window(arr, n, 3));\n    printf(\"Min len for sum >= 7: %d\n\", min_len_subarray(arr, n, 7));\n    return 0;\n}\n```\n\n## Aliases & Shorthands\nAvailable via: `prog_cp_sliding_window`, `competitive-programming.full-programs.range-queries.sliding-window.prog-sliding-window`, `competitive-programming>prog_cp_sliding_window()`, `competitive-programming>full-programs>range-queries>sliding-window>prog-sliding-window>prog_cp_sliding_window()`\n",
+    "documentation": "# prog_cp_sliding_window\n> **Domain:** `competitive-programming` | **Subcategory:** `range-queries` | **Type:** `program`\n## Overview\nComplete competitive programming program executing fixed and variable sliding windows\n\n## Signature\n```c\nint main(void);\n```\n\n## Complexity Analysis\n- **Time Complexity:** `O(1)`\n- **Space Complexity:** `O(1)`\n\n## Edge Cases & Constraints\n- **NULL / Empty Input:** Function handles zero/NULL pointers gracefully without segfaulting.\n- **Boundary Conditions:** Bounds-checked against buffer boundaries and integer limits.\n- **Zero-Comment Invariant:** Code is 100% executable clean C code adhering strictly to library standards.\n\n## Implementation\n```c\n#include <stdio.h>\n\nlong long max_fixed_window(const int* arr, int n, int k) {\n    if (n < k || k <= 0) return 0;\n    long long cur = 0;\n    for (int i = 0; i < k; i++) cur += arr[i];\n    long long max_sum = cur;\n    for (int i = k; i < n; i++) {\n        cur += arr[i] - arr[i - k];\n        if (cur > max_sum) max_sum = cur;\n    }\n    return max_sum;\n}\n\nint min_len_subarray(const int* arr, int n, long long target) {\n    int min_len = n + 1;\n    long long cur = 0;\n    int left = 0;\n    for (int right = 0; right < n; right++) {\n        cur += arr[right];\n        while (cur >= target) {\n            int len = right - left + 1;\n            if (len < min_len) min_len = len;\n            cur -= arr[left++];\n        }\n    }\n    return (min_len <= n) ? min_len : 0;\n}\n\nint main(void) {\n    int arr[] = {2, 3, 1, 2, 4, 3};\n    int n = 6;\n    printf(\"Max sum of window 3: %lld\\n\", max_fixed_window(arr, n, 3));\n    printf(\"Min len for sum >= 7: %d\\n\", min_len_subarray(arr, n, 7));\n    return 0;\n}\n```\n\n## Aliases & Shorthands\nAvailable via: `prog_cp_sliding_window`, `competitive-programming.full-programs.range-queries.sliding-window.prog-sliding-window`, `competitive-programming>prog_cp_sliding_window()`, `competitive-programming>full-programs>range-queries>sliding-window>prog-sliding-window>prog_cp_sliding_window()`\n",
     "version": "1.0.0",
     "dependencies": [],
     "tags": [
@@ -2092,8 +2092,8 @@
       "competitive-programming>prog_cp_sliding_window()",
       "competitive-programming>full-programs>range-queries>sliding-window>prog-sliding-window>prog_cp_sliding_window()"
     ],
-    "createdAt": "2026-09-17T09:35:42.934Z",
-    "updatedAt": "2026-09-17T09:35:42.934Z"
+    "createdAt": "2026-09-19T07:33:52.425Z",
+    "updatedAt": "2026-09-19T07:33:52.425Z"
   },
   {
     "id": "competitive-programming.full-programs.cp-data-structures.fenwick-tree.prog-fenwick-tree",
@@ -2106,13 +2106,13 @@
     "path": "competitive-programming/full-programs/cp-data-structures/fenwick-tree/prog-fenwick-tree",
     "description": "Complete competitive programming program executing point updates and range queries on a Fenwick tree",
     "signature": "int main(void);",
-    "code": "#include <stdio.h>\n\nvoid fenwick_update(long long* tree, int n, int idx, long long delta) {\n    while (idx <= n) {\n        tree[idx] += delta;\n        idx += (idx & (-idx));\n    }\n}\n\nlong long fenwick_query(const long long* tree, int idx) {\n    long long sum = 0;\n    while (idx > 0) {\n        sum += tree[idx];\n        idx -= (idx & (-idx));\n    }\n    return sum;\n}\n\nint main(void) {\n    int n = 8;\n    long long tree[9] = {0};\n    int initial[] = {0, 1, 3, 5, 7, 9, 11, 13, 15};\n    for (int i = 1; i <= n; i++) {\n        fenwick_update(tree, n, i, initial[i]);\n    }\n    printf(\"Prefix sum(5): %lld\n\", fenwick_query(tree, 5));\n    printf(\"Range sum(3..6): %lld\n\", fenwick_query(tree, 6) - fenwick_query(tree, 2));\n    fenwick_update(tree, n, 4, 10);\n    printf(\"Range sum(3..6) after +10 at idx 4: %lld\n\", fenwick_query(tree, 6) - fenwick_query(tree, 2));\n    return 0;\n}",
+    "code": "#include <stdio.h>\n\nvoid fenwick_update(long long* tree, int n, int idx, long long delta) {\n    while (idx <= n) {\n        tree[idx] += delta;\n        idx += (idx & (-idx));\n    }\n}\n\nlong long fenwick_query(const long long* tree, int idx) {\n    long long sum = 0;\n    while (idx > 0) {\n        sum += tree[idx];\n        idx -= (idx & (-idx));\n    }\n    return sum;\n}\n\nint main(void) {\n    int n = 8;\n    long long tree[9] = {0};\n    int initial[] = {0, 1, 3, 5, 7, 9, 11, 13, 15};\n    for (int i = 1; i <= n; i++) {\n        fenwick_update(tree, n, i, initial[i]);\n    }\n    printf(\"Prefix sum(5): %lld\\n\", fenwick_query(tree, 5));\n    printf(\"Range sum(3..6): %lld\\n\", fenwick_query(tree, 6) - fenwick_query(tree, 2));\n    fenwick_update(tree, n, 4, 10);\n    printf(\"Range sum(3..6) after +10 at idx 4: %lld\\n\", fenwick_query(tree, 6) - fenwick_query(tree, 2));\n    return 0;\n}",
     "complexity": {
       "time": "O(1)",
       "space": "O(1)"
     },
     "difficulty": "intermediate",
-    "documentation": "# prog_cp_fenwick_tree\n> **Domain:** `competitive-programming` | **Subcategory:** `cp-data-structures` | **Type:** `program`\n## Overview\nComplete competitive programming program executing point updates and range queries on a Fenwick tree\n\n## Signature\n```c\nint main(void);\n```\n\n## Complexity Analysis\n- **Time Complexity:** `O(1)`\n- **Space Complexity:** `O(1)`\n\n## Edge Cases & Constraints\n- **NULL / Empty Input:** Function handles zero/NULL pointers gracefully without segfaulting.\n- **Boundary Conditions:** Bounds-checked against buffer boundaries and integer limits.\n- **Zero-Comment Invariant:** Code is 100% executable clean C code adhering strictly to library standards.\n\n## Implementation\n```c\n#include <stdio.h>\n\nvoid fenwick_update(long long* tree, int n, int idx, long long delta) {\n    while (idx <= n) {\n        tree[idx] += delta;\n        idx += (idx & (-idx));\n    }\n}\n\nlong long fenwick_query(const long long* tree, int idx) {\n    long long sum = 0;\n    while (idx > 0) {\n        sum += tree[idx];\n        idx -= (idx & (-idx));\n    }\n    return sum;\n}\n\nint main(void) {\n    int n = 8;\n    long long tree[9] = {0};\n    int initial[] = {0, 1, 3, 5, 7, 9, 11, 13, 15};\n    for (int i = 1; i <= n; i++) {\n        fenwick_update(tree, n, i, initial[i]);\n    }\n    printf(\"Prefix sum(5): %lld\n\", fenwick_query(tree, 5));\n    printf(\"Range sum(3..6): %lld\n\", fenwick_query(tree, 6) - fenwick_query(tree, 2));\n    fenwick_update(tree, n, 4, 10);\n    printf(\"Range sum(3..6) after +10 at idx 4: %lld\n\", fenwick_query(tree, 6) - fenwick_query(tree, 2));\n    return 0;\n}\n```\n\n## Aliases & Shorthands\nAvailable via: `prog_cp_fenwick_tree`, `competitive-programming.full-programs.cp-data-structures.fenwick-tree.prog-fenwick-tree`, `competitive-programming>prog_cp_fenwick_tree()`, `competitive-programming>full-programs>cp-data-structures>fenwick-tree>prog-fenwick-tree>prog_cp_fenwick_tree()`\n",
+    "documentation": "# prog_cp_fenwick_tree\n> **Domain:** `competitive-programming` | **Subcategory:** `cp-data-structures` | **Type:** `program`\n## Overview\nComplete competitive programming program executing point updates and range queries on a Fenwick tree\n\n## Signature\n```c\nint main(void);\n```\n\n## Complexity Analysis\n- **Time Complexity:** `O(1)`\n- **Space Complexity:** `O(1)`\n\n## Edge Cases & Constraints\n- **NULL / Empty Input:** Function handles zero/NULL pointers gracefully without segfaulting.\n- **Boundary Conditions:** Bounds-checked against buffer boundaries and integer limits.\n- **Zero-Comment Invariant:** Code is 100% executable clean C code adhering strictly to library standards.\n\n## Implementation\n```c\n#include <stdio.h>\n\nvoid fenwick_update(long long* tree, int n, int idx, long long delta) {\n    while (idx <= n) {\n        tree[idx] += delta;\n        idx += (idx & (-idx));\n    }\n}\n\nlong long fenwick_query(const long long* tree, int idx) {\n    long long sum = 0;\n    while (idx > 0) {\n        sum += tree[idx];\n        idx -= (idx & (-idx));\n    }\n    return sum;\n}\n\nint main(void) {\n    int n = 8;\n    long long tree[9] = {0};\n    int initial[] = {0, 1, 3, 5, 7, 9, 11, 13, 15};\n    for (int i = 1; i <= n; i++) {\n        fenwick_update(tree, n, i, initial[i]);\n    }\n    printf(\"Prefix sum(5): %lld\\n\", fenwick_query(tree, 5));\n    printf(\"Range sum(3..6): %lld\\n\", fenwick_query(tree, 6) - fenwick_query(tree, 2));\n    fenwick_update(tree, n, 4, 10);\n    printf(\"Range sum(3..6) after +10 at idx 4: %lld\\n\", fenwick_query(tree, 6) - fenwick_query(tree, 2));\n    return 0;\n}\n```\n\n## Aliases & Shorthands\nAvailable via: `prog_cp_fenwick_tree`, `competitive-programming.full-programs.cp-data-structures.fenwick-tree.prog-fenwick-tree`, `competitive-programming>prog_cp_fenwick_tree()`, `competitive-programming>full-programs>cp-data-structures>fenwick-tree>prog-fenwick-tree>prog_cp_fenwick_tree()`\n",
     "version": "1.0.0",
     "dependencies": [],
     "tags": [
@@ -2126,8 +2126,8 @@
       "competitive-programming>prog_cp_fenwick_tree()",
       "competitive-programming>full-programs>cp-data-structures>fenwick-tree>prog-fenwick-tree>prog_cp_fenwick_tree()"
     ],
-    "createdAt": "2026-09-17T09:35:42.934Z",
-    "updatedAt": "2026-09-17T09:35:42.934Z"
+    "createdAt": "2026-09-19T07:33:52.425Z",
+    "updatedAt": "2026-09-19T07:33:52.425Z"
   },
   {
     "id": "competitive-programming.full-programs.cp-data-structures.segment-tree.prog-segment-tree",
@@ -2140,13 +2140,13 @@
     "path": "competitive-programming/full-programs/cp-data-structures/segment-tree/prog-segment-tree",
     "description": "Complete competitive programming program executing range minimum queries and point updates",
     "signature": "int main(void);",
-    "code": "#include <stdio.h>\n\nvoid seg_build(long long* tree, const int* arr, int node, int start, int end) {\n    if (start == end) {\n        tree[node] = arr[start];\n        return;\n    }\n    int mid = start + (end - start) / 2;\n    seg_build(tree, arr, 2 * node, start, mid);\n    seg_build(tree, arr, 2 * node + 1, mid + 1, end);\n    tree[node] = (tree[2 * node] < tree[2 * node + 1]) ? tree[2 * node] : tree[2 * node + 1];\n}\n\nvoid seg_update(long long* tree, int node, int start, int end, int idx, long long val) {\n    if (start == end) {\n        tree[node] = val;\n        return;\n    }\n    int mid = start + (end - start) / 2;\n    if (idx <= mid) seg_update(tree, 2 * node, start, mid, idx, val);\n    else seg_update(tree, 2 * node + 1, mid + 1, end, idx, val);\n    tree[node] = (tree[2 * node] < tree[2 * node + 1]) ? tree[2 * node] : tree[2 * node + 1];\n}\n\nlong long seg_query(const long long* tree, int node, int start, int end, int l, int r) {\n    if (r < start || end < l) return 9223372036854775807LL;\n    if (l <= start && end <= r) return tree[node];\n    int mid = start + (end - start) / 2;\n    long long l_min = seg_query(tree, 2 * node, start, mid, l, r);\n    long long r_min = seg_query(tree, 2 * node + 1, mid + 1, end, l, r);\n    return (l_min < r_min) ? l_min : r_min;\n}\n\nint main(void) {\n    int arr[] = {18, 17, 13, 19, 15, 11, 20};\n    int n = 7;\n    long long tree[30];\n    seg_build(tree, arr, 1, 0, n - 1);\n    printf(\"Min in range [1, 4]: %lld\n\", seg_query(tree, 1, 0, n - 1, 1, 4));\n    seg_update(tree, 1, 0, n - 1, 2, 5);\n    printf(\"Min in range [1, 4] after update idx 2 to 5: %lld\n\", seg_query(tree, 1, 0, n - 1, 1, 4));\n    return 0;\n}",
+    "code": "#include <stdio.h>\n\nvoid seg_build(long long* tree, const int* arr, int node, int start, int end) {\n    if (start == end) {\n        tree[node] = arr[start];\n        return;\n    }\n    int mid = start + (end - start) / 2;\n    seg_build(tree, arr, 2 * node, start, mid);\n    seg_build(tree, arr, 2 * node + 1, mid + 1, end);\n    tree[node] = (tree[2 * node] < tree[2 * node + 1]) ? tree[2 * node] : tree[2 * node + 1];\n}\n\nvoid seg_update(long long* tree, int node, int start, int end, int idx, long long val) {\n    if (start == end) {\n        tree[node] = val;\n        return;\n    }\n    int mid = start + (end - start) / 2;\n    if (idx <= mid) seg_update(tree, 2 * node, start, mid, idx, val);\n    else seg_update(tree, 2 * node + 1, mid + 1, end, idx, val);\n    tree[node] = (tree[2 * node] < tree[2 * node + 1]) ? tree[2 * node] : tree[2 * node + 1];\n}\n\nlong long seg_query(const long long* tree, int node, int start, int end, int l, int r) {\n    if (r < start || end < l) return 9223372036854775807LL;\n    if (l <= start && end <= r) return tree[node];\n    int mid = start + (end - start) / 2;\n    long long l_min = seg_query(tree, 2 * node, start, mid, l, r);\n    long long r_min = seg_query(tree, 2 * node + 1, mid + 1, end, l, r);\n    return (l_min < r_min) ? l_min : r_min;\n}\n\nint main(void) {\n    int arr[] = {18, 17, 13, 19, 15, 11, 20};\n    int n = 7;\n    long long tree[30];\n    seg_build(tree, arr, 1, 0, n - 1);\n    printf(\"Min in range [1, 4]: %lld\\n\", seg_query(tree, 1, 0, n - 1, 1, 4));\n    seg_update(tree, 1, 0, n - 1, 2, 5);\n    printf(\"Min in range [1, 4] after update idx 2 to 5: %lld\\n\", seg_query(tree, 1, 0, n - 1, 1, 4));\n    return 0;\n}",
     "complexity": {
       "time": "O(1)",
       "space": "O(1)"
     },
     "difficulty": "intermediate",
-    "documentation": "# prog_cp_segment_tree\n> **Domain:** `competitive-programming` | **Subcategory:** `cp-data-structures` | **Type:** `program`\n## Overview\nComplete competitive programming program executing range minimum queries and point updates\n\n## Signature\n```c\nint main(void);\n```\n\n## Complexity Analysis\n- **Time Complexity:** `O(1)`\n- **Space Complexity:** `O(1)`\n\n## Edge Cases & Constraints\n- **NULL / Empty Input:** Function handles zero/NULL pointers gracefully without segfaulting.\n- **Boundary Conditions:** Bounds-checked against buffer boundaries and integer limits.\n- **Zero-Comment Invariant:** Code is 100% executable clean C code adhering strictly to library standards.\n\n## Implementation\n```c\n#include <stdio.h>\n\nvoid seg_build(long long* tree, const int* arr, int node, int start, int end) {\n    if (start == end) {\n        tree[node] = arr[start];\n        return;\n    }\n    int mid = start + (end - start) / 2;\n    seg_build(tree, arr, 2 * node, start, mid);\n    seg_build(tree, arr, 2 * node + 1, mid + 1, end);\n    tree[node] = (tree[2 * node] < tree[2 * node + 1]) ? tree[2 * node] : tree[2 * node + 1];\n}\n\nvoid seg_update(long long* tree, int node, int start, int end, int idx, long long val) {\n    if (start == end) {\n        tree[node] = val;\n        return;\n    }\n    int mid = start + (end - start) / 2;\n    if (idx <= mid) seg_update(tree, 2 * node, start, mid, idx, val);\n    else seg_update(tree, 2 * node + 1, mid + 1, end, idx, val);\n    tree[node] = (tree[2 * node] < tree[2 * node + 1]) ? tree[2 * node] : tree[2 * node + 1];\n}\n\nlong long seg_query(const long long* tree, int node, int start, int end, int l, int r) {\n    if (r < start || end < l) return 9223372036854775807LL;\n    if (l <= start && end <= r) return tree[node];\n    int mid = start + (end - start) / 2;\n    long long l_min = seg_query(tree, 2 * node, start, mid, l, r);\n    long long r_min = seg_query(tree, 2 * node + 1, mid + 1, end, l, r);\n    return (l_min < r_min) ? l_min : r_min;\n}\n\nint main(void) {\n    int arr[] = {18, 17, 13, 19, 15, 11, 20};\n    int n = 7;\n    long long tree[30];\n    seg_build(tree, arr, 1, 0, n - 1);\n    printf(\"Min in range [1, 4]: %lld\n\", seg_query(tree, 1, 0, n - 1, 1, 4));\n    seg_update(tree, 1, 0, n - 1, 2, 5);\n    printf(\"Min in range [1, 4] after update idx 2 to 5: %lld\n\", seg_query(tree, 1, 0, n - 1, 1, 4));\n    return 0;\n}\n```\n\n## Aliases & Shorthands\nAvailable via: `prog_cp_segment_tree`, `competitive-programming.full-programs.cp-data-structures.segment-tree.prog-segment-tree`, `competitive-programming>prog_cp_segment_tree()`, `competitive-programming>full-programs>cp-data-structures>segment-tree>prog-segment-tree>prog_cp_segment_tree()`\n",
+    "documentation": "# prog_cp_segment_tree\n> **Domain:** `competitive-programming` | **Subcategory:** `cp-data-structures` | **Type:** `program`\n## Overview\nComplete competitive programming program executing range minimum queries and point updates\n\n## Signature\n```c\nint main(void);\n```\n\n## Complexity Analysis\n- **Time Complexity:** `O(1)`\n- **Space Complexity:** `O(1)`\n\n## Edge Cases & Constraints\n- **NULL / Empty Input:** Function handles zero/NULL pointers gracefully without segfaulting.\n- **Boundary Conditions:** Bounds-checked against buffer boundaries and integer limits.\n- **Zero-Comment Invariant:** Code is 100% executable clean C code adhering strictly to library standards.\n\n## Implementation\n```c\n#include <stdio.h>\n\nvoid seg_build(long long* tree, const int* arr, int node, int start, int end) {\n    if (start == end) {\n        tree[node] = arr[start];\n        return;\n    }\n    int mid = start + (end - start) / 2;\n    seg_build(tree, arr, 2 * node, start, mid);\n    seg_build(tree, arr, 2 * node + 1, mid + 1, end);\n    tree[node] = (tree[2 * node] < tree[2 * node + 1]) ? tree[2 * node] : tree[2 * node + 1];\n}\n\nvoid seg_update(long long* tree, int node, int start, int end, int idx, long long val) {\n    if (start == end) {\n        tree[node] = val;\n        return;\n    }\n    int mid = start + (end - start) / 2;\n    if (idx <= mid) seg_update(tree, 2 * node, start, mid, idx, val);\n    else seg_update(tree, 2 * node + 1, mid + 1, end, idx, val);\n    tree[node] = (tree[2 * node] < tree[2 * node + 1]) ? tree[2 * node] : tree[2 * node + 1];\n}\n\nlong long seg_query(const long long* tree, int node, int start, int end, int l, int r) {\n    if (r < start || end < l) return 9223372036854775807LL;\n    if (l <= start && end <= r) return tree[node];\n    int mid = start + (end - start) / 2;\n    long long l_min = seg_query(tree, 2 * node, start, mid, l, r);\n    long long r_min = seg_query(tree, 2 * node + 1, mid + 1, end, l, r);\n    return (l_min < r_min) ? l_min : r_min;\n}\n\nint main(void) {\n    int arr[] = {18, 17, 13, 19, 15, 11, 20};\n    int n = 7;\n    long long tree[30];\n    seg_build(tree, arr, 1, 0, n - 1);\n    printf(\"Min in range [1, 4]: %lld\\n\", seg_query(tree, 1, 0, n - 1, 1, 4));\n    seg_update(tree, 1, 0, n - 1, 2, 5);\n    printf(\"Min in range [1, 4] after update idx 2 to 5: %lld\\n\", seg_query(tree, 1, 0, n - 1, 1, 4));\n    return 0;\n}\n```\n\n## Aliases & Shorthands\nAvailable via: `prog_cp_segment_tree`, `competitive-programming.full-programs.cp-data-structures.segment-tree.prog-segment-tree`, `competitive-programming>prog_cp_segment_tree()`, `competitive-programming>full-programs>cp-data-structures>segment-tree>prog-segment-tree>prog_cp_segment_tree()`\n",
     "version": "1.0.0",
     "dependencies": [],
     "tags": [
@@ -2160,8 +2160,8 @@
       "competitive-programming>prog_cp_segment_tree()",
       "competitive-programming>full-programs>cp-data-structures>segment-tree>prog-segment-tree>prog_cp_segment_tree()"
     ],
-    "createdAt": "2026-09-17T09:35:42.934Z",
-    "updatedAt": "2026-09-17T09:35:42.934Z"
+    "createdAt": "2026-09-19T07:33:52.425Z",
+    "updatedAt": "2026-09-19T07:33:52.425Z"
   },
   {
     "id": "competitive-programming.full-programs.cp-data-structures.disjoint-set.prog-disjoint-set",
@@ -2174,13 +2174,13 @@
     "path": "competitive-programming/full-programs/cp-data-structures/disjoint-set/prog-disjoint-set",
     "description": "Complete competitive programming program executing DSU unions and detecting cycle connections",
     "signature": "int main(void);",
-    "code": "#include <stdio.h>\n\nint dsu_find(int* parent, int i) {\n    if (parent[i] == i) return i;\n    parent[i] = dsu_find(parent, parent[i]);\n    return parent[i];\n}\n\nint dsu_union(int* parent, int* rank, int i, int j) {\n    int root_i = dsu_find(parent, i);\n    int root_j = dsu_find(parent, j);\n    if (root_i == root_j) return 0;\n    if (rank[root_i] < rank[root_j]) {\n        parent[root_i] = root_j;\n    } else if (rank[root_i] > rank[root_j]) {\n        parent[root_j] = root_i;\n    } else {\n        parent[root_j] = root_i;\n        rank[root_i]++;\n    }\n    return 1;\n}\n\nint main(void) {\n    int n = 5;\n    int parent[5], rank[5];\n    for (int i = 0; i < n; i++) { parent[i] = i; rank[i] = 0; }\n    dsu_union(parent, rank, 0, 1);\n    dsu_union(parent, rank, 2, 3);\n    dsu_union(parent, rank, 1, 2);\n    printf(\"Are 0 and 3 connected: %s\n\", dsu_find(parent, 0) == dsu_find(parent, 3) ? \"Yes\" : \"No\");\n    printf(\"Are 0 and 4 connected: %s\n\", dsu_find(parent, 0) == dsu_find(parent, 4) ? \"Yes\" : \"No\");\n    return 0;\n}",
+    "code": "#include <stdio.h>\n\nint dsu_find(int* parent, int i) {\n    if (parent[i] == i) return i;\n    parent[i] = dsu_find(parent, parent[i]);\n    return parent[i];\n}\n\nint dsu_union(int* parent, int* rank, int i, int j) {\n    int root_i = dsu_find(parent, i);\n    int root_j = dsu_find(parent, j);\n    if (root_i == root_j) return 0;\n    if (rank[root_i] < rank[root_j]) {\n        parent[root_i] = root_j;\n    } else if (rank[root_i] > rank[root_j]) {\n        parent[root_j] = root_i;\n    } else {\n        parent[root_j] = root_i;\n        rank[root_i]++;\n    }\n    return 1;\n}\n\nint main(void) {\n    int n = 5;\n    int parent[5], rank[5];\n    for (int i = 0; i < n; i++) { parent[i] = i; rank[i] = 0; }\n    dsu_union(parent, rank, 0, 1);\n    dsu_union(parent, rank, 2, 3);\n    dsu_union(parent, rank, 1, 2);\n    printf(\"Are 0 and 3 connected: %s\\n\", dsu_find(parent, 0) == dsu_find(parent, 3) ? \"Yes\" : \"No\");\n    printf(\"Are 0 and 4 connected: %s\\n\", dsu_find(parent, 0) == dsu_find(parent, 4) ? \"Yes\" : \"No\");\n    return 0;\n}",
     "complexity": {
       "time": "O(1)",
       "space": "O(1)"
     },
     "difficulty": "intermediate",
-    "documentation": "# prog_cp_disjoint_set\n> **Domain:** `competitive-programming` | **Subcategory:** `cp-data-structures` | **Type:** `program`\n## Overview\nComplete competitive programming program executing DSU unions and detecting cycle connections\n\n## Signature\n```c\nint main(void);\n```\n\n## Complexity Analysis\n- **Time Complexity:** `O(1)`\n- **Space Complexity:** `O(1)`\n\n## Edge Cases & Constraints\n- **NULL / Empty Input:** Function handles zero/NULL pointers gracefully without segfaulting.\n- **Boundary Conditions:** Bounds-checked against buffer boundaries and integer limits.\n- **Zero-Comment Invariant:** Code is 100% executable clean C code adhering strictly to library standards.\n\n## Implementation\n```c\n#include <stdio.h>\n\nint dsu_find(int* parent, int i) {\n    if (parent[i] == i) return i;\n    parent[i] = dsu_find(parent, parent[i]);\n    return parent[i];\n}\n\nint dsu_union(int* parent, int* rank, int i, int j) {\n    int root_i = dsu_find(parent, i);\n    int root_j = dsu_find(parent, j);\n    if (root_i == root_j) return 0;\n    if (rank[root_i] < rank[root_j]) {\n        parent[root_i] = root_j;\n    } else if (rank[root_i] > rank[root_j]) {\n        parent[root_j] = root_i;\n    } else {\n        parent[root_j] = root_i;\n        rank[root_i]++;\n    }\n    return 1;\n}\n\nint main(void) {\n    int n = 5;\n    int parent[5], rank[5];\n    for (int i = 0; i < n; i++) { parent[i] = i; rank[i] = 0; }\n    dsu_union(parent, rank, 0, 1);\n    dsu_union(parent, rank, 2, 3);\n    dsu_union(parent, rank, 1, 2);\n    printf(\"Are 0 and 3 connected: %s\n\", dsu_find(parent, 0) == dsu_find(parent, 3) ? \"Yes\" : \"No\");\n    printf(\"Are 0 and 4 connected: %s\n\", dsu_find(parent, 0) == dsu_find(parent, 4) ? \"Yes\" : \"No\");\n    return 0;\n}\n```\n\n## Aliases & Shorthands\nAvailable via: `prog_cp_disjoint_set`, `competitive-programming.full-programs.cp-data-structures.disjoint-set.prog-disjoint-set`, `competitive-programming>prog_cp_disjoint_set()`, `competitive-programming>full-programs>cp-data-structures>disjoint-set>prog-disjoint-set>prog_cp_disjoint_set()`\n",
+    "documentation": "# prog_cp_disjoint_set\n> **Domain:** `competitive-programming` | **Subcategory:** `cp-data-structures` | **Type:** `program`\n## Overview\nComplete competitive programming program executing DSU unions and detecting cycle connections\n\n## Signature\n```c\nint main(void);\n```\n\n## Complexity Analysis\n- **Time Complexity:** `O(1)`\n- **Space Complexity:** `O(1)`\n\n## Edge Cases & Constraints\n- **NULL / Empty Input:** Function handles zero/NULL pointers gracefully without segfaulting.\n- **Boundary Conditions:** Bounds-checked against buffer boundaries and integer limits.\n- **Zero-Comment Invariant:** Code is 100% executable clean C code adhering strictly to library standards.\n\n## Implementation\n```c\n#include <stdio.h>\n\nint dsu_find(int* parent, int i) {\n    if (parent[i] == i) return i;\n    parent[i] = dsu_find(parent, parent[i]);\n    return parent[i];\n}\n\nint dsu_union(int* parent, int* rank, int i, int j) {\n    int root_i = dsu_find(parent, i);\n    int root_j = dsu_find(parent, j);\n    if (root_i == root_j) return 0;\n    if (rank[root_i] < rank[root_j]) {\n        parent[root_i] = root_j;\n    } else if (rank[root_i] > rank[root_j]) {\n        parent[root_j] = root_i;\n    } else {\n        parent[root_j] = root_i;\n        rank[root_i]++;\n    }\n    return 1;\n}\n\nint main(void) {\n    int n = 5;\n    int parent[5], rank[5];\n    for (int i = 0; i < n; i++) { parent[i] = i; rank[i] = 0; }\n    dsu_union(parent, rank, 0, 1);\n    dsu_union(parent, rank, 2, 3);\n    dsu_union(parent, rank, 1, 2);\n    printf(\"Are 0 and 3 connected: %s\\n\", dsu_find(parent, 0) == dsu_find(parent, 3) ? \"Yes\" : \"No\");\n    printf(\"Are 0 and 4 connected: %s\\n\", dsu_find(parent, 0) == dsu_find(parent, 4) ? \"Yes\" : \"No\");\n    return 0;\n}\n```\n\n## Aliases & Shorthands\nAvailable via: `prog_cp_disjoint_set`, `competitive-programming.full-programs.cp-data-structures.disjoint-set.prog-disjoint-set`, `competitive-programming>prog_cp_disjoint_set()`, `competitive-programming>full-programs>cp-data-structures>disjoint-set>prog-disjoint-set>prog_cp_disjoint_set()`\n",
     "version": "1.0.0",
     "dependencies": [],
     "tags": [
@@ -2194,8 +2194,8 @@
       "competitive-programming>prog_cp_disjoint_set()",
       "competitive-programming>full-programs>cp-data-structures>disjoint-set>prog-disjoint-set>prog_cp_disjoint_set()"
     ],
-    "createdAt": "2026-09-17T09:35:42.934Z",
-    "updatedAt": "2026-09-17T09:35:42.934Z"
+    "createdAt": "2026-09-19T07:33:52.425Z",
+    "updatedAt": "2026-09-19T07:33:52.425Z"
   },
   {
     "id": "competitive-programming.full-programs.cp-data-structures.monotonic-structures.prog-monotonic-structures",
@@ -2208,13 +2208,13 @@
     "path": "competitive-programming/full-programs/cp-data-structures/monotonic-structures/prog-monotonic-structures",
     "description": "Complete competitive programming program computing next greater element with monotonic stack",
     "signature": "int main(void);",
-    "code": "#include <stdio.h>\n\nvoid next_greater(const int* arr, int n, int* res) {\n    int stack[n];\n    int top = -1;\n    for (int i = 0; i < n; i++) res[i] = -1;\n    for (int i = 0; i < n; i++) {\n        while (top >= 0 && arr[i] > arr[stack[top]]) {\n            res[stack[top--]] = arr[i];\n        }\n        stack[++top] = i;\n    }\n}\n\nint main(void) {\n    int arr[] = {4, 5, 2, 25, 7, 18};\n    int n = 6;\n    int res[6];\n    next_greater(arr, n, res);\n    for (int i = 0; i < n; i++) {\n        printf(\"%d -> %d\n\", arr[i], res[i]);\n    }\n    return 0;\n}",
+    "code": "#include <stdio.h>\n\nvoid next_greater(const int* arr, int n, int* res) {\n    int stack[n];\n    int top = -1;\n    for (int i = 0; i < n; i++) res[i] = -1;\n    for (int i = 0; i < n; i++) {\n        while (top >= 0 && arr[i] > arr[stack[top]]) {\n            res[stack[top--]] = arr[i];\n        }\n        stack[++top] = i;\n    }\n}\n\nint main(void) {\n    int arr[] = {4, 5, 2, 25, 7, 18};\n    int n = 6;\n    int res[6];\n    next_greater(arr, n, res);\n    for (int i = 0; i < n; i++) {\n        printf(\"%d -> %d\\n\", arr[i], res[i]);\n    }\n    return 0;\n}",
     "complexity": {
       "time": "O(1)",
       "space": "O(1)"
     },
     "difficulty": "intermediate",
-    "documentation": "# prog_cp_monotonic_structures\n> **Domain:** `competitive-programming` | **Subcategory:** `cp-data-structures` | **Type:** `program`\n## Overview\nComplete competitive programming program computing next greater element with monotonic stack\n\n## Signature\n```c\nint main(void);\n```\n\n## Complexity Analysis\n- **Time Complexity:** `O(1)`\n- **Space Complexity:** `O(1)`\n\n## Edge Cases & Constraints\n- **NULL / Empty Input:** Function handles zero/NULL pointers gracefully without segfaulting.\n- **Boundary Conditions:** Bounds-checked against buffer boundaries and integer limits.\n- **Zero-Comment Invariant:** Code is 100% executable clean C code adhering strictly to library standards.\n\n## Implementation\n```c\n#include <stdio.h>\n\nvoid next_greater(const int* arr, int n, int* res) {\n    int stack[n];\n    int top = -1;\n    for (int i = 0; i < n; i++) res[i] = -1;\n    for (int i = 0; i < n; i++) {\n        while (top >= 0 && arr[i] > arr[stack[top]]) {\n            res[stack[top--]] = arr[i];\n        }\n        stack[++top] = i;\n    }\n}\n\nint main(void) {\n    int arr[] = {4, 5, 2, 25, 7, 18};\n    int n = 6;\n    int res[6];\n    next_greater(arr, n, res);\n    for (int i = 0; i < n; i++) {\n        printf(\"%d -> %d\n\", arr[i], res[i]);\n    }\n    return 0;\n}\n```\n\n## Aliases & Shorthands\nAvailable via: `prog_cp_monotonic_structures`, `competitive-programming.full-programs.cp-data-structures.monotonic-structures.prog-monotonic-structures`, `competitive-programming>prog_cp_monotonic_structures()`, `competitive-programming>full-programs>cp-data-structures>monotonic-structures>prog-monotonic-structures>prog_cp_monotonic_structures()`\n",
+    "documentation": "# prog_cp_monotonic_structures\n> **Domain:** `competitive-programming` | **Subcategory:** `cp-data-structures` | **Type:** `program`\n## Overview\nComplete competitive programming program computing next greater element with monotonic stack\n\n## Signature\n```c\nint main(void);\n```\n\n## Complexity Analysis\n- **Time Complexity:** `O(1)`\n- **Space Complexity:** `O(1)`\n\n## Edge Cases & Constraints\n- **NULL / Empty Input:** Function handles zero/NULL pointers gracefully without segfaulting.\n- **Boundary Conditions:** Bounds-checked against buffer boundaries and integer limits.\n- **Zero-Comment Invariant:** Code is 100% executable clean C code adhering strictly to library standards.\n\n## Implementation\n```c\n#include <stdio.h>\n\nvoid next_greater(const int* arr, int n, int* res) {\n    int stack[n];\n    int top = -1;\n    for (int i = 0; i < n; i++) res[i] = -1;\n    for (int i = 0; i < n; i++) {\n        while (top >= 0 && arr[i] > arr[stack[top]]) {\n            res[stack[top--]] = arr[i];\n        }\n        stack[++top] = i;\n    }\n}\n\nint main(void) {\n    int arr[] = {4, 5, 2, 25, 7, 18};\n    int n = 6;\n    int res[6];\n    next_greater(arr, n, res);\n    for (int i = 0; i < n; i++) {\n        printf(\"%d -> %d\\n\", arr[i], res[i]);\n    }\n    return 0;\n}\n```\n\n## Aliases & Shorthands\nAvailable via: `prog_cp_monotonic_structures`, `competitive-programming.full-programs.cp-data-structures.monotonic-structures.prog-monotonic-structures`, `competitive-programming>prog_cp_monotonic_structures()`, `competitive-programming>full-programs>cp-data-structures>monotonic-structures>prog-monotonic-structures>prog_cp_monotonic_structures()`\n",
     "version": "1.0.0",
     "dependencies": [],
     "tags": [
@@ -2228,8 +2228,8 @@
       "competitive-programming>prog_cp_monotonic_structures()",
       "competitive-programming>full-programs>cp-data-structures>monotonic-structures>prog-monotonic-structures>prog_cp_monotonic_structures()"
     ],
-    "createdAt": "2026-09-17T09:35:42.934Z",
-    "updatedAt": "2026-09-17T09:35:42.934Z"
+    "createdAt": "2026-09-19T07:33:52.425Z",
+    "updatedAt": "2026-09-19T07:33:52.425Z"
   },
   {
     "id": "competitive-programming.full-programs.binary-search-techniques.binary-search-answer.prog-binary-search-answer",
@@ -2242,13 +2242,13 @@
     "path": "competitive-programming/full-programs/binary-search-techniques/binary-search-answer/prog-binary-search-answer",
     "description": "Complete competitive programming program allocating workload across workers via binary search on answer",
     "signature": "int main(void);",
-    "code": "#include <stdio.h>\n\nint check_feasible(long long max_sum, const int* arr, int n, int k) {\n    int count = 1;\n    long long current = 0;\n    for (int i = 0; i < n; i++) {\n        if (arr[i] > max_sum) return 0;\n        if (current + arr[i] > max_sum) {\n            count++;\n            current = arr[i];\n        } else {\n            current += arr[i];\n        }\n    }\n    return count <= k;\n}\n\nlong long min_max_allocation(const int* arr, int n, int k) {\n    long long low = 0, high = 0;\n    for (int i = 0; i < n; i++) {\n        if (arr[i] > low) low = arr[i];\n        high += arr[i];\n    }\n    long long ans = high;\n    while (low <= high) {\n        long long mid = low + (high - low) / 2;\n        if (check_feasible(mid, arr, n, k)) {\n            ans = mid;\n            high = mid - 1;\n        } else {\n            low = mid + 1;\n        }\n    }\n    return ans;\n}\n\nint main(void) {\n    int arr[] = {10, 20, 30, 40};\n    int n = 4, k = 2;\n    printf(\"Optimal partitioned sum for 2 workers: %lld\n\", min_max_allocation(arr, n, k));\n    return 0;\n}",
+    "code": "#include <stdio.h>\n\nint check_feasible(long long max_sum, const int* arr, int n, int k) {\n    int count = 1;\n    long long current = 0;\n    for (int i = 0; i < n; i++) {\n        if (arr[i] > max_sum) return 0;\n        if (current + arr[i] > max_sum) {\n            count++;\n            current = arr[i];\n        } else {\n            current += arr[i];\n        }\n    }\n    return count <= k;\n}\n\nlong long min_max_allocation(const int* arr, int n, int k) {\n    long long low = 0, high = 0;\n    for (int i = 0; i < n; i++) {\n        if (arr[i] > low) low = arr[i];\n        high += arr[i];\n    }\n    long long ans = high;\n    while (low <= high) {\n        long long mid = low + (high - low) / 2;\n        if (check_feasible(mid, arr, n, k)) {\n            ans = mid;\n            high = mid - 1;\n        } else {\n            low = mid + 1;\n        }\n    }\n    return ans;\n}\n\nint main(void) {\n    int arr[] = {10, 20, 30, 40};\n    int n = 4, k = 2;\n    printf(\"Optimal partitioned sum for 2 workers: %lld\\n\", min_max_allocation(arr, n, k));\n    return 0;\n}",
     "complexity": {
       "time": "O(1)",
       "space": "O(1)"
     },
     "difficulty": "intermediate",
-    "documentation": "# prog_cp_binary_search_answer\n> **Domain:** `competitive-programming` | **Subcategory:** `binary-search-techniques` | **Type:** `program`\n## Overview\nComplete competitive programming program allocating workload across workers via binary search on answer\n\n## Signature\n```c\nint main(void);\n```\n\n## Complexity Analysis\n- **Time Complexity:** `O(1)`\n- **Space Complexity:** `O(1)`\n\n## Edge Cases & Constraints\n- **NULL / Empty Input:** Function handles zero/NULL pointers gracefully without segfaulting.\n- **Boundary Conditions:** Bounds-checked against buffer boundaries and integer limits.\n- **Zero-Comment Invariant:** Code is 100% executable clean C code adhering strictly to library standards.\n\n## Implementation\n```c\n#include <stdio.h>\n\nint check_feasible(long long max_sum, const int* arr, int n, int k) {\n    int count = 1;\n    long long current = 0;\n    for (int i = 0; i < n; i++) {\n        if (arr[i] > max_sum) return 0;\n        if (current + arr[i] > max_sum) {\n            count++;\n            current = arr[i];\n        } else {\n            current += arr[i];\n        }\n    }\n    return count <= k;\n}\n\nlong long min_max_allocation(const int* arr, int n, int k) {\n    long long low = 0, high = 0;\n    for (int i = 0; i < n; i++) {\n        if (arr[i] > low) low = arr[i];\n        high += arr[i];\n    }\n    long long ans = high;\n    while (low <= high) {\n        long long mid = low + (high - low) / 2;\n        if (check_feasible(mid, arr, n, k)) {\n            ans = mid;\n            high = mid - 1;\n        } else {\n            low = mid + 1;\n        }\n    }\n    return ans;\n}\n\nint main(void) {\n    int arr[] = {10, 20, 30, 40};\n    int n = 4, k = 2;\n    printf(\"Optimal partitioned sum for 2 workers: %lld\n\", min_max_allocation(arr, n, k));\n    return 0;\n}\n```\n\n## Aliases & Shorthands\nAvailable via: `prog_cp_binary_search_answer`, `competitive-programming.full-programs.binary-search-techniques.binary-search-answer.prog-binary-search-answer`, `competitive-programming>prog_cp_binary_search_answer()`, `competitive-programming>full-programs>binary-search-techniques>binary-search-answer>prog-binary-search-answer>prog_cp_binary_search_answer()`\n",
+    "documentation": "# prog_cp_binary_search_answer\n> **Domain:** `competitive-programming` | **Subcategory:** `binary-search-techniques` | **Type:** `program`\n## Overview\nComplete competitive programming program allocating workload across workers via binary search on answer\n\n## Signature\n```c\nint main(void);\n```\n\n## Complexity Analysis\n- **Time Complexity:** `O(1)`\n- **Space Complexity:** `O(1)`\n\n## Edge Cases & Constraints\n- **NULL / Empty Input:** Function handles zero/NULL pointers gracefully without segfaulting.\n- **Boundary Conditions:** Bounds-checked against buffer boundaries and integer limits.\n- **Zero-Comment Invariant:** Code is 100% executable clean C code adhering strictly to library standards.\n\n## Implementation\n```c\n#include <stdio.h>\n\nint check_feasible(long long max_sum, const int* arr, int n, int k) {\n    int count = 1;\n    long long current = 0;\n    for (int i = 0; i < n; i++) {\n        if (arr[i] > max_sum) return 0;\n        if (current + arr[i] > max_sum) {\n            count++;\n            current = arr[i];\n        } else {\n            current += arr[i];\n        }\n    }\n    return count <= k;\n}\n\nlong long min_max_allocation(const int* arr, int n, int k) {\n    long long low = 0, high = 0;\n    for (int i = 0; i < n; i++) {\n        if (arr[i] > low) low = arr[i];\n        high += arr[i];\n    }\n    long long ans = high;\n    while (low <= high) {\n        long long mid = low + (high - low) / 2;\n        if (check_feasible(mid, arr, n, k)) {\n            ans = mid;\n            high = mid - 1;\n        } else {\n            low = mid + 1;\n        }\n    }\n    return ans;\n}\n\nint main(void) {\n    int arr[] = {10, 20, 30, 40};\n    int n = 4, k = 2;\n    printf(\"Optimal partitioned sum for 2 workers: %lld\\n\", min_max_allocation(arr, n, k));\n    return 0;\n}\n```\n\n## Aliases & Shorthands\nAvailable via: `prog_cp_binary_search_answer`, `competitive-programming.full-programs.binary-search-techniques.binary-search-answer.prog-binary-search-answer`, `competitive-programming>prog_cp_binary_search_answer()`, `competitive-programming>full-programs>binary-search-techniques>binary-search-answer>prog-binary-search-answer>prog_cp_binary_search_answer()`\n",
     "version": "1.0.0",
     "dependencies": [],
     "tags": [
@@ -2262,8 +2262,8 @@
       "competitive-programming>prog_cp_binary_search_answer()",
       "competitive-programming>full-programs>binary-search-techniques>binary-search-answer>prog-binary-search-answer>prog_cp_binary_search_answer()"
     ],
-    "createdAt": "2026-09-17T09:35:42.934Z",
-    "updatedAt": "2026-09-17T09:35:42.934Z"
+    "createdAt": "2026-09-19T07:33:52.425Z",
+    "updatedAt": "2026-09-19T07:33:52.425Z"
   },
   {
     "id": "competitive-programming.full-programs.binary-search-techniques.ternary-search.prog-ternary-search",
@@ -2276,13 +2276,13 @@
     "path": "competitive-programming/full-programs/binary-search-techniques/ternary-search/prog-ternary-search",
     "description": "Complete competitive programming program finding the maximum of a unimodal parabola via ternary search",
     "signature": "int main(void);",
-    "code": "#include <stdio.h>\n\nlong long func(long long x) {\n    return -(x - 14) * (x - 14) + 100;\n}\n\nlong long ternary_search(long long low, long long high) {\n    while (high - low >= 3) {\n        long long m1 = low + (high - low) / 3;\n        long long m2 = high - (high - low) / 3;\n        if (func(m1) < func(m2)) low = m1;\n        else high = m2;\n    }\n    long long best_x = low;\n    long long best_val = func(low);\n    for (long long x = low + 1; x <= high; x++) {\n        long long val = func(x);\n        if (val > best_val) {\n            best_val = val;\n            best_x = x;\n        }\n    }\n    return best_x;\n}\n\nint main(void) {\n    long long peak_x = ternary_search(0, 50);\n    printf(\"Peak located at x = %lld with value = %lld\n\", peak_x, func(peak_x));\n    return 0;\n}",
+    "code": "#include <stdio.h>\n\nlong long func(long long x) {\n    return -(x - 14) * (x - 14) + 100;\n}\n\nlong long ternary_search(long long low, long long high) {\n    while (high - low >= 3) {\n        long long m1 = low + (high - low) / 3;\n        long long m2 = high - (high - low) / 3;\n        if (func(m1) < func(m2)) low = m1;\n        else high = m2;\n    }\n    long long best_x = low;\n    long long best_val = func(low);\n    for (long long x = low + 1; x <= high; x++) {\n        long long val = func(x);\n        if (val > best_val) {\n            best_val = val;\n            best_x = x;\n        }\n    }\n    return best_x;\n}\n\nint main(void) {\n    long long peak_x = ternary_search(0, 50);\n    printf(\"Peak located at x = %lld with value = %lld\\n\", peak_x, func(peak_x));\n    return 0;\n}",
     "complexity": {
       "time": "O(1)",
       "space": "O(1)"
     },
     "difficulty": "intermediate",
-    "documentation": "# prog_cp_ternary_search\n> **Domain:** `competitive-programming` | **Subcategory:** `binary-search-techniques` | **Type:** `program`\n## Overview\nComplete competitive programming program finding the maximum of a unimodal parabola via ternary search\n\n## Signature\n```c\nint main(void);\n```\n\n## Complexity Analysis\n- **Time Complexity:** `O(1)`\n- **Space Complexity:** `O(1)`\n\n## Edge Cases & Constraints\n- **NULL / Empty Input:** Function handles zero/NULL pointers gracefully without segfaulting.\n- **Boundary Conditions:** Bounds-checked against buffer boundaries and integer limits.\n- **Zero-Comment Invariant:** Code is 100% executable clean C code adhering strictly to library standards.\n\n## Implementation\n```c\n#include <stdio.h>\n\nlong long func(long long x) {\n    return -(x - 14) * (x - 14) + 100;\n}\n\nlong long ternary_search(long long low, long long high) {\n    while (high - low >= 3) {\n        long long m1 = low + (high - low) / 3;\n        long long m2 = high - (high - low) / 3;\n        if (func(m1) < func(m2)) low = m1;\n        else high = m2;\n    }\n    long long best_x = low;\n    long long best_val = func(low);\n    for (long long x = low + 1; x <= high; x++) {\n        long long val = func(x);\n        if (val > best_val) {\n            best_val = val;\n            best_x = x;\n        }\n    }\n    return best_x;\n}\n\nint main(void) {\n    long long peak_x = ternary_search(0, 50);\n    printf(\"Peak located at x = %lld with value = %lld\n\", peak_x, func(peak_x));\n    return 0;\n}\n```\n\n## Aliases & Shorthands\nAvailable via: `prog_cp_ternary_search`, `competitive-programming.full-programs.binary-search-techniques.ternary-search.prog-ternary-search`, `competitive-programming>prog_cp_ternary_search()`, `competitive-programming>full-programs>binary-search-techniques>ternary-search>prog-ternary-search>prog_cp_ternary_search()`\n",
+    "documentation": "# prog_cp_ternary_search\n> **Domain:** `competitive-programming` | **Subcategory:** `binary-search-techniques` | **Type:** `program`\n## Overview\nComplete competitive programming program finding the maximum of a unimodal parabola via ternary search\n\n## Signature\n```c\nint main(void);\n```\n\n## Complexity Analysis\n- **Time Complexity:** `O(1)`\n- **Space Complexity:** `O(1)`\n\n## Edge Cases & Constraints\n- **NULL / Empty Input:** Function handles zero/NULL pointers gracefully without segfaulting.\n- **Boundary Conditions:** Bounds-checked against buffer boundaries and integer limits.\n- **Zero-Comment Invariant:** Code is 100% executable clean C code adhering strictly to library standards.\n\n## Implementation\n```c\n#include <stdio.h>\n\nlong long func(long long x) {\n    return -(x - 14) * (x - 14) + 100;\n}\n\nlong long ternary_search(long long low, long long high) {\n    while (high - low >= 3) {\n        long long m1 = low + (high - low) / 3;\n        long long m2 = high - (high - low) / 3;\n        if (func(m1) < func(m2)) low = m1;\n        else high = m2;\n    }\n    long long best_x = low;\n    long long best_val = func(low);\n    for (long long x = low + 1; x <= high; x++) {\n        long long val = func(x);\n        if (val > best_val) {\n            best_val = val;\n            best_x = x;\n        }\n    }\n    return best_x;\n}\n\nint main(void) {\n    long long peak_x = ternary_search(0, 50);\n    printf(\"Peak located at x = %lld with value = %lld\\n\", peak_x, func(peak_x));\n    return 0;\n}\n```\n\n## Aliases & Shorthands\nAvailable via: `prog_cp_ternary_search`, `competitive-programming.full-programs.binary-search-techniques.ternary-search.prog-ternary-search`, `competitive-programming>prog_cp_ternary_search()`, `competitive-programming>full-programs>binary-search-techniques>ternary-search>prog-ternary-search>prog_cp_ternary_search()`\n",
     "version": "1.0.0",
     "dependencies": [],
     "tags": [
@@ -2296,8 +2296,8 @@
       "competitive-programming>prog_cp_ternary_search()",
       "competitive-programming>full-programs>binary-search-techniques>ternary-search>prog-ternary-search>prog_cp_ternary_search()"
     ],
-    "createdAt": "2026-09-17T09:35:42.934Z",
-    "updatedAt": "2026-09-17T09:35:42.934Z"
+    "createdAt": "2026-09-19T07:33:52.425Z",
+    "updatedAt": "2026-09-19T07:33:52.425Z"
   },
   {
     "id": "competitive-programming.full-programs.graph-techniques.zero-one-bfs.prog-zero-one-bfs",
@@ -2310,13 +2310,13 @@
     "path": "competitive-programming/full-programs/graph-techniques/zero-one-bfs/prog-zero-one-bfs",
     "description": "Complete competitive programming program solving shortest path on 0-1 weighted graph using deque BFS",
     "signature": "int main(void);",
-    "code": "#include <stdio.h>\n\nint main(void) {\n    int n = 5;\n    int head[5] = {-1, -1, -1, -1, -1};\n    int to[] = {1, 2, 3, 4, 4};\n    int weight[] = {0, 1, 0, 1, 0};\n    int next[] = {-1, -1, -1, -1, -1};\n    head[0] = 0; to[0] = 1; weight[0] = 0; next[0] = 1;\n             to[1] = 2; weight[1] = 1; next[1] = -1;\n    head[1] = 2; to[2] = 3; weight[2] = 0; next[2] = -1;\n    head[2] = 3; to[3] = 4; weight[3] = 1; next[3] = -1;\n    head[3] = 4; to[4] = 4; weight[4] = 0; next[4] = -1;\n\n    int dist[5];\n    for (int i = 0; i < n; i++) dist[i] = 1000000000;\n    int deque[20];\n    int front = 10, back = 10;\n    dist[0] = 0;\n    deque[back++] = 0;\n    while (front < back) {\n        int u = deque[front++];\n        for (int e = head[u]; e != -1; e = next[e]) {\n            int v = to[e];\n            int w = weight[e];\n            if (dist[u] + w < dist[v]) {\n                dist[v] = dist[u] + w;\n                if (w == 0) deque[--front] = v;\n                else deque[back++] = v;\n            }\n        }\n    }\n    for (int i = 0; i < n; i++) {\n        printf(\"dist to %d = %d\n\", i, dist[i]);\n    }\n    return 0;\n}",
+    "code": "#include <stdio.h>\n\nint main(void) {\n    int n = 5;\n    int head[5] = {-1, -1, -1, -1, -1};\n    int to[] = {1, 2, 3, 4, 4};\n    int weight[] = {0, 1, 0, 1, 0};\n    int next[] = {-1, -1, -1, -1, -1};\n    head[0] = 0; to[0] = 1; weight[0] = 0; next[0] = 1;\n             to[1] = 2; weight[1] = 1; next[1] = -1;\n    head[1] = 2; to[2] = 3; weight[2] = 0; next[2] = -1;\n    head[2] = 3; to[3] = 4; weight[3] = 1; next[3] = -1;\n    head[3] = 4; to[4] = 4; weight[4] = 0; next[4] = -1;\n\n    int dist[5];\n    for (int i = 0; i < n; i++) dist[i] = 1000000000;\n    int deque[20];\n    int front = 10, back = 10;\n    dist[0] = 0;\n    deque[back++] = 0;\n    while (front < back) {\n        int u = deque[front++];\n        for (int e = head[u]; e != -1; e = next[e]) {\n            int v = to[e];\n            int w = weight[e];\n            if (dist[u] + w < dist[v]) {\n                dist[v] = dist[u] + w;\n                if (w == 0) deque[--front] = v;\n                else deque[back++] = v;\n            }\n        }\n    }\n    for (int i = 0; i < n; i++) {\n        printf(\"dist to %d = %d\\n\", i, dist[i]);\n    }\n    return 0;\n}",
     "complexity": {
       "time": "O(1)",
       "space": "O(1)"
     },
     "difficulty": "intermediate",
-    "documentation": "# prog_cp_01_bfs\n> **Domain:** `competitive-programming` | **Subcategory:** `graph-techniques` | **Type:** `program`\n## Overview\nComplete competitive programming program solving shortest path on 0-1 weighted graph using deque BFS\n\n## Signature\n```c\nint main(void);\n```\n\n## Complexity Analysis\n- **Time Complexity:** `O(1)`\n- **Space Complexity:** `O(1)`\n\n## Edge Cases & Constraints\n- **NULL / Empty Input:** Function handles zero/NULL pointers gracefully without segfaulting.\n- **Boundary Conditions:** Bounds-checked against buffer boundaries and integer limits.\n- **Zero-Comment Invariant:** Code is 100% executable clean C code adhering strictly to library standards.\n\n## Implementation\n```c\n#include <stdio.h>\n\nint main(void) {\n    int n = 5;\n    int head[5] = {-1, -1, -1, -1, -1};\n    int to[] = {1, 2, 3, 4, 4};\n    int weight[] = {0, 1, 0, 1, 0};\n    int next[] = {-1, -1, -1, -1, -1};\n    head[0] = 0; to[0] = 1; weight[0] = 0; next[0] = 1;\n             to[1] = 2; weight[1] = 1; next[1] = -1;\n    head[1] = 2; to[2] = 3; weight[2] = 0; next[2] = -1;\n    head[2] = 3; to[3] = 4; weight[3] = 1; next[3] = -1;\n    head[3] = 4; to[4] = 4; weight[4] = 0; next[4] = -1;\n\n    int dist[5];\n    for (int i = 0; i < n; i++) dist[i] = 1000000000;\n    int deque[20];\n    int front = 10, back = 10;\n    dist[0] = 0;\n    deque[back++] = 0;\n    while (front < back) {\n        int u = deque[front++];\n        for (int e = head[u]; e != -1; e = next[e]) {\n            int v = to[e];\n            int w = weight[e];\n            if (dist[u] + w < dist[v]) {\n                dist[v] = dist[u] + w;\n                if (w == 0) deque[--front] = v;\n                else deque[back++] = v;\n            }\n        }\n    }\n    for (int i = 0; i < n; i++) {\n        printf(\"dist to %d = %d\n\", i, dist[i]);\n    }\n    return 0;\n}\n```\n\n## Aliases & Shorthands\nAvailable via: `prog_cp_01_bfs`, `competitive-programming.full-programs.graph-techniques.zero-one-bfs.prog-zero-one-bfs`, `competitive-programming>prog_cp_01_bfs()`, `competitive-programming>full-programs>graph-techniques>zero-one-bfs>prog-zero-one-bfs>prog_cp_01_bfs()`\n",
+    "documentation": "# prog_cp_01_bfs\n> **Domain:** `competitive-programming` | **Subcategory:** `graph-techniques` | **Type:** `program`\n## Overview\nComplete competitive programming program solving shortest path on 0-1 weighted graph using deque BFS\n\n## Signature\n```c\nint main(void);\n```\n\n## Complexity Analysis\n- **Time Complexity:** `O(1)`\n- **Space Complexity:** `O(1)`\n\n## Edge Cases & Constraints\n- **NULL / Empty Input:** Function handles zero/NULL pointers gracefully without segfaulting.\n- **Boundary Conditions:** Bounds-checked against buffer boundaries and integer limits.\n- **Zero-Comment Invariant:** Code is 100% executable clean C code adhering strictly to library standards.\n\n## Implementation\n```c\n#include <stdio.h>\n\nint main(void) {\n    int n = 5;\n    int head[5] = {-1, -1, -1, -1, -1};\n    int to[] = {1, 2, 3, 4, 4};\n    int weight[] = {0, 1, 0, 1, 0};\n    int next[] = {-1, -1, -1, -1, -1};\n    head[0] = 0; to[0] = 1; weight[0] = 0; next[0] = 1;\n             to[1] = 2; weight[1] = 1; next[1] = -1;\n    head[1] = 2; to[2] = 3; weight[2] = 0; next[2] = -1;\n    head[2] = 3; to[3] = 4; weight[3] = 1; next[3] = -1;\n    head[3] = 4; to[4] = 4; weight[4] = 0; next[4] = -1;\n\n    int dist[5];\n    for (int i = 0; i < n; i++) dist[i] = 1000000000;\n    int deque[20];\n    int front = 10, back = 10;\n    dist[0] = 0;\n    deque[back++] = 0;\n    while (front < back) {\n        int u = deque[front++];\n        for (int e = head[u]; e != -1; e = next[e]) {\n            int v = to[e];\n            int w = weight[e];\n            if (dist[u] + w < dist[v]) {\n                dist[v] = dist[u] + w;\n                if (w == 0) deque[--front] = v;\n                else deque[back++] = v;\n            }\n        }\n    }\n    for (int i = 0; i < n; i++) {\n        printf(\"dist to %d = %d\\n\", i, dist[i]);\n    }\n    return 0;\n}\n```\n\n## Aliases & Shorthands\nAvailable via: `prog_cp_01_bfs`, `competitive-programming.full-programs.graph-techniques.zero-one-bfs.prog-zero-one-bfs`, `competitive-programming>prog_cp_01_bfs()`, `competitive-programming>full-programs>graph-techniques>zero-one-bfs>prog-zero-one-bfs>prog_cp_01_bfs()`\n",
     "version": "1.0.0",
     "dependencies": [],
     "tags": [
@@ -2330,8 +2330,8 @@
       "competitive-programming>prog_cp_01_bfs()",
       "competitive-programming>full-programs>graph-techniques>zero-one-bfs>prog-zero-one-bfs>prog_cp_01_bfs()"
     ],
-    "createdAt": "2026-09-17T09:35:42.934Z",
-    "updatedAt": "2026-09-17T09:35:42.934Z"
+    "createdAt": "2026-09-19T07:33:52.425Z",
+    "updatedAt": "2026-09-19T07:33:52.425Z"
   },
   {
     "id": "competitive-programming.full-programs.graph-techniques.lowest-common-ancestor.prog-lca",
@@ -2344,13 +2344,13 @@
     "path": "competitive-programming/full-programs/graph-techniques/lowest-common-ancestor/prog-lca",
     "description": "Complete competitive programming program finding tree Lowest Common Ancestors via binary lifting",
     "signature": "int main(void);",
-    "code": "#include <stdio.h>\n\nvoid build_up(int n, int max_log, const int* parent, int* up) {\n    for (int i = 0; i < n; i++) up[i * max_log + 0] = parent[i];\n    for (int j = 1; j < max_log; j++) {\n        for (int i = 0; i < n; i++) {\n            int p = up[i * max_log + (j - 1)];\n            if (p != -1) up[i * max_log + j] = up[p * max_log + (j - 1)];\n            else up[i * max_log + j] = -1;\n        }\n    }\n}\n\nint query_lca(int u, int v, int max_log, const int* depth, const int* up) {\n    if (depth[u] < depth[v]) {\n        int tmp = u; u = v; v = tmp;\n    }\n    for (int j = max_log - 1; j >= 0; j--) {\n        if (depth[u] - (1 << j) >= depth[v]) {\n            u = up[u * max_log + j];\n        }\n    }\n    if (u == v) return u;\n    for (int j = max_log - 1; j >= 0; j--) {\n        if (up[u * max_log + j] != up[v * max_log + j]) {\n            u = up[u * max_log + j];\n            v = up[v * max_log + j];\n        }\n    }\n    return up[u * max_log + 0];\n}\n\nint main(void) {\n    int n = 7, max_log = 4;\n    int parent[] = {-1, 0, 0, 1, 1, 2, 2};\n    int depth[]  = { 0, 1, 1, 2, 2, 2, 2};\n    int up[7 * 4];\n    build_up(n, max_log, parent, up);\n    printf(\"LCA(3, 4) = %d\n\", query_lca(3, 4, max_log, depth, up));\n    printf(\"LCA(3, 5) = %d\n\", query_lca(3, 5, max_log, depth, up));\n    printf(\"LCA(4, 1) = %d\n\", query_lca(4, 1, max_log, depth, up));\n    return 0;\n}",
+    "code": "#include <stdio.h>\n\nvoid build_up(int n, int max_log, const int* parent, int* up) {\n    for (int i = 0; i < n; i++) up[i * max_log + 0] = parent[i];\n    for (int j = 1; j < max_log; j++) {\n        for (int i = 0; i < n; i++) {\n            int p = up[i * max_log + (j - 1)];\n            if (p != -1) up[i * max_log + j] = up[p * max_log + (j - 1)];\n            else up[i * max_log + j] = -1;\n        }\n    }\n}\n\nint query_lca(int u, int v, int max_log, const int* depth, const int* up) {\n    if (depth[u] < depth[v]) {\n        int tmp = u; u = v; v = tmp;\n    }\n    for (int j = max_log - 1; j >= 0; j--) {\n        if (depth[u] - (1 << j) >= depth[v]) {\n            u = up[u * max_log + j];\n        }\n    }\n    if (u == v) return u;\n    for (int j = max_log - 1; j >= 0; j--) {\n        if (up[u * max_log + j] != up[v * max_log + j]) {\n            u = up[u * max_log + j];\n            v = up[v * max_log + j];\n        }\n    }\n    return up[u * max_log + 0];\n}\n\nint main(void) {\n    int n = 7, max_log = 4;\n    int parent[] = {-1, 0, 0, 1, 1, 2, 2};\n    int depth[]  = { 0, 1, 1, 2, 2, 2, 2};\n    int up[7 * 4];\n    build_up(n, max_log, parent, up);\n    printf(\"LCA(3, 4) = %d\\n\", query_lca(3, 4, max_log, depth, up));\n    printf(\"LCA(3, 5) = %d\\n\", query_lca(3, 5, max_log, depth, up));\n    printf(\"LCA(4, 1) = %d\\n\", query_lca(4, 1, max_log, depth, up));\n    return 0;\n}",
     "complexity": {
       "time": "O(1)",
       "space": "O(1)"
     },
     "difficulty": "intermediate",
-    "documentation": "# prog_cp_lca\n> **Domain:** `competitive-programming` | **Subcategory:** `graph-techniques` | **Type:** `program`\n## Overview\nComplete competitive programming program finding tree Lowest Common Ancestors via binary lifting\n\n## Signature\n```c\nint main(void);\n```\n\n## Complexity Analysis\n- **Time Complexity:** `O(1)`\n- **Space Complexity:** `O(1)`\n\n## Edge Cases & Constraints\n- **NULL / Empty Input:** Function handles zero/NULL pointers gracefully without segfaulting.\n- **Boundary Conditions:** Bounds-checked against buffer boundaries and integer limits.\n- **Zero-Comment Invariant:** Code is 100% executable clean C code adhering strictly to library standards.\n\n## Implementation\n```c\n#include <stdio.h>\n\nvoid build_up(int n, int max_log, const int* parent, int* up) {\n    for (int i = 0; i < n; i++) up[i * max_log + 0] = parent[i];\n    for (int j = 1; j < max_log; j++) {\n        for (int i = 0; i < n; i++) {\n            int p = up[i * max_log + (j - 1)];\n            if (p != -1) up[i * max_log + j] = up[p * max_log + (j - 1)];\n            else up[i * max_log + j] = -1;\n        }\n    }\n}\n\nint query_lca(int u, int v, int max_log, const int* depth, const int* up) {\n    if (depth[u] < depth[v]) {\n        int tmp = u; u = v; v = tmp;\n    }\n    for (int j = max_log - 1; j >= 0; j--) {\n        if (depth[u] - (1 << j) >= depth[v]) {\n            u = up[u * max_log + j];\n        }\n    }\n    if (u == v) return u;\n    for (int j = max_log - 1; j >= 0; j--) {\n        if (up[u * max_log + j] != up[v * max_log + j]) {\n            u = up[u * max_log + j];\n            v = up[v * max_log + j];\n        }\n    }\n    return up[u * max_log + 0];\n}\n\nint main(void) {\n    int n = 7, max_log = 4;\n    int parent[] = {-1, 0, 0, 1, 1, 2, 2};\n    int depth[]  = { 0, 1, 1, 2, 2, 2, 2};\n    int up[7 * 4];\n    build_up(n, max_log, parent, up);\n    printf(\"LCA(3, 4) = %d\n\", query_lca(3, 4, max_log, depth, up));\n    printf(\"LCA(3, 5) = %d\n\", query_lca(3, 5, max_log, depth, up));\n    printf(\"LCA(4, 1) = %d\n\", query_lca(4, 1, max_log, depth, up));\n    return 0;\n}\n```\n\n## Aliases & Shorthands\nAvailable via: `prog_cp_lca`, `competitive-programming.full-programs.graph-techniques.lowest-common-ancestor.prog-lca`, `competitive-programming>prog_cp_lca()`, `competitive-programming>full-programs>graph-techniques>lowest-common-ancestor>prog-lca>prog_cp_lca()`\n",
+    "documentation": "# prog_cp_lca\n> **Domain:** `competitive-programming` | **Subcategory:** `graph-techniques` | **Type:** `program`\n## Overview\nComplete competitive programming program finding tree Lowest Common Ancestors via binary lifting\n\n## Signature\n```c\nint main(void);\n```\n\n## Complexity Analysis\n- **Time Complexity:** `O(1)`\n- **Space Complexity:** `O(1)`\n\n## Edge Cases & Constraints\n- **NULL / Empty Input:** Function handles zero/NULL pointers gracefully without segfaulting.\n- **Boundary Conditions:** Bounds-checked against buffer boundaries and integer limits.\n- **Zero-Comment Invariant:** Code is 100% executable clean C code adhering strictly to library standards.\n\n## Implementation\n```c\n#include <stdio.h>\n\nvoid build_up(int n, int max_log, const int* parent, int* up) {\n    for (int i = 0; i < n; i++) up[i * max_log + 0] = parent[i];\n    for (int j = 1; j < max_log; j++) {\n        for (int i = 0; i < n; i++) {\n            int p = up[i * max_log + (j - 1)];\n            if (p != -1) up[i * max_log + j] = up[p * max_log + (j - 1)];\n            else up[i * max_log + j] = -1;\n        }\n    }\n}\n\nint query_lca(int u, int v, int max_log, const int* depth, const int* up) {\n    if (depth[u] < depth[v]) {\n        int tmp = u; u = v; v = tmp;\n    }\n    for (int j = max_log - 1; j >= 0; j--) {\n        if (depth[u] - (1 << j) >= depth[v]) {\n            u = up[u * max_log + j];\n        }\n    }\n    if (u == v) return u;\n    for (int j = max_log - 1; j >= 0; j--) {\n        if (up[u * max_log + j] != up[v * max_log + j]) {\n            u = up[u * max_log + j];\n            v = up[v * max_log + j];\n        }\n    }\n    return up[u * max_log + 0];\n}\n\nint main(void) {\n    int n = 7, max_log = 4;\n    int parent[] = {-1, 0, 0, 1, 1, 2, 2};\n    int depth[]  = { 0, 1, 1, 2, 2, 2, 2};\n    int up[7 * 4];\n    build_up(n, max_log, parent, up);\n    printf(\"LCA(3, 4) = %d\\n\", query_lca(3, 4, max_log, depth, up));\n    printf(\"LCA(3, 5) = %d\\n\", query_lca(3, 5, max_log, depth, up));\n    printf(\"LCA(4, 1) = %d\\n\", query_lca(4, 1, max_log, depth, up));\n    return 0;\n}\n```\n\n## Aliases & Shorthands\nAvailable via: `prog_cp_lca`, `competitive-programming.full-programs.graph-techniques.lowest-common-ancestor.prog-lca`, `competitive-programming>prog_cp_lca()`, `competitive-programming>full-programs>graph-techniques>lowest-common-ancestor>prog-lca>prog_cp_lca()`\n",
     "version": "1.0.0",
     "dependencies": [],
     "tags": [
@@ -2364,8 +2364,8 @@
       "competitive-programming>prog_cp_lca()",
       "competitive-programming>full-programs>graph-techniques>lowest-common-ancestor>prog-lca>prog_cp_lca()"
     ],
-    "createdAt": "2026-09-17T09:35:42.934Z",
-    "updatedAt": "2026-09-17T09:35:42.934Z"
+    "createdAt": "2026-09-19T07:33:52.425Z",
+    "updatedAt": "2026-09-19T07:33:52.425Z"
   },
   {
     "id": "competitive-programming.full-programs.graph-techniques.strongly-connected.prog-tarjan-scc",
@@ -2378,13 +2378,13 @@
     "path": "competitive-programming/full-programs/graph-techniques/strongly-connected/prog-tarjan-scc",
     "description": "Complete competitive programming program finding strongly connected components using Tarjan algorithm",
     "signature": "int main(void);",
-    "code": "#include <stdio.h>\n\nvoid tarjan(int u, const int* head, const int* to, const int* next, int* disc, int* low, int* in_stack, int* stack, int* top, int* timer, int* scc_id, int* scc_count) {\n    disc[u] = low[u] = ++(*timer);\n    stack[++(*top)] = u;\n    in_stack[u] = 1;\n    for (int e = head[u]; e != -1; e = next[e]) {\n        int v = to[e];\n        if (disc[v] == 0) {\n            tarjan(v, head, to, next, disc, low, in_stack, stack, top, timer, scc_id, scc_count);\n            if (low[v] < low[u]) low[u] = low[v];\n        } else if (in_stack[v]) {\n            if (disc[v] < low[u]) low[u] = disc[v];\n        }\n    }\n    if (low[u] == disc[u]) {\n        (*scc_count)++;\n        while (1) {\n            int node = stack[(*top)--];\n            in_stack[node] = 0;\n            scc_id[node] = *scc_count;\n            if (node == u) break;\n        }\n    }\n}\n\nint main(void) {\n    int n = 5;\n    int head[5] = {0, 1, 2, 4, -1};\n    int to[] = {1, 2, 0, 3, 4};\n    int next[] = {-1, -1, 3, -1, -1};\n    int disc[5] = {0}, low[5] = {0}, in_stack[5] = {0}, stack[5];\n    int top = -1, timer = 0, scc_id[5] = {0}, scc_count = 0;\n\n    for (int i = 0; i < n; i++) {\n        if (disc[i] == 0) {\n            tarjan(i, head, to, next, disc, low, in_stack, stack, &top, &timer, scc_id, &scc_count);\n        }\n    }\n    printf(\"Total SCCs: %d\n\", scc_count);\n    for (int i = 0; i < n; i++) {\n        printf(\"Node %d in SCC %d\n\", i, scc_id[i]);\n    }\n    return 0;\n}",
+    "code": "#include <stdio.h>\n\nvoid tarjan(int u, const int* head, const int* to, const int* next, int* disc, int* low, int* in_stack, int* stack, int* top, int* timer, int* scc_id, int* scc_count) {\n    disc[u] = low[u] = ++(*timer);\n    stack[++(*top)] = u;\n    in_stack[u] = 1;\n    for (int e = head[u]; e != -1; e = next[e]) {\n        int v = to[e];\n        if (disc[v] == 0) {\n            tarjan(v, head, to, next, disc, low, in_stack, stack, top, timer, scc_id, scc_count);\n            if (low[v] < low[u]) low[u] = low[v];\n        } else if (in_stack[v]) {\n            if (disc[v] < low[u]) low[u] = disc[v];\n        }\n    }\n    if (low[u] == disc[u]) {\n        (*scc_count)++;\n        while (1) {\n            int node = stack[(*top)--];\n            in_stack[node] = 0;\n            scc_id[node] = *scc_count;\n            if (node == u) break;\n        }\n    }\n}\n\nint main(void) {\n    int n = 5;\n    int head[5] = {0, 1, 2, 4, -1};\n    int to[] = {1, 2, 0, 3, 4};\n    int next[] = {-1, -1, 3, -1, -1};\n    int disc[5] = {0}, low[5] = {0}, in_stack[5] = {0}, stack[5];\n    int top = -1, timer = 0, scc_id[5] = {0}, scc_count = 0;\n\n    for (int i = 0; i < n; i++) {\n        if (disc[i] == 0) {\n            tarjan(i, head, to, next, disc, low, in_stack, stack, &top, &timer, scc_id, &scc_count);\n        }\n    }\n    printf(\"Total SCCs: %d\\n\", scc_count);\n    for (int i = 0; i < n; i++) {\n        printf(\"Node %d in SCC %d\\n\", i, scc_id[i]);\n    }\n    return 0;\n}",
     "complexity": {
       "time": "O(1)",
       "space": "O(1)"
     },
     "difficulty": "intermediate",
-    "documentation": "# prog_cp_tarjan_scc\n> **Domain:** `competitive-programming` | **Subcategory:** `graph-techniques` | **Type:** `program`\n## Overview\nComplete competitive programming program finding strongly connected components using Tarjan algorithm\n\n## Signature\n```c\nint main(void);\n```\n\n## Complexity Analysis\n- **Time Complexity:** `O(1)`\n- **Space Complexity:** `O(1)`\n\n## Edge Cases & Constraints\n- **NULL / Empty Input:** Function handles zero/NULL pointers gracefully without segfaulting.\n- **Boundary Conditions:** Bounds-checked against buffer boundaries and integer limits.\n- **Zero-Comment Invariant:** Code is 100% executable clean C code adhering strictly to library standards.\n\n## Implementation\n```c\n#include <stdio.h>\n\nvoid tarjan(int u, const int* head, const int* to, const int* next, int* disc, int* low, int* in_stack, int* stack, int* top, int* timer, int* scc_id, int* scc_count) {\n    disc[u] = low[u] = ++(*timer);\n    stack[++(*top)] = u;\n    in_stack[u] = 1;\n    for (int e = head[u]; e != -1; e = next[e]) {\n        int v = to[e];\n        if (disc[v] == 0) {\n            tarjan(v, head, to, next, disc, low, in_stack, stack, top, timer, scc_id, scc_count);\n            if (low[v] < low[u]) low[u] = low[v];\n        } else if (in_stack[v]) {\n            if (disc[v] < low[u]) low[u] = disc[v];\n        }\n    }\n    if (low[u] == disc[u]) {\n        (*scc_count)++;\n        while (1) {\n            int node = stack[(*top)--];\n            in_stack[node] = 0;\n            scc_id[node] = *scc_count;\n            if (node == u) break;\n        }\n    }\n}\n\nint main(void) {\n    int n = 5;\n    int head[5] = {0, 1, 2, 4, -1};\n    int to[] = {1, 2, 0, 3, 4};\n    int next[] = {-1, -1, 3, -1, -1};\n    int disc[5] = {0}, low[5] = {0}, in_stack[5] = {0}, stack[5];\n    int top = -1, timer = 0, scc_id[5] = {0}, scc_count = 0;\n\n    for (int i = 0; i < n; i++) {\n        if (disc[i] == 0) {\n            tarjan(i, head, to, next, disc, low, in_stack, stack, &top, &timer, scc_id, &scc_count);\n        }\n    }\n    printf(\"Total SCCs: %d\n\", scc_count);\n    for (int i = 0; i < n; i++) {\n        printf(\"Node %d in SCC %d\n\", i, scc_id[i]);\n    }\n    return 0;\n}\n```\n\n## Aliases & Shorthands\nAvailable via: `prog_cp_tarjan_scc`, `competitive-programming.full-programs.graph-techniques.strongly-connected.prog-tarjan-scc`, `competitive-programming>prog_cp_tarjan_scc()`, `competitive-programming>full-programs>graph-techniques>strongly-connected>prog-tarjan-scc>prog_cp_tarjan_scc()`\n",
+    "documentation": "# prog_cp_tarjan_scc\n> **Domain:** `competitive-programming` | **Subcategory:** `graph-techniques` | **Type:** `program`\n## Overview\nComplete competitive programming program finding strongly connected components using Tarjan algorithm\n\n## Signature\n```c\nint main(void);\n```\n\n## Complexity Analysis\n- **Time Complexity:** `O(1)`\n- **Space Complexity:** `O(1)`\n\n## Edge Cases & Constraints\n- **NULL / Empty Input:** Function handles zero/NULL pointers gracefully without segfaulting.\n- **Boundary Conditions:** Bounds-checked against buffer boundaries and integer limits.\n- **Zero-Comment Invariant:** Code is 100% executable clean C code adhering strictly to library standards.\n\n## Implementation\n```c\n#include <stdio.h>\n\nvoid tarjan(int u, const int* head, const int* to, const int* next, int* disc, int* low, int* in_stack, int* stack, int* top, int* timer, int* scc_id, int* scc_count) {\n    disc[u] = low[u] = ++(*timer);\n    stack[++(*top)] = u;\n    in_stack[u] = 1;\n    for (int e = head[u]; e != -1; e = next[e]) {\n        int v = to[e];\n        if (disc[v] == 0) {\n            tarjan(v, head, to, next, disc, low, in_stack, stack, top, timer, scc_id, scc_count);\n            if (low[v] < low[u]) low[u] = low[v];\n        } else if (in_stack[v]) {\n            if (disc[v] < low[u]) low[u] = disc[v];\n        }\n    }\n    if (low[u] == disc[u]) {\n        (*scc_count)++;\n        while (1) {\n            int node = stack[(*top)--];\n            in_stack[node] = 0;\n            scc_id[node] = *scc_count;\n            if (node == u) break;\n        }\n    }\n}\n\nint main(void) {\n    int n = 5;\n    int head[5] = {0, 1, 2, 4, -1};\n    int to[] = {1, 2, 0, 3, 4};\n    int next[] = {-1, -1, 3, -1, -1};\n    int disc[5] = {0}, low[5] = {0}, in_stack[5] = {0}, stack[5];\n    int top = -1, timer = 0, scc_id[5] = {0}, scc_count = 0;\n\n    for (int i = 0; i < n; i++) {\n        if (disc[i] == 0) {\n            tarjan(i, head, to, next, disc, low, in_stack, stack, &top, &timer, scc_id, &scc_count);\n        }\n    }\n    printf(\"Total SCCs: %d\\n\", scc_count);\n    for (int i = 0; i < n; i++) {\n        printf(\"Node %d in SCC %d\\n\", i, scc_id[i]);\n    }\n    return 0;\n}\n```\n\n## Aliases & Shorthands\nAvailable via: `prog_cp_tarjan_scc`, `competitive-programming.full-programs.graph-techniques.strongly-connected.prog-tarjan-scc`, `competitive-programming>prog_cp_tarjan_scc()`, `competitive-programming>full-programs>graph-techniques>strongly-connected>prog-tarjan-scc>prog_cp_tarjan_scc()`\n",
     "version": "1.0.0",
     "dependencies": [],
     "tags": [
@@ -2398,7 +2398,7 @@
       "competitive-programming>prog_cp_tarjan_scc()",
       "competitive-programming>full-programs>graph-techniques>strongly-connected>prog-tarjan-scc>prog_cp_tarjan_scc()"
     ],
-    "createdAt": "2026-09-17T09:35:42.934Z",
-    "updatedAt": "2026-09-17T09:35:42.934Z"
+    "createdAt": "2026-09-19T07:33:52.425Z",
+    "updatedAt": "2026-09-19T07:33:52.425Z"
   }
 ]

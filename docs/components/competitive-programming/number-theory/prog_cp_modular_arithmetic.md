@@ -56,12 +56,9 @@ int main(void) {
     long long mod = 1000000007LL;
     long long p = mod_pow(3, 10, mod);
     long long inv = mod_inv(3, mod);
-    printf("3^10 mod 1e9+7 = %lld
-", p);
-    printf("inv(3) mod 1e9+7 = %lld
-", inv);
-    printf("(3 * inv) mod 1e9+7 = %lld
-", (3 * inv) % mod);
+    printf("3^10 mod 1e9+7 = %lld\n", p);
+    printf("inv(3) mod 1e9+7 = %lld\n", inv);
+    printf("(3 * inv) mod 1e9+7 = %lld\n", (3 * inv) % mod);
     return 0;
 }
 ```

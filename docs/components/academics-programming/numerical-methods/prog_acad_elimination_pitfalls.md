@@ -26,19 +26,15 @@ void analyze_system_pitfalls(int n, const double A[n][n]) {
     double det = 0;
     if (n == 2) {
         det = A[0][0] * A[1][1] - A[0][1] * A[1][0];
-        printf("Matrix Determinant: %.6e
-", det);
+        printf("Matrix Determinant: %.6e\n", det);
         if (fabs(det) < 1e-9) {
-            printf("Pitfall Detected: Matrix is singular or near-singular (ill-conditioned)
-");
+            printf("Pitfall Detected: Matrix is singular or near-singular (ill-conditioned)\n");
         } else {
-            printf("System Condition: Well-behaved for direct elimination
-");
+            printf("System Condition: Well-behaved for direct elimination\n");
         }
         for (int i = 0; i < n; i++) {
             if (fabs(A[i][i]) < 1e-12) {
-                printf("Pitfall Detected: Zero pivot at row %d requires pivoting
-", i);
+                printf("Pitfall Detected: Zero pivot at row %d requires pivoting\n", i);
             }
         }
     }

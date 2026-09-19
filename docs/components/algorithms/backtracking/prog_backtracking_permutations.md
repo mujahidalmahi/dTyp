@@ -26,8 +26,7 @@ void swap(int* a, int* b) { int t = *a; *a = *b; *b = t; }
 void permute(int* a, int l, int r) {
     if (l == r) {
         for (int i = 0; i <= r; i++) printf("%d ", a[i]);
-        putchar('
-');
+        putchar('\n');
     } else {
         for (int i = l; i <= r; i++) {
             swap(&a[l], &a[i]);
@@ -39,8 +38,7 @@ void permute(int* a, int l, int r) {
 
 int main(void) {
     int arr[] = {1, 2, 3};
-    printf("Permutations of {1, 2, 3}:
-");
+    printf("Permutations of {1, 2, 3}:\n");
     permute(arr, 0, 2);
     return 0;
 }

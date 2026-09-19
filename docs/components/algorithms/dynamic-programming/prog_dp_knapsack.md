@@ -40,8 +40,7 @@ int main(void) {
         }
     }
 
-    printf("0/1 Knapsack Optimal Value: %d
-", dp[n][W]);
+    printf("0/1 Knapsack Optimal Value: %d\n", dp[n][W]);
     return 0;
 }
 ```

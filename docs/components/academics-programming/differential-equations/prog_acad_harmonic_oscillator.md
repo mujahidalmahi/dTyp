@@ -24,13 +24,10 @@ int main(void);
 void solve_oscillator_rk4(double m, double c, double k, double y0, double v0, double dt, int steps) {
     double t = 0.0;
     double y = y0, v = v0;
-    printf("Time   | Displacement | Velocity
-");
-    printf("-------+--------------+---------
-");
+    printf("Time   | Displacement | Velocity\n");
+    printf("-------+--------------+---------\n");
     for (int i = 0; i <= steps; i++) {
-        if (i % 20 == 0) printf("%6.2f | %12.4f | %8.4f
-", t, y, v);
+        if (i % 20 == 0) printf("%6.2f | %12.4f | %8.4f\n", t, y, v);
         double kv1 = (-c * v - k * y) / m;
         double ky1 = v;
 

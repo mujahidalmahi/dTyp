@@ -54,10 +54,8 @@ long long fib_matrix(long long n, long long mod) {
 
 int main(void) {
     long long mod = 1000000007LL;
-    printf("Fib(10) mod 1e9+7 = %lld
-", fib_matrix(10, mod));
-    printf("Fib(50) mod 1e9+7 = %lld
-", fib_matrix(50, mod));
+    printf("Fib(10) mod 1e9+7 = %lld\n", fib_matrix(10, mod));
+    printf("Fib(50) mod 1e9+7 = %lld\n", fib_matrix(50, mod));
     return 0;
 }
 ```

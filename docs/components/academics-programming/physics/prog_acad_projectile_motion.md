@@ -30,16 +30,11 @@ void compute_projectile(double v0, double theta_deg, double g) {
     double max_height = (vy * vy) / (2.0 * g);
     double range = vx * t_flight;
 
-    printf("Initial Speed:   %.2f m/s
-", v0);
-    printf("Launch Angle:    %.2f degrees
-", theta_deg);
-    printf("Time of Flight:  %.4f s
-", t_flight);
-    printf("Max Elevation:   %.4f m
-", max_height);
-    printf("Horizontal Range: %.4f m
-", range);
+    printf("Initial Speed:   %.2f m/s\n", v0);
+    printf("Launch Angle:    %.2f degrees\n", theta_deg);
+    printf("Time of Flight:  %.4f s\n", t_flight);
+    printf("Max Elevation:   %.4f m\n", max_height);
+    printf("Horizontal Range: %.4f m\n", range);
 }
 
 int main(void) {

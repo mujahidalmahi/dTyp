@@ -41,13 +41,11 @@ int main(void) {
         buffer[count++] = val;
     }
 
-    printf("Dynamic buffer (capacity %zu, count %zu):
-", cap, count);
+    printf("Dynamic buffer (capacity %zu, count %zu):\n", cap, count);
     for (size_t i = 0; i < count; i++) {
         printf("%d ", buffer[i]);
     }
-    putchar('
-');
+    putchar('\n');
 
     free(buffer);
     return 0;

@@ -40,8 +40,7 @@ double solve_rk4(double x0, double y0, double target_x, double h) {
 
 int main(void) {
     double x0 = 0.0, y0 = 1.0, target = 2.0, h = 0.1;
-    printf("RK4 Solution at %.1f: %.6f
-", target, solve_rk4(x0, y0, target, h));
+    printf("RK4 Solution at %.1f: %.6f\n", target, solve_rk4(x0, y0, target, h));
     return 0;
 }
 ```

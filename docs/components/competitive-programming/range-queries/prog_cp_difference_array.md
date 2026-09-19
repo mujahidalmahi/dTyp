@@ -32,8 +32,7 @@ int main(void) {
     for (int i = 0; i < n; i++) {
         running += diff[i];
         res[i] = running;
-        printf("idx %d: %lld
-", i, res[i]);
+        printf("idx %d: %lld\n", i, res[i]);
     }
     return 0;
 }

@@ -60,11 +60,9 @@ int main(void) {
         }
     }
 
-    printf("Dijkstra Shortest Paths from Source 0:
-");
+    printf("Dijkstra Shortest Paths from Source 0:\n");
     for (int i = 0; i < V; i++) {
-        printf("To vertex %d: %d
-", i, dist[i]);
+        printf("To vertex %d: %d\n", i, dist[i]);
     }
     return 0;
 }

@@ -23,8 +23,7 @@ int main(void);
 #include <string.h>
 
 void parse_simple_json(const char* json) {
-    printf("Parsing JSON: %s
-", json);
+    printf("Parsing JSON: %s\n", json);
     const char* ptr = json;
     while (*ptr) {
         if (*ptr == '"') {
@@ -43,8 +42,7 @@ void parse_simple_json(const char* json) {
             } else {
                 while (*ptr && *ptr != ',' && *ptr != '}' && vi < 63) val[vi++] = *ptr++;
             }
-            printf("  Key: '%s' => Value: '%s'
-", key, val);
+            printf("  Key: '%s' => Value: '%s'\n", key, val);
         } else {
             ptr++;
         }
@@ -52,7 +50,7 @@ void parse_simple_json(const char* json) {
 }
 
 int main(void) {
-    const char* sample = "{"name": "dTyp", "version": 2, "active": true}";
+    const char* sample = "{\"name\": \"dTyp\", \"version\": 2, \"active\": true}";
     parse_simple_json(sample);
     return 0;
 }

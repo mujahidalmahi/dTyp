@@ -35,16 +35,13 @@ typedef struct Variant {
 void print_variant(const Variant* v) {
     switch (v->kind) {
         case KIND_INT:
-            printf("Variant Int: %d
-", v->as.i_val);
+            printf("Variant Int: %d\n", v->as.i_val);
             break;
         case KIND_FLOAT:
-            printf("Variant Float: %.2f
-", v->as.f_val);
+            printf("Variant Float: %.2f\n", v->as.f_val);
             break;
         case KIND_STRING:
-            printf("Variant String: %s
-", v->as.str);
+            printf("Variant String: %s\n", v->as.str);
             break;
     }
 }

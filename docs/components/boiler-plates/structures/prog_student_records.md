@@ -29,8 +29,7 @@ typedef struct Student {
 } Student;
 
 void display_student(const Student* s) {
-    printf("ID: %04d | Name: %-12s | GPA: %.2f
-", s->id, s->name, s->gpa);
+    printf("ID: %04d | Name: %-12s | GPA: %.2f\n", s->id, s->name, s->gpa);
 }
 
 int main(void) {
@@ -40,8 +39,7 @@ int main(void) {
         {103, "Charlie Lee", 3.96}
     };
 
-    printf("=== Student Records ===
-");
+    printf("=== Student Records ===\n");
     for (int i = 0; i < 3; i++) {
         display_student(&roster[i]);
     }

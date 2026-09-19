@@ -44,8 +44,7 @@ int main(void) {
         }
     }
 
-    printf("Edit Distance between '%s' and '%s': %d
-", s1, s2, dp[m][n]);
+    printf("Edit Distance between '%s' and '%s': %d\n", s1, s2, dp[m][n]);
     return 0;
 }
 ```

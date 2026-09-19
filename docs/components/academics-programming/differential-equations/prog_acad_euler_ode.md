@@ -37,8 +37,7 @@ double solve_euler(double x0, double y0, double target_x, double h) {
 int main(void) {
     double x0 = 0.0, y0 = 1.0, target = 1.0, h = 0.05;
     double y_target = solve_euler(x0, y0, target, h);
-    printf("Euler Solution y(%.1f): %.6f
-", target, y_target);
+    printf("Euler Solution y(%.1f): %.6f\n", target, y_target);
     return 0;
 }
 ```

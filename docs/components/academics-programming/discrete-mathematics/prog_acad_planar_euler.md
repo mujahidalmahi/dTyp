@@ -23,22 +23,16 @@ int main(void);
 
 void verify_planarity(int V, int E) {
     int F = E - V + 2;
-    printf("Vertices (V): %d
-", V);
-    printf("Edges (E): %d
-", E);
-    printf("Calculated Faces (F = E - V + 2): %d
-", F);
+    printf("Vertices (V): %d\n", V);
+    printf("Edges (E): %d\n", E);
+    printf("Calculated Faces (F = E - V + 2): %d\n", F);
     if (V >= 3) {
         int max_edges = 3 * V - 6;
-        printf("Planar Maximum Edge Bound (3V - 6): %d
-", max_edges);
+        printf("Planar Maximum Edge Bound (3V - 6): %d\n", max_edges);
         if (E <= max_edges) {
-            printf("Planarity Edge Condition: Satisfied
-");
+            printf("Planarity Edge Condition: Satisfied\n");
         } else {
-            printf("Planarity Edge Condition: Violates Bound (Non-planar)
-");
+            printf("Planarity Edge Condition: Violates Bound (Non-planar)\n");
         }
     }
 }

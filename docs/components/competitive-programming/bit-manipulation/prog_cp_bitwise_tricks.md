@@ -42,8 +42,7 @@ int main(void) {
     unsigned int vals[] = {1, 2, 7, 16, 29, 64};
     for (int i = 0; i < 6; i++) {
         unsigned int v = vals[i];
-        printf("v=%u: set_bits=%d, lsb=%d, pow2=%d
-",
+        printf("v=%u: set_bits=%d, lsb=%d, pow2=%d\n",
                v, count_set_bits(v), lowest_set_bit((int)v), is_power_of_two(v));
     }
     return 0;

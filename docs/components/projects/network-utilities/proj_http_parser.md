@@ -40,25 +40,17 @@ void parse_http_request(const char* raw, HttpRequest* req) {
 
 int main(void) {
     const char* sample_http =
-        "POST /api/v1/user HTTP/1.1
-"
-        "Host: api.example.com
-"
-        "Content-Length: 24
-"
-        "
-"
-        "{"user": "antigravity"}";
+        "POST /api/v1/user HTTP/1.1\n"
+        "Host: api.example.com\n"
+        "Content-Length: 24\n"
+        "\n"
+        "{\"user\": \"antigravity\"}";
     HttpRequest req;
     parse_http_request(sample_http, &req);
-    printf("Method:         %s
-", req.method);
-    printf("Path:           %s
-", req.path);
-    printf("Host:           %s
-", req.host);
-    printf("Content-Length: %d
-", req.content_length);
+    printf("Method:         %s\n", req.method);
+    printf("Path:           %s\n", req.path);
+    printf("Host:           %s\n", req.host);
+    printf("Content-Length: %d\n", req.content_length);
     return 0;
 }
 ```

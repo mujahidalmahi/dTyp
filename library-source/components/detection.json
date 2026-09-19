@@ -32,8 +32,8 @@
       "detection>error-integrity>parity-even>detect_parity_even()",
       "parity_even"
     ],
-    "createdAt": "2026-09-17T09:35:42.945Z",
-    "updatedAt": "2026-09-17T09:35:42.945Z"
+    "createdAt": "2026-09-19T07:33:52.432Z",
+    "updatedAt": "2026-09-19T07:33:52.432Z"
   },
   {
     "id": "detection.error-integrity.parity-odd",
@@ -68,8 +68,8 @@
       "detection>error-integrity>parity-odd>detect_parity_odd()",
       "parity_odd"
     ],
-    "createdAt": "2026-09-17T09:35:42.945Z",
-    "updatedAt": "2026-09-17T09:35:42.945Z"
+    "createdAt": "2026-09-19T07:33:52.432Z",
+    "updatedAt": "2026-09-19T07:33:52.432Z"
   },
   {
     "id": "detection.error-integrity.crc8",
@@ -104,8 +104,8 @@
       "detection>error-integrity>crc8>detect_crc8()",
       "verify_crc8"
     ],
-    "createdAt": "2026-09-17T09:35:42.945Z",
-    "updatedAt": "2026-09-17T09:35:42.945Z"
+    "createdAt": "2026-09-19T07:33:52.432Z",
+    "updatedAt": "2026-09-19T07:33:52.432Z"
   },
   {
     "id": "detection.error-integrity.crc16",
@@ -140,8 +140,8 @@
       "detection>error-integrity>crc16>detect_crc16()",
       "verify_crc16"
     ],
-    "createdAt": "2026-09-17T09:35:42.945Z",
-    "updatedAt": "2026-09-17T09:35:42.945Z"
+    "createdAt": "2026-09-19T07:33:52.432Z",
+    "updatedAt": "2026-09-19T07:33:52.432Z"
   },
   {
     "id": "detection.error-integrity.crc32",
@@ -176,8 +176,8 @@
       "detection>error-integrity>crc32>detect_crc32()",
       "verify_crc32"
     ],
-    "createdAt": "2026-09-17T09:35:42.945Z",
-    "updatedAt": "2026-09-17T09:35:42.945Z"
+    "createdAt": "2026-09-19T07:33:52.432Z",
+    "updatedAt": "2026-09-19T07:33:52.432Z"
   },
   {
     "id": "detection.error-integrity.checksum-internet",
@@ -212,8 +212,8 @@
       "detection>error-integrity>checksum-internet>detect_checksum_internet()",
       "verify_ip_checksum"
     ],
-    "createdAt": "2026-09-17T09:35:42.945Z",
-    "updatedAt": "2026-09-17T09:35:42.945Z"
+    "createdAt": "2026-09-19T07:33:52.432Z",
+    "updatedAt": "2026-09-19T07:33:52.432Z"
   },
   {
     "id": "detection.error-integrity.adler32",
@@ -248,8 +248,8 @@
       "detection>error-integrity>adler32>detect_adler32()",
       "verify_adler32"
     ],
-    "createdAt": "2026-09-17T09:35:42.945Z",
-    "updatedAt": "2026-09-17T09:35:42.945Z"
+    "createdAt": "2026-09-19T07:33:52.432Z",
+    "updatedAt": "2026-09-19T07:33:52.432Z"
   },
   {
     "id": "detection.error-integrity.fletcher16",
@@ -283,8 +283,8 @@
       "detection>error-integrity>fletcher16>detect_fletcher16()",
       "verify_fletcher16"
     ],
-    "createdAt": "2026-09-17T09:35:42.945Z",
-    "updatedAt": "2026-09-17T09:35:42.945Z"
+    "createdAt": "2026-09-19T07:33:52.432Z",
+    "updatedAt": "2026-09-19T07:33:52.432Z"
   },
   {
     "id": "detection.error-integrity.hamming-single-error",
@@ -319,8 +319,8 @@
       "detection>error-integrity>hamming-single-error>detect_hamming_single_error()",
       "hamming_error"
     ],
-    "createdAt": "2026-09-17T09:35:42.945Z",
-    "updatedAt": "2026-09-17T09:35:42.945Z"
+    "createdAt": "2026-09-19T07:33:52.432Z",
+    "updatedAt": "2026-09-19T07:33:52.432Z"
   },
   {
     "id": "detection.error-integrity.luhn-checksum",
@@ -355,8 +355,8 @@
       "detection>error-integrity>luhn-checksum>detect_luhn_checksum()",
       "luhn_validate"
     ],
-    "createdAt": "2026-09-17T09:35:42.945Z",
-    "updatedAt": "2026-09-17T09:35:42.945Z"
+    "createdAt": "2026-09-19T07:33:52.432Z",
+    "updatedAt": "2026-09-19T07:33:52.432Z"
   },
   {
     "id": "detection.cycles-loops.cycle-floyd",
@@ -391,8 +391,8 @@
       "detection>cycles-loops>cycle-floyd>detect_linked_list_cycle_floyd()",
       "has_cycle_floyd"
     ],
-    "createdAt": "2026-09-17T09:35:42.945Z",
-    "updatedAt": "2026-09-17T09:35:42.945Z"
+    "createdAt": "2026-09-19T07:33:52.432Z",
+    "updatedAt": "2026-09-19T07:33:52.432Z"
   },
   {
     "id": "detection.cycles-loops.cycle-brent",
@@ -427,8 +427,8 @@
       "detection>cycles-loops>cycle-brent>detect_linked_list_cycle_brent()",
       "has_cycle_brent"
     ],
-    "createdAt": "2026-09-17T09:35:42.945Z",
-    "updatedAt": "2026-09-17T09:35:42.945Z"
+    "createdAt": "2026-09-19T07:33:52.432Z",
+    "updatedAt": "2026-09-19T07:33:52.432Z"
   },
   {
     "id": "detection.cycles-loops.cycle-directed-dfs",
@@ -464,8 +464,8 @@
       "detection>cycles-loops>cycle-directed-dfs>detect_graph_cycle_directed_dfs()",
       "directed_has_cycle"
     ],
-    "createdAt": "2026-09-17T09:35:42.945Z",
-    "updatedAt": "2026-09-17T09:35:42.945Z"
+    "createdAt": "2026-09-19T07:33:52.432Z",
+    "updatedAt": "2026-09-19T07:33:52.432Z"
   },
   {
     "id": "detection.cycles-loops.cycle-directed-kahn",
@@ -501,8 +501,8 @@
       "detection>cycles-loops>cycle-directed-kahn>detect_graph_cycle_directed_kahn()",
       "kahn_cycle_detect"
     ],
-    "createdAt": "2026-09-17T09:35:42.945Z",
-    "updatedAt": "2026-09-17T09:35:42.945Z"
+    "createdAt": "2026-09-19T07:33:52.432Z",
+    "updatedAt": "2026-09-19T07:33:52.432Z"
   },
   {
     "id": "detection.cycles-loops.cycle-undirected-dfs",
@@ -538,8 +538,8 @@
       "detection>cycles-loops>cycle-undirected-dfs>detect_graph_cycle_undirected_dfs()",
       "undirected_has_cycle"
     ],
-    "createdAt": "2026-09-17T09:35:42.945Z",
-    "updatedAt": "2026-09-17T09:35:42.945Z"
+    "createdAt": "2026-09-19T07:33:52.432Z",
+    "updatedAt": "2026-09-19T07:33:52.432Z"
   },
   {
     "id": "detection.cycles-loops.cycle-disjoint-set",
@@ -575,8 +575,8 @@
       "detection>cycles-loops>cycle-disjoint-set>detect_graph_cycle_disjoint_set()",
       "union_find_cycle"
     ],
-    "createdAt": "2026-09-17T09:35:42.945Z",
-    "updatedAt": "2026-09-17T09:35:42.945Z"
+    "createdAt": "2026-09-19T07:33:52.432Z",
+    "updatedAt": "2026-09-19T07:33:52.432Z"
   },
   {
     "id": "detection.cycles-loops.deadlock-rag",
@@ -612,8 +612,8 @@
       "detection>cycles-loops>deadlock-rag>detect_deadlock_rag()",
       "detect_deadlock"
     ],
-    "createdAt": "2026-09-17T09:35:42.945Z",
-    "updatedAt": "2026-09-17T09:35:42.945Z"
+    "createdAt": "2026-09-19T07:33:52.432Z",
+    "updatedAt": "2026-09-19T07:33:52.432Z"
   },
   {
     "id": "detection.graph-structural.bipartite-graph",
@@ -648,8 +648,8 @@
       "detection>graph-structural>bipartite-graph>detect_bipartite_graph()",
       "is_bipartite"
     ],
-    "createdAt": "2026-09-17T09:35:42.945Z",
-    "updatedAt": "2026-09-17T09:35:42.945Z"
+    "createdAt": "2026-09-19T07:33:52.432Z",
+    "updatedAt": "2026-09-19T07:33:52.432Z"
   },
   {
     "id": "detection.graph-structural.eulerian-circuit",
@@ -684,8 +684,8 @@
       "detection>graph-structural>eulerian-circuit>detect_eulerian_circuit()",
       "is_eulerian_circuit"
     ],
-    "createdAt": "2026-09-17T09:35:42.945Z",
-    "updatedAt": "2026-09-17T09:35:42.945Z"
+    "createdAt": "2026-09-19T07:33:52.432Z",
+    "updatedAt": "2026-09-19T07:33:52.432Z"
   },
   {
     "id": "detection.graph-structural.eulerian-path",
@@ -720,8 +720,8 @@
       "detection>graph-structural>eulerian-path>detect_eulerian_path()",
       "is_eulerian_path"
     ],
-    "createdAt": "2026-09-17T09:35:42.945Z",
-    "updatedAt": "2026-09-17T09:35:42.945Z"
+    "createdAt": "2026-09-19T07:33:52.432Z",
+    "updatedAt": "2026-09-19T07:33:52.432Z"
   },
   {
     "id": "detection.graph-structural.bridge-edges",
@@ -757,8 +757,8 @@
       "detection>graph-structural>bridge-edges>detect_bridge_edges()",
       "count_bridges"
     ],
-    "createdAt": "2026-09-17T09:35:42.945Z",
-    "updatedAt": "2026-09-17T09:35:42.945Z"
+    "createdAt": "2026-09-19T07:33:52.432Z",
+    "updatedAt": "2026-09-19T07:33:52.432Z"
   },
   {
     "id": "detection.graph-structural.articulation-points",
@@ -793,8 +793,8 @@
       "detection>graph-structural>articulation-points>detect_articulation_points()",
       "count_articulation_points"
     ],
-    "createdAt": "2026-09-17T09:35:42.945Z",
-    "updatedAt": "2026-09-17T09:35:42.945Z"
+    "createdAt": "2026-09-19T07:33:52.432Z",
+    "updatedAt": "2026-09-19T07:33:52.432Z"
   },
   {
     "id": "detection.graph-structural.connected-components",
@@ -829,8 +829,8 @@
       "detection>graph-structural>connected-components>detect_connected_components()",
       "count_components"
     ],
-    "createdAt": "2026-09-17T09:35:42.945Z",
-    "updatedAt": "2026-09-17T09:35:42.945Z"
+    "createdAt": "2026-09-19T07:33:52.432Z",
+    "updatedAt": "2026-09-19T07:33:52.432Z"
   },
   {
     "id": "detection.graph-structural.dag-property",
@@ -865,8 +865,8 @@
       "detection>graph-structural>dag-property>detect_dag_property()",
       "is_dag"
     ],
-    "createdAt": "2026-09-17T09:35:42.945Z",
-    "updatedAt": "2026-09-17T09:35:42.945Z"
+    "createdAt": "2026-09-19T07:33:52.432Z",
+    "updatedAt": "2026-09-19T07:33:52.432Z"
   },
   {
     "id": "detection.patterns-strings.palindrome",
@@ -901,8 +901,8 @@
       "detection>patterns-strings>palindrome>detect_palindrome()",
       "is_palindrome"
     ],
-    "createdAt": "2026-09-17T09:35:42.945Z",
-    "updatedAt": "2026-09-17T09:35:42.945Z"
+    "createdAt": "2026-09-19T07:33:52.432Z",
+    "updatedAt": "2026-09-19T07:33:52.432Z"
   },
   {
     "id": "detection.patterns-strings.anagram",
@@ -937,8 +937,8 @@
       "detection>patterns-strings>anagram>detect_anagram()",
       "is_anagram"
     ],
-    "createdAt": "2026-09-17T09:35:42.945Z",
-    "updatedAt": "2026-09-17T09:35:42.945Z"
+    "createdAt": "2026-09-19T07:33:52.432Z",
+    "updatedAt": "2026-09-19T07:33:52.432Z"
   },
   {
     "id": "detection.patterns-strings.pangram",
@@ -973,8 +973,8 @@
       "detection>patterns-strings>pangram>detect_pangram()",
       "is_pangram"
     ],
-    "createdAt": "2026-09-17T09:35:42.945Z",
-    "updatedAt": "2026-09-17T09:35:42.945Z"
+    "createdAt": "2026-09-19T07:33:52.432Z",
+    "updatedAt": "2026-09-19T07:33:52.432Z"
   },
   {
     "id": "detection.patterns-strings.isogram",
@@ -1009,8 +1009,8 @@
       "detection>patterns-strings>isogram>detect_isogram()",
       "is_isogram"
     ],
-    "createdAt": "2026-09-17T09:35:42.945Z",
-    "updatedAt": "2026-09-17T09:35:42.945Z"
+    "createdAt": "2026-09-19T07:33:52.432Z",
+    "updatedAt": "2026-09-19T07:33:52.432Z"
   },
   {
     "id": "detection.patterns-strings.subsequence",
@@ -1045,8 +1045,8 @@
       "detection>patterns-strings>subsequence>detect_subsequence()",
       "is_subsequence"
     ],
-    "createdAt": "2026-09-17T09:35:42.945Z",
-    "updatedAt": "2026-09-17T09:35:42.945Z"
+    "createdAt": "2026-09-19T07:33:52.432Z",
+    "updatedAt": "2026-09-19T07:33:52.432Z"
   },
   {
     "id": "detection.patterns-strings.pattern-kmp",
@@ -1081,8 +1081,8 @@
       "detection>patterns-strings>pattern-kmp>detect_pattern_kmp()",
       "kmp_find"
     ],
-    "createdAt": "2026-09-17T09:35:42.945Z",
-    "updatedAt": "2026-09-17T09:35:42.945Z"
+    "createdAt": "2026-09-19T07:33:52.432Z",
+    "updatedAt": "2026-09-19T07:33:52.432Z"
   },
   {
     "id": "detection.patterns-strings.pattern-rabin-karp",
@@ -1117,8 +1117,8 @@
       "detection>patterns-strings>pattern-rabin-karp>detect_pattern_rabin_karp()",
       "rabin_karp_find"
     ],
-    "createdAt": "2026-09-17T09:35:42.945Z",
-    "updatedAt": "2026-09-17T09:35:42.945Z"
+    "createdAt": "2026-09-19T07:33:52.432Z",
+    "updatedAt": "2026-09-19T07:33:52.432Z"
   },
   {
     "id": "detection.patterns-strings.balanced-parentheses",
@@ -1153,8 +1153,8 @@
       "detection>patterns-strings>balanced-parentheses>detect_balanced_parentheses()",
       "is_balanced"
     ],
-    "createdAt": "2026-09-17T09:35:42.945Z",
-    "updatedAt": "2026-09-17T09:35:42.945Z"
+    "createdAt": "2026-09-19T07:33:52.432Z",
+    "updatedAt": "2026-09-19T07:33:52.432Z"
   },
   {
     "id": "detection.patterns-strings.repeated-character",
@@ -1189,8 +1189,8 @@
       "detection>patterns-strings>repeated-character>detect_repeated_character()",
       "first_repeated_char"
     ],
-    "createdAt": "2026-09-17T09:35:42.945Z",
-    "updatedAt": "2026-09-17T09:35:42.945Z"
+    "createdAt": "2026-09-19T07:33:52.432Z",
+    "updatedAt": "2026-09-19T07:33:52.432Z"
   },
   {
     "id": "detection.number-properties.prime",
@@ -1225,8 +1225,8 @@
       "detection>number-properties>prime>detect_prime()",
       "is_prime"
     ],
-    "createdAt": "2026-09-17T09:35:42.945Z",
-    "updatedAt": "2026-09-17T09:35:42.945Z"
+    "createdAt": "2026-09-19T07:33:52.432Z",
+    "updatedAt": "2026-09-19T07:33:52.432Z"
   },
   {
     "id": "detection.number-properties.power-of-two",
@@ -1261,8 +1261,8 @@
       "detection>number-properties>power-of-two>detect_power_of_two()",
       "is_power_of_two"
     ],
-    "createdAt": "2026-09-17T09:35:42.945Z",
-    "updatedAt": "2026-09-17T09:35:42.945Z"
+    "createdAt": "2026-09-19T07:33:52.432Z",
+    "updatedAt": "2026-09-19T07:33:52.432Z"
   },
   {
     "id": "detection.number-properties.armstrong-number",
@@ -1297,8 +1297,8 @@
       "detection>number-properties>armstrong-number>detect_armstrong_number()",
       "is_armstrong"
     ],
-    "createdAt": "2026-09-17T09:35:42.945Z",
-    "updatedAt": "2026-09-17T09:35:42.945Z"
+    "createdAt": "2026-09-19T07:33:52.432Z",
+    "updatedAt": "2026-09-19T07:33:52.432Z"
   },
   {
     "id": "detection.number-properties.perfect-number",
@@ -1333,8 +1333,8 @@
       "detection>number-properties>perfect-number>detect_perfect_number()",
       "is_perfect_number"
     ],
-    "createdAt": "2026-09-17T09:35:42.945Z",
-    "updatedAt": "2026-09-17T09:35:42.945Z"
+    "createdAt": "2026-09-19T07:33:52.433Z",
+    "updatedAt": "2026-09-19T07:33:52.433Z"
   },
   {
     "id": "detection.number-properties.happy-number",
@@ -1369,8 +1369,8 @@
       "detection>number-properties>happy-number>detect_happy_number()",
       "is_happy_number"
     ],
-    "createdAt": "2026-09-17T09:35:42.945Z",
-    "updatedAt": "2026-09-17T09:35:42.945Z"
+    "createdAt": "2026-09-19T07:33:52.433Z",
+    "updatedAt": "2026-09-19T07:33:52.433Z"
   },
   {
     "id": "detection.number-properties.overflow-add",
@@ -1405,8 +1405,8 @@
       "detection>number-properties>overflow-add>detect_overflow_add()",
       "check_add_overflow"
     ],
-    "createdAt": "2026-09-17T09:35:42.945Z",
-    "updatedAt": "2026-09-17T09:35:42.945Z"
+    "createdAt": "2026-09-19T07:33:52.433Z",
+    "updatedAt": "2026-09-19T07:33:52.433Z"
   },
   {
     "id": "detection.number-properties.overflow-sub",
@@ -1441,8 +1441,8 @@
       "detection>number-properties>overflow-sub>detect_overflow_sub()",
       "check_sub_overflow"
     ],
-    "createdAt": "2026-09-17T09:35:42.945Z",
-    "updatedAt": "2026-09-17T09:35:42.945Z"
+    "createdAt": "2026-09-19T07:33:52.433Z",
+    "updatedAt": "2026-09-19T07:33:52.433Z"
   },
   {
     "id": "detection.number-properties.overflow-mul",
@@ -1477,8 +1477,8 @@
       "detection>number-properties>overflow-mul>detect_overflow_mul()",
       "check_mul_overflow"
     ],
-    "createdAt": "2026-09-17T09:35:42.945Z",
-    "updatedAt": "2026-09-17T09:35:42.945Z"
+    "createdAt": "2026-09-19T07:33:52.433Z",
+    "updatedAt": "2026-09-19T07:33:52.433Z"
   },
   {
     "id": "detection.number-properties.palindrome-number",
@@ -1513,8 +1513,8 @@
       "detection>number-properties>palindrome-number>detect_palindrome_number()",
       "is_numeric_palindrome"
     ],
-    "createdAt": "2026-09-17T09:35:42.945Z",
-    "updatedAt": "2026-09-17T09:35:42.945Z"
+    "createdAt": "2026-09-19T07:33:52.433Z",
+    "updatedAt": "2026-09-19T07:33:52.433Z"
   },
   {
     "id": "detection.number-properties.float-nan",
@@ -1549,8 +1549,8 @@
       "detection>number-properties>float-nan>detect_float_nan()",
       "is_nan_float"
     ],
-    "createdAt": "2026-09-17T09:35:42.945Z",
-    "updatedAt": "2026-09-17T09:35:42.945Z"
+    "createdAt": "2026-09-19T07:33:52.433Z",
+    "updatedAt": "2026-09-19T07:33:52.433Z"
   },
   {
     "id": "detection.array-anomalies.array-sorted-ascending",
@@ -1585,8 +1585,8 @@
       "detection>array-anomalies>array-sorted-ascending>detect_array_sorted_ascending()",
       "is_sorted_asc"
     ],
-    "createdAt": "2026-09-17T09:35:42.945Z",
-    "updatedAt": "2026-09-17T09:35:42.945Z"
+    "createdAt": "2026-09-19T07:33:52.433Z",
+    "updatedAt": "2026-09-19T07:33:52.433Z"
   },
   {
     "id": "detection.array-anomalies.array-sorted-descending",
@@ -1621,8 +1621,8 @@
       "detection>array-anomalies>array-sorted-descending>detect_array_sorted_descending()",
       "is_sorted_desc"
     ],
-    "createdAt": "2026-09-17T09:35:42.945Z",
-    "updatedAt": "2026-09-17T09:35:42.945Z"
+    "createdAt": "2026-09-19T07:33:52.433Z",
+    "updatedAt": "2026-09-19T07:33:52.433Z"
   },
   {
     "id": "detection.array-anomalies.array-monotonic",
@@ -1657,8 +1657,8 @@
       "detection>array-anomalies>array-monotonic>detect_array_monotonic()",
       "is_monotonic"
     ],
-    "createdAt": "2026-09-17T09:35:42.945Z",
-    "updatedAt": "2026-09-17T09:35:42.945Z"
+    "createdAt": "2026-09-19T07:33:52.433Z",
+    "updatedAt": "2026-09-19T07:33:52.433Z"
   },
   {
     "id": "detection.array-anomalies.array-duplicate",
@@ -1693,8 +1693,8 @@
       "detection>array-anomalies>array-duplicate>detect_array_duplicate()",
       "has_duplicate"
     ],
-    "createdAt": "2026-09-17T09:35:42.945Z",
-    "updatedAt": "2026-09-17T09:35:42.945Z"
+    "createdAt": "2026-09-19T07:33:52.433Z",
+    "updatedAt": "2026-09-19T07:33:52.433Z"
   },
   {
     "id": "detection.array-anomalies.array-majority-element",
@@ -1729,8 +1729,8 @@
       "detection>array-anomalies>array-majority-element>detect_array_majority_element()",
       "majority_element"
     ],
-    "createdAt": "2026-09-17T09:35:42.945Z",
-    "updatedAt": "2026-09-17T09:35:42.945Z"
+    "createdAt": "2026-09-19T07:33:52.433Z",
+    "updatedAt": "2026-09-19T07:33:52.433Z"
   },
   {
     "id": "detection.array-anomalies.array-peak-element",
@@ -1765,8 +1765,8 @@
       "detection>array-anomalies>array-peak-element>detect_array_peak_element()",
       "find_peak_element"
     ],
-    "createdAt": "2026-09-17T09:35:42.945Z",
-    "updatedAt": "2026-09-17T09:35:42.945Z"
+    "createdAt": "2026-09-19T07:33:52.433Z",
+    "updatedAt": "2026-09-19T07:33:52.433Z"
   },
   {
     "id": "detection.array-anomalies.array-missing-number",
@@ -1801,8 +1801,8 @@
       "detection>array-anomalies>array-missing-number>detect_array_missing_number()",
       "find_missing_number"
     ],
-    "createdAt": "2026-09-17T09:35:42.945Z",
-    "updatedAt": "2026-09-17T09:35:42.945Z"
+    "createdAt": "2026-09-19T07:33:52.433Z",
+    "updatedAt": "2026-09-19T07:33:52.433Z"
   },
   {
     "id": "detection.array-anomalies.array-two-sum-target",
@@ -1837,8 +1837,8 @@
       "detection>array-anomalies>array-two-sum-target>detect_array_two_sum_target()",
       "has_two_sum"
     ],
-    "createdAt": "2026-09-17T09:35:42.945Z",
-    "updatedAt": "2026-09-17T09:35:42.945Z"
+    "createdAt": "2026-09-19T07:33:52.433Z",
+    "updatedAt": "2026-09-19T07:33:52.433Z"
   },
   {
     "id": "detection.geometry-collisions.aabb-collision-2d",
@@ -1874,8 +1874,8 @@
       "detection>geometry-collisions>aabb-collision-2d>detect_aabb_collision_2d()",
       "aabb_overlap"
     ],
-    "createdAt": "2026-09-17T09:35:42.945Z",
-    "updatedAt": "2026-09-17T09:35:42.945Z"
+    "createdAt": "2026-09-19T07:33:52.433Z",
+    "updatedAt": "2026-09-19T07:33:52.433Z"
   },
   {
     "id": "detection.geometry-collisions.circle-collision",
@@ -1910,8 +1910,8 @@
       "detection>geometry-collisions>circle-collision>detect_circle_collision()",
       "circle_overlap"
     ],
-    "createdAt": "2026-09-17T09:35:42.945Z",
-    "updatedAt": "2026-09-17T09:35:42.945Z"
+    "createdAt": "2026-09-19T07:33:52.433Z",
+    "updatedAt": "2026-09-19T07:33:52.433Z"
   },
   {
     "id": "detection.geometry-collisions.point-in-circle",
@@ -1945,8 +1945,8 @@
       "detection>geometry-collisions>point-in-circle>detect_point_in_circle()",
       "is_point_in_circle"
     ],
-    "createdAt": "2026-09-17T09:35:42.945Z",
-    "updatedAt": "2026-09-17T09:35:42.945Z"
+    "createdAt": "2026-09-19T07:33:52.433Z",
+    "updatedAt": "2026-09-19T07:33:52.433Z"
   },
   {
     "id": "detection.geometry-collisions.point-in-rect",
@@ -1980,8 +1980,8 @@
       "detection>geometry-collisions>point-in-rect>detect_point_in_rect()",
       "is_point_in_rect"
     ],
-    "createdAt": "2026-09-17T09:35:42.945Z",
-    "updatedAt": "2026-09-17T09:35:42.945Z"
+    "createdAt": "2026-09-19T07:33:52.433Z",
+    "updatedAt": "2026-09-19T07:33:52.433Z"
   },
   {
     "id": "detection.geometry-collisions.line-segment-intersection",
@@ -2016,8 +2016,8 @@
       "detection>geometry-collisions>line-segment-intersection>detect_line_segment_intersection()",
       "lines_intersect"
     ],
-    "createdAt": "2026-09-17T09:35:42.945Z",
-    "updatedAt": "2026-09-17T09:35:42.945Z"
+    "createdAt": "2026-09-19T07:33:52.433Z",
+    "updatedAt": "2026-09-19T07:33:52.433Z"
   },
   {
     "id": "detection.geometry-collisions.point-in-polygon",
@@ -2052,8 +2052,8 @@
       "detection>geometry-collisions>point-in-polygon>detect_point_in_polygon()",
       "is_point_in_polygon"
     ],
-    "createdAt": "2026-09-17T09:35:42.945Z",
-    "updatedAt": "2026-09-17T09:35:42.945Z"
+    "createdAt": "2026-09-19T07:33:52.433Z",
+    "updatedAt": "2026-09-19T07:33:52.433Z"
   },
   {
     "id": "detection.geometry-collisions.sphere-collision-3d",
@@ -2089,8 +2089,8 @@
       "detection>geometry-collisions>sphere-collision-3d>detect_sphere_collision_3d()",
       "sphere_overlap_3d"
     ],
-    "createdAt": "2026-09-17T09:35:42.945Z",
-    "updatedAt": "2026-09-17T09:35:42.945Z"
+    "createdAt": "2026-09-19T07:33:52.433Z",
+    "updatedAt": "2026-09-19T07:33:52.433Z"
   },
   {
     "id": "detection.geometry-collisions.ray-box-intersection",
@@ -2125,8 +2125,8 @@
       "detection>geometry-collisions>ray-box-intersection>detect_ray_box_intersection()",
       "ray_intersects_box"
     ],
-    "createdAt": "2026-09-17T09:35:42.945Z",
-    "updatedAt": "2026-09-17T09:35:42.945Z"
+    "createdAt": "2026-09-19T07:33:52.433Z",
+    "updatedAt": "2026-09-19T07:33:52.433Z"
   },
   {
     "id": "detection.system-hardware.endianness",
@@ -2161,8 +2161,8 @@
       "detection>system-hardware>endianness>detect_endianness()",
       "is_little_endian"
     ],
-    "createdAt": "2026-09-17T09:35:42.945Z",
-    "updatedAt": "2026-09-17T09:35:42.945Z"
+    "createdAt": "2026-09-19T07:33:52.433Z",
+    "updatedAt": "2026-09-19T07:33:52.433Z"
   },
   {
     "id": "detection.system-hardware.pointer-alignment",
@@ -2197,8 +2197,8 @@
       "detection>system-hardware>pointer-alignment>detect_pointer_alignment()",
       "is_aligned"
     ],
-    "createdAt": "2026-09-17T09:35:42.945Z",
-    "updatedAt": "2026-09-17T09:35:42.945Z"
+    "createdAt": "2026-09-19T07:33:52.433Z",
+    "updatedAt": "2026-09-19T07:33:52.433Z"
   },
   {
     "id": "detection.system-hardware.architecture-bits",
@@ -2233,8 +2233,8 @@
       "detection>system-hardware>architecture-bits>detect_architecture_bits()",
       "cpu_pointer_bits"
     ],
-    "createdAt": "2026-09-17T09:35:42.945Z",
-    "updatedAt": "2026-09-17T09:35:42.945Z"
+    "createdAt": "2026-09-19T07:33:52.433Z",
+    "updatedAt": "2026-09-19T07:33:52.433Z"
   },
   {
     "id": "detection.system-hardware.null-terminator",
@@ -2269,8 +2269,8 @@
       "detection>system-hardware>null-terminator>detect_null_terminator()",
       "has_null_terminator"
     ],
-    "createdAt": "2026-09-17T09:35:42.945Z",
-    "updatedAt": "2026-09-17T09:35:42.945Z"
+    "createdAt": "2026-09-19T07:33:52.433Z",
+    "updatedAt": "2026-09-19T07:33:52.433Z"
   },
   {
     "id": "detection.system-hardware.stack-growth-direction",
@@ -2305,7 +2305,7 @@
       "detection>system-hardware>stack-growth-direction>detect_stack_growth_direction()",
       "stack_direction"
     ],
-    "createdAt": "2026-09-17T09:35:42.945Z",
-    "updatedAt": "2026-09-17T09:35:42.945Z"
+    "createdAt": "2026-09-19T07:33:52.433Z",
+    "updatedAt": "2026-09-19T07:33:52.433Z"
   }
 ]

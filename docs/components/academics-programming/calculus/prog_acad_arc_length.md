@@ -44,8 +44,7 @@ double compute_arc_length(double a, double b, int n) {
 
 int main(void) {
     double len = compute_arc_length(0.0, 1.0, 1000);
-    printf("Arc length of y = x^2 from x = 0 to 1: %.6f
-", len);
+    printf("Arc length of y = x^2 from x = 0 to 1: %.6f\n", len);
     return 0;
 }
 ```

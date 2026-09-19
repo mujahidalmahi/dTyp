@@ -44,8 +44,7 @@ void gap_insert(GapBuffer* gb, char c) {
 void print_buffer(const GapBuffer* gb) {
     for (int i = 0; i < gb->gap_left; i++) putchar(gb->buf[i]);
     for (int i = gb->gap_right + 1; i < gb->size; i++) putchar(gb->buf[i]);
-    putchar('
-');
+    putchar('\n');
 }
 
 int main(void) {

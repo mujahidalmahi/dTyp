@@ -44,8 +44,7 @@ void logger_write(const Logger* log, Level lvl, const char* fmt, ...) {
 
     printf("[%s] [%s] ", time_str, tags[lvl]);
     vprintf(fmt, args1);
-    putchar('
-');
+    putchar('\n');
     va_end(args1);
 
     if (log->log_file) {
@@ -53,8 +52,7 @@ void logger_write(const Logger* log, Level lvl, const char* fmt, ...) {
         if (f) {
             fprintf(f, "[%s] [%s] ", time_str, tags[lvl]);
             vfprintf(f, fmt, args2);
-            fputc('
-', f);
+            fputc('\n', f);
             fclose(f);
         }
     }

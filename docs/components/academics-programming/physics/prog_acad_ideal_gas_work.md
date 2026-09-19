@@ -28,10 +28,8 @@ void thermodynamic_processes(double n, double T, double V1, double V2, double P_
     double P_pa = P_bar * 1e5;
     double W_isobaric = P_pa * (V2 - V1);
 
-    printf("Isothermal Work (T = %.1f K): %.2f J
-", T, W_isothermal);
-    printf("Isobaric Work   (P = %.1f bar): %.2f J
-", P_bar, W_isobaric);
+    printf("Isothermal Work (T = %.1f K): %.2f J\n", T, W_isothermal);
+    printf("Isobaric Work   (P = %.1f bar): %.2f J\n", P_bar, W_isobaric);
 }
 
 int main(void) {

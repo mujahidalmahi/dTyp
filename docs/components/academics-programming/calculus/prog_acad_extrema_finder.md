@@ -44,19 +44,16 @@ void find_extrema(double a, double b, int n) {
             double root = (x1 + x2) / 2.0;
             double concavity = d2f(root, h);
             if (concavity < 0) {
-                printf("Local Maximum at x = %.4f, f(x) = %.4f
-", root, f(root));
+                printf("Local Maximum at x = %.4f, f(x) = %.4f\n", root, f(root));
             } else if (concavity > 0) {
-                printf("Local Minimum at x = %.4f, f(x) = %.4f
-", root, f(root));
+                printf("Local Minimum at x = %.4f, f(x) = %.4f\n", root, f(root));
             }
         }
     }
 }
 
 int main(void) {
-    printf("Finding extrema for 2x^3 - 9x^2 + 12x + 1 in [0, 4]:
-");
+    printf("Finding extrema for 2x^3 - 9x^2 + 12x + 1 in [0, 4]:\n");
     find_extrema(0.0, 4.0, 100);
     return 0;
 }

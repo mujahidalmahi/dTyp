@@ -26,11 +26,9 @@ int main(void) {
     int* ptr = arr;
     int count = sizeof(arr) / sizeof(arr[0]);
 
-    printf("Buffer address: %p
-", (void*)ptr);
+    printf("Buffer address: %p\n", (void*)ptr);
     while (ptr < arr + count) {
-        printf("Index %td: value = %d at address %p
-", ptr - arr, *ptr, (void*)ptr);
+        printf("Index %td: value = %d at address %p\n", ptr - arr, *ptr, (void*)ptr);
         ptr++;
     }
     return 0;

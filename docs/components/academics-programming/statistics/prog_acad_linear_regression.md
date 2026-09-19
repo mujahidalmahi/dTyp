@@ -39,18 +39,12 @@ void solve_linear_regression(int n, const double x[], const double y[], double q
     double r2 = r * r;
     double pred_y = m * query_x + c;
 
-    printf("Slope (m):                     %.4f
-", m);
-    printf("Intercept (c):                 %.4f
-", c);
-    printf("Regression Equation:           y = %.4fx + %.4f
-", m, c);
-    printf("Pearson Correlation (r):       %.4f
-", r);
-    printf("R-Squared (r^2):               %.4f
-", r2);
-    printf("Prediction at x = %.2f:       y = %.4f
-", query_x, pred_y);
+    printf("Slope (m):                     %.4f\n", m);
+    printf("Intercept (c):                 %.4f\n", c);
+    printf("Regression Equation:           y = %.4fx + %.4f\n", m, c);
+    printf("Pearson Correlation (r):       %.4f\n", r);
+    printf("R-Squared (r^2):               %.4f\n", r2);
+    printf("Prediction at x = %.2f:       y = %.4f\n", query_x, pred_y);
 }
 
 int main(void) {

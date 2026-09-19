@@ -42,10 +42,8 @@ long long compute_combination(int n, int r) {
 
 int main(void) {
     int n = 8, r = 3;
-    printf("P(%d, %d) = %lld
-", n, r, compute_permutation(n, r));
-    printf("C(%d, %d) = %lld
-", n, r, compute_combination(n, r));
+    printf("P(%d, %d) = %lld\n", n, r, compute_permutation(n, r));
+    printf("C(%d, %d) = %lld\n", n, r, compute_combination(n, r));
     return 0;
 }
 ```

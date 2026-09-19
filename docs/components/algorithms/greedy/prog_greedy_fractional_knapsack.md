@@ -38,8 +38,7 @@ int main(void) {
         }
     }
 
-    printf("Max Fractional Knapsack Value: %.2f
-", total_val);
+    printf("Max Fractional Knapsack Value: %.2f\n", total_val);
     return 0;
 }
 ```

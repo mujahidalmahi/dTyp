@@ -45,16 +45,11 @@ void compute_descriptive_stats(int n, double arr[]) {
     double q3 = arr[(3 * n) / 4];
     double iqr = q3 - q1;
 
-    printf("Mean:               %.4f
-", mean);
-    printf("Median:             %.4f
-", median);
-    printf("Sample Variance:    %.4f
-", variance);
-    printf("Standard Deviation: %.4f
-", std_dev);
-    printf("IQR (Q3 - Q1):      %.4f
-", iqr);
+    printf("Mean:               %.4f\n", mean);
+    printf("Median:             %.4f\n", median);
+    printf("Sample Variance:    %.4f\n", variance);
+    printf("Standard Deviation: %.4f\n", std_dev);
+    printf("IQR (Q3 - Q1):      %.4f\n", iqr);
 }
 
 int main(void) {

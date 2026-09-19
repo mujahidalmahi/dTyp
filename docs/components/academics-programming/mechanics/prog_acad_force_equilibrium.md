@@ -31,10 +31,8 @@ void resolve_forces(int n, const double mag[], const double theta_deg[]) {
     }
     double r_mag = sqrt(sum_fx * sum_fx + sum_fy * sum_fy);
     double r_ang = atan2(sum_fy, sum_fx) * (180.0 / 3.141592653589793);
-    printf("Resultant Force: %.2f N at %.2f deg
-", r_mag, r_ang);
-    printf("Equilibrant:     %.2f N at %.2f deg
-", r_mag, r_ang + 180.0);
+    printf("Resultant Force: %.2f N at %.2f deg\n", r_mag, r_ang);
+    printf("Equilibrant:     %.2f N at %.2f deg\n", r_mag, r_ang + 180.0);
 }
 
 int main(void) {

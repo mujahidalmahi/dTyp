@@ -36,12 +36,9 @@ int btree_search(const BNode* node, int key) {
 
 int main(void) {
     BNode leaf = {{10, 20, 30}, 3, 1};
-    printf("Searching in B-Tree Node [10, 20, 30]:
-");
-    printf("Search 20: %s
-", btree_search(&leaf, 20) ? "Found" : "Not Found");
-    printf("Search 25: %s
-", btree_search(&leaf, 25) ? "Found" : "Not Found");
+    printf("Searching in B-Tree Node [10, 20, 30]:\n");
+    printf("Search 20: %s\n", btree_search(&leaf, 20) ? "Found" : "Not Found");
+    printf("Search 25: %s\n", btree_search(&leaf, 25) ? "Found" : "Not Found");
     return 0;
 }
 ```

@@ -50,10 +50,8 @@ int main(void) {
     };
     double x[3] = {1, 1, 1};
     double lambda = solve_power_method(n, A, x, 1e-6, 100);
-    printf("Dominant Eigenvalue: %.4f
-", lambda);
-    printf("Eigenvector: (%.4f, %.4f, %.4f)
-", x[0], x[1], x[2]);
+    printf("Dominant Eigenvalue: %.4f\n", lambda);
+    printf("Eigenvector: (%.4f, %.4f, %.4f)\n", x[0], x[1], x[2]);
     return 0;
 }
 ```

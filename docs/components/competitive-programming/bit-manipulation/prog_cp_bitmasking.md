@@ -23,14 +23,11 @@ int main(void);
 
 int main(void) {
     int mask = 13;
-    printf("Submasks of %d:
-", mask);
+    printf("Submasks of %d:\n", mask);
     for (int sub = mask; sub > 0; sub = (sub - 1) & mask) {
-        printf("%d
-", sub);
+        printf("%d\n", sub);
     }
-    printf("0
-");
+    printf("0\n");
     return 0;
 }
 ```

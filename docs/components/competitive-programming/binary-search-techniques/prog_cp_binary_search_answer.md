@@ -58,8 +58,7 @@ long long min_max_allocation(const int* arr, int n, int k) {
 int main(void) {
     int arr[] = {10, 20, 30, 40};
     int n = 4, k = 2;
-    printf("Optimal partitioned sum for 2 workers: %lld
-", min_max_allocation(arr, n, k));
+    printf("Optimal partitioned sum for 2 workers: %lld\n", min_max_allocation(arr, n, k));
     return 0;
 }
 ```

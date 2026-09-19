@@ -42,8 +42,7 @@ int main(void) {
     while (i < n) {
         if (pat[j] == text[i]) { i++; j++; }
         if (j == m) {
-            printf("Found pattern at index %d
-", i - j);
+            printf("Found pattern at index %d\n", i - j);
             j = lps[j - 1];
         } else if (i < n && pat[j] != text[i]) {
             if (j) j = lps[j - 1];

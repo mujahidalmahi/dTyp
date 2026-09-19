@@ -28,22 +28,16 @@ void analyze_inclined_plane(double m, double theta_deg, double mu_s, double mu_k
     double f_down = m * g * sin(theta);
     double max_static = mu_s * N;
 
-    printf("Downhill Force (mg sin theta): %.2f N
-", f_down);
-    printf("Max Static Friction:           %.2f N
-", max_static);
+    printf("Downhill Force (mg sin theta): %.2f N\n", f_down);
+    printf("Max Static Friction:           %.2f N\n", max_static);
     if (f_down <= max_static) {
-        printf("State: Static Equilibrium (No motion, a = 0.00 m/s^2)
-");
+        printf("State: Static Equilibrium (No motion, a = 0.00 m/s^2)\n");
     } else {
         double f_kinetic = mu_k * N;
         double a = (f_down - f_kinetic) / m;
-        printf("State: Motion occurs
-");
-        printf("Kinetic Friction Force:        %.2f N
-", f_kinetic);
-        printf("Acceleration down plane:       %.4f m/s^2
-", a);
+        printf("State: Motion occurs\n");
+        printf("Kinetic Friction Force:        %.2f N\n", f_kinetic);
+        printf("Acceleration down plane:       %.4f m/s^2\n", a);
     }
 }
 

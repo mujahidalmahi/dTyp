@@ -30,17 +30,14 @@ typedef struct {
 } WalRecord;
 
 void replay_log(const WalRecord* log, int count) {
-    printf("Replaying Write-Ahead Log (%d records):
-", count);
+    printf("Replaying Write-Ahead Log (%d records):\n", count);
     int current_val = 0;
     for (int i = 0; i < count; i++) {
         if (log[i].op == '+') current_val += log[i].val;
         else if (log[i].op == '=') current_val = log[i].val;
-        printf("  LSN %04d: %s %c %d => State: %d
-", log[i].lsn, log[i].key, log[i].op, log[i].val, current_val);
+        printf("  LSN %04d: %s %c %d => State: %d\n", log[i].lsn, log[i].key, log[i].op, log[i].val, current_val);
     }
-    printf("Recovered state successfully.
-");
+    printf("Recovered state successfully.\n");
 }
 
 int main(void) {

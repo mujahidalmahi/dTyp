@@ -39,15 +39,13 @@ int main(void) {
 
     printf("Original: ");
     for (int i = 0; i < n; i++) printf("%d ", arr[i]);
-    putchar('
-');
+    putchar('\n');
 
     insertion_sort(arr, n);
 
     printf("Sorted:   ");
     for (int i = 0; i < n; i++) printf("%d ", arr[i]);
-    putchar('
-');
+    putchar('\n');
 
     return 0;
 }

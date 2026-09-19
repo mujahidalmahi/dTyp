@@ -40,8 +40,7 @@ int main(void) {
         if (data[i] > max_val) max_val = data[i];
     }
 
-    printf("Count: %zu, Sum: %lld, Average: %.2f, Min: %d, Max: %d
-",
+    printf("Count: %zu, Sum: %lld, Average: %.2f, Min: %d, Max: %d\n",
            n, sum, (double)sum / n, min_val, max_val);
 
     free(data);

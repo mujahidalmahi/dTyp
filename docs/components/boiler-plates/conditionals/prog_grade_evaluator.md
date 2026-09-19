@@ -34,8 +34,7 @@ int main(void) {
         else if (s >= 60) grade = 'D';
         else grade = 'F';
 
-        printf("Score: %d -> Grade: %c
-", s, grade);
+        printf("Score: %d -> Grade: %c\n", s, grade);
     }
     return 0;
 }

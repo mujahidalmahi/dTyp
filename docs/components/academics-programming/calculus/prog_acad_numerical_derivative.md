@@ -37,12 +37,9 @@ double second_derivative(double x, double h) {
 int main(void) {
     double x = 1.04719755;
     double h = 1e-5;
-    printf("f(x) = sin(x) at pi/3:
-");
-    printf("f'(x)  = %.6f (Expected cos(pi/3) = 0.500000)
-", first_derivative(x, h));
-    printf("f''(x) = %.6f (Expected -sin(pi/3) = -0.866025)
-", second_derivative(x, h));
+    printf("f(x) = sin(x) at pi/3:\n");
+    printf("f'(x)  = %.6f (Expected cos(pi/3) = 0.500000)\n", first_derivative(x, h));
+    printf("f''(x) = %.6f (Expected -sin(pi/3) = -0.866025)\n", second_derivative(x, h));
     return 0;
 }
 ```

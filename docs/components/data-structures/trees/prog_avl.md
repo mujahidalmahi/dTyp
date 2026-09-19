@@ -1,7 +1,7 @@
 # prog_avl
 > **Domain:** `data-structures` | **Subcategory:** `trees` | **Type:** `program`
 ## Overview
-Complete self-balancing AVL Tree insertion program with rotations
+Interactive self-balancing AVL tree program with automatic rotations (LL, RR, LR, RL), search, and inorder traversal
 
 ## Signature
 ```c
@@ -21,89 +21,155 @@ int main(void)
 ```c
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
-typedef struct Node {
-    int key;
-    struct Node* left;
-    struct Node* right;
+void clear_input(void) {
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF);
+}
+
+typedef struct AVLNode {
+    int val;
+    struct AVLNode* left;
+    struct AVLNode* right;
     int height;
-} Node;
+} AVLNode;
 
-static int h(Node* n) { return n ? n->height : 0; }
-static int max(int a, int b) { return a > b ? a : b; }
+int avl_h(AVLNode* n) { return n ? n->height : 0; }
+int avl_max(int a, int b) { return a > b ? a : b; }
 
-static Node* r_rot(Node* y) {
-    Node* x = y->left;
-    Node* t = x->right;
-    x->right = y; y->left = t;
-    y->height = max(h(y->left), h(y->right)) + 1;
-    x->height = max(h(x->left), h(x->right)) + 1;
+AVLNode* avl_create(int val) {
+    AVLNode* n = (AVLNode*)malloc(sizeof(AVLNode));
+    n->val = val;
+    n->left = NULL;
+    n->right = NULL;
+    n->height = 1;
+    return n;
+}
+
+AVLNode* avl_rot_right(AVLNode* y) {
+    AVLNode* x = y->left;
+    AVLNode* t2 = x->right;
+    x->right = y;
+    y->left = t2;
+    y->height = avl_max(avl_h(y->left), avl_h(y->right)) + 1;
+    x->height = avl_max(avl_h(x->left), avl_h(x->right)) + 1;
     return x;
 }
 
-static Node* l_rot(Node* x) {
-    Node* y = x->right;
-    Node* t = y->left;
-    y->left = x; x->right = t;
-    x->height = max(h(x->left), h(x->right)) + 1;
-    y->height = max(h(y->left), h(y->right)) + 1;
+AVLNode* avl_rot_left(AVLNode* x) {
+    AVLNode* y = x->right;
+    AVLNode* t2 = y->left;
+    y->left = x;
+    x->right = t2;
+    x->height = avl_max(avl_h(x->left), avl_h(x->right)) + 1;
+    y->height = avl_max(avl_h(y->left), avl_h(y->right)) + 1;
     return y;
 }
 
-Node* insert(Node* node, int key) {
-    if (!node) {
-        Node* n = (Node*)malloc(sizeof(Node));
-        n->key = key; n->height = 1; n->left = n->right = NULL;
-        return n;
-    }
-    if (key < node->key) node->left = insert(node->left, key);
-    else if (key > node->key) node->right = insert(node->right, key);
+int avl_balance_factor(AVLNode* n) {
+    return n ? avl_h(n->left) - avl_h(n->right) : 0;
+}
+
+AVLNode* avl_insert(AVLNode* node, int val) {
+    if (!node) return avl_create(val);
+    if (val < node->val) node->left = avl_insert(node->left, val);
+    else if (val > node->val) node->right = avl_insert(node->right, val);
     else return node;
 
-    node->height = 1 + max(h(node->left), h(node->right));
-    int b = h(node->left) - h(node->right);
+    node->height = 1 + avl_max(avl_h(node->left), avl_h(node->right));
+    int balance = avl_balance_factor(node);
 
-    if (b > 1 && key < node->left->key) return r_rot(node);
-    if (b < -1 && key > node->right->key) return l_rot(node);
-    if (b > 1 && key > node->left->key) {
-        node->left = l_rot(node->left);
-        return r_rot(node);
+    if (balance > 1 && val < node->left->val) return avl_rot_right(node);
+    if (balance < -1 && val > node->right->val) return avl_rot_left(node);
+    if (balance > 1 && val > node->left->val) {
+        node->left = avl_rot_left(node->left);
+        return avl_rot_right(node);
     }
-    if (b < -1 && key < node->right->key) {
-        node->right = r_rot(node->right);
-        return l_rot(node);
+    if (balance < -1 && val < node->right->val) {
+        node->right = avl_rot_right(node->right);
+        return avl_rot_left(node);
     }
     return node;
 }
 
-void print_preorder(const Node* r) {
-    if (!r) return;
-    printf("%d ", r->key);
-    print_preorder(r->left);
-    print_preorder(r->right);
+bool avl_search(const AVLNode* root, int val) {
+    if (!root) return false;
+    if (root->val == val) return true;
+    if (val < root->val) return avl_search(root->left, val);
+    return avl_search(root->right, val);
 }
 
-void clean(Node* r) {
-    if (!r) return;
-    clean(r->left);
-    clean(r->right);
-    free(r);
+void avl_inorder(const AVLNode* root) {
+    if (!root) return;
+    avl_inorder(root->left);
+    printf("%d (BF:%d) ", root->val, avl_balance_factor((AVLNode*)root));
+    avl_inorder(root->right);
+}
+
+void avl_free(AVLNode* root) {
+    if (!root) return;
+    avl_free(root->left);
+    avl_free(root->right);
+    free(root);
 }
 
 int main(void) {
-    Node* root = NULL;
-    root = insert(root, 10);
-    root = insert(root, 20);
-    root = insert(root, 30);
-    root = insert(root, 40);
-    root = insert(root, 50);
+    AVLNode* root = NULL;
+    int choice;
 
-    printf("Balanced AVL Pre-Order: ");
-    print_preorder(root);
-    putchar('
-');
+    do {
+        printf("\n=== AVL Self-Balancing Tree Menu ===\n");
+        printf("1. Insert Node\n");
+        printf("2. Search Value\n");
+        printf("3. Inorder Traversal (Values with Balance Factors)\n");
+        printf("4. Tree Root Height & Balance Factor\n");
+        printf("0. Exit\n");
+        printf("Enter choice: ");
 
-    clean(root);
+        if (scanf("%d", &choice) != 1) {
+            clear_input();
+            continue;
+        }
+
+        switch (choice) {
+            case 1: {
+                int val;
+                printf("Enter value to insert into AVL tree: ");
+                if (scanf("%d", &val) == 1) {
+                    root = avl_insert(root, val);
+                    printf("Inserted %d with automatic balancing.\n", val);
+                } else clear_input();
+                break;
+            }
+            case 2: {
+                int val;
+                printf("Enter value to search: ");
+                if (scanf("%d", &val) == 1) {
+                    if (avl_search(root, val)) printf("Found %d in AVL tree.\n", val);
+                    else printf("%d is not in the tree.\n", val);
+                } else clear_input();
+                break;
+            }
+            case 3:
+                printf("AVL Inorder: ");
+                avl_inorder(root);
+                printf("\n");
+                break;
+            case 4:
+                if (root) printf("Root: %d | Height: %d | Balance Factor: %d\n", root->val, root->height, avl_balance_factor(root));
+                else printf("Tree is empty.\n");
+                break;
+            case 0:
+                printf("Exiting AVL Tree Menu.\n");
+                break;
+            default:
+                printf("Invalid choice.\n");
+                break;
+        }
+    } while (choice != 0);
+
+    avl_free(root);
     return 0;
 }
 ```

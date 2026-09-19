@@ -39,8 +39,7 @@ int main(void) {
         }
     }
 
-    printf("Length of LCS between '%s' and '%s': %d
-", s1, s2, dp[m][n]);
+    printf("Length of LCS between '%s' and '%s': %d\n", s1, s2, dp[m][n]);
     return 0;
 }
 ```

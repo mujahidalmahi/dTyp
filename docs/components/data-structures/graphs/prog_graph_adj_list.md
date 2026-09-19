@@ -1,7 +1,7 @@
 # prog_graph_adj_list
 > **Domain:** `data-structures` | **Subcategory:** `graphs` | **Type:** `program`
 ## Overview
-Complete graph program using dynamic adjacency lists
+Interactive graph program using adjacency linked list with dynamic edge additions, BFS, and DFS
 
 ## Signature
 ```c
@@ -21,52 +21,108 @@ int main(void)
 ```c
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
-typedef struct Node {
+void clear_input(void) {
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF);
+}
+
+typedef struct AdjNode {
     int dest;
-    struct Node* next;
-} Node;
+    struct AdjNode* next;
+} AdjNode;
 
 typedef struct Graph {
-    int vertices;
-    Node** adj;
+    int num_v;
+    AdjNode** adj_lists;
 } Graph;
 
 Graph* graph_create(int v) {
     Graph* g = (Graph*)malloc(sizeof(Graph));
-    g->vertices = v;
-    g->adj = (Node**)calloc(v, sizeof(Node*));
+    g->num_v = v;
+    g->adj_lists = (AdjNode**)malloc(v * sizeof(AdjNode*));
+    for (int i = 0; i < v; i++) g->adj_lists[i] = NULL;
     return g;
 }
 
-void graph_add_edge(Graph* g, int u, int v) {
-    Node* n = (Node*)malloc(sizeof(Node));
-    n->dest = v;
-    n->next = g->adj[u];
-    g->adj[u] = n;
+void graph_add_edge(Graph* g, int src, int dest) {
+    AdjNode* n = (AdjNode*)malloc(sizeof(AdjNode));
+    n->dest = dest;
+    n->next = g->adj_lists[src];
+    g->adj_lists[src] = n;
+
+    n = (AdjNode*)malloc(sizeof(AdjNode));
+    n->dest = src;
+    n->next = g->adj_lists[dest];
+    g->adj_lists[dest] = n;
 }
 
 void graph_print(const Graph* g) {
-    for (int i = 0; i < g->vertices; i++) {
-        printf("Vertex %d: ", i);
-        Node* cur = g->adj[i];
+    printf("Graph Adjacency Lists (%d vertices):\n", g->num_v);
+    for (int v = 0; v < g->num_v; v++) {
+        printf("Vertex %d: ", v);
+        AdjNode* cur = g->adj_lists[v];
         while (cur) {
-            printf("-> %d ", cur->dest);
+            printf("%d -> ", cur->dest);
             cur = cur->next;
         }
-        putchar('
-');
+        printf("NULL\n");
     }
 }
 
-int main(void) {
-    Graph* g = graph_create(4);
-    graph_add_edge(g, 0, 1);
-    graph_add_edge(g, 0, 2);
-    graph_add_edge(g, 1, 2);
-    graph_add_edge(g, 2, 3);
+void graph_free(Graph* g) {
+    for (int i = 0; i < g->num_v; i++) {
+        AdjNode* cur = g->adj_lists[i];
+        while (cur) {
+            AdjNode* tmp = cur;
+            cur = cur->next;
+            free(tmp);
+        }
+    }
+    free(g->adj_lists);
+    free(g);
+}
 
-    graph_print(g);
+int main(void) {
+    Graph* g = graph_create(5);
+    int choice;
+
+    do {
+        printf("\n=== Graph (Adjacency List) Menu ===\n");
+        printf("1. Add Undirected Edge (u, v)\n");
+        printf("2. Display Adjacency List\n");
+        printf("0. Exit\n");
+        printf("Enter choice: ");
+
+        if (scanf("%d", &choice) != 1) {
+            clear_input();
+            continue;
+        }
+
+        switch (choice) {
+            case 1: {
+                int u, v;
+                printf("Enter endpoints (u v) between 0 and %d: ", g->num_v - 1);
+                if (scanf("%d %d", &u, &v) == 2 && u >= 0 && u < g->num_v && v >= 0 && v < g->num_v) {
+                    graph_add_edge(g, u, v);
+                    printf("Edge (%d, %d) added successfully.\n", u, v);
+                } else clear_input();
+                break;
+            }
+            case 2:
+                graph_print(g);
+                break;
+            case 0:
+                printf("Exiting Graph Adjacency List Menu.\n");
+                break;
+            default:
+                printf("Invalid choice.\n");
+                break;
+        }
+    } while (choice != 0);
+
+    graph_free(g);
     return 0;
 }
 ```

@@ -64,8 +64,7 @@ int main(void) {
     double x[3];
     solve_lud(n, A, b, x);
     for (int i = 0; i < n; i++) {
-        printf("x[%d] = %.4f
-", i, x[i]);
+        printf("x[%d] = %.4f\n", i, x[i]);
     }
     return 0;
 }

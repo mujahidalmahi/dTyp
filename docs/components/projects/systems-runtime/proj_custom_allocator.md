@@ -57,12 +57,10 @@ int main(void) {
     init_allocator();
     int* p1 = (int*)my_malloc(64);
     int* p2 = (int*)my_malloc(128);
-    printf("Allocated p1 at %p, p2 at %p
-", (void*)p1, (void*)p2);
+    printf("Allocated p1 at %p, p2 at %p\n", (void*)p1, (void*)p2);
     my_free(p1);
     int* p3 = (int*)my_malloc(32);
-    printf("Reallocated p3 in freed space: %p
-", (void*)p3);
+    printf("Reallocated p3 in freed space: %p\n", (void*)p3);
     return 0;
 }
 ```

@@ -41,19 +41,16 @@ int main(void) {
     for (int i = 0; i < n; i++) {
         sscanf(csv_data[i], "%31[^,],%15[^,],%d", records[i].name, records[i].dept, &records[i].salary);
     }
-    printf("Query: SELECT Name, Salary WHERE Dept = 'Engineering'
-");
+    printf("Query: SELECT Name, Salary WHERE Dept = 'Engineering'\n");
     int total = 0, count = 0;
     for (int i = 0; i < n; i++) {
         if (strcmp(records[i].dept, "Engineering") == 0) {
-            printf("  %-10s | $%d
-", records[i].name, records[i].salary);
+            printf("  %-10s | $%d\n", records[i].name, records[i].salary);
             total += records[i].salary;
             count++;
         }
     }
-    printf("Average Engineering Salary: $%d
-", total / count);
+    printf("Average Engineering Salary: $%d\n", total / count);
     return 0;
 }
 ```

@@ -132,6 +132,92 @@ export const validateLibrary = async (): Promise<boolean> => {
     }
   }
 
+  // 5. C Syntax Verification with GCC (if GCC is available)
+  let hasGcc = false;
+  try {
+    const { execSync } = await import("node:child_process");
+    execSync("gcc --version", { stdio: "ignore" });
+    hasGcc = true;
+  } catch {
+    logger.warn("GCC compiler not found in PATH; skipping C syntax verification.");
+  }
+
+  if (hasGcc) {
+    const { execSync } = await import("node:child_process");
+    const os = await import("node:os");
+    logger.info("Executing C syntax verification (gcc -fsyntax-only) across all components...");
+    const headers = [
+      "#include <stdio.h>",
+      "#include <stdlib.h>",
+      "#include <string.h>",
+      "#include <stdbool.h>",
+      "#include <stdint.h>",
+      "#include <limits.h>",
+      "#include <math.h>",
+      "",
+    ].join("\n");
+    const tempFile = path.join(os.tmpdir(), `dtyp_syntax_check_${Date.now()}.c`);
+
+    const resolveDeps = (comp: Component, visited = new Set<string>(), result: Component[] = []): Component[] => {
+      if (!comp.dependencies) return result;
+      for (const depId of comp.dependencies) {
+        if (!visited.has(depId)) {
+          visited.add(depId);
+          const dep = componentMap.get(depId);
+          if (dep) {
+            resolveDeps(dep, visited, result);
+            result.push(dep);
+          }
+        }
+      }
+      return result;
+    };
+
+    let syntaxErrors = 0;
+    for (const comp of allComponents) {
+      let code = "";
+      if (comp.type === "program") {
+        code = comp.code;
+      } else {
+        code = headers;
+        const deps = resolveDeps(comp);
+        for (const dep of deps) {
+          if (dep.type !== "program") {
+            code += dep.code + "\n";
+          }
+        }
+        if (comp.type === "snippet") {
+          if (comp.id.includes("main-") || comp.id.includes("common-headers")) {
+            code += comp.code + "\n";
+          } else {
+            code += "int dummy_wrapper_fn(void) {\n    int a = 0, b = 0, c = 0, n = 10, count = 10, option = 1, condition = 1, score = 95, grade = 0, value = 0;\n" + comp.code + "\n    return 0;\n}\n";
+          }
+        } else {
+          code += comp.code + "\n";
+        }
+      }
+
+      fs.writeFileSync(tempFile, code);
+      try {
+        execSync(`gcc -fsyntax-only "${tempFile}"`, { stdio: "pipe" });
+      } catch (err: any) {
+        syntaxErrors++;
+        hasErrors = true;
+        logger.error(`C syntax check failed for ${comp.id} (${comp.type}): ${err.stderr?.toString().split("\\n").slice(0, 2).join(" ")}`);
+      }
+    }
+
+    try {
+      if (fs.existsSync(tempFile)) fs.unlinkSync(tempFile);
+    } catch {}
+
+    if (syntaxErrors > 0) {
+      logger.error(`GCC syntax verification failed on ${syntaxErrors} component(s)!`);
+    } else {
+      logger.info(`All ${allComponents.length} components passed GCC C-syntax validation with 0 errors!`);
+    }
+  }
+
   if (hasErrors) {
     logger.error("Library validation pipeline FAILED with errors!");
     return false;

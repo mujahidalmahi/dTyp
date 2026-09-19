@@ -29,16 +29,11 @@ void simulate_collision(double m1, double u1, double m2, double u2, double e) {
     double ke_final = 0.5 * m1 * v1 * v1 + 0.5 * m2 * v2 * v2;
     double ke_loss = ke_initial - ke_final;
 
-    printf("Post-collision v1: %.2f m/s
-", v1);
-    printf("Post-collision v2: %.2f m/s
-", v2);
-    printf("Initial Kinetic Energy: %.2f J
-", ke_initial);
-    printf("Final Kinetic Energy:   %.2f J
-", ke_final);
-    printf("Kinetic Energy Loss:    %.2f J (%.1f%%)
-", ke_loss, (ke_loss / ke_initial) * 100.0);
+    printf("Post-collision v1: %.2f m/s\n", v1);
+    printf("Post-collision v2: %.2f m/s\n", v2);
+    printf("Initial Kinetic Energy: %.2f J\n", ke_initial);
+    printf("Final Kinetic Energy:   %.2f J\n", ke_final);
+    printf("Kinetic Energy Loss:    %.2f J (%.1f%%)\n", ke_loss, (ke_loss / ke_initial) * 100.0);
 }
 
 int main(void) {

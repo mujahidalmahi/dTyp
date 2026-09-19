@@ -27,8 +27,7 @@ int main(void) {
         for (int j = 1; j <= size; j++) {
             printf("%4d", i * j);
         }
-        putchar('
-');
+        putchar('\n');
     }
     return 0;
 }

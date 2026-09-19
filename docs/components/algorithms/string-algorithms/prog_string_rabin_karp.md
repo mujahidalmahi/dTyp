@@ -41,8 +41,7 @@ int main(void) {
             for (int j = 0; j < m; j++) {
                 if (txt[i + j] != pat[j]) { match = 0; break; }
             }
-            if (match) printf("Pattern found at index %d
-", i);
+            if (match) printf("Pattern found at index %d\n", i);
         }
         if (i < n - m) {
             t = (d * (t - txt[i] * h) + txt[i + m]) % q;

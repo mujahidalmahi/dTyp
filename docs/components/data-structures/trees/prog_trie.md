@@ -1,7 +1,7 @@
 # prog_trie
 > **Domain:** `data-structures` | **Subcategory:** `trees` | **Type:** `program`
 ## Overview
-Complete prefix tree Trie program with insert, search, and prefix matching
+Interactive 26-ary alphabet Trie with word insertion, search, prefix checks, and recursive memory cleanup
 
 ## Signature
 ```c
@@ -22,48 +22,120 @@ int main(void)
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <string.h>
 
-typedef struct Trie {
-    struct Trie* children[26];
-    bool is_word;
-} Trie;
-
-Trie* trie_create(void) {
-    return (Trie*)calloc(1, sizeof(Trie));
+void clear_input(void) {
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF);
 }
 
-void trie_add(Trie* root, const char* w) {
-    Trie* cur = root;
-    for (int i = 0; w[i]; i++) {
-        int idx = w[i] - 'a';
-        if (!cur->children[idx]) cur->children[idx] = trie_create();
-        cur = cur->children[idx];
-    }
-    cur->is_word = true;
+typedef struct TrieNode {
+    struct TrieNode* children[26];
+    bool is_end;
+} TrieNode;
+
+TrieNode* trie_create(void) {
+    TrieNode* n = (TrieNode*)malloc(sizeof(TrieNode));
+    n->is_end = false;
+    for (int i = 0; i < 26; i++) n->children[i] = NULL;
+    return n;
 }
 
-bool trie_has(const Trie* root, const char* w) {
-    const Trie* cur = root;
-    for (int i = 0; w[i]; i++) {
-        int idx = w[i] - 'a';
-        if (!cur->children[idx]) return false;
-        cur = cur->children[idx];
+void trie_insert(TrieNode* root, const char* word) {
+    TrieNode* cur = root;
+    while (*word) {
+        if (*word >= 'a' && *word <= 'z') {
+            int idx = *word - 'a';
+            if (!cur->children[idx]) cur->children[idx] = trie_create();
+            cur = cur->children[idx];
+        }
+        word++;
     }
-    return cur && cur->is_word;
+    cur->is_end = true;
+}
+
+bool trie_search(const TrieNode* root, const char* word) {
+    const TrieNode* cur = root;
+    while (*word) {
+        if (*word >= 'a' && *word <= 'z') {
+            int idx = *word - 'a';
+            if (!cur->children[idx]) return false;
+            cur = cur->children[idx];
+        } else return false;
+        word++;
+    }
+    return cur != NULL && cur->is_end;
+}
+
+bool trie_starts_with(const TrieNode* root, const char* prefix) {
+    const TrieNode* cur = root;
+    while (*prefix) {
+        if (*prefix >= 'a' && *prefix <= 'z') {
+            int idx = *prefix - 'a';
+            if (!cur->children[idx]) return false;
+            cur = cur->children[idx];
+        } else return false;
+        prefix++;
+    }
+    return true;
+}
+
+void trie_free(TrieNode* root) {
+    if (!root) return;
+    for (int i = 0; i < 26; i++) {
+        if (root->children[i]) trie_free(root->children[i]);
+    }
+    free(root);
 }
 
 int main(void) {
-    Trie* root = trie_create();
-    trie_add(root, "apple");
-    trie_add(root, "app");
+    TrieNode* root = trie_create();
+    int choice;
+    char buffer[128];
 
-    printf("Search 'app':   %s
-", trie_has(root, "app") ? "FOUND" : "NOT FOUND");
-    printf("Search 'apple': %s
-", trie_has(root, "apple") ? "FOUND" : "NOT FOUND");
-    printf("Search 'appl':  %s
-", trie_has(root, "appl") ? "FOUND" : "NOT FOUND");
+    do {
+        printf("\n=== Prefix Trie Operations Menu ===\n");
+        printf("1. Insert Word\n");
+        printf("2. Search Complete Word\n");
+        printf("3. Check Prefix Exists (starts with)\n");
+        printf("0. Exit\n");
+        printf("Enter choice: ");
 
+        if (scanf("%d", &choice) != 1) {
+            clear_input();
+            continue;
+        }
+
+        switch (choice) {
+            case 1:
+                printf("Enter lowercase word to insert: ");
+                if (scanf("%127s", buffer) == 1) {
+                    trie_insert(root, buffer);
+                    printf("Inserted '%s' into trie.\n", buffer);
+                } else clear_input();
+                break;
+            case 2:
+                printf("Enter word to search: ");
+                if (scanf("%127s", buffer) == 1) {
+                    printf("Word '%s': %s\n", buffer, trie_search(root, buffer) ? "FOUND" : "NOT FOUND");
+                } else clear_input();
+                break;
+            case 3:
+                printf("Enter prefix to check: ");
+                if (scanf("%127s", buffer) == 1) {
+                    printf("Prefix '%s': %s\n", buffer, trie_starts_with(root, buffer) ? "EXISTS" : "DOES NOT EXIST");
+                } else clear_input();
+                break;
+            case 0:
+                printf("Exiting Trie Menu.\n");
+                break;
+            default:
+                printf("Invalid choice.\n");
+                break;
+        }
+    } while (choice != 0);
+
+    trie_free(root);
     return 0;
 }
 ```

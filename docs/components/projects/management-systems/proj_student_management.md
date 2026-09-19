@@ -35,8 +35,7 @@ double calculate_gpa(const double marks[3]) {
 }
 
 void print_student(const Student* s) {
-    printf("ID: %-4d | Name: %-12s | GPA: %.2f | Marks: [%.0f, %.0f, %.0f]
-",
+    printf("ID: %-4d | Name: %-12s | GPA: %.2f | Marks: [%.0f, %.0f, %.0f]\n",
            s->id, s->name, s->gpa, s->marks[0], s->marks[1], s->marks[2]);
 }
 
@@ -60,13 +59,10 @@ int main(void) {
     for (int i = 0; i < n; i++) {
         database[i].gpa = calculate_gpa(database[i].marks);
     }
-    printf("=== Student Database ===
-");
+    printf("=== Student Database ===\n");
     for (int i = 0; i < n; i++) print_student(&database[i]);
     rank_students(database, n);
-    printf("
-=== Ranked by GPA ===
-");
+    printf("\n=== Ranked by GPA ===\n");
     for (int i = 0; i < n; i++) {
         printf("Rank %d: ", i + 1);
         print_student(&database[i]);

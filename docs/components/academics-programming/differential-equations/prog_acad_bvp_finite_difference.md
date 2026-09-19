@@ -46,11 +46,9 @@ void solve_bvp_thomas(int n, double a, double b, double ya, double yb) {
     }
     y[0] = ya;
     y[n + 1] = yb;
-    printf("BVP Solution profile:
-");
+    printf("BVP Solution profile:\n");
     for (int i = 0; i <= n + 1; i++) {
-        printf("x = %.2f, y = %.4f
-", a + i * h, y[i]);
+        printf("x = %.2f, y = %.4f\n", a + i * h, y[i]);
     }
 }
 

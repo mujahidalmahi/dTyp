@@ -347,7 +347,7 @@ void parse_simple_json(const char* json) {
 }
 
 int main(void) {
-    const char* sample = "{\"name\": \"dTyp\", \"version\": 2, \"active\": true}";
+    const char* sample = "{\\\"name\\\": \\\"dTyp\\\", \\\"version\\\": 2, \\\"active\\\": true}";
     parse_simple_json(sample);
     return 0;
 }`,
@@ -623,7 +623,7 @@ int main(void) {
         "Host: api.example.com\r\n"
         "Content-Length: 24\r\n"
         "\r\n"
-        "{\"user\": \"antigravity\"}";
+        "{\\\"user\\\": \\\"antigravity\\\"}";
     HttpRequest req;
     parse_http_request(sample_http, &req);
     printf("Method:         %s\n", req.method);

@@ -28,8 +28,7 @@ double f(double x) {
 
 double solve_bisection(double a, double b, double tol, int max_iter) {
     if (f(a) * f(b) >= 0) {
-        printf("Invalid bracket: f(a) and f(b) must have opposite signs
-");
+        printf("Invalid bracket: f(a) and f(b) must have opposite signs\n");
         return a;
     }
     double c = a;
@@ -45,10 +44,8 @@ double solve_bisection(double a, double b, double tol, int max_iter) {
 int main(void) {
     double a = 2.0, b = 3.0, tol = 1e-6;
     double root = solve_bisection(a, b, tol, 100);
-    printf("Bisection Root of x^3 - 4x - 9: %.6f
-", root);
-    printf("f(root) = %.6e
-", f(root));
+    printf("Bisection Root of x^3 - 4x - 9: %.6f\n", root);
+    printf("f(root) = %.6e\n", f(root));
     return 0;
 }
 ```

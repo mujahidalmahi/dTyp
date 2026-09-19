@@ -30,24 +30,17 @@ void analyze_graph(int v, int e, const int edges[][2]) {
     }
     int sum_deg = 0;
     int odd_count = 0;
-    printf("Vertex Degrees:
-");
+    printf("Vertex Degrees:\n");
     for (int i = 0; i < v; i++) {
-        printf("Vertex %d: %d
-", i, deg[i]);
+        printf("Vertex %d: %d\n", i, deg[i]);
         sum_deg += deg[i];
         if (deg[i] % 2 != 0) odd_count++;
     }
-    printf("Sum of Degrees: %d (Expected 2 * E = %d)
-", sum_deg, 2 * e);
-    printf("Handshaking Lemma Verified: %s
-", (sum_deg == 2 * e) ? "Yes" : "No");
-    if (odd_count == 0) printf("Eulerian Circuit: Yes
-");
-    else if (odd_count == 2) printf("Eulerian Path: Yes (No Circuit)
-");
-    else printf("Eulerian: No (Odd degree count = %d)
-", odd_count);
+    printf("Sum of Degrees: %d (Expected 2 * E = %d)\n", sum_deg, 2 * e);
+    printf("Handshaking Lemma Verified: %s\n", (sum_deg == 2 * e) ? "Yes" : "No");
+    if (odd_count == 0) printf("Eulerian Circuit: Yes\n");
+    else if (odd_count == 2) printf("Eulerian Path: Yes (No Circuit)\n");
+    else printf("Eulerian: No (Odd degree count = %d)\n", odd_count);
 }
 
 int main(void) {

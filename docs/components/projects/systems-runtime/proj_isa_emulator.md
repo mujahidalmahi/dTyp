@@ -52,8 +52,7 @@ int main(void) {
         0xFF
     };
     run_cpu(&cpu, rom);
-    printf("CPU Result: Register A = %d (Zero Flag: %d)
-", cpu.A, cpu.zero_flag);
+    printf("CPU Result: Register A = %d (Zero Flag: %d)\n", cpu.A, cpu.zero_flag);
     return 0;
 }
 ```

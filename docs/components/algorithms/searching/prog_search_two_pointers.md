@@ -41,8 +41,7 @@ int main(void) {
     int l, r;
 
     if (two_sum(arr, n, 25, &l, &r)) {
-        printf("Found pair for sum 25: arr[%d] (%d) + arr[%d] (%d) = 25
-",
+        printf("Found pair for sum 25: arr[%d] (%d) + arr[%d] (%d) = 25\n",
                l, arr[l], r, arr[r]);
     }
     return 0;

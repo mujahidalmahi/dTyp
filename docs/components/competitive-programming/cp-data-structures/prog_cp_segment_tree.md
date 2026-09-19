@@ -57,11 +57,9 @@ int main(void) {
     int n = 7;
     long long tree[30];
     seg_build(tree, arr, 1, 0, n - 1);
-    printf("Min in range [1, 4]: %lld
-", seg_query(tree, 1, 0, n - 1, 1, 4));
+    printf("Min in range [1, 4]: %lld\n", seg_query(tree, 1, 0, n - 1, 1, 4));
     seg_update(tree, 1, 0, n - 1, 2, 5);
-    printf("Min in range [1, 4] after update idx 2 to 5: %lld
-", seg_query(tree, 1, 0, n - 1, 1, 4));
+    printf("Min in range [1, 4] after update idx 2 to 5: %lld\n", seg_query(tree, 1, 0, n - 1, 1, 4));
     return 0;
 }
 ```

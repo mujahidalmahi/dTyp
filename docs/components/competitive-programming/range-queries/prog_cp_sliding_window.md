@@ -51,10 +51,8 @@ int min_len_subarray(const int* arr, int n, long long target) {
 int main(void) {
     int arr[] = {2, 3, 1, 2, 4, 3};
     int n = 6;
-    printf("Max sum of window 3: %lld
-", max_fixed_window(arr, n, 3));
-    printf("Min len for sum >= 7: %d
-", min_len_subarray(arr, n, 7));
+    printf("Max sum of window 3: %lld\n", max_fixed_window(arr, n, 3));
+    printf("Min len for sum >= 7: %d\n", min_len_subarray(arr, n, 7));
     return 0;
 }
 ```

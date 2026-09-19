@@ -43,8 +43,7 @@ int main(void) {
     int n = sizeof(arr) / sizeof(arr[0]);
 
     int idx = jump_search(arr, n, 55);
-    printf("Jump search for 55 found at index: %d
-", idx);
+    printf("Jump search for 55 found at index: %d\n", idx);
 
     return 0;
 }

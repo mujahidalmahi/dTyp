@@ -27,8 +27,7 @@ void print_pyramid(int rows) {
         for (int j = 0; j < (2 * i - 1); j++) {
             putchar('*');
         }
-        putchar('
-');
+        putchar('\n');
     }
 }
 ```

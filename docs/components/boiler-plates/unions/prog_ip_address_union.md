@@ -34,10 +34,8 @@ int main(void) {
     ip.octets[2] = 1;
     ip.octets[3] = 100;
 
-    printf("Dotted IP: %u.%u.%u.%u
-", ip.octets[0], ip.octets[1], ip.octets[2], ip.octets[3]);
-    printf("32-bit Integer representation: 0x%08X (%u)
-", ip.full_address, ip.full_address);
+    printf("Dotted IP: %u.%u.%u.%u\n", ip.octets[0], ip.octets[1], ip.octets[2], ip.octets[3]);
+    printf("32-bit Integer representation: 0x%08X (%u)\n", ip.full_address, ip.full_address);
     return 0;
 }
 ```

@@ -42,8 +42,7 @@ double solve_secant(double x0, double x1, double tol, int max_iter) {
 int main(void) {
     double x0 = 1.0, x1 = 2.0, tol = 1e-6;
     double root = solve_secant(x0, x1, tol, 100);
-    printf("Secant Method Root: %.6f
-", root);
+    printf("Secant Method Root: %.6f\n", root);
     return 0;
 }
 ```

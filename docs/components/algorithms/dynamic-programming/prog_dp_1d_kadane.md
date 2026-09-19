@@ -32,8 +32,7 @@ int main(void) {
         if (curr_max > max_so_far) max_so_far = curr_max;
     }
 
-    printf("Maximum Subarray Sum: %d
-", max_so_far);
+    printf("Maximum Subarray Sum: %d\n", max_so_far);
     return 0;
 }
 ```

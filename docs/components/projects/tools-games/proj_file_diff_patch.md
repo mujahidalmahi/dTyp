@@ -23,26 +23,19 @@ int main(void);
 #include <string.h>
 
 void compute_line_diff(const char* old_lines[], int n_old, const char* new_lines[], int n_new) {
-    printf("--- Original
-+++ Modified
-");
+    printf("--- Original\n+++ Modified\n");
     int i = 0, j = 0;
     while (i < n_old && j < n_new) {
         if (strcmp(old_lines[i], new_lines[j]) == 0) {
-            printf("  %s
-", old_lines[i]);
+            printf("  %s\n", old_lines[i]);
             i++; j++;
         } else {
-            printf("- %s
-", old_lines[i++]);
-            printf("+ %s
-", new_lines[j++]);
+            printf("- %s\n", old_lines[i++]);
+            printf("+ %s\n", new_lines[j++]);
         }
     }
-    while (i < n_old) printf("- %s
-", old_lines[i++]);
-    while (j < n_new) printf("+ %s
-", new_lines[j++]);
+    while (i < n_old) printf("- %s\n", old_lines[i++]);
+    while (j < n_new) printf("+ %s\n", new_lines[j++]);
 }
 
 int main(void) {

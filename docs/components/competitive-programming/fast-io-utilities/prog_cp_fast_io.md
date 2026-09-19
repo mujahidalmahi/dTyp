@@ -46,8 +46,7 @@ int main(void) {
     int n = 5;
     for (int i = 0; i < n; i++) {
         fast_write_int(sample_inputs[i]);
-        putchar('
-');
+        putchar('\n');
     }
     return 0;
 }

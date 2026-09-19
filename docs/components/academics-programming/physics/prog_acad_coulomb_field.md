@@ -37,12 +37,9 @@ void compute_electric_field(int n, const double q[], const double x[], const dou
         }
     }
     double total_E = sqrt(Ex * Ex + Ey * Ey);
-    printf("Electric Field at (%.2f, %.2f):
-", px, py);
-    printf("Ex = %.4e N/C, Ey = %.4e N/C
-", Ex, Ey);
-    printf("|E| = %.4e N/C
-", total_E);
+    printf("Electric Field at (%.2f, %.2f):\n", px, py);
+    printf("Ex = %.4e N/C, Ey = %.4e N/C\n", Ex, Ey);
+    printf("|E| = %.4e N/C\n", total_E);
 }
 
 int main(void) {

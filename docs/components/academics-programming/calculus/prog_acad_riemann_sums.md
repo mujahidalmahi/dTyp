@@ -36,12 +36,9 @@ void compute_riemann_sums(double a, double b, int n) {
         right_sum += f(x_right) * dx;
         mid_sum += f(x_mid) * dx;
     }
-    printf("Left Riemann Sum:     %.6f
-", left_sum);
-    printf("Right Riemann Sum:    %.6f
-", right_sum);
-    printf("Midpoint Riemann Sum: %.6f
-", mid_sum);
+    printf("Left Riemann Sum:     %.6f\n", left_sum);
+    printf("Right Riemann Sum:    %.6f\n", right_sum);
+    printf("Midpoint Riemann Sum: %.6f\n", mid_sum);
 }
 
 int main(void) {

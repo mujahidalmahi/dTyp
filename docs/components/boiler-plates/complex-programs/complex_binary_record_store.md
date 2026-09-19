@@ -50,10 +50,8 @@ int main(void) {
     fread(&target, sizeof(Record), 1, in);
     fclose(in);
 
-    printf("Randomly Read Record at Index 1:
-");
-    printf("ID: %d | Currency: %s | Balance: %.2f
-", target.id, target.code, target.balance);
+    printf("Randomly Read Record at Index 1:\n");
+    printf("ID: %d | Currency: %s | Balance: %.2f\n", target.id, target.code, target.balance);
 
     remove(filename);
     return 0;

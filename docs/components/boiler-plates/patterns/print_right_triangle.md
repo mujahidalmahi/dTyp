@@ -24,8 +24,7 @@ void print_right_triangle(int rows) {
         for (int j = 1; j <= i; j++) {
             putchar('*');
         }
-        putchar('
-');
+        putchar('\n');
     }
 }
 ```

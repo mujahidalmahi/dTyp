@@ -41,16 +41,11 @@ void compute_shape_moments(int n, const double arr[]) {
     double skewness = m3 / pow(m2, 1.5);
     double kurtosis = (m4 / (m2 * m2)) - 3.0;
 
-    printf("Second Central Moment m2: %.4f
-", m2);
-    printf("Third Central Moment m3:  %.4f
-", m3);
-    printf("Fourth Central Moment m4: %.4f
-", m4);
-    printf("Fisher-Pearson Skewness:  %.4f
-", skewness);
-    printf("Excess Kurtosis:          %.4f
-", kurtosis);
+    printf("Second Central Moment m2: %.4f\n", m2);
+    printf("Third Central Moment m3:  %.4f\n", m3);
+    printf("Fourth Central Moment m4: %.4f\n", m4);
+    printf("Fisher-Pearson Skewness:  %.4f\n", skewness);
+    printf("Excess Kurtosis:          %.4f\n", kurtosis);
 }
 
 int main(void) {

@@ -39,8 +39,7 @@ void run_vm(const int* code) {
             int b = stack[sp--]; int a = stack[sp--];
             stack[++sp] = a * b;
         } else if (op == OP_PRINT) {
-            printf("VM Output: %d
-", stack[sp]);
+            printf("VM Output: %d\n", stack[sp]);
         }
     }
 }

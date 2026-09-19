@@ -49,12 +49,10 @@ int main(void) {
     int sol[N][N] = {0};
     solve_maze(maze, 0, 0, sol);
 
-    printf("Maze Solution Path:
-");
+    printf("Maze Solution Path:\n");
     for (int i = 0; i < N; i++) {
         for (int j = 0; j < N; j++) printf("%d ", sol[i][j]);
-        putchar('
-');
+        putchar('\n');
     }
     return 0;
 }

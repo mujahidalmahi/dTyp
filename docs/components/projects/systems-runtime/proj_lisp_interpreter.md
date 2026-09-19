@@ -54,8 +54,7 @@ int eval_lisp(const char** expr) {
 int main(void) {
     const char* code = "(+ 2 (* 3 4) 5)";
     const char* ptr = code;
-    printf("Eval '%s' = %d
-", code, eval_lisp(&ptr));
+    printf("Eval '%s' = %d\n", code, eval_lisp(&ptr));
     return 0;
 }
 ```

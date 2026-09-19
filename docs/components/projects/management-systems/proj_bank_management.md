@@ -49,23 +49,19 @@ int transfer(BankAccount* from, BankAccount* to, double amount) {
 }
 
 void print_account(const BankAccount* acc) {
-    printf("Acc #%-5d | Holder: %-10s | Balance: $%.2f
-", acc->acc_no, acc->holder, acc->balance);
+    printf("Acc #%-5d | Holder: %-10s | Balance: $%.2f\n", acc->acc_no, acc->holder, acc->balance);
 }
 
 int main(void) {
     BankAccount a1 = {1001, "John", 500.0};
     BankAccount a2 = {1002, "Sarah", 1200.0};
-    printf("Initial Accounts:
-");
+    printf("Initial Accounts:\n");
     print_account(&a1);
     print_account(&a2);
     deposit(&a1, 250.0);
     withdraw(&a2, 100.0);
     transfer(&a2, &a1, 300.0);
-    printf("
-Final Accounts after transactions:
-");
+    printf("\nFinal Accounts after transactions:\n");
     print_account(&a1);
     print_account(&a2);
     return 0;

@@ -36,12 +36,9 @@ int main(void) {
     double gx, gy;
     compute_gradient(x, y, h, &gx, &gy);
     double magnitude = sqrt(gx * gx + gy * gy);
-    printf("At (%.1f, %.1f):
-", x, y);
-    printf("grad f = (%.4f, %.4f)
-", gx, gy);
-    printf("|grad f| = %.4f
-", magnitude);
+    printf("At (%.1f, %.1f):\n", x, y);
+    printf("grad f = (%.4f, %.4f)\n", gx, gy);
+    printf("|grad f| = %.4f\n", magnitude);
     return 0;
 }
 ```

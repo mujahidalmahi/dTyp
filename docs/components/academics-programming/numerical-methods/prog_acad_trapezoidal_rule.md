@@ -39,8 +39,7 @@ int main(void) {
     double a = 0.0, b = 1.0;
     int n = 100;
     double area = integrate_trapezoidal(a, b, n);
-    printf("Trapezoidal Integral of 1/(1+x^2): %.6f (True pi/4 = %.6f)
-", area, atan(1.0));
+    printf("Trapezoidal Integral of 1/(1+x^2): %.6f (True pi/4 = %.6f)\n", area, atan(1.0));
     return 0;
 }
 ```

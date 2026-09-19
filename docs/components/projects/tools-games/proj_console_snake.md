@@ -29,12 +29,10 @@ int main(void) {
     Point snake[] = {{5, 5}, {5, 4}, {5, 3}};
     int len = 3;
     Point food = {5, 6};
-    printf("Snake head at (%d, %d), Food at (%d, %d)
-", snake[0].x, snake[0].y, food.x, food.y);
+    printf("Snake head at (%d, %d), Food at (%d, %d)\n", snake[0].x, snake[0].y, food.x, food.y);
     Point next_head = {snake[0].x, snake[0].y + 1};
     if (next_head.x == food.x && next_head.y == food.y) {
-        printf("Food eaten! Snake length increases to %d
-", len + 1);
+        printf("Food eaten! Snake length increases to %d\n", len + 1);
     }
     return 0;
 }

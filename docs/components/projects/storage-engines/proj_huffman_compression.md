@@ -42,12 +42,9 @@ int main(void) {
     for (int i = 0; i < 6; i++) {
         huffman_bits += codes[i].freq * (int)__builtin_strlen(codes[i].code);
     }
-    printf("Original 8-bit size: %d bits
-", fixed_bits);
-    printf("Huffman compressed:  %d bits
-", huffman_bits);
-    printf("Space saved:         %.1f%%
-", 100.0 * (1.0 - (double)huffman_bits / fixed_bits));
+    printf("Original 8-bit size: %d bits\n", fixed_bits);
+    printf("Huffman compressed:  %d bits\n", huffman_bits);
+    printf("Space saved:         %.1f%%\n", 100.0 * (1.0 - (double)huffman_bits / fixed_bits));
     return 0;
 }
 ```

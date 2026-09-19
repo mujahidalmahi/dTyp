@@ -23,16 +23,13 @@ void print_var_value(const VarValue* v) {
     if (!v) return;
     switch (v->type) {
         case TYPE_INT:
-            printf("Integer: %d
-", v->val.i);
+            printf("Integer: %d\n", v->val.i);
             break;
         case TYPE_FLOAT:
-            printf("Float: %.2f
-", v->val.f);
+            printf("Float: %.2f\n", v->val.f);
             break;
         case TYPE_CHAR:
-            printf("Char: %c
-", v->val.c);
+            printf("Char: %c\n", v->val.c);
             break;
     }
 }

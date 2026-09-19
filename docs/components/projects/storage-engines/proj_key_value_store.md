@@ -56,12 +56,9 @@ const char* kv_get(const char* key, int cur_tick) {
 
 int main(void) {
     kv_set("session_id", "xyz987", 3, 0);
-    printf("Tick 1: session_id = %s
-", kv_get("session_id", 1));
-    printf("Tick 2: session_id = %s
-", kv_get("session_id", 2));
-    printf("Tick 4 (Expired): session_id = %s
-", kv_get("session_id", 4) ? "Valid" : "Expired/NULL");
+    printf("Tick 1: session_id = %s\n", kv_get("session_id", 1));
+    printf("Tick 2: session_id = %s\n", kv_get("session_id", 2));
+    printf("Tick 4 (Expired): session_id = %s\n", kv_get("session_id", 4) ? "Valid" : "Expired/NULL");
     return 0;
 }
 ```

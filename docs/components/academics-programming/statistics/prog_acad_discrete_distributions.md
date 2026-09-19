@@ -41,10 +41,8 @@ double poisson_pmf(double lambda, int k) {
 }
 
 int main(void) {
-    printf("Binomial(n=10, p=0.3, k=3): %.6f
-", binomial_pmf(10, 3, 0.3));
-    printf("Poisson(lambda=2.5, k=2):   %.6f
-", poisson_pmf(2.5, 2));
+    printf("Binomial(n=10, p=0.3, k=3): %.6f\n", binomial_pmf(10, 3, 0.3));
+    printf("Poisson(lambda=2.5, k=2):   %.6f\n", poisson_pmf(2.5, 2));
     return 0;
 }
 ```

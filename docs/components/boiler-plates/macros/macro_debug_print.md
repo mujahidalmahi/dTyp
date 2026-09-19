@@ -19,8 +19,7 @@ Variadic debug print macro outputting file and line number
 
 ## Implementation
 ```c
-#define DEBUG_PRINT(fmt, ...) fprintf(stderr, "[DEBUG] %s:%d: " fmt "
-", __FILE__, __LINE__, ##__VA_ARGS__)
+#define DEBUG_PRINT(fmt, ...) fprintf(stderr, "[DEBUG] %s:%d: " fmt "\n", __FILE__, __LINE__, ##__VA_ARGS__)
 ```
 
 ## Aliases & Shorthands

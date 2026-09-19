@@ -46,14 +46,12 @@ int main(void) {
     int board[N][N] = {0};
     solve(board, 0);
 
-    printf("N-Queens Solution (N=%d):
-", N);
+    printf("N-Queens Solution (N=%d):\n", N);
     for (int i = 0; i < N; i++) {
         for (int j = 0; j < N; j++) {
             printf("%c ", board[i][j] ? 'Q' : '.');
         }
-        putchar('
-');
+        putchar('\n');
     }
     return 0;
 }

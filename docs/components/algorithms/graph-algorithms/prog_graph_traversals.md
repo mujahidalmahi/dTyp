@@ -39,8 +39,7 @@ void bfs(const int matrix[][4], int v, int start) {
             }
         }
     }
-    putchar('
-');
+    putchar('\n');
 }
 
 int main(void) {

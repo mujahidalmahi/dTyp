@@ -51,8 +51,7 @@ int main(void) {
     double x[3] = {0, 0, 0};
     solve_jacobi(n, A, b, x, 1e-6, 100);
     for (int i = 0; i < n; i++) {
-        printf("x[%d] = %.4f
-", i, x[i]);
+        printf("x[%d] = %.4f\n", i, x[i]);
     }
     return 0;
 }

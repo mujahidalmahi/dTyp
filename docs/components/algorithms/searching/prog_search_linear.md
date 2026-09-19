@@ -33,8 +33,7 @@ int main(void) {
     int n = sizeof(arr) / sizeof(arr[0]);
 
     int idx = linear_search(arr, n, 42);
-    printf("Linear search for 42 found at index: %d
-", idx);
+    printf("Linear search for 42 found at index: %d\n", idx);
 
     return 0;
 }

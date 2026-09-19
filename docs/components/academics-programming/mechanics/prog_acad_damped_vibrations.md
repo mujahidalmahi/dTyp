@@ -27,23 +27,17 @@ void analyze_vibrations(double m, double c, double k) {
     double c_crit = 2.0 * sqrt(k * m);
     double zeta = c / c_crit;
 
-    printf("Natural Frequency omega_n: %.4f rad/s
-", omega_n);
-    printf("Critical Damping c_c:      %.4f N*s/m
-", c_crit);
-    printf("Damping Ratio zeta:        %.4f
-", zeta);
+    printf("Natural Frequency omega_n: %.4f rad/s\n", omega_n);
+    printf("Critical Damping c_c:      %.4f N*s/m\n", c_crit);
+    printf("Damping Ratio zeta:        %.4f\n", zeta);
 
     if (fabs(zeta - 1.0) < 1e-4) {
-        printf("Regime: Critically Damped
-");
+        printf("Regime: Critically Damped\n");
     } else if (zeta < 1.0) {
         double omega_d = omega_n * sqrt(1.0 - zeta * zeta);
-        printf("Regime: Underdamped (Damped Frequency omega_d = %.4f rad/s)
-", omega_d);
+        printf("Regime: Underdamped (Damped Frequency omega_d = %.4f rad/s)\n", omega_d);
     } else {
-        printf("Regime: Overdamped (Non-oscillatory)
-");
+        printf("Regime: Overdamped (Non-oscillatory)\n");
     }
 }
 

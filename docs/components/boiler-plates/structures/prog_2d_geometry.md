@@ -40,12 +40,9 @@ double rect_area(const Rect* r) {
 
 int main(void) {
     Rect r = {{0.0, 10.0}, {15.0, 0.0}};
-    printf("Rectangle Top-Left: (%.1f, %.1f)
-", r.top_left.x, r.top_left.y);
-    printf("Rectangle Bottom-Right: (%.1f, %.1f)
-", r.bottom_right.x, r.bottom_right.y);
-    printf("Rectangle Area: %.2f
-", rect_area(&r));
+    printf("Rectangle Top-Left: (%.1f, %.1f)\n", r.top_left.x, r.top_left.y);
+    printf("Rectangle Bottom-Right: (%.1f, %.1f)\n", r.bottom_right.x, r.bottom_right.y);
+    printf("Rectangle Area: %.2f\n", rect_area(&r));
     return 0;
 }
 ```

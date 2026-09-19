@@ -49,10 +49,8 @@ int main(void) {
     dsu_union(parent, rank, 0, 1);
     dsu_union(parent, rank, 2, 3);
     dsu_union(parent, rank, 1, 2);
-    printf("Are 0 and 3 connected: %s
-", dsu_find(parent, 0) == dsu_find(parent, 3) ? "Yes" : "No");
-    printf("Are 0 and 4 connected: %s
-", dsu_find(parent, 0) == dsu_find(parent, 4) ? "Yes" : "No");
+    printf("Are 0 and 3 connected: %s\n", dsu_find(parent, 0) == dsu_find(parent, 3) ? "Yes" : "No");
+    printf("Are 0 and 4 connected: %s\n", dsu_find(parent, 0) == dsu_find(parent, 4) ? "Yes" : "No");
     return 0;
 }
 ```

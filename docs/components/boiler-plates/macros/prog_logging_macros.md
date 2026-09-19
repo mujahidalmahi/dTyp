@@ -21,12 +21,9 @@ int main(void)
 ```c
 #include <stdio.h>
 
-#define LOG_INFO(fmt, ...) printf("[INFO] %s:%d: " fmt "
-", __FILE__, __LINE__, ##__VA_ARGS__)
-#define LOG_WARN(fmt, ...) printf("[WARN] %s:%d: " fmt "
-", __FILE__, __LINE__, ##__VA_ARGS__)
-#define LOG_ERR(fmt, ...)  fprintf(stderr, "[ERROR] %s:%d: " fmt "
-", __FILE__, __LINE__, ##__VA_ARGS__)
+#define LOG_INFO(fmt, ...) printf("[INFO] %s:%d: " fmt "\n", __FILE__, __LINE__, ##__VA_ARGS__)
+#define LOG_WARN(fmt, ...) printf("[WARN] %s:%d: " fmt "\n", __FILE__, __LINE__, ##__VA_ARGS__)
+#define LOG_ERR(fmt, ...)  fprintf(stderr, "[ERROR] %s:%d: " fmt "\n", __FILE__, __LINE__, ##__VA_ARGS__)
 
 int main(void) {
     LOG_INFO("System started successfully on port %d", 8080);

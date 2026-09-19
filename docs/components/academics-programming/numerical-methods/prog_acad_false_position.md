@@ -41,8 +41,7 @@ double solve_false_position(double a, double b, double tol, int max_iter) {
 int main(void) {
     double a = 2.0, b = 3.0, tol = 1e-6;
     double root = solve_false_position(a, b, tol, 100);
-    printf("False Position Root of x^3 - 2x - 5: %.6f
-", root);
+    printf("False Position Root of x^3 - 2x - 5: %.6f\n", root);
     return 0;
 }
 ```

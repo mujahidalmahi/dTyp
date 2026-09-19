@@ -28,13 +28,11 @@ typedef struct {
 
 int fiber_task_a(Fiber* f) {
     if (f->state == 0) {
-        printf("Fiber A: Step 1
-");
+        printf("Fiber A: Step 1\n");
         f->state = 1;
         return 1;
     } else if (f->state == 1) {
-        printf("Fiber A: Step 2 (Completed)
-");
+        printf("Fiber A: Step 2 (Completed)\n");
         f->state = 2;
         return 0;
     }
@@ -43,13 +41,11 @@ int fiber_task_a(Fiber* f) {
 
 int fiber_task_b(Fiber* f) {
     if (f->state == 0) {
-        printf("Fiber B: Step 1
-");
+        printf("Fiber B: Step 1\n");
         f->state = 1;
         return 1;
     } else if (f->state == 1) {
-        printf("Fiber B: Step 2 (Completed)
-");
+        printf("Fiber B: Step 2 (Completed)\n");
         f->state = 2;
         return 0;
     }
@@ -60,15 +56,13 @@ int main(void) {
     Fiber fa = {0, 1};
     Fiber fb = {0, 2};
     int active = 2;
-    printf("Starting Cooperative Scheduler:
-");
+    printf("Starting Cooperative Scheduler:\n");
     while (active > 0) {
         active = 0;
         if (fiber_task_a(&fa)) active++;
         if (fiber_task_b(&fb)) active++;
     }
-    printf("All fibers completed.
-");
+    printf("All fibers completed.\n");
     return 0;
 }
 ```

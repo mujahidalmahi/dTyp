@@ -56,8 +56,7 @@ int main(void) {
 
     printf("Merge Sorted: ");
     for (int i = 0; i < n; i++) printf("%d ", arr[i]);
-    putchar('
-');
+    putchar('\n');
 
     return 0;
 }

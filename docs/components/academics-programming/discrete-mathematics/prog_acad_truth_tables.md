@@ -28,16 +28,12 @@ int op_implies(int a, int b) { return (!a) || b; }
 int op_bicond(int a, int b) { return a == b; }
 
 void print_truth_table(int (*op)(int, int), const char* op_name) {
-    printf("--- %s ---
-", op_name);
-    printf("A | B | Result
-");
-    printf("--+---+-------
-");
+    printf("--- %s ---\n", op_name);
+    printf("A | B | Result\n");
+    printf("--+---+-------\n");
     for (int a = 0; a <= 1; a++) {
         for (int b = 0; b <= 1; b++) {
-            printf("%d | %d |   %d
-", a, b, op(a, b));
+            printf("%d | %d |   %d\n", a, b, op(a, b));
         }
     }
 }

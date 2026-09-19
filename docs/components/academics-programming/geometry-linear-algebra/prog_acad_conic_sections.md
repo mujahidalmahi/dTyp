@@ -24,22 +24,17 @@ int main(void);
 
 void classify_conic(double A, double B, double C, double D, double E, double F) {
     double disc = B * B - 4 * A * C;
-    printf("Conic Discriminant B^2 - 4AC: %.4f
-", disc);
+    printf("Conic Discriminant B^2 - 4AC: %.4f\n", disc);
     if (fabs(disc) < 1e-9) {
-        printf("Type: Parabola
-");
+        printf("Type: Parabola\n");
     } else if (disc < 0) {
         if (fabs(A - C) < 1e-9 && fabs(B) < 1e-9) {
-            printf("Type: Circle
-");
+            printf("Type: Circle\n");
         } else {
-            printf("Type: Ellipse
-");
+            printf("Type: Ellipse\n");
         }
     } else {
-        printf("Type: Hyperbola
-");
+        printf("Type: Hyperbola\n");
     }
 }
 

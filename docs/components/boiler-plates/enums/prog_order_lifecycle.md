@@ -38,8 +38,7 @@ void print_order_status(int order_id, OrderStatus status) {
         case ORDER_DELIVERED: str = "DELIVERED"; break;
         case ORDER_CANCELLED: str = "CANCELLED"; break;
     }
-    printf("Order #%d Status: %s
-", order_id, str);
+    printf("Order #%d Status: %s\n", order_id, str);
 }
 
 int main(void) {

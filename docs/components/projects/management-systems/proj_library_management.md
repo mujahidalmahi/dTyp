@@ -47,8 +47,7 @@ int return_book(Book* b) {
 }
 
 void print_book(const Book* b) {
-    printf("[%d] '%s' by %s (%d/%d available)
-", b->id, b->title, b->author, b->available, b->total);
+    printf("[%d] '%s' by %s (%d/%d available)\n", b->id, b->title, b->author, b->available, b->total);
 }
 
 int main(void) {
@@ -57,17 +56,12 @@ int main(void) {
         {2, "Algorithms", "Sedgewick", 2, 2},
         {3, "Clean Code", "Martin", 1, 1}
     };
-    printf("=== Library Catalog ===
-");
+    printf("=== Library Catalog ===\n");
     for (int i = 0; i < 3; i++) print_book(&catalog[i]);
-    printf("
-Borrowing 'Clean Code'... %s
-", borrow_book(&catalog[2]) ? "Success" : "Failed");
-    printf("Borrowing 'Clean Code' again... %s
-", borrow_book(&catalog[2]) ? "Success" : "Unavailable");
+    printf("\nBorrowing 'Clean Code'... %s\n", borrow_book(&catalog[2]) ? "Success" : "Failed");
+    printf("Borrowing 'Clean Code' again... %s\n", borrow_book(&catalog[2]) ? "Success" : "Unavailable");
     return_book(&catalog[2]);
-    printf("Returned 'Clean Code'. Updated copies: %d
-", catalog[2].available);
+    printf("Returned 'Clean Code'. Updated copies: %d\n", catalog[2].available);
     return 0;
 }
 ```

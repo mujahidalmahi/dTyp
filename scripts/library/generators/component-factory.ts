@@ -1,4 +1,4 @@
-﻿import { Component, ComponentType, ComponentComplexity } from "@dtyp/types";
+import { Component, ComponentType, ComponentComplexity } from "@dtyp/types";
 
 export interface CreateComponentOptions {
   id: string;
@@ -22,6 +22,125 @@ export interface CreateComponentOptions {
   dependencies?: string[];
   tags?: string[];
   aliases?: string[];
+}
+
+export function sanitizeCStringLiterals(code: string): string {
+  let result = "";
+  let inString = false;
+  let inChar = false;
+  let i = 0;
+
+  while (i < code.length) {
+    const ch = code[i];
+
+    if (inString) {
+      if (ch === "\\") {
+        result += ch;
+        i++;
+        if (i < code.length) {
+          result += code[i];
+          i++;
+        }
+        continue;
+      } else if (ch === '"') {
+        inString = false;
+        result += ch;
+        i++;
+        continue;
+      } else if (ch === "\r" && i + 1 < code.length && code[i + 1] === "\n") {
+        result += "\\n";
+        i += 2;
+        continue;
+      } else if (ch === "\n") {
+        result += "\\n";
+        i++;
+        continue;
+      } else if (ch === "\0") {
+        result += "\\0";
+        i++;
+        continue;
+      } else {
+        result += ch;
+        i++;
+        continue;
+      }
+    }
+
+    if (inChar) {
+      if (ch === "\\") {
+        result += ch;
+        i++;
+        if (i < code.length) {
+          result += code[i];
+          i++;
+        }
+        continue;
+      } else if (ch === "'") {
+        inChar = false;
+        result += ch;
+        i++;
+        continue;
+      } else if (ch === "\r" && i + 1 < code.length && code[i + 1] === "\n") {
+        result += "\\n";
+        i += 2;
+        continue;
+      } else if (ch === "\n") {
+        result += "\\n";
+        i++;
+        continue;
+      } else if (ch === "\0") {
+        result += "\\0";
+        i++;
+        continue;
+      } else {
+        result += ch;
+        i++;
+        continue;
+      }
+    }
+
+    // Check for comment starts
+    if (ch === "/" && i + 1 < code.length && code[i + 1] === "/") {
+      while (i < code.length && code[i] !== "\n") {
+        result += code[i];
+        i++;
+      }
+      continue;
+    }
+
+    if (ch === "/" && i + 1 < code.length && code[i + 1] === "*") {
+      result += "/*";
+      i += 2;
+      while (i < code.length && !(code[i] === "*" && i + 1 < code.length && code[i + 1] === "/")) {
+        result += code[i];
+        i++;
+      }
+      if (i < code.length) {
+        result += "*/";
+        i += 2;
+      }
+      continue;
+    }
+
+    if (ch === '"') {
+      inString = true;
+      result += ch;
+      i++;
+      continue;
+    }
+
+    if (ch === "'") {
+      inChar = true;
+      result += ch;
+      i++;
+      continue;
+    }
+
+    result += ch;
+    i++;
+  }
+
+  return result;
 }
 
 export function createComponent(opts: CreateComponentOptions): Component {
@@ -51,7 +170,7 @@ export function createComponent(opts: CreateComponentOptions): Component {
     path: opts.path,
     description: opts.description,
     signature: opts.signature,
-    code: opts.code.trim(),
+    code: sanitizeCStringLiterals(opts.code).trim(),
     complexity,
     inputType: opts.inputType,
     outputType: opts.outputType,

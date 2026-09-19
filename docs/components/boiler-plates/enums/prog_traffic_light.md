@@ -48,8 +48,7 @@ const char* state_name(LightState cur) {
 int main(void) {
     LightState state = LIGHT_RED;
     for (int i = 0; i < 6; i++) {
-        printf("Step %d: %s
-", i + 1, state_name(state));
+        printf("Step %d: %s\n", i + 1, state_name(state));
         state = next_state(state);
     }
     return 0;

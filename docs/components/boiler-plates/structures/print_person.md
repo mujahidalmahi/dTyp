@@ -21,8 +21,7 @@ void print_person(const Person* p);
 ```c
 void print_person(const Person* p) {
     if (!p) return;
-    printf("Person { name: %s, age: %d, score: %.2f }
-", p->name, p->age, p->score);
+    printf("Person { name: %s, age: %d, score: %.2f }\n", p->name, p->age, p->score);
 }
 ```
 

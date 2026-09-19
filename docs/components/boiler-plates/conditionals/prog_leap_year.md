@@ -34,8 +34,7 @@ int main(void) {
 
     for (int i = 0; i < n; i++) {
         int y = test_years[i];
-        printf("Year %d: %s
-", y, is_leap_year(y) ? "Leap Year" : "Common Year");
+        printf("Year %d: %s\n", y, is_leap_year(y) ? "Leap Year" : "Common Year");
     }
     return 0;
 }

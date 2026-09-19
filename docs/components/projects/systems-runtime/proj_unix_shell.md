@@ -34,14 +34,11 @@ void execute_command(char* cmd) {
     if (argc == 0) return;
     if (strcmp(args[0], "echo") == 0) {
         for (int i = 1; i < argc; i++) printf("%s ", args[i]);
-        printf("
-");
+        printf("\n");
     } else if (strcmp(args[0], "pwd") == 0) {
-        printf("/home/user/workspace
-");
+        printf("/home/user/workspace\n");
     } else {
-        printf("Executed external command: %s (args: %d)
-", args[0], argc - 1);
+        printf("Executed external command: %s (args: %d)\n", args[0], argc - 1);
     }
 }
 

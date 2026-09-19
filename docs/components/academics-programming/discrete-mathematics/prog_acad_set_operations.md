@@ -58,8 +58,7 @@ void print_set(const char* label, const int* set, int size) {
     for (int i = 0; i < size; i++) {
         printf("%d%s", set[i], (i < size - 1) ? ", " : " ");
     }
-    printf("}
-");
+    printf("}\n");
 }
 
 int main(void) {

@@ -44,13 +44,10 @@ int main(void) {
     for (int i = 1; i <= n; i++) {
         fenwick_update(tree, n, i, initial[i]);
     }
-    printf("Prefix sum(5): %lld
-", fenwick_query(tree, 5));
-    printf("Range sum(3..6): %lld
-", fenwick_query(tree, 6) - fenwick_query(tree, 2));
+    printf("Prefix sum(5): %lld\n", fenwick_query(tree, 5));
+    printf("Range sum(3..6): %lld\n", fenwick_query(tree, 6) - fenwick_query(tree, 2));
     fenwick_update(tree, n, 4, 10);
-    printf("Range sum(3..6) after +10 at idx 4: %lld
-", fenwick_query(tree, 6) - fenwick_query(tree, 2));
+    printf("Range sum(3..6) after +10 at idx 4: %lld\n", fenwick_query(tree, 6) - fenwick_query(tree, 2));
     return 0;
 }
 ```

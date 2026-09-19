@@ -58,11 +58,9 @@ int main(void) {
             tarjan(i, head, to, next, disc, low, in_stack, stack, &top, &timer, scc_id, &scc_count);
         }
     }
-    printf("Total SCCs: %d
-", scc_count);
+    printf("Total SCCs: %d\n", scc_count);
     for (int i = 0; i < n; i++) {
-        printf("Node %d in SCC %d
-", i, scc_id[i]);
+        printf("Node %d in SCC %d\n", i, scc_id[i]);
     }
     return 0;
 }

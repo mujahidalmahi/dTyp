@@ -36,8 +36,7 @@ int main(void) {
     int n = sizeof(arr) / sizeof(arr[0]);
 
     int lb = lower_bound(arr, n, 20);
-    printf("Lower bound for 20: index %d (value %d)
-", lb, arr[lb]);
+    printf("Lower bound for 20: index %d (value %d)\n", lb, arr[lb]);
 
     return 0;
 }

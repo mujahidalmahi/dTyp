@@ -47,8 +47,7 @@ void lru_put(int key, int val) {
             lru_idx = i;
         }
     }
-    printf("Evicting key %d to insert key %d
-", cache[lru_idx].key, key);
+    printf("Evicting key %d to insert key %d\n", cache[lru_idx].key, key);
     cache[lru_idx].key = key;
     cache[lru_idx].val = val;
     cache[lru_idx].last_access = clock_tick;
@@ -61,8 +60,7 @@ int main(void) {
     clock_tick = 3;
     lru_put(4, 400);
     lru_put(5, 500);
-    printf("Current Cache Keys: [%d, %d, %d]
-", cache[0].key, cache[1].key, cache[2].key);
+    printf("Current Cache Keys: [%d, %d, %d]\n", cache[0].key, cache[1].key, cache[2].key);
     return 0;
 }
 ```

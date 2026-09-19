@@ -22,11 +22,9 @@ int main(int argc, char* argv[])
 #include <stdio.h>
 
 int main(int argc, char* argv[]) {
-    printf("Argument count: %d
-", argc);
+    printf("Argument count: %d\n", argc);
     for (int i = 0; i < argc; i++) {
-        printf("argv[%d] = %s
-", i, argv[i]);
+        printf("argv[%d] = %s\n", i, argv[i]);
     }
     return 0;
 }

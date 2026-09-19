@@ -28,8 +28,7 @@ void print_hollow_square(int size) {
                 putchar(' ');
             }
         }
-        putchar('
-');
+        putchar('\n');
     }
 }
 ```

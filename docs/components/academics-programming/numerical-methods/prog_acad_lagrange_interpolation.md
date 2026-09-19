@@ -41,8 +41,7 @@ int main(void) {
     double y_pts[] = {1, 2, 9, 28};
     double query = 2.5;
     double y_val = interpolate_lagrange(n, x_pts, y_pts, query);
-    printf("Lagrange Interpolation at x = %.2f: %.4f
-", query, y_val);
+    printf("Lagrange Interpolation at x = %.2f: %.4f\n", query, y_val);
     return 0;
 }
 ```

@@ -47,8 +47,7 @@ int main(void) {
     double x[] = {10, 20, 30, 40, 50};
     double y[] = {0.1736, 0.3420, 0.5000, 0.6428, 0.7660};
     double target = 25;
-    printf("Newton Forward Interpolation at %.1f: %.4f
-", target, interpolate_newton_forward(n, x, y, target));
+    printf("Newton Forward Interpolation at %.1f: %.4f\n", target, interpolate_newton_forward(n, x, y, target));
     return 0;
 }
 ```

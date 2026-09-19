@@ -24,23 +24,17 @@ int main(void);
 
 void md_to_html_line(const char* line) {
     if (strncmp(line, "### ", 4) == 0) {
-        printf("<h3>%s</h3>
-", line + 4);
+        printf("<h3>%s</h3>\n", line + 4);
     } else if (strncmp(line, "## ", 3) == 0) {
-        printf("<h2>%s</h2>
-", line + 3);
+        printf("<h2>%s</h2>\n", line + 3);
     } else if (strncmp(line, "# ", 2) == 0) {
-        printf("<h1>%s</h1>
-", line + 2);
+        printf("<h1>%s</h1>\n", line + 2);
     } else if (strncmp(line, "- ", 2) == 0) {
-        printf("  <li>%s</li>
-", line + 2);
+        printf("  <li>%s</li>\n", line + 2);
     } else if (strncmp(line, "> ", 2) == 0) {
-        printf("<blockquote>%s</blockquote>
-", line + 2);
+        printf("<blockquote>%s</blockquote>\n", line + 2);
     } else if (strlen(line) > 0) {
-        printf("<p>%s</p>
-", line);
+        printf("<p>%s</p>\n", line);
     }
 }
 

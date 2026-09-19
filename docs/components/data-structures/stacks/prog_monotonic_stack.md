@@ -1,7 +1,7 @@
 # prog_monotonic_stack
 > **Domain:** `data-structures` | **Subcategory:** `stacks` | **Type:** `program`
 ## Overview
-Complete program computing next greater element array using monotonic stack
+Interactive monotonic stack program solving Next Greater Element and Previous Greater Element in O(n)
 
 ## Signature
 ```c
@@ -22,31 +22,94 @@ int main(void)
 #include <stdio.h>
 #include <stdlib.h>
 
-int main(void) {
-    int arr[] = {4, 5, 2, 25, 7, 8};
-    int n = sizeof(arr) / sizeof(arr[0]);
-    int* nge = (int*)malloc(n * sizeof(int));
+void clear_input(void) {
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF);
+}
+
+void next_greater_elements(const int* arr, int n, int* nge) {
     int* stack = (int*)malloc(n * sizeof(int));
     int top = -1;
 
     for (int i = n - 1; i >= 0; i--) {
-        while (top >= 0 && stack[top] <= arr[i]) {
-            top--;
-        }
-        nge[i] = (top < 0) ? -1 : stack[top];
+        while (top >= 0 && stack[top] <= arr[i]) top--;
+        nge[i] = (top >= 0) ? stack[top] : -1;
         stack[++top] = arr[i];
     }
-
-    printf("Input: ");
-    for (int i = 0; i < n; i++) printf("%4d", arr[i]);
-    printf("
-NGE:   ");
-    for (int i = 0; i < n; i++) printf("%4d", nge[i]);
-    putchar('
-');
-
-    free(nge);
     free(stack);
+}
+
+void prev_greater_elements(const int* arr, int n, int* pge) {
+    int* stack = (int*)malloc(n * sizeof(int));
+    int top = -1;
+
+    for (int i = 0; i < n; i++) {
+        while (top >= 0 && stack[top] <= arr[i]) top--;
+        pge[i] = (top >= 0) ? stack[top] : -1;
+        stack[++top] = arr[i];
+    }
+    free(stack);
+}
+
+int main(void) {
+    int n = 5;
+    int arr[100] = {4, 5, 2, 25, 10};
+    int choice;
+
+    do {
+        printf("\n=== Monotonic Stack Operations Menu ===\n");
+        printf("1. Input New Array\n");
+        printf("2. Compute Next Greater Elements (NGE)\n");
+        printf("3. Compute Previous Greater Elements (PGE)\n");
+        printf("4. Display Current Array\n");
+        printf("0. Exit\n");
+        printf("Enter choice: ");
+
+        if (scanf("%d", &choice) != 1) {
+            clear_input();
+            continue;
+        }
+
+        switch (choice) {
+            case 1: {
+                printf("Enter number of elements (1-100): ");
+                if (scanf("%d", &n) == 1 && n > 0 && n <= 100) {
+                    printf("Enter %d integers: ", n);
+                    for (int i = 0; i < n; i++) scanf("%d", &arr[i]);
+                    printf("Array updated successfully.\n");
+                } else clear_input();
+                break;
+            }
+            case 2: {
+                int* nge = (int*)malloc(n * sizeof(int));
+                next_greater_elements(arr, n, nge);
+                printf("Element -> Next Greater Element:\n");
+                for (int i = 0; i < n; i++) printf("  %4d -> %d\n", arr[i], nge[i]);
+                free(nge);
+                break;
+            }
+            case 3: {
+                int* pge = (int*)malloc(n * sizeof(int));
+                prev_greater_elements(arr, n, pge);
+                printf("Element -> Previous Greater Element:\n");
+                for (int i = 0; i < n; i++) printf("  %4d -> %d\n", arr[i], pge[i]);
+                free(pge);
+                break;
+            }
+            case 4:
+                printf("Current Array [%d elements]: ", n);
+                for (int i = 0; i < n; i++) printf("%d ", arr[i]);
+                printf("\n");
+                break;
+            case 0:
+                printf("Exiting Monotonic Stack Menu.\n");
+                break;
+            default:
+                printf("Invalid choice.\n");
+                break;
+        }
+    } while (choice != 0);
+
     return 0;
 }
 ```

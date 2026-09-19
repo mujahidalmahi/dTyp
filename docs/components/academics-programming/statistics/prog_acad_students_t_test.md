@@ -27,16 +27,11 @@ void perform_t_test(int n, double sample_mean, double sample_std, double mu0) {
     double t_stat = (sample_mean - mu0) / se;
     int df = n - 1;
 
-    printf("Sample Mean:        %.4f
-", sample_mean);
-    printf("Hypothesized Mean:  %.4f
-", mu0);
-    printf("Standard Error:     %.4f
-", se);
-    printf("t-Statistic:        %.4f
-", t_stat);
-    printf("Degrees of Freedom: %d
-", df);
+    printf("Sample Mean:        %.4f\n", sample_mean);
+    printf("Hypothesized Mean:  %.4f\n", mu0);
+    printf("Standard Error:     %.4f\n", se);
+    printf("t-Statistic:        %.4f\n", t_stat);
+    printf("Degrees of Freedom: %d\n", df);
 }
 
 int main(void) {

@@ -72,8 +72,7 @@ int evaluate_expr(const char* expr) {
 
 int main(void) {
     const char* expr = "3 + 5 * (2 - 8)";
-    printf("%s = %d
-", expr, evaluate_expr(expr));
+    printf("%s = %d\n", expr, evaluate_expr(expr));
     return 0;
 }
 ```

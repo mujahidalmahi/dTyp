@@ -37,20 +37,17 @@ int main(void) {
     for (int i = 0; i < n; i++) parent[i] = i;
 
     int total_w = 0;
-    printf("Kruskal MST Selected Edges:
-");
+    printf("Kruskal MST Selected Edges:\n");
     for (int i = 0; i < e; i++) {
         int ru = find_root(u[i]);
         int rv = find_root(v[i]);
         if (ru != rv) {
             parent[ru] = rv;
             total_w += w[i];
-            printf("Edge (%d, %d) with weight %d
-", u[i], v[i], w[i]);
+            printf("Edge (%d, %d) with weight %d\n", u[i], v[i], w[i]);
         }
     }
-    printf("Total Spanning Tree Weight: %d
-", total_w);
+    printf("Total Spanning Tree Weight: %d\n", total_w);
     return 0;
 }
 ```

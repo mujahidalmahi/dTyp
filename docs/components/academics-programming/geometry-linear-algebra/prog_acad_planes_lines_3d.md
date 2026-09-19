@@ -34,10 +34,8 @@ void analyze_planes_3d(double a1, double b1, double c1,
     double line_dy = c1 * a2 - c2 * a1;
     double line_dz = a1 * b2 - a2 * b1;
 
-    printf("Angle between planes: %.2f degrees
-", theta_deg);
-    printf("Line of intersection direction vector: (%.2f, %.2f, %.2f)
-",
+    printf("Angle between planes: %.2f degrees\n", theta_deg);
+    printf("Line of intersection direction vector: (%.2f, %.2f, %.2f)\n",
            line_dx, line_dy, line_dz);
 }
 

@@ -50,12 +50,9 @@ double simpson_three_eighth(double a, double b, int n) {
 
 int main(void) {
     double a = 0.0, b = 2.0;
-    printf("Simpson 1/3 Integral of e^x: %.6f
-", simpson_one_third(a, b, 10));
-    printf("Simpson 3/8 Integral of e^x: %.6f
-", simpson_three_eighth(a, b, 12));
-    printf("Analytical (e^2 - 1):        %.6f
-", exp(2.0) - 1.0);
+    printf("Simpson 1/3 Integral of e^x: %.6f\n", simpson_one_third(a, b, 10));
+    printf("Simpson 3/8 Integral of e^x: %.6f\n", simpson_three_eighth(a, b, 12));
+    printf("Analytical (e^2 - 1):        %.6f\n", exp(2.0) - 1.0);
     return 0;
 }
 ```

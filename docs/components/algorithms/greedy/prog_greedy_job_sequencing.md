@@ -47,8 +47,7 @@ int main(void) {
         }
     }
 
-    printf("Max Job Scheduling Profit: %d
-", total_p);
+    printf("Max Job Scheduling Profit: %d\n", total_p);
     return 0;
 }
 ```

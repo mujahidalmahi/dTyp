@@ -50,10 +50,8 @@ int main(void) {
     long long mod = 1000000007LL;
     long long fact[101], inv_fact[101];
     precompute_fact(100, mod, fact, inv_fact);
-    printf("10C3 mod 1e9+7 = %lld
-", ncr(10, 3, mod, fact, inv_fact));
-    printf("50C5 mod 1e9+7 = %lld
-", ncr(50, 5, mod, fact, inv_fact));
+    printf("10C3 mod 1e9+7 = %lld\n", ncr(10, 3, mod, fact, inv_fact));
+    printf("50C5 mod 1e9+7 = %lld\n", ncr(50, 5, mod, fact, inv_fact));
     return 0;
 }
 ```

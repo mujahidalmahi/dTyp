@@ -58,23 +58,19 @@ int factorize(long long n, long long* primes, int* exponents) {
 int main(void) {
     char prime_flags[51];
     sieve(50, prime_flags);
-    printf("Primes <= 50:
-");
+    printf("Primes <= 50:\n");
     for (int i = 2; i <= 50; i++) {
         if (prime_flags[i]) printf("%d ", i);
     }
-    printf("
-");
+    printf("\n");
     long long p[10];
     int exp[10];
     int k = factorize(360, p, exp);
-    printf("Prime factors of 360:
-");
+    printf("Prime factors of 360:\n");
     for (int i = 0; i < k; i++) {
         printf("%lld^%d ", p[i], exp[i]);
     }
-    printf("
-");
+    printf("\n");
     return 0;
 }
 ```

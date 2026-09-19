@@ -34,8 +34,7 @@ int main(void) {
 
     int a = 20, b = 4;
     for (int i = 0; i < 4; i++) {
-        printf("%d %s %d = %d
-", a, names[i], b, ops[i](a, b));
+        printf("%d %s %d = %d\n", a, names[i], b, ops[i](a, b));
     }
     return 0;
 }

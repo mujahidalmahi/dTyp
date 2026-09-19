@@ -36,12 +36,9 @@ double normal_cdf(double x, double mu, double sigma) {
 int main(void) {
     double mu = 100.0, sigma = 15.0, query = 115.0;
     double z = (query - mu) / sigma;
-    printf("Z-Score: %.4f
-", z);
-    printf("PDF f(115): %.6f
-", normal_pdf(query, mu, sigma));
-    printf("CDF P(X <= 115): %.6f
-", normal_cdf(query, mu, sigma));
+    printf("Z-Score: %.4f\n", z);
+    printf("PDF f(115): %.6f\n", normal_pdf(query, mu, sigma));
+    printf("CDF P(X <= 115): %.6f\n", normal_cdf(query, mu, sigma));
     return 0;
 }
 ```

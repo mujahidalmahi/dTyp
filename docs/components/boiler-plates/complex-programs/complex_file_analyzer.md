@@ -42,8 +42,7 @@ int analyze_file(const char* filepath, FileStats* stats) {
     bool in_word = false;
     while ((c = fgetc(f)) != EOF) {
         stats->bytes++;
-        if (c == '
-') stats->lines++;
+        if (c == '\n') stats->lines++;
         if (isspace(c)) {
             in_word = false;
         } else if (!in_word) {
@@ -57,24 +56,19 @@ int analyze_file(const char* filepath, FileStats* stats) {
 
 int main(int argc, char* argv[]) {
     if (argc < 2) {
-        printf("Usage: %s <file1> [file2 ...]
-", argv[0]);
+        printf("Usage: %s <file1> [file2 ...]\n", argv[0]);
         return 1;
     }
 
-    printf("%-20s %8s %8s %8s
-", "File", "Lines", "Words", "Bytes");
-    printf("--------------------------------------------------
-");
+    printf("%-20s %8s %8s %8s\n", "File", "Lines", "Words", "Bytes");
+    printf("--------------------------------------------------\n");
 
     for (int i = 1; i < argc; i++) {
         FileStats stats;
         if (analyze_file(argv[i], &stats)) {
-            printf("%-20s %8ld %8ld %8ld
-", argv[i], stats.lines, stats.words, stats.bytes);
+            printf("%-20s %8ld %8ld %8ld\n", argv[i], stats.lines, stats.words, stats.bytes);
         } else {
-            printf("%-20s [ERROR: cannot open file]
-", argv[i]);
+            printf("%-20s [ERROR: cannot open file]\n", argv[i]);
         }
     }
     return 0;

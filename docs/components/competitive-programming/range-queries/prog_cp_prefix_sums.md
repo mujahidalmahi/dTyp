@@ -27,10 +27,8 @@ int main(void) {
     long long pref[8];
     pref[0] = 0;
     for (int i = 0; i < n; i++) pref[i + 1] = pref[i] + arr[i];
-    printf("Range sum [1, 4]: %lld
-", pref[5] - pref[1]);
-    printf("Range sum [0, 6]: %lld
-", pref[7] - pref[0]);
+    printf("Range sum [1, 4]: %lld\n", pref[5] - pref[1]);
+    printf("Range sum [0, 6]: %lld\n", pref[7] - pref[0]);
     return 0;
 }
 ```

@@ -65,15 +65,13 @@ Matrix* matrix_multiply(const Matrix* a, const Matrix* b) {
 }
 
 void matrix_print(const Matrix* m, const char* label) {
-    printf("Matrix %s (%dx%d):
-", label, m->rows, m->cols);
+    printf("Matrix %s (%dx%d):\n", label, m->rows, m->cols);
     for (int i = 0; i < m->rows; i++) {
         printf("  [ ");
         for (int j = 0; j < m->cols; j++) {
             printf("%6.1f ", m->data[i][j]);
         }
-        printf("]
-");
+        printf("]\n");
     }
 }
 

@@ -27,16 +27,13 @@ void analyze_optics(double n1, double n2, double theta1_deg, double f_lens, doub
     double sin_theta2 = (n1 / n2) * sin(theta1);
     if (fabs(sin_theta2) <= 1.0) {
         double theta2_deg = asin(sin_theta2) * (180.0 / 3.141592653589793);
-        printf("Snell's Law: Refraction Angle = %.2f degrees
-", theta2_deg);
+        printf("Snell's Law: Refraction Angle = %.2f degrees\n", theta2_deg);
     } else {
-        printf("Snell's Law: Total Internal Reflection occurs
-");
+        printf("Snell's Law: Total Internal Reflection occurs\n");
     }
     double d_img = (f_lens * d_obj) / (d_obj - f_lens);
     double m = -d_img / d_obj;
-    printf("Thin Lens: Image Distance = %.2f cm, Magnification = %.2f
-", d_img, m);
+    printf("Thin Lens: Image Distance = %.2f cm, Magnification = %.2f\n", d_img, m);
 }
 
 int main(void) {

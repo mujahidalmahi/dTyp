@@ -25,8 +25,7 @@ int main(int argc, char* argv[])
 
 int main(int argc, char* argv[]) {
     if (argc < 2) {
-        printf("Usage: %s <filename>
-", argv[0]);
+        printf("Usage: %s <filename>\n", argv[0]);
         return 1;
     }
 
@@ -42,8 +41,7 @@ int main(int argc, char* argv[]) {
 
     while ((c = fgetc(f)) != EOF) {
         chars++;
-        if (c == '
-') lines++;
+        if (c == '\n') lines++;
         if (isspace(c)) {
             in_word = false;
         } else if (!in_word) {
@@ -53,9 +51,7 @@ int main(int argc, char* argv[]) {
     }
 
     fclose(f);
-    printf("File: %s
-Lines: %ld | Words: %ld | Chars: %ld
-", argv[1], lines, words, chars);
+    printf("File: %s\nLines: %ld | Words: %ld | Chars: %ld\n", argv[1], lines, words, chars);
     return 0;
 }
 ```

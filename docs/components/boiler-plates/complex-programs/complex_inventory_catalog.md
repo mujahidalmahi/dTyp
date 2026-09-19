@@ -49,16 +49,12 @@ int main(void) {
 
     qsort(catalog, count, sizeof(Item), compare_items_price);
 
-    printf("=== Inventory Catalog (Sorted by Price) ===
-");
-    printf("%-10s %-22s %8s %6s
-", "SKU", "Title", "Price", "Stock");
-    printf("------------------------------------------------
-");
+    printf("=== Inventory Catalog (Sorted by Price) ===\n");
+    printf("%-10s %-22s %8s %6s\n", "SKU", "Title", "Price", "Stock");
+    printf("------------------------------------------------\n");
 
     for (int i = 0; i < count; i++) {
-        printf("%-10s %-22s $%7.2f %6d
-",
+        printf("%-10s %-22s $%7.2f %6d\n",
                catalog[i].sku, catalog[i].title, catalog[i].price, catalog[i].stock);
     }
     return 0;

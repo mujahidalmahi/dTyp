@@ -26,17 +26,13 @@ void steady_heat_conduction(double L, double k, double T1, double T2, double A, 
     double q_flux = -k * (T2 - T1) / L;
     double total_rate = q_flux * A;
 
-    printf("Heat Flux: %.2f W/m^2
-", q_flux);
-    printf("Total Heat Transfer Rate: %.2f W
-", total_rate);
-    printf("Nodal Temperatures:
-");
+    printf("Heat Flux: %.2f W/m^2\n", q_flux);
+    printf("Total Heat Transfer Rate: %.2f W\n", total_rate);
+    printf("Nodal Temperatures:\n");
     for (int i = 0; i < nodes; i++) {
         double x = i * dx;
         double T = T1 + (T2 - T1) * (x / L);
-        printf("x = %.3f m: T = %.2f C
-", x, T);
+        printf("x = %.3f m: T = %.2f C\n", x, T);
     }
 }
 

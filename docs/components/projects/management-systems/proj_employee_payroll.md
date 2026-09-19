@@ -37,17 +37,11 @@ void generate_payslip(const Employee* e) {
     double tax = gross * 0.15;
     double net = gross - tax;
 
-    printf("=== Payslip: %s (ID: %d) ===
-", e->name, e->id);
-    printf("Regular Pay (%.1fh @ $%.2f): $%.2f
-", reg_hours, e->hourly_rate, reg_pay);
-    if (ot_hours > 0) printf("Overtime Pay (%.1fh @ $%.2f): $%.2f
-", ot_hours, e->hourly_rate * 1.5, ot_pay);
-    printf("Gross Salary: $%.2f | Tax (15%%): $%.2f
-", gross, tax);
-    printf("Net Pay:      $%.2f
-
-", net);
+    printf("=== Payslip: %s (ID: %d) ===\n", e->name, e->id);
+    printf("Regular Pay (%.1fh @ $%.2f): $%.2f\n", reg_hours, e->hourly_rate, reg_pay);
+    if (ot_hours > 0) printf("Overtime Pay (%.1fh @ $%.2f): $%.2f\n", ot_hours, e->hourly_rate * 1.5, ot_pay);
+    printf("Gross Salary: $%.2f | Tax (15%%): $%.2f\n", gross, tax);
+    printf("Net Pay:      $%.2f\n\n", net);
 }
 
 int main(void) {

@@ -24,8 +24,7 @@ int main(void)
 int main(void) {
     long long n = 27;
     int steps = 0;
-    printf("Starting Collatz sequence for %lld:
-", n);
+    printf("Starting Collatz sequence for %lld:\n", n);
     while (n != 1) {
         printf("%lld -> ", n);
         if (n % 2 == 0) {
@@ -35,9 +34,7 @@ int main(void) {
         }
         steps++;
     }
-    printf("1
-Total steps: %d
-", steps);
+    printf("1\nTotal steps: %d\n", steps);
     return 0;
 }
 ```

@@ -28,12 +28,9 @@ void compute_orbital_parameters(double M, double r) {
     double v_esc = sqrt(2.0 * G * M / r);
     double period = 2.0 * 3.141592653589793 * sqrt((r * r * r) / (G * M));
 
-    printf("Circular Orbital Velocity: %.2f m/s
-", v_circ);
-    printf("Escape Velocity:           %.2f m/s
-", v_esc);
-    printf("Orbital Period:            %.2f s (%.2f h)
-", period, period / 3600.0);
+    printf("Circular Orbital Velocity: %.2f m/s\n", v_circ);
+    printf("Escape Velocity:           %.2f m/s\n", v_esc);
+    printf("Orbital Period:            %.2f s (%.2f h)\n", period, period / 3600.0);
 }
 
 int main(void) {

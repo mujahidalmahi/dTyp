@@ -45,12 +45,10 @@ int main(void) {
     double B[3][2] = {{7, 8}, {9, 1}, {2, 3}};
     double C[2][2];
     mat_mul(2, 3, 2, A, B, C);
-    printf("Product Matrix C (2x2):
-");
+    printf("Product Matrix C (2x2):\n");
     for (int i = 0; i < 2; i++) {
         for (int j = 0; j < 2; j++) printf("%.1f ", C[i][j]);
-        printf("
-");
+        printf("\n");
     }
     return 0;
 }

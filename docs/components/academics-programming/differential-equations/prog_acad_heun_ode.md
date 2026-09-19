@@ -37,8 +37,7 @@ double solve_heun(double x0, double y0, double target_x, double h) {
 
 int main(void) {
     double x0 = 0.0, y0 = 1.0, target = 1.0, h = 0.1;
-    printf("Heun Solution at %.1f: %.6f
-", target, solve_heun(x0, y0, target, h));
+    printf("Heun Solution at %.1f: %.6f\n", target, solve_heun(x0, y0, target, h));
     return 0;
 }
 ```

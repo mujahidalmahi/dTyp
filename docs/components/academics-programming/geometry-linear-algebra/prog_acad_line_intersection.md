@@ -41,12 +41,10 @@ int main(void) {
     double a2 = 1, b2 = -1, c2 = 1;
     double ix, iy;
     if (find_intersection(a1, b1, c1, a2, b2, c2, &ix, &iy)) {
-        printf("Intersection: (%.4f, %.4f)
-", ix, iy);
+        printf("Intersection: (%.4f, %.4f)\n", ix, iy);
     }
     double dist = point_to_line_dist(a1, b1, c1, 4, 5);
-    printf("Distance from (4, 5) to Line 1: %.4f
-", dist);
+    printf("Distance from (4, 5) to Line 1: %.4f\n", dist);
     return 0;
 }
 ```

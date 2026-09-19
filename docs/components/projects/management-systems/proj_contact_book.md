@@ -42,17 +42,13 @@ int main(void) {
         {"Frank", "+1-555-0144", "frank@example.com"}
     };
     int n = 3;
-    printf("=== Contact Directory ===
-");
+    printf("=== Contact Directory ===\n");
     for (int i = 0; i < n; i++) {
-        printf("%-10s | %-14s | %s
-", book[i].name, book[i].phone, book[i].email);
+        printf("%-10s | %-14s | %s\n", book[i].name, book[i].phone, book[i].email);
     }
     int idx = find_contact(book, n, "Emma");
     if (idx != -1) {
-        printf("
-Found Emma: Phone: %s, Email: %s
-", book[idx].phone, book[idx].email);
+        printf("\nFound Emma: Phone: %s, Email: %s\n", book[idx].phone, book[idx].email);
     }
     return 0;
 }

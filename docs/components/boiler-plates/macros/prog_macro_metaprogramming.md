@@ -23,8 +23,7 @@ int main(void)
 
 #define TO_STR(x) #x
 #define CONCAT(a, b) a##b
-#define DECLARE_SETTER(type, name)     void CONCAT(set_, name)(type val) {         printf("Setting " TO_STR(name) " = %d
-", (int)val);     }
+#define DECLARE_SETTER(type, name)     void CONCAT(set_, name)(type val) {         printf("Setting " TO_STR(name) " = %d\n", (int)val);     }
 
 DECLARE_SETTER(int, age)
 DECLARE_SETTER(int, score)

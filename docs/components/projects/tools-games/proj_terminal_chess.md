@@ -33,12 +33,9 @@ int valid_rook_move(int r1, int c1, int r2, int c2) {
 }
 
 int main(void) {
-    printf("Knight from (1, 2) to (3, 3): %s
-", valid_knight_move(1, 2, 3, 3) ? "Legal" : "Illegal");
-    printf("Knight from (1, 2) to (2, 2): %s
-", valid_knight_move(1, 2, 2, 2) ? "Legal" : "Illegal");
-    printf("Rook from (0, 0) to (0, 7):   %s
-", valid_rook_move(0, 0, 0, 7) ? "Legal" : "Illegal");
+    printf("Knight from (1, 2) to (3, 3): %s\n", valid_knight_move(1, 2, 3, 3) ? "Legal" : "Illegal");
+    printf("Knight from (1, 2) to (2, 2): %s\n", valid_knight_move(1, 2, 2, 2) ? "Legal" : "Illegal");
+    printf("Rook from (0, 0) to (0, 7):   %s\n", valid_rook_move(0, 0, 0, 7) ? "Legal" : "Illegal");
     return 0;
 }
 ```

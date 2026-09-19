@@ -39,8 +39,7 @@ int main(void) {
     int res[6];
     next_greater(arr, n, res);
     for (int i = 0; i < n; i++) {
-        printf("%d -> %d
-", arr[i], res[i]);
+        printf("%d -> %d\n", arr[i], res[i]);
     }
     return 0;
 }

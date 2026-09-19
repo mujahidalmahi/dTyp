@@ -40,11 +40,9 @@ int main(void) {
             }
         }
     }
-    printf("Dispatched tasks in priority order:
-");
+    printf("Dispatched tasks in priority order:\n");
     for (int i = 0; i < n; i++) {
-        printf("  [Priority %d]: %s
-", queue[i].priority, queue[i].name);
+        printf("  [Priority %d]: %s\n", queue[i].priority, queue[i].name);
     }
     return 0;
 }

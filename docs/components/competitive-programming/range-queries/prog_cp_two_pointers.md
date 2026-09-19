@@ -59,12 +59,10 @@ int main(void) {
     int arr[] = {2, 4, 7, 11, 15};
     int i, j;
     if (pair_sum(arr, 5, 15, &i, &j)) {
-        printf("Pair sum 15 found at indices %d and %d
-", i, j);
+        printf("Pair sum 15 found at indices %d and %d\n", i, j);
     }
     int heights[] = {0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1};
-    printf("Trapped water: %lld
-", trap_water(heights, 12));
+    printf("Trapped water: %lld\n", trap_water(heights, 12));
     return 0;
 }
 ```

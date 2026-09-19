@@ -46,8 +46,7 @@ long long ternary_search(long long low, long long high) {
 
 int main(void) {
     long long peak_x = ternary_search(0, 50);
-    printf("Peak located at x = %lld with value = %lld
-", peak_x, func(peak_x));
+    printf("Peak located at x = %lld with value = %lld\n", peak_x, func(peak_x));
     return 0;
 }
 ```

@@ -33,8 +33,7 @@ long long fib(int n) {
 
 int main(void) {
     for (int i = 0; i <= 20; i++) {
-        printf("Fib(%d) = %lld
-", i, fib(i));
+        printf("Fib(%d) = %lld\n", i, fib(i));
     }
     return 0;
 }

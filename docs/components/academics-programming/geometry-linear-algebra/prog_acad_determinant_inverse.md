@@ -70,14 +70,11 @@ int main(void) {
     double inv[3][3];
     double det;
     if (invert_matrix(n, A, inv, &det)) {
-        printf("Determinant: %.4f
-", det);
-        printf("Inverse Matrix:
-");
+        printf("Determinant: %.4f\n", det);
+        printf("Inverse Matrix:\n");
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) printf("%8.4f ", inv[i][j]);
-            printf("
-");
+            printf("\n");
         }
     }
     return 0;
