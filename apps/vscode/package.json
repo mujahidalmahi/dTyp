@@ -2,7 +2,7 @@
   "name": "dtyp-vscode",
   "displayName": "dTyp — Don't Tell Your Professor",
   "description": "Offline academic C programming library & automated character-by-character typing assistant",
-  "version": "3.1.0",
+  "version": "3.2.0",
   "publisher": "1da7b1e6-01f1-6f58-9ef3-d95516c5e875",
   "icon": "images/icon.png",
   "engines": {

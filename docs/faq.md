@@ -7,15 +7,27 @@
 
 ### Q: How does the Humanized Natural Typing Engine work?
 **A:** The engine simulates real human typing behavior in modern IDEs:
-1. **Intelligent Delimiter Pairing**: When you type `{` or `(`, VS Code auto-creates the closing partner. dTyp detects this and steps over the closing delimiter instead of typing a duplicate token.
-2. **Muscle Memory Bursts**: 35%–60% faster typing on 55+ common C keywords (`int`, `return`, `printf`, `struct`, `sizeof`, `typedef`, etc.).
-3. **Cognitive Hesitations**: Natural pauses before block openers (`{`), after statement ends (`;`), at line breaks (`\n`), and after parameter commas (`,`).
-4. **Physical QWERTY Typos**: Occasional realistic keystroke slips to adjacent keys with an immediate 4-step self-correction sequence: stroke &rarr; pause &rarr; backspace &rarr; correct stroke.
+1. **Smart Block Auto-Expansion**: When you type `{` at the end of a block header (like `int main(void) {`), pressing Enter expands a 3-line scaffold with the cursor placed at column 4 on line 2, and the closing brace on line 3—exactly mimicking VS Code's `onEnterRules`.
+2. **Universal Non-Sequential Coding**: Drafts skeleton return statements and allocation cleanups first, then navigates back up (`above_return`, `above_free`) to author inner algorithms and logic.
+3. **Intelligent Delimiter Pairing**: Detects editor-inserted closing partners and smoothly steps over them instead of typing duplicate tokens.
+4. **Muscle Memory Bursts**: 35%–60% faster typing on 55+ common C keywords (`int`, `return`, `printf`, `struct`, `sizeof`, `typedef`, etc.).
+5. **Delayed-Recognition Typo Bursts**: Keystrokes occasionally overshoot by 1–2 characters before human realization, followed by a double backspace and correction.
+6. **Cognitive Hesitations & Operator Whitespace Rhythm**: Natural pauses before block openers, after statements, across binary operators, and after commas.
 
 ---
 
-### Q: How does the Stealth Manual Typing (`Ctrl+D`) mode work?
-**A:** In Manual mode (`"dtyp.typingMode": "manual"`), when you select a component or snippet to insert, dTyp tokenizes and loads the humanized actions into an in-memory queue. Every time you press **`Ctrl+D`**, dTyp executes the next humanized keystroke (including delimiter step-over and typo backspacing). This provides complete, realistic stealth during live demonstrations or evaluations.
+### Q: How does the Stealth Manual Typing (`Ctrl+Shift+D`) mode work?
+**A:** In Manual mode (`"dtyp.typingMode": "manual"`), when you select a component or snippet to insert, dTyp tokenizes and loads the humanized actions into an in-memory queue. Every time you press **`Ctrl+Shift+D`**, dTyp executes the next humanized action (including delimiter step-over, block expansion, and typo backspacing). This provides complete, realistic stealth during live demonstrations or evaluations.
+
+---
+
+### Q: What is the "Own Library" and how do I create custom components?
+**A:** The **Own Library** allows you to save and manage your private C/C++ algorithms, lab solutions, and custom boilerplates directly inside VS Code:
+- Open the **Own Library** tree view in the Activity Bar or run **`dTyp: Create Custom Component`** (`Ctrl+Shift+P`).
+- Fill in the native 10-field editor form (Name, Sub-domain, Topic, Sub-topic, Description, Signature, Code, Language, Input Type, Output Type). Only Code is required.
+- Saved components persist in your local VS Code global storage directory (`own-library.json`).
+- You can insert custom components using the full Humanized Typing Engine, Non-Sequential Coding, Header Auto-Injection, and Memory Leak Analysis.
+- Export or import your entire library at any time via `dtyp.exportOwnLibrary` and `dtyp.importOwnLibrary`.
 
 ---
 

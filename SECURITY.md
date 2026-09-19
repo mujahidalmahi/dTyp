@@ -4,6 +4,8 @@
 
 | Version | Supported          |
 | ------- | ------------------ |
+| 3.2.x   | :white_check_mark: |
+| 3.1.x   | :white_check_mark: |
 | 3.0.x   | :white_check_mark: |
 | 2.0.x   | :white_check_mark: |
 | 1.0.x   | :x:                |
@@ -11,7 +13,7 @@
 ## Local-First & Zero-Cloud Privacy Guarantee
 
 **dTyp** is built around a **100% offline, local-first architecture**:
-- **No Remote Code Execution**: All 500 C components run from an embedded local SQLite WebAssembly database.
+- **No Remote Code Execution**: All 500 C components run from an embedded local SQLite WebAssembly database, and custom Own Library components reside in your local VS Code global storage directory (`own-library.json`).
 - **Zero Telemetry / Zero Tracking**: dTyp collects no user data, no keystroke metrics, no IP addresses, and no analytics.
 - **No Background Network Traffic**: The extension makes zero network requests during normal operation (except for the optional GitHub release check which queries public GitHub API endpoints if enabled).
 

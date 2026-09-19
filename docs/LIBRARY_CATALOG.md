@@ -1,12 +1,12 @@
-# dTyp Offline C Component Library Catalog (v3.0)
+# dTyp Offline C Component Library Catalog (v3.2)
 
-The **dTyp** offline library contains **500 carefully curated, compilable C components** designed specifically for academic computer science courses, competitive programming, and systems engineering.
+The **dTyp** offline library contains **500 carefully curated, compilable C components** designed specifically for academic computer science courses, competitive programming, and systems engineering, plus full support for user-defined components in the **Own Library**.
 
 Every component is self-contained, adheres strictly to the C11 standard, requires zero third-party dependencies, strictly enforces the **Zero-Comments Invariant** (100% verified, 0 comments), and is indexed within an embedded SQLite WebAssembly database for sub-millisecond querying.
 
 ---
 
-## 🏛️ Domain Breakdown (7 Canonical Domains)
+## 🏛️ Domain Breakdown (7 Canonical Domains + Own Library)
 
 | Domain | Key Categories | Exact Components | Description |
 |---|---|---|---|
@@ -17,6 +17,7 @@ Every component is self-contained, adheres strictly to the C11 standard, require
 | **5. Academics Programming** | `discrete-mathematics`, `numerical-methods`, `physics-mechanics`, `statistics-probability` | 46 | Discrete truth tables, numerical systems (Gauss-Jordan, LU, Newton-Raphson, Runge-Kutta RK4/RK45), orbital/projectile physics, probability distributions. |
 | **6. Projects** | `systems-runtime`, `parsers-compilers`, `storage-engines`, `network-utilities`, `management-systems`, `tools-games` | 30 | Complete standalone compilable systems: micro UNIX shell, HTTP parser, mini event loop, JSON parser, custom allocator, key-value store, terminal chess, console snake. |
 | **7. Detection** | `cycles-loops`, `patterns-strings`, `graph-structural`, `number-properties`, `array-anomalies`, `system-hardware`, `error-integrity` | 64 | Algorithmic detection primitives: Floyd's/Brent's cycle detection, graph cycles, palindromes, anagrams, bipartiteness, overflow checks, endianness detection, CRC32. |
+| **8. Own Library** | `own-library` | User-defined | Private algorithms, lab solutions, and custom boilerplates managed directly via the Own Library sidebar view with 10 customizable fields. |
 
 ---
 

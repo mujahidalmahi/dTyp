@@ -1,10 +1,10 @@
-# dTyp Academic C Library & Database Guide (v3.0)
+# dTyp Academic C Library & Database Guide (v3.2)
 
 ## 1. Overview
 
-The dTyp C Library is an offline-first collection of **500 production-grade academic C components** and 1,492 structured snippets spanning 7 canonical computer science domains and 361 categories.
+The dTyp C Library is an offline-first collection of **500 production-grade academic C components** and 1,492 structured snippets spanning 7 canonical computer science domains and 361 categories, augmented in v3.2 by user-defined components in the **Own Library**.
 
-Every component strictly enforces the **Zero-Comments Invariant** (100% verified, 0 comments) for clean, academic-grade code.
+Every built-in component strictly enforces the **Zero-Comments Invariant** (100% verified, 0 comments) for clean, academic-grade code.
 
 The library is compiled into an indexed SQLite WebAssembly database (`dtyp.db`) located in:
 - `database/dtyp.db`
@@ -12,7 +12,7 @@ The library is compiled into an indexed SQLite WebAssembly database (`dtyp.db`) 
 
 ---
 
-## 2. Primary Domains (7 Domains)
+## 2. Primary Domains (7 Domains + Own Library)
 
 | Domain | Category Code | Component Count | Highlights |
 |---|---|---|---|
@@ -23,6 +23,7 @@ The library is compiled into an indexed SQLite WebAssembly database (`dtyp.db`) 
 | **Academics Programming** | `academics-programming` | 46 | Discrete truth tables, numerical methods (Gauss-Jordan, LU, Newton-Raphson, Runge-Kutta RK4/RK45), physics |
 | **Projects** | `projects` | 30 | Standalone compilable systems: micro UNIX shell, HTTP parser, event loop, JSON parser, custom allocator, key-value store |
 | **Detection** | `detection` | 64 | Algorithmic detection: Floyd's/Brent's cycle detection, graph cycles, palindromes, bipartiteness, overflow, endianness |
+| **Own Library** | `own-library` | User-defined | Private code snippets, lab solutions, and custom algorithms with full typing and header support |
 
 ---
 
@@ -81,3 +82,34 @@ CREATE TABLE snippets (
     FOREIGN KEY(component_id) REFERENCES components(id) ON DELETE CASCADE
 );
 ```
+
+---
+
+## 4. Own Library Schema & Local Persistence
+
+Custom components authored by users are stored locally in the VS Code global storage directory (`globalStorageUri/own-library.json`):
+
+```typescript
+interface OwnComponent {
+  id: string;               // Unique UUID/timestamp identifier
+  name: string;             // Component name (defaults to "custom_component")
+  subdomain?: string;       // Sub-domain categorization (e.g. "Lab Solutions")
+  topic?: string;           // Topic grouping (e.g. "Graph Algorithms")
+  subtopic?: string;        // Sub-topic grouping (e.g. "Shortest Path")
+  description?: string;     // Purpose & usage description
+  signature?: string;       // C function or struct signature
+  code: string;             // Mandatory: component source code
+  language: string;         // Programming language ("c" or "cpp")
+  inputType?: string;       // Input parameters type/description
+  outputType?: string;      // Return type/description
+  createdAt: string;        // ISO 8601 creation timestamp
+  updatedAt: string;        // ISO 8601 last modified timestamp
+}
+```
+
+Own Library components are fully integrated with:
+- `AutoTypeEngine` (Humanized character-by-character typing or stealth `Ctrl+Shift+D` stepping)
+- `NonlinearAuthoringPlanner` (Universal non-sequential skeleton-first drafting)
+- `HeaderEngine` (Missing standard header scanning and auto-injection)
+- `MemoryEngine` (Heap allocation leak analysis)
+- `SearchEngine` (Ranked fuzzy search with `own:` prefix)

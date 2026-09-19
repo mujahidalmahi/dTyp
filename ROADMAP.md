@@ -4,14 +4,38 @@ This document outlines the strategic roadmap for the **dTyp** developer ecosyste
 
 ---
 
-## 🚀 Released: Version 3.0.0 (Current Production Release)
+## 🚀 Released: Version 3.2.0 (Current Production Release)
+
+- [x] **Smart Block Auto-Expansion (`enter_block`)**:
+  - Emulates VS Code native `onEnterRules` block indentation.
+  - Automatically creates a 3-line scaffold when opening braces are typed (`{\n    \n}`), placing cursor at column 4 on line 2.
+  - Pushes closing brace to line 3 with 0-column indent, eliminating sideways brace sliding and duplicate manual indenting.
+- [x] **Universal Non-Sequential Coding**:
+  - `CStructuralDecomposer` and `NonlinearAuthoringPlanner` for non-linear code authoring.
+  - Intra-function skeleton-first drafting: drafts function header &rarr; skeleton return (`return 0;`) &rarr; jumps back (`above_return`) to author logic and local variables.
+  - Allocation-cleanup pairing: writes resource allocation (`malloc`) &rarr; exit cleanup (`free`) &rarr; navigates upward (`above_free`) to fill operational code.
+  - Multi-function scaffolding: emits helper structs and signatures first before authoring implementation bodies.
+- [x] **Own Library Custom Component Creator & Manager**:
+  - Dedicated Activity Bar View (`dtyp.ownLibraryView`) with hierarchical domain navigation (`Own Library` > Sub-domain > Topic > Sub-topic > Component).
+  - Native 10-field editor form (Name, Sub-domain, Topic, Sub-topic, Description, Signature, Code, Language, Input Type, Output Type).
+  - Fully integrated with all 8 core engines (AutoType, Header, Memory, Cursor, Snippet, Session, Search).
+  - Local JSON persistent storage (`globalStorageUri/own-library.json`) with one-click export and import.
+- [x] **Natural Typing Kinetics & Cadence**:
+  - Delayed-recognition typo bursts: models 1–2 character overshoots before human realization, followed by double backspace and correction.
+  - Operator rhythm: cadence acceleration and realistic whitespace hesitation around binary operators (`+`, `-`, `=`, `==`, `!=`, etc.).
+  - Parameter comma pauses (`comma_parameter`) and post-statement breathing breaks (`post_statement`).
+  - Stealth stepping via **`Ctrl+Shift+D`**.
+
+---
+
+## 🚀 Released: Version 3.0.0
 
 - [x] **Humanized Natural Typing Engine**:
   - Intelligent auto-closing delimiter step-over (`overtypeCharacter`).
   - Muscle-memory keyword burst acceleration (35%–60% faster on 55+ C keywords).
   - Cognitive hesitations at structural junctions (`{`, `\n`, `;`, `,`).
   - Physical QWERTY layout proximity typo simulation with immediate 4-step self-correction.
-  - Seamless dual-mode: humanized actions in both Automatic Streaming and Stealth Manual (`Ctrl+D`) stepping.
+  - Seamless dual-mode: humanized actions in both Automatic Streaming and Stealth Manual stepping.
 - [x] **500 Compilable C Components across 7 Ordered Domains**:
   - `boiler-plates` (64), `data-structures` (126), `algorithms` (120), `competitive-programming` (50), `academics-programming` (46), `projects` (30), `detection` (64).
   - **Strict Zero-Comments Invariant**: 100% verified across all 500 components.
@@ -46,8 +70,8 @@ This document outlines the strategic roadmap for the **dTyp** developer ecosyste
 
 ---
 
-## 🎯 Upcoming: Version 3.1.0
+## 🎯 Upcoming: Version 3.3.0
 
-- [ ] **Custom Component Importer**: Allow users to save their own custom C functions/structs directly into the local SQLite library.
-- [ ] **Typing Profiles**: Presets for typing speed (Slow / Realistic / Fast / Stealth / Instant).
+- [ ] **Typing Profiles & Custom Presets**: User-selectable typing cadence profiles (Casual, Hacker, Coder Exam, Speed Demon).
 - [ ] **Multi-File Project Scaffolding**: One-click generation of complete multi-file academic C projects with Makefiles, headers, and test harnesses.
+- [ ] **Interactive Visual Debugger Stepping**: Stepping through component execution with visual pointers in an interactive webview.

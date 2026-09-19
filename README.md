@@ -8,7 +8,7 @@
 
 <p align="center">
   <a href="https://github.com/mujahidalmahi/dTyp/actions/workflows/ci.yml"><img src="https://img.shields.io/github/actions/workflow/status/mujahidalmahi/dTyp/ci.yml?branch=main&label=CI&logo=github" alt="CI Build Status" /></a>
-  <a href="https://github.com/mujahidalmahi/dTyp/releases/latest"><img src="https://img.shields.io/badge/release-v3.0.0-blue?logo=semanticrelease" alt="Release Version" /></a>
+  <a href="https://github.com/mujahidalmahi/dTyp/releases/latest"><img src="https://img.shields.io/badge/release-v3.2.0-blue?logo=semanticrelease" alt="Release Version" /></a>
   <a href="https://marketplace.visualstudio.com/items?itemName=1da7b1e6-01f1-6f58-9ef3-d95516c5e875.dtyp-vscode"><img src="https://img.shields.io/badge/VS%20Code-Marketplace-007ACC?logo=visualstudiocode&logoColor=white" alt="VS Code Marketplace" /></a>
   <a href="docs/LIBRARY_CATALOG.md"><img src="https://img.shields.io/badge/library-500%20C%20Components-emerald?logo=c" alt="500 C Components" /></a>
   <a href="https://sql.js.org/"><img src="https://img.shields.io/badge/runtime-SQLite%20WASM-blueviolet?logo=sqlite" alt="SQLite WASM" /></a>
@@ -20,9 +20,9 @@
 
 ## ⚡ Executive Summary
 
-**dTyp v3.0** is a zero-cloud, high-performance C/C++ developer companion and **humanized stealth typing assistant** built natively for Visual Studio Code. It packages **500 compilable, bloat-free C components** across 7 primary computer science domains inside an embedded SQLite WebAssembly database, accompanied by an advanced **humanized keystroke simulation engine**.
+**dTyp v3.2** is a zero-cloud, high-performance C/C++ developer companion and **humanized stealth typing assistant** built natively for Visual Studio Code. It packages **500 compilable, bloat-free C components** across 7 primary computer science domains inside an embedded SQLite WebAssembly database, accompanies full support for your **Own Library** of custom components, and features an industry-leading **humanized keystroke simulation engine** featuring **Smart Block Auto-Expansion** and **Universal Non-Sequential Coding**.
 
-Whether practicing complex algorithms, preparing academic lab assignments, or presenting real-world systems, dTyp types flawless, production-ready code directly into your editor—either continuously with muscle-memory bursts and intelligent auto-closing delimiter handling, or discreetly keystroke-by-keystroke via **`Ctrl+Shift+D`**.
+Whether practicing complex algorithms, preparing academic lab assignments, or presenting real-world systems, dTyp types flawless, production-ready code directly into your editor—either continuously with muscle-memory bursts, smart block expansion, and non-sequential skeleton-first authoring, or discreetly keystroke-by-keystroke via **`Ctrl+Shift+D`**.
 
 ---
 
@@ -30,12 +30,14 @@ Whether practicing complex algorithms, preparing academic lab assignments, or pr
 
 - [Why dTyp?](#-why-dtyp)
 - [Key Architectural Features](#-key-architectural-features)
-  - [1. Humanized Natural Typing Engine](#1-humanized-natural-typing-engine)
-  - [2. 500 Compilable C Components (Zero Comments)](#2-500-compilable-c-components-zero-comments)
-  - [3. Eight High-Performance Production Engines](#3-eight-high-performance-production-engines)
-  - [4. Dedicated Activity Bar & 4 Sidebar TreeViews](#4-dedicated-activity-bar--4-sidebar-treeviews)
-  - [5. Interactive Release Notes & Automated Update Engine](#5-interactive-release-notes--automated-update-engine)
-  - [6. 100% Offline & Zero-Cloud Privacy Guarantee](#6-100-offline--zero-cloud-privacy-guarantee)
+  - [1. Humanized Natural Typing Engine & Smart Block Expansion](#1-humanized-natural-typing-engine--smart-block-expansion)
+  - [2. Universal Non-Sequential Coding](#2-universal-non-sequential-coding)
+  - [3. Own Library Custom Component Creator & Manager](#3-own-library-custom-component-creator--manager)
+  - [4. 500 Compilable C Components (Zero Comments)](#4-500-compilable-c-components-zero-comments)
+  - [5. Core High-Performance Production Engines](#5-core-high-performance-production-engines)
+  - [6. Dedicated Activity Bar & 5 Sidebar TreeViews](#6-dedicated-activity-bar--5-sidebar-treeviews)
+  - [7. Interactive Release Notes & Automated Update Engine](#7-interactive-release-notes--automated-update-engine)
+  - [8. 100% Offline & Zero-Cloud Privacy Guarantee](#8-100-offline--zero-cloud-privacy-guarantee)
 - [Activity Bar Interface](#-activity-bar-interface)
 - [Keybindings & Command Palette](#-keybindings--command-palette)
 - [Configuration Reference](#-configuration-reference)
@@ -49,37 +51,54 @@ Whether practicing complex algorithms, preparing academic lab assignments, or pr
 
 ## ⚖️ Why dTyp?
 
-| Capability | Traditional Snippet Packs | Cloud AI Assistants (Copilot, etc.) | **dTyp v3.0** |
+| Capability | Traditional Snippet Packs | Cloud AI Assistants (Copilot, etc.) | **dTyp v3.2** |
 |---|---|---|---|
-| **Insertion Mechanism** | Instant bulk clipboard paste | Multi-token streaming / paste | **Humanized natural cadence, auto-closing delimiter step-over, or stealth `Ctrl+D` stepping** |
-| **Typing Realism** | ❌ None (Paste event) | ❌ Machine-like streaming | **Keyword bursts (35-60% faster), cognitive hesitations, QWERTY physical typos & backspaces** |
-| **Offline Reliability** | ✅ Yes (Static JSON) | ❌ No (Requires internet & active subscription) | **✅ 100% Offline (Embedded SQLite WebAssembly)** |
-| **Component Depth** | ~50 basic snippets | Probabilistic / Hallucinatory | **500 verified compilable C components across 7 domains** |
+| **Insertion Mechanism** | Instant bulk clipboard paste | Multi-token streaming / paste | **Humanized natural cadence, Smart Block Auto-Expansion, non-sequential drafting, or stealth `Ctrl+Shift+D` stepping** |
+| **Typing Realism** | ❌ None (Paste event) | ❌ Machine-like streaming | **Keyword bursts (35-60% faster), cognitive hesitations, delayed-recognition typo bursts & backspaces, operator rhythms** |
+| **Block Expansion** | ❌ None / raw text paste | ❌ Indents block on newline post-facto | **Smart `enter_block` expansion: creates 3-line scaffold with cursor at indented column 4, closing brace on line 3** |
+| **Authoring Order** | ❌ Strictly linear | ❌ Strictly sequential | **Universal Non-Sequential Coding: drafts skeletons first (`above_return`), allocation-cleanup pairs (`above_free`), then fills inner logic** |
+| **Custom Components** | ⚠️ Snippet JSON files only | ❌ None | **Dedicated Own Library view & native form with 10 fields, full CRUD, export/import, and typing engine support** |
+| **Offline Reliability** | ✅ Yes (Static JSON) | ❌ No (Requires internet & active subscription) | **✅ 100% Offline (Embedded SQLite WebAssembly + Local JSON Storage)** |
+| **Component Depth** | ~50 basic snippets | Probabilistic / Hallucinatory | **500 verified compilable C components across 7 domains + Unlimited Own Library** |
 | **Code Hygiene** | Often contains verbose comments | Unpredictable comments | **Strict Zero-Comments Invariant (100% verified, 0 comments)** |
 | **Header Injection** | ❌ None | Partial / Manual | **Automatic header injection without duplicate declarations** |
 | **Memory Analysis** | ❌ None | ❌ None | **Real-time dynamic heap allocation & memory leak warnings** |
-| **Exam / Lab Discretion** | ❌ Obvious paste events | ❌ Flagged by network proxies & telemetry | **Total stealth with status-bar stepping buffer** |
-| **UI Experience** | Basic autocomplete list | Ghost text inline suggestions | **Activity Bar, QuickPick with item action buttons, & Interactive Hovers** |
+| **Exam / Lab Discretion** | ❌ Obvious paste events | ❌ Flagged by network proxies & telemetry | **Total stealth with status-bar stepping buffer via `Ctrl+Shift+D`** |
+| **UI Experience** | Basic autocomplete list | Ghost text inline suggestions | **Activity Bar, 5 TreeViews, Native Forms, QuickPick with item actions, & Interactive Hovers** |
 
 ---
 
 ## 🌟 Key Architectural Features
 
-### 1. Humanized Natural Typing Engine
-dTyp v3.0 introduces a state-of-the-art natural typing engine that simulates how real human programmers type in modern IDEs:
-- **Intelligent Delimiter Pairing & Overtyping**: When you type `{` or `(`, VS Code auto-inserts the closing partner `}` or `)`. dTyp detects editor-inserted closing delimiters and smoothly steps over them (`overtypeCharacter`), completely eliminating syntax errors and duplicate tokens.
-- **Muscle Memory Keyword Bursts**: Programmers type familiar keywords much faster. Keystrokes on 55+ common C keywords (`int`, `return`, `printf`, `struct`, `sizeof`, `typedef`, etc.) accelerate by **35% to 60%**.
-- **Cognitive Hesitations**: Injects natural cognitive pauses before block openers (`{`), after statement terminators (`;`), at line breaks (`\n`), and after parameter commas (`,`).
-- **Physical QWERTY Typo Simulation & Self-Correction**: When enabled, strokes occasionally slip to adjacent physical keys, recognized with a brief hesitation, backspaced, and cleanly re-typed.
-- **Dual Modality (Auto & Stealth `Ctrl+D`)**:
+### 1. Humanized Natural Typing Engine & Smart Block Expansion
+dTyp v3.2 introduces a revolutionary natural typing engine that reproduces the mechanical and cognitive reality of human programming:
+- **Smart Block Auto-Expansion (`enter_block`)**: When typing a block opener such as `int main(void) {`, pressing Enter in VS Code naturally expands into a 3-line indented scaffold with the cursor placed at column 4 on line 2, and the closing brace pushed to line 3. dTyp emulates this exact behavior natively, eliminating clumsy manual indentation typing and sideways brace pushing.
+- **Delayed-Recognition Typo Bursts**: Real programmers overshoot typos by 1–2 characters before realizing their mistake. dTyp models this realistic human reflex: type wrong char &rarr; overshoot next character &rarr; cognitive realization pause &rarr; double backspace &rarr; correct typing.
+- **Intelligent Delimiter Pairing & Overtyping**: Detects editor-inserted closing delimiters (`}`, `)`, `]`, `"`, `'`) and smoothly steps over them (`overtypeCharacter`), completely eliminating syntax errors and duplicate tokens.
+- **Muscle Memory Keyword Bursts**: Keystrokes on 55+ common C keywords (`int`, `return`, `printf`, `struct`, `sizeof`, `typedef`, etc.) accelerate by **35% to 60%**.
+- **Cognitive Hesitations & Operator Whitespace Rhythm**: Injects natural cognitive pauses before block openers (`{`), after statement terminators (`;`), at line breaks (`\n`), after parameter commas (`comma_parameter`), and between whitespace-separated binary operators.
+- **Dual Modality (Auto & Stealth `Ctrl+Shift+D`)**:
   - **Automatic Streaming**: Types continuously with configurable delay (**1ms to 1000ms**) and Gaussian jitter.
-  - **Stealth Manual Stepping**: Queues humanized actions into a stepping buffer. Each press of **`Ctrl+D`** steps through the next action with natural human pacing.
+  - **Stealth Manual Stepping**: Queues humanized actions into a stepping buffer. Each press of **`Ctrl+Shift+D`** steps through the next action with natural human pacing.
 - **Real-World Edge Case Guards**:
   - **Granular Undo Chunks**: Groups edits into 2–3 character chunks so pressing `Ctrl+Z` undoes a few characters at a time.
   - **Cursor Relocation Guard**: Pauses typing if the cursor is manually moved and prompts to resume or realign.
   - **Tab-Switch Guard**: Halts typing if you switch editor tabs or files.
 
-### 2. 500 Compilable C Components (Zero Comments)
+### 2. Universal Non-Sequential Coding
+Real programmers rarely write code purely sequentially from line 1 to line 100. dTyp v3.2 features an intelligent non-sequential authoring planner:
+- **Intra-Function Skeleton-First Drafting**: Writes function signature and block scaffold &rarr; immediately drafts return statement skeleton (`return 0;`) &rarr; jumps back up (`above_return`) to flesh out algorithm logic and variables.
+- **Allocation-Cleanup Pairing**: Allocates heap resources (`malloc`) &rarr; immediately generates cleanup code at function exit (`free`, `fclose`) &rarr; navigates upward (`above_free`) to author processing logic, guaranteeing leak-free code drafting.
+- **Multi-Function Scaffolding**: Automatically scaffolds helper structs and declarations before jumping back to implement consumer functions.
+
+### 3. Own Library Custom Component Creator & Manager
+Manage your private snippets, lab solutions, and custom algorithms with first-class editor integration:
+- **Dedicated Activity Bar View (`dtyp.ownLibraryView`)**: Hierarchical tree organized by Domain (`Own Library`) > Sub-domain > Topic > Sub-topic > Component.
+- **Native Custom Component Form**: Create or edit components using a 10-field editor form (Name, Sub-domain, Topic, Sub-topic, Description, Signature, Code, Language, Input Type, Output Type). Only Code is mandatory; all metadata fields are optional.
+- **Full Production Engine Compatibility**: Insert your custom components with full access to the Humanized Typing Engine, Smart Block Expansion, Non-Sequential Coding, Header Auto-Injection, and Memory Leak Analysis.
+- **Zero-Cloud Persistent Storage**: Saved locally in your VS Code global storage directory (`own-library.json`) with one-click JSON export and import capabilities.
+
+### 4. 500 Compilable C Components (Zero Comments)
 Curated, bloat-free, standards-compliant C99/C11 code organized into 7 primary domains and 361 categories. Every component follows the strict **Zero-Comments Invariant**:
 - **boiler-plates** (64 components): CLI starters, argument parsers, Makefiles, arenas, test harnesses.
 - **data-structures** (126 components): Singly/doubly/circular linked lists, stacks, queues, trees, heaps, hash tables.
@@ -89,34 +108,37 @@ Curated, bloat-free, standards-compliant C99/C11 code organized into 7 primary d
 - **projects** (30 components): Standalone system projects (shell, HTTP server, compiler, allocator, key-value store).
 - **detection** (64 components): Algorithmic detectors for cycles, palindromes, bipartiteness, overflow, and leaks.
 
-### 3. Eight High-Performance Production Engines
-- ⚡ **AutoTypeEngine**: Orchestrates humanized keystrokes, delimiter overtyping, typo self-correction, and `Ctrl+D` stepping.
+### 5. Core High-Performance Production Engines
+- ⚡ **AutoTypeEngine**: Orchestrates humanized keystrokes, smart block expansion, delimiter overtyping, typo self-correction, and `Ctrl+Shift+D` stepping.
+- 🏗️ **NonlinearAuthoringPlanner & CStructuralDecomposer**: Transforms linear code into natural human skeleton-first drafting plans.
+- 📦 **OwnLibraryStorage**: Manages persistent local CRUD storage, indexing, and JSON export/import for user components.
 - 🛡️ **HeaderEngine**: Scans code requirements and injects missing standard C headers (`<stdlib.h>`, `<stdbool.h>`, `<stdio.h>`, `<math.h>`) at top of file.
 - 🧠 **MemoryEngine**: Scans dynamic heap allocations (`malloc`, `calloc`, `realloc`), checks for matching `free()`, and warns of potential leaks.
 - 🎯 **CursorEngine**: Automatically parses inserted code for placeholder tokens (`/* TODO */`, `<type>`) and navigates bidirectionally (`Alt+Down` / `Alt+Up`).
 - ⏱️ **SessionEngine**: Persists insertion history, session statistics, and starred favorites across editor reloads.
-- 🔍 **SearchEngine**: Production-grade ranked fuzzy search with category scoping (`boiler:main`, `ds:tree`, `algo:sort`).
+- 🔍 **SearchEngine**: Production-grade ranked fuzzy search with category scoping (`boiler:main`, `ds:tree`, `algo:sort`, `own:`).
 - 📝 **SnippetEngine**: Native completion provider with tab-stops (`$1`, `$2`, `$0`) across 1,492 structured snippets.
 - 🔄 **UpdateEngine**: Non-intrusive background check against GitHub releases with direct VSIX download.
 
-### 4. Dedicated Activity Bar & 4 Sidebar TreeViews
+### 6. Dedicated Activity Bar & 5 Sidebar TreeViews
 - 🌲 **Offline C Library (500)**: Hierarchical explorer organized by Domain > Category > Component.
+- 📚 **Own Library**: Your private library of custom components with quick actions to Add, Edit, Delete, Insert, and Export/Import.
 - ⭐ **Favorites & Pinned**: Keep your most frequently used structs and algorithms pinned for instantaneous access.
 - 📜 **Recent Insertions**: Search and re-insert recently used components with one click.
 - 🎛️ **Quick Controls**: Switch typing mode, toggle header injection, view diagnostics, and trigger release notes directly from the sidebar.
 
-### 5. Interactive Release Notes & Automated Update Engine
-- **"What's New in v3.0" Webview Panel**: Dark-mode dashboard with quick action triggers and shortcuts cheat-sheet.
+### 7. Interactive Release Notes & Automated Update Engine
+- **"What's New in v3.2" Webview Panel**: Dark-mode dashboard highlighting Smart Block Expansion, Non-Sequential Coding, and Own Library.
 - **Background Release Check**: Non-intrusive update notification with one-click direct update.
 
-### 6. 100% Offline & Zero-Cloud Privacy Guarantee
-All 500 components and search indexes reside in `dtyp.db`, accessed in-memory via pure WebAssembly (`sql.js`). No external network requests, zero telemetry, zero analytics.
+### 8. 100% Offline & Zero-Cloud Privacy Guarantee
+All 500 components reside in `dtyp.db` (WebAssembly `sql.js`), and your custom library resides in local JSON. No external network requests, zero telemetry, zero analytics.
 
 ---
 
 ## 🧭 Activity Bar Interface
 
-Click the **dTyp** icon in the VS Code Activity Bar (or press `Ctrl+Shift+D`) to open the explorer:
+Click the **dTyp** icon in the VS Code Activity Bar (or open the Explorer) to view the integrated panels:
 
 ```
 ┌──────────────────────────────────────────────┐
@@ -134,6 +156,11 @@ Click the **dTyp** icon in the VS Code Activity Bar (or press `Ctrl+Shift+D`) to
 │       📄 detect_graph_cycle_directed_dfs     │
 │       📄 detect_bipartite_graph              │
 │                                              │
+│ ▼ OWN LIBRARY                                │
+│   ▶ 📁 Lab Exercises                         │
+│   ▼ 📁 Custom Algorithms                     │
+│       📄 fast_fourier_transform              │
+│                                              │
 │ ▼ FAVORITES & PINNED                         │
 │   ⭐ bst_insert                              │
 │   ⭐ quick_sort_3way                         │
@@ -144,6 +171,7 @@ Click the **dTyp** icon in the VS Code Activity Bar (or press `Ctrl+Shift+D`) to
 │   🕒 fast_io_scan_int (14m ago)              │
 │                                              │
 │ ▼ QUICK CONTROLS                             │
+│   ➕ Create Custom Component                 │
 │   ⚙️ Mode: Automatic (15ms delay)            │
 │   🔄 Check for Updates                       │
 │   📋 System Diagnostics                      │
@@ -156,13 +184,16 @@ Click the **dTyp** icon in the VS Code Activity Bar (or press `Ctrl+Shift+D`) to
 
 | Shortcut | Command ID | Action / Description |
 |---|---|---|
-| **`Ctrl+D`** | `dtyp.typeNextCharacter` | Types the next character (or batch) from the manual stepping queue |
-| **`Ctrl+Shift+D`** | `dtyp.browseLibrary` | Opens the themed category and component browser |
+| **`Ctrl+Shift+D`** | `dtyp.typeNextCharacter` | Types the next character (or batch) from the manual stepping queue |
+| **`Ctrl+Alt+D`** | `dtyp.browseLibrary` | Opens the themed category and component browser |
 | **`Escape`** | `dtyp.cancelTyping` | Instantly halts automatic typing or flushes the manual queue |
+| `Ctrl+Shift+P` | `dtyp.createOwnComponent` | Opens the native form to create a new Custom Component |
 | `Ctrl+Shift+P` | `dtyp.quickInsert` | Opens ranked fuzzy search QuickPick with item action buttons |
 | `Ctrl+Shift+P` | `dtyp.insertSnippet` | Interactively selects and inserts standard C snippets |
 | `Ctrl+Shift+P` | `dtyp.showHistory` | Opens history QuickPick to re-insert recently used items |
-| `Ctrl+Shift+P` | `dtyp.showReleaseNotes` | Launches the interactive "What's New in v3.0" Webview panel |
+| `Ctrl+Shift+P` | `dtyp.showReleaseNotes` | Launches the interactive "What's New in v3.2" Webview panel |
+| `Ctrl+Shift+P` | `dtyp.exportOwnLibrary` | Exports your Own Library components to a portable JSON file |
+| `Ctrl+Shift+P` | `dtyp.importOwnLibrary` | Imports components into your Own Library from a JSON file |
 | `Ctrl+Shift+P` | `dtyp.checkForUpdates` | Checks GitHub releases for new dTyp versions |
 | `Ctrl+Shift+P` | `dtyp.healthCheck` | Runs an automated health check (WASM, DB, engines, and status) |
 | `Ctrl+Shift+P` | `dtyp.viewDocumentation` | Opens full Markdown documentation for any component |
@@ -175,13 +206,13 @@ Configure dTyp via your VS Code Settings UI (`Ctrl+,`) or `settings.json`:
 
 ```json
 {
-  // Typing simulation mode: "automatic" (continuous stream) or "manual" (stealth Ctrl+D stepping)
+  // Typing simulation mode: "automatic" (continuous stream) or "manual" (stealth Ctrl+Shift+D stepping)
   "dtyp.typingMode": "automatic",
 
-  // Natural typing model: "humanized" (bursts, overtyping, typo self-correction) or "linear"
+  // Natural typing model: "humanized" (bursts, block auto-expansion, typo self-correction) or "linear"
   "dtyp.naturalTypingModel": "humanized",
 
-  // Enable realistic human typo simulation with automatic backspace correction
+  // Enable realistic human typo simulation with delayed recognition & backspace bursts
   "dtyp.enableTypoSimulation": true,
 
   // Probability of human typo on alphabetic keystrokes (0.015 = 1.5% typo rate)
@@ -193,7 +224,7 @@ Configure dTyp via your VS Code Settings UI (`Ctrl+,`) or `settings.json`:
   // Randomized human jitter in milliseconds added to typing delays
   "dtyp.typingJitterMs": 5,
 
-  // Number of characters typed per Ctrl+D press in manual mode (1 - 50)
+  // Number of characters typed per Ctrl+Shift+D press in manual mode (1 - 50)
   "dtyp.stepSize": 1,
 
   // Number of characters grouped per Ctrl+Z undo chunk (1 - 10, default: 3)
@@ -226,7 +257,7 @@ Configure dTyp via your VS Code Settings UI (`Ctrl+,`) or `settings.json`:
 
 ## 📚 Component Taxonomy
 
-The offline database (`dtyp.db`) houses **500 components** across 7 primary domains:
+The offline database (`dtyp.db`) houses **500 components** across 7 primary domains, plus user-defined components in the **Own Library**:
 
 | Domain | Count | Key Categories & Scope |
 |---|---|---|
@@ -237,6 +268,7 @@ The offline database (`dtyp.db`) houses **500 components** across 7 primary doma
 | **Academics Programming** | 56 | Numerical methods (Gauss-Jordan, LU, Newton-Raphson, Runge-Kutta RK4/RK45), discrete math truth tables, physics simulations |
 | **Projects** | 30 | Standalone systems (micro UNIX shell, HTTP parser, event loop, JSON parser, custom allocator, key-value store, chess, snake) |
 | **Detection** | 64 | Algorithmic detection primitives (graph cycles, linked-list cycles, palindromes, bipartiteness, integer overflow, memory leaks, endianness) |
+| **Own Library** | User-defined | Private algorithms, lab solutions, and templates stored in local JSON with 10 customizable fields |
 
 *For complete component breakdowns, sample signatures, and architectural patterns, see [docs/LIBRARY_CATALOG.md](docs/LIBRARY_CATALOG.md).*
 
@@ -256,22 +288,22 @@ In addition to the component database, dTyp provides 1,492 structured snippets w
 1. **Via VS Code Marketplace**: Search for `dTyp` in the Extensions view (`Ctrl+Shift+X`) and click **Install**.
 2. **Via Pre-built VSIX**: Download the latest `.vsix` package from [Releases](https://github.com/mujahidalmahi/dTyp/releases) and run:
    ```bash
-   code --install-extension dtyp-vscode-3.0.0.vsix
+   code --install-extension dtyp-vscode-3.2.0.vsix
    ```
 
 ### First Run Walkthrough
 1. Open any `.c` or `.cpp` file.
 2. Press **`Ctrl+Shift+P`** and run **`dTyp: Quick Insert (Fuzzy Search)`**.
 3. Type `bst_insert` or `dijkstra` and press `Enter`.
-4. Watch as the code is naturally typed character-by-character into your editor!
+4. Watch as the code is naturally typed character-by-character into your editor with authentic human pauses, operator rhythm, and smart block expansion!
 5. Notice that required headers like `<stdlib.h>` are automatically added to the top of your file.
 
 ### Switching to Stealth Manual Mode
 1. Open settings (`Ctrl+,`) and search for `dtyp.typingMode`.
 2. Select **`manual`**.
 3. Trigger any component via Quick Insert or the Activity Bar.
-4. Notice the status bar indicator: `$(keyboard) dTyp: 184 chars [Ctrl+D to step]`.
-5. Press **`Ctrl+D`** repeatedly. Each press executes the next humanized keystroke (including delimiter step-over and typo backspacing)!
+4. Notice the status bar indicator: `$(keyboard) dTyp: 184 chars [Ctrl+Shift+D to step]`.
+5. Press **`Ctrl+Shift+D`** repeatedly. Each press executes the next humanized keystroke (including delimiter step-over and typo backspacing)!
 
 ---
 

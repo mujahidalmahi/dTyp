@@ -15,4 +15,8 @@ dTyp provides **1,492 structured snippets** integrated directly into VS Code's C
      - `dtyp.fast_io` &rarr; Competitive programming fast I/O setup
    - **Full Code Blocks**: `<prefix>.code` &rarr; Injects complete implementation
 
+### Custom Components:
+You can also insert any component from your **Own Library** with full auto-typing and header checks:
+
 [Browse & Insert Snippet (1,492)...](command:dtyp.insertSnippet)
+[Create Custom Component](command:dtyp.createOwnComponent)

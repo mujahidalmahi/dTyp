@@ -2,6 +2,41 @@
 
 All notable changes to the "dtyp-vscode" extension will be documented in this file.
 
+## [3.2.0] - 2026-09-19
+
+### Smart Block Auto-Expansion, Universal Non-Sequential Authoring, and Own Library Creator
+- **Smart Block Auto-Expansion (`enter_block`)**:
+  - Implemented exact VS Code native `onEnterRules` emulation.
+  - When `{` is typed followed by a line break, the engine pairs `{}` on the same line, immediately executes `enter_block` to create the 3-line scaffold:
+    - Line 1: `... {`
+    - Line 2: `    |` (auto-indented to column 4, cursor placed here)
+    - Line 3: `}` (closing brace on its own line at base indentation)
+  - Code statements inside the block type directly into the indented line.
+  - At block termination, the closing brace `}` is cleanly overtyped without pushing the brace sideways across the editor line.
+  - Completely eradicates the machine artifact of spaces pushing `}` horizontally.
+- **Universal Non-Sequential Coding**:
+  - Expanded non-linear authoring beyond full programs to handle single functions, competitive programming routines, algorithms, and multi-function libraries.
+  - **Intra-Function Skeleton-First Drafting**: Function signature and return anchor drafted first (`int fib(int n) { return 0; }`), then cursor jumps above return (`landmark: "above_return"`) to author intermediate algorithm logic.
+  - **Resource-Cleanup Pairing**: Dynamic memory allocations (`malloc`/`calloc`) and file handles (`fopen`) are paired immediately with cleanups (`free(ptr);`, `fclose(f);`), with cursor jumping between them (`landmark: "above_free"`) to write data operations.
+  - **Multi-Function Scaffolding**: Automatically scaffolds primary/entry functions first, moves cursor above to author helper functions, and returns inside the entry function to complete driver logic.
+- **Own Library Custom Component Creator**:
+  - Added dedicated **Own Library** sidebar TreeView (`dtyp.ownLibraryView`) in the Activity Bar with collapsible hierarchy (`Sub Domain` &rarr; `Sub Topic` &rarr; `Component Item`).
+  - Native Webview Form (`OwnLibraryPanel`) with 10 custom fields:
+    - Domain (`Own Library` fixed badge), Sub Domain, Sub Topic, Component Name, Component Type (`snippet`, `function`, `struct`, `program`, `header`), Signature, Description, Tags, Aliases, and Code Content.
+    - Tab key indentation support (4 spaces) and dynamic line/character counting.
+  - Persistent JSON Storage (`OwnLibraryStorage`) saving to `context.globalStorageUri/own-library.json` with synchronous in-memory caching and globalState fallback.
+  - Full CRUD operations, JSON library export (`dtyp.exportOwnLibrary`), and schema-validated JSON import (`dtyp.importOwnLibrary`).
+  - Integrated into QuickPick browser (`dtyp.browseLibrary`), fuzzy search (`dtyp.quickInsert`), and the dual-mode typing pipeline.
+- **Natural Typing Kinetics & Cadence**:
+  - **Delayed-Recognition Typo Bursts**: Velocity-aware typo simulation where the engine types 1 overshoot character, experiences a recognition pause (90–160ms), issues a 2x backspace burst (35–60ms), and types the corrected sequence.
+  - **Rhythmic Operator Spacing**: Deliberate cadence on binary operators surrounded by whitespace (` = `, ` == `, ` != `, ` + `, ` - `) versus reflex strokes on unary operators (`++i`, `*ptr`).
+  - **Cognitive Micro-Pauses**:
+    - Comma parameter inspection hesitation (`comma_parameter`: 90–220ms).
+    - Post-statement breathing pause before newlines (`post_statement`: 80–200ms).
+    - Inter-block conceptual formulation pause on double newlines (`inter_block`: 350–700ms).
+- **Test Suite Expansion**:
+  - Added 12 new dedicated unit tests (`tests/unit/nonlinear-typing-behaviors.test.ts`), bringing the full test suite to 87 tests passing with 100% success rate.
+
 ## [3.1.0] - 2026-09-17
 
 ### Nonlinear Humanized C Authoring, Cognitive Pauses & Renew Engine Overhaul

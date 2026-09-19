@@ -59,9 +59,9 @@ All C components in dTyp adhere to strict quality invariants:
 - **Memory Safety**: Any function that performs dynamic memory allocation (`malloc`) must check for allocation failure (`NULL`) and provide a corresponding free/destroy companion function.
 - **Clear Documentation & Complexity**: Every component must specify its time and space complexity (e.g. `O(n log n)`, `O(1)`) and a descriptive summary.
 
-### 2. Adding / Modifying Engines
-The VS Code extension core is partitioned into 8 independent engines located under `apps/vscode/src/engine/`:
-- `auto-type-engine.ts`: Dual-mode typing (automatic streaming vs manual `Ctrl+D` stepping) with human cadence, delimiter overtyping, and typo correction.
+### 2. Adding / Modifying Engines & Storage
+The VS Code extension core is partitioned into modular engines and storage providers located under `apps/vscode/src/engine/` and `apps/vscode/src/storage/`:
+- `auto-type-engine.ts`: Dual-mode typing (automatic streaming vs manual `Ctrl+Shift+D` stepping) with human cadence, Smart Block Auto-Expansion (`enter_block`), delimiter overtyping, and delayed-recognition typo correction.
 - `header-engine.ts`: Document header scanning and duplicate-free auto-injection.
 - `memory-engine.ts`: Heap allocation leak detection and disposable resource tracking.
 - `cursor-engine.ts`: Placeholder detection and cursor navigation.
@@ -69,6 +69,7 @@ The VS Code extension core is partitioned into 8 independent engines located und
 - `session-engine.ts`: Insertion history and favorites management.
 - `search-engine.ts`: Scored fuzzy search with category filters.
 - `update-engine.ts`: Background GitHub release checking and one-click VSIX update.
+- `own-library-storage.ts`: Persistent local storage and JSON export/import for custom user components.
 
 All engine logic must remain modular and covered by unit tests in `tests/unit/`.
 

@@ -17,7 +17,7 @@ export class ReleaseNotesPanel {
 
     const panel = vscode.window.createWebviewPanel(
       "dtyp.releaseNotes",
-      "What's New in dTyp v3.0",
+      "What's New in dTyp v3.2",
       column || vscode.ViewColumn.One,
       {
         enableScripts: true,
@@ -88,7 +88,7 @@ export class ReleaseNotesPanel {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>What's New in dTyp v3.0</title>
+  <title>What's New in dTyp v3.2</title>
   <style>
     :root {
       --bg: var(--vscode-editor-background);
@@ -98,7 +98,7 @@ export class ReleaseNotesPanel {
       --accent: var(--vscode-button-background, #007acc);
       --accent-fg: var(--vscode-button-foreground, #ffffff);
       --accent-hover: var(--vscode-button-hoverBackground, #0062a3);
-      --code-bg: var(--vscode-textCodeBlock-background, #111111);
+      --code-bg: var(--vscode-textCodeBlock-background, #2d2d2d);
       --muted: var(--vscode-descriptionForeground, #888888);
     }
     body {
@@ -106,7 +106,7 @@ export class ReleaseNotesPanel {
       background-color: var(--bg);
       color: var(--fg);
       margin: 0;
-      padding: 32px 48px;
+      padding: 32px 40px;
       line-height: 1.6;
       max-width: 960px;
       margin: 0 auto;
@@ -116,8 +116,8 @@ export class ReleaseNotesPanel {
       align-items: center;
       justify-content: space-between;
       border-bottom: 1px solid var(--card-border);
-      padding-bottom: 24px;
-      margin-bottom: 32px;
+      padding-bottom: 20px;
+      margin-bottom: 24px;
     }
     .brand {
       display: flex;
@@ -125,32 +125,31 @@ export class ReleaseNotesPanel {
       gap: 16px;
     }
     .brand-badge {
-      background: #000000;
-      color: #ffffff;
+      background: var(--accent);
+      color: var(--accent-fg);
+      font-weight: 700;
+      font-size: 20px;
+      padding: 6px 14px;
+      border-radius: 8px;
       font-family: monospace;
-      font-weight: 800;
-      font-size: 28px;
-      padding: 8px 16px;
-      border-radius: 6px;
-      border: 1px solid #444444;
-      letter-spacing: 1px;
+      letter-spacing: -0.5px;
     }
     .title-group h1 {
       margin: 0;
-      font-size: 26px;
+      font-size: 24px;
       font-weight: 700;
       letter-spacing: -0.5px;
     }
     .title-group p {
       margin: 4px 0 0;
       color: var(--muted);
-      font-size: 14px;
+      font-size: 13px;
     }
     .version-tag {
       background: rgba(0, 122, 204, 0.15);
-      color: #3794ff;
-      border: 1px solid rgba(55, 148, 255, 0.3);
-      padding: 4px 10px;
+      color: #388bfd;
+      border: 1px solid rgba(56, 139, 253, 0.4);
+      padding: 4px 12px;
       border-radius: 12px;
       font-size: 12px;
       font-weight: 600;
@@ -167,14 +166,16 @@ export class ReleaseNotesPanel {
       border-radius: 8px;
       padding: 20px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-      transition: transform 0.1s ease, border-color 0.1s ease;
+      transition: border-color 0.2s ease, transform 0.15s ease;
     }
     .card:hover {
-      border-color: #555555;
+      border-color: var(--accent);
+      transform: translateY(-2px);
     }
     .card-icon {
-      font-size: 24px;
-      margin-bottom: 8px;
+      font-size: 28px;
+      margin-bottom: 12px;
+      line-height: 1;
     }
     .card h3 {
       margin: 0 0 8px;
@@ -291,11 +292,11 @@ export class ReleaseNotesPanel {
     <div class="brand">
       <div class="brand-badge">dTyp_</div>
       <div class="title-group">
-        <h1>Welcome to dTyp v3.0</h1>
+        <h1>Welcome to dTyp v3.2</h1>
         <p>Offline Academic C Library & Automated Stealth Typing Assistant</p>
       </div>
     </div>
-    <span class="version-tag">v3.0.0 Production Release</span>
+    <span class="version-tag">v3.2.0 Production Release</span>
   </div>
 
   <div class="actions">
@@ -316,43 +317,43 @@ export class ReleaseNotesPanel {
     </button>
   </div>
 
-  <div class="section-title">✨ Major Features & Architectural Overhaul</div>
+  <div class="section-title">✨ What's New in Version 3.2.0</div>
 
   <div class="grid">
     <div class="card">
       <div class="card-icon">⚡</div>
-      <h3>Dual Typing Engine & Edge-Case Guards</h3>
-      <p>Choose between <b>Automatic</b> (1ms to 1000ms delay) and <b>Stealth Manual</b> mode (<kbd>Ctrl+D</kbd>). Includes cursor jump relocation pause, tab-switch guard, and 2-3 char undo chunks.</p>
+      <h3>Smart Block Auto-Expansion (enter_block)</h3>
+      <p>Native VS Code <code>onEnterRules</code> simulation. Typing <code>{</code> creates the 3-line scaffold with cursor placed at column 4. Closing brace waits on line 3 with <b>zero sideways brace movement</b>.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🧠</div>
+      <h3>Universal Non-Sequential Coding</h3>
+      <p>Drafts code skeleton-first like a real programmer: function signature and return anchors scaffolded first, jumping above return (<code>landmark: "above_return"</code>) and pairing resource cleanups (<code>above_free</code>).</p>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">📁</div>
+      <h3>Own Library Component Creator</h3>
+      <p>Dedicated Activity Bar view (<code>dtyp.ownLibraryView</code>), interactive form with 10 text fields, global JSON persistence, full CRUD, and export/import integration.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">⌨️</div>
+      <h3>Natural Typing Kinetics & Typos</h3>
+      <p>Delayed-recognition typo bursts (overshoot &rarr; pause &rarr; 2x backspace &rarr; correct), operator whitespace rhythm, comma parameter pauses, and post-statement breathing breaks.</p>
     </div>
 
     <div class="card">
       <div class="card-icon">📚</div>
-      <h3>500 Essential C Components (Zero Comments)</h3>
-      <p>Completely bloat-free offline library across 7 structured domains. Strict Zero-Comments Invariant verified 100% with parametric variations.</p>
-    </div>
-
-    <div class="card">
-      <div class="card-icon">📦</div>
-      <h3>Complete Projects & Boilerplates</h3>
-      <p>Stand-alone system projects (shell, HTTP server, compiler, allocator) alongside production main templates, IO, strings, and testing harnesses.</p>
-    </div>
-
-    <div class="card">
-      <div class="card-icon">🧩</div>
-      <h3>1,492 Structured Snippets & Docs</h3>
-      <p>Hierarchical and alias snippet prefixes (<code>dtyp.*</code>) with interactive tab stops (<code>$1</code>, <code>$2</code>, <code>$0</code>) and 500 full Markdown documentation pages.</p>
+      <h3>500 Curated C Components (Zero Comments)</h3>
+      <p>Completely bloat-free offline library across 7 structured domains inside an embedded SQLite WebAssembly database.</p>
     </div>
 
     <div class="card">
       <div class="card-icon">🛡️</div>
-      <h3>HeaderEngine & Memory Leak Detector</h3>
-      <p>Safe top-of-file header injection without duplicates, plus dynamic heap allocation (<code>malloc</code>/<code>free</code>) leak analysis.</p>
-    </div>
-
-    <div class="card">
-      <div class="card-icon">🔍</div>
-      <h3>Scored Fuzzy Search & Sidebar</h3>
-      <p>Sub-millisecond ranked search with category scoping (e.g. <code>boiler:main</code>, <code>ds:stack</code>) and dedicated Activity Bar sidebar views.</p>
+      <h3>Dual Modes & Edge-Case Guards</h3>
+      <p>Automatic streaming and stealth manual stepping (<kbd>Ctrl+Shift+D</kbd>) with cursor relocation pause and tab-switch guards.</p>
     </div>
   </div>
 
@@ -369,16 +370,16 @@ export class ReleaseNotesPanel {
     <tbody>
       <tr>
         <td><b>Step Next Character</b> (Stealth Typing)</td>
-        <td><kbd>Ctrl+D</kbd></td>
+        <td><kbd>Ctrl+Shift+D</kbd></td>
         <td>Editor has queued characters in Manual mode</td>
       </tr>
       <tr>
         <td><b>Browse Offline Library</b></td>
-        <td><kbd>Ctrl+Shift+D</kbd></td>
+        <td><kbd>Ctrl+Alt+D</kbd></td>
         <td>Anywhere in editor</td>
       </tr>
       <tr>
-        <td><b>Cancel Typing / Flush Queue</b></td>
+        <td><b>Cancel Typing / Clear Queue</b></td>
         <td><kbd>Escape</kbd></td>
         <td>While typing is active or queue is non-empty</td>
       </tr>
@@ -391,6 +392,11 @@ export class ReleaseNotesPanel {
         <td><b>Insert Snippet with Tab Stops</b></td>
         <td>Type <code>dtyp.</code> or <kbd>Ctrl+Shift+P</kbd> &rarr; <code>dTyp: Insert Snippet</code></td>
         <td>C / C++ files</td>
+      </tr>
+      <tr>
+        <td><b>Create Custom Component</b></td>
+        <td><kbd>Ctrl+Shift+P</kbd> &rarr; <code>dTyp: Create Custom Component</code></td>
+        <td>Opens Own Library form</td>
       </tr>
     </tbody>
   </table>
