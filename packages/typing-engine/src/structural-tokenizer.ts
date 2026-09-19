@@ -53,8 +53,8 @@ export class StructuralTokenizer {
     const isNonlinear = this.options.model === "nonlinear" || this.options.model === "humanized";
     if (isNonlinear) {
       const decomposed = CStructuralDecomposer.decompose(source);
-      if (decomposed.isFullProgram) {
-        const steps = NonlinearAuthoringPlanner.plan(decomposed, source);
+      const steps = NonlinearAuthoringPlanner.plan(decomposed, source);
+      if (steps.length > 1 || steps[0].kind !== "raw") {
         const actions: TypingAction[] = [];
 
         for (const step of steps) {
@@ -203,6 +203,16 @@ export class StructuralTokenizer {
         }
       }
 
+      // Inter-block pause on double newline
+      if (isHumanized && char === "\n" && prevChar === "\n") {
+        actions.push({
+          type: "pause",
+          pauseKind: "inter_block",
+          delayMs: this.pauseModel.getPauseDuration("inter_block"),
+          description: "inter-block conceptual pause",
+        });
+      }
+
       // Handle escaped characters inside strings / chars
       if (escaped) {
         escaped = false;
@@ -278,6 +288,90 @@ export class StructuralTokenizer {
         continue;
       }
 
+      // Comma parameter pause when followed by space outside strings/chars
+      if (!inString && !inChar && char === "," && i + 1 < normalized.length && normalized[i + 1] === " ") {
+        actions.push({ type: "type", char: ",", delayMs: strokeDelay });
+        actions.push({ type: "type", char: " ", delayMs: Math.max(1, Math.round(strokeDelay * 0.9)) });
+        if (isHumanized) {
+          actions.push({
+            type: "pause",
+            pauseKind: "comma_parameter",
+            delayMs: this.pauseModel.getPauseDuration("comma_parameter"),
+            description: "parameter inspection hesitation",
+          });
+        }
+        prevChar = " ";
+        i++; // skip the space since it was emitted
+        continue;
+      }
+
+      // Smart Block Expansion for '{' followed by newline
+      if (!inString && !inChar && char === "{" && isHumanized) {
+        const restOfLine = normalized.slice(i + 1);
+        const matchNewline = restOfLine.match(/^([ \t]*)\r?\n/);
+        if (matchNewline) {
+          const prevNlIdx = normalized.lastIndexOf("\n", i);
+          const currentLineLeading = normalized.slice(prevNlIdx + 1, i).match(/^[ \t]*/);
+          const baseIndent = currentLineLeading ? currentLineLeading[0] : "";
+
+          const afterNewline = restOfLine.slice(matchNewline[0].length);
+          const nextLineIndentMatch = afterNewline.match(/^([ \t]*)/);
+          let blockIndent = nextLineIndentMatch ? nextLineIndentMatch[1] : baseIndent + "    ";
+          if (blockIndent.length <= baseIndent.length) {
+            blockIndent = baseIndent + "    ";
+          }
+
+          delimiterStack.push("}");
+          actions.push({
+            type: "type",
+            char: "{",
+            autoClose: "}",
+            delayMs: strokeDelay,
+            description: "open block brace with autoClose '}'",
+          });
+          actions.push({
+            type: "enter_block",
+            baseIndent,
+            blockIndent,
+            delayMs: Math.max(1, Math.round(strokeDelay * 0.8)),
+            description: "auto-expand block braces with indentation",
+          });
+
+          const actualIndentToSkip = afterNewline.startsWith(blockIndent)
+            ? blockIndent.length
+            : (nextLineIndentMatch ? nextLineIndentMatch[1].length : 0);
+          const skipCount = matchNewline[0].length + actualIndentToSkip;
+          i += skipCount;
+          prevChar = " ";
+          continue;
+        }
+      }
+
+      // Smart step over closing brace on block line
+      if (!inString && !inChar && char === "\n" && isHumanized && delimiterStack.length > 0 && delimiterStack[delimiterStack.length - 1] === "}") {
+        const ahead = normalized.slice(i);
+        const matchClose = ahead.match(/^\r?\n([ \t]*)\}/);
+        if (matchClose) {
+          delimiterStack.pop();
+          actions.push({
+            type: "overtype",
+            char: "}",
+            delayMs: Math.max(1, strokeDelay),
+            description: "overtype closing brace on block line",
+          });
+          actions.push({
+            type: "pause",
+            pauseKind: "block_close",
+            delayMs: this.pauseModel.getPauseDuration("block_close"),
+            description: "block scope review pause",
+          });
+          this.stamina.renew();
+          i += matchClose[0].length - 1;
+          prevChar = "}";
+          continue;
+        }
+      }
+
       // Outside strings/chars: handle brackets `(`, `[`, `{` and matching `)`, `]`, `}`
       if (!inString && !inChar) {
         if (char in OPEN_TO_CLOSE) {
@@ -330,6 +424,14 @@ export class StructuralTokenizer {
             delayMs: this.pauseModel.getPauseDuration("syntax_statement"),
             description: "statement syntax completion pause",
           });
+          if (i + 1 < normalized.length && normalized[i + 1] === "\n") {
+            actions.push({
+              type: "pause",
+              pauseKind: "post_statement",
+              delayMs: this.pauseModel.getPauseDuration("post_statement"),
+              description: "post-statement line break pause",
+            });
+          }
           this.stamina.renew();
           prevChar = char;
           continue;
@@ -349,8 +451,22 @@ export class StructuralTokenizer {
       if (shouldTypo) {
         const adjacent = this.cadence.getAdjacentKey(char);
         if (adjacent && adjacent !== char) {
-          const typoSeq = this.cadence.createTypoSequence(char, adjacent);
-          actions.push(...typoSeq);
+          if (
+            isAlpha &&
+            i + 1 < normalized.length &&
+            /[a-zA-Z0-9]/.test(normalized[i + 1]) &&
+            Math.random() < 0.5
+          ) {
+            const overshootChar = normalized[i + 1];
+            const delayedSeq = this.cadence.createDelayedTypoSequence(char, adjacent, overshootChar);
+            actions.push(...delayedSeq);
+            i++;
+            prevChar = overshootChar;
+            continue;
+          } else {
+            const typoSeq = this.cadence.createTypoSequence(char, adjacent);
+            actions.push(...typoSeq);
+          }
         } else {
           actions.push({ type: "type", char, delayMs: strokeDelay });
         }

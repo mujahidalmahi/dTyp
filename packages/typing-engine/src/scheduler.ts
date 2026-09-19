@@ -68,6 +68,13 @@ export class TypingScheduler {
           typedChars++;
         } else if (item.action === "backspace") {
           await this.mapper.deleteBackward();
+        } else if (item.action === "enter_block") {
+          if (this.mapper.enterBlock) {
+            await this.mapper.enterBlock(item.baseIndent ?? "", item.blockIndent ?? "    ");
+          } else {
+            await this.mapper.typeCharacter("\n");
+          }
+          typedChars++;
         } else if (item.action === "pause") {
           // Pure pause action (hesitation or recognition)
         } else if (item.action === "cursor_move") {

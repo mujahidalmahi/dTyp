@@ -122,9 +122,13 @@ export class HumanCadence {
     } else if (char === " ") {
       if (prevChar === ";") {
         delay += (50 + Math.random() * 70) * scale;
+      } else if (prevChar && /[=+\-*/%<>&|^]/.test(prevChar)) {
+        delay += (18 + Math.random() * 25) * scale;
       } else {
         delay += (15 + Math.random() * 25) * scale;
       }
+    } else if (prevChar === " " && /[=+\-*/%<>&|^]/.test(char)) {
+      delay += (20 + Math.random() * 25) * scale;
     }
 
     // 6. Add Gaussian/uniform jitter
@@ -157,6 +161,56 @@ export class HumanCadence {
         char: correctChar,
         delayMs: Math.max(1, Math.round(base * 1.1)),
         description: `corrected stroke: '${correctChar}'`,
+      },
+    ];
+  }
+
+  public createDelayedTypoSequence(
+    correctChar: string,
+    typoChar: string,
+    overshootChar: string
+  ): TypingAction[] {
+    const base = this.options.baseDelayMs;
+    const scale = Math.max(0.02, base / 30);
+    return [
+      {
+        type: "type",
+        char: typoChar,
+        delayMs: Math.max(1, Math.round(base * 0.85)),
+        description: `typo: '${typoChar}' instead of '${correctChar}'`,
+      },
+      {
+        type: "type",
+        char: overshootChar,
+        delayMs: Math.max(1, Math.round(base * 0.75)),
+        description: `overshoot char during velocity: '${overshootChar}'`,
+      },
+      {
+        type: "pause",
+        delayMs: Math.max(1, Math.round((90 + Math.random() * 70) * scale)),
+        description: "delayed recognition pause: noticed typo",
+      },
+      {
+        type: "backspace",
+        delayMs: Math.max(1, Math.round((35 + Math.random() * 25) * scale)),
+        description: "backspace overshoot",
+      },
+      {
+        type: "backspace",
+        delayMs: Math.max(1, Math.round((35 + Math.random() * 25) * scale)),
+        description: "backspace typo",
+      },
+      {
+        type: "type",
+        char: correctChar,
+        delayMs: Math.max(1, Math.round(base * 1.05)),
+        description: `corrected stroke: '${correctChar}'`,
+      },
+      {
+        type: "type",
+        char: overshootChar,
+        delayMs: Math.max(1, Math.round(base * 0.95)),
+        description: `re-typed subsequent character: '${overshootChar}'`,
       },
     ];
   }

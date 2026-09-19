@@ -2,6 +2,12 @@ export interface CFunctionBlock {
   name: string;
   signature: string;
   body: string;
+  returnStatement?: string;
+  bodyBeforeReturn?: string;
+  hasAllocCleanupPair?: boolean;
+  allocStatement?: string;
+  cleanupStatement?: string;
+  bodyBetweenAlloc?: string;
   fullText: string;
 }
 
@@ -9,6 +15,9 @@ export interface CMainBlock {
   signature: string;
   driverStatements: string;
   returnStatement: string;
+  hasAllocCleanupPair?: boolean;
+  allocStatement?: string;
+  cleanupStatement?: string;
   fullText: string;
 }
 
@@ -20,6 +29,8 @@ export interface CDecomposedProgram {
   mainFunction: CMainBlock | null;
   rawPreamble: string;
   isFullProgram: boolean;
+  isSingleFunction?: boolean;
+  primaryFunction?: CFunctionBlock;
 }
 
 export class CStructuralDecomposer {
@@ -85,6 +96,8 @@ export class CStructuralDecomposer {
     }
 
     const isFullProgram = mainFunction !== null && (headers.length > 0 || helperFunctions.length > 0);
+    const isSingleFunction = mainFunction === null && helperFunctions.length === 1;
+    const primaryFunction = isSingleFunction ? helperFunctions[0] : (helperFunctions.length > 0 ? helperFunctions[helperFunctions.length - 1] : undefined);
 
     return {
       headers,
@@ -94,6 +107,8 @@ export class CStructuralDecomposer {
       mainFunction,
       rawPreamble: rawPreamble.trim(),
       isFullProgram,
+      isSingleFunction,
+      primaryFunction,
     };
   }
 
@@ -135,10 +150,61 @@ export class CStructuralDecomposer {
     const closeBrace = trimmed.lastIndexOf("}");
     const body = closeBrace > openBrace ? trimmed.slice(openBrace + 1, closeBrace) : "";
 
+    // Parse return statement and preceding body
+    const bodyLines = body.split(/\r?\n/);
+    let returnStmt: string | undefined;
+    let bodyBeforeReturn: string | undefined;
+
+    for (let i = bodyLines.length - 1; i >= 0; i--) {
+      const line = bodyLines[i].trim();
+      if (line.startsWith("return ") || line === "return;" || line.startsWith("return(")) {
+        returnStmt = line;
+        const preceding = bodyLines.slice(0, i).filter((l) => l.trim().length > 0);
+        if (preceding.length > 0) {
+          bodyBeforeReturn = bodyLines.slice(0, i).join("\n");
+        }
+        break;
+      }
+    }
+
+    // Check for malloc/calloc and free pairs
+    let hasAllocCleanupPair = false;
+    let allocStatement: string | undefined;
+    let cleanupStatement: string | undefined;
+    let bodyBetweenAlloc: string | undefined;
+
+    let allocLineIdx = -1;
+    let cleanupLineIdx = -1;
+    for (let i = 0; i < bodyLines.length; i++) {
+      const line = bodyLines[i].trim();
+      if (allocLineIdx === -1 && (line.includes("malloc(") || line.includes("calloc(") || line.includes("fopen("))) {
+        allocLineIdx = i;
+        allocStatement = line;
+      }
+      if (line.startsWith("free(") || line.startsWith("fclose(")) {
+        cleanupLineIdx = i;
+        cleanupStatement = line;
+      }
+    }
+
+    if (allocLineIdx !== -1 && cleanupLineIdx > allocLineIdx) {
+      hasAllocCleanupPair = true;
+      const between = bodyLines.slice(allocLineIdx + 1, cleanupLineIdx);
+      if (between.some((l) => l.trim().length > 0)) {
+        bodyBetweenAlloc = between.join("\n");
+      }
+    }
+
     return {
       name,
       signature,
       body,
+      returnStatement: returnStmt,
+      bodyBeforeReturn,
+      hasAllocCleanupPair,
+      allocStatement,
+      cleanupStatement,
+      bodyBetweenAlloc,
       fullText: trimmed,
     };
   }
@@ -150,7 +216,7 @@ export class CStructuralDecomposer {
 
     for (let i = bodyLines.length - 1; i >= 0; i--) {
       const line = bodyLines[i].trim();
-      if (line.startsWith("return ")) {
+      if (line.startsWith("return ") || line === "return;" || line.startsWith("return(")) {
         returnStmt = line;
         driverLines.unshift(...bodyLines.slice(0, i));
         break;
@@ -165,6 +231,9 @@ export class CStructuralDecomposer {
       signature: fn.signature,
       driverStatements: driverLines.join("\n"),
       returnStatement: returnStmt,
+      hasAllocCleanupPair: fn.hasAllocCleanupPair,
+      allocStatement: fn.allocStatement,
+      cleanupStatement: fn.cleanupStatement,
       fullText: fn.fullText,
     };
   }

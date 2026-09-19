@@ -1,9 +1,18 @@
+import { TypingActionLandmark } from "@dtyp/types";
 import { CDecomposedProgram, CFunctionBlock } from "./c-structural-decomposer.js";
 
 export interface AuthoringStep {
-  kind: "headers" | "main_scaffold" | "types" | "helper_function" | "main_driver" | "raw";
+  kind:
+    | "headers"
+    | "main_scaffold"
+    | "types"
+    | "helper_function"
+    | "main_driver"
+    | "function_scaffold"
+    | "function_body"
+    | "raw";
   code: string;
-  cursorMoveBefore?: { lineOffset: number; column?: number; landmark?: "above_main" | "inside_main" };
+  cursorMoveBefore?: { lineOffset: number; column?: number; landmark?: TypingActionLandmark };
   pauseBeforeMs?: number;
   pauseAfterMs?: number;
   description: string;
@@ -14,21 +23,41 @@ export class NonlinearAuthoringPlanner {
    * Plans the realistic step-by-step authoring sequence for a C program or component.
    */
   public static plan(decomposed: CDecomposedProgram, rawSource: string): AuthoringStep[] {
-    if (!decomposed.isFullProgram || !decomposed.mainFunction) {
-      // If not a full program with main(), author directly
-      return [
-        {
-          kind: "raw",
-          code: rawSource,
-          pauseBeforeMs: 100,
-          pauseAfterMs: 300,
-          description: "author component",
-        },
-      ];
+    // 1. Full program with main()
+    if (decomposed.isFullProgram && decomposed.mainFunction) {
+      return this.planFullProgram(decomposed);
     }
 
-    const steps: AuthoringStep[] = [];
+    // 2. Single function component with return statement
+    if (decomposed.isSingleFunction && decomposed.primaryFunction) {
+      const fn = decomposed.primaryFunction;
+      if (fn.returnStatement && fn.bodyBeforeReturn && fn.bodyBeforeReturn.trim().length > 0) {
+        return this.planSingleFunction(decomposed, fn);
+      }
+    }
+
+    // 3. Multi-function component without main()
+    if (decomposed.helperFunctions.length > 1 && !decomposed.mainFunction) {
+      return this.planMultiFunctionComponent(decomposed);
+    }
+
+    // Default: author directly
+    return [
+      {
+        kind: "raw",
+        code: rawSource,
+        pauseBeforeMs: 100,
+        pauseAfterMs: 300,
+        description: "author component",
+      },
+    ];
+  }
+
+  private static planFullProgram(decomposed: CDecomposedProgram): AuthoringStep[] {
     const main = decomposed.mainFunction;
+    if (!main) return [];
+
+    const steps: AuthoringStep[] = [];
 
     // 1. Phase 1: Headers and Preprocessor Directives
     const allHeaders = [...decomposed.headers, ...decomposed.macros];
@@ -103,6 +132,147 @@ export class NonlinearAuthoringPlanner {
         pauseBeforeMs: 500,
         pauseAfterMs: 400,
         description: "move inside main() to author driver logic, function calls, and printfs",
+      });
+    }
+
+    return steps;
+  }
+
+  private static planSingleFunction(decomposed: CDecomposedProgram, fn: CFunctionBlock): AuthoringStep[] {
+    const steps: AuthoringStep[] = [];
+
+    // 1. Headers / Macros (if any)
+    const allHeaders = [...decomposed.headers, ...decomposed.macros];
+    let headerCode = "";
+    if (allHeaders.length > 0) {
+      headerCode = allHeaders.join("\n") + "\n\n";
+    }
+
+    // 2. Scaffold function signature + return statement + closing brace
+    const returnLine = fn.returnStatement?.trim() || "return 0;";
+    const fnScaffoldCode = `${fn.signature} {\n    ${returnLine}\n}\n`;
+    const initialCode = headerCode + fnScaffoldCode;
+
+    steps.push({
+      kind: "function_scaffold",
+      code: initialCode,
+      pauseBeforeMs: 120,
+      pauseAfterMs: 450,
+      description: `scaffold ${fn.name}() skeleton with return anchor`,
+    });
+
+    const scaffoldLines = fnScaffoldCode.trim().split("\n").length;
+
+    // 3. Types / Structs (if any) - written above the function
+    let hasMovedAbove = false;
+    if (decomposed.types.length > 0) {
+      const typeCode = decomposed.types.join("\n\n") + "\n\n";
+      steps.push({
+        kind: "types",
+        code: typeCode,
+        cursorMoveBefore: { lineOffset: -(scaffoldLines + 1), column: 0, landmark: "above_main" },
+        pauseBeforeMs: 300,
+        pauseAfterMs: 400,
+        description: `declare types and structs above ${fn.name}()`,
+      });
+      hasMovedAbove = true;
+    }
+
+    // 4. Fill function body above return statement
+    const bodyCode = (fn.bodyBeforeReturn || "").trim();
+    if (bodyCode.length > 0) {
+      steps.push({
+        kind: "function_body",
+        code: bodyCode + "\n",
+        cursorMoveBefore: hasMovedAbove
+          ? { lineOffset: 1, column: 4, landmark: "above_return" }
+          : { lineOffset: -2, column: 4, landmark: "above_return" },
+        pauseBeforeMs: 350,
+        pauseAfterMs: 300,
+        description: `implement ${fn.name}() algorithm logic above return`,
+      });
+    }
+
+    return steps;
+  }
+
+  private static planMultiFunctionComponent(decomposed: CDecomposedProgram): AuthoringStep[] {
+    const steps: AuthoringStep[] = [];
+    const entryFn = decomposed.helperFunctions[decomposed.helperFunctions.length - 1];
+    const helpers = decomposed.helperFunctions.slice(0, -1);
+
+    // 1. Headers / Macros
+    const allHeaders = [...decomposed.headers, ...decomposed.macros];
+    let headerCode = "";
+    if (allHeaders.length > 0) {
+      headerCode = allHeaders.join("\n") + "\n\n";
+    }
+
+    // 2. Scaffold entry function
+    const returnLine = entryFn.returnStatement?.trim() || "";
+    const entryScaffoldCode = returnLine
+      ? `${entryFn.signature} {\n    ${returnLine}\n}\n`
+      : `${entryFn.signature} {\n}\n`;
+
+    const initialCode = headerCode + entryScaffoldCode;
+
+    steps.push({
+      kind: "function_scaffold",
+      code: initialCode,
+      pauseBeforeMs: 150,
+      pauseAfterMs: 550,
+      description: `scaffold entry function ${entryFn.name}() skeleton`,
+    });
+
+    const scaffoldLines = entryScaffoldCode.trim().split("\n").length;
+    let hasMovedAbove = false;
+
+    // 3. Types (if any)
+    if (decomposed.types.length > 0) {
+      const typeCode = decomposed.types.join("\n\n") + "\n\n";
+      steps.push({
+        kind: "types",
+        code: typeCode,
+        cursorMoveBefore: { lineOffset: -(scaffoldLines + 1), column: 0, landmark: "above_main" },
+        pauseBeforeMs: 350,
+        pauseAfterMs: 450,
+        description: "declare types above functions",
+      });
+      hasMovedAbove = true;
+    }
+
+    // 4. Helper functions above entry function
+    for (let i = 0; i < helpers.length; i++) {
+      const h = helpers[i];
+      const moveBefore = !hasMovedAbove
+        ? { lineOffset: -(scaffoldLines + 1), column: 0, landmark: "above_main" as const }
+        : undefined;
+      hasMovedAbove = true;
+
+      steps.push({
+        kind: "helper_function",
+        code: h.fullText + "\n\n",
+        cursorMoveBefore: moveBefore,
+        pauseBeforeMs: 300,
+        pauseAfterMs: 600,
+        description: `implement helper function ${h.name}() above ${entryFn.name}()`,
+      });
+    }
+
+    // 5. Fill entry function body
+    const bodyCode = (entryFn.bodyBeforeReturn || entryFn.body || "").trim();
+    if (bodyCode.length > 0) {
+      steps.push({
+        kind: "function_body",
+        code: bodyCode + "\n",
+        cursorMoveBefore: {
+          lineOffset: 1,
+          column: 4,
+          landmark: entryFn.returnStatement ? "above_return" : "inside_main",
+        },
+        pauseBeforeMs: 400,
+        pauseAfterMs: 350,
+        description: `implement ${entryFn.name}() logic`,
       });
     }
 

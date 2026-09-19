@@ -1,4 +1,4 @@
-import { KeyboardMapper, TypingTarget } from "@dtyp/types";
+import { KeyboardMapper, TypingTarget, TypingActionLandmark } from "@dtyp/types";
 
 export class StandardKeyboardMapper implements KeyboardMapper {
   constructor(private target: TypingTarget) {}
@@ -32,6 +32,14 @@ export class StandardKeyboardMapper implements KeyboardMapper {
     }
   }
 
+  public async enterBlock(baseIndent: string, blockIndent: string): Promise<void> {
+    if (this.target && typeof this.target.enterBlock === "function") {
+      await this.target.enterBlock(baseIndent, blockIndent);
+    } else if (this.target) {
+      await this.target.typeCharacter("\n");
+    }
+  }
+
   public async releaseModifiers(): Promise<void> {
     if (this.target && typeof this.target.releaseModifiers === "function") {
       await this.target.releaseModifiers();
@@ -41,7 +49,7 @@ export class StandardKeyboardMapper implements KeyboardMapper {
   public async moveCursor(
     lineOffset: number,
     column?: number,
-    landmark?: "above_main" | "inside_main"
+    landmark?: TypingActionLandmark
   ): Promise<void> {
     if (this.target && typeof this.target.moveCursor === "function") {
       await this.target.moveCursor(lineOffset, column, landmark);

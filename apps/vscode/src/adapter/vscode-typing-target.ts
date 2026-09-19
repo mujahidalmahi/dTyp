@@ -235,6 +235,57 @@ export class VSCodeTypingTarget implements TypingTarget {
     }
   }
 
+  public async enterBlock(baseIndent: string, blockIndent: string): Promise<void> {
+    const activeEditor = this.editor ?? vscode.window.activeTextEditor;
+    if (!activeEditor) {
+      throw new Error("No active text editor in VS Code to enter block");
+    }
+
+    if (this.pauseOnTabSwitch && this.activeDocUri && activeEditor.document.uri.toString() !== this.activeDocUri) {
+      this.logger.warn("Active document changed during typing, halting typing session");
+      throw new Error("TYPING_PAUSED_TAB_SWITCHED");
+    }
+
+    let targetPos = activeEditor.selection.active;
+    if (this.expectedHead && !targetPos.isEqual(this.expectedHead)) {
+      this.logger.warn(`Cursor manually jumped from ${this.expectedHead.line}:${this.expectedHead.character} to ${targetPos.line}:${targetPos.character}`);
+      this.onCursorJumpCallback?.(this.expectedHead, targetPos);
+
+      if (this.cursorJumpPolicy === "pause") {
+        throw new Error("TYPING_PAUSED_CURSOR_MOVED");
+      } else if (this.cursorJumpPolicy === "realign") {
+        targetPos = this.expectedHead;
+      } else if (this.cursorJumpPolicy === "abort") {
+        throw new Error("TYPING_ABORTED_CURSOR_MOVED");
+      }
+    }
+
+    const currentLineText = activeEditor.document.lineAt(targetPos.line).text;
+    const charAtCursor = currentLineText.charAt(targetPos.character);
+    const hasClosingBrace = charAtCursor === "}";
+
+    // If closing brace is already at cursor, insert newline + blockIndent + newline + baseIndent before it
+    // If not, insert newline + blockIndent + newline + baseIndent + }
+    const textToInsert = hasClosingBrace
+      ? `\n${blockIndent}\n${baseIndent}`
+      : `\n${blockIndent}\n${baseIndent}}`;
+
+    await activeEditor.edit(
+      (editBuilder) => {
+        editBuilder.insert(targetPos, textToInsert);
+      },
+      {
+        undoStopBefore: false,
+        undoStopAfter: false,
+      }
+    );
+
+    const indentedPos = new vscode.Position(targetPos.line + 1, blockIndent.length);
+    activeEditor.selection = new vscode.Selection(indentedPos, indentedPos);
+    this.expectedHead = indentedPos;
+    this.charCount += 2;
+  }
+
   public async releaseModifiers(): Promise<void> {
     this.logger.debug("VS Code typing target modifier release requested");
   }
@@ -242,7 +293,7 @@ export class VSCodeTypingTarget implements TypingTarget {
   public async moveCursor(
     lineOffset: number,
     column?: number,
-    landmark?: "above_main" | "inside_main"
+    landmark?: import("@dtyp/types").TypingActionLandmark
   ): Promise<void> {
     const activeEditor = this.editor ?? vscode.window.activeTextEditor;
     if (!activeEditor) {
@@ -257,21 +308,21 @@ export class VSCodeTypingTarget implements TypingTarget {
     let targetLine = -1;
     let targetCol = column ?? 0;
 
-    if (landmark === "above_main") {
-      // Find line declaring main()
+    if (landmark === "above_main" || landmark === "function_top") {
+      // Find line declaring main() or top function
       for (let l = 0; l < doc.lineCount; l++) {
         const text = doc.lineAt(l).text;
-        if (/\b(?:int|void)\s+main\s*\(/.test(text)) {
+        if (/\b(?:int|void|bool|char|double|float|[a-zA-Z0-9_]+)\s+(?:main|[a-zA-Z0-9_]+)\s*\(/.test(text)) {
           targetLine = l;
           break;
         }
       }
       if (targetLine !== -1) {
-        // If line immediately above main is empty, position cursor on it.
+        // If line immediately above is empty, position cursor on it.
         if (targetLine > 0 && doc.lineAt(targetLine - 1).text.trim() === "") {
           targetLine = targetLine - 1;
         } else {
-          // If no empty line above main, insert a newline before main
+          // If no empty line above, insert a newline before
           const insertPos = new vscode.Position(targetLine, 0);
           await activeEditor.edit((builder) => builder.insert(insertPos, "\n"), {
             undoStopBefore: false,
@@ -314,6 +365,56 @@ export class VSCodeTypingTarget implements TypingTarget {
           targetLine = Math.min(doc.lineCount - 1, braceLine + 1);
           targetCol = 4;
         }
+      }
+    } else if (landmark === "above_return") {
+      // Find last return statement
+      let returnLine = -1;
+      for (let l = doc.lineCount - 1; l >= 0; l--) {
+        const text = doc.lineAt(l).text;
+        if (/\breturn\b/.test(text)) {
+          returnLine = l;
+          break;
+        }
+      }
+
+      if (returnLine !== -1) {
+        // If line above return is empty, position there
+        if (returnLine > 0 && doc.lineAt(returnLine - 1).text.trim() === "") {
+          targetLine = returnLine - 1;
+        } else {
+          // Insert an indented line above return
+          const insertPos = new vscode.Position(returnLine, 0);
+          await activeEditor.edit((builder) => builder.insert(insertPos, "    \n"), {
+            undoStopBefore: false,
+            undoStopAfter: false,
+          });
+          targetLine = returnLine;
+        }
+        targetCol = 4;
+      }
+    } else if (landmark === "above_free") {
+      // Find free or fclose statement
+      let freeLine = -1;
+      for (let l = doc.lineCount - 1; l >= 0; l--) {
+        const text = doc.lineAt(l).text;
+        if (/\b(?:free|fclose)\s*\(/.test(text)) {
+          freeLine = l;
+          break;
+        }
+      }
+
+      if (freeLine !== -1) {
+        if (freeLine > 0 && doc.lineAt(freeLine - 1).text.trim() === "") {
+          targetLine = freeLine - 1;
+        } else {
+          const insertPos = new vscode.Position(freeLine, 0);
+          await activeEditor.edit((builder) => builder.insert(insertPos, "    \n"), {
+            undoStopBefore: false,
+            undoStopAfter: false,
+          });
+          targetLine = freeLine;
+        }
+        targetCol = 4;
       }
     }
 

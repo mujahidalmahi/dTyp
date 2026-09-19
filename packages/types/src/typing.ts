@@ -1,7 +1,14 @@
 export type TypingExecutionMode = "automatic" | "manual";
 export type TypingModel = "nonlinear" | "humanized" | "linear";
 
-export type TypingActionType = "type" | "overtype" | "backspace" | "pause" | "cursor_move" | "newline";
+export type TypingActionType =
+  | "type"
+  | "overtype"
+  | "backspace"
+  | "pause"
+  | "cursor_move"
+  | "newline"
+  | "enter_block";
 
 export type CognitivePauseKind =
   | "control_flow"
@@ -9,7 +16,17 @@ export type CognitivePauseKind =
   | "block_close"
   | "pointer_nav"
   | "parameter"
-  | "fatigue_rest";
+  | "fatigue_rest"
+  | "comma_parameter"
+  | "inter_block"
+  | "post_statement";
+
+export type TypingActionLandmark =
+  | "above_main"
+  | "inside_main"
+  | "above_return"
+  | "above_free"
+  | "function_top";
 
 export type CognitivePauseIntensity = "subtle" | "natural" | "deliberate";
 
@@ -22,7 +39,9 @@ export interface TypingAction {
   targetLineOffset?: number;
   targetColumn?: number;
   indentSpaces?: number;
-  targetLandmark?: "above_main" | "inside_main";
+  baseIndent?: string;
+  blockIndent?: string;
+  targetLandmark?: TypingActionLandmark;
   pauseKind?: CognitivePauseKind;
 }
 
@@ -75,7 +94,9 @@ export interface QueuedCharacter {
   targetLineOffset?: number;
   targetColumn?: number;
   indentSpaces?: number;
-  targetLandmark?: "above_main" | "inside_main";
+  baseIndent?: string;
+  blockIndent?: string;
+  targetLandmark?: TypingActionLandmark;
   pauseKind?: CognitivePauseKind;
 }
 
@@ -85,7 +106,8 @@ export interface TypingTarget {
   releaseModifiers(): Promise<void>;
   overtypeCharacter?(character: string): Promise<void>;
   deleteBackward?(): Promise<void>;
-  moveCursor?(lineOffset: number, column?: number, landmark?: "above_main" | "inside_main"): Promise<void>;
+  enterBlock?(baseIndent: string, blockIndent: string): Promise<void>;
+  moveCursor?(lineOffset: number, column?: number, landmark?: TypingActionLandmark): Promise<void>;
 }
 
 export interface KeyboardMapper {
@@ -93,7 +115,8 @@ export interface KeyboardMapper {
   releaseModifiers?(): Promise<void>;
   overtypeCharacter?(character: string): Promise<void>;
   deleteBackward?(): Promise<void>;
-  moveCursor?(lineOffset: number, column?: number, landmark?: "above_main" | "inside_main"): Promise<void>;
+  enterBlock?(baseIndent: string, blockIndent: string): Promise<void>;
+  moveCursor?(lineOffset: number, column?: number, landmark?: TypingActionLandmark): Promise<void>;
 }
 
 export interface TypingProgressEvent {

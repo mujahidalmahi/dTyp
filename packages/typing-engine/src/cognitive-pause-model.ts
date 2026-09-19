@@ -54,12 +54,18 @@ export class CognitivePauseModel {
         return this.sampleLogNormal(450, 0.3); // 350-700ms formulation
       case "syntax_statement":
         return this.sampleLogNormal(220, 0.25); // 150-320ms statement end
+      case "post_statement":
+        return this.sampleLogNormal(130, 0.25); // 80-200ms post-semicolon breathing pause
       case "block_close":
         return this.sampleLogNormal(400, 0.28); // 280-550ms scope check
       case "pointer_nav":
         return this.sampleLogNormal(180, 0.25); // 120-250ms dereference check
       case "parameter":
         return this.sampleLogNormal(160, 0.25); // 100-220ms argument retrieval
+      case "comma_parameter":
+        return this.sampleLogNormal(140, 0.25); // 90-220ms parameter lookup pause
+      case "inter_block":
+        return this.sampleLogNormal(450, 0.3); // 350-700ms pause between functions/blocks
       case "fatigue_rest":
         return this.sampleLogNormal(1500, 0.35); // 1000-2500ms breathing break
     }

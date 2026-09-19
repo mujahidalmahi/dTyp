@@ -200,6 +200,12 @@ export class AutoTypeEngine {
           await this.typingTarget.overtypeCharacter(action.char || "");
         } else if (action.type === "backspace") {
           await this.typingTarget.deleteBackward();
+        } else if (action.type === "enter_block") {
+          if (this.typingTarget.enterBlock) {
+            await this.typingTarget.enterBlock(action.baseIndent ?? "", action.blockIndent ?? "    ");
+          } else {
+            await this.typingTarget.typeCharacter("\n");
+          }
         } else if (action.type === "cursor_move") {
           await this.typingTarget.moveCursor(
             action.targetLineOffset ?? 0,
@@ -253,6 +259,12 @@ export class AutoTypeEngine {
         await this.typingTarget.overtypeCharacter(action.char || "");
       } else if (action.type === "backspace") {
         await this.typingTarget.deleteBackward();
+      } else if (action.type === "enter_block") {
+        if (this.typingTarget.enterBlock) {
+          await this.typingTarget.enterBlock(action.baseIndent ?? "", action.blockIndent ?? "    ");
+        } else {
+          await this.typingTarget.typeCharacter("\n");
+        }
       } else if (action.type === "cursor_move") {
         await this.typingTarget.moveCursor(
           action.targetLineOffset ?? 0,
