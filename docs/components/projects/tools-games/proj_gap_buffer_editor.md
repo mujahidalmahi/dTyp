@@ -1,7 +1,7 @@
 # proj_gap_buffer_editor
 > **Domain:** `projects` | **Subcategory:** `tools-games` | **Type:** `program`
 ## Overview
-Text editor core gap buffer data structure supporting O(1) cursor insertions and deletions
+Interactive gap buffer text editor engine with cursor movement and insertion
 
 ## Signature
 ```c
@@ -22,38 +22,89 @@ int main(void);
 #include <stdio.h>
 #include <string.h>
 
-typedef struct {
-    char buf[64];
-    int gap_left;
-    int gap_right;
-    int size;
-} GapBuffer;
+#define BUF_SIZE 64
 
-void gap_init(GapBuffer* gb, int cap) {
-    gb->size = cap;
-    gb->gap_left = 0;
-    gb->gap_right = cap - 1;
+static char buffer[BUF_SIZE];
+static int gap_start = 0;
+static int gap_end = BUF_SIZE - 1;
+
+static void clear_input(void) {
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF);
 }
 
-void gap_insert(GapBuffer* gb, char c) {
-    if (gb->gap_left <= gb->gap_right) {
-        gb->buf[gb->gap_left++] = c;
+static void print_editor_state(void) {
+    printf("Buffer Content: \"");
+    for (int i = 0; i < gap_start; i++) putchar(buffer[i]);
+    for (int i = gap_end + 1; i < BUF_SIZE; i++) putchar(buffer[i]);
+    printf("\"\n");
+    printf("Cursor at position %d (Gap [%d..%d])\n", gap_start, gap_start, gap_end);
+}
+
+static void insert_char(char c) {
+    if (gap_start <= gap_end) {
+        buffer[gap_start++] = c;
+    } else {
+        printf("Gap buffer full.\n");
     }
 }
 
-void print_buffer(const GapBuffer* gb) {
-    for (int i = 0; i < gb->gap_left; i++) putchar(gb->buf[i]);
-    for (int i = gb->gap_right + 1; i < gb->size; i++) putchar(gb->buf[i]);
-    putchar('\n');
+static void move_left(void) {
+    if (gap_start > 0) {
+        gap_start--;
+        buffer[gap_end--] = buffer[gap_start];
+    }
+}
+
+static void move_right(void) {
+    if (gap_end < BUF_SIZE - 1) {
+        gap_end++;
+        buffer[gap_start++] = buffer[gap_end];
+    }
 }
 
 int main(void) {
-    GapBuffer gb;
-    gap_init(&gb, 32);
-    const char* text = "Hello World!";
-    for (int i = 0; text[i]; i++) gap_insert(&gb, text[i]);
-    printf("Editor Buffer Contents: ");
-    print_buffer(&gb);
+    int choice;
+    do {
+        printf("=== Gap Buffer Editor Engine ===\n");
+        print_editor_state();
+        printf("1. Insert Character\n");
+        printf("2. Move Cursor Left\n");
+        printf("3. Move Cursor Right\n");
+        printf("0. Exit\n");
+        printf("Enter choice: ");
+        if (scanf("%d", &choice) != 1) {
+            clear_input();
+            choice = -1;
+            continue;
+        }
+        clear_input();
+        switch (choice) {
+            case 1: {
+                char ch;
+                printf("Enter character: ");
+                if (scanf("%c", &ch) == 1) {
+                    clear_input();
+                    insert_char(ch);
+                } else {
+                    clear_input();
+                }
+                break;
+            }
+            case 2:
+                move_left();
+                break;
+            case 3:
+                move_right();
+                break;
+            case 0:
+                printf("Exiting gap buffer editor.\n");
+                break;
+            default:
+                printf("Invalid option.\n");
+                break;
+        }
+    } while (choice != 0);
     return 0;
 }
 ```

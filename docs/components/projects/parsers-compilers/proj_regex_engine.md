@@ -1,7 +1,7 @@
 # proj_regex_engine
 > **Domain:** `projects` | **Subcategory:** `parsers-compilers` | **Type:** `program`
 ## Overview
-Regular expression pattern matcher supporting '.', '*', and '^' anchors
+Interactive regex pattern matcher supporting literal characters, dots, and Kleene stars
 
 ## Signature
 ```c
@@ -20,38 +20,81 @@ int main(void);
 ## Implementation
 ```c
 #include <stdio.h>
+#include <string.h>
 
-int match_here(const char* regexp, const char* text);
+static void clear_input(void) {
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF);
+}
 
-int match_star(char c, const char* regexp, const char* text) {
+static int match_pattern(const char* pat, const char* text);
+
+static int match_star(char c, const char* pat, const char* text) {
     do {
-        if (match_here(regexp, text)) return 1;
+        if (match_pattern(pat, text)) return 1;
     } while (*text != '\0' && (*text++ == c || c == '.'));
     return 0;
 }
 
-int match_here(const char* regexp, const char* text) {
-    if (regexp[0] == '\0') return 1;
-    if (regexp[1] == '*') return match_star(regexp[0], regexp + 2, text);
-    if (regexp[0] == '$' && regexp[1] == '\0') return *text == '\0';
-    if (*text != '\0' && (regexp[0] == '.' || regexp[0] == *text)) {
-        return match_here(regexp + 1, text + 1);
+static int match_pattern(const char* pat, const char* text) {
+    if (pat[0] == '\0') return 1;
+    if (pat[1] == '*') return match_star(pat[0], pat + 2, text);
+    if (pat[0] == '$' && pat[1] == '\0') return (*text == '\0');
+    if (*text != '\0' && (pat[0] == '.' || pat[0] == *text)) {
+        return match_pattern(pat + 1, text + 1);
     }
     return 0;
 }
 
-int match(const char* regexp, const char* text) {
-    if (regexp[0] == '^') return match_here(regexp + 1, text);
+static int regex_search(const char* pat, const char* text) {
+    if (pat[0] == '^') return match_pattern(pat + 1, text);
     do {
-        if (match_here(regexp, text)) return 1;
+        if (match_pattern(pat, text)) return 1;
     } while (*text++ != '\0');
     return 0;
 }
 
 int main(void) {
-    printf("Match 'a*b' in 'aaab': %d\n", match("a*b", "aaab"));
-    printf("Match '^c.t' in 'cat': %d\n", match("^c.t", "cat"));
-    printf("Match '^c.t' in 'dog': %d\n", match("^c.t", "dog"));
+    int choice;
+    do {
+        printf("=== Micro Regular Expression Matcher ===\n");
+        printf("Supported: '.' (any char), '*' (zero or more), '^' (anchor start), '$' (anchor end)\n");
+        printf("1. Match Pattern against Text\n");
+        printf("0. Exit\n");
+        printf("Enter choice: ");
+        if (scanf("%d", &choice) != 1) {
+            clear_input();
+            choice = -1;
+            continue;
+        }
+        clear_input();
+        switch (choice) {
+            case 1: {
+                char pat[128], text[256];
+                printf("Enter regex pattern: ");
+                if (scanf("%127s", pat) == 1) {
+                    printf("Enter text to match: ");
+                    if (scanf("%255s", text) == 1) {
+                        clear_input();
+                        int matched = regex_search(pat, text);
+                        printf("Pattern '%s' %s in '%s'.\n",
+                               pat, matched ? "MATCHED" : "DID NOT MATCH", text);
+                    } else {
+                        clear_input();
+                    }
+                } else {
+                    clear_input();
+                }
+                break;
+            }
+            case 0:
+                printf("Exiting regex engine.\n");
+                break;
+            default:
+                printf("Invalid option.\n");
+                break;
+        }
+    } while (choice != 0);
     return 0;
 }
 ```

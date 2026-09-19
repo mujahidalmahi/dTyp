@@ -1,11 +1,11 @@
 # prog_sort_merge
 > **Domain:** `algorithms` | **Subcategory:** `sorting` | **Type:** `program`
 ## Overview
-Complete Merge Sort program with dynamic split and conquer merging
+Complete interactive program executing divide-and-conquer Merge Sort and counting inversions
 
 ## Signature
 ```c
-int main(void)
+int main(void);
 ```
 
 ## Complexity Analysis
@@ -20,44 +20,112 @@ int main(void)
 ## Implementation
 ```c
 #include <stdio.h>
-#include <stdlib.h>
 
-void merge(int* arr, int l, int m, int r) {
-    int n1 = m - l + 1, n2 = r - m;
-    int* left = (int*)malloc(n1 * sizeof(int));
-    int* right = (int*)malloc(n2 * sizeof(int));
-    for (int i = 0; i < n1; i++) left[i] = arr[l + i];
-    for (int j = 0; j < n2; j++) right[j] = arr[m + 1 + j];
-    int i = 0, j = 0, k = l;
-    while (i < n1 && j < n2) {
-        if (left[i] <= right[j]) arr[k++] = left[i++];
-        else arr[k++] = right[j++];
-    }
-    while (i < n1) arr[k++] = left[i++];
-    while (j < n2) arr[k++] = right[j++];
-    free(left);
-    free(right);
+#define MAX_N 500
+
+static void clear_input(void) {
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF);
 }
 
-void merge_sort(int* arr, int l, int r) {
-    if (l < r) {
-        int m = l + (r - l) / 2;
-        merge_sort(arr, l, m);
-        merge_sort(arr, m + 1, r);
-        merge(arr, l, m, r);
+static void print_array(const int* arr, int n) {
+    printf("Array [%d elements]: ", n);
+    for (int i = 0; i < n; i++) printf("%d ", arr[i]);
+    putchar('\n');
+}
+
+static long long merge(int* arr, int left, int mid, int right) {
+    int n1 = mid - left + 1;
+    int n2 = right - mid;
+    int L[MAX_N], R[MAX_N];
+    for (int i = 0; i < n1; i++) L[i] = arr[left + i];
+    for (int j = 0; j < n2; j++) R[j] = arr[mid + 1 + j];
+    int i = 0, j = 0, k = left;
+    long long inv_count = 0;
+    while (i < n1 && j < n2) {
+        if (L[i] <= R[j]) {
+            arr[k++] = L[i++];
+        } else {
+            arr[k++] = R[j++];
+            inv_count += (n1 - i);
+        }
     }
+    while (i < n1) arr[k++] = L[i++];
+    while (j < n2) arr[k++] = R[j++];
+    return inv_count;
+}
+
+static long long merge_sort(int* arr, int left, int right) {
+    long long inv_count = 0;
+    if (left < right) {
+        int mid = left + (right - left) / 2;
+        inv_count += merge_sort(arr, left, mid);
+        inv_count += merge_sort(arr, mid + 1, right);
+        inv_count += merge(arr, left, mid, right);
+    }
+    return inv_count;
 }
 
 int main(void) {
-    int arr[] = {38, 27, 43, 3, 9, 82, 10};
-    int n = sizeof(arr) / sizeof(arr[0]);
-
-    merge_sort(arr, 0, n - 1);
-
-    printf("Merge Sorted: ");
-    for (int i = 0; i < n; i++) printf("%d ", arr[i]);
-    putchar('\n');
-
+    int choice;
+    int n = 0;
+    int arr[MAX_N];
+    do {
+        printf("=== Merge Sort Workbench ===\n");
+        printf("1. Enter Custom Array\n");
+        printf("2. Run Recursive Merge Sort\n");
+        printf("3. Calculate Inversion Count\n");
+        printf("0. Exit\n");
+        printf("Enter choice: ");
+        if (scanf("%d", &choice) != 1) {
+            clear_input();
+            choice = -1;
+            continue;
+        }
+        clear_input();
+        switch (choice) {
+            case 1: {
+                printf("Enter N (<= %d): ", MAX_N);
+                if (scanf("%d", &n) == 1 && n > 0 && n <= MAX_N) {
+                    printf("Enter %d integers: ", n);
+                    for (int i = 0; i < n; i++) scanf("%d", &arr[i]);
+                    clear_input();
+                    print_array(arr, n);
+                } else {
+                    clear_input();
+                }
+                break;
+            }
+            case 2: {
+                if (n == 0) {
+                    printf("Enter an array first.\n");
+                    break;
+                }
+                long long inv = merge_sort(arr, 0, n - 1);
+                printf("Merge Sorted: ");
+                print_array(arr, n);
+                printf("Total inversions in original array: %lld\n", inv);
+                break;
+            }
+            case 3: {
+                if (n == 0) {
+                    printf("Enter an array first.\n");
+                    break;
+                }
+                int temp[MAX_N];
+                for (int i = 0; i < n; i++) temp[i] = arr[i];
+                long long inv = merge_sort(temp, 0, n - 1);
+                printf("Number of inversions: %lld\n", inv);
+                break;
+            }
+            case 0:
+                printf("Exiting suite.\n");
+                break;
+            default:
+                printf("Invalid option.\n");
+                break;
+        }
+    } while (choice != 0);
     return 0;
 }
 ```

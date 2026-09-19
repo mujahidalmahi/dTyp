@@ -1,11 +1,11 @@
 # prog_string_rabin_karp
 > **Domain:** `algorithms` | **Subcategory:** `string-algorithms` | **Type:** `program`
 ## Overview
-Complete Rabin-Karp rolling hash string search program
+Complete interactive program running Rabin-Karp rolling hash substring search
 
 ## Signature
 ```c
-int main(void)
+int main(void);
 ```
 
 ## Complexity Analysis
@@ -22,35 +22,100 @@ int main(void)
 #include <stdio.h>
 #include <string.h>
 
-int main(void) {
-    const char* txt = "GEEKS FOR GEEKS";
-    const char* pat = "GEEK";
-    int q = 101, d = 256;
-    int n = (int)strlen(txt), m = (int)strlen(pat);
-    int p = 0, t = 0, h = 1;
+#define MAX_TEXT 1000
+#define MAX_PAT 200
+#define PRIME_MOD 1000000007LL
+#define BASE 256
 
-    for (int i = 0; i < m - 1; i++) h = (h * d) % q;
-    for (int i = 0; i < m; i++) {
-        p = (d * p + pat[i]) % q;
-        t = (d * t + txt[i]) % q;
+static void clear_input(void) {
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF);
+}
+
+static void rabin_karp_search(const char* text, const char* pat) {
+    int n = (int)strlen(text);
+    int m = (int)strlen(pat);
+    if (m > n) {
+        printf("Pattern is longer than text.\n");
+        return;
     }
-
+    long long h = 1;
+    for (int i = 0; i < m - 1; i++) {
+        h = (h * BASE) % PRIME_MOD;
+    }
+    long long p_hash = 0, t_hash = 0;
+    for (int i = 0; i < m; i++) {
+        p_hash = (BASE * p_hash + (unsigned char)pat[i]) % PRIME_MOD;
+        t_hash = (BASE * t_hash + (unsigned char)text[i]) % PRIME_MOD;
+    }
+    int matches = 0, collisions = 0;
+    printf("Pattern found at indices: ");
     for (int i = 0; i <= n - m; i++) {
-        if (p == t) {
+        if (p_hash == t_hash) {
             int match = 1;
             for (int j = 0; j < m; j++) {
-                if (txt[i + j] != pat[j]) { match = 0; break; }
+                if (text[i + j] != pat[j]) {
+                    match = 0;
+                    break;
+                }
             }
-            if (match) printf("Pattern found at index %d\n", i);
+            if (match) {
+                printf("%d ", i);
+                matches++;
+            } else {
+                collisions++;
+            }
         }
         if (i < n - m) {
-            t = (d * (t - txt[i] * h) + txt[i + m]) % q;
-            if (t < 0) t += q;
+            t_hash = (BASE * (t_hash - (unsigned char)text[i] * h) + (unsigned char)text[i + m]) % PRIME_MOD;
+            if (t_hash < 0) t_hash += PRIME_MOD;
         }
     }
+    if (matches == 0) printf("None");
+    printf("\nTotal Matches: %d | Hash Collisions: %d\n", matches, collisions);
+}
+
+int main(void) {
+    int choice;
+    do {
+        printf("=== Rabin-Karp Rolling Hash Workbench ===\n");
+        printf("1. Search Pattern in Text using Rabin-Karp\n");
+        printf("0. Exit\n");
+        printf("Enter choice: ");
+        if (scanf("%d", &choice) != 1) {
+            clear_input();
+            choice = -1;
+            continue;
+        }
+        clear_input();
+        switch (choice) {
+            case 1: {
+                char text[MAX_TEXT], pat[MAX_PAT];
+                printf("Enter text: ");
+                if (scanf("%999s", text) == 1) {
+                    printf("Enter pattern: ");
+                    if (scanf("%199s", pat) == 1) {
+                        clear_input();
+                        rabin_karp_search(text, pat);
+                    } else {
+                        clear_input();
+                    }
+                } else {
+                    clear_input();
+                }
+                break;
+            }
+            case 0:
+                printf("Exiting suite.\n");
+                break;
+            default:
+                printf("Invalid option.\n");
+                break;
+        }
+    } while (choice != 0);
     return 0;
 }
 ```
 
 ## Aliases & Shorthands
-Available via: `prog_string_rabin_karp`, `algorithms.full-programs.string-algorithms.rabin-karp.prog-rabin-karp`, `algorithms>prog_string_rabin_karp()`, `algorithms>full-programs>string-algorithms>rabin-karp>prog-rabin-karp>prog_string_rabin_karp()`, `programRabinKarp`
+Available via: `prog_string_rabin_karp`, `algorithms.full-programs.string-algorithms.rabin-karp.prog-rabin-karp`, `algorithms>prog_string_rabin_karp()`, `algorithms>full-programs>string-algorithms>rabin-karp>prog-rabin-karp>prog_string_rabin_karp()`, `programRabinKarpSearch`

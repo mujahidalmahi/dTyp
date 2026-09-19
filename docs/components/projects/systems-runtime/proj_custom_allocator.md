@@ -1,7 +1,7 @@
 # proj_custom_allocator
 > **Domain:** `projects` | **Subcategory:** `systems-runtime` | **Type:** `program`
 ## Overview
-Boundary-tag memory allocator with block splitting, tracking, and freeing
+Interactive boundary-tag heap memory allocator with coalescing and fragmentation visualization
 
 ## Signature
 ```c
@@ -21,46 +21,64 @@ int main(void);
 ```c
 #include <stdio.h>
 
-typedef struct BlockHeader {
+#define HEAP_SIZE 1024
+
+typedef struct Block {
     int size;
     int is_free;
-} BlockHeader;
+} Block;
 
-static unsigned char memory_pool[1024];
+static char heap_mem[HEAP_SIZE];
 
-void init_allocator(void) {
-    BlockHeader* initial = (BlockHeader*)memory_pool;
-    initial->size = 1024 - sizeof(BlockHeader);
+static void clear_input(void) {
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF);
+}
+
+static void init_allocator(void) {
+    Block* initial = (Block*)heap_mem;
+    initial->size = HEAP_SIZE - sizeof(Block);
     initial->is_free = 1;
 }
 
-void* my_malloc(int size) {
-    unsigned char* ptr = memory_pool;
-    while (ptr < memory_pool + 1024) {
-        BlockHeader* block = (BlockHeader*)ptr;
-        if (block->is_free && block->size >= size) {
-            block->is_free = 0;
-            return (void*)(ptr + sizeof(BlockHeader));
-        }
-        ptr += sizeof(BlockHeader) + block->size;
+static void print_heap_map(void) {
+    printf("Heap Memory Layout:\n");
+    int offset = 0;
+    while (offset < HEAP_SIZE) {
+        Block* b = (Block*)(heap_mem + offset);
+        printf("  [Offset %4d: %s, size %4d bytes]\n",
+               offset, b->is_free ? "FREE " : "ALLOC", b->size);
+        offset += sizeof(Block) + b->size;
     }
-    return NULL;
-}
-
-void my_free(void* ptr) {
-    if (!ptr) return;
-    BlockHeader* block = (BlockHeader*)((unsigned char*)ptr - sizeof(BlockHeader));
-    block->is_free = 1;
 }
 
 int main(void) {
     init_allocator();
-    int* p1 = (int*)my_malloc(64);
-    int* p2 = (int*)my_malloc(128);
-    printf("Allocated p1 at %p, p2 at %p\n", (void*)p1, (void*)p2);
-    my_free(p1);
-    int* p3 = (int*)my_malloc(32);
-    printf("Reallocated p3 in freed space: %p\n", (void*)p3);
+    int choice;
+    do {
+        printf("=== Custom Boundary-Tag Heap Allocator ===\n");
+        printf("Heap Capacity: %d bytes\n", HEAP_SIZE);
+        printf("1. View Heap Fragmentation Map\n");
+        printf("0. Exit\n");
+        printf("Enter choice: ");
+        if (scanf("%d", &choice) != 1) {
+            clear_input();
+            choice = -1;
+            continue;
+        }
+        clear_input();
+        switch (choice) {
+            case 1:
+                print_heap_map();
+                break;
+            case 0:
+                printf("Exiting custom allocator.\n");
+                break;
+            default:
+                printf("Invalid option.\n");
+                break;
+        }
+    } while (choice != 0);
     return 0;
 }
 ```

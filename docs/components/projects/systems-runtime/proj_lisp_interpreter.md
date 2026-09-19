@@ -1,7 +1,7 @@
 # proj_lisp_interpreter
 > **Domain:** `projects` | **Subcategory:** `systems-runtime` | **Type:** `program`
 ## Overview
-Lisp S-expression prefix arithmetic evaluator
+Interactive Lisp / Scheme S-expression evaluator REPL
 
 ## Signature
 ```c
@@ -20,41 +20,60 @@ int main(void);
 ## Implementation
 ```c
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
 
-int eval_lisp(const char** expr) {
-    while (**expr == ' ' || **expr == '(') (*expr)++;
-    char op = **expr;
-    (*expr)++;
-    while (**expr == ' ') (*expr)++;
-    int res = (op == '*') ? 1 : 0;
-    int first = 1;
-    while (**expr && **expr != ')') {
-        while (**expr == ' ') (*expr)++;
-        if (**expr == ')') break;
-        int val;
-        if (**expr == '(') {
-            val = eval_lisp(expr);
-        } else {
-            val = strtol(*expr, (char**)expr, 10);
-        }
-        if (op == '+') res += val;
-        else if (op == '*') res *= val;
-        else if (op == '-') {
-            if (first) res = val;
-            else res -= val;
-        }
-        first = 0;
+#define MAX_LISP 128
+
+static void clear_input(void) {
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF);
+}
+
+static int eval_s_expr(const char* expr) {
+    char op;
+    int a, b;
+    if (sscanf(expr, "(%c %d %d)", &op, &a, &b) == 3) {
+        if (op == '+') return a + b;
+        if (op == '-') return a - b;
+        if (op == '*') return a * b;
+        if (op == '/' && b != 0) return a / b;
     }
-    if (**expr == ')') (*expr)++;
-    return res;
+    return 0;
 }
 
 int main(void) {
-    const char* code = "(+ 2 (* 3 4) 5)";
-    const char* ptr = code;
-    printf("Eval '%s' = %d\n", code, eval_lisp(&ptr));
+    int choice;
+    do {
+        printf("=== Micro Lisp S-Expression Evaluator ===\n");
+        printf("1. Evaluate S-Expression (e.g. (+ 10 20), (* 5 6))\n");
+        printf("0. Exit\n");
+        printf("Enter choice: ");
+        if (scanf("%d", &choice) != 1) {
+            clear_input();
+            choice = -1;
+            continue;
+        }
+        clear_input();
+        switch (choice) {
+            case 1: {
+                char expr[MAX_LISP];
+                printf("Enter S-expression: ");
+                if (scanf("%127[^\n]", expr) == 1) {
+                    clear_input();
+                    printf("Result: %d\n", eval_s_expr(expr));
+                } else {
+                    clear_input();
+                }
+                break;
+            }
+            case 0:
+                printf("Exiting Lisp evaluator.\n");
+                break;
+            default:
+                printf("Invalid option.\n");
+                break;
+        }
+    } while (choice != 0);
     return 0;
 }
 ```

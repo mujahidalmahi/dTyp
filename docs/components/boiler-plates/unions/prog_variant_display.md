@@ -1,11 +1,11 @@
 # prog_variant_display
 > **Domain:** `boiler-plates` | **Subcategory:** `unions` | **Type:** `program`
 ## Overview
-Complete tagged variant union dispatcher program
+Interactive tagged union variant representation system with dynamic inspection
 
 ## Signature
 ```c
-int main(void)
+int main(void);
 ```
 
 ## Complexity Analysis
@@ -20,38 +20,91 @@ int main(void)
 ## Implementation
 ```c
 #include <stdio.h>
+#include <string.h>
 
-typedef enum Kind { KIND_INT, KIND_FLOAT, KIND_STRING } Kind;
+typedef enum {
+    TYPE_INT,
+    TYPE_DOUBLE,
+    TYPE_STRING
+} VariantType;
 
-typedef struct Variant {
-    Kind kind;
+typedef struct {
+    VariantType type;
     union {
         int i_val;
-        float f_val;
-        char str[32];
-    } as;
+        double d_val;
+        char s_val[64];
+    } data;
 } Variant;
 
-void print_variant(const Variant* v) {
-    switch (v->kind) {
-        case KIND_INT:
-            printf("Variant Int: %d\n", v->as.i_val);
+static void display_variant(const Variant* v) {
+    switch (v->type) {
+        case TYPE_INT:
+            printf("Variant [TYPE_INT]    : %d (sizeof union = %zu bytes)\n",
+                   v->data.i_val, sizeof(v->data));
             break;
-        case KIND_FLOAT:
-            printf("Variant Float: %.2f\n", v->as.f_val);
+        case TYPE_DOUBLE:
+            printf("Variant [TYPE_DOUBLE] : %.6f (sizeof union = %zu bytes)\n",
+                   v->data.d_val, sizeof(v->data));
             break;
-        case KIND_STRING:
-            printf("Variant String: %s\n", v->as.str);
+        case TYPE_STRING:
+            printf("Variant [TYPE_STRING] : \"%s\" (sizeof union = %zu bytes)\n",
+                   v->data.s_val, sizeof(v->data));
             break;
     }
 }
 
-int main(void) {
-    Variant v1 = {.kind = KIND_INT, .as.i_val = 42};
-    Variant v2 = {.kind = KIND_FLOAT, .as.f_val = 3.14159f};
+static void clear_input(void) {
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF);
+}
 
-    print_variant(&v1);
-    print_variant(&v2);
+int main(void) {
+    Variant active_var;
+    active_var.type = TYPE_INT;
+    active_var.data.i_val = 42;
+    int choice;
+
+    do {
+        printf("\n=== TAGGED UNION VARIANT EXPLORER ===\n");
+        printf("Current Stored State:\n  ");
+        display_variant(&active_var);
+        printf("\n1. Set Integer Value\n");
+        printf("2. Set Double Value\n");
+        printf("3. Set String Value\n");
+        printf("0. Exit\n");
+        printf("Select option: ");
+        if (scanf("%d", &choice) != 1) {
+            clear_input();
+            continue;
+        }
+        clear_input();
+
+        if (choice == 1) {
+            int iv;
+            printf("Enter integer: ");
+            if (scanf("%d", &iv) == 1) {
+                active_var.type = TYPE_INT;
+                active_var.data.i_val = iv;
+            }
+            clear_input();
+        } else if (choice == 2) {
+            double dv;
+            printf("Enter double: ");
+            if (scanf("%lf", &dv) == 1) {
+                active_var.type = TYPE_DOUBLE;
+                active_var.data.d_val = dv;
+            }
+            clear_input();
+        } else if (choice == 3) {
+            printf("Enter string: ");
+            if (fgets(active_var.data.s_val, sizeof(active_var.data.s_val), stdin)) {
+                active_var.data.s_val[strcspn(active_var.data.s_val, "\r\n")] = '\0';
+                active_var.type = TYPE_STRING;
+            }
+        }
+    } while (choice != 0);
+
     return 0;
 }
 ```

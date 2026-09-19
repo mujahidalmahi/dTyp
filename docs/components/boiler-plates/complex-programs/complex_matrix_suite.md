@@ -1,11 +1,11 @@
 # complex_matrix_suite
 > **Domain:** `boiler-plates` | **Subcategory:** `complex-programs` | **Type:** `program`
 ## Overview
-Dynamic 2D matrix allocation, multiplication, transpose, and cleanup
+Interactive linear algebra matrix operations suite (addition, multiplication, transpose, determinant)
 
 ## Signature
 ```c
-int main(void)
+int main(void);
 ```
 
 ## Complexity Analysis
@@ -20,82 +20,120 @@ int main(void)
 ## Implementation
 ```c
 #include <stdio.h>
-#include <stdlib.h>
 
-typedef struct Matrix {
+#define MAX_DIM 4
+
+typedef struct {
     int rows;
     int cols;
-    double** data;
+    double data[MAX_DIM][MAX_DIM];
 } Matrix;
 
-Matrix* matrix_create(int rows, int cols) {
-    Matrix* m = (Matrix*)malloc(sizeof(Matrix));
-    if (!m) return NULL;
-    m->rows = rows;
-    m->cols = cols;
-    m->data = (double**)malloc(rows * sizeof(double*));
-    for (int i = 0; i < rows; i++) {
-        m->data[i] = (double*)calloc(cols, sizeof(double));
+static void print_matrix(const Matrix* m, const char* name) {
+    printf("Matrix %s (%dx%d):\n", name, m->rows, m->cols);
+    for (int r = 0; r < m->rows; r++) {
+        printf("  |");
+        for (int c = 0; c < m->cols; c++) {
+            printf("%7.2f ", m->data[r][c]);
+        }
+        printf("|\n");
     }
-    return m;
 }
 
-void matrix_free(Matrix* m) {
-    if (!m) return;
-    for (int i = 0; i < m->rows; i++) {
-        free(m->data[i]);
-    }
-    free(m->data);
-    free(m);
-}
-
-Matrix* matrix_multiply(const Matrix* a, const Matrix* b) {
-    if (a->cols != b->rows) return NULL;
-    Matrix* res = matrix_create(a->rows, b->cols);
-    for (int i = 0; i < a->rows; i++) {
-        for (int j = 0; j < b->cols; j++) {
-            double sum = 0.0;
-            for (int k = 0; k < a->cols; k++) {
-                sum += a->data[i][k] * b->data[k][j];
-            }
-            res->data[i][j] = sum;
+static Matrix add_matrices(const Matrix* a, const Matrix* b) {
+    Matrix res;
+    res.rows = a->rows;
+    res.cols = a->cols;
+    for (int r = 0; r < a->rows; r++) {
+        for (int c = 0; c < a->cols; c++) {
+            res.data[r][c] = a->data[r][c] + b->data[r][c];
         }
     }
     return res;
 }
 
-void matrix_print(const Matrix* m, const char* label) {
-    printf("Matrix %s (%dx%d):\n", label, m->rows, m->cols);
-    for (int i = 0; i < m->rows; i++) {
-        printf("  [ ");
-        for (int j = 0; j < m->cols; j++) {
-            printf("%6.1f ", m->data[i][j]);
+static Matrix multiply_matrices(const Matrix* a, const Matrix* b) {
+    Matrix res;
+    res.rows = a->rows;
+    res.cols = b->cols;
+    for (int r = 0; r < a->rows; r++) {
+        for (int c = 0; c < b->cols; c++) {
+            res.data[r][c] = 0.0;
+            for (int k = 0; k < a->cols; k++) {
+                res.data[r][c] += a->data[r][k] * b->data[k][c];
+            }
         }
-        printf("]\n");
     }
+    return res;
+}
+
+static Matrix transpose_matrix(const Matrix* a) {
+    Matrix res;
+    res.rows = a->cols;
+    res.cols = a->rows;
+    for (int r = 0; r < a->rows; r++) {
+        for (int c = 0; c < a->cols; c++) {
+            res.data[c][r] = a->data[r][c];
+        }
+    }
+    return res;
+}
+
+static double det2x2(const Matrix* m) {
+    return m->data[0][0] * m->data[1][1] - m->data[0][1] * m->data[1][0];
+}
+
+static void clear_input(void) {
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF);
 }
 
 int main(void) {
-    Matrix* a = matrix_create(2, 2);
-    a->data[0][0] = 1.0; a->data[0][1] = 2.0;
-    a->data[1][0] = 3.0; a->data[1][1] = 4.0;
+    Matrix a = { 2, 2, {{ 1.0, 2.0 }, { 3.0, 4.0 }} };
+    Matrix b = { 2, 2, {{ 5.0, 6.0 }, { 7.0, 8.0 }} };
+    int choice;
 
-    Matrix* b = matrix_create(2, 2);
-    b->data[0][0] = 2.0; b->data[0][1] = 0.0;
-    b->data[1][0] = 1.0; b->data[1][1] = 2.0;
+    do {
+        printf("\n=== MATRIX MATHEMATICS SUITE ===\n");
+        print_matrix(&a, "A");
+        print_matrix(&b, "B");
+        printf("1. Add Matrices (A + B)\n");
+        printf("2. Multiply Matrices (A * B)\n");
+        printf("3. Transpose Matrix A\n");
+        printf("4. Determinant of Matrix A (2x2)\n");
+        printf("5. Input New Matrix A Values\n");
+        printf("0. Exit\n");
+        printf("Select option: ");
+        if (scanf("%d", &choice) != 1) {
+            clear_input();
+            continue;
+        }
 
-    Matrix* c = matrix_multiply(a, b);
+        if (choice == 1) {
+            Matrix c = add_matrices(&a, &b);
+            print_matrix(&c, "A + B");
+        } else if (choice == 2) {
+            Matrix c = multiply_matrices(&a, &b);
+            print_matrix(&c, "A * B");
+        } else if (choice == 3) {
+            Matrix at = transpose_matrix(&a);
+            print_matrix(&at, "A^T");
+        } else if (choice == 4) {
+            printf("Determinant of A: %.4f\n", det2x2(&a));
+        } else if (choice == 5) {
+            printf("Enter 4 elements for 2x2 Matrix A: ");
+            for (int r = 0; r < 2; r++) {
+                for (int c = 0; c < 2; c++) {
+                    if (scanf("%lf", &a.data[r][c]) != 1) a.data[r][c] = 0.0;
+                }
+            }
+        }
+        clear_input();
+    } while (choice != 0);
 
-    matrix_print(a, "A");
-    matrix_print(b, "B");
-    matrix_print(c, "C = A * B");
-
-    matrix_free(a);
-    matrix_free(b);
-    matrix_free(c);
     return 0;
 }
 ```
 
 ## Aliases & Shorthands
-Available via: `complex_matrix_suite`, `boiler-plates.full-programs.complex-programs.complex-matrix-suite`, `boiler-plates>complex_matrix_suite()`, `boiler-plates>full-programs>complex-programs>complex-matrix-suite>complex_matrix_suite()`, `matrixOperationsProgram`
+Available via: `complex_matrix_suite`, `boiler-plates.full-programs.complex-programs.complex-matrix-suite`, `boiler-plates>complex_matrix_suite()`, `boiler-plates>full-programs>complex-programs>complex-matrix-suite>complex_matrix_suite()`, `matrixSuiteProgram`

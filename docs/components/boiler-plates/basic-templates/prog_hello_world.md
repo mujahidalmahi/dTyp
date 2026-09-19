@@ -1,11 +1,11 @@
 # prog_hello_world
 > **Domain:** `boiler-plates` | **Subcategory:** `basic-templates` | **Type:** `program`
 ## Overview
-Complete Hello World C program
+Interactive greeting terminal application with custom banner and system info
 
 ## Signature
 ```c
-int main(void)
+int main(void);
 ```
 
 ## Complexity Analysis
@@ -20,9 +20,53 @@ int main(void)
 ## Implementation
 ```c
 #include <stdio.h>
+#include <string.h>
+
+static void clear_input(void) {
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF);
+}
 
 int main(void) {
-    puts("Hello, World!");
+    char name[64];
+    char lang[32];
+    int choice;
+
+    do {
+        printf("\n=== HELLO WORLD INTERACTIVE SUITE ===\n");
+        printf("1. Standard Hello World\n");
+        printf("2. Personalized Greeting\n");
+        printf("3. Programming Language Banner\n");
+        printf("0. Exit\n");
+        printf("Select option: ");
+        if (scanf("%d", &choice) != 1) {
+            clear_input();
+            continue;
+        }
+        clear_input();
+
+        if (choice == 1) {
+            printf("\nHello, World! Welcome to C programming.\n");
+        } else if (choice == 2) {
+            printf("Enter your name: ");
+            if (fgets(name, sizeof(name), stdin)) {
+                name[strcspn(name, "\r\n")] = '\0';
+                printf("Hello, %s! Have a productive coding session.\n", name);
+            }
+        } else if (choice == 3) {
+            printf("Enter your preferred programming language: ");
+            if (fgets(lang, sizeof(lang), stdin)) {
+                lang[strcspn(lang, "\r\n")] = '\0';
+                printf("****************************************\n");
+                printf("* Hello from the %-18s world! *\n", lang);
+                printf("****************************************\n");
+            }
+        } else if (choice != 0) {
+            printf("Invalid choice. Try again.\n");
+        }
+    } while (choice != 0);
+
+    printf("Goodbye!\n");
     return 0;
 }
 ```

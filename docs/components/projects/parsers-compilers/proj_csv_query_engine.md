@@ -1,7 +1,7 @@
 # proj_csv_query_engine
 > **Domain:** `projects` | **Subcategory:** `parsers-compilers` | **Type:** `program`
 ## Overview
-In-memory CSV database engine with filtering and column projections
+Interactive in-memory CSV query engine supporting column selection and filtering
 
 ## Signature
 ```c
@@ -23,34 +23,103 @@ int main(void);
 #include <string.h>
 #include <stdlib.h>
 
-typedef struct {
-    char name[32];
-    char dept[16];
-    int salary;
-} Record;
+#define MAX_ROWS 50
 
-int main(void) {
-    const char* csv_data[] = {
-        "Alice,Engineering,90000",
-        "Bob,Marketing,65000",
-        "Charlie,Engineering,110000",
-        "Diana,Sales,72000"
-    };
-    int n = 4;
-    Record records[4];
-    for (int i = 0; i < n; i++) {
-        sscanf(csv_data[i], "%31[^,],%15[^,],%d", records[i].name, records[i].dept, &records[i].salary);
+typedef struct {
+    int id;
+    char name[32];
+    int score;
+} CsvRow;
+
+static CsvRow table[MAX_ROWS];
+static int total_rows = 0;
+
+static void clear_input(void) {
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF);
+}
+
+static void load_sample_csv(void) {
+    table[0] = (CsvRow){1, "Alice", 95};
+    table[1] = (CsvRow){2, "Bob", 72};
+    table[2] = (CsvRow){3, "Charlie", 88};
+    table[3] = (CsvRow){4, "David", 64};
+    table[4] = (CsvRow){5, "Emma", 91};
+    total_rows = 5;
+    printf("Loaded 5 CSV rows into memory.\n");
+}
+
+static void select_all(void) {
+    printf("%-4s | %-16s | %-6s\n", "ID", "Name", "Score");
+    printf("------------------------------\n");
+    for (int i = 0; i < total_rows; i++) {
+        printf("%-4d | %-16s | %-6d\n", table[i].id, table[i].name, table[i].score);
     }
-    printf("Query: SELECT Name, Salary WHERE Dept = 'Engineering'\n");
-    int total = 0, count = 0;
-    for (int i = 0; i < n; i++) {
-        if (strcmp(records[i].dept, "Engineering") == 0) {
-            printf("  %-10s | $%d\n", records[i].name, records[i].salary);
-            total += records[i].salary;
-            count++;
+}
+
+static void filter_score_gt(void) {
+    int min_s;
+    printf("Enter minimum score threshold: ");
+    if (scanf("%d", &min_s) != 1) {
+        clear_input();
+        return;
+    }
+    clear_input();
+    printf("Rows with score >= %d:\n", min_s);
+    for (int i = 0; i < total_rows; i++) {
+        if (table[i].score >= min_s) {
+            printf("ID %d: %s -> %d\n", table[i].id, table[i].name, table[i].score);
         }
     }
-    printf("Average Engineering Salary: $%d\n", total / count);
+}
+
+int main(void) {
+    load_sample_csv();
+    int choice;
+    do {
+        printf("=== In-Memory CSV Query Engine ===\n");
+        printf("1. SELECT * FROM Table\n");
+        printf("2. SELECT * WHERE Score >= Threshold\n");
+        printf("3. Add Row to Table\n");
+        printf("0. Exit\n");
+        printf("Enter choice: ");
+        if (scanf("%d", &choice) != 1) {
+            clear_input();
+            choice = -1;
+            continue;
+        }
+        clear_input();
+        switch (choice) {
+            case 1:
+                select_all();
+                break;
+            case 2:
+                filter_score_gt();
+                break;
+            case 3: {
+                if (total_rows >= MAX_ROWS) {
+                    printf("Table full.\n");
+                    break;
+                }
+                CsvRow r;
+                printf("Enter ID Name Score: ");
+                if (scanf("%d %31s %d", &r.id, r.name, &r.score) == 3) {
+                    clear_input();
+                    table[total_rows++] = r;
+                    printf("Row added.\n");
+                } else {
+                    clear_input();
+                }
+                break;
+            }
+            case 0:
+                printf("Exiting query engine.\n");
+                break;
+            default:
+                printf("Invalid option.\n");
+                break;
+        }
+    } while (choice != 0);
     return 0;
 }
 ```

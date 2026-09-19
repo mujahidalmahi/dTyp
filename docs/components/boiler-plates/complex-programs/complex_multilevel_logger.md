@@ -1,11 +1,11 @@
 # complex_multilevel_logger
 > **Domain:** `boiler-plates` | **Subcategory:** `complex-programs` | **Type:** `program`
 ## Overview
-Logging engine supporting severity filtering, formatting, and file appending
+Interactive structured circular ring buffer logger with level filters and telemetry
 
 ## Signature
 ```c
-int main(void)
+int main(void);
 ```
 
 ## Complexity Analysis
@@ -20,54 +20,110 @@ int main(void)
 ## Implementation
 ```c
 #include <stdio.h>
-#include <stdarg.h>
-#include <time.h>
+#include <string.h>
 
-typedef enum Level { LVL_DEBUG, LVL_INFO, LVL_WARN, LVL_ERROR } Level;
+#define RING_BUFFER_SIZE 16
 
-typedef struct Logger {
-    Level min_level;
-    const char* log_file;
-} Logger;
+typedef enum {
+    LVL_TRACE = 0,
+    LVL_DEBUG,
+    LVL_INFO,
+    LVL_WARN,
+    LVL_ERROR
+} Severity;
 
-void logger_write(const Logger* log, Level lvl, const char* fmt, ...) {
-    if (lvl < log->min_level) return;
+typedef struct {
+    int seq;
+    Severity level;
+    char message[64];
+} LogEntry;
 
-    const char* tags[] = {"DEBUG", "INFO", "WARN", "ERROR"};
-    time_t now = time(NULL);
-    char time_str[24];
-    strftime(time_str, sizeof(time_str), "%Y-%m-%d %H:%M:%S", localtime(&now));
+static LogEntry ring[RING_BUFFER_SIZE];
+static int head = 0;
+static int entry_count = 0;
+static int global_seq = 1;
 
-    va_list args1, args2;
-    va_start(args1, fmt);
-    va_copy(args2, args1);
+static const char* severity_tag(Severity s) {
+    switch (s) {
+        case LVL_TRACE: return "TRACE";
+        case LVL_DEBUG: return "DEBUG";
+        case LVL_INFO:  return "INFO ";
+        case LVL_WARN:  return "WARN ";
+        case LVL_ERROR: return "ERROR";
+        default:        return "UNKNOWN";
+    }
+}
 
-    printf("[%s] [%s] ", time_str, tags[lvl]);
-    vprintf(fmt, args1);
-    putchar('\n');
-    va_end(args1);
+static void log_append(Severity level, const char* msg) {
+    int idx = head;
+    ring[idx].seq = global_seq++;
+    ring[idx].level = level;
+    strncpy(ring[idx].message, msg, sizeof(ring[idx].message) - 1);
+    ring[idx].message[sizeof(ring[idx].message) - 1] = '\0';
+    head = (head + 1) % RING_BUFFER_SIZE;
+    if (entry_count < RING_BUFFER_SIZE) entry_count++;
+}
 
-    if (log->log_file) {
-        FILE* f = fopen(log->log_file, "a");
-        if (f) {
-            fprintf(f, "[%s] [%s] ", time_str, tags[lvl]);
-            vfprintf(f, fmt, args2);
-            fputc('\n', f);
-            fclose(f);
+static void dump_logs(Severity min_lvl) {
+    printf("\n=== SYSTEM LOG AUDIT (Min Severity: %s) ===\n", severity_tag(min_lvl));
+    int start = (entry_count == RING_BUFFER_SIZE) ? head : 0;
+    for (int i = 0; i < entry_count; i++) {
+        int idx = (start + i) % RING_BUFFER_SIZE;
+        if (ring[idx].level >= min_lvl) {
+            printf("  [%04d] [%s] %s\n",
+                   ring[idx].seq, severity_tag(ring[idx].level), ring[idx].message);
         }
     }
-    va_end(args2);
+}
+
+static void clear_input(void) {
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF);
 }
 
 int main(void) {
-    Logger logger = { .min_level = LVL_INFO, .log_file = "app.log" };
+    log_append(LVL_INFO, "Subsystem initialized");
+    log_append(LVL_DEBUG, "Memory mapped at default offset");
+    int choice;
 
-    logger_write(&logger, LVL_DEBUG, "This debug trace will be filtered out");
-    logger_write(&logger, LVL_INFO, "Worker thread started with ID %d", 4);
-    logger_write(&logger, LVL_WARN, "Disk capacity at %d percent", 85);
-    logger_write(&logger, LVL_ERROR, "Socket connection dropped unexpectedly");
+    do {
+        printf("\n=== MULTILEVEL RING LOGGER ===\n");
+        printf("Entries in ring: %d / %d\n", entry_count, RING_BUFFER_SIZE);
+        printf("1. Write Log Message\n");
+        printf("2. Dump All Logs\n");
+        printf("3. Dump Logs with Filter\n");
+        printf("0. Exit\n");
+        printf("Select option: ");
+        if (scanf("%d", &choice) != 1) {
+            clear_input();
+            continue;
+        }
+        clear_input();
 
-    remove("app.log");
+        if (choice == 1) {
+            int lvl;
+            char msg[64];
+            printf("Select level (0: TRACE, 1: DEBUG, 2: INFO, 3: WARN, 4: ERROR): ");
+            if (scanf("%d", &lvl) != 1 || lvl < 0 || lvl > 4) lvl = 2;
+            clear_input();
+            printf("Enter log message: ");
+            if (fgets(msg, sizeof(msg), stdin)) {
+                msg[strcspn(msg, "\r\n")] = '\0';
+                log_append((Severity)lvl, msg);
+                printf("Log entry recorded.\n");
+            }
+        } else if (choice == 2) {
+            dump_logs(LVL_TRACE);
+        } else if (choice == 3) {
+            int filter;
+            printf("Select filter cutoff level (0-4): ");
+            if (scanf("%d", &filter) == 1 && filter >= 0 && filter <= 4) {
+                dump_logs((Severity)filter);
+            }
+            clear_input();
+        }
+    } while (choice != 0);
+
     return 0;
 }
 ```

@@ -1,11 +1,11 @@
 # prog_traffic_light
 > **Domain:** `boiler-plates` | **Subcategory:** `enums` | **Type:** `program`
 ## Overview
-Complete traffic light state transition program using enums
+Interactive traffic light controller and state machine simulation
 
 ## Signature
 ```c
-int main(void)
+int main(void);
 ```
 
 ## Complexity Analysis
@@ -21,36 +21,75 @@ int main(void)
 ```c
 #include <stdio.h>
 
-typedef enum LightState {
+typedef enum {
     LIGHT_RED,
     LIGHT_GREEN,
     LIGHT_YELLOW
-} LightState;
+} TrafficLightState;
 
-LightState next_state(LightState cur) {
-    switch (cur) {
-        case LIGHT_RED: return LIGHT_GREEN;
-        case LIGHT_GREEN: return LIGHT_YELLOW;
-        case LIGHT_YELLOW: return LIGHT_RED;
+static const char* state_to_string(TrafficLightState s) {
+    switch (s) {
+        case LIGHT_RED:    return "RED [STOP - Wait for cross traffic]";
+        case LIGHT_GREEN:  return "GREEN [GO - Proceed safely]";
+        case LIGHT_YELLOW: return "YELLOW [CAUTION - Prepare to stop]";
+        default:           return "UNKNOWN";
     }
-    return LIGHT_RED;
 }
 
-const char* state_name(LightState cur) {
-    switch (cur) {
-        case LIGHT_RED: return "RED (Stop)";
-        case LIGHT_GREEN: return "GREEN (Go)";
-        case LIGHT_YELLOW: return "YELLOW (Caution)";
+static TrafficLightState next_state(TrafficLightState s) {
+    switch (s) {
+        case LIGHT_RED:    return LIGHT_GREEN;
+        case LIGHT_GREEN:  return LIGHT_YELLOW;
+        case LIGHT_YELLOW: return LIGHT_RED;
+        default:           return LIGHT_RED;
     }
-    return "UNKNOWN";
+}
+
+static void clear_input(void) {
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF);
 }
 
 int main(void) {
-    LightState state = LIGHT_RED;
-    for (int i = 0; i < 6; i++) {
-        printf("Step %d: %s\n", i + 1, state_name(state));
-        state = next_state(state);
-    }
+    TrafficLightState current = LIGHT_RED;
+    int choice;
+
+    do {
+        printf("\n=== TRAFFIC LIGHT CONTROLLER (ENUM FINITE STATE MACHINE) ===\n");
+        printf("Current Signal: %s\n", state_to_string(current));
+        printf("1. Advance Signal (Step FSM)\n");
+        printf("2. Simulate N Cycles\n");
+        printf("3. Manual Override to Color\n");
+        printf("0. Exit\n");
+        printf("Select option: ");
+        if (scanf("%d", &choice) != 1) {
+            clear_input();
+            continue;
+        }
+
+        if (choice == 1) {
+            current = next_state(current);
+            printf("Advanced to: %s\n", state_to_string(current));
+        } else if (choice == 2) {
+            int cycles;
+            printf("Enter number of state advances: ");
+            if (scanf("%d", &cycles) == 1 && cycles > 0) {
+                for (int i = 1; i <= cycles; i++) {
+                    current = next_state(current);
+                    printf("  Advance #%d: %s\n", i, state_to_string(current));
+                }
+            }
+        } else if (choice == 3) {
+            int set_color;
+            printf("Choose (0: RED, 1: GREEN, 2: YELLOW): ");
+            if (scanf("%d", &set_color) == 1 && set_color >= 0 && set_color <= 2) {
+                current = (TrafficLightState)set_color;
+                printf("Manually set to: %s\n", state_to_string(current));
+            }
+        }
+        clear_input();
+    } while (choice != 0);
+
     return 0;
 }
 ```

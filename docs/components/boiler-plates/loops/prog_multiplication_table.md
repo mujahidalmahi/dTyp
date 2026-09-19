@@ -1,11 +1,11 @@
 # prog_multiplication_table
 > **Domain:** `boiler-plates` | **Subcategory:** `loops` | **Type:** `program`
 ## Overview
-Complete formatted multiplication table program
+Interactive arithmetic multiplication table and grid generator
 
 ## Signature
 ```c
-int main(void)
+int main(void);
 ```
 
 ## Complexity Analysis
@@ -21,14 +21,55 @@ int main(void)
 ```c
 #include <stdio.h>
 
+static void clear_input(void) {
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF);
+}
+
 int main(void) {
-    int size = 10;
-    for (int i = 1; i <= size; i++) {
-        for (int j = 1; j <= size; j++) {
-            printf("%4d", i * j);
+    int choice;
+
+    do {
+        printf("\n=== MULTIPLICATION TABLE SUITE ===\n");
+        printf("1. Single Number Table\n");
+        printf("2. 2D Multiplication Grid\n");
+        printf("0. Exit\n");
+        printf("Select option: ");
+        if (scanf("%d", &choice) != 1) {
+            clear_input();
+            continue;
         }
-        putchar('\n');
-    }
+
+        if (choice == 1) {
+            int num, limit;
+            printf("Enter base number and limit (e.g. 7 12): ");
+            if (scanf("%d %d", &num, &limit) == 2 && limit > 0 && limit <= 100) {
+                printf("\nMultiplication Table for %d:\n", num);
+                for (int i = 1; i <= limit; i++) {
+                    printf("  %2d x %2d = %4d\n", num, i, num * i);
+                }
+            }
+        } else if (choice == 2) {
+            int rows, cols;
+            printf("Enter grid dimensions rows cols (1-15): ");
+            if (scanf("%d %d", &rows, &cols) == 2 && rows > 0 && rows <= 15 && cols > 0 && cols <= 15) {
+                printf("\n      ");
+                for (int c = 1; c <= cols; c++) printf("%5d", c);
+                printf("\n      ");
+                for (int c = 1; c <= cols; c++) printf("-----");
+                printf("\n");
+                for (int r = 1; r <= rows; r++) {
+                    printf("%4d |", r);
+                    for (int c = 1; c <= cols; c++) {
+                        printf("%5d", r * c);
+                    }
+                    printf("\n");
+                }
+            }
+        }
+        clear_input();
+    } while (choice != 0);
+
     return 0;
 }
 ```

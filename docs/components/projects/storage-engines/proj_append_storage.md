@@ -1,7 +1,7 @@
 # proj_append_storage
 > **Domain:** `projects` | **Subcategory:** `storage-engines` | **Type:** `program`
 ## Overview
-Write-ahead log (WAL) data store with sequence numbers and state recovery replay
+Interactive Write-Ahead Log (WAL) storage engine with CRC checksums and crash replay recovery
 
 ## Signature
 ```c
@@ -22,31 +22,115 @@ int main(void);
 #include <stdio.h>
 #include <string.h>
 
+#define MAX_LOGS 50
+
 typedef struct {
-    int lsn;
-    char op;
-    char key[16];
+    int seq_num;
+    char operation[16];
+    char key[32];
     int val;
+    unsigned int checksum;
 } WalRecord;
 
-void replay_log(const WalRecord* log, int count) {
-    printf("Replaying Write-Ahead Log (%d records):\n", count);
-    int current_val = 0;
-    for (int i = 0; i < count; i++) {
-        if (log[i].op == '+') current_val += log[i].val;
-        else if (log[i].op == '=') current_val = log[i].val;
-        printf("  LSN %04d: %s %c %d => State: %d\n", log[i].lsn, log[i].key, log[i].op, log[i].val, current_val);
+static WalRecord wal[MAX_LOGS];
+static int log_count = 0;
+
+static void clear_input(void) {
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF);
+}
+
+static unsigned int simple_crc(const char* str, int val) {
+    unsigned int h = 5381;
+    for (int i = 0; str[i]; i++) h = ((h << 5) + h) + (unsigned char)str[i];
+    h = ((h << 5) + h) + (unsigned int)val;
+    return h;
+}
+
+static void append_record(const char* op, const char* k, int v) {
+    if (log_count >= MAX_LOGS) {
+        printf("WAL full.\n");
+        return;
     }
-    printf("Recovered state successfully.\n");
+    WalRecord r;
+    r.seq_num = log_count + 1;
+    strncpy(r.operation, op, 15);
+    r.operation[15] = '\0';
+    strncpy(r.key, k, 31);
+    r.key[31] = '\0';
+    r.val = v;
+    r.checksum = simple_crc(k, v);
+    wal[log_count++] = r;
+    printf("WAL appended: Seq #%d [%s %s = %d] (Checksum: 0x%08X)\n",
+           r.seq_num, r.operation, r.key, r.val, r.checksum);
+}
+
+static void replay_wal(void) {
+    printf("Replaying WAL for Crash Recovery:\n");
+    int valid = 0, corrupted = 0;
+    for (int i = 0; i < log_count; i++) {
+        unsigned int expected = simple_crc(wal[i].key, wal[i].val);
+        if (expected == wal[i].checksum) {
+            printf("  [OK] Seq #%d: Apply %s %s = %d\n",
+                   wal[i].seq_num, wal[i].operation, wal[i].key, wal[i].val);
+            valid++;
+        } else {
+            printf("  [CORRUPTED] Seq #%d: Checksum mismatch! Skipping.\n", wal[i].seq_num);
+            corrupted++;
+        }
+    }
+    printf("Replay finished: %d records applied, %d corrupted.\n", valid, corrupted);
 }
 
 int main(void) {
-    WalRecord wal[3] = {
-        {101, '=', "counter", 10},
-        {102, '+', "counter", 5},
-        {103, '+', "counter", 20}
-    };
-    replay_log(wal, 3);
+    int choice;
+    do {
+        printf("=== Write-Ahead Log (WAL) Storage Engine ===\n");
+        printf("Active WAL Records: %d\n", log_count);
+        printf("1. Append Transaction to WAL\n");
+        printf("2. Replay WAL (Crash Recovery Simulator)\n");
+        printf("3. Corrupt Last WAL Record (Simulate Bit Rot)\n");
+        printf("0. Exit\n");
+        printf("Enter choice: ");
+        if (scanf("%d", &choice) != 1) {
+            clear_input();
+            choice = -1;
+            continue;
+        }
+        clear_input();
+        switch (choice) {
+            case 1: {
+                char op[16], k[32];
+                int v;
+                printf("Enter Operation (e.g. PUT/ADD), Key, and Value: ");
+                if (scanf("%15s %31s %d", op, k, &v) == 3) {
+                    clear_input();
+                    append_record(op, k, v);
+                } else {
+                    clear_input();
+                }
+                break;
+            }
+            case 2:
+                replay_wal();
+                break;
+            case 3: {
+                if (log_count == 0) {
+                    printf("WAL is empty.\n");
+                    break;
+                }
+                wal[log_count - 1].checksum ^= 0xFFFFFFFF;
+                printf("Corrupted checksum of Seq #%d.\n", wal[log_count - 1].seq_num);
+                break;
+            }
+            case 0:
+                printf("Exiting WAL engine.\n");
+                break;
+            default:
+                printf("Invalid option.\n");
+                break;
+        }
+    } while (choice != 0);
     return 0;
 }
 ```

@@ -1,11 +1,11 @@
 # prog_file_line_counter
 > **Domain:** `boiler-plates` | **Subcategory:** `file-io` | **Type:** `program`
 ## Overview
-Complete program calculating lines, words, and characters in a file
+Interactive file text analytics counting lines, words, characters, and whitespace
 
 ## Signature
 ```c
-int main(int argc, char* argv[])
+int main(void);
 ```
 
 ## Complexity Analysis
@@ -20,38 +20,83 @@ int main(int argc, char* argv[])
 ## Implementation
 ```c
 #include <stdio.h>
+#include <string.h>
 #include <ctype.h>
-#include <stdbool.h>
 
-int main(int argc, char* argv[]) {
-    if (argc < 2) {
-        printf("Usage: %s <filename>\n", argv[0]);
-        return 1;
-    }
-
-    FILE* f = fopen(argv[1], "r");
-    if (!f) {
-        perror("Error opening file");
-        return 1;
-    }
-
-    long lines = 0, words = 0, chars = 0;
+static void clear_input(void) {
     int c;
-    bool in_word = false;
+    while ((c = getchar()) != '\n' && c != EOF);
+}
 
-    while ((c = fgetc(f)) != EOF) {
+static void analyze_file(const char* path) {
+    FILE* fp = fopen(path, "r");
+    if (!fp) {
+        printf("Error: Could not open \"%s\" for reading!\n", path);
+        return;
+    }
+
+    long long lines = 0, words = 0, chars = 0, non_blank_lines = 0;
+    int in_word = 0, line_chars = 0;
+    int ch;
+
+    while ((ch = fgetc(fp)) != EOF) {
         chars++;
-        if (c == '\n') lines++;
-        if (isspace(c)) {
-            in_word = false;
+        if (ch == '\n') {
+            lines++;
+            if (line_chars > 0) non_blank_lines++;
+            line_chars = 0;
+        } else if (!isspace(ch)) {
+            line_chars++;
+        }
+
+        if (isspace(ch)) {
+            in_word = 0;
         } else if (!in_word) {
-            in_word = true;
+            in_word = 1;
             words++;
         }
     }
 
-    fclose(f);
-    printf("File: %s\nLines: %ld | Words: %ld | Chars: %ld\n", argv[1], lines, words, chars);
+    if (chars > 0 && line_chars > 0) {
+        lines++;
+        non_blank_lines++;
+    }
+
+    fclose(fp);
+
+    printf("\n--- File Statistics for \"%s\" ---\n", path);
+    printf("  Total Characters : %lld\n", chars);
+    printf("  Total Words      : %lld\n", words);
+    printf("  Total Lines      : %lld\n", lines);
+    printf("  Non-Blank Lines  : %lld\n", non_blank_lines);
+}
+
+int main(void) {
+    char path[128];
+    int choice;
+
+    do {
+        printf("\n=== FILE LINE & WORD COUNTER ===\n");
+        printf("1. Analyze File\n");
+        printf("0. Exit\n");
+        printf("Select option: ");
+        if (scanf("%d", &choice) != 1) {
+            clear_input();
+            continue;
+        }
+        clear_input();
+
+        if (choice == 1) {
+            printf("Enter path to file: ");
+            if (fgets(path, sizeof(path), stdin)) {
+                path[strcspn(path, "\r\n")] = '\0';
+                if (strlen(path) > 0) {
+                    analyze_file(path);
+                }
+            }
+        }
+    } while (choice != 0);
+
     return 0;
 }
 ```

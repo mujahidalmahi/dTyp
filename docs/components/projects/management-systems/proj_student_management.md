@@ -1,7 +1,7 @@
 # proj_student_management
 > **Domain:** `projects` | **Subcategory:** `management-systems` | **Type:** `program`
 ## Overview
-Complete student record management system with GPA computation, ranking, and search
+Complete interactive student record management system with GPA computation, ranking, and search
 
 ## Signature
 ```c
@@ -22,6 +22,8 @@ int main(void);
 #include <stdio.h>
 #include <string.h>
 
+#define MAX_STUDENTS 100
+
 typedef struct {
     int id;
     char name[32];
@@ -29,44 +31,127 @@ typedef struct {
     double gpa;
 } Student;
 
-double calculate_gpa(const double marks[3]) {
-    double total = marks[0] + marks[1] + marks[2];
-    return (total / 300.0) * 4.0;
+static Student db[MAX_STUDENTS];
+static int student_count = 0;
+
+static void clear_input(void) {
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF);
 }
 
-void print_student(const Student* s) {
-    printf("ID: %-4d | Name: %-12s | GPA: %.2f | Marks: [%.0f, %.0f, %.0f]\n",
-           s->id, s->name, s->gpa, s->marks[0], s->marks[1], s->marks[2]);
+static double calc_gpa(const double m[3]) {
+    return ((m[0] + m[1] + m[2]) / 300.0) * 4.0;
 }
 
-void rank_students(Student arr[], int n) {
-    for (int i = 0; i < n - 1; i++) {
-        for (int j = 0; j < n - i - 1; j++) {
-            if (arr[j].gpa < arr[j + 1].gpa) {
-                Student tmp = arr[j]; arr[j] = arr[j + 1]; arr[j + 1] = tmp;
+static void add_student(void) {
+    if (student_count >= MAX_STUDENTS) {
+        printf("Database full.\n");
+        return;
+    }
+    Student s;
+    printf("Enter Student ID: ");
+    if (scanf("%d", &s.id) != 1) {
+        clear_input();
+        return;
+    }
+    clear_input();
+    printf("Enter Student Name: ");
+    if (scanf("%31[^\n]", s.name) != 1) {
+        clear_input();
+        return;
+    }
+    clear_input();
+    printf("Enter 3 course marks (0 to 100): ");
+    if (scanf("%lf %lf %lf", &s.marks[0], &s.marks[1], &s.marks[2]) != 3) {
+        clear_input();
+        return;
+    }
+    clear_input();
+    s.gpa = calc_gpa(s.marks);
+    db[student_count++] = s;
+    printf("Student added successfully. GPA: %.2f\n", s.gpa);
+}
+
+static void display_all_students(void) {
+    if (student_count == 0) {
+        printf("No records found.\n");
+        return;
+    }
+    printf("%-6s | %-16s | %-6s | %-18s\n", "ID", "Name", "GPA", "Marks [M1, M2, M3]");
+    printf("------------------------------------------------------------\n");
+    for (int i = 0; i < student_count; i++) {
+        printf("%-6d | %-16s | %-6.2f | [%.0f, %.0f, %.0f]\n",
+               db[i].id, db[i].name, db[i].gpa, db[i].marks[0], db[i].marks[1], db[i].marks[2]);
+    }
+}
+
+static void search_student_id(void) {
+    int q_id;
+    printf("Enter ID to search: ");
+    if (scanf("%d", &q_id) != 1) {
+        clear_input();
+        return;
+    }
+    clear_input();
+    for (int i = 0; i < student_count; i++) {
+        if (db[i].id == q_id) {
+            printf("Found: ID %d | Name: %s | GPA: %.2f\n", db[i].id, db[i].name, db[i].gpa);
+            return;
+        }
+    }
+    printf("Student with ID %d not found.\n", q_id);
+}
+
+static void rank_by_gpa(void) {
+    if (student_count < 2) return;
+    for (int i = 0; i < student_count - 1; i++) {
+        for (int j = 0; j < student_count - i - 1; j++) {
+            if (db[j].gpa < db[j + 1].gpa) {
+                Student tmp = db[j]; db[j] = db[j + 1]; db[j + 1] = tmp;
             }
         }
     }
+    printf("Ranked students by GPA descending:\n");
+    display_all_students();
 }
 
 int main(void) {
-    Student database[3] = {
-        {101, "Alice", {85, 90, 88}, 0.0},
-        {102, "Bob", {72, 68, 75}, 0.0},
-        {103, "Charlie", {95, 92, 98}, 0.0}
-    };
-    int n = 3;
-    for (int i = 0; i < n; i++) {
-        database[i].gpa = calculate_gpa(database[i].marks);
-    }
-    printf("=== Student Database ===\n");
-    for (int i = 0; i < n; i++) print_student(&database[i]);
-    rank_students(database, n);
-    printf("\n=== Ranked by GPA ===\n");
-    for (int i = 0; i < n; i++) {
-        printf("Rank %d: ", i + 1);
-        print_student(&database[i]);
-    }
+    int choice;
+    do {
+        printf("=== Student Record Management System ===\n");
+        printf("1. Add New Student Record\n");
+        printf("2. View All Student Records\n");
+        printf("3. Search Student by ID\n");
+        printf("4. Rank Students by GPA\n");
+        printf("0. Exit\n");
+        printf("Enter choice: ");
+        if (scanf("%d", &choice) != 1) {
+            clear_input();
+            choice = -1;
+            continue;
+        }
+        clear_input();
+        switch (choice) {
+            case 1:
+                add_student();
+                break;
+            case 2:
+                display_all_students();
+                break;
+            case 3:
+                search_student_id();
+                break;
+            case 4:
+                rank_by_gpa();
+                break;
+            case 0:
+                printf("Exiting system.\n");
+                break;
+            default:
+                printf("Invalid option.\n");
+                break;
+        }
+    } while (choice != 0);
     return 0;
 }
 ```

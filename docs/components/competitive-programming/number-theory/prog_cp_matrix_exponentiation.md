@@ -1,7 +1,7 @@
 # prog_cp_matrix_exponentiation
 > **Domain:** `competitive-programming` | **Subcategory:** `number-theory` | **Type:** `program`
 ## Overview
-Complete competitive programming program calculating N-th Fibonacci via 2x2 matrix fast power
+Codeforces style fast matrix exponentiation suite calculating N-th Fibonacci and 2x2 powers
 
 ## Signature
 ```c
@@ -21,41 +21,148 @@ int main(void);
 ```c
 #include <stdio.h>
 
-void mat_mul_2x2(const long long A[2][2], const long long B[2][2], long long C[2][2], long long mod) {
-    long long r00 = (A[0][0] * B[0][0] + A[0][1] * B[1][0]) % mod;
-    long long r01 = (A[0][0] * B[0][1] + A[0][1] * B[1][1]) % mod;
-    long long r10 = (A[1][0] * B[0][0] + A[1][1] * B[1][0]) % mod;
-    long long r11 = (A[1][0] * B[0][1] + A[1][1] * B[1][1]) % mod;
-    C[0][0] = r00; C[0][1] = r01;
-    C[1][0] = r10; C[1][1] = r11;
+typedef long long ll;
+#define MOD 1000000007LL
+
+typedef struct {
+    ll mat[2][2];
+} Matrix2x2;
+
+static void clear_input(void) {
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF);
 }
 
-long long fib_matrix(long long n, long long mod) {
+static Matrix2x2 multiply_2x2(Matrix2x2 a, Matrix2x2 b) {
+    Matrix2x2 res;
+    for (int i = 0; i < 2; i++) {
+        for (int j = 0; j < 2; j++) {
+            res.mat[i][j] = 0;
+            for (int k = 0; k < 2; k++) {
+                res.mat[i][j] = (res.mat[i][j] + (a.mat[i][k] * b.mat[k][j]) % MOD) % MOD;
+            }
+        }
+    }
+    return res;
+}
+
+static Matrix2x2 power_2x2(Matrix2x2 base, ll exp) {
+    Matrix2x2 res;
+    res.mat[0][0] = 1; res.mat[0][1] = 0;
+    res.mat[1][0] = 0; res.mat[1][1] = 1;
+    while (exp > 0) {
+        if (exp & 1) res = multiply_2x2(res, base);
+        base = multiply_2x2(base, base);
+        exp >>= 1;
+    }
+    return res;
+}
+
+static ll fibonacci(ll n) {
     if (n <= 0) return 0;
     if (n == 1) return 1;
-    long long res[2][2] = {{1, 0}, {0, 1}};
-    long long base[2][2] = {{1, 1}, {1, 0}};
-    long long p = n - 1;
-    while (p > 0) {
-        if (p & 1) {
-            long long tmp[2][2];
-            mat_mul_2x2(res, base, tmp, mod);
-            res[0][0] = tmp[0][0]; res[0][1] = tmp[0][1];
-            res[1][0] = tmp[1][0]; res[1][1] = tmp[1][1];
-        }
-        long long tmp_base[2][2];
-        mat_mul_2x2(base, base, tmp_base, mod);
-        base[0][0] = tmp_base[0][0]; base[0][1] = tmp_base[0][1];
-        base[1][0] = tmp_base[1][0]; base[1][1] = tmp_base[1][1];
-        p >>= 1;
-    }
-    return res[0][0];
+    Matrix2x2 t;
+    t.mat[0][0] = 1; t.mat[0][1] = 1;
+    t.mat[1][0] = 1; t.mat[1][1] = 0;
+    Matrix2x2 tn = power_2x2(t, n - 1);
+    return tn.mat[0][0];
 }
 
 int main(void) {
-    long long mod = 1000000007LL;
-    printf("Fib(10) mod 1e9+7 = %lld\n", fib_matrix(10, mod));
-    printf("Fib(50) mod 1e9+7 = %lld\n", fib_matrix(50, mod));
+    int choice;
+    do {
+        printf("=== Matrix Fast Exponentiation Codeforces Suite ===\n");
+        printf("Modulo: %lld\n", MOD);
+        printf("1. Compute N-th Fibonacci Number in O(log N)\n");
+        printf("2. Compute Custom 2x2 Matrix Power (M^K)\n");
+        printf("3. Solve General 2nd Order Linear Recurrence\n");
+        printf("4. Solve CF Multi-Testcases (T Cases)\n");
+        printf("0. Exit\n");
+        printf("Enter choice: ");
+        if (scanf("%d", &choice) != 1) {
+            clear_input();
+            choice = -1;
+            continue;
+        }
+        clear_input();
+        switch (choice) {
+            case 1: {
+                ll n;
+                printf("Enter N (up to 10^18): ");
+                if (scanf("%lld", &n) == 1) {
+                    clear_input();
+                    printf("Fibonacci(%lld) mod %lld = %lld\n", n, MOD, fibonacci(n));
+                } else {
+                    clear_input();
+                }
+                break;
+            }
+            case 2: {
+                Matrix2x2 m;
+                ll exp;
+                printf("Enter 2x2 matrix elements (m00 m01 m10 m11): ");
+                if (scanf("%lld %lld %lld %lld", &m.mat[0][0], &m.mat[0][1], &m.mat[1][0], &m.mat[1][1]) == 4) {
+                    printf("Enter exponent K: ");
+                    if (scanf("%lld", &exp) == 1 && exp >= 0) {
+                        clear_input();
+                        Matrix2x2 res = power_2x2(m, exp);
+                        printf("M^%lld =\n[ %lld %lld ]\n[ %lld %lld ]\n",
+                               exp, res.mat[0][0], res.mat[0][1], res.mat[1][0], res.mat[1][1]);
+                    } else {
+                        clear_input();
+                    }
+                } else {
+                    clear_input();
+                }
+                break;
+            }
+            case 3: {
+                ll a, b, f1, f0, n;
+                printf("For recurrence f(n) = a*f(n-1) + b*f(n-2):\n");
+                printf("Enter coefficients a b: ");
+                scanf("%lld %lld", &a, &b);
+                printf("Enter base values f(1) f(0): ");
+                scanf("%lld %lld", &f1, &f0);
+                printf("Enter query index N (>= 2): ");
+                scanf("%lld", &n);
+                clear_input();
+                if (n == 0) printf("f(0) = %lld\n", f0 % MOD);
+                else if (n == 1) printf("f(1) = %lld\n", f1 % MOD);
+                else {
+                    Matrix2x2 t;
+                    t.mat[0][0] = a % MOD; t.mat[0][1] = b % MOD;
+                    t.mat[1][0] = 1;       t.mat[1][1] = 0;
+                    Matrix2x2 tn = power_2x2(t, n - 1);
+                    ll ans = (tn.mat[0][0] * (f1 % MOD) + tn.mat[0][1] * (f0 % MOD)) % MOD;
+                    printf("f(%lld) = %lld\n", n, ans);
+                }
+                break;
+            }
+            case 4: {
+                int t;
+                printf("Enter T test cases: ");
+                if (scanf("%d", &t) == 1 && t > 0) {
+                    clear_input();
+                    for (int c = 1; c <= t; c++) {
+                        ll n;
+                        printf("[Case #%d] Enter N: ", c);
+                        scanf("%lld", &n);
+                        clear_input();
+                        printf("Fibonacci(%lld) = %lld\n", n, fibonacci(n));
+                    }
+                } else {
+                    clear_input();
+                }
+                break;
+            }
+            case 0:
+                printf("Exiting suite.\n");
+                break;
+            default:
+                printf("Invalid option.\n");
+                break;
+        }
+    } while (choice != 0);
     return 0;
 }
 ```

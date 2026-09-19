@@ -1,11 +1,11 @@
 # prog_greedy_job_sequencing
 > **Domain:** `algorithms` | **Subcategory:** `greedy` | **Type:** `program`
 ## Overview
-Complete job sequencing program maximizing profit within deadlines
+Complete interactive program solving Job Sequencing with deadlines and profits
 
 ## Signature
 ```c
-int main(void)
+int main(void);
 ```
 
 ## Complexity Analysis
@@ -20,34 +20,88 @@ int main(void)
 ## Implementation
 ```c
 #include <stdio.h>
+#include <stdlib.h>
 
-int main(void) {
-    int deadline[] = {4, 1, 1, 1};
-    int profit[] = {20, 10, 40, 30};
-    int n = 4;
+#define MAX_JOBS 100
 
-    for (int i = 0; i < n - 1; i++) {
-        for (int j = 0; j < n - i - 1; j++) {
-            if (profit[j] < profit[j + 1]) {
-                int tp = profit[j]; profit[j] = profit[j + 1]; profit[j + 1] = tp;
-                int td = deadline[j]; deadline[j] = deadline[j + 1]; deadline[j + 1] = td;
-            }
-        }
+typedef struct {
+    char id[16];
+    int deadline;
+    int profit;
+} Job;
+
+static void clear_input(void) {
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF);
+}
+
+static int cmp_jobs(const void* a, const void* b) {
+    return (((const Job*)b)->profit - ((const Job*)a)->profit);
+}
+
+static void job_sequencing(void) {
+    int n;
+    printf("Enter number of jobs N (<= %d): ", MAX_JOBS);
+    if (scanf("%d", &n) != 1 || n <= 0 || n > MAX_JOBS) {
+        clear_input();
+        return;
     }
-
-    int slots[5] = {0};
-    int total_p = 0;
+    Job jobs[MAX_JOBS];
+    int max_deadline = 0;
+    printf("Enter job ID, deadline, and profit for %d jobs (e.g. J1 2 100):\n", n);
     for (int i = 0; i < n; i++) {
-        for (int j = deadline[i]; j > 0; j--) {
-            if (!slots[j]) {
-                slots[j] = 1;
-                total_p += profit[i];
+        scanf("%15s %d %d", jobs[i].id, &jobs[i].deadline, &jobs[i].profit);
+        if (jobs[i].deadline > max_deadline) max_deadline = jobs[i].deadline;
+    }
+    clear_input();
+    qsort(jobs, (size_t)n, sizeof(Job), cmp_jobs);
+    int slot[MAX_JOBS + 1];
+    for (int i = 0; i <= max_deadline; i++) slot[i] = -1;
+    int total_profit = 0, count = 0;
+    for (int i = 0; i < n; i++) {
+        for (int j = jobs[i].deadline; j > 0; j--) {
+            if (slot[j] == -1) {
+                slot[j] = i;
+                total_profit += jobs[i].profit;
+                count++;
                 break;
             }
         }
     }
+    printf("Scheduled Jobs for Maximum Profit: ");
+    for (int i = 1; i <= max_deadline; i++) {
+        if (slot[i] != -1) {
+            printf("[%s at slot %d] ", jobs[slot[i]].id, i);
+        }
+    }
+    printf("\nTotal Scheduled Jobs: %d | Maximum Profit: %d\n", count, total_profit);
+}
 
-    printf("Max Job Scheduling Profit: %d\n", total_p);
+int main(void) {
+    int choice;
+    do {
+        printf("=== Job Sequencing with Deadlines Workbench ===\n");
+        printf("1. Solve Job Sequencing Problem\n");
+        printf("0. Exit\n");
+        printf("Enter choice: ");
+        if (scanf("%d", &choice) != 1) {
+            clear_input();
+            choice = -1;
+            continue;
+        }
+        clear_input();
+        switch (choice) {
+            case 1:
+                job_sequencing();
+                break;
+            case 0:
+                printf("Exiting suite.\n");
+                break;
+            default:
+                printf("Invalid option.\n");
+                break;
+        }
+    } while (choice != 0);
     return 0;
 }
 ```

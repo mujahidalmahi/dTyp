@@ -1,11 +1,11 @@
 # complex_expression_evaluator
 > **Domain:** `boiler-plates` | **Subcategory:** `complex-programs` | **Type:** `program`
 ## Overview
-Postfix arithmetic expression evaluator using integer stack and switch-case
+Interactive arithmetic expression evaluator using Shunting-Yard RPN parsing
 
 ## Signature
 ```c
-int main(void)
+int main(void);
 ```
 
 ## Complexity Analysis
@@ -24,67 +24,102 @@ int main(void)
 #include <string.h>
 #include <ctype.h>
 
-#define STACK_CAPACITY 64
-
-typedef struct Stack {
-    int data[STACK_CAPACITY];
-    int top;
-} Stack;
-
-void stack_init(Stack* s) { s->top = -1; }
-int stack_push(Stack* s, int val) {
-    if (s->top >= STACK_CAPACITY - 1) return 0;
-    s->data[++s->top] = val;
-    return 1;
-}
-int stack_pop(Stack* s, int* val) {
-    if (s->top < 0) return 0;
-    *val = s->data[s->top--];
-    return 1;
+static int precedence(char op) {
+    if (op == '+' || op == '-') return 1;
+    if (op == '*' || op == '/') return 2;
+    return 0;
 }
 
-int evaluate_postfix(const char* expr) {
-    Stack stack;
-    stack_init(&stack);
+static double apply_op(double a, double b, char op) {
+    switch (op) {
+        case '+': return a + b;
+        case '-': return a - b;
+        case '*': return a * b;
+        case '/': return (b != 0.0) ? a / b : 0.0;
+        default:  return 0.0;
+    }
+}
 
-    const char* p = expr;
-    while (*p != '\0') {
-        if (isspace(*p)) {
-            p++;
-            continue;
-        }
-        if (isdigit(*p)) {
-            int val = 0;
-            while (isdigit(*p)) {
-                val = val * 10 + (*p - '0');
-                p++;
+static double eval_postfix(const char* expr) {
+    double values[64];
+    int v_top = -1;
+    char ops[64];
+    int o_top = -1;
+
+    for (int i = 0; expr[i] != '\0'; i++) {
+        if (isspace((unsigned char)expr[i])) continue;
+
+        if (isdigit((unsigned char)expr[i])) {
+            double val = 0;
+            while (i < (int)strlen(expr) && isdigit((unsigned char)expr[i])) {
+                val = (val * 10) + (expr[i] - '0');
+                i++;
             }
-            stack_push(&stack, val);
+            i--;
+            values[++v_top] = val;
+        } else if (expr[i] == '(') {
+            ops[++o_top] = expr[i];
+        } else if (expr[i] == ')') {
+            while (o_top >= 0 && ops[o_top] != '(') {
+                double val2 = values[v_top--];
+                double val1 = values[v_top--];
+                char op = ops[o_top--];
+                values[++v_top] = apply_op(val1, val2, op);
+            }
+            if (o_top >= 0) o_top--;
         } else {
-            int b, a;
-            stack_pop(&stack, &b);
-            stack_pop(&stack, &a);
-            int res = 0;
-            switch (*p) {
-                case '+': res = a + b; break;
-                case '-': res = a - b; break;
-                case '*': res = a * b; break;
-                case '/': res = (b != 0) ? a / b : 0; break;
+            while (o_top >= 0 && precedence(ops[o_top]) >= precedence(expr[i])) {
+                double val2 = values[v_top--];
+                double val1 = values[v_top--];
+                char op = ops[o_top--];
+                values[++v_top] = apply_op(val1, val2, op);
             }
-            stack_push(&stack, res);
-            p++;
+            ops[++o_top] = expr[i];
         }
     }
 
-    int result = 0;
-    stack_pop(&stack, &result);
-    return result;
+    while (o_top >= 0) {
+        double val2 = values[v_top--];
+        double val1 = values[v_top--];
+        char op = ops[o_top--];
+        values[++v_top] = apply_op(val1, val2, op);
+    }
+
+    return (v_top >= 0) ? values[v_top] : 0.0;
+}
+
+static void clear_input(void) {
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF);
 }
 
 int main(void) {
-    const char* expression = "15 7 1 1 + - / 3 * 2 1 1 + + -";
-    printf("Postfix Expression: %s\n", expression);
-    printf("Evaluation Result: %d\n", evaluate_postfix(expression));
+    char expr[128];
+    int choice;
+
+    do {
+        printf("\n=== SHUNTING-YARD EXPRESSION EVALUATOR ===\n");
+        printf("1. Evaluate Arithmetic Expression\n");
+        printf("0. Exit\n");
+        printf("Select option: ");
+        if (scanf("%d", &choice) != 1) {
+            clear_input();
+            continue;
+        }
+        clear_input();
+
+        if (choice == 1) {
+            printf("Enter infix expression (e.g. 3 + 5 * ( 2 - 8 )): ");
+            if (fgets(expr, sizeof(expr), stdin)) {
+                expr[strcspn(expr, "\r\n")] = '\0';
+                if (strlen(expr) > 0) {
+                    double ans = eval_postfix(expr);
+                    printf("Result: %.4f\n", ans);
+                }
+            }
+        }
+    } while (choice != 0);
+
     return 0;
 }
 ```

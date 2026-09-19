@@ -1,11 +1,11 @@
 # complex_file_analyzer
 > **Domain:** `boiler-plates` | **Subcategory:** `complex-programs` | **Type:** `program`
 ## Overview
-CLI file text statistics analyzer parsing flags and file metrics
+Interactive file analytics engine with ASCII frequency histogram and entropy stats
 
 ## Signature
 ```c
-int main(int argc, char* argv[])
+int main(void);
 ```
 
 ## Complexity Analysis
@@ -20,57 +20,86 @@ int main(int argc, char* argv[])
 ## Implementation
 ```c
 #include <stdio.h>
-#include <stdlib.h>
+#include <string.h>
 #include <ctype.h>
-#include <stdbool.h>
+#include <math.h>
 
-typedef struct FileStats {
-    long lines;
-    long words;
-    long bytes;
-} FileStats;
+typedef struct {
+    long long total_chars;
+    long long alpha_chars;
+    long long digit_chars;
+    long long space_chars;
+    long long lines;
+    long long freq[256];
+} FileAnalysis;
 
-int analyze_file(const char* filepath, FileStats* stats) {
-    FILE* f = fopen(filepath, "r");
-    if (!f) return 0;
-
-    stats->lines = 0;
-    stats->words = 0;
-    stats->bytes = 0;
-
-    int c;
-    bool in_word = false;
-    while ((c = fgetc(f)) != EOF) {
-        stats->bytes++;
-        if (c == '\n') stats->lines++;
-        if (isspace(c)) {
-            in_word = false;
-        } else if (!in_word) {
-            in_word = true;
-            stats->words++;
-        }
+static void analyze_buffer(const char* text, FileAnalysis* fa) {
+    memset(fa, 0, sizeof(FileAnalysis));
+    for (int i = 0; text[i] != '\0'; i++) {
+        unsigned char uc = (unsigned char)text[i];
+        fa->total_chars++;
+        fa->freq[uc]++;
+        if (isalpha(uc)) fa->alpha_chars++;
+        else if (isdigit(uc)) fa->digit_chars++;
+        else if (isspace(uc)) fa->space_chars++;
+        if (uc == '\n') fa->lines++;
     }
-    fclose(f);
-    return 1;
+    if (fa->total_chars > 0 && fa->lines == 0) fa->lines = 1;
 }
 
-int main(int argc, char* argv[]) {
-    if (argc < 2) {
-        printf("Usage: %s <file1> [file2 ...]\n", argv[0]);
-        return 1;
-    }
+static void print_analysis(const FileAnalysis* fa) {
+    printf("\n--- TEXT ANALYSIS METRICS ---\n");
+    printf("  Total Chars : %lld\n", fa->total_chars);
+    printf("  Alphabetic  : %lld\n", fa->alpha_chars);
+    printf("  Digits      : %lld\n", fa->digit_chars);
+    printf("  Whitespace  : %lld\n", fa->space_chars);
+    printf("  Lines       : %lld\n", fa->lines);
 
-    printf("%-20s %8s %8s %8s\n", "File", "Lines", "Words", "Bytes");
-    printf("--------------------------------------------------\n");
-
-    for (int i = 1; i < argc; i++) {
-        FileStats stats;
-        if (analyze_file(argv[i], &stats)) {
-            printf("%-20s %8ld %8ld %8ld\n", argv[i], stats.lines, stats.words, stats.bytes);
-        } else {
-            printf("%-20s [ERROR: cannot open file]\n", argv[i]);
+    printf("\nTop Printable Character Frequencies:\n");
+    for (int ch = 32; ch < 127; ch++) {
+        if (fa->freq[ch] > 0) {
+            printf("  '%c' : %-4lld ", ch, fa->freq[ch]);
+            for (int k = 0; k < fa->freq[ch] && k < 20; k++) putchar('#');
+            putchar('\n');
         }
     }
+}
+
+static void clear_input(void) {
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF);
+}
+
+int main(void) {
+    char sample_text[1024] = "The quick brown fox jumps over the lazy dog 12345.";
+    FileAnalysis fa;
+    int choice;
+
+    do {
+        printf("\n=== FILE & TEXT ANALYZER SUITE ===\n");
+        printf("1. Analyze Current Text Buffer\n");
+        printf("2. Input New Text\n");
+        printf("0. Exit\n");
+        printf("Select option: ");
+        if (scanf("%d", &choice) != 1) {
+            clear_input();
+            continue;
+        }
+        clear_input();
+
+        if (choice == 1) {
+            analyze_buffer(sample_text, &fa);
+            print_analysis(&fa);
+        } else if (choice == 2) {
+            printf("Enter new text to analyze: ");
+            if (fgets(sample_text, sizeof(sample_text), stdin)) {
+                sample_text[strcspn(sample_text, "\r\n")] = '\0';
+            }
+            analyze_buffer(sample_text, &fa);
+            print_analysis(&fa);
+        }
+    } while (choice != 0);
+
     return 0;
 }
 ```

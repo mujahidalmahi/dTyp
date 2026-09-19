@@ -1,7 +1,7 @@
 # proj_unix_shell
 > **Domain:** `projects` | **Subcategory:** `systems-runtime` | **Type:** `program`
 ## Overview
-Command line interpreter with argument tokenization, built-ins, and pipe detection
+Interactive Unix shell interpreter with command tokenization and builtins
 
 ## Signature
 ```c
@@ -22,33 +22,44 @@ int main(void);
 #include <stdio.h>
 #include <string.h>
 
-void execute_command(char* cmd) {
-    char* args[10];
-    int argc = 0;
-    char* token = strtok(cmd, " ");
-    while (token && argc < 9) {
-        args[argc++] = token;
-        token = strtok(NULL, " ");
+#define MAX_LINE 256
+
+static void clear_input(void) {
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF);
+}
+
+static void execute_shell_line(char* line) {
+    char* tokens[16];
+    int count = 0;
+    char* token = strtok(line, " \t\r\n");
+    while (token && count < 16) {
+        tokens[count++] = token;
+        token = strtok(NULL, " \t\r\n");
     }
-    args[argc] = NULL;
-    if (argc == 0) return;
-    if (strcmp(args[0], "echo") == 0) {
-        for (int i = 1; i < argc; i++) printf("%s ", args[i]);
-        printf("\n");
-    } else if (strcmp(args[0], "pwd") == 0) {
-        printf("/home/user/workspace\n");
+    if (count == 0) return;
+    if (strcmp(tokens[0], "echo") == 0) {
+        for (int i = 1; i < count; i++) printf("%s ", tokens[i]);
+        putchar('\n');
+    } else if (strcmp(tokens[0], "pwd") == 0) {
+        printf("/home/dtyp/workspace\n");
+    } else if (strcmp(tokens[0], "help") == 0) {
+        printf("Builtins: echo, pwd, help, exit\n");
     } else {
-        printf("Executed external command: %s (args: %d)\n", args[0], argc - 1);
+        printf("dtyp-sh: command not found: %s\n", tokens[0]);
     }
 }
 
 int main(void) {
-    char c1[] = "echo Hello from dTyp mini shell";
-    char c2[] = "pwd";
-    char c3[] = "gcc -Wall main.c";
-    execute_command(c1);
-    execute_command(c2);
-    execute_command(c3);
+    char line[MAX_LINE];
+    printf("dTyp Micro Unix Shell (type 'exit' to quit)\n");
+    while (1) {
+        printf("dtyp-sh$ ");
+        if (!fgets(line, sizeof(line), stdin)) break;
+        if (strncmp(line, "exit", 4) == 0) break;
+        execute_shell_line(line);
+    }
+    printf("Shell exited.\n");
     return 0;
 }
 ```

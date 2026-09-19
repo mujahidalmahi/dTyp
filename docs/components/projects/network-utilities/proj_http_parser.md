@@ -1,7 +1,7 @@
 # proj_http_parser
 > **Domain:** `projects` | **Subcategory:** `network-utilities` | **Type:** `program`
 ## Overview
-State-machine HTTP 1.1 request parser extracting method, path, headers, and body
+Interactive HTTP 1.1 request parser extracting method, URI, headers, and body
 
 ## Signature
 ```c
@@ -22,35 +22,74 @@ int main(void);
 #include <stdio.h>
 #include <string.h>
 
-typedef struct {
-    char method[8];
-    char path[64];
-    char host[64];
-    int content_length;
-} HttpRequest;
+#define MAX_REQ 1024
 
-void parse_http_request(const char* raw, HttpRequest* req) {
-    sscanf(raw, "%7s %63s", req->method, req->path);
-    req->content_length = 0;
-    const char* h = strstr(raw, "Host: ");
-    if (h) sscanf(h, "Host: %63s", req->host);
-    const char* cl = strstr(raw, "Content-Length: ");
-    if (cl) sscanf(cl, "Content-Length: %d", &req->content_length);
+static void clear_input(void) {
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF);
+}
+
+static void parse_http_request(const char* raw) {
+    char method[16], uri[256], version[16];
+    if (sscanf(raw, "%15s %255s %15s", method, uri, version) != 3) {
+        printf("Malformed HTTP request line.\n");
+        return;
+    }
+    printf("HTTP Request Line:\n");
+    printf("  Method:  %s\n", method);
+    printf("  URI:     %s\n", uri);
+    printf("  Version: %s\n", version);
+    printf("Headers & Body:\n");
+    const char* line = strchr(raw, '\n');
+    while (line && *line) {
+        line++;
+        if (*line == '\r' || *line == '\n') {
+            if (*line == '\r') line++;
+            if (*line == '\n') line++;
+            printf("  Body: %s\n", line);
+            break;
+        }
+        char h_name[64], h_val[128];
+        if (sscanf(line, "%63[^:]: %127[^\r\n]", h_name, h_val) == 2) {
+            printf("  Header: [%s] = '%s'\n", h_name, h_val);
+        }
+        line = strchr(line, '\n');
+    }
 }
 
 int main(void) {
-    const char* sample_http =
-        "POST /api/v1/user HTTP/1.1\n"
-        "Host: api.example.com\n"
-        "Content-Length: 24\n"
-        "\n"
-        "{\"user\": \"antigravity\"}";
-    HttpRequest req;
-    parse_http_request(sample_http, &req);
-    printf("Method:         %s\n", req.method);
-    printf("Path:           %s\n", req.path);
-    printf("Host:           %s\n", req.host);
-    printf("Content-Length: %d\n", req.content_length);
+    int choice;
+    do {
+        printf("=== HTTP 1.1 Protocol Parser ===\n");
+        printf("1. Parse Raw HTTP Request\n");
+        printf("0. Exit\n");
+        printf("Enter choice: ");
+        if (scanf("%d", &choice) != 1) {
+            clear_input();
+            choice = -1;
+            continue;
+        }
+        clear_input();
+        switch (choice) {
+            case 1: {
+                char req[MAX_REQ];
+                printf("Enter HTTP request line (e.g. GET /index.html HTTP/1.1): ");
+                if (scanf("%1023[^\n]", req) == 1) {
+                    clear_input();
+                    parse_http_request(req);
+                } else {
+                    clear_input();
+                }
+                break;
+            }
+            case 0:
+                printf("Exiting HTTP parser.\n");
+                break;
+            default:
+                printf("Invalid option.\n");
+                break;
+        }
+    } while (choice != 0);
     return 0;
 }
 ```

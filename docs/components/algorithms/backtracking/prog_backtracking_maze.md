@@ -1,11 +1,11 @@
 # prog_backtracking_maze
 > **Domain:** `algorithms` | **Subcategory:** `backtracking` | **Type:** `program`
 ## Overview
-Complete Rat in a Maze backtracking solver navigating obstacle grid
+Complete interactive program solving 2D grid maze pathfinding via backtracking
 
 ## Signature
 ```c
-int main(void)
+int main(void);
 ```
 
 ## Complexity Analysis
@@ -21,39 +21,91 @@ int main(void)
 ```c
 #include <stdio.h>
 
-#define N 4
+#define MAX_DIM 20
 
-int solve_maze(int maze[N][N], int x, int y, int sol[N][N]) {
-    if (x == N - 1 && y == N - 1 && maze[x][y] == 1) {
-        sol[x][y] = 1;
+static int maze[MAX_DIM][MAX_DIM];
+static int path_sol[MAX_DIM][MAX_DIM];
+static int R = 4, C = 4;
+
+static void clear_input(void) {
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF);
+}
+
+static int is_valid_cell(int r, int c) {
+    return (r >= 0 && r < R && c >= 0 && c < C && maze[r][c] == 1 && path_sol[r][c] == 0);
+}
+
+static int solve_maze_rec(int r, int c) {
+    if (r == R - 1 && c == C - 1 && maze[r][c] == 1) {
+        path_sol[r][c] = 1;
         return 1;
     }
-    if (x >= 0 && x < N && y >= 0 && y < N && maze[x][y] == 1) {
-        if (sol[x][y]) return 0;
-        sol[x][y] = 1;
-        if (solve_maze(maze, x + 1, y, sol)) return 1;
-        if (solve_maze(maze, x, y + 1, sol)) return 1;
-        sol[x][y] = 0;
+    if (is_valid_cell(r, c)) {
+        path_sol[r][c] = 1;
+        if (solve_maze_rec(r + 1, c)) return 1;
+        if (solve_maze_rec(r, c + 1)) return 1;
+        if (solve_maze_rec(r - 1, c)) return 1;
+        if (solve_maze_rec(r, c - 1)) return 1;
+        path_sol[r][c] = 0;
         return 0;
     }
     return 0;
 }
 
 int main(void) {
-    int maze[N][N] = {
-        {1, 0, 0, 0},
-        {1, 1, 0, 1},
-        {0, 1, 0, 0},
-        {1, 1, 1, 1}
-    };
-    int sol[N][N] = {0};
-    solve_maze(maze, 0, 0, sol);
-
-    printf("Maze Solution Path:\n");
-    for (int i = 0; i < N; i++) {
-        for (int j = 0; j < N; j++) printf("%d ", sol[i][j]);
-        putchar('\n');
-    }
+    int choice;
+    do {
+        printf("=== 2D Maze Pathfinding Workbench ===\n");
+        printf("1. Enter Custom Maze Grid and Find Path\n");
+        printf("0. Exit\n");
+        printf("Enter choice: ");
+        if (scanf("%d", &choice) != 1) {
+            clear_input();
+            choice = -1;
+            continue;
+        }
+        clear_input();
+        switch (choice) {
+            case 1: {
+                int r, c;
+                printf("Enter dimensions R and C (<= %d): ", MAX_DIM);
+                if (scanf("%d %d", &r, &c) == 2 && r > 0 && c > 0 && r <= MAX_DIM && c <= MAX_DIM) {
+                    R = r; C = c;
+                    printf("Enter %d x %d maze (1: open, 0: wall):\n", R, C);
+                    for (int i = 0; i < R; i++) {
+                        for (int j = 0; j < C; j++) {
+                            scanf("%d", &maze[i][j]);
+                            path_sol[i][j] = 0;
+                        }
+                    }
+                    clear_input();
+                    if (solve_maze_rec(0, 0)) {
+                        printf("Path from (0,0) to (%d,%d) found!\n", R - 1, C - 1);
+                        for (int i = 0; i < R; i++) {
+                            for (int j = 0; j < C; j++) {
+                                if (path_sol[i][j] == 1) printf("[*] ");
+                                else if (maze[i][j] == 0) printf("[#] ");
+                                else printf("[.] ");
+                            }
+                            putchar('\n');
+                        }
+                    } else {
+                        printf("No path exists through the maze.\n");
+                    }
+                } else {
+                    clear_input();
+                }
+                break;
+            }
+            case 0:
+                printf("Exiting suite.\n");
+                break;
+            default:
+                printf("Invalid option.\n");
+                break;
+        }
+    } while (choice != 0);
     return 0;
 }
 ```

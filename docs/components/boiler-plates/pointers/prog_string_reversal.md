@@ -1,11 +1,11 @@
 # prog_string_reversal
 > **Domain:** `boiler-plates` | **Subcategory:** `pointers` | **Type:** `program`
 ## Overview
-Complete string reversal program using two pointers
+Interactive in-place pointer-based string reversal and palindrome verification
 
 ## Signature
 ```c
-int main(void)
+int main(void);
 ```
 
 ## Complexity Analysis
@@ -21,25 +21,70 @@ int main(void)
 ```c
 #include <stdio.h>
 #include <string.h>
+#include <ctype.h>
 
-void reverse_string(char* str) {
-    if (!str) return;
-    char* start = str;
-    char* end = str + strlen(str) - 1;
+static void reverse_in_place(char* start, char* end) {
     while (start < end) {
-        char temp = *start;
-        *start = *end;
-        *end = temp;
-        start++;
-        end--;
+        char tmp = *start;
+        *start++ = *end;
+        *end-- = tmp;
     }
 }
 
+static int is_palindrome(const char* s) {
+    const char* left = s;
+    const char* right = s + strlen(s) - 1;
+    while (left < right) {
+        while (left < right && !isalnum((unsigned char)*left)) left++;
+        while (left < right && !isalnum((unsigned char)*right)) right--;
+        if (tolower((unsigned char)*left) != tolower((unsigned char)*right)) return 0;
+        left++;
+        right--;
+    }
+    return 1;
+}
+
+static void clear_input(void) {
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF);
+}
+
 int main(void) {
-    char text[] = "Modern C Language";
-    printf("Original: %s\n", text);
-    reverse_string(text);
-    printf("Reversed: %s\n", text);
+    char buffer[256];
+    int choice;
+
+    do {
+        printf("\n=== POINTER STRING WORKBENCH ===\n");
+        printf("1. Reverse String In-Place\n");
+        printf("2. Check Alphanumeric Palindrome\n");
+        printf("0. Exit\n");
+        printf("Select option: ");
+        if (scanf("%d", &choice) != 1) {
+            clear_input();
+            continue;
+        }
+        clear_input();
+
+        if (choice == 1) {
+            printf("Enter text to reverse: ");
+            if (fgets(buffer, sizeof(buffer), stdin)) {
+                buffer[strcspn(buffer, "\r\n")] = '\0';
+                int len = (int)strlen(buffer);
+                if (len > 0) {
+                    reverse_in_place(buffer, buffer + len - 1);
+                    printf("Reversed: %s\n", buffer);
+                }
+            }
+        } else if (choice == 2) {
+            printf("Enter text to test: ");
+            if (fgets(buffer, sizeof(buffer), stdin)) {
+                buffer[strcspn(buffer, "\r\n")] = '\0';
+                printf("Result: \"%s\" is %s\n",
+                       buffer, is_palindrome(buffer) ? "a VALID PALINDROME" : "NOT a palindrome");
+            }
+        }
+    } while (choice != 0);
+
     return 0;
 }
 ```

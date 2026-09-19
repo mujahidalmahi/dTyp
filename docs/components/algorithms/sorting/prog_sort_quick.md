@@ -1,11 +1,11 @@
 # prog_sort_quick
 > **Domain:** `algorithms` | **Subcategory:** `sorting` | **Type:** `program`
 ## Overview
-Complete Quick Sort program with Lomuto partitioning
+Complete interactive program executing Quick Sort with Lomuto and Hoare partitions
 
 ## Signature
 ```c
-int main(void)
+int main(void);
 ```
 
 ## Complexity Analysis
@@ -21,37 +21,141 @@ int main(void)
 ```c
 #include <stdio.h>
 
-int partition(int* arr, int low, int high) {
+#define MAX_N 500
+
+static void clear_input(void) {
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF);
+}
+
+static void print_array(const int* arr, int n) {
+    printf("Array [%d elements]: ", n);
+    for (int i = 0; i < n; i++) printf("%d ", arr[i]);
+    putchar('\n');
+}
+
+static int lomuto_partition(int* arr, int low, int high, int* comps, int* swaps) {
     int pivot = arr[high];
     int i = low - 1;
     for (int j = low; j < high; j++) {
+        (*comps)++;
         if (arr[j] <= pivot) {
             i++;
-            int t = arr[i]; arr[i] = arr[j]; arr[j] = t;
+            int tmp = arr[i]; arr[i] = arr[j]; arr[j] = tmp;
+            (*swaps)++;
         }
     }
-    int t = arr[i + 1]; arr[i + 1] = arr[high]; arr[high] = t;
+    int tmp = arr[i + 1]; arr[i + 1] = arr[high]; arr[high] = tmp;
+    (*swaps)++;
     return i + 1;
 }
 
-void quick_sort(int* arr, int low, int high) {
+static void quick_sort_lomuto(int* arr, int low, int high, int* comps, int* swaps) {
     if (low < high) {
-        int pi = partition(arr, low, high);
-        quick_sort(arr, low, pi - 1);
-        quick_sort(arr, pi + 1, high);
+        int pi = lomuto_partition(arr, low, high, comps, swaps);
+        quick_sort_lomuto(arr, low, pi - 1, comps, swaps);
+        quick_sort_lomuto(arr, pi + 1, high, comps, swaps);
+    }
+}
+
+static int hoare_partition(int* arr, int low, int high, int* comps, int* swaps) {
+    int pivot = arr[low];
+    int i = low - 1;
+    int j = high + 1;
+    while (1) {
+        do { i++; (*comps)++; } while (arr[i] < pivot);
+        do { j--; (*comps)++; } while (arr[j] > pivot);
+        if (i >= j) return j;
+        int tmp = arr[i]; arr[i] = arr[j]; arr[j] = tmp;
+        (*swaps)++;
+    }
+}
+
+static void quick_sort_hoare(int* arr, int low, int high, int* comps, int* swaps) {
+    if (low < high) {
+        int pi = hoare_partition(arr, low, high, comps, swaps);
+        quick_sort_hoare(arr, low, pi, comps, swaps);
+        quick_sort_hoare(arr, pi + 1, high, comps, swaps);
     }
 }
 
 int main(void) {
-    int arr[] = {10, 80, 30, 90, 40, 50, 70};
-    int n = sizeof(arr) / sizeof(arr[0]);
-
-    quick_sort(arr, 0, n - 1);
-
-    printf("Quick Sorted: ");
-    for (int i = 0; i < n; i++) printf("%d ", arr[i]);
-    putchar('\n');
-
+    int choice;
+    int n = 0;
+    int arr[MAX_N];
+    do {
+        printf("=== Quick Sort Workbench ===\n");
+        printf("1. Enter Custom Array\n");
+        printf("2. Sort with Lomuto Partitioning\n");
+        printf("3. Sort with Hoare Partitioning\n");
+        printf("4. Sort Descending Order\n");
+        printf("0. Exit\n");
+        printf("Enter choice: ");
+        if (scanf("%d", &choice) != 1) {
+            clear_input();
+            choice = -1;
+            continue;
+        }
+        clear_input();
+        switch (choice) {
+            case 1: {
+                printf("Enter N (<= %d): ", MAX_N);
+                if (scanf("%d", &n) == 1 && n > 0 && n <= MAX_N) {
+                    printf("Enter %d elements: ", n);
+                    for (int i = 0; i < n; i++) scanf("%d", &arr[i]);
+                    clear_input();
+                    print_array(arr, n);
+                } else {
+                    clear_input();
+                }
+                break;
+            }
+            case 2: {
+                if (n == 0) {
+                    printf("Enter an array first.\n");
+                    break;
+                }
+                int comps = 0, swaps = 0;
+                quick_sort_lomuto(arr, 0, n - 1, &comps, &swaps);
+                printf("Sorted (Lomuto): ");
+                print_array(arr, n);
+                printf("Comparisons: %d | Swaps: %d\n", comps, swaps);
+                break;
+            }
+            case 3: {
+                if (n == 0) {
+                    printf("Enter an array first.\n");
+                    break;
+                }
+                int comps = 0, swaps = 0;
+                quick_sort_hoare(arr, 0, n - 1, &comps, &swaps);
+                printf("Sorted (Hoare): ");
+                print_array(arr, n);
+                printf("Comparisons: %d | Swaps: %d\n", comps, swaps);
+                break;
+            }
+            case 4: {
+                if (n == 0) {
+                    printf("Enter an array first.\n");
+                    break;
+                }
+                int comps = 0, swaps = 0;
+                quick_sort_lomuto(arr, 0, n - 1, &comps, &swaps);
+                for (int i = 0; i < n / 2; i++) {
+                    int tmp = arr[i]; arr[i] = arr[n - 1 - i]; arr[n - 1 - i] = tmp;
+                }
+                printf("Descending: ");
+                print_array(arr, n);
+                break;
+            }
+            case 0:
+                printf("Exiting suite.\n");
+                break;
+            default:
+                printf("Invalid option.\n");
+                break;
+        }
+    } while (choice != 0);
     return 0;
 }
 ```

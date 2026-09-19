@@ -1,7 +1,7 @@
 # proj_math_evaluator
 > **Domain:** `projects` | **Subcategory:** `parsers-compilers` | **Type:** `program`
 ## Overview
-Evaluates mathematical expressions using Dijkstra's Shunting-yard algorithm and RPN stack
+Interactive mathematical expression evaluator using Shunting-Yard and RPN stack
 
 ## Signature
 ```c
@@ -20,59 +20,108 @@ int main(void);
 ## Implementation
 ```c
 #include <stdio.h>
-#include <stdlib.h>
-#include <ctype.h>
+#include <string.h>
 
-int precedence(char op) {
+#define MAX_EXPR 256
+
+static void clear_input(void) {
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF);
+}
+
+static int precedence(char op) {
     if (op == '+' || op == '-') return 1;
     if (op == '*' || op == '/') return 2;
     return 0;
 }
 
-int apply_op(int a, int b, char op) {
-    if (op == '+') return a + b;
-    if (op == '-') return a - b;
-    if (op == '*') return a * b;
-    if (op == '/' && b != 0) return a / b;
-    return 0;
+static double apply_op(double a, double b, char op) {
+    switch (op) {
+        case '+': return a + b;
+        case '-': return a - b;
+        case '*': return a * b;
+        case '/': return (b != 0) ? a / b : 0.0;
+        default: return 0.0;
+    }
 }
 
-int evaluate_expr(const char* expr) {
-    int vals[50]; int val_top = -1;
-    char ops[50]; int op_top = -1;
-    for (int i = 0; expr[i]; i++) {
+static double evaluate_expr(const char* expr) {
+    double values[MAX_EXPR];
+    int v_top = -1;
+    char ops[MAX_EXPR];
+    int o_top = -1;
+    int len = (int)strlen(expr);
+    for (int i = 0; i < len; i++) {
         if (expr[i] == ' ') continue;
-        if (isdigit(expr[i])) {
-            int val = 0;
-            while (isdigit(expr[i])) val = val * 10 + (expr[i++] - '0');
+        if (expr[i] >= '0' && expr[i] <= '9') {
+            double val = 0;
+            while (i < len && expr[i] >= '0' && expr[i] <= '9') {
+                val = val * 10 + (expr[i++] - '0');
+            }
             i--;
-            vals[++val_top] = val;
+            values[++v_top] = val;
         } else if (expr[i] == '(') {
-            ops[++op_top] = '(';
+            ops[++o_top] = expr[i];
         } else if (expr[i] == ')') {
-            while (op_top >= 0 && ops[op_top] != '(') {
-                int v2 = vals[val_top--]; int v1 = vals[val_top--];
-                vals[++val_top] = apply_op(v1, v2, ops[op_top--]);
+            while (o_top >= 0 && ops[o_top] != '(') {
+                double v2 = values[v_top--];
+                double v1 = values[v_top--];
+                char op = ops[o_top--];
+                values[++v_top] = apply_op(v1, v2, op);
             }
-            if (op_top >= 0) op_top--;
+            if (o_top >= 0) o_top--;
         } else {
-            while (op_top >= 0 && precedence(ops[op_top]) >= precedence(expr[i])) {
-                int v2 = vals[val_top--]; int v1 = vals[val_top--];
-                vals[++val_top] = apply_op(v1, v2, ops[op_top--]);
+            while (o_top >= 0 && precedence(ops[o_top]) >= precedence(expr[i])) {
+                double v2 = values[v_top--];
+                double v1 = values[v_top--];
+                char op = ops[o_top--];
+                values[++v_top] = apply_op(v1, v2, op);
             }
-            ops[++op_top] = expr[i];
+            ops[++o_top] = expr[i];
         }
     }
-    while (op_top >= 0) {
-        int v2 = vals[val_top--]; int v1 = vals[val_top--];
-        vals[++val_top] = apply_op(v1, v2, ops[op_top--]);
+    while (o_top >= 0) {
+        double v2 = values[v_top--];
+        double v1 = values[v_top--];
+        char op = ops[o_top--];
+        values[++v_top] = apply_op(v1, v2, op);
     }
-    return vals[val_top];
+    return (v_top >= 0) ? values[v_top] : 0.0;
 }
 
 int main(void) {
-    const char* expr = "3 + 5 * (2 - 8)";
-    printf("%s = %d\n", expr, evaluate_expr(expr));
+    int choice;
+    do {
+        printf("=== Mathematical Expression Evaluator ===\n");
+        printf("1. Evaluate Arithmetic Expression\n");
+        printf("0. Exit\n");
+        printf("Enter choice: ");
+        if (scanf("%d", &choice) != 1) {
+            clear_input();
+            choice = -1;
+            continue;
+        }
+        clear_input();
+        switch (choice) {
+            case 1: {
+                char expr[MAX_EXPR];
+                printf("Enter expression (e.g. 3 + 5 * (2 - 8)): ");
+                if (scanf("%255[^\n]", expr) == 1) {
+                    clear_input();
+                    printf("Result: %.4f\n", evaluate_expr(expr));
+                } else {
+                    clear_input();
+                }
+                break;
+            }
+            case 0:
+                printf("Exiting evaluator.\n");
+                break;
+            default:
+                printf("Invalid option.\n");
+                break;
+        }
+    } while (choice != 0);
     return 0;
 }
 ```
