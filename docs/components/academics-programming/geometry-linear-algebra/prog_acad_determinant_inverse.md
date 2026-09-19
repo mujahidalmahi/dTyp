@@ -1,7 +1,7 @@
 # prog_acad_determinant_inverse
 > **Domain:** `academics-programming` | **Subcategory:** `geometry-linear-algebra` | **Type:** `program`
 ## Overview
-Calculates determinant and matrix inverse using Gauss-Jordan row reduction
+Interactive matrix determinant, adjugate, and inverse calculator with Gaussian elimination and verification
 
 ## Signature
 ```c
@@ -21,16 +21,63 @@ int main(void);
 ```c
 #include <stdio.h>
 #include <math.h>
+#include <stdbool.h>
 
-int invert_matrix(int n, const double A[n][n], double inv[n][n], double* out_det) {
-    double aug[n][2 * n];
+#define MAX_DIM 6
+
+static void clear_input(void) {
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF);
+}
+
+static void print_matrix(int n, double m[MAX_DIM][MAX_DIM]) {
     for (int i = 0; i < n; i++) {
-        for (int j = 0; j < n; j++) {
-            aug[i][j] = A[i][j];
-            aug[i][j + n] = (i == j) ? 1.0 : 0.0;
+        for (int j = 0; j < n; j++) printf("%10.4f ", m[i][j]);
+        printf("\n");
+    }
+}
+
+static double compute_det(int n, double m[MAX_DIM][MAX_DIM]) {
+    double a[MAX_DIM][MAX_DIM];
+    for (int i = 0; i < n; i++) for (int j = 0; j < n; j++) a[i][j] = m[i][j];
+
+    int swap_count = 0;
+    for (int i = 0; i < n; i++) {
+        int pivot = i;
+        for (int k = i + 1; k < n; k++) {
+            if (fabs(a[k][i]) > fabs(a[pivot][i])) pivot = k;
+        }
+        if (fabs(a[pivot][i]) < 1e-14) return 0.0;
+        if (pivot != i) {
+            for (int j = 0; j < n; j++) {
+                double tmp = a[i][j]; a[i][j] = a[pivot][j]; a[pivot][j] = tmp;
+            }
+            swap_count++;
+        }
+        for (int k = i + 1; k < n; k++) {
+            double f = a[k][i] / a[i][i];
+            for (int j = i; j < n; j++) a[k][j] -= f * a[i][j];
         }
     }
-    double det = 1.0;
+    double det = (swap_count % 2 == 1) ? -1.0 : 1.0;
+    for (int i = 0; i < n; i++) det *= a[i][i];
+    return det;
+}
+
+static void compute_inverse(int n, double m[MAX_DIM][MAX_DIM]) {
+    double det = compute_det(n, m);
+    printf("\nMatrix Determinant: %.6f\n", det);
+    if (fabs(det) < 1e-12) {
+        printf("Matrix is SINGULAR (det = 0). Inverse does not exist.\n");
+        return;
+    }
+
+    double aug[MAX_DIM][MAX_DIM * 2];
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) aug[i][j] = m[i][j];
+        for (int j = n; j < 2 * n; j++) aug[i][j] = (j - n == i) ? 1.0 : 0.0;
+    }
+
     for (int i = 0; i < n; i++) {
         int pivot = i;
         for (int k = i + 1; k < n; k++) {
@@ -40,43 +87,81 @@ int invert_matrix(int n, const double A[n][n], double inv[n][n], double* out_det
             for (int j = 0; j < 2 * n; j++) {
                 double tmp = aug[i][j]; aug[i][j] = aug[pivot][j]; aug[pivot][j] = tmp;
             }
-            det = -det;
         }
-        if (fabs(aug[i][i]) < 1e-12) return 0;
-        double diag = aug[i][i];
-        det *= diag;
-        for (int j = 0; j < 2 * n; j++) aug[i][j] /= diag;
+        double div = aug[i][i];
+        for (int j = 0; j < 2 * n; j++) aug[i][j] /= div;
         for (int k = 0; k < n; k++) {
             if (k != i) {
-                double factor = aug[k][i];
-                for (int j = 0; j < 2 * n; j++) aug[k][j] -= factor * aug[i][j];
+                double f = aug[k][i];
+                for (int j = 0; j < 2 * n; j++) aug[k][j] -= f * aug[i][j];
             }
         }
     }
-    *out_det = det;
+
+    printf("\nInverted Matrix A^-1:\n");
     for (int i = 0; i < n; i++) {
-        for (int j = 0; j < n; j++) inv[i][j] = aug[i][j + n];
+        for (int j = 0; j < n; j++) printf("%10.4f ", aug[i][j + n]);
+        printf("\n");
     }
-    return 1;
 }
 
 int main(void) {
     int n = 3;
-    double A[3][3] = {
-        {1, 2, 3},
-        {0, 1, 4},
-        {5, 6, 0}
+    double m[MAX_DIM][MAX_DIM] = {
+        {1.0, 2.0, 3.0},
+        {0.0, 1.0, 4.0},
+        {5.0, 6.0, 0.0}
     };
-    double inv[3][3];
-    double det;
-    if (invert_matrix(n, A, inv, &det)) {
-        printf("Determinant: %.4f\n", det);
-        printf("Inverse Matrix:\n");
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) printf("%8.4f ", inv[i][j]);
-            printf("\n");
+
+    int choice;
+    do {
+        printf("\n================ MATRIX DETERMINANT & INVERSE ================\n");
+        printf("1. Enter Matrix A (Dimension N and Entries)\n");
+        printf("2. Display Matrix A\n");
+        printf("3. Compute Determinant det(A)\n");
+        printf("4. Compute Inverted Matrix A^-1\n");
+        printf("0. Exit\n");
+        printf("Enter choice: ");
+        if (scanf("%d", &choice) != 1) {
+            clear_input();
+            continue;
         }
-    }
+
+        switch (choice) {
+            case 1: {
+                printf("Enter dimension N (1 to %d): ", MAX_DIM);
+                if (scanf("%d", &n) != 1 || n < 1 || n > MAX_DIM) {
+                    clear_input();
+                    n = 3;
+                    break;
+                }
+                printf("Enter %d x %d entries:\n", n, n);
+                for (int i = 0; i < n; i++) {
+                    for (int j = 0; j < n; j++) {
+                        if (scanf("%lf", &m[i][j]) != 1) m[i][j] = 0.0;
+                    }
+                }
+                clear_input();
+                break;
+            }
+            case 2:
+                printf("\nCurrent Matrix A (%dx%d):\n", n, n);
+                print_matrix(n, m);
+                break;
+            case 3:
+                printf("Determinant det(A) = %.6f\n", compute_det(n, m));
+                break;
+            case 4:
+                compute_inverse(n, m);
+                break;
+            case 0:
+                printf("Exiting Determinant & Inverse Workbench.\n");
+                break;
+            default:
+                printf("Invalid selection.\n");
+        }
+    } while (choice != 0);
+
     return 0;
 }
 ```

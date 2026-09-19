@@ -31,8 +31,8 @@
       "data-structures>separate-components>arrays>1d-array>reverse>array_1d_reverse()",
       "reverseArray1D"
     ],
-    "createdAt": "2026-09-19T08:12:29.906Z",
-    "updatedAt": "2026-09-19T08:12:29.906Z"
+    "createdAt": "2026-09-19T09:27:25.416Z",
+    "updatedAt": "2026-09-19T09:27:25.416Z"
   },
   {
     "id": "data-structures.separate-components.arrays.1d-array.rotate",
@@ -66,8 +66,8 @@
       "data-structures>separate-components>arrays>1d-array>rotate>array_1d_rotate()",
       "rotateArray1D"
     ],
-    "createdAt": "2026-09-19T08:12:29.906Z",
-    "updatedAt": "2026-09-19T08:12:29.906Z"
+    "createdAt": "2026-09-19T09:27:25.416Z",
+    "updatedAt": "2026-09-19T09:27:25.416Z"
   },
   {
     "id": "data-structures.separate-components.arrays.1d-array.binary-search",
@@ -102,8 +102,8 @@
       "data-structures>separate-components>arrays>1d-array>binary-search>array_1d_binary_search()",
       "binarySearch1D"
     ],
-    "createdAt": "2026-09-19T08:12:29.906Z",
-    "updatedAt": "2026-09-19T08:12:29.906Z"
+    "createdAt": "2026-09-19T09:27:25.416Z",
+    "updatedAt": "2026-09-19T09:27:25.416Z"
   },
   {
     "id": "data-structures.separate-components.arrays.1d-array.min-max",
@@ -138,8 +138,8 @@
       "data-structures>separate-components>arrays>1d-array>min-max>array_1d_min_max()",
       "minMaxArray1D"
     ],
-    "createdAt": "2026-09-19T08:12:29.906Z",
-    "updatedAt": "2026-09-19T08:12:29.906Z"
+    "createdAt": "2026-09-19T09:27:25.416Z",
+    "updatedAt": "2026-09-19T09:27:25.416Z"
   },
   {
     "id": "data-structures.separate-components.arrays.2d-array.matrix-struct",
@@ -174,8 +174,8 @@
       "data-structures>separate-components>arrays>2d-array>matrix-struct>Matrix2D()",
       "matrix_2d_struct"
     ],
-    "createdAt": "2026-09-19T08:12:29.906Z",
-    "updatedAt": "2026-09-19T08:12:29.906Z"
+    "createdAt": "2026-09-19T09:27:25.416Z",
+    "updatedAt": "2026-09-19T09:27:25.416Z"
   },
   {
     "id": "data-structures.separate-components.arrays.2d-array.alloc",
@@ -211,8 +211,8 @@
       "data-structures>separate-components>arrays>2d-array>alloc>matrix_2d_alloc()",
       "allocMatrix2D"
     ],
-    "createdAt": "2026-09-19T08:12:29.906Z",
-    "updatedAt": "2026-09-19T08:12:29.906Z"
+    "createdAt": "2026-09-19T09:27:25.416Z",
+    "updatedAt": "2026-09-19T09:27:25.416Z"
   },
   {
     "id": "data-structures.separate-components.arrays.2d-array.free",
@@ -248,8 +248,8 @@
       "data-structures>separate-components>arrays>2d-array>free>matrix_2d_free()",
       "freeMatrix2D"
     ],
-    "createdAt": "2026-09-19T08:12:29.906Z",
-    "updatedAt": "2026-09-19T08:12:29.906Z"
+    "createdAt": "2026-09-19T09:27:25.416Z",
+    "updatedAt": "2026-09-19T09:27:25.416Z"
   },
   {
     "id": "data-structures.separate-components.arrays.2d-array.transpose",
@@ -286,8 +286,8 @@
       "data-structures>separate-components>arrays>2d-array>transpose>matrix_2d_transpose()",
       "transposeMatrix2D"
     ],
-    "createdAt": "2026-09-19T08:12:29.906Z",
-    "updatedAt": "2026-09-19T08:12:29.906Z"
+    "createdAt": "2026-09-19T09:27:25.416Z",
+    "updatedAt": "2026-09-19T09:27:25.416Z"
   },
   {
     "id": "data-structures.separate-components.arrays.3d-array.tensor-struct",
@@ -321,8 +321,8 @@
       "data-structures>separate-components>arrays>3d-array>tensor-struct>Tensor3D()",
       "tensor_3d_struct"
     ],
-    "createdAt": "2026-09-19T08:12:29.906Z",
-    "updatedAt": "2026-09-19T08:12:29.906Z"
+    "createdAt": "2026-09-19T09:27:25.416Z",
+    "updatedAt": "2026-09-19T09:27:25.416Z"
   },
   {
     "id": "data-structures.separate-components.arrays.3d-array.alloc",
@@ -358,8 +358,8 @@
       "data-structures>separate-components>arrays>3d-array>alloc>tensor_3d_alloc()",
       "allocTensor3D"
     ],
-    "createdAt": "2026-09-19T08:12:29.908Z",
-    "updatedAt": "2026-09-19T08:12:29.908Z"
+    "createdAt": "2026-09-19T09:27:25.416Z",
+    "updatedAt": "2026-09-19T09:27:25.416Z"
   },
   {
     "id": "data-structures.separate-components.arrays.3d-array.get-set",
@@ -395,8 +395,8 @@
       "data-structures>separate-components>arrays>3d-array>get-set>tensor_3d_set()",
       "setTensor3D"
     ],
-    "createdAt": "2026-09-19T08:12:29.908Z",
-    "updatedAt": "2026-09-19T08:12:29.908Z"
+    "createdAt": "2026-09-19T09:27:25.416Z",
+    "updatedAt": "2026-09-19T09:27:25.416Z"
   },
   {
     "id": "data-structures.separate-components.arrays.3d-array.free",
@@ -432,8 +432,8 @@
       "data-structures>separate-components>arrays>3d-array>free>tensor_3d_free()",
       "freeTensor3D"
     ],
-    "createdAt": "2026-09-19T08:12:29.908Z",
-    "updatedAt": "2026-09-19T08:12:29.908Z"
+    "createdAt": "2026-09-19T09:27:25.416Z",
+    "updatedAt": "2026-09-19T09:27:25.416Z"
   },
   {
     "id": "data-structures.separate-components.arrays.dynamic-array.vector-struct",
@@ -467,8 +467,8 @@
       "data-structures>separate-components>arrays>dynamic-array>vector-struct>Vector()",
       "vector_struct"
     ],
-    "createdAt": "2026-09-19T08:12:29.908Z",
-    "updatedAt": "2026-09-19T08:12:29.908Z"
+    "createdAt": "2026-09-19T09:27:25.416Z",
+    "updatedAt": "2026-09-19T09:27:25.416Z"
   },
   {
     "id": "data-structures.separate-components.arrays.dynamic-array.init",
@@ -504,8 +504,8 @@
       "data-structures>separate-components>arrays>dynamic-array>init>vector_init()",
       "vectorInit"
     ],
-    "createdAt": "2026-09-19T08:12:29.908Z",
-    "updatedAt": "2026-09-19T08:12:29.908Z"
+    "createdAt": "2026-09-19T09:27:25.416Z",
+    "updatedAt": "2026-09-19T09:27:25.416Z"
   },
   {
     "id": "data-structures.separate-components.arrays.dynamic-array.push-back",
@@ -541,8 +541,8 @@
       "data-structures>separate-components>arrays>dynamic-array>push-back>vector_push_back()",
       "vectorPushBack"
     ],
-    "createdAt": "2026-09-19T08:12:29.909Z",
-    "updatedAt": "2026-09-19T08:12:29.909Z"
+    "createdAt": "2026-09-19T09:27:25.416Z",
+    "updatedAt": "2026-09-19T09:27:25.416Z"
   },
   {
     "id": "data-structures.separate-components.arrays.dynamic-array.pop-back",
@@ -578,8 +578,8 @@
       "data-structures>separate-components>arrays>dynamic-array>pop-back>vector_pop_back()",
       "vectorPopBack"
     ],
-    "createdAt": "2026-09-19T08:12:29.909Z",
-    "updatedAt": "2026-09-19T08:12:29.909Z"
+    "createdAt": "2026-09-19T09:27:25.416Z",
+    "updatedAt": "2026-09-19T09:27:25.416Z"
   },
   {
     "id": "data-structures.separate-components.arrays.dynamic-array.free",
@@ -615,8 +615,8 @@
       "data-structures>separate-components>arrays>dynamic-array>free>vector_free()",
       "vectorFree"
     ],
-    "createdAt": "2026-09-19T08:12:29.909Z",
-    "updatedAt": "2026-09-19T08:12:29.909Z"
+    "createdAt": "2026-09-19T09:27:25.416Z",
+    "updatedAt": "2026-09-19T09:27:25.416Z"
   },
   {
     "id": "linkedList.node",
@@ -652,8 +652,8 @@
       "singly_node",
       "linkedList>Node()"
     ],
-    "createdAt": "2026-09-19T08:12:29.909Z",
-    "updatedAt": "2026-09-19T08:12:29.909Z"
+    "createdAt": "2026-09-19T09:27:25.416Z",
+    "updatedAt": "2026-09-19T09:27:25.416Z"
   },
   {
     "id": "linkedList.createNode",
@@ -691,8 +691,8 @@
       "create_node",
       "linkedList>createNode()"
     ],
-    "createdAt": "2026-09-19T08:12:29.909Z",
-    "updatedAt": "2026-09-19T08:12:29.909Z"
+    "createdAt": "2026-09-19T09:27:25.416Z",
+    "updatedAt": "2026-09-19T09:27:25.416Z"
   },
   {
     "id": "data-structures.separate-components.linked-lists.singly.insert-head",
@@ -730,8 +730,8 @@
       "data-structures>separate-components>linked-lists>singly>insert-head>singly_insert_head()",
       "insertHead"
     ],
-    "createdAt": "2026-09-19T08:12:29.909Z",
-    "updatedAt": "2026-09-19T08:12:29.909Z"
+    "createdAt": "2026-09-19T09:27:25.416Z",
+    "updatedAt": "2026-09-19T09:27:25.416Z"
   },
   {
     "id": "data-structures.separate-components.linked-lists.singly.insert-tail",
@@ -769,8 +769,8 @@
       "data-structures>separate-components>linked-lists>singly>insert-tail>singly_insert_tail()",
       "insertTail"
     ],
-    "createdAt": "2026-09-19T08:12:29.909Z",
-    "updatedAt": "2026-09-19T08:12:29.909Z"
+    "createdAt": "2026-09-19T09:27:25.416Z",
+    "updatedAt": "2026-09-19T09:27:25.416Z"
   },
   {
     "id": "data-structures.separate-components.linked-lists.singly.insert-after",
@@ -808,8 +808,8 @@
       "data-structures>separate-components>linked-lists>singly>insert-after>singly_insert_after()",
       "insertAfter"
     ],
-    "createdAt": "2026-09-19T08:12:29.909Z",
-    "updatedAt": "2026-09-19T08:12:29.909Z"
+    "createdAt": "2026-09-19T09:27:25.416Z",
+    "updatedAt": "2026-09-19T09:27:25.416Z"
   },
   {
     "id": "data-structures.separate-components.linked-lists.singly.insert-before",
@@ -848,8 +848,8 @@
       "data-structures>separate-components>linked-lists>singly>insert-before>singly_insert_before()",
       "insertBefore"
     ],
-    "createdAt": "2026-09-19T08:12:29.909Z",
-    "updatedAt": "2026-09-19T08:12:29.909Z"
+    "createdAt": "2026-09-19T09:27:25.416Z",
+    "updatedAt": "2026-09-19T09:27:25.416Z"
   },
   {
     "id": "data-structures.separate-components.linked-lists.singly.delete-value",
@@ -886,8 +886,8 @@
       "data-structures>separate-components>linked-lists>singly>delete-value>singly_delete_value()",
       "deleteValue"
     ],
-    "createdAt": "2026-09-19T08:12:29.909Z",
-    "updatedAt": "2026-09-19T08:12:29.909Z"
+    "createdAt": "2026-09-19T09:27:25.416Z",
+    "updatedAt": "2026-09-19T09:27:25.416Z"
   },
   {
     "id": "data-structures.separate-components.linked-lists.singly.search",
@@ -923,8 +923,8 @@
       "data-structures>separate-components>linked-lists>singly>search>singly_search()",
       "searchList"
     ],
-    "createdAt": "2026-09-19T08:12:29.909Z",
-    "updatedAt": "2026-09-19T08:12:29.909Z"
+    "createdAt": "2026-09-19T09:27:25.416Z",
+    "updatedAt": "2026-09-19T09:27:25.416Z"
   },
   {
     "id": "data-structures.separate-components.linked-lists.singly.count",
@@ -960,8 +960,8 @@
       "data-structures>separate-components>linked-lists>singly>count>singly_count()",
       "countNodes"
     ],
-    "createdAt": "2026-09-19T08:12:29.909Z",
-    "updatedAt": "2026-09-19T08:12:29.909Z"
+    "createdAt": "2026-09-19T09:27:25.416Z",
+    "updatedAt": "2026-09-19T09:27:25.416Z"
   },
   {
     "id": "data-structures.separate-components.linked-lists.singly.min-max",
@@ -998,8 +998,8 @@
       "data-structures>separate-components>linked-lists>singly>min-max>singly_min_max()",
       "singlyMinMax"
     ],
-    "createdAt": "2026-09-19T08:12:29.909Z",
-    "updatedAt": "2026-09-19T08:12:29.909Z"
+    "createdAt": "2026-09-19T09:27:25.416Z",
+    "updatedAt": "2026-09-19T09:27:25.416Z"
   },
   {
     "id": "data-structures.separate-components.linked-lists.singly.free",
@@ -1035,8 +1035,8 @@
       "data-structures>separate-components>linked-lists>singly>free>singly_free()",
       "freeList"
     ],
-    "createdAt": "2026-09-19T08:12:29.909Z",
-    "updatedAt": "2026-09-19T08:12:29.909Z"
+    "createdAt": "2026-09-19T09:27:25.416Z",
+    "updatedAt": "2026-09-19T09:27:25.416Z"
   },
   {
     "id": "data-structures.separate-components.linked-lists.doubly.node",
@@ -1071,8 +1071,8 @@
       "DoublyNode",
       "doubly_node"
     ],
-    "createdAt": "2026-09-19T08:12:29.909Z",
-    "updatedAt": "2026-09-19T08:12:29.909Z"
+    "createdAt": "2026-09-19T09:27:25.416Z",
+    "updatedAt": "2026-09-19T09:27:25.416Z"
   },
   {
     "id": "data-structures.separate-components.linked-lists.doubly.create-node",
@@ -1108,8 +1108,8 @@
       "data-structures>separate-components>linked-lists>doubly>create-node>doubly_create_node()",
       "createDoublyNode"
     ],
-    "createdAt": "2026-09-19T08:12:29.909Z",
-    "updatedAt": "2026-09-19T08:12:29.909Z"
+    "createdAt": "2026-09-19T09:27:25.416Z",
+    "updatedAt": "2026-09-19T09:27:25.416Z"
   },
   {
     "id": "data-structures.separate-components.linked-lists.doubly.insert-head",
@@ -1147,8 +1147,8 @@
       "data-structures>separate-components>linked-lists>doubly>insert-head>doubly_insert_head()",
       "insertHeadDoubly"
     ],
-    "createdAt": "2026-09-19T08:12:29.909Z",
-    "updatedAt": "2026-09-19T08:12:29.909Z"
+    "createdAt": "2026-09-19T09:27:25.416Z",
+    "updatedAt": "2026-09-19T09:27:25.416Z"
   },
   {
     "id": "data-structures.separate-components.linked-lists.doubly.insert-tail",
@@ -1186,8 +1186,8 @@
       "data-structures>separate-components>linked-lists>doubly>insert-tail>doubly_insert_tail()",
       "insertTailDoubly"
     ],
-    "createdAt": "2026-09-19T08:12:29.909Z",
-    "updatedAt": "2026-09-19T08:12:29.909Z"
+    "createdAt": "2026-09-19T09:27:25.416Z",
+    "updatedAt": "2026-09-19T09:27:25.416Z"
   },
   {
     "id": "data-structures.separate-components.linked-lists.doubly.insert-after",
@@ -1225,8 +1225,8 @@
       "data-structures>separate-components>linked-lists>doubly>insert-after>doubly_insert_after()",
       "insertAfterDoubly"
     ],
-    "createdAt": "2026-09-19T08:12:29.909Z",
-    "updatedAt": "2026-09-19T08:12:29.909Z"
+    "createdAt": "2026-09-19T09:27:25.416Z",
+    "updatedAt": "2026-09-19T09:27:25.416Z"
   },
   {
     "id": "data-structures.separate-components.linked-lists.doubly.insert-before",
@@ -1265,8 +1265,8 @@
       "data-structures>separate-components>linked-lists>doubly>insert-before>doubly_insert_before()",
       "insertBeforeDoubly"
     ],
-    "createdAt": "2026-09-19T08:12:29.909Z",
-    "updatedAt": "2026-09-19T08:12:29.909Z"
+    "createdAt": "2026-09-19T09:27:25.416Z",
+    "updatedAt": "2026-09-19T09:27:25.416Z"
   },
   {
     "id": "data-structures.separate-components.linked-lists.doubly.delete-node",
@@ -1302,8 +1302,8 @@
       "data-structures>separate-components>linked-lists>doubly>delete-node>doubly_delete_node()",
       "deleteDoublyNode"
     ],
-    "createdAt": "2026-09-19T08:12:29.909Z",
-    "updatedAt": "2026-09-19T08:12:29.909Z"
+    "createdAt": "2026-09-19T09:27:25.416Z",
+    "updatedAt": "2026-09-19T09:27:25.416Z"
   },
   {
     "id": "data-structures.separate-components.linked-lists.doubly.free",
@@ -1339,8 +1339,8 @@
       "data-structures>separate-components>linked-lists>doubly>free>doubly_free()",
       "freeDoublyList"
     ],
-    "createdAt": "2026-09-19T08:12:29.909Z",
-    "updatedAt": "2026-09-19T08:12:29.909Z"
+    "createdAt": "2026-09-19T09:27:25.416Z",
+    "updatedAt": "2026-09-19T09:27:25.416Z"
   },
   {
     "id": "data-structures.separate-components.linked-lists.singly-circular.node",
@@ -1375,8 +1375,8 @@
       "CircularNode",
       "sc_node"
     ],
-    "createdAt": "2026-09-19T08:12:29.909Z",
-    "updatedAt": "2026-09-19T08:12:29.909Z"
+    "createdAt": "2026-09-19T09:27:25.416Z",
+    "updatedAt": "2026-09-19T09:27:25.416Z"
   },
   {
     "id": "data-structures.separate-components.linked-lists.singly-circular.insert-end",
@@ -1412,8 +1412,8 @@
       "data-structures>separate-components>linked-lists>singly-circular>insert-end>sc_insert_end()",
       "insertCircularEnd"
     ],
-    "createdAt": "2026-09-19T08:12:29.909Z",
-    "updatedAt": "2026-09-19T08:12:29.909Z"
+    "createdAt": "2026-09-19T09:27:25.416Z",
+    "updatedAt": "2026-09-19T09:27:25.416Z"
   },
   {
     "id": "data-structures.separate-components.linked-lists.singly-circular.free",
@@ -1449,8 +1449,8 @@
       "data-structures>separate-components>linked-lists>singly-circular>free>sc_free()",
       "freeCircularList"
     ],
-    "createdAt": "2026-09-19T08:12:29.909Z",
-    "updatedAt": "2026-09-19T08:12:29.909Z"
+    "createdAt": "2026-09-19T09:27:25.416Z",
+    "updatedAt": "2026-09-19T09:27:25.416Z"
   },
   {
     "id": "data-structures.separate-components.linked-lists.doubly-circular.node",
@@ -1485,8 +1485,8 @@
       "DoublyCircularNode",
       "dc_node"
     ],
-    "createdAt": "2026-09-19T08:12:29.909Z",
-    "updatedAt": "2026-09-19T08:12:29.909Z"
+    "createdAt": "2026-09-19T09:27:25.416Z",
+    "updatedAt": "2026-09-19T09:27:25.416Z"
   },
   {
     "id": "data-structures.separate-components.linked-lists.doubly-circular.insert-end",
@@ -1522,8 +1522,8 @@
       "data-structures>separate-components>linked-lists>doubly-circular>insert-end>dc_insert_end()",
       "insertDoublyCircularEnd"
     ],
-    "createdAt": "2026-09-19T08:12:29.909Z",
-    "updatedAt": "2026-09-19T08:12:29.909Z"
+    "createdAt": "2026-09-19T09:27:25.416Z",
+    "updatedAt": "2026-09-19T09:27:25.416Z"
   },
   {
     "id": "data-structures.separate-components.linked-lists.doubly-circular.free",
@@ -1559,8 +1559,8 @@
       "data-structures>separate-components>linked-lists>doubly-circular>free>dc_free()",
       "freeDoublyCircularList"
     ],
-    "createdAt": "2026-09-19T08:12:29.909Z",
-    "updatedAt": "2026-09-19T08:12:29.909Z"
+    "createdAt": "2026-09-19T09:27:25.416Z",
+    "updatedAt": "2026-09-19T09:27:25.416Z"
   },
   {
     "id": "data-structures.separate-components.stacks.array-stack.struct",
@@ -1594,8 +1594,8 @@
       "data-structures>separate-components>stacks>array-stack>struct>ArrayStack()",
       "array_stack_struct"
     ],
-    "createdAt": "2026-09-19T08:12:29.909Z",
-    "updatedAt": "2026-09-19T08:12:29.909Z"
+    "createdAt": "2026-09-19T09:27:25.416Z",
+    "updatedAt": "2026-09-19T09:27:25.416Z"
   },
   {
     "id": "data-structures.separate-components.stacks.array-stack.push",
@@ -1630,8 +1630,8 @@
       "data-structures>separate-components>stacks>array-stack>push>array_stack_push()",
       "pushStack"
     ],
-    "createdAt": "2026-09-19T08:12:29.909Z",
-    "updatedAt": "2026-09-19T08:12:29.909Z"
+    "createdAt": "2026-09-19T09:27:25.416Z",
+    "updatedAt": "2026-09-19T09:27:25.416Z"
   },
   {
     "id": "data-structures.separate-components.stacks.array-stack.pop",
@@ -1666,8 +1666,8 @@
       "data-structures>separate-components>stacks>array-stack>pop>array_stack_pop()",
       "popStack"
     ],
-    "createdAt": "2026-09-19T08:12:29.909Z",
-    "updatedAt": "2026-09-19T08:12:29.909Z"
+    "createdAt": "2026-09-19T09:27:25.416Z",
+    "updatedAt": "2026-09-19T09:27:25.416Z"
   },
   {
     "id": "data-structures.separate-components.stacks.linked-stack.node",
@@ -1702,8 +1702,8 @@
       "StackNode",
       "linked_stack_node"
     ],
-    "createdAt": "2026-09-19T08:12:29.909Z",
-    "updatedAt": "2026-09-19T08:12:29.909Z"
+    "createdAt": "2026-09-19T09:27:25.416Z",
+    "updatedAt": "2026-09-19T09:27:25.416Z"
   },
   {
     "id": "data-structures.separate-components.stacks.linked-stack.push",
@@ -1739,8 +1739,8 @@
       "data-structures>separate-components>stacks>linked-stack>push>linked_stack_push()",
       "pushLinkedStack"
     ],
-    "createdAt": "2026-09-19T08:12:29.909Z",
-    "updatedAt": "2026-09-19T08:12:29.909Z"
+    "createdAt": "2026-09-19T09:27:25.416Z",
+    "updatedAt": "2026-09-19T09:27:25.416Z"
   },
   {
     "id": "data-structures.separate-components.stacks.linked-stack.pop",
@@ -1776,8 +1776,8 @@
       "data-structures>separate-components>stacks>linked-stack>pop>linked_stack_pop()",
       "popLinkedStack"
     ],
-    "createdAt": "2026-09-19T08:12:29.909Z",
-    "updatedAt": "2026-09-19T08:12:29.909Z"
+    "createdAt": "2026-09-19T09:27:25.416Z",
+    "updatedAt": "2026-09-19T09:27:25.416Z"
   },
   {
     "id": "data-structures.separate-components.stacks.monotonic-stack.next-greater",
@@ -1811,8 +1811,8 @@
       "data-structures>separate-components>stacks>monotonic-stack>next-greater>mono_stack_next_greater()",
       "nextGreaterElement"
     ],
-    "createdAt": "2026-09-19T08:12:29.909Z",
-    "updatedAt": "2026-09-19T08:12:29.909Z"
+    "createdAt": "2026-09-19T09:27:25.416Z",
+    "updatedAt": "2026-09-19T09:27:25.416Z"
   },
   {
     "id": "data-structures.separate-components.queues.linear-queue.struct",
@@ -1846,8 +1846,8 @@
       "data-structures>separate-components>queues>linear-queue>struct>LinearQueue()",
       "linear_queue_struct"
     ],
-    "createdAt": "2026-09-19T08:12:29.909Z",
-    "updatedAt": "2026-09-19T08:12:29.909Z"
+    "createdAt": "2026-09-19T09:27:25.416Z",
+    "updatedAt": "2026-09-19T09:27:25.416Z"
   },
   {
     "id": "data-structures.separate-components.queues.linear-queue.enqueue",
@@ -1882,8 +1882,8 @@
       "data-structures>separate-components>queues>linear-queue>enqueue>linear_queue_enqueue()",
       "enqueueLinear"
     ],
-    "createdAt": "2026-09-19T08:12:29.909Z",
-    "updatedAt": "2026-09-19T08:12:29.909Z"
+    "createdAt": "2026-09-19T09:27:25.416Z",
+    "updatedAt": "2026-09-19T09:27:25.416Z"
   },
   {
     "id": "data-structures.separate-components.queues.linear-queue.dequeue",
@@ -1918,8 +1918,8 @@
       "data-structures>separate-components>queues>linear-queue>dequeue>linear_queue_dequeue()",
       "dequeueLinear"
     ],
-    "createdAt": "2026-09-19T08:12:29.909Z",
-    "updatedAt": "2026-09-19T08:12:29.909Z"
+    "createdAt": "2026-09-19T09:27:25.416Z",
+    "updatedAt": "2026-09-19T09:27:25.416Z"
   },
   {
     "id": "data-structures.separate-components.queues.circular-queue.struct",
@@ -1953,8 +1953,8 @@
       "data-structures>separate-components>queues>circular-queue>struct>CircularQueue()",
       "circular_queue_struct"
     ],
-    "createdAt": "2026-09-19T08:12:29.909Z",
-    "updatedAt": "2026-09-19T08:12:29.909Z"
+    "createdAt": "2026-09-19T09:27:25.416Z",
+    "updatedAt": "2026-09-19T09:27:25.416Z"
   },
   {
     "id": "data-structures.separate-components.queues.circular-queue.enqueue",
@@ -1990,8 +1990,8 @@
       "data-structures>separate-components>queues>circular-queue>enqueue>circular_queue_enqueue()",
       "enqueueCircular"
     ],
-    "createdAt": "2026-09-19T08:12:29.909Z",
-    "updatedAt": "2026-09-19T08:12:29.909Z"
+    "createdAt": "2026-09-19T09:27:25.416Z",
+    "updatedAt": "2026-09-19T09:27:25.416Z"
   },
   {
     "id": "data-structures.separate-components.queues.circular-queue.dequeue",
@@ -2027,8 +2027,8 @@
       "data-structures>separate-components>queues>circular-queue>dequeue>circular_queue_dequeue()",
       "dequeueCircular"
     ],
-    "createdAt": "2026-09-19T08:12:29.909Z",
-    "updatedAt": "2026-09-19T08:12:29.909Z"
+    "createdAt": "2026-09-19T09:27:25.416Z",
+    "updatedAt": "2026-09-19T09:27:25.416Z"
   },
   {
     "id": "data-structures.separate-components.queues.deque.struct",
@@ -2061,8 +2061,8 @@
       "data-structures>separate-components>queues>deque>struct>Deque()",
       "deque_struct"
     ],
-    "createdAt": "2026-09-19T08:12:29.909Z",
-    "updatedAt": "2026-09-19T08:12:29.909Z"
+    "createdAt": "2026-09-19T09:27:25.416Z",
+    "updatedAt": "2026-09-19T09:27:25.416Z"
   },
   {
     "id": "data-structures.separate-components.queues.deque.push-front",
@@ -2098,8 +2098,8 @@
       "data-structures>separate-components>queues>deque>push-front>deque_push_front()",
       "pushFrontDeque"
     ],
-    "createdAt": "2026-09-19T08:12:29.909Z",
-    "updatedAt": "2026-09-19T08:12:29.909Z"
+    "createdAt": "2026-09-19T09:27:25.416Z",
+    "updatedAt": "2026-09-19T09:27:25.416Z"
   },
   {
     "id": "data-structures.separate-components.queues.deque.push-back",
@@ -2135,8 +2135,8 @@
       "data-structures>separate-components>queues>deque>push-back>deque_push_back()",
       "pushBackDeque"
     ],
-    "createdAt": "2026-09-19T08:12:29.909Z",
-    "updatedAt": "2026-09-19T08:12:29.909Z"
+    "createdAt": "2026-09-19T09:27:25.416Z",
+    "updatedAt": "2026-09-19T09:27:25.416Z"
   },
   {
     "id": "data-structures.separate-components.queues.priority-queue.struct",
@@ -2170,8 +2170,8 @@
       "data-structures>separate-components>queues>priority-queue>struct>PriorityQueue()",
       "pq_struct"
     ],
-    "createdAt": "2026-09-19T08:12:29.909Z",
-    "updatedAt": "2026-09-19T08:12:29.909Z"
+    "createdAt": "2026-09-19T09:27:25.416Z",
+    "updatedAt": "2026-09-19T09:27:25.416Z"
   },
   {
     "id": "data-structures.separate-components.queues.priority-queue.push",
@@ -2207,8 +2207,8 @@
       "data-structures>separate-components>queues>priority-queue>push>pq_push()",
       "pushPriorityQueue"
     ],
-    "createdAt": "2026-09-19T08:12:29.909Z",
-    "updatedAt": "2026-09-19T08:12:29.909Z"
+    "createdAt": "2026-09-19T09:27:25.416Z",
+    "updatedAt": "2026-09-19T09:27:25.416Z"
   },
   {
     "id": "data-structures.separate-components.queues.priority-queue.pop",
@@ -2244,8 +2244,8 @@
       "data-structures>separate-components>queues>priority-queue>pop>pq_pop()",
       "popPriorityQueue"
     ],
-    "createdAt": "2026-09-19T08:12:29.909Z",
-    "updatedAt": "2026-09-19T08:12:29.909Z"
+    "createdAt": "2026-09-19T09:27:25.416Z",
+    "updatedAt": "2026-09-19T09:27:25.416Z"
   },
   {
     "id": "data-structures.separate-components.trees.bst.node",
@@ -2280,8 +2280,8 @@
       "BSTNode",
       "bst_node"
     ],
-    "createdAt": "2026-09-19T08:12:29.909Z",
-    "updatedAt": "2026-09-19T08:12:29.909Z"
+    "createdAt": "2026-09-19T09:27:25.417Z",
+    "updatedAt": "2026-09-19T09:27:25.417Z"
   },
   {
     "id": "data-structures.separate-components.trees.bst.insert",
@@ -2317,8 +2317,8 @@
       "data-structures>separate-components>trees>bst>insert>bst_insert()",
       "insertBST"
     ],
-    "createdAt": "2026-09-19T08:12:29.909Z",
-    "updatedAt": "2026-09-19T08:12:29.909Z"
+    "createdAt": "2026-09-19T09:27:25.417Z",
+    "updatedAt": "2026-09-19T09:27:25.417Z"
   },
   {
     "id": "data-structures.separate-components.trees.bst.search",
@@ -2354,8 +2354,8 @@
       "data-structures>separate-components>trees>bst>search>bst_search()",
       "searchBST"
     ],
-    "createdAt": "2026-09-19T08:12:29.909Z",
-    "updatedAt": "2026-09-19T08:12:29.909Z"
+    "createdAt": "2026-09-19T09:27:25.417Z",
+    "updatedAt": "2026-09-19T09:27:25.417Z"
   },
   {
     "id": "data-structures.separate-components.trees.bst.free",
@@ -2391,8 +2391,8 @@
       "data-structures>separate-components>trees>bst>free>bst_free()",
       "freeBST"
     ],
-    "createdAt": "2026-09-19T08:12:29.909Z",
-    "updatedAt": "2026-09-19T08:12:29.909Z"
+    "createdAt": "2026-09-19T09:27:25.417Z",
+    "updatedAt": "2026-09-19T09:27:25.417Z"
   },
   {
     "id": "data-structures.separate-components.trees.avl.node",
@@ -2427,8 +2427,8 @@
       "AVLNode",
       "avl_node"
     ],
-    "createdAt": "2026-09-19T08:12:29.909Z",
-    "updatedAt": "2026-09-19T08:12:29.909Z"
+    "createdAt": "2026-09-19T09:27:25.417Z",
+    "updatedAt": "2026-09-19T09:27:25.417Z"
   },
   {
     "id": "data-structures.separate-components.trees.avl.insert",
@@ -2464,8 +2464,8 @@
       "data-structures>separate-components>trees>avl>insert>avl_insert()",
       "insertAVL"
     ],
-    "createdAt": "2026-09-19T08:12:29.909Z",
-    "updatedAt": "2026-09-19T08:12:29.909Z"
+    "createdAt": "2026-09-19T09:27:25.417Z",
+    "updatedAt": "2026-09-19T09:27:25.417Z"
   },
   {
     "id": "data-structures.separate-components.trees.trie.node",
@@ -2499,8 +2499,8 @@
       "data-structures>separate-components>trees>trie>node>TrieNode()",
       "trie_node_struct"
     ],
-    "createdAt": "2026-09-19T08:12:29.909Z",
-    "updatedAt": "2026-09-19T08:12:29.909Z"
+    "createdAt": "2026-09-19T09:27:25.417Z",
+    "updatedAt": "2026-09-19T09:27:25.417Z"
   },
   {
     "id": "data-structures.separate-components.trees.trie.insert",
@@ -2536,8 +2536,8 @@
       "data-structures>separate-components>trees>trie>insert>trie_insert()",
       "insertTrie"
     ],
-    "createdAt": "2026-09-19T08:12:29.909Z",
-    "updatedAt": "2026-09-19T08:12:29.909Z"
+    "createdAt": "2026-09-19T09:27:25.417Z",
+    "updatedAt": "2026-09-19T09:27:25.417Z"
   },
   {
     "id": "data-structures.separate-components.trees.trie.search",
@@ -2573,8 +2573,8 @@
       "data-structures>separate-components>trees>trie>search>trie_search()",
       "searchTrie"
     ],
-    "createdAt": "2026-09-19T08:12:29.909Z",
-    "updatedAt": "2026-09-19T08:12:29.909Z"
+    "createdAt": "2026-09-19T09:27:25.417Z",
+    "updatedAt": "2026-09-19T09:27:25.417Z"
   },
   {
     "id": "data-structures.separate-components.trees.segment-tree.struct",
@@ -2607,8 +2607,8 @@
       "data-structures>separate-components>trees>segment-tree>struct>SegTree()",
       "segtree_struct"
     ],
-    "createdAt": "2026-09-19T08:12:29.909Z",
-    "updatedAt": "2026-09-19T08:12:29.909Z"
+    "createdAt": "2026-09-19T09:27:25.417Z",
+    "updatedAt": "2026-09-19T09:27:25.417Z"
   },
   {
     "id": "data-structures.separate-components.trees.segment-tree.query",
@@ -2644,8 +2644,8 @@
       "data-structures>separate-components>trees>segment-tree>query>segtree_query_range()",
       "querySegTree"
     ],
-    "createdAt": "2026-09-19T08:12:29.909Z",
-    "updatedAt": "2026-09-19T08:12:29.909Z"
+    "createdAt": "2026-09-19T09:27:25.417Z",
+    "updatedAt": "2026-09-19T09:27:25.417Z"
   },
   {
     "id": "data-structures.separate-components.graphs.adjacency-matrix.struct",
@@ -2679,8 +2679,8 @@
       "data-structures>separate-components>graphs>adjacency-matrix>struct>GraphMat()",
       "graph_matrix_struct"
     ],
-    "createdAt": "2026-09-19T08:12:29.909Z",
-    "updatedAt": "2026-09-19T08:12:29.909Z"
+    "createdAt": "2026-09-19T09:27:25.417Z",
+    "updatedAt": "2026-09-19T09:27:25.417Z"
   },
   {
     "id": "data-structures.separate-components.graphs.adjacency-matrix.init",
@@ -2716,8 +2716,8 @@
       "data-structures>separate-components>graphs>adjacency-matrix>init>graph_matrix_init()",
       "initGraphMatrix"
     ],
-    "createdAt": "2026-09-19T08:12:29.910Z",
-    "updatedAt": "2026-09-19T08:12:29.910Z"
+    "createdAt": "2026-09-19T09:27:25.417Z",
+    "updatedAt": "2026-09-19T09:27:25.417Z"
   },
   {
     "id": "data-structures.separate-components.graphs.adjacency-matrix.add-edge",
@@ -2753,8 +2753,8 @@
       "data-structures>separate-components>graphs>adjacency-matrix>add-edge>graph_matrix_add_edge()",
       "addEdgeGraphMatrix"
     ],
-    "createdAt": "2026-09-19T08:12:29.910Z",
-    "updatedAt": "2026-09-19T08:12:29.910Z"
+    "createdAt": "2026-09-19T09:27:25.417Z",
+    "updatedAt": "2026-09-19T09:27:25.417Z"
   },
   {
     "id": "data-structures.separate-components.graphs.adjacency-list.node",
@@ -2789,8 +2789,8 @@
       "GraphAdjNode",
       "graph_adj_node"
     ],
-    "createdAt": "2026-09-19T08:12:29.910Z",
-    "updatedAt": "2026-09-19T08:12:29.910Z"
+    "createdAt": "2026-09-19T09:27:25.417Z",
+    "updatedAt": "2026-09-19T09:27:25.417Z"
   },
   {
     "id": "data-structures.separate-components.graphs.adjacency-list.struct",
@@ -2826,8 +2826,8 @@
       "data-structures>separate-components>graphs>adjacency-list>struct>GraphList()",
       "graph_list_struct"
     ],
-    "createdAt": "2026-09-19T08:12:29.910Z",
-    "updatedAt": "2026-09-19T08:12:29.910Z"
+    "createdAt": "2026-09-19T09:27:25.417Z",
+    "updatedAt": "2026-09-19T09:27:25.417Z"
   },
   {
     "id": "data-structures.separate-components.graphs.adjacency-list.add-edge",
@@ -2864,8 +2864,8 @@
       "data-structures>separate-components>graphs>adjacency-list>add-edge>graph_list_add_edge()",
       "addEdgeGraphList"
     ],
-    "createdAt": "2026-09-19T08:12:29.910Z",
-    "updatedAt": "2026-09-19T08:12:29.910Z"
+    "createdAt": "2026-09-19T09:27:25.417Z",
+    "updatedAt": "2026-09-19T09:27:25.417Z"
   },
   {
     "id": "data-structures.separate-components.graphs.dsu.struct",
@@ -2899,8 +2899,8 @@
       "data-structures>separate-components>graphs>dsu>struct>GraphDSU()",
       "graph_dsu_struct"
     ],
-    "createdAt": "2026-09-19T08:12:29.910Z",
-    "updatedAt": "2026-09-19T08:12:29.910Z"
+    "createdAt": "2026-09-19T09:27:25.417Z",
+    "updatedAt": "2026-09-19T09:27:25.417Z"
   },
   {
     "id": "data-structures.separate-components.graphs.dsu.find",
@@ -2936,8 +2936,8 @@
       "data-structures>separate-components>graphs>dsu>find>graph_dsu_find()",
       "findDSU"
     ],
-    "createdAt": "2026-09-19T08:12:29.910Z",
-    "updatedAt": "2026-09-19T08:12:29.910Z"
+    "createdAt": "2026-09-19T09:27:25.417Z",
+    "updatedAt": "2026-09-19T09:27:25.417Z"
   },
   {
     "id": "data-structures.separate-components.graphs.dsu.union",
@@ -2974,8 +2974,8 @@
       "data-structures>separate-components>graphs>dsu>union>graph_dsu_union()",
       "unionDSU"
     ],
-    "createdAt": "2026-09-19T08:12:29.910Z",
-    "updatedAt": "2026-09-19T08:12:29.910Z"
+    "createdAt": "2026-09-19T09:27:25.417Z",
+    "updatedAt": "2026-09-19T09:27:25.417Z"
   },
   {
     "id": "data-structures.separate-components.hashing.chaining.node",
@@ -3010,8 +3010,8 @@
       "HashNode",
       "hash_node_struct"
     ],
-    "createdAt": "2026-09-19T08:12:29.910Z",
-    "updatedAt": "2026-09-19T08:12:29.910Z"
+    "createdAt": "2026-09-19T09:27:25.417Z",
+    "updatedAt": "2026-09-19T09:27:25.417Z"
   },
   {
     "id": "data-structures.separate-components.hashing.chaining.struct",
@@ -3047,8 +3047,8 @@
       "data-structures>separate-components>hashing>chaining>struct>ChainHashTable()",
       "chain_table_struct"
     ],
-    "createdAt": "2026-09-19T08:12:29.910Z",
-    "updatedAt": "2026-09-19T08:12:29.910Z"
+    "createdAt": "2026-09-19T09:27:25.417Z",
+    "updatedAt": "2026-09-19T09:27:25.417Z"
   },
   {
     "id": "data-structures.separate-components.hashing.chaining.insert",
@@ -3085,8 +3085,8 @@
       "data-structures>separate-components>hashing>chaining>insert>chain_hash_insert()",
       "insertChainHash"
     ],
-    "createdAt": "2026-09-19T08:12:29.910Z",
-    "updatedAt": "2026-09-19T08:12:29.910Z"
+    "createdAt": "2026-09-19T09:27:25.417Z",
+    "updatedAt": "2026-09-19T09:27:25.417Z"
   },
   {
     "id": "data-structures.separate-components.hashing.open-addressing.struct",
@@ -3120,8 +3120,8 @@
       "data-structures>separate-components>hashing>open-addressing>struct>OpenHashTable()",
       "open_hash_table_struct"
     ],
-    "createdAt": "2026-09-19T08:12:29.910Z",
-    "updatedAt": "2026-09-19T08:12:29.910Z"
+    "createdAt": "2026-09-19T09:27:25.417Z",
+    "updatedAt": "2026-09-19T09:27:25.417Z"
   },
   {
     "id": "data-structures.separate-components.hashing.open-addressing.insert",
@@ -3157,8 +3157,8 @@
       "data-structures>separate-components>hashing>open-addressing>insert>open_hash_insert()",
       "insertOpenHash"
     ],
-    "createdAt": "2026-09-19T08:12:29.910Z",
-    "updatedAt": "2026-09-19T08:12:29.910Z"
+    "createdAt": "2026-09-19T09:27:25.417Z",
+    "updatedAt": "2026-09-19T09:27:25.417Z"
   },
   {
     "id": "data-structures.separate-components.hashing.hash-functions.djb2",
@@ -3192,8 +3192,8 @@
       "data-structures>separate-components>hashing>hash-functions>djb2>hash_djb2()",
       "djb2Hash"
     ],
-    "createdAt": "2026-09-19T08:12:29.910Z",
-    "updatedAt": "2026-09-19T08:12:29.910Z"
+    "createdAt": "2026-09-19T09:27:25.417Z",
+    "updatedAt": "2026-09-19T09:27:25.417Z"
   },
   {
     "id": "data-structures.separate-components.hashing.hash-functions.fnv1a",
@@ -3227,8 +3227,8 @@
       "data-structures>separate-components>hashing>hash-functions>fnv1a>hash_fnv1a()",
       "fnv1aHash"
     ],
-    "createdAt": "2026-09-19T08:12:29.910Z",
-    "updatedAt": "2026-09-19T08:12:29.910Z"
+    "createdAt": "2026-09-19T09:27:25.417Z",
+    "updatedAt": "2026-09-19T09:27:25.417Z"
   },
   {
     "id": "data-structures.separate-components.linked-lists.singly.insert-at-position",
@@ -3267,8 +3267,8 @@
       "data-structures>separate-components>linked-lists>singly>insert-at-position>singly_insert_at_position()",
       "insertAtPositionSingly"
     ],
-    "createdAt": "2026-09-19T08:12:29.910Z",
-    "updatedAt": "2026-09-19T08:12:29.910Z"
+    "createdAt": "2026-09-19T09:27:25.417Z",
+    "updatedAt": "2026-09-19T09:27:25.417Z"
   },
   {
     "id": "data-structures.separate-components.linked-lists.singly.insert-sorted",
@@ -3306,8 +3306,8 @@
       "data-structures>separate-components>linked-lists>singly>insert-sorted>singly_insert_sorted()",
       "insertSortedSingly"
     ],
-    "createdAt": "2026-09-19T08:12:29.910Z",
-    "updatedAt": "2026-09-19T08:12:29.910Z"
+    "createdAt": "2026-09-19T09:27:25.417Z",
+    "updatedAt": "2026-09-19T09:27:25.417Z"
   },
   {
     "id": "data-structures.separate-components.linked-lists.singly.delete-beginning",
@@ -3344,8 +3344,8 @@
       "data-structures>separate-components>linked-lists>singly>delete-beginning>singly_delete_beginning()",
       "deleteBeginningSingly"
     ],
-    "createdAt": "2026-09-19T08:12:29.910Z",
-    "updatedAt": "2026-09-19T08:12:29.910Z"
+    "createdAt": "2026-09-19T09:27:25.417Z",
+    "updatedAt": "2026-09-19T09:27:25.417Z"
   },
   {
     "id": "data-structures.separate-components.linked-lists.singly.delete-end",
@@ -3382,8 +3382,8 @@
       "data-structures>separate-components>linked-lists>singly>delete-end>singly_delete_end()",
       "deleteEndSingly"
     ],
-    "createdAt": "2026-09-19T08:12:29.910Z",
-    "updatedAt": "2026-09-19T08:12:29.910Z"
+    "createdAt": "2026-09-19T09:27:25.417Z",
+    "updatedAt": "2026-09-19T09:27:25.417Z"
   },
   {
     "id": "data-structures.separate-components.linked-lists.singly.delete-at-position",
@@ -3420,8 +3420,8 @@
       "data-structures>separate-components>linked-lists>singly>delete-at-position>singly_delete_at_position()",
       "deleteAtPositionSingly"
     ],
-    "createdAt": "2026-09-19T08:12:29.910Z",
-    "updatedAt": "2026-09-19T08:12:29.910Z"
+    "createdAt": "2026-09-19T09:27:25.417Z",
+    "updatedAt": "2026-09-19T09:27:25.417Z"
   },
   {
     "id": "data-structures.separate-components.linked-lists.singly.delete-after",
@@ -3458,8 +3458,8 @@
       "data-structures>separate-components>linked-lists>singly>delete-after>singly_delete_after()",
       "deleteAfterSingly"
     ],
-    "createdAt": "2026-09-19T08:12:29.910Z",
-    "updatedAt": "2026-09-19T08:12:29.910Z"
+    "createdAt": "2026-09-19T09:27:25.417Z",
+    "updatedAt": "2026-09-19T09:27:25.417Z"
   },
   {
     "id": "data-structures.separate-components.linked-lists.singly.reverse",
@@ -3495,8 +3495,8 @@
       "data-structures>separate-components>linked-lists>singly>reverse>singly_reverse()",
       "reverseSinglyList"
     ],
-    "createdAt": "2026-09-19T08:12:29.910Z",
-    "updatedAt": "2026-09-19T08:12:29.910Z"
+    "createdAt": "2026-09-19T09:27:25.417Z",
+    "updatedAt": "2026-09-19T09:27:25.417Z"
   },
   {
     "id": "data-structures.separate-components.linked-lists.singly.sort",
@@ -3532,8 +3532,8 @@
       "data-structures>separate-components>linked-lists>singly>sort>singly_sort()",
       "sortSinglyList"
     ],
-    "createdAt": "2026-09-19T08:12:29.910Z",
-    "updatedAt": "2026-09-19T08:12:29.910Z"
+    "createdAt": "2026-09-19T09:27:25.417Z",
+    "updatedAt": "2026-09-19T09:27:25.417Z"
   },
   {
     "id": "data-structures.separate-components.linked-lists.singly.find-middle",
@@ -3569,8 +3569,8 @@
       "data-structures>separate-components>linked-lists>singly>find-middle>singly_find_middle()",
       "findMiddleSingly"
     ],
-    "createdAt": "2026-09-19T08:12:29.910Z",
-    "updatedAt": "2026-09-19T08:12:29.910Z"
+    "createdAt": "2026-09-19T09:27:25.417Z",
+    "updatedAt": "2026-09-19T09:27:25.417Z"
   },
   {
     "id": "data-structures.separate-components.linked-lists.singly.detect-cycle",
@@ -3607,8 +3607,8 @@
       "data-structures>separate-components>linked-lists>singly>detect-cycle>singly_detect_cycle()",
       "detectCycleSingly"
     ],
-    "createdAt": "2026-09-19T08:12:29.910Z",
-    "updatedAt": "2026-09-19T08:12:29.910Z"
+    "createdAt": "2026-09-19T09:27:25.417Z",
+    "updatedAt": "2026-09-19T09:27:25.417Z"
   },
   {
     "id": "data-structures.separate-components.linked-lists.singly.remove-duplicates",
@@ -3644,8 +3644,8 @@
       "data-structures>separate-components>linked-lists>singly>remove-duplicates>singly_remove_duplicates()",
       "removeDuplicatesSingly"
     ],
-    "createdAt": "2026-09-19T08:12:29.910Z",
-    "updatedAt": "2026-09-19T08:12:29.910Z"
+    "createdAt": "2026-09-19T09:27:25.417Z",
+    "updatedAt": "2026-09-19T09:27:25.417Z"
   },
   {
     "id": "data-structures.separate-components.linked-lists.singly.display",
@@ -3681,8 +3681,8 @@
       "data-structures>separate-components>linked-lists>singly>display>singly_display()",
       "printSinglyList"
     ],
-    "createdAt": "2026-09-19T08:12:29.910Z",
-    "updatedAt": "2026-09-19T08:12:29.910Z"
+    "createdAt": "2026-09-19T09:27:25.417Z",
+    "updatedAt": "2026-09-19T09:27:25.417Z"
   },
   {
     "id": "data-structures.separate-components.linked-lists.doubly.insert-at-position",
@@ -3721,8 +3721,8 @@
       "data-structures>separate-components>linked-lists>doubly>insert-at-position>doubly_insert_at_position()",
       "insertAtPositionDoubly"
     ],
-    "createdAt": "2026-09-19T08:12:29.910Z",
-    "updatedAt": "2026-09-19T08:12:29.910Z"
+    "createdAt": "2026-09-19T09:27:25.418Z",
+    "updatedAt": "2026-09-19T09:27:25.418Z"
   },
   {
     "id": "data-structures.separate-components.linked-lists.doubly.insert-sorted",
@@ -3760,8 +3760,8 @@
       "data-structures>separate-components>linked-lists>doubly>insert-sorted>doubly_insert_sorted()",
       "insertSortedDoubly"
     ],
-    "createdAt": "2026-09-19T08:12:29.910Z",
-    "updatedAt": "2026-09-19T08:12:29.910Z"
+    "createdAt": "2026-09-19T09:27:25.418Z",
+    "updatedAt": "2026-09-19T09:27:25.419Z"
   },
   {
     "id": "data-structures.separate-components.linked-lists.doubly.delete-beginning",
@@ -3798,8 +3798,8 @@
       "data-structures>separate-components>linked-lists>doubly>delete-beginning>doubly_delete_beginning()",
       "deleteBeginningDoubly"
     ],
-    "createdAt": "2026-09-19T08:12:29.911Z",
-    "updatedAt": "2026-09-19T08:12:29.911Z"
+    "createdAt": "2026-09-19T09:27:25.419Z",
+    "updatedAt": "2026-09-19T09:27:25.419Z"
   },
   {
     "id": "data-structures.separate-components.linked-lists.doubly.delete-end",
@@ -3836,8 +3836,8 @@
       "data-structures>separate-components>linked-lists>doubly>delete-end>doubly_delete_end()",
       "deleteEndDoubly"
     ],
-    "createdAt": "2026-09-19T08:12:29.911Z",
-    "updatedAt": "2026-09-19T08:12:29.911Z"
+    "createdAt": "2026-09-19T09:27:25.419Z",
+    "updatedAt": "2026-09-19T09:27:25.419Z"
   },
   {
     "id": "data-structures.separate-components.linked-lists.doubly.delete-at-position",
@@ -3874,8 +3874,8 @@
       "data-structures>separate-components>linked-lists>doubly>delete-at-position>doubly_delete_at_position()",
       "deleteAtPositionDoubly"
     ],
-    "createdAt": "2026-09-19T08:12:29.911Z",
-    "updatedAt": "2026-09-19T08:12:29.911Z"
+    "createdAt": "2026-09-19T09:27:25.419Z",
+    "updatedAt": "2026-09-19T09:27:25.419Z"
   },
   {
     "id": "data-structures.separate-components.linked-lists.doubly.delete-after",
@@ -3912,8 +3912,8 @@
       "data-structures>separate-components>linked-lists>doubly>delete-after>doubly_delete_after()",
       "deleteAfterDoubly"
     ],
-    "createdAt": "2026-09-19T08:12:29.911Z",
-    "updatedAt": "2026-09-19T08:12:29.911Z"
+    "createdAt": "2026-09-19T09:27:25.419Z",
+    "updatedAt": "2026-09-19T09:27:25.419Z"
   },
   {
     "id": "data-structures.separate-components.linked-lists.doubly.delete-value",
@@ -3950,8 +3950,8 @@
       "data-structures>separate-components>linked-lists>doubly>delete-value>doubly_delete_value()",
       "deleteValueDoubly"
     ],
-    "createdAt": "2026-09-19T08:12:29.911Z",
-    "updatedAt": "2026-09-19T08:12:29.911Z"
+    "createdAt": "2026-09-19T09:27:25.419Z",
+    "updatedAt": "2026-09-19T09:27:25.419Z"
   },
   {
     "id": "data-structures.separate-components.linked-lists.doubly.search",
@@ -3987,8 +3987,8 @@
       "data-structures>separate-components>linked-lists>doubly>search>doubly_search()",
       "searchDoublyList"
     ],
-    "createdAt": "2026-09-19T08:12:29.911Z",
-    "updatedAt": "2026-09-19T08:12:29.911Z"
+    "createdAt": "2026-09-19T09:27:25.419Z",
+    "updatedAt": "2026-09-19T09:27:25.419Z"
   },
   {
     "id": "data-structures.separate-components.linked-lists.doubly.count",
@@ -4024,8 +4024,8 @@
       "data-structures>separate-components>linked-lists>doubly>count>doubly_count()",
       "countNodesDoubly"
     ],
-    "createdAt": "2026-09-19T08:12:29.911Z",
-    "updatedAt": "2026-09-19T08:12:29.911Z"
+    "createdAt": "2026-09-19T09:27:25.419Z",
+    "updatedAt": "2026-09-19T09:27:25.419Z"
   },
   {
     "id": "data-structures.separate-components.linked-lists.doubly.min-max",
@@ -4062,8 +4062,8 @@
       "data-structures>separate-components>linked-lists>doubly>min-max>doubly_min_max()",
       "minMaxDoubly"
     ],
-    "createdAt": "2026-09-19T08:12:29.911Z",
-    "updatedAt": "2026-09-19T08:12:29.911Z"
+    "createdAt": "2026-09-19T09:27:25.419Z",
+    "updatedAt": "2026-09-19T09:27:25.419Z"
   },
   {
     "id": "data-structures.separate-components.linked-lists.doubly.reverse",
@@ -4099,8 +4099,8 @@
       "data-structures>separate-components>linked-lists>doubly>reverse>doubly_reverse()",
       "reverseDoublyList"
     ],
-    "createdAt": "2026-09-19T08:12:29.911Z",
-    "updatedAt": "2026-09-19T08:12:29.911Z"
+    "createdAt": "2026-09-19T09:27:25.419Z",
+    "updatedAt": "2026-09-19T09:27:25.419Z"
   },
   {
     "id": "data-structures.separate-components.linked-lists.doubly.sort",
@@ -4136,8 +4136,8 @@
       "data-structures>separate-components>linked-lists>doubly>sort>doubly_sort()",
       "sortDoublyList"
     ],
-    "createdAt": "2026-09-19T08:12:29.911Z",
-    "updatedAt": "2026-09-19T08:12:29.911Z"
+    "createdAt": "2026-09-19T09:27:25.419Z",
+    "updatedAt": "2026-09-19T09:27:25.419Z"
   },
   {
     "id": "data-structures.separate-components.linked-lists.doubly.find-middle",
@@ -4173,8 +4173,8 @@
       "data-structures>separate-components>linked-lists>doubly>find-middle>doubly_find_middle()",
       "findMiddleDoubly"
     ],
-    "createdAt": "2026-09-19T08:12:29.911Z",
-    "updatedAt": "2026-09-19T08:12:29.911Z"
+    "createdAt": "2026-09-19T09:27:25.419Z",
+    "updatedAt": "2026-09-19T09:27:25.419Z"
   },
   {
     "id": "data-structures.separate-components.linked-lists.doubly.remove-duplicates",
@@ -4210,8 +4210,8 @@
       "data-structures>separate-components>linked-lists>doubly>remove-duplicates>doubly_remove_duplicates()",
       "removeDuplicatesDoubly"
     ],
-    "createdAt": "2026-09-19T08:12:29.911Z",
-    "updatedAt": "2026-09-19T08:12:29.911Z"
+    "createdAt": "2026-09-19T09:27:25.419Z",
+    "updatedAt": "2026-09-19T09:27:25.419Z"
   },
   {
     "id": "data-structures.separate-components.linked-lists.doubly.display-forward",
@@ -4248,8 +4248,8 @@
       "data-structures>separate-components>linked-lists>doubly>display-forward>doubly_display_forward()",
       "displayForwardDoubly"
     ],
-    "createdAt": "2026-09-19T08:12:29.911Z",
-    "updatedAt": "2026-09-19T08:12:29.911Z"
+    "createdAt": "2026-09-19T09:27:25.419Z",
+    "updatedAt": "2026-09-19T09:27:25.419Z"
   },
   {
     "id": "data-structures.separate-components.linked-lists.doubly.display-backward",
@@ -4286,8 +4286,8 @@
       "data-structures>separate-components>linked-lists>doubly>display-backward>doubly_display_backward()",
       "displayBackwardDoubly"
     ],
-    "createdAt": "2026-09-19T08:12:29.911Z",
-    "updatedAt": "2026-09-19T08:12:29.911Z"
+    "createdAt": "2026-09-19T09:27:25.419Z",
+    "updatedAt": "2026-09-19T09:27:25.419Z"
   },
   {
     "id": "data-structures.separate-components.linked-lists.singly-circular.create-node",
@@ -4323,8 +4323,8 @@
       "data-structures>separate-components>linked-lists>singly-circular>create-node>sc_create_node()",
       "createCircularNode"
     ],
-    "createdAt": "2026-09-19T08:12:29.911Z",
-    "updatedAt": "2026-09-19T08:12:29.911Z"
+    "createdAt": "2026-09-19T09:27:25.420Z",
+    "updatedAt": "2026-09-19T09:27:25.420Z"
   },
   {
     "id": "data-structures.separate-components.linked-lists.singly-circular.insert-beginning",
@@ -4361,8 +4361,8 @@
       "data-structures>separate-components>linked-lists>singly-circular>insert-beginning>sc_insert_beginning()",
       "insertBeginningCircular"
     ],
-    "createdAt": "2026-09-19T08:12:29.911Z",
-    "updatedAt": "2026-09-19T08:12:29.911Z"
+    "createdAt": "2026-09-19T09:27:25.420Z",
+    "updatedAt": "2026-09-19T09:27:25.420Z"
   },
   {
     "id": "data-structures.separate-components.linked-lists.singly-circular.insert-at-position",
@@ -4399,8 +4399,8 @@
       "data-structures>separate-components>linked-lists>singly-circular>insert-at-position>sc_insert_at_position()",
       "insertAtPositionCircular"
     ],
-    "createdAt": "2026-09-19T08:12:29.911Z",
-    "updatedAt": "2026-09-19T08:12:29.911Z"
+    "createdAt": "2026-09-19T09:27:25.420Z",
+    "updatedAt": "2026-09-19T09:27:25.420Z"
   },
   {
     "id": "data-structures.separate-components.linked-lists.singly-circular.insert-before",
@@ -4437,8 +4437,8 @@
       "data-structures>separate-components>linked-lists>singly-circular>insert-before>sc_insert_before()",
       "insertBeforeCircular"
     ],
-    "createdAt": "2026-09-19T08:12:29.911Z",
-    "updatedAt": "2026-09-19T08:12:29.911Z"
+    "createdAt": "2026-09-19T09:27:25.420Z",
+    "updatedAt": "2026-09-19T09:27:25.420Z"
   },
   {
     "id": "data-structures.separate-components.linked-lists.singly-circular.insert-after",
@@ -4475,8 +4475,8 @@
       "data-structures>separate-components>linked-lists>singly-circular>insert-after>sc_insert_after()",
       "insertAfterCircular"
     ],
-    "createdAt": "2026-09-19T08:12:29.911Z",
-    "updatedAt": "2026-09-19T08:12:29.911Z"
+    "createdAt": "2026-09-19T09:27:25.420Z",
+    "updatedAt": "2026-09-19T09:27:25.420Z"
   },
   {
     "id": "data-structures.separate-components.linked-lists.singly-circular.insert-sorted",
@@ -4513,8 +4513,8 @@
       "data-structures>separate-components>linked-lists>singly-circular>insert-sorted>sc_insert_sorted()",
       "insertSortedCircular"
     ],
-    "createdAt": "2026-09-19T08:12:29.911Z",
-    "updatedAt": "2026-09-19T08:12:29.911Z"
+    "createdAt": "2026-09-19T09:27:25.420Z",
+    "updatedAt": "2026-09-19T09:27:25.420Z"
   },
   {
     "id": "data-structures.separate-components.linked-lists.singly-circular.delete-beginning",
@@ -4551,8 +4551,8 @@
       "data-structures>separate-components>linked-lists>singly-circular>delete-beginning>sc_delete_beginning()",
       "deleteBeginningCircular"
     ],
-    "createdAt": "2026-09-19T08:12:29.911Z",
-    "updatedAt": "2026-09-19T08:12:29.911Z"
+    "createdAt": "2026-09-19T09:27:25.420Z",
+    "updatedAt": "2026-09-19T09:27:25.420Z"
   },
   {
     "id": "data-structures.separate-components.linked-lists.singly-circular.delete-end",
@@ -4589,8 +4589,8 @@
       "data-structures>separate-components>linked-lists>singly-circular>delete-end>sc_delete_end()",
       "deleteEndCircular"
     ],
-    "createdAt": "2026-09-19T08:12:29.911Z",
-    "updatedAt": "2026-09-19T08:12:29.911Z"
+    "createdAt": "2026-09-19T09:27:25.420Z",
+    "updatedAt": "2026-09-19T09:27:25.420Z"
   },
   {
     "id": "data-structures.separate-components.linked-lists.singly-circular.delete-at-position",
@@ -4627,8 +4627,8 @@
       "data-structures>separate-components>linked-lists>singly-circular>delete-at-position>sc_delete_at_position()",
       "deleteAtPositionCircular"
     ],
-    "createdAt": "2026-09-19T08:12:29.911Z",
-    "updatedAt": "2026-09-19T08:12:29.911Z"
+    "createdAt": "2026-09-19T09:27:25.420Z",
+    "updatedAt": "2026-09-19T09:27:25.420Z"
   },
   {
     "id": "data-structures.separate-components.linked-lists.singly-circular.delete-value",
@@ -4665,8 +4665,8 @@
       "data-structures>separate-components>linked-lists>singly-circular>delete-value>sc_delete_value()",
       "deleteValueCircular"
     ],
-    "createdAt": "2026-09-19T08:12:29.911Z",
-    "updatedAt": "2026-09-19T08:12:29.911Z"
+    "createdAt": "2026-09-19T09:27:25.420Z",
+    "updatedAt": "2026-09-19T09:27:25.420Z"
   },
   {
     "id": "data-structures.separate-components.linked-lists.singly-circular.delete-after",
@@ -4703,8 +4703,8 @@
       "data-structures>separate-components>linked-lists>singly-circular>delete-after>sc_delete_after()",
       "deleteAfterCircular"
     ],
-    "createdAt": "2026-09-19T08:12:29.911Z",
-    "updatedAt": "2026-09-19T08:12:29.911Z"
+    "createdAt": "2026-09-19T09:27:25.420Z",
+    "updatedAt": "2026-09-19T09:27:25.420Z"
   },
   {
     "id": "data-structures.separate-components.linked-lists.singly-circular.search",
@@ -4740,8 +4740,8 @@
       "data-structures>separate-components>linked-lists>singly-circular>search>sc_search()",
       "searchCircularList"
     ],
-    "createdAt": "2026-09-19T08:12:29.911Z",
-    "updatedAt": "2026-09-19T08:12:29.911Z"
+    "createdAt": "2026-09-19T09:27:25.420Z",
+    "updatedAt": "2026-09-19T09:27:25.420Z"
   },
   {
     "id": "data-structures.separate-components.linked-lists.singly-circular.count",
@@ -4777,8 +4777,8 @@
       "data-structures>separate-components>linked-lists>singly-circular>count>sc_count()",
       "countCircularNodes"
     ],
-    "createdAt": "2026-09-19T08:12:29.911Z",
-    "updatedAt": "2026-09-19T08:12:29.911Z"
+    "createdAt": "2026-09-19T09:27:25.420Z",
+    "updatedAt": "2026-09-19T09:27:25.420Z"
   },
   {
     "id": "data-structures.separate-components.linked-lists.singly-circular.min-max",
@@ -4815,8 +4815,8 @@
       "data-structures>separate-components>linked-lists>singly-circular>min-max>sc_min_max()",
       "minMaxCircular"
     ],
-    "createdAt": "2026-09-19T08:12:29.911Z",
-    "updatedAt": "2026-09-19T08:12:29.911Z"
+    "createdAt": "2026-09-19T09:27:25.420Z",
+    "updatedAt": "2026-09-19T09:27:25.420Z"
   },
   {
     "id": "data-structures.separate-components.linked-lists.singly-circular.display",
@@ -4852,8 +4852,8 @@
       "data-structures>separate-components>linked-lists>singly-circular>display>sc_display()",
       "displayCircularList"
     ],
-    "createdAt": "2026-09-19T08:12:29.911Z",
-    "updatedAt": "2026-09-19T08:12:29.911Z"
+    "createdAt": "2026-09-19T09:27:25.420Z",
+    "updatedAt": "2026-09-19T09:27:25.420Z"
   },
   {
     "id": "data-structures.separate-components.linked-lists.singly-circular.reverse",
@@ -4889,8 +4889,8 @@
       "data-structures>separate-components>linked-lists>singly-circular>reverse>sc_reverse()",
       "reverseCircularList"
     ],
-    "createdAt": "2026-09-19T08:12:29.911Z",
-    "updatedAt": "2026-09-19T08:12:29.911Z"
+    "createdAt": "2026-09-19T09:27:25.420Z",
+    "updatedAt": "2026-09-19T09:27:25.420Z"
   },
   {
     "id": "data-structures.separate-components.linked-lists.singly-circular.sort",
@@ -4926,8 +4926,8 @@
       "data-structures>separate-components>linked-lists>singly-circular>sort>sc_sort()",
       "sortCircularList"
     ],
-    "createdAt": "2026-09-19T08:12:29.911Z",
-    "updatedAt": "2026-09-19T08:12:29.911Z"
+    "createdAt": "2026-09-19T09:27:25.420Z",
+    "updatedAt": "2026-09-19T09:27:25.420Z"
   },
   {
     "id": "data-structures.separate-components.linked-lists.singly-circular.remove-duplicates",
@@ -4963,8 +4963,8 @@
       "data-structures>separate-components>linked-lists>singly-circular>remove-duplicates>sc_remove_duplicates()",
       "removeDuplicatesCircular"
     ],
-    "createdAt": "2026-09-19T08:12:29.911Z",
-    "updatedAt": "2026-09-19T08:12:29.911Z"
+    "createdAt": "2026-09-19T09:27:25.420Z",
+    "updatedAt": "2026-09-19T09:27:25.420Z"
   },
   {
     "id": "data-structures.separate-components.linked-lists.singly-circular.find-middle",
@@ -5000,8 +5000,8 @@
       "data-structures>separate-components>linked-lists>singly-circular>find-middle>sc_find_middle()",
       "findMiddleCircular"
     ],
-    "createdAt": "2026-09-19T08:12:29.911Z",
-    "updatedAt": "2026-09-19T08:12:29.911Z"
+    "createdAt": "2026-09-19T09:27:25.420Z",
+    "updatedAt": "2026-09-19T09:27:25.420Z"
   },
   {
     "id": "data-structures.separate-components.linked-lists.singly-circular.split-halves",
@@ -5037,8 +5037,8 @@
       "data-structures>separate-components>linked-lists>singly-circular>split-halves>sc_split_halves()",
       "splitCircularHalves"
     ],
-    "createdAt": "2026-09-19T08:12:29.911Z",
-    "updatedAt": "2026-09-19T08:12:29.911Z"
+    "createdAt": "2026-09-19T09:27:25.420Z",
+    "updatedAt": "2026-09-19T09:27:25.420Z"
   },
   {
     "id": "data-structures.separate-components.linked-lists.doubly-circular.create-node",
@@ -5074,8 +5074,8 @@
       "data-structures>separate-components>linked-lists>doubly-circular>create-node>dc_create_node()",
       "createDoublyCircularNode"
     ],
-    "createdAt": "2026-09-19T08:12:29.912Z",
-    "updatedAt": "2026-09-19T08:12:29.912Z"
+    "createdAt": "2026-09-19T09:27:25.420Z",
+    "updatedAt": "2026-09-19T09:27:25.420Z"
   },
   {
     "id": "data-structures.separate-components.linked-lists.doubly-circular.insert-beginning",
@@ -5112,8 +5112,8 @@
       "data-structures>separate-components>linked-lists>doubly-circular>insert-beginning>dc_insert_beginning()",
       "insertBeginningDoublyCircular"
     ],
-    "createdAt": "2026-09-19T08:12:29.912Z",
-    "updatedAt": "2026-09-19T08:12:29.912Z"
+    "createdAt": "2026-09-19T09:27:25.420Z",
+    "updatedAt": "2026-09-19T09:27:25.420Z"
   },
   {
     "id": "data-structures.separate-components.linked-lists.doubly-circular.insert-at-position",
@@ -5151,8 +5151,8 @@
       "data-structures>separate-components>linked-lists>doubly-circular>insert-at-position>dc_insert_at_position()",
       "insertAtPositionDoublyCircular"
     ],
-    "createdAt": "2026-09-19T08:12:29.912Z",
-    "updatedAt": "2026-09-19T08:12:29.912Z"
+    "createdAt": "2026-09-19T09:27:25.420Z",
+    "updatedAt": "2026-09-19T09:27:25.420Z"
   },
   {
     "id": "data-structures.separate-components.linked-lists.doubly-circular.insert-before",
@@ -5190,8 +5190,8 @@
       "data-structures>separate-components>linked-lists>doubly-circular>insert-before>dc_insert_before()",
       "insertBeforeDoublyCircular"
     ],
-    "createdAt": "2026-09-19T08:12:29.912Z",
-    "updatedAt": "2026-09-19T08:12:29.912Z"
+    "createdAt": "2026-09-19T09:27:25.420Z",
+    "updatedAt": "2026-09-19T09:27:25.420Z"
   },
   {
     "id": "data-structures.separate-components.linked-lists.doubly-circular.insert-after",
@@ -5228,8 +5228,8 @@
       "data-structures>separate-components>linked-lists>doubly-circular>insert-after>dc_insert_after()",
       "insertAfterDoublyCircular"
     ],
-    "createdAt": "2026-09-19T08:12:29.912Z",
-    "updatedAt": "2026-09-19T08:12:29.912Z"
+    "createdAt": "2026-09-19T09:27:25.420Z",
+    "updatedAt": "2026-09-19T09:27:25.420Z"
   },
   {
     "id": "data-structures.separate-components.linked-lists.doubly-circular.insert-sorted",
@@ -5266,8 +5266,8 @@
       "data-structures>separate-components>linked-lists>doubly-circular>insert-sorted>dc_insert_sorted()",
       "insertSortedDoublyCircular"
     ],
-    "createdAt": "2026-09-19T08:12:29.912Z",
-    "updatedAt": "2026-09-19T08:12:29.912Z"
+    "createdAt": "2026-09-19T09:27:25.420Z",
+    "updatedAt": "2026-09-19T09:27:25.420Z"
   },
   {
     "id": "data-structures.separate-components.linked-lists.doubly-circular.delete-beginning",
@@ -5304,8 +5304,8 @@
       "data-structures>separate-components>linked-lists>doubly-circular>delete-beginning>dc_delete_beginning()",
       "deleteBeginningDoublyCircular"
     ],
-    "createdAt": "2026-09-19T08:12:29.912Z",
-    "updatedAt": "2026-09-19T08:12:29.912Z"
+    "createdAt": "2026-09-19T09:27:25.420Z",
+    "updatedAt": "2026-09-19T09:27:25.420Z"
   },
   {
     "id": "data-structures.separate-components.linked-lists.doubly-circular.delete-end",
@@ -5342,8 +5342,8 @@
       "data-structures>separate-components>linked-lists>doubly-circular>delete-end>dc_delete_end()",
       "deleteEndDoublyCircular"
     ],
-    "createdAt": "2026-09-19T08:12:29.912Z",
-    "updatedAt": "2026-09-19T08:12:29.912Z"
+    "createdAt": "2026-09-19T09:27:25.420Z",
+    "updatedAt": "2026-09-19T09:27:25.420Z"
   },
   {
     "id": "data-structures.separate-components.linked-lists.doubly-circular.delete-at-position",
@@ -5380,8 +5380,8 @@
       "data-structures>separate-components>linked-lists>doubly-circular>delete-at-position>dc_delete_at_position()",
       "deleteAtPositionDoublyCircular"
     ],
-    "createdAt": "2026-09-19T08:12:29.912Z",
-    "updatedAt": "2026-09-19T08:12:29.912Z"
+    "createdAt": "2026-09-19T09:27:25.420Z",
+    "updatedAt": "2026-09-19T09:27:25.420Z"
   },
   {
     "id": "data-structures.separate-components.linked-lists.doubly-circular.delete-value",
@@ -5418,8 +5418,8 @@
       "data-structures>separate-components>linked-lists>doubly-circular>delete-value>dc_delete_value()",
       "deleteValueDoublyCircular"
     ],
-    "createdAt": "2026-09-19T08:12:29.912Z",
-    "updatedAt": "2026-09-19T08:12:29.912Z"
+    "createdAt": "2026-09-19T09:27:25.420Z",
+    "updatedAt": "2026-09-19T09:27:25.420Z"
   },
   {
     "id": "data-structures.separate-components.linked-lists.doubly-circular.delete-after",
@@ -5456,8 +5456,8 @@
       "data-structures>separate-components>linked-lists>doubly-circular>delete-after>dc_delete_after()",
       "deleteAfterDoublyCircular"
     ],
-    "createdAt": "2026-09-19T08:12:29.912Z",
-    "updatedAt": "2026-09-19T08:12:29.912Z"
+    "createdAt": "2026-09-19T09:27:25.420Z",
+    "updatedAt": "2026-09-19T09:27:25.420Z"
   },
   {
     "id": "data-structures.separate-components.linked-lists.doubly-circular.search",
@@ -5493,8 +5493,8 @@
       "data-structures>separate-components>linked-lists>doubly-circular>search>dc_search()",
       "searchDoublyCircular"
     ],
-    "createdAt": "2026-09-19T08:12:29.912Z",
-    "updatedAt": "2026-09-19T08:12:29.912Z"
+    "createdAt": "2026-09-19T09:27:25.420Z",
+    "updatedAt": "2026-09-19T09:27:25.420Z"
   },
   {
     "id": "data-structures.separate-components.linked-lists.doubly-circular.count",
@@ -5530,8 +5530,8 @@
       "data-structures>separate-components>linked-lists>doubly-circular>count>dc_count()",
       "countDoublyCircular"
     ],
-    "createdAt": "2026-09-19T08:12:29.912Z",
-    "updatedAt": "2026-09-19T08:12:29.912Z"
+    "createdAt": "2026-09-19T09:27:25.420Z",
+    "updatedAt": "2026-09-19T09:27:25.420Z"
   },
   {
     "id": "data-structures.separate-components.linked-lists.doubly-circular.min-max",
@@ -5568,8 +5568,8 @@
       "data-structures>separate-components>linked-lists>doubly-circular>min-max>dc_min_max()",
       "minMaxDoublyCircular"
     ],
-    "createdAt": "2026-09-19T08:12:29.912Z",
-    "updatedAt": "2026-09-19T08:12:29.912Z"
+    "createdAt": "2026-09-19T09:27:25.420Z",
+    "updatedAt": "2026-09-19T09:27:25.420Z"
   },
   {
     "id": "data-structures.separate-components.linked-lists.doubly-circular.display-forward",
@@ -5606,8 +5606,8 @@
       "data-structures>separate-components>linked-lists>doubly-circular>display-forward>dc_display_forward()",
       "displayForwardDoublyCircular"
     ],
-    "createdAt": "2026-09-19T08:12:29.912Z",
-    "updatedAt": "2026-09-19T08:12:29.912Z"
+    "createdAt": "2026-09-19T09:27:25.420Z",
+    "updatedAt": "2026-09-19T09:27:25.420Z"
   },
   {
     "id": "data-structures.separate-components.linked-lists.doubly-circular.display-backward",
@@ -5644,8 +5644,8 @@
       "data-structures>separate-components>linked-lists>doubly-circular>display-backward>dc_display_backward()",
       "displayBackwardDoublyCircular"
     ],
-    "createdAt": "2026-09-19T08:12:29.912Z",
-    "updatedAt": "2026-09-19T08:12:29.912Z"
+    "createdAt": "2026-09-19T09:27:25.420Z",
+    "updatedAt": "2026-09-19T09:27:25.420Z"
   },
   {
     "id": "data-structures.separate-components.linked-lists.doubly-circular.reverse",
@@ -5681,8 +5681,8 @@
       "data-structures>separate-components>linked-lists>doubly-circular>reverse>dc_reverse()",
       "reverseDoublyCircular"
     ],
-    "createdAt": "2026-09-19T08:12:29.912Z",
-    "updatedAt": "2026-09-19T08:12:29.912Z"
+    "createdAt": "2026-09-19T09:27:25.420Z",
+    "updatedAt": "2026-09-19T09:27:25.420Z"
   },
   {
     "id": "data-structures.separate-components.linked-lists.doubly-circular.sort",
@@ -5718,8 +5718,8 @@
       "data-structures>separate-components>linked-lists>doubly-circular>sort>dc_sort()",
       "sortDoublyCircular"
     ],
-    "createdAt": "2026-09-19T08:12:29.912Z",
-    "updatedAt": "2026-09-19T08:12:29.912Z"
+    "createdAt": "2026-09-19T09:27:25.420Z",
+    "updatedAt": "2026-09-19T09:27:25.420Z"
   },
   {
     "id": "data-structures.separate-components.linked-lists.doubly-circular.remove-duplicates",
@@ -5755,8 +5755,8 @@
       "data-structures>separate-components>linked-lists>doubly-circular>remove-duplicates>dc_remove_duplicates()",
       "removeDuplicatesDoublyCircular"
     ],
-    "createdAt": "2026-09-19T08:12:29.912Z",
-    "updatedAt": "2026-09-19T08:12:29.912Z"
+    "createdAt": "2026-09-19T09:27:25.420Z",
+    "updatedAt": "2026-09-19T09:27:25.420Z"
   },
   {
     "id": "data-structures.separate-components.linked-lists.doubly-circular.find-middle",
@@ -5792,8 +5792,8 @@
       "data-structures>separate-components>linked-lists>doubly-circular>find-middle>dc_find_middle()",
       "findMiddleDoublyCircular"
     ],
-    "createdAt": "2026-09-19T08:12:29.912Z",
-    "updatedAt": "2026-09-19T08:12:29.912Z"
+    "createdAt": "2026-09-19T09:27:25.420Z",
+    "updatedAt": "2026-09-19T09:27:25.420Z"
   },
   {
     "id": "data-structures.separate-components.linked-lists.doubly-circular.split-halves",
@@ -5829,8 +5829,8 @@
       "data-structures>separate-components>linked-lists>doubly-circular>split-halves>dc_split_halves()",
       "splitDoublyCircularHalves"
     ],
-    "createdAt": "2026-09-19T08:12:29.912Z",
-    "updatedAt": "2026-09-19T08:12:29.912Z"
+    "createdAt": "2026-09-19T09:27:25.420Z",
+    "updatedAt": "2026-09-19T09:27:25.420Z"
   },
   {
     "id": "data-structures.separate-components.arrays.1d-array.insert-at",
@@ -5864,8 +5864,8 @@
       "data-structures>separate-components>arrays>1d-array>insert-at>array_1d_insert_at()",
       "insert1DArray"
     ],
-    "createdAt": "2026-09-19T08:12:29.912Z",
-    "updatedAt": "2026-09-19T08:12:29.912Z"
+    "createdAt": "2026-09-19T09:27:25.421Z",
+    "updatedAt": "2026-09-19T09:27:25.421Z"
   },
   {
     "id": "data-structures.separate-components.arrays.1d-array.delete-at",
@@ -5899,8 +5899,8 @@
       "data-structures>separate-components>arrays>1d-array>delete-at>array_1d_delete_at()",
       "delete1DArray"
     ],
-    "createdAt": "2026-09-19T08:12:29.912Z",
-    "updatedAt": "2026-09-19T08:12:29.912Z"
+    "createdAt": "2026-09-19T09:27:25.421Z",
+    "updatedAt": "2026-09-19T09:27:25.421Z"
   },
   {
     "id": "data-structures.separate-components.arrays.1d-array.linear-search",
@@ -5935,8 +5935,8 @@
       "data-structures>separate-components>arrays>1d-array>linear-search>array_1d_linear_search()",
       "linearSearch1D"
     ],
-    "createdAt": "2026-09-19T08:12:29.912Z",
-    "updatedAt": "2026-09-19T08:12:29.912Z"
+    "createdAt": "2026-09-19T09:27:25.421Z",
+    "updatedAt": "2026-09-19T09:27:25.421Z"
   },
   {
     "id": "data-structures.separate-components.arrays.1d-array.display",
@@ -5970,8 +5970,8 @@
       "data-structures>separate-components>arrays>1d-array>display>array_1d_display()",
       "print1DArray"
     ],
-    "createdAt": "2026-09-19T08:12:29.912Z",
-    "updatedAt": "2026-09-19T08:12:29.912Z"
+    "createdAt": "2026-09-19T09:27:25.421Z",
+    "updatedAt": "2026-09-19T09:27:25.421Z"
   },
   {
     "id": "data-structures.separate-components.stacks.array-stack.is-empty",
@@ -6007,8 +6007,8 @@
       "data-structures>separate-components>stacks>array-stack>is-empty>stack_is_empty()",
       "isStackEmpty"
     ],
-    "createdAt": "2026-09-19T08:12:29.912Z",
-    "updatedAt": "2026-09-19T08:12:29.912Z"
+    "createdAt": "2026-09-19T09:27:25.421Z",
+    "updatedAt": "2026-09-19T09:27:25.421Z"
   },
   {
     "id": "data-structures.separate-components.stacks.array-stack.is-full",
@@ -6044,8 +6044,8 @@
       "data-structures>separate-components>stacks>array-stack>is-full>stack_is_full()",
       "isStackFull"
     ],
-    "createdAt": "2026-09-19T08:12:29.912Z",
-    "updatedAt": "2026-09-19T08:12:29.912Z"
+    "createdAt": "2026-09-19T09:27:25.421Z",
+    "updatedAt": "2026-09-19T09:27:25.421Z"
   },
   {
     "id": "data-structures.separate-components.stacks.array-stack.display",
@@ -6081,8 +6081,8 @@
       "data-structures>separate-components>stacks>array-stack>display>stack_display()",
       "displayStack"
     ],
-    "createdAt": "2026-09-19T08:12:29.912Z",
-    "updatedAt": "2026-09-19T08:12:29.912Z"
+    "createdAt": "2026-09-19T09:27:25.421Z",
+    "updatedAt": "2026-09-19T09:27:25.421Z"
   },
   {
     "id": "data-structures.separate-components.stacks.array-stack.count",
@@ -6118,8 +6118,8 @@
       "data-structures>separate-components>stacks>array-stack>count>stack_count()",
       "countStack"
     ],
-    "createdAt": "2026-09-19T08:12:29.912Z",
-    "updatedAt": "2026-09-19T08:12:29.912Z"
+    "createdAt": "2026-09-19T09:27:25.421Z",
+    "updatedAt": "2026-09-19T09:27:25.421Z"
   },
   {
     "id": "data-structures.separate-components.stacks.linked-stack.is-empty",
@@ -6155,8 +6155,8 @@
       "data-structures>separate-components>stacks>linked-stack>is-empty>linked_stack_is_empty()",
       "isLinkedStackEmpty"
     ],
-    "createdAt": "2026-09-19T08:12:29.912Z",
-    "updatedAt": "2026-09-19T08:12:29.912Z"
+    "createdAt": "2026-09-19T09:27:25.421Z",
+    "updatedAt": "2026-09-19T09:27:25.421Z"
   },
   {
     "id": "data-structures.separate-components.stacks.linked-stack.display",
@@ -6192,8 +6192,8 @@
       "data-structures>separate-components>stacks>linked-stack>display>linked_stack_display()",
       "displayLinkedStack"
     ],
-    "createdAt": "2026-09-19T08:12:29.912Z",
-    "updatedAt": "2026-09-19T08:12:29.912Z"
+    "createdAt": "2026-09-19T09:27:25.421Z",
+    "updatedAt": "2026-09-19T09:27:25.421Z"
   },
   {
     "id": "data-structures.separate-components.stacks.linked-stack.count",
@@ -6229,8 +6229,8 @@
       "data-structures>separate-components>stacks>linked-stack>count>linked_stack_count()",
       "countLinkedStack"
     ],
-    "createdAt": "2026-09-19T08:12:29.912Z",
-    "updatedAt": "2026-09-19T08:12:29.912Z"
+    "createdAt": "2026-09-19T09:27:25.421Z",
+    "updatedAt": "2026-09-19T09:27:25.421Z"
   },
   {
     "id": "data-structures.separate-components.queues.linear-queue.is-empty",
@@ -6266,8 +6266,8 @@
       "data-structures>separate-components>queues>linear-queue>is-empty>linear_queue_is_empty()",
       "isLinearQueueEmpty"
     ],
-    "createdAt": "2026-09-19T08:12:29.912Z",
-    "updatedAt": "2026-09-19T08:12:29.912Z"
+    "createdAt": "2026-09-19T09:27:25.421Z",
+    "updatedAt": "2026-09-19T09:27:25.421Z"
   },
   {
     "id": "data-structures.separate-components.queues.linear-queue.is-full",
@@ -6303,8 +6303,8 @@
       "data-structures>separate-components>queues>linear-queue>is-full>linear_queue_is_full()",
       "isLinearQueueFull"
     ],
-    "createdAt": "2026-09-19T08:12:29.912Z",
-    "updatedAt": "2026-09-19T08:12:29.912Z"
+    "createdAt": "2026-09-19T09:27:25.421Z",
+    "updatedAt": "2026-09-19T09:27:25.421Z"
   },
   {
     "id": "data-structures.separate-components.queues.linear-queue.peek-rear",
@@ -6341,8 +6341,8 @@
       "data-structures>separate-components>queues>linear-queue>peek-rear>linear_queue_peek_rear()",
       "peekRearLinearQueue"
     ],
-    "createdAt": "2026-09-19T08:12:29.912Z",
-    "updatedAt": "2026-09-19T08:12:29.912Z"
+    "createdAt": "2026-09-19T09:27:25.421Z",
+    "updatedAt": "2026-09-19T09:27:25.421Z"
   },
   {
     "id": "data-structures.separate-components.queues.linear-queue.display",
@@ -6378,8 +6378,8 @@
       "data-structures>separate-components>queues>linear-queue>display>linear_queue_display()",
       "displayLinearQueue"
     ],
-    "createdAt": "2026-09-19T08:12:29.912Z",
-    "updatedAt": "2026-09-19T08:12:29.912Z"
+    "createdAt": "2026-09-19T09:27:25.421Z",
+    "updatedAt": "2026-09-19T09:27:25.421Z"
   },
   {
     "id": "data-structures.separate-components.queues.deque.get-rear",
@@ -6415,8 +6415,8 @@
       "data-structures>separate-components>queues>deque>get-rear>deque_get_rear()",
       "getRearDeque"
     ],
-    "createdAt": "2026-09-19T08:12:29.912Z",
-    "updatedAt": "2026-09-19T08:12:29.912Z"
+    "createdAt": "2026-09-19T09:27:25.421Z",
+    "updatedAt": "2026-09-19T09:27:25.421Z"
   },
   {
     "id": "data-structures.separate-components.queues.deque.display",
@@ -6452,8 +6452,8 @@
       "data-structures>separate-components>queues>deque>display>deque_display()",
       "displayDeque"
     ],
-    "createdAt": "2026-09-19T08:12:29.912Z",
-    "updatedAt": "2026-09-19T08:12:29.912Z"
+    "createdAt": "2026-09-19T09:27:25.421Z",
+    "updatedAt": "2026-09-19T09:27:25.421Z"
   },
   {
     "id": "data-structures.separate-components.trees.bst.inorder",
@@ -6490,8 +6490,8 @@
       "data-structures>separate-components>trees>bst>inorder>bst_inorder()",
       "inorderBST"
     ],
-    "createdAt": "2026-09-19T08:12:29.913Z",
-    "updatedAt": "2026-09-19T08:12:29.913Z"
+    "createdAt": "2026-09-19T09:27:25.422Z",
+    "updatedAt": "2026-09-19T09:27:25.422Z"
   },
   {
     "id": "data-structures.separate-components.trees.bst.preorder",
@@ -6528,8 +6528,8 @@
       "data-structures>separate-components>trees>bst>preorder>bst_preorder()",
       "preorderBST"
     ],
-    "createdAt": "2026-09-19T08:12:29.913Z",
-    "updatedAt": "2026-09-19T08:12:29.913Z"
+    "createdAt": "2026-09-19T09:27:25.422Z",
+    "updatedAt": "2026-09-19T09:27:25.422Z"
   },
   {
     "id": "data-structures.separate-components.trees.bst.postorder",
@@ -6566,8 +6566,8 @@
       "data-structures>separate-components>trees>bst>postorder>bst_postorder()",
       "postorderBST"
     ],
-    "createdAt": "2026-09-19T08:12:29.913Z",
-    "updatedAt": "2026-09-19T08:12:29.913Z"
+    "createdAt": "2026-09-19T09:27:25.422Z",
+    "updatedAt": "2026-09-19T09:27:25.422Z"
   },
   {
     "id": "data-structures.separate-components.trees.bst.levelorder",
@@ -6605,8 +6605,8 @@
       "data-structures>separate-components>trees>bst>levelorder>bst_levelorder()",
       "levelorderBST"
     ],
-    "createdAt": "2026-09-19T08:12:29.913Z",
-    "updatedAt": "2026-09-19T08:12:29.913Z"
+    "createdAt": "2026-09-19T09:27:25.422Z",
+    "updatedAt": "2026-09-19T09:27:25.422Z"
   },
   {
     "id": "data-structures.separate-components.trees.bst.zigzag",
@@ -6643,8 +6643,8 @@
       "data-structures>separate-components>trees>bst>zigzag>bst_zigzag()",
       "zigzagBST"
     ],
-    "createdAt": "2026-09-19T08:12:29.913Z",
-    "updatedAt": "2026-09-19T08:12:29.913Z"
+    "createdAt": "2026-09-19T09:27:25.422Z",
+    "updatedAt": "2026-09-19T09:27:25.422Z"
   },
   {
     "id": "data-structures.separate-components.trees.bst.boundary",
@@ -6681,8 +6681,8 @@
       "data-structures>separate-components>trees>bst>boundary>bst_boundary()",
       "boundaryBST"
     ],
-    "createdAt": "2026-09-19T08:12:29.913Z",
-    "updatedAt": "2026-09-19T08:12:29.913Z"
+    "createdAt": "2026-09-19T09:27:25.422Z",
+    "updatedAt": "2026-09-19T09:27:25.422Z"
   },
   {
     "id": "data-structures.separate-components.trees.bst.top-view",
@@ -6719,8 +6719,8 @@
       "data-structures>separate-components>trees>bst>top-view>bst_top_view()",
       "topViewBST"
     ],
-    "createdAt": "2026-09-19T08:12:29.913Z",
-    "updatedAt": "2026-09-19T08:12:29.913Z"
+    "createdAt": "2026-09-19T09:27:25.422Z",
+    "updatedAt": "2026-09-19T09:27:25.422Z"
   },
   {
     "id": "data-structures.separate-components.trees.bst.bottom-view",
@@ -6757,8 +6757,8 @@
       "data-structures>separate-components>trees>bst>bottom-view>bst_bottom_view()",
       "bottomViewBST"
     ],
-    "createdAt": "2026-09-19T08:12:29.913Z",
-    "updatedAt": "2026-09-19T08:12:29.913Z"
+    "createdAt": "2026-09-19T09:27:25.422Z",
+    "updatedAt": "2026-09-19T09:27:25.422Z"
   },
   {
     "id": "data-structures.separate-components.trees.bst.morris-inorder",
@@ -6796,8 +6796,8 @@
       "data-structures>separate-components>trees>bst>morris-inorder>bst_morris_inorder()",
       "morrisInorderBST"
     ],
-    "createdAt": "2026-09-19T08:12:29.913Z",
-    "updatedAt": "2026-09-19T08:12:29.913Z"
+    "createdAt": "2026-09-19T09:27:25.422Z",
+    "updatedAt": "2026-09-19T09:27:25.422Z"
   },
   {
     "id": "data-structures.separate-components.trees.bst.iterative-inorder",
@@ -6835,8 +6835,8 @@
       "data-structures>separate-components>trees>bst>iterative-inorder>bst_iterative_inorder()",
       "iterativeInorderBST"
     ],
-    "createdAt": "2026-09-19T08:12:29.914Z",
-    "updatedAt": "2026-09-19T08:12:29.914Z"
+    "createdAt": "2026-09-19T09:27:25.422Z",
+    "updatedAt": "2026-09-19T09:27:25.422Z"
   },
   {
     "id": "data-structures.separate-components.trees.bst.iterative-preorder",
@@ -6874,8 +6874,8 @@
       "data-structures>separate-components>trees>bst>iterative-preorder>bst_iterative_preorder()",
       "iterativePreorderBST"
     ],
-    "createdAt": "2026-09-19T08:12:29.914Z",
-    "updatedAt": "2026-09-19T08:12:29.914Z"
+    "createdAt": "2026-09-19T09:27:25.422Z",
+    "updatedAt": "2026-09-19T09:27:25.422Z"
   },
   {
     "id": "data-structures.separate-components.trees.bst.delete",
@@ -6911,8 +6911,8 @@
       "data-structures>separate-components>trees>bst>delete>bst_delete()",
       "deleteBST"
     ],
-    "createdAt": "2026-09-19T08:12:29.914Z",
-    "updatedAt": "2026-09-19T08:12:29.914Z"
+    "createdAt": "2026-09-19T09:27:25.422Z",
+    "updatedAt": "2026-09-19T09:27:25.422Z"
   },
   {
     "id": "data-structures.separate-components.trees.bst.find-min",
@@ -6949,8 +6949,8 @@
       "data-structures>separate-components>trees>bst>find-min>bst_find_min()",
       "findMinBST"
     ],
-    "createdAt": "2026-09-19T08:12:29.914Z",
-    "updatedAt": "2026-09-19T08:12:29.914Z"
+    "createdAt": "2026-09-19T09:27:25.422Z",
+    "updatedAt": "2026-09-19T09:27:25.422Z"
   },
   {
     "id": "data-structures.separate-components.trees.bst.find-max",
@@ -6987,8 +6987,8 @@
       "data-structures>separate-components>trees>bst>find-max>bst_find_max()",
       "findMaxBST"
     ],
-    "createdAt": "2026-09-19T08:12:29.914Z",
-    "updatedAt": "2026-09-19T08:12:29.914Z"
+    "createdAt": "2026-09-19T09:27:25.422Z",
+    "updatedAt": "2026-09-19T09:27:25.422Z"
   },
   {
     "id": "data-structures.separate-components.trees.bst.height",
@@ -7024,8 +7024,8 @@
       "data-structures>separate-components>trees>bst>height>bst_height()",
       "heightBST"
     ],
-    "createdAt": "2026-09-19T08:12:29.914Z",
-    "updatedAt": "2026-09-19T08:12:29.914Z"
+    "createdAt": "2026-09-19T09:27:25.422Z",
+    "updatedAt": "2026-09-19T09:27:25.422Z"
   },
   {
     "id": "data-structures.separate-components.trees.bst.count-nodes",
@@ -7061,8 +7061,8 @@
       "data-structures>separate-components>trees>bst>count-nodes>bst_count_nodes()",
       "countNodesBST"
     ],
-    "createdAt": "2026-09-19T08:12:29.914Z",
-    "updatedAt": "2026-09-19T08:12:29.914Z"
+    "createdAt": "2026-09-19T09:27:25.422Z",
+    "updatedAt": "2026-09-19T09:27:25.422Z"
   },
   {
     "id": "data-structures.separate-components.trees.bst.leaf-count",
@@ -7099,8 +7099,8 @@
       "data-structures>separate-components>trees>bst>leaf-count>bst_leaf_count()",
       "leafCountBST"
     ],
-    "createdAt": "2026-09-19T08:12:29.914Z",
-    "updatedAt": "2026-09-19T08:12:29.914Z"
+    "createdAt": "2026-09-19T09:27:25.422Z",
+    "updatedAt": "2026-09-19T09:27:25.422Z"
   },
   {
     "id": "data-structures.separate-components.trees.bst.mirror",
@@ -7137,8 +7137,8 @@
       "data-structures>separate-components>trees>bst>mirror>bst_mirror()",
       "mirrorBST"
     ],
-    "createdAt": "2026-09-19T08:12:29.914Z",
-    "updatedAt": "2026-09-19T08:12:29.914Z"
+    "createdAt": "2026-09-19T09:27:25.422Z",
+    "updatedAt": "2026-09-19T09:27:25.422Z"
   },
   {
     "id": "data-structures.separate-components.trees.avl.rotate-left",
@@ -7175,8 +7175,8 @@
       "data-structures>separate-components>trees>avl>rotate-left>avl_rotate_left()",
       "rotateLeftAVL"
     ],
-    "createdAt": "2026-09-19T08:12:29.914Z",
-    "updatedAt": "2026-09-19T08:12:29.914Z"
+    "createdAt": "2026-09-19T09:27:25.422Z",
+    "updatedAt": "2026-09-19T09:27:25.422Z"
   },
   {
     "id": "data-structures.separate-components.trees.avl.rotate-right",
@@ -7213,8 +7213,8 @@
       "data-structures>separate-components>trees>avl>rotate-right>avl_rotate_right()",
       "rotateRightAVL"
     ],
-    "createdAt": "2026-09-19T08:12:29.914Z",
-    "updatedAt": "2026-09-19T08:12:29.914Z"
+    "createdAt": "2026-09-19T09:27:25.422Z",
+    "updatedAt": "2026-09-19T09:27:25.422Z"
   },
   {
     "id": "data-structures.separate-components.trees.avl.balance-factor",
@@ -7250,8 +7250,8 @@
       "data-structures>separate-components>trees>avl>balance-factor>avl_balance_factor()",
       "balanceFactorAVL"
     ],
-    "createdAt": "2026-09-19T08:12:29.914Z",
-    "updatedAt": "2026-09-19T08:12:29.914Z"
+    "createdAt": "2026-09-19T09:27:25.422Z",
+    "updatedAt": "2026-09-19T09:27:25.422Z"
   },
   {
     "id": "data-structures.separate-components.trees.avl.height",
@@ -7287,8 +7287,8 @@
       "data-structures>separate-components>trees>avl>height>avl_height()",
       "heightAVL"
     ],
-    "createdAt": "2026-09-19T08:12:29.914Z",
-    "updatedAt": "2026-09-19T08:12:29.914Z"
+    "createdAt": "2026-09-19T09:27:25.422Z",
+    "updatedAt": "2026-09-19T09:27:25.422Z"
   },
   {
     "id": "data-structures.separate-components.trees.avl.search",
@@ -7324,8 +7324,8 @@
       "data-structures>separate-components>trees>avl>search>avl_search()",
       "searchAVL"
     ],
-    "createdAt": "2026-09-19T08:12:29.914Z",
-    "updatedAt": "2026-09-19T08:12:29.914Z"
+    "createdAt": "2026-09-19T09:27:25.422Z",
+    "updatedAt": "2026-09-19T09:27:25.422Z"
   },
   {
     "id": "data-structures.separate-components.trees.avl.delete",
@@ -7361,8 +7361,8 @@
       "data-structures>separate-components>trees>avl>delete>avl_delete()",
       "deleteAVL"
     ],
-    "createdAt": "2026-09-19T08:12:29.914Z",
-    "updatedAt": "2026-09-19T08:12:29.914Z"
+    "createdAt": "2026-09-19T09:27:25.422Z",
+    "updatedAt": "2026-09-19T09:27:25.422Z"
   },
   {
     "id": "data-structures.separate-components.trees.avl.inorder",
@@ -7399,8 +7399,8 @@
       "data-structures>separate-components>trees>avl>inorder>avl_inorder()",
       "inorderAVL"
     ],
-    "createdAt": "2026-09-19T08:12:29.914Z",
-    "updatedAt": "2026-09-19T08:12:29.914Z"
+    "createdAt": "2026-09-19T09:27:25.422Z",
+    "updatedAt": "2026-09-19T09:27:25.422Z"
   },
   {
     "id": "data-structures.separate-components.trees.avl.preorder",
@@ -7437,8 +7437,8 @@
       "data-structures>separate-components>trees>avl>preorder>avl_preorder()",
       "preorderAVL"
     ],
-    "createdAt": "2026-09-19T08:12:29.914Z",
-    "updatedAt": "2026-09-19T08:12:29.914Z"
+    "createdAt": "2026-09-19T09:27:25.422Z",
+    "updatedAt": "2026-09-19T09:27:25.422Z"
   },
   {
     "id": "data-structures.separate-components.trees.avl.postorder",
@@ -7475,8 +7475,8 @@
       "data-structures>separate-components>trees>avl>postorder>avl_postorder()",
       "postorderAVL"
     ],
-    "createdAt": "2026-09-19T08:12:29.914Z",
-    "updatedAt": "2026-09-19T08:12:29.914Z"
+    "createdAt": "2026-09-19T09:27:25.422Z",
+    "updatedAt": "2026-09-19T09:27:25.422Z"
   },
   {
     "id": "data-structures.separate-components.trees.avl.levelorder",
@@ -7513,8 +7513,8 @@
       "data-structures>separate-components>trees>avl>levelorder>avl_levelorder()",
       "levelorderAVL"
     ],
-    "createdAt": "2026-09-19T08:12:29.914Z",
-    "updatedAt": "2026-09-19T08:12:29.914Z"
+    "createdAt": "2026-09-19T09:27:25.422Z",
+    "updatedAt": "2026-09-19T09:27:25.422Z"
   },
   {
     "id": "data-structures.separate-components.trees.avl.find-min",
@@ -7550,8 +7550,8 @@
       "data-structures>separate-components>trees>avl>find-min>avl_find_min()",
       "findMinAVL"
     ],
-    "createdAt": "2026-09-19T08:12:29.914Z",
-    "updatedAt": "2026-09-19T08:12:29.914Z"
+    "createdAt": "2026-09-19T09:27:25.422Z",
+    "updatedAt": "2026-09-19T09:27:25.422Z"
   },
   {
     "id": "data-structures.separate-components.trees.avl.find-max",
@@ -7587,8 +7587,8 @@
       "data-structures>separate-components>trees>avl>find-max>avl_find_max()",
       "findMaxAVL"
     ],
-    "createdAt": "2026-09-19T08:12:29.914Z",
-    "updatedAt": "2026-09-19T08:12:29.914Z"
+    "createdAt": "2026-09-19T09:27:25.422Z",
+    "updatedAt": "2026-09-19T09:27:25.422Z"
   },
   {
     "id": "data-structures.separate-components.trees.avl.is-balanced",
@@ -7625,8 +7625,8 @@
       "data-structures>separate-components>trees>avl>is-balanced>avl_is_balanced()",
       "isBalancedAVL"
     ],
-    "createdAt": "2026-09-19T08:12:29.914Z",
-    "updatedAt": "2026-09-19T08:12:29.914Z"
+    "createdAt": "2026-09-19T09:27:25.422Z",
+    "updatedAt": "2026-09-19T09:27:25.422Z"
   },
   {
     "id": "data-structures.separate-components.graphs.adjacency-matrix.remove-edge",
@@ -7663,8 +7663,8 @@
       "data-structures>separate-components>graphs>adjacency-matrix>remove-edge>graph_matrix_remove_edge()",
       "removeEdgeGraphMatrix"
     ],
-    "createdAt": "2026-09-19T08:12:29.914Z",
-    "updatedAt": "2026-09-19T08:12:29.914Z"
+    "createdAt": "2026-09-19T09:27:25.422Z",
+    "updatedAt": "2026-09-19T09:27:25.422Z"
   },
   {
     "id": "data-structures.separate-components.graphs.adjacency-matrix.has-edge",
@@ -7700,8 +7700,8 @@
       "data-structures>separate-components>graphs>adjacency-matrix>has-edge>graph_matrix_has_edge()",
       "hasEdgeGraphMatrix"
     ],
-    "createdAt": "2026-09-19T08:12:29.914Z",
-    "updatedAt": "2026-09-19T08:12:29.914Z"
+    "createdAt": "2026-09-19T09:27:25.422Z",
+    "updatedAt": "2026-09-19T09:27:25.422Z"
   },
   {
     "id": "data-structures.separate-components.graphs.adjacency-matrix.bfs",
@@ -7737,8 +7737,8 @@
       "data-structures>separate-components>graphs>adjacency-matrix>bfs>graph_matrix_bfs()",
       "bfsGraphMatrix"
     ],
-    "createdAt": "2026-09-19T08:12:29.914Z",
-    "updatedAt": "2026-09-19T08:12:29.914Z"
+    "createdAt": "2026-09-19T09:27:25.422Z",
+    "updatedAt": "2026-09-19T09:27:25.422Z"
   },
   {
     "id": "data-structures.separate-components.graphs.adjacency-matrix.dfs",
@@ -7774,8 +7774,8 @@
       "data-structures>separate-components>graphs>adjacency-matrix>dfs>graph_matrix_dfs()",
       "dfsGraphMatrix"
     ],
-    "createdAt": "2026-09-19T08:12:29.914Z",
-    "updatedAt": "2026-09-19T08:12:29.914Z"
+    "createdAt": "2026-09-19T09:27:25.422Z",
+    "updatedAt": "2026-09-19T09:27:25.422Z"
   },
   {
     "id": "data-structures.separate-components.graphs.adjacency-matrix.degrees",
@@ -7811,8 +7811,8 @@
       "data-structures>separate-components>graphs>adjacency-matrix>degrees>graph_matrix_degrees()",
       "degreesGraphMatrix"
     ],
-    "createdAt": "2026-09-19T08:12:29.914Z",
-    "updatedAt": "2026-09-19T08:12:29.914Z"
+    "createdAt": "2026-09-19T09:27:25.422Z",
+    "updatedAt": "2026-09-19T09:27:25.422Z"
   },
   {
     "id": "data-structures.separate-components.graphs.adjacency-list.remove-edge",
@@ -7850,8 +7850,8 @@
       "data-structures>separate-components>graphs>adjacency-list>remove-edge>graph_list_remove_edge()",
       "removeEdgeGraphList"
     ],
-    "createdAt": "2026-09-19T08:12:29.914Z",
-    "updatedAt": "2026-09-19T08:12:29.914Z"
+    "createdAt": "2026-09-19T09:27:25.422Z",
+    "updatedAt": "2026-09-19T09:27:25.422Z"
   },
   {
     "id": "data-structures.separate-components.graphs.adjacency-list.has-edge",
@@ -7888,8 +7888,8 @@
       "data-structures>separate-components>graphs>adjacency-list>has-edge>graph_list_has_edge()",
       "hasEdgeGraphList"
     ],
-    "createdAt": "2026-09-19T08:12:29.914Z",
-    "updatedAt": "2026-09-19T08:12:29.914Z"
+    "createdAt": "2026-09-19T09:27:25.422Z",
+    "updatedAt": "2026-09-19T09:27:25.422Z"
   },
   {
     "id": "data-structures.separate-components.graphs.adjacency-list.bfs",
@@ -7926,8 +7926,8 @@
       "data-structures>separate-components>graphs>adjacency-list>bfs>graph_list_bfs()",
       "bfsGraphList"
     ],
-    "createdAt": "2026-09-19T08:12:29.914Z",
-    "updatedAt": "2026-09-19T08:12:29.914Z"
+    "createdAt": "2026-09-19T09:27:25.422Z",
+    "updatedAt": "2026-09-19T09:27:25.422Z"
   },
   {
     "id": "data-structures.separate-components.graphs.adjacency-list.dfs",
@@ -7964,8 +7964,8 @@
       "data-structures>separate-components>graphs>adjacency-list>dfs>graph_list_dfs()",
       "dfsGraphList"
     ],
-    "createdAt": "2026-09-19T08:12:29.914Z",
-    "updatedAt": "2026-09-19T08:12:29.914Z"
+    "createdAt": "2026-09-19T09:27:25.422Z",
+    "updatedAt": "2026-09-19T09:27:25.422Z"
   },
   {
     "id": "data-structures.separate-components.graphs.dsu.connected",
@@ -8002,8 +8002,8 @@
       "data-structures>separate-components>graphs>dsu>connected>graph_dsu_connected()",
       "connectedDSU"
     ],
-    "createdAt": "2026-09-19T08:12:29.914Z",
-    "updatedAt": "2026-09-19T08:12:29.914Z"
+    "createdAt": "2026-09-19T09:27:25.422Z",
+    "updatedAt": "2026-09-19T09:27:25.422Z"
   },
   {
     "id": "data-structures.separate-components.graphs.dsu.count-sets",
@@ -8039,8 +8039,8 @@
       "data-structures>separate-components>graphs>dsu>count-sets>graph_dsu_count_sets()",
       "countSetsDSU"
     ],
-    "createdAt": "2026-09-19T08:12:29.914Z",
-    "updatedAt": "2026-09-19T08:12:29.914Z"
+    "createdAt": "2026-09-19T09:27:25.422Z",
+    "updatedAt": "2026-09-19T09:27:25.422Z"
   },
   {
     "id": "data-structures.separate-components.hashing.chaining.search",
@@ -8077,8 +8077,8 @@
       "data-structures>separate-components>hashing>chaining>search>chain_hash_search()",
       "searchChainHash"
     ],
-    "createdAt": "2026-09-19T08:12:29.914Z",
-    "updatedAt": "2026-09-19T08:12:29.914Z"
+    "createdAt": "2026-09-19T09:27:25.422Z",
+    "updatedAt": "2026-09-19T09:27:25.422Z"
   },
   {
     "id": "data-structures.separate-components.hashing.chaining.delete",
@@ -8115,8 +8115,8 @@
       "data-structures>separate-components>hashing>chaining>delete>chain_hash_delete()",
       "deleteChainHash"
     ],
-    "createdAt": "2026-09-19T08:12:29.914Z",
-    "updatedAt": "2026-09-19T08:12:29.914Z"
+    "createdAt": "2026-09-19T09:27:25.422Z",
+    "updatedAt": "2026-09-19T09:27:25.422Z"
   },
   {
     "id": "data-structures.separate-components.hashing.chaining.load-factor",
@@ -8153,8 +8153,8 @@
       "data-structures>separate-components>hashing>chaining>load-factor>chain_hash_load_factor()",
       "loadFactorChainHash"
     ],
-    "createdAt": "2026-09-19T08:12:29.914Z",
-    "updatedAt": "2026-09-19T08:12:29.914Z"
+    "createdAt": "2026-09-19T09:27:25.422Z",
+    "updatedAt": "2026-09-19T09:27:25.422Z"
   },
   {
     "id": "data-structures.separate-components.hashing.open-addressing.search",
@@ -8190,8 +8190,8 @@
       "data-structures>separate-components>hashing>open-addressing>search>open_hash_search()",
       "searchOpenHash"
     ],
-    "createdAt": "2026-09-19T08:12:29.914Z",
-    "updatedAt": "2026-09-19T08:12:29.914Z"
+    "createdAt": "2026-09-19T09:27:25.422Z",
+    "updatedAt": "2026-09-19T09:27:25.422Z"
   },
   {
     "id": "data-structures.separate-components.hashing.open-addressing.delete",
@@ -8227,8 +8227,8 @@
       "data-structures>separate-components>hashing>open-addressing>delete>open_hash_delete()",
       "deleteOpenHash"
     ],
-    "createdAt": "2026-09-19T08:12:29.914Z",
-    "updatedAt": "2026-09-19T08:12:29.914Z"
+    "createdAt": "2026-09-19T09:27:25.422Z",
+    "updatedAt": "2026-09-19T09:27:25.422Z"
   },
   {
     "id": "data-structures.separate-components.hashing.hash-functions.sdbm",
@@ -8262,8 +8262,8 @@
       "data-structures>separate-components>hashing>hash-functions>sdbm>hash_sdbm()",
       "sdbmHash"
     ],
-    "createdAt": "2026-09-19T08:12:29.914Z",
-    "updatedAt": "2026-09-19T08:12:29.914Z"
+    "createdAt": "2026-09-19T09:27:25.422Z",
+    "updatedAt": "2026-09-19T09:27:25.422Z"
   },
   {
     "id": "data-structures.separate-components.hashing.hash-functions.murmur32",
@@ -8297,8 +8297,8 @@
       "data-structures>separate-components>hashing>hash-functions>murmur32>hash_murmur32()",
       "murmur32Hash"
     ],
-    "createdAt": "2026-09-19T08:12:29.914Z",
-    "updatedAt": "2026-09-19T08:12:29.914Z"
+    "createdAt": "2026-09-19T09:27:25.422Z",
+    "updatedAt": "2026-09-19T09:27:25.422Z"
   },
   {
     "id": "data-structures.separate-components.hashing.hash-functions.polynomial",
@@ -8332,8 +8332,8 @@
       "data-structures>separate-components>hashing>hash-functions>polynomial>hash_polynomial()",
       "polynomialHash"
     ],
-    "createdAt": "2026-09-19T08:12:29.914Z",
-    "updatedAt": "2026-09-19T08:12:29.914Z"
+    "createdAt": "2026-09-19T09:27:25.422Z",
+    "updatedAt": "2026-09-19T09:27:25.422Z"
   },
   {
     "id": "data-structures.full-programs.arrays.1d-array.prog-1d-array",
@@ -8367,8 +8367,8 @@
       "data-structures>full-programs>arrays>1d-array>prog-1d-array>prog_1d_array()",
       "programArray1D"
     ],
-    "createdAt": "2026-09-19T08:12:29.916Z",
-    "updatedAt": "2026-09-19T08:12:29.916Z"
+    "createdAt": "2026-09-19T09:27:25.424Z",
+    "updatedAt": "2026-09-19T09:27:25.424Z"
   },
   {
     "id": "data-structures.full-programs.arrays.2d-array.prog-2d-array",
@@ -8402,8 +8402,8 @@
       "data-structures>full-programs>arrays>2d-array>prog-2d-array>prog_2d_array()",
       "programArray2D"
     ],
-    "createdAt": "2026-09-19T08:12:29.917Z",
-    "updatedAt": "2026-09-19T08:12:29.917Z"
+    "createdAt": "2026-09-19T09:27:25.424Z",
+    "updatedAt": "2026-09-19T09:27:25.424Z"
   },
   {
     "id": "data-structures.full-programs.arrays.3d-array.prog-3d-array",
@@ -8437,8 +8437,8 @@
       "data-structures>full-programs>arrays>3d-array>prog-3d-array>prog_3d_array()",
       "programArray3D"
     ],
-    "createdAt": "2026-09-19T08:12:29.917Z",
-    "updatedAt": "2026-09-19T08:12:29.917Z"
+    "createdAt": "2026-09-19T09:27:25.425Z",
+    "updatedAt": "2026-09-19T09:27:25.425Z"
   },
   {
     "id": "data-structures.full-programs.arrays.dynamic-array.prog-dynamic-array",
@@ -8472,8 +8472,8 @@
       "data-structures>full-programs>arrays>dynamic-array>prog-dynamic-array>prog_dynamic_array()",
       "programDynamicArray"
     ],
-    "createdAt": "2026-09-19T08:12:29.917Z",
-    "updatedAt": "2026-09-19T08:12:29.917Z"
+    "createdAt": "2026-09-19T09:27:25.425Z",
+    "updatedAt": "2026-09-19T09:27:25.425Z"
   },
   {
     "id": "data-structures.full-programs.linked-lists.singly.prog-singly-list",
@@ -8507,8 +8507,8 @@
       "data-structures>full-programs>linked-lists>singly>prog-singly-list>prog_singly_linked_list()",
       "programSinglyList"
     ],
-    "createdAt": "2026-09-19T08:12:29.917Z",
-    "updatedAt": "2026-09-19T08:12:29.917Z"
+    "createdAt": "2026-09-19T09:27:25.425Z",
+    "updatedAt": "2026-09-19T09:27:25.425Z"
   },
   {
     "id": "data-structures.full-programs.linked-lists.doubly.prog-doubly-list",
@@ -8542,8 +8542,8 @@
       "data-structures>full-programs>linked-lists>doubly>prog-doubly-list>prog_doubly_linked_list()",
       "programDoublyList"
     ],
-    "createdAt": "2026-09-19T08:12:29.917Z",
-    "updatedAt": "2026-09-19T08:12:29.917Z"
+    "createdAt": "2026-09-19T09:27:25.425Z",
+    "updatedAt": "2026-09-19T09:27:25.425Z"
   },
   {
     "id": "data-structures.full-programs.linked-lists.singly-circular.prog-circular-list",
@@ -8577,8 +8577,8 @@
       "data-structures>full-programs>linked-lists>singly-circular>prog-circular-list>prog_circular_list()",
       "programCircularList"
     ],
-    "createdAt": "2026-09-19T08:12:29.917Z",
-    "updatedAt": "2026-09-19T08:12:29.917Z"
+    "createdAt": "2026-09-19T09:27:25.425Z",
+    "updatedAt": "2026-09-19T09:27:25.425Z"
   },
   {
     "id": "data-structures.full-programs.linked-lists.doubly-circular.prog-doubly-circular",
@@ -8612,8 +8612,8 @@
       "data-structures>full-programs>linked-lists>doubly-circular>prog-doubly-circular>prog_doubly_circular()",
       "programDoublyCircular"
     ],
-    "createdAt": "2026-09-19T08:12:29.917Z",
-    "updatedAt": "2026-09-19T08:12:29.917Z"
+    "createdAt": "2026-09-19T09:27:25.425Z",
+    "updatedAt": "2026-09-19T09:27:25.425Z"
   },
   {
     "id": "data-structures.full-programs.stacks.array-stack.prog-array-stack",
@@ -8647,8 +8647,8 @@
       "data-structures>full-programs>stacks>array-stack>prog-array-stack>prog_array_stack()",
       "programArrayStack"
     ],
-    "createdAt": "2026-09-19T08:12:29.917Z",
-    "updatedAt": "2026-09-19T08:12:29.917Z"
+    "createdAt": "2026-09-19T09:27:25.425Z",
+    "updatedAt": "2026-09-19T09:27:25.425Z"
   },
   {
     "id": "data-structures.full-programs.stacks.linked-stack.prog-linked-stack",
@@ -8682,8 +8682,8 @@
       "data-structures>full-programs>stacks>linked-stack>prog-linked-stack>prog_linked_stack()",
       "programLinkedStack"
     ],
-    "createdAt": "2026-09-19T08:12:29.917Z",
-    "updatedAt": "2026-09-19T08:12:29.917Z"
+    "createdAt": "2026-09-19T09:27:25.425Z",
+    "updatedAt": "2026-09-19T09:27:25.425Z"
   },
   {
     "id": "data-structures.full-programs.stacks.monotonic-stack.prog-monotonic-stack",
@@ -8717,8 +8717,8 @@
       "data-structures>full-programs>stacks>monotonic-stack>prog-monotonic-stack>prog_monotonic_stack()",
       "programMonotonicStack"
     ],
-    "createdAt": "2026-09-19T08:12:29.917Z",
-    "updatedAt": "2026-09-19T08:12:29.917Z"
+    "createdAt": "2026-09-19T09:27:25.425Z",
+    "updatedAt": "2026-09-19T09:27:25.425Z"
   },
   {
     "id": "data-structures.full-programs.queues.linear-queue.prog-linear-queue",
@@ -8752,8 +8752,8 @@
       "data-structures>full-programs>queues>linear-queue>prog-linear-queue>prog_linear_queue()",
       "programLinearQueue"
     ],
-    "createdAt": "2026-09-19T08:12:29.917Z",
-    "updatedAt": "2026-09-19T08:12:29.917Z"
+    "createdAt": "2026-09-19T09:27:25.426Z",
+    "updatedAt": "2026-09-19T09:27:25.426Z"
   },
   {
     "id": "data-structures.full-programs.queues.circular-queue.prog-circular-queue",
@@ -8787,8 +8787,8 @@
       "data-structures>full-programs>queues>circular-queue>prog-circular-queue>prog_circular_queue()",
       "programCircularQueue"
     ],
-    "createdAt": "2026-09-19T08:12:29.917Z",
-    "updatedAt": "2026-09-19T08:12:29.917Z"
+    "createdAt": "2026-09-19T09:27:25.426Z",
+    "updatedAt": "2026-09-19T09:27:25.426Z"
   },
   {
     "id": "data-structures.full-programs.queues.deque.prog-deque",
@@ -8822,8 +8822,8 @@
       "data-structures>full-programs>queues>deque>prog-deque>prog_deque()",
       "programDeque"
     ],
-    "createdAt": "2026-09-19T08:12:29.917Z",
-    "updatedAt": "2026-09-19T08:12:29.917Z"
+    "createdAt": "2026-09-19T09:27:25.426Z",
+    "updatedAt": "2026-09-19T09:27:25.426Z"
   },
   {
     "id": "data-structures.full-programs.queues.priority-queue.prog-priority-queue",
@@ -8857,8 +8857,8 @@
       "data-structures>full-programs>queues>priority-queue>prog-priority-queue>prog_priority_queue()",
       "programPriorityQueue"
     ],
-    "createdAt": "2026-09-19T08:12:29.917Z",
-    "updatedAt": "2026-09-19T08:12:29.917Z"
+    "createdAt": "2026-09-19T09:27:25.426Z",
+    "updatedAt": "2026-09-19T09:27:25.426Z"
   },
   {
     "id": "data-structures.full-programs.trees.bst.prog-bst",
@@ -8892,8 +8892,8 @@
       "data-structures>full-programs>trees>bst>prog-bst>prog_bst()",
       "programBST"
     ],
-    "createdAt": "2026-09-19T08:12:29.918Z",
-    "updatedAt": "2026-09-19T08:12:29.918Z"
+    "createdAt": "2026-09-19T09:27:25.426Z",
+    "updatedAt": "2026-09-19T09:27:25.426Z"
   },
   {
     "id": "data-structures.full-programs.trees.avl.prog-avl",
@@ -8927,8 +8927,8 @@
       "data-structures>full-programs>trees>avl>prog-avl>prog_avl()",
       "programAVL"
     ],
-    "createdAt": "2026-09-19T08:12:29.918Z",
-    "updatedAt": "2026-09-19T08:12:29.918Z"
+    "createdAt": "2026-09-19T09:27:25.426Z",
+    "updatedAt": "2026-09-19T09:27:25.426Z"
   },
   {
     "id": "data-structures.full-programs.trees.trie.prog-trie",
@@ -8962,8 +8962,8 @@
       "data-structures>full-programs>trees>trie>prog-trie>prog_trie()",
       "programTrie"
     ],
-    "createdAt": "2026-09-19T08:12:29.918Z",
-    "updatedAt": "2026-09-19T08:12:29.918Z"
+    "createdAt": "2026-09-19T09:27:25.426Z",
+    "updatedAt": "2026-09-19T09:27:25.426Z"
   },
   {
     "id": "data-structures.full-programs.trees.segment-tree.prog-segment-tree",
@@ -8997,8 +8997,8 @@
       "data-structures>full-programs>trees>segment-tree>prog-segment-tree>prog_segment_tree()",
       "programSegmentTree"
     ],
-    "createdAt": "2026-09-19T08:12:29.918Z",
-    "updatedAt": "2026-09-19T08:12:29.918Z"
+    "createdAt": "2026-09-19T09:27:25.426Z",
+    "updatedAt": "2026-09-19T09:27:25.426Z"
   },
   {
     "id": "data-structures.full-programs.graphs.adjacency-matrix.prog-graph-adj-matrix",
@@ -9032,8 +9032,8 @@
       "data-structures>full-programs>graphs>adjacency-matrix>prog-graph-adj-matrix>prog_graph_adj_matrix()",
       "programGraphAdjMatrix"
     ],
-    "createdAt": "2026-09-19T08:12:29.918Z",
-    "updatedAt": "2026-09-19T08:12:29.918Z"
+    "createdAt": "2026-09-19T09:27:25.426Z",
+    "updatedAt": "2026-09-19T09:27:25.426Z"
   },
   {
     "id": "data-structures.full-programs.graphs.adjacency-list.prog-graph-adj-list",
@@ -9067,8 +9067,8 @@
       "data-structures>full-programs>graphs>adjacency-list>prog-graph-adj-list>prog_graph_adj_list()",
       "programGraphAdjList"
     ],
-    "createdAt": "2026-09-19T08:12:29.918Z",
-    "updatedAt": "2026-09-19T08:12:29.918Z"
+    "createdAt": "2026-09-19T09:27:25.426Z",
+    "updatedAt": "2026-09-19T09:27:25.426Z"
   },
   {
     "id": "data-structures.full-programs.graphs.dsu.prog-graph-dsu",
@@ -9102,8 +9102,8 @@
       "data-structures>full-programs>graphs>dsu>prog-graph-dsu>prog_graph_dsu()",
       "programGraphDSU"
     ],
-    "createdAt": "2026-09-19T08:12:29.918Z",
-    "updatedAt": "2026-09-19T08:12:29.918Z"
+    "createdAt": "2026-09-19T09:27:25.427Z",
+    "updatedAt": "2026-09-19T09:27:25.427Z"
   },
   {
     "id": "data-structures.full-programs.hashing.chaining.prog-chain-hash",
@@ -9137,8 +9137,8 @@
       "data-structures>full-programs>hashing>chaining>prog-chain-hash>prog_chain_hash()",
       "programChainHash"
     ],
-    "createdAt": "2026-09-19T08:12:29.918Z",
-    "updatedAt": "2026-09-19T08:12:29.918Z"
+    "createdAt": "2026-09-19T09:27:25.427Z",
+    "updatedAt": "2026-09-19T09:27:25.427Z"
   },
   {
     "id": "data-structures.full-programs.hashing.open-addressing.prog-open-hash",
@@ -9172,8 +9172,8 @@
       "data-structures>full-programs>hashing>open-addressing>prog-open-hash>prog_open_hash()",
       "programOpenHash"
     ],
-    "createdAt": "2026-09-19T08:12:29.918Z",
-    "updatedAt": "2026-09-19T08:12:29.918Z"
+    "createdAt": "2026-09-19T09:27:25.427Z",
+    "updatedAt": "2026-09-19T09:27:25.427Z"
   },
   {
     "id": "data-structures.full-programs.hashing.hash-functions.prog-hash-functions",
@@ -9207,7 +9207,7 @@
       "data-structures>full-programs>hashing>hash-functions>prog-hash-functions>prog_hash_functions()",
       "programHashFunctions"
     ],
-    "createdAt": "2026-09-19T08:12:29.919Z",
-    "updatedAt": "2026-09-19T08:12:29.919Z"
+    "createdAt": "2026-09-19T09:27:25.427Z",
+    "updatedAt": "2026-09-19T09:27:25.427Z"
   }
 ]

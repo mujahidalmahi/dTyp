@@ -1,7 +1,7 @@
 # prog_acad_harmonic_oscillator
 > **Domain:** `academics-programming` | **Subcategory:** `differential-equations` | **Type:** `program`
 ## Overview
-Simulates 2nd-order damped harmonic oscillator y'' + 2*zeta*omega*y' + omega^2*y = 0
+Interactive damped harmonic oscillator simulator (m x'' + c x' + k x = 0) solved as a 2D first-order system using vector RK4
 
 ## Signature
 ```c
@@ -20,40 +20,110 @@ int main(void);
 ## Implementation
 ```c
 #include <stdio.h>
+#include <math.h>
+#include <stdbool.h>
 
-void solve_oscillator_rk4(double m, double c, double k, double y0, double v0, double dt, int steps) {
+static void clear_input(void) {
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF);
+}
+
+static void derivatives(double t, double x, double v, double m, double c_damp, double k, double* dx_dt, double* dv_dt) {
+    (void)t;
+    *dx_dt = v;
+    *dv_dt = (-c_damp * v - k * x) / m;
+}
+
+static void simulate_oscillator(double m, double c_damp, double k, double x0, double v0, double t_end, double dt) {
+    double omega_n = sqrt(k / m);
+    double c_crit = 2.0 * sqrt(k * m);
+    double zeta = c_damp / c_crit;
+
+    printf("\n--- Oscillator Characteristics ---\n");
+    printf("Mass m:                %10.4f kg\n", m);
+    printf("Damping c:             %10.4f N*s/m\n", c_damp);
+    printf("Spring constant k:     %10.4f N/m\n", k);
+    printf("Natural Frequency w_n: %10.4f rad/s\n", omega_n);
+    printf("Damping Ratio zeta:    %10.4f\n", zeta);
+    if (zeta < 1.0) printf("Regime: UNDERDAMPED (Oscillatory decay)\n");
+    else if (fabs(zeta - 1.0) < 1e-4) printf("Regime: CRITICALLY DAMPED\n");
+    else printf("Regime: OVERDAMPED (Non-oscillatory)\n");
+
+    int steps = (int)round(t_end / dt);
+    printf("\nVector RK4 Simulation Table (dt = %.4f):\n", dt);
+    printf("------------------------------------------------------------------\n");
+    printf(" Time t (s) |  Position x (m) |  Velocity v (m/s) | Total Energy (J)\n");
+    printf("------------------------------------------------------------------\n");
+
     double t = 0.0;
-    double y = y0, v = v0;
-    printf("Time   | Displacement | Velocity\n");
-    printf("-------+--------------+---------\n");
-    for (int i = 0; i <= steps; i++) {
-        if (i % 20 == 0) printf("%6.2f | %12.4f | %8.4f\n", t, y, v);
-        double kv1 = (-c * v - k * y) / m;
-        double ky1 = v;
+    double x = x0;
+    double v = v0;
 
-        double v_mid1 = v + 0.5 * dt * kv1;
-        double y_mid1 = y + 0.5 * dt * ky1;
-        double kv2 = (-c * v_mid1 - k * y_mid1) / m;
-        double ky2 = v_mid1;
+    for (int step = 0; step <= steps; step++) {
+        if (step % (steps / 20 > 0 ? steps / 20 : 1) == 0 || step == steps) {
+            double E = 0.5 * m * v * v + 0.5 * k * x * x;
+            printf(" %10.3f | %15.6f | %17.6f | %16.6f\n", t, x, v, E);
+        }
 
-        double v_mid2 = v + 0.5 * dt * kv2;
-        double y_mid2 = y + 0.5 * dt * ky2;
-        double kv3 = (-c * v_mid2 - k * y_mid2) / m;
-        double ky3 = v_mid2;
+        double k1_x, k1_v;
+        derivatives(t, x, v, m, c_damp, k, &k1_x, &k1_v);
 
-        double v_end = v + dt * kv3;
-        double y_end = y + dt * ky3;
-        double kv4 = (-c * v_end - k * y_end) / m;
-        double ky4 = v_end;
+        double k2_x, k2_v;
+        derivatives(t + 0.5 * dt, x + 0.5 * dt * k1_x, v + 0.5 * dt * k1_v, m, c_damp, k, &k2_x, &k2_v);
 
-        v += (dt / 6.0) * (kv1 + 2 * kv2 + 2 * kv3 + kv4);
-        y += (dt / 6.0) * (ky1 + 2 * ky2 + 2 * ky3 + ky4);
+        double k3_x, k3_v;
+        derivatives(t + 0.5 * dt, x + 0.5 * dt * k2_x, v + 0.5 * dt * k2_v, m, c_damp, k, &k3_x, &k3_v);
+
+        double k4_x, k4_v;
+        derivatives(t + dt, x + dt * k3_x, v + dt * k3_v, m, c_damp, k, &k4_x, &k4_v);
+
+        x += (dt / 6.0) * (k1_x + 2.0 * k2_x + 2.0 * k3_x + k4_x);
+        v += (dt / 6.0) * (k1_v + 2.0 * k2_v + 2.0 * k3_v + k4_v);
         t += dt;
     }
+    printf("------------------------------------------------------------------\n");
 }
 
 int main(void) {
-    solve_oscillator_rk4(1.0, 0.5, 4.0, 1.0, 0.0, 0.05, 100);
+    int choice;
+    do {
+        printf("\n================ DAMPED HARMONIC OSCILLATOR WORKBENCH ================\n");
+        printf("1. Simulate Underdamped Oscillator (m=1.0, c=0.5, k=10.0)\n");
+        printf("2. Simulate Critically Damped Oscillator\n");
+        printf("3. Custom Parameters (m, c, k, x0, v0)\n");
+        printf("0. Exit\n");
+        printf("Enter choice: ");
+        if (scanf("%d", &choice) != 1) {
+            clear_input();
+            continue;
+        }
+
+        switch (choice) {
+            case 1:
+                simulate_oscillator(1.0, 0.5, 10.0, 1.0, 0.0, 5.0, 0.01);
+                break;
+            case 2:
+                simulate_oscillator(1.0, 2.0 * sqrt(10.0), 10.0, 1.0, 0.0, 3.0, 0.01);
+                break;
+            case 3: {
+                double m, c, k, x0, v0, t_end;
+                printf("Enter m (kg), c (N*s/m), k (N/m): ");
+                if (scanf("%lf %lf %lf", &m, &c, &k) != 3) { clear_input(); break; }
+                printf("Enter initial displacement x0 (m) and velocity v0 (m/s): ");
+                if (scanf("%lf %lf", &x0, &v0) != 2) { clear_input(); break; }
+                printf("Enter simulation duration t_end (s): ");
+                if (scanf("%lf", &t_end) != 1) t_end = 5.0;
+                simulate_oscillator(m, c, k, x0, v0, t_end, 0.01);
+                break;
+            }
+            case 0:
+                printf("Exiting Harmonic Oscillator.\n");
+                break;
+            default:
+                printf("Invalid selection.\n");
+        }
+    } while (choice != 0);
+
     return 0;
 }
 ```

@@ -30,8 +30,8 @@
       "competitive-programming>programming-technics>fast-io-utilities>fast-io>fast-read-int>cp_fast_read_int()",
       "fastReadInt"
     ],
-    "createdAt": "2026-09-19T08:12:29.925Z",
-    "updatedAt": "2026-09-19T08:12:29.925Z"
+    "createdAt": "2026-09-19T09:27:25.435Z",
+    "updatedAt": "2026-09-19T09:27:25.435Z"
   },
   {
     "id": "competitive-programming.programming-technics.fast-io-utilities.fast-io.fast-write-int",
@@ -64,8 +64,8 @@
       "competitive-programming>programming-technics>fast-io-utilities>fast-io>fast-write-int>cp_fast_write_int()",
       "fastWriteInt"
     ],
-    "createdAt": "2026-09-19T08:12:29.925Z",
-    "updatedAt": "2026-09-19T08:12:29.925Z"
+    "createdAt": "2026-09-19T09:27:25.435Z",
+    "updatedAt": "2026-09-19T09:27:25.435Z"
   },
   {
     "id": "competitive-programming.programming-technics.fast-io-utilities.fast-io.fast-read-long",
@@ -98,8 +98,8 @@
       "competitive-programming>programming-technics>fast-io-utilities>fast-io>fast-read-long>cp_fast_read_long()",
       "fastReadLong"
     ],
-    "createdAt": "2026-09-19T08:12:29.925Z",
-    "updatedAt": "2026-09-19T08:12:29.925Z"
+    "createdAt": "2026-09-19T09:27:25.435Z",
+    "updatedAt": "2026-09-19T09:27:25.435Z"
   },
   {
     "id": "competitive-programming.programming-technics.fast-io-utilities.coordinate-compression.compress",
@@ -132,8 +132,8 @@
       "competitive-programming>programming-technics>fast-io-utilities>coordinate-compression>compress>cp_coordinate_compress()",
       "coordCompress"
     ],
-    "createdAt": "2026-09-19T08:12:29.925Z",
-    "updatedAt": "2026-09-19T08:12:29.925Z"
+    "createdAt": "2026-09-19T09:27:25.435Z",
+    "updatedAt": "2026-09-19T09:27:25.435Z"
   },
   {
     "id": "competitive-programming.programming-technics.fast-io-utilities.coordinate-compression.get-rank",
@@ -166,8 +166,8 @@
       "competitive-programming>programming-technics>fast-io-utilities>coordinate-compression>get-rank>cp_compressed_rank()",
       "coordRank"
     ],
-    "createdAt": "2026-09-19T08:12:29.925Z",
-    "updatedAt": "2026-09-19T08:12:29.925Z"
+    "createdAt": "2026-09-19T09:27:25.435Z",
+    "updatedAt": "2026-09-19T09:27:25.435Z"
   },
   {
     "id": "competitive-programming.programming-technics.bit-manipulation.bitwise-tricks.count-set",
@@ -200,8 +200,8 @@
       "competitive-programming>programming-technics>bit-manipulation>bitwise-tricks>count-set>cp_bit_count_set()",
       "bitCountSet"
     ],
-    "createdAt": "2026-09-19T08:12:29.925Z",
-    "updatedAt": "2026-09-19T08:12:29.925Z"
+    "createdAt": "2026-09-19T09:27:25.435Z",
+    "updatedAt": "2026-09-19T09:27:25.435Z"
   },
   {
     "id": "competitive-programming.programming-technics.bit-manipulation.bitwise-tricks.lowest-set",
@@ -234,8 +234,8 @@
       "competitive-programming>programming-technics>bit-manipulation>bitwise-tricks>lowest-set>cp_bit_lowest_set()",
       "bitLowestSet"
     ],
-    "createdAt": "2026-09-19T08:12:29.925Z",
-    "updatedAt": "2026-09-19T08:12:29.925Z"
+    "createdAt": "2026-09-19T09:27:25.435Z",
+    "updatedAt": "2026-09-19T09:27:25.435Z"
   },
   {
     "id": "competitive-programming.programming-technics.bit-manipulation.bitwise-tricks.is-power-of-two",
@@ -268,8 +268,8 @@
       "competitive-programming>programming-technics>bit-manipulation>bitwise-tricks>is-power-of-two>cp_bit_is_power_of_two()",
       "bitIsPowerOfTwo"
     ],
-    "createdAt": "2026-09-19T08:12:29.925Z",
-    "updatedAt": "2026-09-19T08:12:29.925Z"
+    "createdAt": "2026-09-19T09:27:25.435Z",
+    "updatedAt": "2026-09-19T09:27:25.435Z"
   },
   {
     "id": "competitive-programming.programming-technics.bit-manipulation.bitmasking.iterate-submasks",
@@ -302,8 +302,8 @@
       "competitive-programming>programming-technics>bit-manipulation>bitmasking>iterate-submasks>cp_bit_iterate_submasks()",
       "bitIterateSubmasks"
     ],
-    "createdAt": "2026-09-19T08:12:29.925Z",
-    "updatedAt": "2026-09-19T08:12:29.925Z"
+    "createdAt": "2026-09-19T09:27:25.435Z",
+    "updatedAt": "2026-09-19T09:27:25.435Z"
   },
   {
     "id": "competitive-programming.programming-technics.bit-manipulation.bitmasking.has-subset",
@@ -336,8 +336,8 @@
       "competitive-programming>programming-technics>bit-manipulation>bitmasking>has-subset>cp_bitmask_has_subset()",
       "bitmaskHasSubset"
     ],
-    "createdAt": "2026-09-19T08:12:29.925Z",
-    "updatedAt": "2026-09-19T08:12:29.925Z"
+    "createdAt": "2026-09-19T09:27:25.435Z",
+    "updatedAt": "2026-09-19T09:27:25.435Z"
   },
   {
     "id": "competitive-programming.programming-technics.number-theory.prime-sieve.sieve-eratosthenes",
@@ -370,8 +370,8 @@
       "competitive-programming>programming-technics>number-theory>prime-sieve>sieve-eratosthenes>cp_sieve_eratosthenes()",
       "sieveEratosthenes"
     ],
-    "createdAt": "2026-09-19T08:12:29.925Z",
-    "updatedAt": "2026-09-19T08:12:29.925Z"
+    "createdAt": "2026-09-19T09:27:25.435Z",
+    "updatedAt": "2026-09-19T09:27:25.435Z"
   },
   {
     "id": "competitive-programming.programming-technics.number-theory.prime-sieve.factorization",
@@ -404,8 +404,8 @@
       "competitive-programming>programming-technics>number-theory>prime-sieve>factorization>cp_prime_factorization()",
       "primeFactorization"
     ],
-    "createdAt": "2026-09-19T08:12:29.925Z",
-    "updatedAt": "2026-09-19T08:12:29.925Z"
+    "createdAt": "2026-09-19T09:27:25.435Z",
+    "updatedAt": "2026-09-19T09:27:25.435Z"
   },
   {
     "id": "competitive-programming.programming-technics.number-theory.modular-arithmetic.mod-pow",
@@ -438,8 +438,8 @@
       "competitive-programming>programming-technics>number-theory>modular-arithmetic>mod-pow>cp_mod_pow()",
       "modPow"
     ],
-    "createdAt": "2026-09-19T08:12:29.925Z",
-    "updatedAt": "2026-09-19T08:12:29.925Z"
+    "createdAt": "2026-09-19T09:27:25.435Z",
+    "updatedAt": "2026-09-19T09:27:25.435Z"
   },
   {
     "id": "competitive-programming.programming-technics.number-theory.modular-arithmetic.extended-gcd",
@@ -472,8 +472,8 @@
       "competitive-programming>programming-technics>number-theory>modular-arithmetic>extended-gcd>cp_extended_gcd()",
       "extendedGcd"
     ],
-    "createdAt": "2026-09-19T08:12:29.925Z",
-    "updatedAt": "2026-09-19T08:12:29.925Z"
+    "createdAt": "2026-09-19T09:27:25.435Z",
+    "updatedAt": "2026-09-19T09:27:25.435Z"
   },
   {
     "id": "competitive-programming.programming-technics.number-theory.modular-arithmetic.mod-inverse",
@@ -508,8 +508,8 @@
       "competitive-programming>programming-technics>number-theory>modular-arithmetic>mod-inverse>cp_mod_inverse()",
       "modInverse"
     ],
-    "createdAt": "2026-09-19T08:12:29.925Z",
-    "updatedAt": "2026-09-19T08:12:29.925Z"
+    "createdAt": "2026-09-19T09:27:25.435Z",
+    "updatedAt": "2026-09-19T09:27:25.435Z"
   },
   {
     "id": "competitive-programming.programming-technics.number-theory.combinatorics.precompute-factorials",
@@ -544,8 +544,8 @@
       "competitive-programming>programming-technics>number-theory>combinatorics>precompute-factorials>cp_precompute_factorials()",
       "precomputeFactorials"
     ],
-    "createdAt": "2026-09-19T08:12:29.925Z",
-    "updatedAt": "2026-09-19T08:12:29.925Z"
+    "createdAt": "2026-09-19T09:27:25.435Z",
+    "updatedAt": "2026-09-19T09:27:25.435Z"
   },
   {
     "id": "competitive-programming.programming-technics.number-theory.combinatorics.ncr-modulo",
@@ -578,8 +578,8 @@
       "competitive-programming>programming-technics>number-theory>combinatorics>ncr-modulo>cp_ncr_modulo()",
       "ncrModulo"
     ],
-    "createdAt": "2026-09-19T08:12:29.925Z",
-    "updatedAt": "2026-09-19T08:12:29.925Z"
+    "createdAt": "2026-09-19T09:27:25.435Z",
+    "updatedAt": "2026-09-19T09:27:25.435Z"
   },
   {
     "id": "competitive-programming.programming-technics.number-theory.matrix-exponentiation.multiply-2x2",
@@ -612,8 +612,8 @@
       "competitive-programming>programming-technics>number-theory>matrix-exponentiation>multiply-2x2>cp_matrix_multiply_2x2()",
       "matrixMultiply2x2"
     ],
-    "createdAt": "2026-09-19T08:12:29.925Z",
-    "updatedAt": "2026-09-19T08:12:29.925Z"
+    "createdAt": "2026-09-19T09:27:25.435Z",
+    "updatedAt": "2026-09-19T09:27:25.435Z"
   },
   {
     "id": "competitive-programming.programming-technics.number-theory.matrix-exponentiation.fibonacci",
@@ -648,8 +648,8 @@
       "competitive-programming>programming-technics>number-theory>matrix-exponentiation>fibonacci>cp_matrix_power_fibonacci()",
       "matrixFibonacci"
     ],
-    "createdAt": "2026-09-19T08:12:29.926Z",
-    "updatedAt": "2026-09-19T08:12:29.926Z"
+    "createdAt": "2026-09-19T09:27:25.435Z",
+    "updatedAt": "2026-09-19T09:27:25.435Z"
   },
   {
     "id": "competitive-programming.programming-technics.range-queries.prefix-sums.build-1d",
@@ -682,8 +682,8 @@
       "competitive-programming>programming-technics>range-queries>prefix-sums>build-1d>cp_prefix_sum_1d_build()",
       "prefSum1dBuild"
     ],
-    "createdAt": "2026-09-19T08:12:29.926Z",
-    "updatedAt": "2026-09-19T08:12:29.926Z"
+    "createdAt": "2026-09-19T09:27:25.435Z",
+    "updatedAt": "2026-09-19T09:27:25.435Z"
   },
   {
     "id": "competitive-programming.programming-technics.range-queries.prefix-sums.query-1d",
@@ -716,8 +716,8 @@
       "competitive-programming>programming-technics>range-queries>prefix-sums>query-1d>cp_prefix_sum_1d_query()",
       "prefSum1dQuery"
     ],
-    "createdAt": "2026-09-19T08:12:29.926Z",
-    "updatedAt": "2026-09-19T08:12:29.926Z"
+    "createdAt": "2026-09-19T09:27:25.435Z",
+    "updatedAt": "2026-09-19T09:27:25.435Z"
   },
   {
     "id": "competitive-programming.programming-technics.range-queries.prefix-sums.query-2d",
@@ -750,8 +750,8 @@
       "competitive-programming>programming-technics>range-queries>prefix-sums>query-2d>cp_prefix_sum_2d_query()",
       "prefSum2dQuery"
     ],
-    "createdAt": "2026-09-19T08:12:29.926Z",
-    "updatedAt": "2026-09-19T08:12:29.926Z"
+    "createdAt": "2026-09-19T09:27:25.435Z",
+    "updatedAt": "2026-09-19T09:27:25.435Z"
   },
   {
     "id": "competitive-programming.programming-technics.range-queries.difference-array.range-add",
@@ -784,8 +784,8 @@
       "competitive-programming>programming-technics>range-queries>difference-array>range-add>cp_difference_array_range_add()",
       "diffRangeAdd"
     ],
-    "createdAt": "2026-09-19T08:12:29.926Z",
-    "updatedAt": "2026-09-19T08:12:29.926Z"
+    "createdAt": "2026-09-19T09:27:25.435Z",
+    "updatedAt": "2026-09-19T09:27:25.435Z"
   },
   {
     "id": "competitive-programming.programming-technics.range-queries.difference-array.compute",
@@ -818,8 +818,8 @@
       "competitive-programming>programming-technics>range-queries>difference-array>compute>cp_difference_array_compute()",
       "diffCompute"
     ],
-    "createdAt": "2026-09-19T08:12:29.926Z",
-    "updatedAt": "2026-09-19T08:12:29.926Z"
+    "createdAt": "2026-09-19T09:27:25.435Z",
+    "updatedAt": "2026-09-19T09:27:25.435Z"
   },
   {
     "id": "competitive-programming.programming-technics.range-queries.two-pointers.pair-sum",
@@ -852,8 +852,8 @@
       "competitive-programming>programming-technics>range-queries>two-pointers>pair-sum>cp_two_pointers_pair_sum()",
       "twoPointersPairSum"
     ],
-    "createdAt": "2026-09-19T08:12:29.926Z",
-    "updatedAt": "2026-09-19T08:12:29.926Z"
+    "createdAt": "2026-09-19T09:27:25.435Z",
+    "updatedAt": "2026-09-19T09:27:25.435Z"
   },
   {
     "id": "competitive-programming.programming-technics.range-queries.two-pointers.remove-duplicates",
@@ -886,8 +886,8 @@
       "competitive-programming>programming-technics>range-queries>two-pointers>remove-duplicates>cp_two_pointers_remove_duplicates()",
       "twoPointersDedup"
     ],
-    "createdAt": "2026-09-19T08:12:29.926Z",
-    "updatedAt": "2026-09-19T08:12:29.926Z"
+    "createdAt": "2026-09-19T09:27:25.435Z",
+    "updatedAt": "2026-09-19T09:27:25.435Z"
   },
   {
     "id": "competitive-programming.programming-technics.range-queries.two-pointers.trapping-rain-water",
@@ -920,8 +920,8 @@
       "competitive-programming>programming-technics>range-queries>two-pointers>trapping-rain-water>cp_two_pointers_trapping_rain_water()",
       "twoPointersTrappingWater"
     ],
-    "createdAt": "2026-09-19T08:12:29.926Z",
-    "updatedAt": "2026-09-19T08:12:29.926Z"
+    "createdAt": "2026-09-19T09:27:25.435Z",
+    "updatedAt": "2026-09-19T09:27:25.435Z"
   },
   {
     "id": "competitive-programming.programming-technics.range-queries.sliding-window.fixed-sum",
@@ -954,8 +954,8 @@
       "competitive-programming>programming-technics>range-queries>sliding-window>fixed-sum>cp_sliding_window_fixed_sum()",
       "slidingWindowFixedSum"
     ],
-    "createdAt": "2026-09-19T08:12:29.926Z",
-    "updatedAt": "2026-09-19T08:12:29.926Z"
+    "createdAt": "2026-09-19T09:27:25.435Z",
+    "updatedAt": "2026-09-19T09:27:25.435Z"
   },
   {
     "id": "competitive-programming.programming-technics.range-queries.sliding-window.min-subarray-len",
@@ -988,8 +988,8 @@
       "competitive-programming>programming-technics>range-queries>sliding-window>min-subarray-len>cp_sliding_window_min_subarray_len()",
       "slidingWindowMinLen"
     ],
-    "createdAt": "2026-09-19T08:12:29.926Z",
-    "updatedAt": "2026-09-19T08:12:29.926Z"
+    "createdAt": "2026-09-19T09:27:25.435Z",
+    "updatedAt": "2026-09-19T09:27:25.435Z"
   },
   {
     "id": "competitive-programming.programming-technics.cp-data-structures.fenwick-tree.struct",
@@ -1022,8 +1022,8 @@
       "competitive-programming>programming-technics>cp-data-structures>fenwick-tree>struct>CpFenwickTree()",
       "FenwickTree"
     ],
-    "createdAt": "2026-09-19T08:12:29.926Z",
-    "updatedAt": "2026-09-19T08:12:29.926Z"
+    "createdAt": "2026-09-19T09:27:25.435Z",
+    "updatedAt": "2026-09-19T09:27:25.435Z"
   },
   {
     "id": "competitive-programming.programming-technics.cp-data-structures.fenwick-tree.update",
@@ -1058,8 +1058,8 @@
       "competitive-programming>programming-technics>cp-data-structures>fenwick-tree>update>cp_fenwick_update()",
       "fenwickUpdate"
     ],
-    "createdAt": "2026-09-19T08:12:29.926Z",
-    "updatedAt": "2026-09-19T08:12:29.926Z"
+    "createdAt": "2026-09-19T09:27:25.435Z",
+    "updatedAt": "2026-09-19T09:27:25.435Z"
   },
   {
     "id": "competitive-programming.programming-technics.cp-data-structures.fenwick-tree.query",
@@ -1094,8 +1094,8 @@
       "competitive-programming>programming-technics>cp-data-structures>fenwick-tree>query>cp_fenwick_query()",
       "fenwickQuery"
     ],
-    "createdAt": "2026-09-19T08:12:29.926Z",
-    "updatedAt": "2026-09-19T08:12:29.926Z"
+    "createdAt": "2026-09-19T09:27:25.435Z",
+    "updatedAt": "2026-09-19T09:27:25.435Z"
   },
   {
     "id": "competitive-programming.programming-technics.cp-data-structures.segment-tree.struct",
@@ -1128,8 +1128,8 @@
       "competitive-programming>programming-technics>cp-data-structures>segment-tree>struct>CpSegmentTree()",
       "SegmentTree"
     ],
-    "createdAt": "2026-09-19T08:12:29.926Z",
-    "updatedAt": "2026-09-19T08:12:29.926Z"
+    "createdAt": "2026-09-19T09:27:25.435Z",
+    "updatedAt": "2026-09-19T09:27:25.435Z"
   },
   {
     "id": "competitive-programming.programming-technics.cp-data-structures.segment-tree.build",
@@ -1164,8 +1164,8 @@
       "competitive-programming>programming-technics>cp-data-structures>segment-tree>build>cp_seg_tree_build()",
       "segTreeBuild"
     ],
-    "createdAt": "2026-09-19T08:12:29.926Z",
-    "updatedAt": "2026-09-19T08:12:29.926Z"
+    "createdAt": "2026-09-19T09:27:25.435Z",
+    "updatedAt": "2026-09-19T09:27:25.435Z"
   },
   {
     "id": "competitive-programming.programming-technics.cp-data-structures.segment-tree.update",
@@ -1200,8 +1200,8 @@
       "competitive-programming>programming-technics>cp-data-structures>segment-tree>update>cp_seg_tree_update()",
       "segTreeUpdate"
     ],
-    "createdAt": "2026-09-19T08:12:29.926Z",
-    "updatedAt": "2026-09-19T08:12:29.926Z"
+    "createdAt": "2026-09-19T09:27:25.435Z",
+    "updatedAt": "2026-09-19T09:27:25.435Z"
   },
   {
     "id": "competitive-programming.programming-technics.cp-data-structures.segment-tree.query",
@@ -1236,8 +1236,8 @@
       "competitive-programming>programming-technics>cp-data-structures>segment-tree>query>cp_seg_tree_query()",
       "segTreeQuery"
     ],
-    "createdAt": "2026-09-19T08:12:29.926Z",
-    "updatedAt": "2026-09-19T08:12:29.926Z"
+    "createdAt": "2026-09-19T09:27:25.435Z",
+    "updatedAt": "2026-09-19T09:27:25.435Z"
   },
   {
     "id": "competitive-programming.programming-technics.cp-data-structures.disjoint-set.struct",
@@ -1270,8 +1270,8 @@
       "competitive-programming>programming-technics>cp-data-structures>disjoint-set>struct>CpDsu()",
       "DisjointSet"
     ],
-    "createdAt": "2026-09-19T08:12:29.926Z",
-    "updatedAt": "2026-09-19T08:12:29.926Z"
+    "createdAt": "2026-09-19T09:27:25.435Z",
+    "updatedAt": "2026-09-19T09:27:25.435Z"
   },
   {
     "id": "competitive-programming.programming-technics.cp-data-structures.disjoint-set.init",
@@ -1306,8 +1306,8 @@
       "competitive-programming>programming-technics>cp-data-structures>disjoint-set>init>cp_dsu_init()",
       "dsuInit"
     ],
-    "createdAt": "2026-09-19T08:12:29.926Z",
-    "updatedAt": "2026-09-19T08:12:29.926Z"
+    "createdAt": "2026-09-19T09:27:25.435Z",
+    "updatedAt": "2026-09-19T09:27:25.435Z"
   },
   {
     "id": "competitive-programming.programming-technics.cp-data-structures.disjoint-set.find",
@@ -1342,8 +1342,8 @@
       "competitive-programming>programming-technics>cp-data-structures>disjoint-set>find>cp_dsu_find()",
       "dsuFind"
     ],
-    "createdAt": "2026-09-19T08:12:29.926Z",
-    "updatedAt": "2026-09-19T08:12:29.926Z"
+    "createdAt": "2026-09-19T09:27:25.435Z",
+    "updatedAt": "2026-09-19T09:27:25.435Z"
   },
   {
     "id": "competitive-programming.programming-technics.cp-data-structures.disjoint-set.union",
@@ -1378,8 +1378,8 @@
       "competitive-programming>programming-technics>cp-data-structures>disjoint-set>union>cp_dsu_union()",
       "dsuUnion"
     ],
-    "createdAt": "2026-09-19T08:12:29.926Z",
-    "updatedAt": "2026-09-19T08:12:29.926Z"
+    "createdAt": "2026-09-19T09:27:25.435Z",
+    "updatedAt": "2026-09-19T09:27:25.435Z"
   },
   {
     "id": "competitive-programming.programming-technics.cp-data-structures.monotonic-structures.next-greater",
@@ -1412,8 +1412,8 @@
       "competitive-programming>programming-technics>cp-data-structures>monotonic-structures>next-greater>cp_monotonic_stack_next_greater()",
       "monotonicNextGreater"
     ],
-    "createdAt": "2026-09-19T08:12:29.926Z",
-    "updatedAt": "2026-09-19T08:12:29.926Z"
+    "createdAt": "2026-09-19T09:27:25.435Z",
+    "updatedAt": "2026-09-19T09:27:25.435Z"
   },
   {
     "id": "competitive-programming.programming-technics.cp-data-structures.monotonic-structures.window-max",
@@ -1446,8 +1446,8 @@
       "competitive-programming>programming-technics>cp-data-structures>monotonic-structures>window-max>cp_monotonic_sliding_window_max()",
       "monotonicWindowMax"
     ],
-    "createdAt": "2026-09-19T08:12:29.926Z",
-    "updatedAt": "2026-09-19T08:12:29.926Z"
+    "createdAt": "2026-09-19T09:27:25.435Z",
+    "updatedAt": "2026-09-19T09:27:25.435Z"
   },
   {
     "id": "competitive-programming.programming-technics.binary-search-techniques.binary-search-answer.min",
@@ -1480,8 +1480,8 @@
       "competitive-programming>programming-technics>binary-search-techniques>binary-search-answer>min>cp_binary_search_answer_min()",
       "bsAnswerMin"
     ],
-    "createdAt": "2026-09-19T08:12:29.926Z",
-    "updatedAt": "2026-09-19T08:12:29.926Z"
+    "createdAt": "2026-09-19T09:27:25.435Z",
+    "updatedAt": "2026-09-19T09:27:25.435Z"
   },
   {
     "id": "competitive-programming.programming-technics.binary-search-techniques.binary-search-answer.max",
@@ -1514,8 +1514,8 @@
       "competitive-programming>programming-technics>binary-search-techniques>binary-search-answer>max>cp_binary_search_answer_max()",
       "bsAnswerMax"
     ],
-    "createdAt": "2026-09-19T08:12:29.926Z",
-    "updatedAt": "2026-09-19T08:12:29.926Z"
+    "createdAt": "2026-09-19T09:27:25.435Z",
+    "updatedAt": "2026-09-19T09:27:25.435Z"
   },
   {
     "id": "competitive-programming.programming-technics.binary-search-techniques.ternary-search.unimodal-max",
@@ -1548,8 +1548,8 @@
       "competitive-programming>programming-technics>binary-search-techniques>ternary-search>unimodal-max>cp_ternary_search_unimodal_max()",
       "ternarySearchMax"
     ],
-    "createdAt": "2026-09-19T08:12:29.926Z",
-    "updatedAt": "2026-09-19T08:12:29.926Z"
+    "createdAt": "2026-09-19T09:27:25.435Z",
+    "updatedAt": "2026-09-19T09:27:25.435Z"
   },
   {
     "id": "competitive-programming.programming-technics.graph-techniques.zero-one-bfs.shortest-path",
@@ -1582,8 +1582,8 @@
       "competitive-programming>programming-technics>graph-techniques>zero-one-bfs>shortest-path>cp_zero_one_bfs()",
       "zeroOneBfs"
     ],
-    "createdAt": "2026-09-19T08:12:29.926Z",
-    "updatedAt": "2026-09-19T08:12:29.926Z"
+    "createdAt": "2026-09-19T09:27:25.435Z",
+    "updatedAt": "2026-09-19T09:27:25.435Z"
   },
   {
     "id": "competitive-programming.programming-technics.graph-techniques.lowest-common-ancestor.build",
@@ -1616,8 +1616,8 @@
       "competitive-programming>programming-technics>graph-techniques>lowest-common-ancestor>build>cp_lca_binary_lifting_build()",
       "lcaBuild"
     ],
-    "createdAt": "2026-09-19T08:12:29.926Z",
-    "updatedAt": "2026-09-19T08:12:29.926Z"
+    "createdAt": "2026-09-19T09:27:25.435Z",
+    "updatedAt": "2026-09-19T09:27:25.435Z"
   },
   {
     "id": "competitive-programming.programming-technics.graph-techniques.lowest-common-ancestor.query",
@@ -1650,8 +1650,8 @@
       "competitive-programming>programming-technics>graph-techniques>lowest-common-ancestor>query>cp_lca_query()",
       "lcaQuery"
     ],
-    "createdAt": "2026-09-19T08:12:29.926Z",
-    "updatedAt": "2026-09-19T08:12:29.926Z"
+    "createdAt": "2026-09-19T09:27:25.435Z",
+    "updatedAt": "2026-09-19T09:27:25.435Z"
   },
   {
     "id": "competitive-programming.programming-technics.graph-techniques.strongly-connected.tarjan-scc",
@@ -1684,8 +1684,8 @@
       "competitive-programming>programming-technics>graph-techniques>strongly-connected>tarjan-scc>cp_tarjan_scc()",
       "tarjanScc"
     ],
-    "createdAt": "2026-09-19T08:12:29.926Z",
-    "updatedAt": "2026-09-19T08:12:29.926Z"
+    "createdAt": "2026-09-19T09:27:25.435Z",
+    "updatedAt": "2026-09-19T09:27:25.435Z"
   },
   {
     "id": "competitive-programming.full-programs.fast-io-utilities.fast-io.prog-fast-io",
@@ -1718,8 +1718,8 @@
       "competitive-programming>prog_cp_fast_io()",
       "competitive-programming>full-programs>fast-io-utilities>fast-io>prog-fast-io>prog_cp_fast_io()"
     ],
-    "createdAt": "2026-09-19T08:12:29.926Z",
-    "updatedAt": "2026-09-19T08:12:29.926Z"
+    "createdAt": "2026-09-19T09:27:25.435Z",
+    "updatedAt": "2026-09-19T09:27:25.435Z"
   },
   {
     "id": "competitive-programming.full-programs.fast-io-utilities.coordinate-compression.prog-coordinate-compression",
@@ -1752,8 +1752,8 @@
       "competitive-programming>prog_cp_coordinate_compression()",
       "competitive-programming>full-programs>fast-io-utilities>coordinate-compression>prog-coordinate-compression>prog_cp_coordinate_compression()"
     ],
-    "createdAt": "2026-09-19T08:12:29.926Z",
-    "updatedAt": "2026-09-19T08:12:29.926Z"
+    "createdAt": "2026-09-19T09:27:25.435Z",
+    "updatedAt": "2026-09-19T09:27:25.435Z"
   },
   {
     "id": "competitive-programming.full-programs.bit-manipulation.bitwise-tricks.prog-bitwise-tricks",
@@ -1786,8 +1786,8 @@
       "competitive-programming>prog_cp_bitwise_tricks()",
       "competitive-programming>full-programs>bit-manipulation>bitwise-tricks>prog-bitwise-tricks>prog_cp_bitwise_tricks()"
     ],
-    "createdAt": "2026-09-19T08:12:29.926Z",
-    "updatedAt": "2026-09-19T08:12:29.926Z"
+    "createdAt": "2026-09-19T09:27:25.435Z",
+    "updatedAt": "2026-09-19T09:27:25.435Z"
   },
   {
     "id": "competitive-programming.full-programs.bit-manipulation.bitmasking.prog-bitmasking",
@@ -1820,8 +1820,8 @@
       "competitive-programming>prog_cp_bitmasking()",
       "competitive-programming>full-programs>bit-manipulation>bitmasking>prog-bitmasking>prog_cp_bitmasking()"
     ],
-    "createdAt": "2026-09-19T08:12:29.926Z",
-    "updatedAt": "2026-09-19T08:12:29.926Z"
+    "createdAt": "2026-09-19T09:27:25.435Z",
+    "updatedAt": "2026-09-19T09:27:25.435Z"
   },
   {
     "id": "competitive-programming.full-programs.number-theory.prime-sieve.prog-sieve-primes",
@@ -1854,8 +1854,8 @@
       "competitive-programming>prog_cp_sieve_primes()",
       "competitive-programming>full-programs>number-theory>prime-sieve>prog-sieve-primes>prog_cp_sieve_primes()"
     ],
-    "createdAt": "2026-09-19T08:12:29.926Z",
-    "updatedAt": "2026-09-19T08:12:29.926Z"
+    "createdAt": "2026-09-19T09:27:25.435Z",
+    "updatedAt": "2026-09-19T09:27:25.435Z"
   },
   {
     "id": "competitive-programming.full-programs.number-theory.modular-arithmetic.prog-modular-arithmetic",
@@ -1888,8 +1888,8 @@
       "competitive-programming>prog_cp_modular_arithmetic()",
       "competitive-programming>full-programs>number-theory>modular-arithmetic>prog-modular-arithmetic>prog_cp_modular_arithmetic()"
     ],
-    "createdAt": "2026-09-19T08:12:29.926Z",
-    "updatedAt": "2026-09-19T08:12:29.926Z"
+    "createdAt": "2026-09-19T09:27:25.435Z",
+    "updatedAt": "2026-09-19T09:27:25.435Z"
   },
   {
     "id": "competitive-programming.full-programs.number-theory.combinatorics.prog-combinatorics",
@@ -1922,8 +1922,8 @@
       "competitive-programming>prog_cp_combinatorics()",
       "competitive-programming>full-programs>number-theory>combinatorics>prog-combinatorics>prog_cp_combinatorics()"
     ],
-    "createdAt": "2026-09-19T08:12:29.926Z",
-    "updatedAt": "2026-09-19T08:12:29.926Z"
+    "createdAt": "2026-09-19T09:27:25.435Z",
+    "updatedAt": "2026-09-19T09:27:25.435Z"
   },
   {
     "id": "competitive-programming.full-programs.number-theory.matrix-exponentiation.prog-matrix-exponentiation",
@@ -1956,8 +1956,8 @@
       "competitive-programming>prog_cp_matrix_exponentiation()",
       "competitive-programming>full-programs>number-theory>matrix-exponentiation>prog-matrix-exponentiation>prog_cp_matrix_exponentiation()"
     ],
-    "createdAt": "2026-09-19T08:12:29.926Z",
-    "updatedAt": "2026-09-19T08:12:29.926Z"
+    "createdAt": "2026-09-19T09:27:25.435Z",
+    "updatedAt": "2026-09-19T09:27:25.435Z"
   },
   {
     "id": "competitive-programming.full-programs.range-queries.prefix-sums.prog-prefix-sums",
@@ -1990,8 +1990,8 @@
       "competitive-programming>prog_cp_prefix_sums()",
       "competitive-programming>full-programs>range-queries>prefix-sums>prog-prefix-sums>prog_cp_prefix_sums()"
     ],
-    "createdAt": "2026-09-19T08:12:29.926Z",
-    "updatedAt": "2026-09-19T08:12:29.926Z"
+    "createdAt": "2026-09-19T09:27:25.435Z",
+    "updatedAt": "2026-09-19T09:27:25.435Z"
   },
   {
     "id": "competitive-programming.full-programs.range-queries.difference-array.prog-difference-array",
@@ -2024,8 +2024,8 @@
       "competitive-programming>prog_cp_difference_array()",
       "competitive-programming>full-programs>range-queries>difference-array>prog-difference-array>prog_cp_difference_array()"
     ],
-    "createdAt": "2026-09-19T08:12:29.926Z",
-    "updatedAt": "2026-09-19T08:12:29.926Z"
+    "createdAt": "2026-09-19T09:27:25.435Z",
+    "updatedAt": "2026-09-19T09:27:25.435Z"
   },
   {
     "id": "competitive-programming.full-programs.range-queries.two-pointers.prog-two-pointers",
@@ -2058,8 +2058,8 @@
       "competitive-programming>prog_cp_two_pointers()",
       "competitive-programming>full-programs>range-queries>two-pointers>prog-two-pointers>prog_cp_two_pointers()"
     ],
-    "createdAt": "2026-09-19T08:12:29.926Z",
-    "updatedAt": "2026-09-19T08:12:29.926Z"
+    "createdAt": "2026-09-19T09:27:25.435Z",
+    "updatedAt": "2026-09-19T09:27:25.435Z"
   },
   {
     "id": "competitive-programming.full-programs.range-queries.sliding-window.prog-sliding-window",
@@ -2092,8 +2092,8 @@
       "competitive-programming>prog_cp_sliding_window()",
       "competitive-programming>full-programs>range-queries>sliding-window>prog-sliding-window>prog_cp_sliding_window()"
     ],
-    "createdAt": "2026-09-19T08:12:29.926Z",
-    "updatedAt": "2026-09-19T08:12:29.926Z"
+    "createdAt": "2026-09-19T09:27:25.435Z",
+    "updatedAt": "2026-09-19T09:27:25.435Z"
   },
   {
     "id": "competitive-programming.full-programs.cp-data-structures.fenwick-tree.prog-fenwick-tree",
@@ -2126,8 +2126,8 @@
       "competitive-programming>prog_cp_fenwick_tree()",
       "competitive-programming>full-programs>cp-data-structures>fenwick-tree>prog-fenwick-tree>prog_cp_fenwick_tree()"
     ],
-    "createdAt": "2026-09-19T08:12:29.926Z",
-    "updatedAt": "2026-09-19T08:12:29.926Z"
+    "createdAt": "2026-09-19T09:27:25.435Z",
+    "updatedAt": "2026-09-19T09:27:25.435Z"
   },
   {
     "id": "competitive-programming.full-programs.cp-data-structures.segment-tree.prog-segment-tree",
@@ -2160,8 +2160,8 @@
       "competitive-programming>prog_cp_segment_tree()",
       "competitive-programming>full-programs>cp-data-structures>segment-tree>prog-segment-tree>prog_cp_segment_tree()"
     ],
-    "createdAt": "2026-09-19T08:12:29.926Z",
-    "updatedAt": "2026-09-19T08:12:29.926Z"
+    "createdAt": "2026-09-19T09:27:25.435Z",
+    "updatedAt": "2026-09-19T09:27:25.435Z"
   },
   {
     "id": "competitive-programming.full-programs.cp-data-structures.disjoint-set.prog-disjoint-set",
@@ -2194,8 +2194,8 @@
       "competitive-programming>prog_cp_disjoint_set()",
       "competitive-programming>full-programs>cp-data-structures>disjoint-set>prog-disjoint-set>prog_cp_disjoint_set()"
     ],
-    "createdAt": "2026-09-19T08:12:29.926Z",
-    "updatedAt": "2026-09-19T08:12:29.926Z"
+    "createdAt": "2026-09-19T09:27:25.435Z",
+    "updatedAt": "2026-09-19T09:27:25.435Z"
   },
   {
     "id": "competitive-programming.full-programs.cp-data-structures.monotonic-structures.prog-monotonic-structures",
@@ -2228,8 +2228,8 @@
       "competitive-programming>prog_cp_monotonic_structures()",
       "competitive-programming>full-programs>cp-data-structures>monotonic-structures>prog-monotonic-structures>prog_cp_monotonic_structures()"
     ],
-    "createdAt": "2026-09-19T08:12:29.926Z",
-    "updatedAt": "2026-09-19T08:12:29.926Z"
+    "createdAt": "2026-09-19T09:27:25.435Z",
+    "updatedAt": "2026-09-19T09:27:25.435Z"
   },
   {
     "id": "competitive-programming.full-programs.binary-search-techniques.binary-search-answer.prog-binary-search-answer",
@@ -2262,8 +2262,8 @@
       "competitive-programming>prog_cp_binary_search_answer()",
       "competitive-programming>full-programs>binary-search-techniques>binary-search-answer>prog-binary-search-answer>prog_cp_binary_search_answer()"
     ],
-    "createdAt": "2026-09-19T08:12:29.926Z",
-    "updatedAt": "2026-09-19T08:12:29.926Z"
+    "createdAt": "2026-09-19T09:27:25.435Z",
+    "updatedAt": "2026-09-19T09:27:25.435Z"
   },
   {
     "id": "competitive-programming.full-programs.binary-search-techniques.ternary-search.prog-ternary-search",
@@ -2296,8 +2296,8 @@
       "competitive-programming>prog_cp_ternary_search()",
       "competitive-programming>full-programs>binary-search-techniques>ternary-search>prog-ternary-search>prog_cp_ternary_search()"
     ],
-    "createdAt": "2026-09-19T08:12:29.926Z",
-    "updatedAt": "2026-09-19T08:12:29.926Z"
+    "createdAt": "2026-09-19T09:27:25.435Z",
+    "updatedAt": "2026-09-19T09:27:25.435Z"
   },
   {
     "id": "competitive-programming.full-programs.graph-techniques.zero-one-bfs.prog-zero-one-bfs",
@@ -2330,8 +2330,8 @@
       "competitive-programming>prog_cp_01_bfs()",
       "competitive-programming>full-programs>graph-techniques>zero-one-bfs>prog-zero-one-bfs>prog_cp_01_bfs()"
     ],
-    "createdAt": "2026-09-19T08:12:29.926Z",
-    "updatedAt": "2026-09-19T08:12:29.926Z"
+    "createdAt": "2026-09-19T09:27:25.435Z",
+    "updatedAt": "2026-09-19T09:27:25.435Z"
   },
   {
     "id": "competitive-programming.full-programs.graph-techniques.lowest-common-ancestor.prog-lca",
@@ -2364,8 +2364,8 @@
       "competitive-programming>prog_cp_lca()",
       "competitive-programming>full-programs>graph-techniques>lowest-common-ancestor>prog-lca>prog_cp_lca()"
     ],
-    "createdAt": "2026-09-19T08:12:29.926Z",
-    "updatedAt": "2026-09-19T08:12:29.926Z"
+    "createdAt": "2026-09-19T09:27:25.435Z",
+    "updatedAt": "2026-09-19T09:27:25.435Z"
   },
   {
     "id": "competitive-programming.full-programs.graph-techniques.strongly-connected.prog-tarjan-scc",
@@ -2398,7 +2398,7 @@
       "competitive-programming>prog_cp_tarjan_scc()",
       "competitive-programming>full-programs>graph-techniques>strongly-connected>prog-tarjan-scc>prog_cp_tarjan_scc()"
     ],
-    "createdAt": "2026-09-19T08:12:29.926Z",
-    "updatedAt": "2026-09-19T08:12:29.926Z"
+    "createdAt": "2026-09-19T09:27:25.435Z",
+    "updatedAt": "2026-09-19T09:27:25.435Z"
   }
 ]

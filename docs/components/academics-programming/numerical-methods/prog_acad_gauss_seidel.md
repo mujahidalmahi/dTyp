@@ -1,7 +1,7 @@
 # prog_acad_gauss_seidel
 > **Domain:** `academics-programming` | **Subcategory:** `numerical-methods` | **Type:** `program`
 ## Overview
-Solves linear systems using Gauss-Seidel successive over-relaxation
+Interactive Gauss-Seidel and Successive Over-Relaxation (SOR) iterative solver with parameter tuning
 
 ## Signature
 ```c
@@ -21,37 +21,102 @@ int main(void);
 ```c
 #include <stdio.h>
 #include <math.h>
+#include <stdbool.h>
 
-void solve_gauss_seidel(int n, const double A[n][n], const double b[n], double x[n], double tol, int max_iter) {
-    for (int iter = 0; iter < max_iter; iter++) {
-        double max_err = 0.0;
+#define MAX_DIM 10
+
+static void clear_input(void) {
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF);
+}
+
+static void solve_gauss_seidel(int n, double a[MAX_DIM][MAX_DIM], double b[MAX_DIM], double omega, double tol, int max_iter) {
+    double x[MAX_DIM] = {0.0};
+
+    printf("\nGauss-Seidel / SOR Iteration (omega = %.2f):\n", omega);
+    printf("-------------------------------------------------------------\n");
+    printf(" Iter |  x[1]   |  x[2]   |  x[3]   | Max ||dx||_inf\n");
+    printf("-------------------------------------------------------------\n");
+
+    for (int iter = 1; iter <= max_iter; iter++) {
+        double max_diff = 0.0;
         for (int i = 0; i < n; i++) {
-            double sum = b[i];
+            double sum = 0.0;
             for (int j = 0; j < n; j++) {
-                if (j != i) sum -= A[i][j] * x[j];
+                if (i != j) sum += a[i][j] * x[j];
             }
-            double new_val = sum / A[i][i];
-            double err = fabs(new_val - x[i]);
-            if (err > max_err) max_err = err;
-            x[i] = new_val;
+            double x_target = (b[i] - sum) / a[i][i];
+            double x_new = (1.0 - omega) * x[i] + omega * x_target;
+            double diff = fabs(x_new - x[i]);
+            if (diff > max_diff) max_diff = diff;
+            x[i] = x_new;
         }
-        if (max_err < tol) break;
+
+        printf(" %4d |", iter);
+        for (int i = 0; i < ((n < 3) ? n : 3); i++) printf(" %7.4f |", x[i]);
+        printf(" %15.4e\n", max_diff);
+
+        if (max_diff < tol) {
+            printf("-------------------------------------------------------------\n");
+            printf("Convergence reached in %d iterations!\n", iter);
+            for (int i = 0; i < n; i++) printf("  x[%d] = %12.6f\n", i + 1, x[i]);
+            return;
+        }
     }
+    printf("-------------------------------------------------------------\n");
+    printf("Reached max iterations (%d).\n", max_iter);
 }
 
 int main(void) {
     int n = 3;
-    double A[3][3] = {
-        {4, 1, 2},
-        {1, 5, 1},
-        {2, 1, 5}
+    double a[MAX_DIM][MAX_DIM] = {
+        {4.0, 1.0, 1.0},
+        {1.0, 5.0, 2.0},
+        {1.0, 2.0, 4.0}
     };
-    double b[3] = {16, 19, 23};
-    double x[3] = {0, 0, 0};
-    solve_gauss_seidel(n, A, b, x, 1e-6, 100);
-    for (int i = 0; i < n; i++) {
-        printf("x[%d] = %.4f\n", i, x[i]);
-    }
+    double b[MAX_DIM] = {7.0, -8.0, 6.0};
+
+    int choice;
+    do {
+        printf("\n================ GAUSS-SEIDEL & SOR WORKBENCH ================\n");
+        printf("1. Standard Gauss-Seidel (omega = 1.0)\n");
+        printf("2. Successive Over-Relaxation (SOR, user-specified omega)\n");
+        printf("3. Enter Custom System\n");
+        printf("0. Exit\n");
+        printf("Enter choice: ");
+        if (scanf("%d", &choice) != 1) {
+            clear_input();
+            continue;
+        }
+
+        if (choice == 1 || choice == 2) {
+            double omega = 1.0;
+            if (choice == 2) {
+                printf("Enter relaxation factor omega (e.g. 1.15): ");
+                if (scanf("%lf", &omega) != 1 || omega <= 0.0 || omega >= 2.0) omega = 1.0;
+            }
+            solve_gauss_seidel(n, a, b, omega, 1e-6, 50);
+        } else if (choice == 3) {
+            printf("Enter dimension N (2 to %d): ", MAX_DIM);
+            if (scanf("%d", &n) != 1 || n < 2 || n > MAX_DIM) n = 3;
+            for (int i = 0; i < n; i++) {
+                printf("Row %d: ", i + 1);
+                for (int j = 0; j < n; j++) {
+                    if (scanf("%lf", &a[i][j]) != 1) a[i][j] = 0.0;
+                }
+            }
+            printf("Enter RHS b: ");
+            for (int i = 0; i < n; i++) {
+                if (scanf("%lf", &b[i]) != 1) b[i] = 0.0;
+            }
+            clear_input();
+        } else if (choice == 0) {
+            printf("Exiting Gauss-Seidel Workbench.\n");
+        } else {
+            printf("Invalid choice.\n");
+        }
+    } while (choice != 0);
+
     return 0;
 }
 ```

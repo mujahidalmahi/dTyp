@@ -30,8 +30,8 @@
       "algorithms>separate-components>sorting>elementary-sorts>bubble-sort>bubble_sort()",
       "bubbleSort"
     ],
-    "createdAt": "2026-09-19T08:12:29.923Z",
-    "updatedAt": "2026-09-19T08:12:29.923Z"
+    "createdAt": "2026-09-19T09:27:25.431Z",
+    "updatedAt": "2026-09-19T09:27:25.431Z"
   },
   {
     "id": "algorithms.separate-components.sorting.elementary-sorts.selection-sort",
@@ -64,8 +64,8 @@
       "algorithms>separate-components>sorting>elementary-sorts>selection-sort>selection_sort()",
       "selectionSort"
     ],
-    "createdAt": "2026-09-19T08:12:29.923Z",
-    "updatedAt": "2026-09-19T08:12:29.923Z"
+    "createdAt": "2026-09-19T09:27:25.431Z",
+    "updatedAt": "2026-09-19T09:27:25.431Z"
   },
   {
     "id": "algorithms.separate-components.sorting.elementary-sorts.insertion-sort",
@@ -98,8 +98,8 @@
       "algorithms>separate-components>sorting>elementary-sorts>insertion-sort>insertion_sort()",
       "insertionSort"
     ],
-    "createdAt": "2026-09-19T08:12:29.923Z",
-    "updatedAt": "2026-09-19T08:12:29.923Z"
+    "createdAt": "2026-09-19T09:27:25.431Z",
+    "updatedAt": "2026-09-19T09:27:25.431Z"
   },
   {
     "id": "algorithms.separate-components.sorting.quick-sort.lomuto-partition",
@@ -134,8 +134,8 @@
       "algorithms>separate-components>sorting>quick-sort>lomuto-partition>quick_sort_lomuto_partition()",
       "lomutoPartition"
     ],
-    "createdAt": "2026-09-19T08:12:29.923Z",
-    "updatedAt": "2026-09-19T08:12:29.923Z"
+    "createdAt": "2026-09-19T09:27:25.431Z",
+    "updatedAt": "2026-09-19T09:27:25.431Z"
   },
   {
     "id": "algorithms.separate-components.sorting.quick-sort.sort",
@@ -170,8 +170,8 @@
       "algorithms>separate-components>sorting>quick-sort>sort>quick_sort()",
       "quickSort"
     ],
-    "createdAt": "2026-09-19T08:12:29.923Z",
-    "updatedAt": "2026-09-19T08:12:29.923Z"
+    "createdAt": "2026-09-19T09:27:25.431Z",
+    "updatedAt": "2026-09-19T09:27:25.431Z"
   },
   {
     "id": "algorithms.separate-components.sorting.merge-sort.merge-subarrays",
@@ -205,8 +205,8 @@
       "algorithms>separate-components>sorting>merge-sort>merge-subarrays>merge_sorted_subarrays()",
       "mergeArrays"
     ],
-    "createdAt": "2026-09-19T08:12:29.923Z",
-    "updatedAt": "2026-09-19T08:12:29.923Z"
+    "createdAt": "2026-09-19T09:27:25.431Z",
+    "updatedAt": "2026-09-19T09:27:25.431Z"
   },
   {
     "id": "algorithms.separate-components.sorting.merge-sort.sort",
@@ -241,8 +241,8 @@
       "algorithms>separate-components>sorting>merge-sort>sort>merge_sort()",
       "mergeSort"
     ],
-    "createdAt": "2026-09-19T08:12:29.923Z",
-    "updatedAt": "2026-09-19T08:12:29.923Z"
+    "createdAt": "2026-09-19T09:27:25.431Z",
+    "updatedAt": "2026-09-19T09:27:25.431Z"
   },
   {
     "id": "algorithms.separate-components.sorting.heap-sort.max-heapify-down",
@@ -276,8 +276,8 @@
       "algorithms>separate-components>sorting>heap-sort>max-heapify-down>max_heapify_down()",
       "maxHeapifyDown"
     ],
-    "createdAt": "2026-09-19T08:12:29.923Z",
-    "updatedAt": "2026-09-19T08:12:29.923Z"
+    "createdAt": "2026-09-19T09:27:25.431Z",
+    "updatedAt": "2026-09-19T09:27:25.431Z"
   },
   {
     "id": "algorithms.separate-components.sorting.heap-sort.sort",
@@ -312,8 +312,8 @@
       "algorithms>separate-components>sorting>heap-sort>sort>heap_sort()",
       "heapSort"
     ],
-    "createdAt": "2026-09-19T08:12:29.923Z",
-    "updatedAt": "2026-09-19T08:12:29.923Z"
+    "createdAt": "2026-09-19T09:27:25.431Z",
+    "updatedAt": "2026-09-19T09:27:25.431Z"
   },
   {
     "id": "algorithms.separate-components.sorting.non-comparison-sorts.counting-sort",
@@ -346,8 +346,8 @@
       "algorithms>separate-components>sorting>non-comparison-sorts>counting-sort>counting_sort()",
       "countingSort"
     ],
-    "createdAt": "2026-09-19T08:12:29.923Z",
-    "updatedAt": "2026-09-19T08:12:29.923Z"
+    "createdAt": "2026-09-19T09:27:25.431Z",
+    "updatedAt": "2026-09-19T09:27:25.431Z"
   },
   {
     "id": "algorithms.separate-components.sorting.non-comparison-sorts.radix-sort",
@@ -380,8 +380,8 @@
       "algorithms>separate-components>sorting>non-comparison-sorts>radix-sort>radix_sort()",
       "radixSort"
     ],
-    "createdAt": "2026-09-19T08:12:29.923Z",
-    "updatedAt": "2026-09-19T08:12:29.923Z"
+    "createdAt": "2026-09-19T09:27:25.431Z",
+    "updatedAt": "2026-09-19T09:27:25.431Z"
   },
   {
     "id": "algorithms.separate-components.searching.linear-search.standard",
@@ -414,8 +414,8 @@
       "algorithms>separate-components>searching>linear-search>standard>linear_search()",
       "linearSearch"
     ],
-    "createdAt": "2026-09-19T08:12:29.923Z",
-    "updatedAt": "2026-09-19T08:12:29.923Z"
+    "createdAt": "2026-09-19T09:27:25.431Z",
+    "updatedAt": "2026-09-19T09:27:25.431Z"
   },
   {
     "id": "algorithms.separate-components.searching.binary-search.lower-bound",
@@ -449,8 +449,8 @@
       "algorithms>separate-components>searching>binary-search>lower-bound>binary_search_lower_bound()",
       "lowerBound"
     ],
-    "createdAt": "2026-09-19T08:12:29.923Z",
-    "updatedAt": "2026-09-19T08:12:29.923Z"
+    "createdAt": "2026-09-19T09:27:25.431Z",
+    "updatedAt": "2026-09-19T09:27:25.431Z"
   },
   {
     "id": "algorithms.separate-components.searching.binary-search.upper-bound",
@@ -484,8 +484,8 @@
       "algorithms>separate-components>searching>binary-search>upper-bound>binary_search_upper_bound()",
       "upperBound"
     ],
-    "createdAt": "2026-09-19T08:12:29.923Z",
-    "updatedAt": "2026-09-19T08:12:29.923Z"
+    "createdAt": "2026-09-19T09:27:25.431Z",
+    "updatedAt": "2026-09-19T09:27:25.431Z"
   },
   {
     "id": "algorithms.separate-components.searching.jump-interpolation.jump-search",
@@ -518,8 +518,8 @@
       "algorithms>separate-components>searching>jump-interpolation>jump-search>jump_search()",
       "jumpSearch"
     ],
-    "createdAt": "2026-09-19T08:12:29.923Z",
-    "updatedAt": "2026-09-19T08:12:29.923Z"
+    "createdAt": "2026-09-19T09:27:25.431Z",
+    "updatedAt": "2026-09-19T09:27:25.431Z"
   },
   {
     "id": "algorithms.separate-components.searching.two-pointers.two-sum",
@@ -553,8 +553,8 @@
       "algorithms>separate-components>searching>two-pointers>two-sum>two_sum_sorted()",
       "twoSumSorted"
     ],
-    "createdAt": "2026-09-19T08:12:29.923Z",
-    "updatedAt": "2026-09-19T08:12:29.923Z"
+    "createdAt": "2026-09-19T09:27:25.431Z",
+    "updatedAt": "2026-09-19T09:27:25.431Z"
   },
   {
     "id": "algorithms.separate-components.graph-algorithms.graph-traversals.bfs",
@@ -588,8 +588,8 @@
       "algorithms>separate-components>graph-algorithms>graph-traversals>bfs>graph_bfs_traversal()",
       "graphBFS"
     ],
-    "createdAt": "2026-09-19T08:12:29.923Z",
-    "updatedAt": "2026-09-19T08:12:29.923Z"
+    "createdAt": "2026-09-19T09:27:25.431Z",
+    "updatedAt": "2026-09-19T09:27:25.431Z"
   },
   {
     "id": "algorithms.separate-components.graph-algorithms.graph-traversals.dfs",
@@ -623,8 +623,8 @@
       "algorithms>separate-components>graph-algorithms>graph-traversals>dfs>graph_dfs_traversal()",
       "graphDFS"
     ],
-    "createdAt": "2026-09-19T08:12:29.923Z",
-    "updatedAt": "2026-09-19T08:12:29.923Z"
+    "createdAt": "2026-09-19T09:27:25.431Z",
+    "updatedAt": "2026-09-19T09:27:25.431Z"
   },
   {
     "id": "algorithms.separate-components.graph-algorithms.shortest-paths.dijkstra",
@@ -658,8 +658,8 @@
       "algorithms>separate-components>graph-algorithms>shortest-paths>dijkstra>dijkstra_shortest_path()",
       "dijkstra"
     ],
-    "createdAt": "2026-09-19T08:12:29.923Z",
-    "updatedAt": "2026-09-19T08:12:29.923Z"
+    "createdAt": "2026-09-19T09:27:25.431Z",
+    "updatedAt": "2026-09-19T09:27:25.431Z"
   },
   {
     "id": "algorithms.separate-components.graph-algorithms.minimum-spanning-tree.kruskal",
@@ -693,8 +693,8 @@
       "algorithms>separate-components>graph-algorithms>minimum-spanning-tree>kruskal>kruskal_mst()",
       "kruskalMST"
     ],
-    "createdAt": "2026-09-19T08:12:29.923Z",
-    "updatedAt": "2026-09-19T08:12:29.923Z"
+    "createdAt": "2026-09-19T09:27:25.431Z",
+    "updatedAt": "2026-09-19T09:27:25.431Z"
   },
   {
     "id": "algorithms.separate-components.graph-algorithms.topological-sort.kahn",
@@ -728,8 +728,8 @@
       "algorithms>separate-components>graph-algorithms>topological-sort>kahn>topological_sort_kahn()",
       "kahnTopologicalSort"
     ],
-    "createdAt": "2026-09-19T08:12:29.923Z",
-    "updatedAt": "2026-09-19T08:12:29.923Z"
+    "createdAt": "2026-09-19T09:27:25.431Z",
+    "updatedAt": "2026-09-19T09:27:25.431Z"
   },
   {
     "id": "algorithms.separate-components.dynamic-programming.1d-dp.kadane",
@@ -763,8 +763,8 @@
       "algorithms>separate-components>dynamic-programming>1d-dp>kadane>kadane_max_subarray()",
       "kadane"
     ],
-    "createdAt": "2026-09-19T08:12:29.923Z",
-    "updatedAt": "2026-09-19T08:12:29.923Z"
+    "createdAt": "2026-09-19T09:27:25.431Z",
+    "updatedAt": "2026-09-19T09:27:25.431Z"
   },
   {
     "id": "algorithms.separate-components.dynamic-programming.1d-dp.climb-stairs",
@@ -798,8 +798,8 @@
       "algorithms>separate-components>dynamic-programming>1d-dp>climb-stairs>climb_stairs_dp()",
       "climbStairs"
     ],
-    "createdAt": "2026-09-19T08:12:29.923Z",
-    "updatedAt": "2026-09-19T08:12:29.923Z"
+    "createdAt": "2026-09-19T09:27:25.431Z",
+    "updatedAt": "2026-09-19T09:27:25.431Z"
   },
   {
     "id": "algorithms.separate-components.dynamic-programming.knapsack.knapsack-01",
@@ -833,8 +833,8 @@
       "algorithms>separate-components>dynamic-programming>knapsack>knapsack-01>knapsack_01_tabulated()",
       "knapsack01"
     ],
-    "createdAt": "2026-09-19T08:12:29.923Z",
-    "updatedAt": "2026-09-19T08:12:29.923Z"
+    "createdAt": "2026-09-19T09:27:25.431Z",
+    "updatedAt": "2026-09-19T09:27:25.431Z"
   },
   {
     "id": "algorithms.separate-components.dynamic-programming.knapsack.coin-change",
@@ -867,8 +867,8 @@
       "algorithms>separate-components>dynamic-programming>knapsack>coin-change>coin_change_min_coins()",
       "coinChangeMin"
     ],
-    "createdAt": "2026-09-19T08:12:29.923Z",
-    "updatedAt": "2026-09-19T08:12:29.923Z"
+    "createdAt": "2026-09-19T09:27:25.431Z",
+    "updatedAt": "2026-09-19T09:27:25.431Z"
   },
   {
     "id": "algorithms.separate-components.dynamic-programming.subsequences.lcs",
@@ -902,8 +902,8 @@
       "algorithms>separate-components>dynamic-programming>subsequences>lcs>lcs_length()",
       "lcsLength"
     ],
-    "createdAt": "2026-09-19T08:12:29.923Z",
-    "updatedAt": "2026-09-19T08:12:29.923Z"
+    "createdAt": "2026-09-19T09:27:25.431Z",
+    "updatedAt": "2026-09-19T09:27:25.431Z"
   },
   {
     "id": "algorithms.separate-components.dynamic-programming.subsequences.lis",
@@ -937,8 +937,8 @@
       "algorithms>separate-components>dynamic-programming>subsequences>lis>lis_length()",
       "lisLength"
     ],
-    "createdAt": "2026-09-19T08:12:29.923Z",
-    "updatedAt": "2026-09-19T08:12:29.923Z"
+    "createdAt": "2026-09-19T09:27:25.431Z",
+    "updatedAt": "2026-09-19T09:27:25.431Z"
   },
   {
     "id": "algorithms.separate-components.dynamic-programming.string-dp.edit-distance",
@@ -972,8 +972,8 @@
       "algorithms>separate-components>dynamic-programming>string-dp>edit-distance>edit_distance_levenshtein()",
       "editDistance"
     ],
-    "createdAt": "2026-09-19T08:12:29.923Z",
-    "updatedAt": "2026-09-19T08:12:29.923Z"
+    "createdAt": "2026-09-19T09:27:25.431Z",
+    "updatedAt": "2026-09-19T09:27:25.431Z"
   },
   {
     "id": "algorithms.separate-components.greedy.activity-selection.select",
@@ -1007,8 +1007,8 @@
       "algorithms>separate-components>greedy>activity-selection>select>activity_selection_greedy()",
       "activitySelection"
     ],
-    "createdAt": "2026-09-19T08:12:29.923Z",
-    "updatedAt": "2026-09-19T08:12:29.923Z"
+    "createdAt": "2026-09-19T09:27:25.431Z",
+    "updatedAt": "2026-09-19T09:27:25.431Z"
   },
   {
     "id": "algorithms.separate-components.greedy.fractional-knapsack.greedy",
@@ -1041,8 +1041,8 @@
       "algorithms>separate-components>greedy>fractional-knapsack>greedy>fractional_knapsack_greedy()",
       "fractionalKnapsack"
     ],
-    "createdAt": "2026-09-19T08:12:29.923Z",
-    "updatedAt": "2026-09-19T08:12:29.923Z"
+    "createdAt": "2026-09-19T09:27:25.431Z",
+    "updatedAt": "2026-09-19T09:27:25.431Z"
   },
   {
     "id": "algorithms.separate-components.greedy.job-sequencing.schedule",
@@ -1076,8 +1076,8 @@
       "algorithms>separate-components>greedy>job-sequencing>schedule>job_sequencing_deadlines()",
       "jobSequencing"
     ],
-    "createdAt": "2026-09-19T08:12:29.923Z",
-    "updatedAt": "2026-09-19T08:12:29.923Z"
+    "createdAt": "2026-09-19T09:27:25.431Z",
+    "updatedAt": "2026-09-19T09:27:25.431Z"
   },
   {
     "id": "algorithms.separate-components.backtracking.n-queens.solve",
@@ -1110,8 +1110,8 @@
       "algorithms>separate-components>backtracking>n-queens>solve>n_queens_solve()",
       "nQueensSolve"
     ],
-    "createdAt": "2026-09-19T08:12:29.923Z",
-    "updatedAt": "2026-09-19T08:12:29.923Z"
+    "createdAt": "2026-09-19T09:27:25.431Z",
+    "updatedAt": "2026-09-19T09:27:25.431Z"
   },
   {
     "id": "algorithms.separate-components.backtracking.maze-solver.solve",
@@ -1144,8 +1144,8 @@
       "algorithms>separate-components>backtracking>maze-solver>solve>rat_in_maze_solve()",
       "ratInMaze"
     ],
-    "createdAt": "2026-09-19T08:12:29.923Z",
-    "updatedAt": "2026-09-19T08:12:29.923Z"
+    "createdAt": "2026-09-19T09:27:25.431Z",
+    "updatedAt": "2026-09-19T09:27:25.431Z"
   },
   {
     "id": "algorithms.separate-components.backtracking.combinatorial.permutations",
@@ -1179,8 +1179,8 @@
       "algorithms>separate-components>backtracking>combinatorial>permutations>generate_permutations()",
       "permutations"
     ],
-    "createdAt": "2026-09-19T08:12:29.923Z",
-    "updatedAt": "2026-09-19T08:12:29.923Z"
+    "createdAt": "2026-09-19T09:27:25.432Z",
+    "updatedAt": "2026-09-19T09:27:25.432Z"
   },
   {
     "id": "algorithms.separate-components.string-algorithms.kmp.compute-lps",
@@ -1214,8 +1214,8 @@
       "algorithms>separate-components>string-algorithms>kmp>compute-lps>kmp_compute_lps()",
       "kmpLPS"
     ],
-    "createdAt": "2026-09-19T08:12:29.923Z",
-    "updatedAt": "2026-09-19T08:12:29.923Z"
+    "createdAt": "2026-09-19T09:27:25.432Z",
+    "updatedAt": "2026-09-19T09:27:25.432Z"
   },
   {
     "id": "algorithms.separate-components.string-algorithms.kmp.search",
@@ -1251,8 +1251,8 @@
       "algorithms>separate-components>string-algorithms>kmp>search>kmp_search_pattern()",
       "kmpSearch"
     ],
-    "createdAt": "2026-09-19T08:12:29.923Z",
-    "updatedAt": "2026-09-19T08:12:29.923Z"
+    "createdAt": "2026-09-19T09:27:25.432Z",
+    "updatedAt": "2026-09-19T09:27:25.432Z"
   },
   {
     "id": "algorithms.separate-components.string-algorithms.rabin-karp.search",
@@ -1286,8 +1286,8 @@
       "algorithms>separate-components>string-algorithms>rabin-karp>search>rabin_karp_search()",
       "rabinKarp"
     ],
-    "createdAt": "2026-09-19T08:12:29.923Z",
-    "updatedAt": "2026-09-19T08:12:29.923Z"
+    "createdAt": "2026-09-19T09:27:25.432Z",
+    "updatedAt": "2026-09-19T09:27:25.432Z"
   },
   {
     "id": "algorithms.separate-components.string-algorithms.palindromes.longest",
@@ -1320,8 +1320,8 @@
       "algorithms>separate-components>string-algorithms>palindromes>longest>longest_palindromic_substring()",
       "longestPalindrome"
     ],
-    "createdAt": "2026-09-19T08:12:29.923Z",
-    "updatedAt": "2026-09-19T08:12:29.923Z"
+    "createdAt": "2026-09-19T09:27:25.432Z",
+    "updatedAt": "2026-09-19T09:27:25.432Z"
   },
   {
     "id": "algorithms.full-programs.sorting.elementary-sorts.prog-elementary-sorts",
@@ -1355,8 +1355,8 @@
       "algorithms>full-programs>sorting>elementary-sorts>prog-elementary-sorts>prog_sort_elementary()",
       "programElementarySorts"
     ],
-    "createdAt": "2026-09-19T08:12:29.923Z",
-    "updatedAt": "2026-09-19T08:12:29.923Z"
+    "createdAt": "2026-09-19T09:27:25.432Z",
+    "updatedAt": "2026-09-19T09:27:25.432Z"
   },
   {
     "id": "algorithms.full-programs.sorting.quick-sort.prog-quick-sort",
@@ -1390,8 +1390,8 @@
       "algorithms>full-programs>sorting>quick-sort>prog-quick-sort>prog_sort_quick()",
       "programQuickSort"
     ],
-    "createdAt": "2026-09-19T08:12:29.923Z",
-    "updatedAt": "2026-09-19T08:12:29.923Z"
+    "createdAt": "2026-09-19T09:27:25.432Z",
+    "updatedAt": "2026-09-19T09:27:25.432Z"
   },
   {
     "id": "algorithms.full-programs.sorting.merge-sort.prog-merge-sort",
@@ -1425,8 +1425,8 @@
       "algorithms>full-programs>sorting>merge-sort>prog-merge-sort>prog_sort_merge()",
       "programMergeSort"
     ],
-    "createdAt": "2026-09-19T08:12:29.923Z",
-    "updatedAt": "2026-09-19T08:12:29.923Z"
+    "createdAt": "2026-09-19T09:27:25.432Z",
+    "updatedAt": "2026-09-19T09:27:25.432Z"
   },
   {
     "id": "algorithms.full-programs.sorting.heap-sort.prog-heap-sort",
@@ -1460,8 +1460,8 @@
       "algorithms>full-programs>sorting>heap-sort>prog-heap-sort>prog_sort_heap()",
       "programHeapSort"
     ],
-    "createdAt": "2026-09-19T08:12:29.923Z",
-    "updatedAt": "2026-09-19T08:12:29.923Z"
+    "createdAt": "2026-09-19T09:27:25.432Z",
+    "updatedAt": "2026-09-19T09:27:25.432Z"
   },
   {
     "id": "algorithms.full-programs.sorting.non-comparison-sorts.prog-counting-radix",
@@ -1495,8 +1495,8 @@
       "algorithms>full-programs>sorting>non-comparison-sorts>prog-counting-radix>prog_sort_counting_radix()",
       "programCountingSort"
     ],
-    "createdAt": "2026-09-19T08:12:29.923Z",
-    "updatedAt": "2026-09-19T08:12:29.923Z"
+    "createdAt": "2026-09-19T09:27:25.432Z",
+    "updatedAt": "2026-09-19T09:27:25.432Z"
   },
   {
     "id": "algorithms.full-programs.searching.linear-search.prog-linear-search",
@@ -1530,8 +1530,8 @@
       "algorithms>full-programs>searching>linear-search>prog-linear-search>prog_search_linear()",
       "programLinearSearch"
     ],
-    "createdAt": "2026-09-19T08:12:29.923Z",
-    "updatedAt": "2026-09-19T08:12:29.923Z"
+    "createdAt": "2026-09-19T09:27:25.432Z",
+    "updatedAt": "2026-09-19T09:27:25.432Z"
   },
   {
     "id": "algorithms.full-programs.searching.binary-search.prog-binary-search",
@@ -1565,8 +1565,8 @@
       "algorithms>full-programs>searching>binary-search>prog-binary-search>prog_search_binary()",
       "programBinarySearch"
     ],
-    "createdAt": "2026-09-19T08:12:29.923Z",
-    "updatedAt": "2026-09-19T08:12:29.923Z"
+    "createdAt": "2026-09-19T09:27:25.432Z",
+    "updatedAt": "2026-09-19T09:27:25.432Z"
   },
   {
     "id": "algorithms.full-programs.searching.jump-interpolation.prog-jump-search",
@@ -1600,8 +1600,8 @@
       "algorithms>full-programs>searching>jump-interpolation>prog-jump-search>prog_search_jump_interpolation()",
       "programJumpSearch"
     ],
-    "createdAt": "2026-09-19T08:12:29.923Z",
-    "updatedAt": "2026-09-19T08:12:29.923Z"
+    "createdAt": "2026-09-19T09:27:25.432Z",
+    "updatedAt": "2026-09-19T09:27:25.432Z"
   },
   {
     "id": "algorithms.full-programs.searching.two-pointers.prog-two-pointers",
@@ -1635,8 +1635,8 @@
       "algorithms>full-programs>searching>two-pointers>prog-two-pointers>prog_search_two_pointers()",
       "programTwoPointers"
     ],
-    "createdAt": "2026-09-19T08:12:29.923Z",
-    "updatedAt": "2026-09-19T08:12:29.923Z"
+    "createdAt": "2026-09-19T09:27:25.432Z",
+    "updatedAt": "2026-09-19T09:27:25.432Z"
   },
   {
     "id": "algorithms.full-programs.graph-algorithms.graph-traversals.prog-graph-traversals",
@@ -1671,8 +1671,8 @@
       "algorithms>full-programs>graph-algorithms>graph-traversals>prog-graph-traversals>prog_graph_traversals()",
       "programGraphTraversals"
     ],
-    "createdAt": "2026-09-19T08:12:29.923Z",
-    "updatedAt": "2026-09-19T08:12:29.923Z"
+    "createdAt": "2026-09-19T09:27:25.432Z",
+    "updatedAt": "2026-09-19T09:27:25.432Z"
   },
   {
     "id": "algorithms.full-programs.graph-algorithms.shortest-paths.prog-dijkstra",
@@ -1707,8 +1707,8 @@
       "algorithms>full-programs>graph-algorithms>shortest-paths>prog-dijkstra>prog_graph_dijkstra()",
       "programDijkstra"
     ],
-    "createdAt": "2026-09-19T08:12:29.923Z",
-    "updatedAt": "2026-09-19T08:12:29.923Z"
+    "createdAt": "2026-09-19T09:27:25.432Z",
+    "updatedAt": "2026-09-19T09:27:25.432Z"
   },
   {
     "id": "algorithms.full-programs.graph-algorithms.minimum-spanning-tree.prog-kruskal",
@@ -1743,8 +1743,8 @@
       "algorithms>full-programs>graph-algorithms>minimum-spanning-tree>prog-kruskal>prog_graph_mst()",
       "programKruskalMST"
     ],
-    "createdAt": "2026-09-19T08:12:29.923Z",
-    "updatedAt": "2026-09-19T08:12:29.923Z"
+    "createdAt": "2026-09-19T09:27:25.432Z",
+    "updatedAt": "2026-09-19T09:27:25.432Z"
   },
   {
     "id": "algorithms.full-programs.graph-algorithms.topological-sort.prog-topological-sort",
@@ -1778,8 +1778,8 @@
       "algorithms>full-programs>graph-algorithms>topological-sort>prog-topological-sort>prog_graph_topological_sort()",
       "programTopologicalSort"
     ],
-    "createdAt": "2026-09-19T08:12:29.923Z",
-    "updatedAt": "2026-09-19T08:12:29.923Z"
+    "createdAt": "2026-09-19T09:27:25.432Z",
+    "updatedAt": "2026-09-19T09:27:25.432Z"
   },
   {
     "id": "algorithms.full-programs.dynamic-programming.1d-dp.prog-kadane",
@@ -1813,8 +1813,8 @@
       "algorithms>full-programs>dynamic-programming>1d-dp>prog-kadane>prog_dp_1d_kadane()",
       "programKadane"
     ],
-    "createdAt": "2026-09-19T08:12:29.923Z",
-    "updatedAt": "2026-09-19T08:12:29.923Z"
+    "createdAt": "2026-09-19T09:27:25.432Z",
+    "updatedAt": "2026-09-19T09:27:25.432Z"
   },
   {
     "id": "algorithms.full-programs.dynamic-programming.knapsack.prog-knapsack",
@@ -1848,8 +1848,8 @@
       "algorithms>full-programs>dynamic-programming>knapsack>prog-knapsack>prog_dp_knapsack()",
       "programKnapsack"
     ],
-    "createdAt": "2026-09-19T08:12:29.923Z",
-    "updatedAt": "2026-09-19T08:12:29.923Z"
+    "createdAt": "2026-09-19T09:27:25.432Z",
+    "updatedAt": "2026-09-19T09:27:25.432Z"
   },
   {
     "id": "algorithms.full-programs.dynamic-programming.subsequences.prog-lcs",
@@ -1883,8 +1883,8 @@
       "algorithms>full-programs>dynamic-programming>subsequences>prog-lcs>prog_dp_lcs()",
       "programLCS"
     ],
-    "createdAt": "2026-09-19T08:12:29.923Z",
-    "updatedAt": "2026-09-19T08:12:29.923Z"
+    "createdAt": "2026-09-19T09:27:25.432Z",
+    "updatedAt": "2026-09-19T09:27:25.432Z"
   },
   {
     "id": "algorithms.full-programs.dynamic-programming.string-dp.prog-edit-distance",
@@ -1918,8 +1918,8 @@
       "algorithms>full-programs>dynamic-programming>string-dp>prog-edit-distance>prog_dp_edit_distance()",
       "programEditDistance"
     ],
-    "createdAt": "2026-09-19T08:12:29.923Z",
-    "updatedAt": "2026-09-19T08:12:29.923Z"
+    "createdAt": "2026-09-19T09:27:25.432Z",
+    "updatedAt": "2026-09-19T09:27:25.432Z"
   },
   {
     "id": "algorithms.full-programs.greedy.activity-selection.prog-activity-selection",
@@ -1953,8 +1953,8 @@
       "algorithms>full-programs>greedy>activity-selection>prog-activity-selection>prog_greedy_activity_selection()",
       "programActivitySelection"
     ],
-    "createdAt": "2026-09-19T08:12:29.923Z",
-    "updatedAt": "2026-09-19T08:12:29.923Z"
+    "createdAt": "2026-09-19T09:27:25.432Z",
+    "updatedAt": "2026-09-19T09:27:25.432Z"
   },
   {
     "id": "algorithms.full-programs.greedy.fractional-knapsack.prog-fractional-knapsack",
@@ -1988,8 +1988,8 @@
       "algorithms>full-programs>greedy>fractional-knapsack>prog-fractional-knapsack>prog_greedy_fractional_knapsack()",
       "programFractionalKnapsack"
     ],
-    "createdAt": "2026-09-19T08:12:29.923Z",
-    "updatedAt": "2026-09-19T08:12:29.923Z"
+    "createdAt": "2026-09-19T09:27:25.432Z",
+    "updatedAt": "2026-09-19T09:27:25.432Z"
   },
   {
     "id": "algorithms.full-programs.greedy.job-sequencing.prog-job-sequencing",
@@ -2023,8 +2023,8 @@
       "algorithms>full-programs>greedy>job-sequencing>prog-job-sequencing>prog_greedy_job_sequencing()",
       "programJobSequencing"
     ],
-    "createdAt": "2026-09-19T08:12:29.923Z",
-    "updatedAt": "2026-09-19T08:12:29.923Z"
+    "createdAt": "2026-09-19T09:27:25.432Z",
+    "updatedAt": "2026-09-19T09:27:25.432Z"
   },
   {
     "id": "algorithms.full-programs.backtracking.n-queens.prog-n-queens",
@@ -2058,8 +2058,8 @@
       "algorithms>full-programs>backtracking>n-queens>prog-n-queens>prog_backtracking_n_queens()",
       "programNQueens"
     ],
-    "createdAt": "2026-09-19T08:12:29.923Z",
-    "updatedAt": "2026-09-19T08:12:29.923Z"
+    "createdAt": "2026-09-19T09:27:25.432Z",
+    "updatedAt": "2026-09-19T09:27:25.432Z"
   },
   {
     "id": "algorithms.full-programs.backtracking.maze-solver.prog-maze-solver",
@@ -2093,8 +2093,8 @@
       "algorithms>full-programs>backtracking>maze-solver>prog-maze-solver>prog_backtracking_maze()",
       "programMazeSolver"
     ],
-    "createdAt": "2026-09-19T08:12:29.923Z",
-    "updatedAt": "2026-09-19T08:12:29.923Z"
+    "createdAt": "2026-09-19T09:27:25.432Z",
+    "updatedAt": "2026-09-19T09:27:25.432Z"
   },
   {
     "id": "algorithms.full-programs.backtracking.combinatorial.prog-permutations",
@@ -2128,8 +2128,8 @@
       "algorithms>full-programs>backtracking>combinatorial>prog-permutations>prog_backtracking_permutations()",
       "programPermutations"
     ],
-    "createdAt": "2026-09-19T08:12:29.923Z",
-    "updatedAt": "2026-09-19T08:12:29.923Z"
+    "createdAt": "2026-09-19T09:27:25.432Z",
+    "updatedAt": "2026-09-19T09:27:25.432Z"
   },
   {
     "id": "algorithms.full-programs.string-algorithms.kmp.prog-kmp",
@@ -2163,8 +2163,8 @@
       "algorithms>full-programs>string-algorithms>kmp>prog-kmp>prog_string_kmp()",
       "programKMP"
     ],
-    "createdAt": "2026-09-19T08:12:29.923Z",
-    "updatedAt": "2026-09-19T08:12:29.923Z"
+    "createdAt": "2026-09-19T09:27:25.432Z",
+    "updatedAt": "2026-09-19T09:27:25.432Z"
   },
   {
     "id": "algorithms.full-programs.string-algorithms.rabin-karp.prog-rabin-karp",
@@ -2198,8 +2198,8 @@
       "algorithms>full-programs>string-algorithms>rabin-karp>prog-rabin-karp>prog_string_rabin_karp()",
       "programRabinKarp"
     ],
-    "createdAt": "2026-09-19T08:12:29.923Z",
-    "updatedAt": "2026-09-19T08:12:29.923Z"
+    "createdAt": "2026-09-19T09:27:25.432Z",
+    "updatedAt": "2026-09-19T09:27:25.432Z"
   },
   {
     "id": "algorithms.full-programs.string-algorithms.palindromes.prog-palindromes",
@@ -2233,7 +2233,7 @@
       "algorithms>full-programs>string-algorithms>palindromes>prog-palindromes>prog_string_longest_palindrome()",
       "programLongestPalindrome"
     ],
-    "createdAt": "2026-09-19T08:12:29.923Z",
-    "updatedAt": "2026-09-19T08:12:29.923Z"
+    "createdAt": "2026-09-19T09:27:25.432Z",
+    "updatedAt": "2026-09-19T09:27:25.432Z"
   }
 ]

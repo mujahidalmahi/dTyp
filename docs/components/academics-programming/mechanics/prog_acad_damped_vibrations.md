@@ -1,7 +1,7 @@
 # prog_acad_damped_vibrations
 > **Domain:** `academics-programming` | **Subcategory:** `mechanics` | **Type:** `program`
 ## Overview
-Calculates undamped frequency, damping ratio, and classifies vibration regime
+Interactive single degree-of-freedom damped vibrations analyzer with natural frequency, damping ratio, regime, and logarithmic decrement
 
 ## Signature
 ```c
@@ -21,28 +21,75 @@ int main(void);
 ```c
 #include <stdio.h>
 #include <math.h>
+#include <stdbool.h>
 
-void analyze_vibrations(double m, double c, double k) {
+static void clear_input(void) {
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF);
+}
+
+static void analyze_vibration(double m, double c, double k) {
     double omega_n = sqrt(k / m);
     double c_crit = 2.0 * sqrt(k * m);
     double zeta = c / c_crit;
 
-    printf("Natural Frequency omega_n: %.4f rad/s\n", omega_n);
-    printf("Critical Damping c_c:      %.4f N*s/m\n", c_crit);
-    printf("Damping Ratio zeta:        %.4f\n", zeta);
+    printf("\n--- Damped Free Vibration Characteristics ---\n");
+    printf("  Mass m:                      %10.3f kg\n", m);
+    printf("  Damping Coefficient c:       %10.3f N*s/m\n", c);
+    printf("  Stiffness k:                 %10.3f N/m\n", k);
+    printf("  Natural Frequency omega_n:   %10.3f rad/s (%.3f Hz)\n", omega_n, omega_n / (2.0 * 3.141592653589793));
+    printf("  Critical Damping c_c:        %10.3f N*s/m\n", c_crit);
+    printf("  Damping Ratio zeta:          %10.4f\n", zeta);
 
     if (fabs(zeta - 1.0) < 1e-4) {
-        printf("Regime: Critically Damped\n");
+        printf("  Vibration Regime: CRITICALLY DAMPED (Fastest non-oscillatory return to rest)\n");
     } else if (zeta < 1.0) {
         double omega_d = omega_n * sqrt(1.0 - zeta * zeta);
-        printf("Regime: Underdamped (Damped Frequency omega_d = %.4f rad/s)\n", omega_d);
+        double delta = (2.0 * 3.141592653589793 * zeta) / sqrt(1.0 - zeta * zeta);
+        double period_d = 2.0 * 3.141592653589793 / omega_d;
+
+        printf("  Vibration Regime: UNDERDAMPED (Oscillatory decay)\n");
+        printf("  Damped Frequency omega_d:    %10.3f rad/s (%.3f Hz)\n", omega_d, omega_d / (2.0 * 3.141592653589793));
+        printf("  Damped Period T_d:           %10.3f seconds\n", period_d);
+        printf("  Logarithmic Decrement delta: %10.4f\n", delta);
     } else {
-        printf("Regime: Overdamped (Non-oscillatory)\n");
+        printf("  Vibration Regime: OVERDAMPED (Sluggish non-oscillatory decay)\n");
     }
 }
 
 int main(void) {
-    analyze_vibrations(2.0, 1.5, 50.0);
+    int choice;
+    do {
+        printf("\n================ DAMPED FREE VIBRATIONS WORKBENCH ================\n");
+        printf("1. Enter System Parameters (Mass m, damping c, stiffness k)\n");
+        printf("2. Test Standard Underdamped Case (m=2.0 kg, c=1.5 N*s/m, k=50.0 N/m)\n");
+        printf("0. Exit\n");
+        printf("Enter choice: ");
+        if (scanf("%d", &choice) != 1) {
+            clear_input();
+            continue;
+        }
+
+        switch (choice) {
+            case 1: {
+                double m, c, k;
+                printf("Enter mass m (kg), damping c (N*s/m), and stiffness k (N/m): ");
+                if (scanf("%lf %lf %lf", &m, &c, &k) == 3 && m > 0 && k > 0 && c >= 0) {
+                    analyze_vibration(m, c, k);
+                } else { clear_input(); }
+                break;
+            }
+            case 2:
+                analyze_vibration(2.0, 1.5, 50.0);
+                break;
+            case 0:
+                printf("Exiting Vibrations Workbench.\n");
+                break;
+            default:
+                printf("Invalid selection.\n");
+        }
+    } while (choice != 0);
+
     return 0;
 }
 ```

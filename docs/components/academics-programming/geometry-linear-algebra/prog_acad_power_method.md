@@ -1,7 +1,7 @@
 # prog_acad_power_method
 > **Domain:** `academics-programming` | **Subcategory:** `geometry-linear-algebra` | **Type:** `program`
 ## Overview
-Finds dominant eigenvalue and eigenvector using power iteration
+Interactive Power Iteration method for computing dominant eigenvalue and eigenvector with Rayleigh quotient
 
 ## Signature
 ```c
@@ -21,37 +21,117 @@ int main(void);
 ```c
 #include <stdio.h>
 #include <math.h>
+#include <stdbool.h>
 
-double solve_power_method(int n, const double A[n][n], double x[n], double tol, int max_iter) {
-    double lambda_old = 0.0;
-    for (int iter = 0; iter < max_iter; iter++) {
-        double y[n];
+#define MAX_DIM 8
+
+static void clear_input(void) {
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF);
+}
+
+static void run_power_method(int n, double a[MAX_DIM][MAX_DIM], double tol, int max_iter) {
+    double v[MAX_DIM];
+    for (int i = 0; i < n; i++) v[i] = 1.0 / sqrt((double)n);
+
+    double lambda_prev = 0.0;
+    printf("\nPower Iteration Convergence Table:\n");
+    printf("-------------------------------------------------------------\n");
+    printf(" Iter | Dominant Eigenvalue Estimate | Max Residual\n");
+    printf("-------------------------------------------------------------\n");
+
+    for (int iter = 1; iter <= max_iter; iter++) {
+        double y[MAX_DIM] = {0.0};
         for (int i = 0; i < n; i++) {
-            y[i] = 0;
-            for (int j = 0; j < n; j++) y[i] += A[i][j] * x[j];
+            for (int j = 0; j < n; j++) {
+                y[i] += a[i][j] * v[j];
+            }
         }
-        double lambda_new = fabs(y[0]);
-        for (int i = 1; i < n; i++) {
-            if (fabs(y[i]) > lambda_new) lambda_new = fabs(y[i]);
+
+        double lambda = 0.0;
+        for (int i = 0; i < n; i++) lambda += y[i] * v[i];
+
+        double norm = 0.0;
+        for (int i = 0; i < n; i++) norm += y[i] * y[i];
+        norm = sqrt(norm);
+
+        for (int i = 0; i < n; i++) v[i] = y[i] / norm;
+
+        double err = fabs(lambda - lambda_prev);
+        printf(" %4d | %26.8f | %12.4e\n", iter, lambda, err);
+
+        if (err < tol && iter > 2) {
+            printf("-------------------------------------------------------------\n");
+            printf("Convergence reached in %d iterations!\n", iter);
+            printf("Dominant Eigenvalue lambda_max = %.8f\n", lambda);
+            printf("Corresponding Unit Eigenvector:\n  [ ");
+            for (int i = 0; i < n; i++) printf("%.6f%s", v[i], (i < n - 1) ? ", " : " ");
+            printf("]^T\n");
+            return;
         }
-        for (int i = 0; i < n; i++) x[i] = y[i] / lambda_new;
-        if (fabs(lambda_new - lambda_old) < tol) return lambda_new;
-        lambda_old = lambda_new;
+
+        lambda_prev = lambda;
     }
-    return lambda_old;
+    printf("-------------------------------------------------------------\n");
+    printf("Reached max iterations (%d). Final estimate lambda = %.8f\n", max_iter, lambda_prev);
 }
 
 int main(void) {
     int n = 3;
-    double A[3][3] = {
-        {2, -12, 0},
-        {1, -5, 0},
-        {0, 0, 3}
+    double a[MAX_DIM][MAX_DIM] = {
+        {4.0, 1.0, 1.0},
+        {1.0, 3.0, -1.0},
+        {1.0, -1.0, 2.0}
     };
-    double x[3] = {1, 1, 1};
-    double lambda = solve_power_method(n, A, x, 1e-6, 100);
-    printf("Dominant Eigenvalue: %.4f\n", lambda);
-    printf("Eigenvector: (%.4f, %.4f, %.4f)\n", x[0], x[1], x[2]);
+
+    int choice;
+    do {
+        printf("\n================ POWER METHOD (EIGENVALUE / EIGENVECTOR) ================\n");
+        printf("1. Enter Square Matrix A\n");
+        printf("2. Compute Dominant Eigenvalue & Eigenvector\n");
+        printf("3. Load Default Symmetric 3x3 Test Matrix\n");
+        printf("0. Exit\n");
+        printf("Enter choice: ");
+        if (scanf("%d", &choice) != 1) {
+            clear_input();
+            continue;
+        }
+
+        switch (choice) {
+            case 1: {
+                printf("Enter matrix dimension N (2 to %d): ", MAX_DIM);
+                if (scanf("%d", &n) != 1 || n < 2 || n > MAX_DIM) {
+                    clear_input();
+                    n = 3;
+                    break;
+                }
+                printf("Enter %d x %d matrix entries:\n", n, n);
+                for (int i = 0; i < n; i++) {
+                    for (int j = 0; j < n; j++) {
+                        if (scanf("%lf", &a[i][j]) != 1) a[i][j] = 0.0;
+                    }
+                }
+                clear_input();
+                break;
+            }
+            case 2:
+                run_power_method(n, a, 1e-7, 100);
+                break;
+            case 3:
+                n = 3;
+                a[0][0] = 4.0; a[0][1] = 1.0;  a[0][2] = 1.0;
+                a[1][0] = 1.0; a[1][1] = 3.0;  a[1][2] = -1.0;
+                a[2][0] = 1.0; a[2][1] = -1.0; a[2][2] = 2.0;
+                printf("Loaded default 3x3 matrix.\n");
+                break;
+            case 0:
+                printf("Exiting Power Method Workbench.\n");
+                break;
+            default:
+                printf("Invalid selection.\n");
+        }
+    } while (choice != 0);
+
     return 0;
 }
 ```
