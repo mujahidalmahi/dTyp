@@ -8,7 +8,8 @@ export type ComponentType =
   | "template"
   | "program"
   | "project"
-  | "utility";
+  | "utility"
+  | "header";
 
 export interface ComponentComplexity {
   time: string;
@@ -55,6 +56,7 @@ export interface Component {
   template?: string;
   createdAt?: string;
   updatedAt?: string;
+  isCustom?: boolean;
 }
 
 export interface Snippet {

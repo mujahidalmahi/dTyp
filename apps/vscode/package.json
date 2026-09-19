@@ -188,6 +188,54 @@
         "title": "dTyp: Renew Component in File...",
         "category": "dTyp",
         "icon": "$(refresh)"
+      },
+      {
+        "command": "dtyp.createOwnComponent",
+        "title": "dTyp: Create Custom Component (Own Library)",
+        "category": "dTyp",
+        "icon": "$(plus)"
+      },
+      {
+        "command": "dtyp.editOwnComponent",
+        "title": "dTyp: Edit Custom Component",
+        "category": "dTyp",
+        "icon": "$(edit)"
+      },
+      {
+        "command": "dtyp.deleteOwnComponent",
+        "title": "dTyp: Delete Custom Component",
+        "category": "dTyp",
+        "icon": "$(trash)"
+      },
+      {
+        "command": "dtyp.insertOwnComponent",
+        "title": "dTyp: Insert / Auto-Type Custom Component",
+        "category": "dTyp",
+        "icon": "$(keyboard)"
+      },
+      {
+        "command": "dtyp.copyOwnComponentCode",
+        "title": "dTyp: Copy Custom Component Code",
+        "category": "dTyp",
+        "icon": "$(copy)"
+      },
+      {
+        "command": "dtyp.refreshOwnLibrary",
+        "title": "dTyp: Refresh Own Library",
+        "category": "dTyp",
+        "icon": "$(refresh)"
+      },
+      {
+        "command": "dtyp.exportOwnLibrary",
+        "title": "dTyp: Export Own Library to JSON...",
+        "category": "dTyp",
+        "icon": "$(cloud-upload)"
+      },
+      {
+        "command": "dtyp.importOwnLibrary",
+        "title": "dTyp: Import Own Library from JSON...",
+        "category": "dTyp",
+        "icon": "$(cloud-download)"
       }
     ],
     "keybindings": [
@@ -358,7 +406,11 @@
       "dtyp-explorer": [
         {
           "id": "dtyp.libraryView",
-          "name": "Offline C Library (500)"
+          "name": "Offline C Library (665)"
+        },
+        {
+          "id": "dtyp.ownLibraryView",
+          "name": "Own Library"
         },
         {
           "id": "dtyp.favoritesView",
@@ -380,6 +432,26 @@
           "command": "dtyp.refreshViews",
           "when": "view == 'dtyp.libraryView' || view == 'dtyp.favoritesView' || view == 'dtyp.historyView' || view == 'dtyp.quickActionsView'",
           "group": "navigation"
+        },
+        {
+          "command": "dtyp.createOwnComponent",
+          "when": "view == 'dtyp.ownLibraryView'",
+          "group": "navigation@1"
+        },
+        {
+          "command": "dtyp.refreshOwnLibrary",
+          "when": "view == 'dtyp.ownLibraryView'",
+          "group": "navigation@2"
+        },
+        {
+          "command": "dtyp.exportOwnLibrary",
+          "when": "view == 'dtyp.ownLibraryView'",
+          "group": "navigation@3"
+        },
+        {
+          "command": "dtyp.importOwnLibrary",
+          "when": "view == 'dtyp.ownLibraryView'",
+          "group": "navigation@4"
         }
       ],
       "view/item/context": [
@@ -401,6 +473,26 @@
         {
           "command": "dtyp.viewDocumentation",
           "when": "view == 'dtyp.libraryView' && viewItem == 'component'",
+          "group": "inline@4"
+        },
+        {
+          "command": "dtyp.insertOwnComponent",
+          "when": "view == 'dtyp.ownLibraryView' && viewItem == 'ownComponent'",
+          "group": "inline@1"
+        },
+        {
+          "command": "dtyp.editOwnComponent",
+          "when": "view == 'dtyp.ownLibraryView' && viewItem == 'ownComponent'",
+          "group": "inline@2"
+        },
+        {
+          "command": "dtyp.copyOwnComponentCode",
+          "when": "view == 'dtyp.ownLibraryView' && viewItem == 'ownComponent'",
+          "group": "inline@3"
+        },
+        {
+          "command": "dtyp.deleteOwnComponent",
+          "when": "view == 'dtyp.ownLibraryView' && viewItem == 'ownComponent'",
           "group": "inline@4"
         }
       ]

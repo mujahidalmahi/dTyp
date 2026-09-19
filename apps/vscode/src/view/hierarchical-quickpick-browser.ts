@@ -1,7 +1,8 @@
 import * as vscode from "vscode";
 import { DefaultLibraryEngine } from "@dtyp/library-engine";
 import { Category, Component } from "@dtyp/types";
-import { SessionEngine } from "../engine/session-engine";
+import { SessionEngine } from "../engine/session-engine.js";
+import { OwnLibraryStorage } from "../engine/own-library-storage.js";
 
 function getDomainIcon(slug: string, isRoot: boolean): string {
   if (!isRoot) return "symbol-folder";
@@ -20,6 +21,8 @@ function getDomainIcon(slug: string, isRoot: boolean): string {
       return "package";
     case "detection":
       return "shield";
+    case "own-library":
+      return "folder-library";
     default:
       return "symbol-folder";
   }
@@ -45,6 +48,7 @@ type BrowserQuickPickItem = CategoryQuickPickItem | ViewAllQuickPickItem | Compo
 export interface QuickPickBrowserOptions {
   libraryEngine: DefaultLibraryEngine;
   sessionEngine?: SessionEngine;
+  ownLibraryStorage?: OwnLibraryStorage;
   onInsert?: (componentId: string) => Promise<void>;
   onFavoriteChanged?: () => void;
 }
@@ -162,12 +166,14 @@ export class HierarchicalQuickPickBrowser {
     try {
       if (this.history.length === 0) {
         // Root Domains Level
-        this.quickPick.title = "dTyp: Offline C Library (500 components)";
-        this.quickPick.placeholder = "Select a Domain to browse components...";
-        this.quickPick.buttons = [];
-
         const roots = await this.options.libraryEngine.getChildren(null);
         const counts = await this.options.libraryEngine.getCategoryCounts();
+        const totalCount = await this.options.libraryEngine.count();
+        const ownCount = this.options.ownLibraryStorage ? this.options.ownLibraryStorage.getCount() : 0;
+
+        this.quickPick.title = `dTyp: Offline C Library (${(totalCount + ownCount).toLocaleString()} components)`;
+        this.quickPick.placeholder = "Select a Domain to browse components...";
+        this.quickPick.buttons = [];
 
         const items: BrowserQuickPickItem[] = roots.map((cat) => {
           const icon = getDomainIcon(cat.slug, true);
@@ -181,12 +187,39 @@ export class HierarchicalQuickPickBrowser {
           };
         });
 
+        // Add Own Library domain
+        if (this.options.ownLibraryStorage) {
+          items.push({
+            itemType: "category",
+            label: `$(folder-library) Own Library`,
+            description: "own-library",
+            detail: `${ownCount} custom component${ownCount !== 1 ? "s" : ""} • User defined library`,
+            category: {
+              id: "own_library_root",
+              parentId: null,
+              name: "Own Library",
+              slug: "own-library",
+              path: "Own Library",
+              depth: 0,
+              type: "domain",
+              description: "User created custom components and snippets",
+            },
+          });
+        }
+
         this.quickPick.items = items;
       } else {
         const currentCat = this.history[this.history.length - 1];
-        const subcategories = await this.options.libraryEngine.getChildren(currentCat.id);
-
         this.quickPick.buttons = [vscode.QuickInputButtons.Back];
+
+        // Handle Own Library hierarchy
+        if (currentCat.id.startsWith("own_")) {
+          await this.renderOwnLibraryLevel(currentCat);
+          return;
+        }
+
+        // Built-in Library hierarchy
+        const subcategories = await this.options.libraryEngine.getChildren(currentCat.id);
 
         if (subcategories.length > 0) {
           // Division Level with Sub-Divisions
@@ -215,7 +248,7 @@ export class HierarchicalQuickPickBrowser {
 
           this.quickPick.items = items;
         } else {
-          // Leaf Division Level (e.g. Singly Linked List)
+          // Leaf Division Level
           const components = await this.options.libraryEngine.getByCategoryId(currentCat.id);
           this.renderComponents(components);
         }
@@ -225,12 +258,126 @@ export class HierarchicalQuickPickBrowser {
     }
   }
 
+  private async renderOwnLibraryLevel(currentCat: Category): Promise<void> {
+    if (!this.options.ownLibraryStorage) return;
+    const storage = this.options.ownLibraryStorage;
+    const all = storage.getAll();
+
+    if (currentCat.id === "own_library_root") {
+      const subDomains = storage.getSubDomains();
+      const breadcrumb = "Own Library";
+      this.quickPick.title = `dTyp: ${breadcrumb}`;
+      this.quickPick.placeholder = "Select a Sub Domain in Own Library...";
+
+      if (all.length === 0) {
+        vscode.window.showInformationMessage("Your Own Library is empty! Click [+] in the sidebar to create one.");
+        this.renderComponents([]);
+        return;
+      }
+
+      const items: BrowserQuickPickItem[] = [
+        {
+          itemType: "view_all",
+          label: `$(list-unordered) View All in Own Library`,
+          description: `${all.length} custom components`,
+          detail: `Browse and search all ${all.length} custom components`,
+          parentCategory: currentCat,
+        },
+        ...subDomains.map((sd): BrowserQuickPickItem => {
+          const count = all.filter((c) => c.subDomain === sd).length;
+          return {
+            itemType: "category",
+            label: `$(folder-library) ${sd}`,
+            description: `${count} components`,
+            detail: `Sub Domain: ${sd}`,
+            category: {
+              id: `own_sd_${sd}`,
+              parentId: "own_library_root",
+              name: sd,
+              slug: sd.toLowerCase(),
+              path: `Own Library / ${sd}`,
+              depth: 1,
+              type: "subdomain",
+            },
+          };
+        }),
+      ];
+
+      this.quickPick.items = items;
+      return;
+    }
+
+    if (currentCat.id.startsWith("own_sd_")) {
+      const subDomain = currentCat.name;
+      const subTopics = storage.getSubTopics(subDomain);
+      const compsInSd = all.filter((c) => c.subDomain === subDomain);
+
+      this.quickPick.title = `dTyp: Own Library > ${subDomain}`;
+      this.quickPick.placeholder = `Select a Sub Topic in ${subDomain}...`;
+
+      const items: BrowserQuickPickItem[] = [
+        {
+          itemType: "view_all",
+          label: `$(list-unordered) View All in ${subDomain}`,
+          description: `${compsInSd.length} components`,
+          detail: `Browse and search all components in ${subDomain}`,
+          parentCategory: currentCat,
+        },
+        ...subTopics.map((st): BrowserQuickPickItem => {
+          const count = compsInSd.filter((c) => c.subTopic === st).length;
+          return {
+            itemType: "category",
+            label: `$(list-tree) ${st}`,
+            description: `${count} components`,
+            detail: `Sub Topic: ${st}`,
+            category: {
+              id: `own_st_${subDomain}_${st}`,
+              parentId: currentCat.id,
+              name: st,
+              slug: st.toLowerCase(),
+              path: `Own Library / ${subDomain} / ${st}`,
+              depth: 2,
+              type: "subtopic",
+            },
+          };
+        }),
+      ];
+
+      this.quickPick.items = items;
+      return;
+    }
+
+    if (currentCat.id.startsWith("own_st_")) {
+      // Leaf Sub Topic: render components
+      const parts = currentCat.path.split("/").map((p) => p.trim());
+      const subDomain = parts[1] || "";
+      const subTopic = parts[2] || currentCat.name;
+      const comps = storage.getBySubDomainAndTopic(subDomain, subTopic);
+      this.renderComponents(comps.map((c) => storage.toComponent(c)));
+      return;
+    }
+  }
+
   private async renderViewAll(parentCat: Category): Promise<void> {
     this.quickPick.busy = true;
     this.quickPick.value = "";
 
     try {
       this.quickPick.buttons = [vscode.QuickInputButtons.Back];
+
+      if (parentCat.id.startsWith("own_")) {
+        if (!this.options.ownLibraryStorage) return;
+        const storage = this.options.ownLibraryStorage;
+        if (parentCat.id === "own_library_root") {
+          this.renderComponents(storage.getAllAsComponents(), true);
+        } else if (parentCat.id.startsWith("own_sd_")) {
+          const sd = parentCat.name;
+          const comps = storage.getAll().filter((c) => c.subDomain === sd);
+          this.renderComponents(comps.map((c) => storage.toComponent(c)), true);
+        }
+        return;
+      }
+
       const components = await this.options.libraryEngine.getByCategoryBranch(parentCat.id);
       this.renderComponents(components, true);
     } finally {

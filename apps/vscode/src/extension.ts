@@ -17,6 +17,7 @@ import {
   SnippetEngine,
   HeaderEngine,
   RenewEngine,
+  OwnLibraryStorage,
 } from "./engine/index.js";
 import {
   LibraryTreeProvider,
@@ -25,6 +26,8 @@ import {
   QuickActionsTreeProvider,
   ReleaseNotesPanel,
   HierarchicalQuickPickBrowser,
+  OwnLibraryPanel,
+  OwnLibraryTreeProvider,
 } from "./view/index.js";
 import { UpdateEngine } from "./engine/update-engine.js";
 import { DiagnosticsManager } from "./command/diagnostics-command.js";
@@ -42,8 +45,10 @@ let snippetEngine: SnippetEngine | null = null;
 let memoryEngine: MemoryEngine | null = null;
 let updateEngine: UpdateEngine | null = null;
 let renewEngine: RenewEngine | null = null;
+let ownLibraryStorage: OwnLibraryStorage | null = null;
 
 let libraryTreeProvider: LibraryTreeProvider | null = null;
+let ownLibraryTreeProvider: OwnLibraryTreeProvider | null = null;
 let favoritesTreeProvider: FavoritesTreeProvider | null = null;
 let historyTreeProvider: HistoryTreeProvider | null = null;
 let quickActionsTreeProvider: QuickActionsTreeProvider | null = null;
@@ -91,7 +96,8 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
   typingEngine = new DefaultTypingEngine(typingTarget);
 
   sessionEngine = new SessionEngine(context);
-  searchEngine = new SearchEngine(libraryEngine);
+  ownLibraryStorage = new OwnLibraryStorage(context);
+  searchEngine = new SearchEngine(libraryEngine, ownLibraryStorage);
   autoTypeEngine = new AutoTypeEngine(typingEngine, typingTarget);
   snippetEngine = new SnippetEngine(libraryEngine);
   await snippetEngine.loadSnippets();
@@ -142,6 +148,11 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
   libraryTreeProvider = new LibraryTreeProvider(libraryEngine);
   context.subscriptions.push(
     vscode.window.registerTreeDataProvider("dtyp.libraryView", libraryTreeProvider)
+  );
+
+  ownLibraryTreeProvider = new OwnLibraryTreeProvider(ownLibraryStorage);
+  context.subscriptions.push(
+    vscode.window.registerTreeDataProvider("dtyp.ownLibraryView", ownLibraryTreeProvider)
   );
 
   favoritesTreeProvider = new FavoritesTreeProvider(sessionEngine);
@@ -233,17 +244,26 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
       return;
     }
 
-    const comp = await libraryEngine.findComponent(componentId);
-    if (!comp) {
-      vscode.window.showErrorMessage(`Component "${componentId}" not found in dTyp library.`);
-      return;
+    let comp = await libraryEngine.findComponent(componentId);
+    let componentsToInsert: Component[] = [];
+
+    if (!comp && ownLibraryStorage) {
+      const ownComp = ownLibraryStorage.getById(componentId);
+      if (ownComp) {
+        comp = ownLibraryStorage.toComponent(ownComp);
+        componentsToInsert = [comp];
+      }
+    } else if (comp) {
+      try {
+        componentsToInsert = await libraryEngine.getDependencies(componentId);
+      } catch (err: any) {
+        vscode.window.showErrorMessage(`Dependency resolution error: ${err.message}`);
+        return;
+      }
     }
 
-    let componentsToInsert: Component[] = [];
-    try {
-      componentsToInsert = await libraryEngine.getDependencies(componentId);
-    } catch (err: any) {
-      vscode.window.showErrorMessage(`Dependency resolution error: ${err.message}`);
+    if (!comp) {
+      vscode.window.showErrorMessage(`Component "${componentId}" not found in dTyp library.`);
       return;
     }
 
@@ -321,6 +341,7 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
     const browser = new HierarchicalQuickPickBrowser({
       libraryEngine,
       sessionEngine: sessionEngine ?? undefined,
+      ownLibraryStorage: ownLibraryStorage ?? undefined,
       onInsert: insertComponentPipeline,
       onFavoriteChanged: () => favoritesTreeProvider?.refresh(),
     });
@@ -331,7 +352,7 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
   const quickInsertCmd = vscode.commands.registerCommand("dtyp.quickInsert", async () => {
     if (!searchEngine || !libraryEngine) return;
     const quickPick = vscode.window.createQuickPick();
-    quickPick.placeholder = "Type to search 500 components (e.g. 'quickSort', 'boiler:main', 'ds:tree', 'malloc')...";
+    quickPick.placeholder = "Type to search components across all domains + Own Library (e.g. 'quickSort', 'tcp', 'tree', 'malloc')...";
 
     const buildItem = (comp: Component, score?: number) => {
       const isFav = sessionEngine?.isFavorite(comp.id) ?? false;
@@ -437,7 +458,11 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
       category = node.component.category;
     } else if (typeof node === "string") {
       componentId = node;
-      const comp = await libraryEngine?.findComponent(componentId);
+      let comp = await libraryEngine?.findComponent(componentId);
+      if (!comp && ownLibraryStorage) {
+        const ownComp = ownLibraryStorage.getById(componentId);
+        if (ownComp) comp = ownLibraryStorage.toComponent(ownComp);
+      }
       componentName = comp?.name;
       category = comp?.category;
     }
@@ -495,12 +520,151 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
 
   const refreshViewsCmd = vscode.commands.registerCommand("dtyp.refreshViews", () => {
     libraryTreeProvider?.refresh();
+    ownLibraryTreeProvider?.refresh();
     favoritesTreeProvider?.refresh();
     historyTreeProvider?.refresh();
     quickActionsTreeProvider?.refresh();
     vscode.window.setStatusBarMessage("dTyp: Views refreshed", 2000);
   });
   context.subscriptions.push(refreshViewsCmd);
+
+  // Own Library Commands
+  const createOwnCompCmd = vscode.commands.registerCommand("dtyp.createOwnComponent", () => {
+    if (!ownLibraryStorage) return;
+    OwnLibraryPanel.show(context, ownLibraryStorage, undefined, async (comp, autoInsert) => {
+      ownLibraryTreeProvider?.refresh();
+      if (autoInsert) {
+        await insertComponentPipeline(comp.id);
+      }
+    });
+  });
+  context.subscriptions.push(createOwnCompCmd);
+
+  const editOwnCompCmd = vscode.commands.registerCommand("dtyp.editOwnComponent", (node: any) => {
+    if (!ownLibraryStorage) return;
+    let compId: string | undefined;
+    if (node && node.component && node.component.id) {
+      compId = node.component.id;
+    } else if (typeof node === "string") {
+      compId = node;
+    }
+    if (compId) {
+      OwnLibraryPanel.show(context, ownLibraryStorage, compId, async (comp, autoInsert) => {
+        ownLibraryTreeProvider?.refresh();
+        if (autoInsert) {
+          await insertComponentPipeline(comp.id);
+        }
+      });
+    }
+  });
+  context.subscriptions.push(editOwnCompCmd);
+
+  const deleteOwnCompCmd = vscode.commands.registerCommand("dtyp.deleteOwnComponent", async (node: any) => {
+    if (!ownLibraryStorage) return;
+    let compId: string | undefined;
+    let compName = "this component";
+    if (node && node.component) {
+      compId = node.component.id;
+      compName = `"${node.component.name}"`;
+    } else if (typeof node === "string") {
+      compId = node;
+      const c = ownLibraryStorage.getById(node);
+      if (c) compName = `"${c.name}"`;
+    }
+    if (!compId) return;
+
+    const confirm = await vscode.window.showWarningMessage(
+      `Are you sure you want to delete ${compName} from your Own Library?`,
+      { modal: true },
+      "Delete"
+    );
+    if (confirm === "Delete") {
+      await ownLibraryStorage.delete(compId);
+      ownLibraryTreeProvider?.refresh();
+      vscode.window.showInformationMessage(`dTyp: Deleted ${compName} from Own Library.`);
+    }
+  });
+  context.subscriptions.push(deleteOwnCompCmd);
+
+  const insertOwnCompCmd = vscode.commands.registerCommand("dtyp.insertOwnComponent", async (arg: any) => {
+    let compId: string | undefined;
+    if (typeof arg === "string") {
+      compId = arg;
+    } else if (arg && arg.component && arg.component.id) {
+      compId = arg.component.id;
+    }
+    if (compId) {
+      await insertComponentPipeline(compId);
+    }
+  });
+  context.subscriptions.push(insertOwnCompCmd);
+
+  const copyOwnCodeCmd = vscode.commands.registerCommand("dtyp.copyOwnComponentCode", async (node: any) => {
+    let code: string | undefined;
+    let name = "Component";
+    if (node && node.component) {
+      code = node.component.code;
+      name = node.component.name;
+    } else if (typeof node === "string" && ownLibraryStorage) {
+      const comp = ownLibraryStorage.getById(node);
+      if (comp) {
+        code = comp.code;
+        name = comp.name;
+      }
+    }
+    if (code) {
+      await vscode.env.clipboard.writeText(code);
+      vscode.window.setStatusBarMessage(`dTyp: Copied code for "${name}" to clipboard!`, 2500);
+    }
+  });
+  context.subscriptions.push(copyOwnCodeCmd);
+
+  const refreshOwnLibCmd = vscode.commands.registerCommand("dtyp.refreshOwnLibrary", () => {
+    ownLibraryStorage?.load();
+    ownLibraryTreeProvider?.refresh();
+    vscode.window.setStatusBarMessage("dTyp: Own Library refreshed", 2000);
+  });
+  context.subscriptions.push(refreshOwnLibCmd);
+
+  const exportOwnLibCmd = vscode.commands.registerCommand("dtyp.exportOwnLibrary", async () => {
+    if (!ownLibraryStorage) return;
+    const json = ownLibraryStorage.exportToJson();
+    const uri = await vscode.window.showSaveDialog({
+      defaultUri: vscode.Uri.file("dtyp-own-library.json"),
+      filters: { "JSON Files": ["json"] },
+      title: "Export Own Library to JSON",
+    });
+    if (uri) {
+      await vscode.workspace.fs.writeFile(uri, Buffer.from(json, "utf-8"));
+      vscode.window.showInformationMessage(
+        `dTyp: Exported ${ownLibraryStorage.getCount()} components to ${path.basename(uri.fsPath)}`
+      );
+    }
+  });
+  context.subscriptions.push(exportOwnLibCmd);
+
+  const importOwnLibCmd = vscode.commands.registerCommand("dtyp.importOwnLibrary", async () => {
+    if (!ownLibraryStorage) return;
+    const uris = await vscode.window.showOpenDialog({
+      canSelectMany: false,
+      filters: { "JSON Files": ["json"] },
+      title: "Import Own Library from JSON",
+    });
+    if (uris && uris[0]) {
+      try {
+        const fileBytes = await vscode.workspace.fs.readFile(uris[0]);
+        const content = Buffer.from(fileBytes).toString("utf-8");
+        const result = await ownLibraryStorage.importFromJson(content);
+        ownLibraryTreeProvider?.refresh();
+        vscode.window.showInformationMessage(
+          `dTyp: Imported ${result.imported} new, updated ${result.updated} components (${result.failed} skipped).`
+        );
+      } catch (err: any) {
+        vscode.window.showErrorMessage(`dTyp Import Failed: ${err.message}`);
+      }
+    }
+  });
+  context.subscriptions.push(importOwnLibCmd);
 
   const typeNextCmd = vscode.commands.registerCommand("dtyp.typeNextCharacter", async () => {
     const editor = vscode.window.activeTextEditor;
@@ -522,6 +686,7 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
     const browser = new HierarchicalQuickPickBrowser({
       libraryEngine,
       sessionEngine: sessionEngine ?? undefined,
+      ownLibraryStorage: ownLibraryStorage ?? undefined,
       onInsert: insertComponentPipeline,
       onFavoriteChanged: () => favoritesTreeProvider?.refresh(),
     });

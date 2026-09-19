@@ -1,4 +1,5 @@
 import { Component, LibraryEngine } from "@dtyp/types";
+import { OwnLibraryStorage } from "./own-library-storage.js";
 
 export interface ScoredComponent {
   component: Component;
@@ -10,7 +11,14 @@ export class SearchEngine {
   private cache = new Map<string, ScoredComponent[]>();
   private readonly MAX_CACHE = 100;
 
-  constructor(private libraryEngine: LibraryEngine) {}
+  constructor(
+    private libraryEngine: LibraryEngine,
+    private ownLibraryStorage?: OwnLibraryStorage
+  ) {
+    if (this.ownLibraryStorage) {
+      this.ownLibraryStorage.onDidChange(() => this.clearCache());
+    }
+  }
 
   public async search(query: string, limit = 50): Promise<ScoredComponent[]> {
     const trimmed = query.trim().toLowerCase();
@@ -32,6 +40,9 @@ export class SearchEngine {
 
     // Query candidate components from sqlite
     const candidates = await this.libraryEngine.search(searchTerm || categoryScope || "", 300);
+    if (this.ownLibraryStorage) {
+      candidates.push(...this.ownLibraryStorage.getAllAsComponents());
+    }
 
     const scored: ScoredComponent[] = [];
 
