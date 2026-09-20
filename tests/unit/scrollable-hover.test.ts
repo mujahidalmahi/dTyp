@@ -73,10 +73,10 @@ describe("Scrollable Full Code Hover Provider", () => {
 
 		const hover = await provider.provideHover(mockDoc, new (vscode as any).Position(0, 8), {} as any);
 		expect(hover).toBeDefined();
-		expect(hover?.contents.value).toContain("Scrollable Full Implementation Code:");
-		expect(hover?.contents.value).toContain("void quick_sort(int arr[], int low, int high)");
-		expect(hover?.contents.value).toContain("partition(arr, low, high)");
-		expect(hover?.contents.value).toContain("**Time Complexity**: `O(N log N)`");
+		expect((hover?.contents as any).value).toContain("Scrollable Full Implementation Code:");
+		expect((hover?.contents as any).value).toContain("void quick_sort(int arr[], int low, int high)");
+		expect((hover?.contents as any).value).toContain("partition(arr, low, high)");
+		expect((hover?.contents as any).value).toContain("**Time Complexity**: `O(N log N)`");
 	});
 
 	it("returns full file contents when hovering over #include \"module.h\"", async () => {
@@ -98,8 +98,8 @@ describe("Scrollable Full Code Hover Provider", () => {
 
 		const hover = await provider.provideHover(mockDoc, new (vscode as any).Position(0, 12), {} as any);
 		expect(hover).toBeDefined();
-		expect(hover?.contents.value).toContain("Scrollable Full File Preview:");
-		expect(hover?.contents.value).toContain("int add(int a, int b);");
+		expect((hover?.contents as any).value).toContain("Scrollable Full File Preview:");
+		expect((hover?.contents as any).value).toContain("int add(int a, int b);");
 
 		// Clean up
 		fs.unlinkSync(headerPath);
@@ -120,7 +120,7 @@ describe("Scrollable Full Code Hover Provider", () => {
 
 		const hover = await provider.provideHover(mockDoc, new (vscode as any).Position(0, 12), {} as any);
 		expect(hover).toBeDefined();
-		expect(hover?.contents.value).toContain("Standard C Header: `<stdio.h>`");
-		expect(hover?.contents.value).toContain("printf");
+		expect((hover?.contents as any).value).toContain("Standard C Header: `<stdio.h>`");
+		expect((hover?.contents as any).value).toContain("printf");
 	});
 });

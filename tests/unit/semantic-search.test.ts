@@ -35,6 +35,9 @@ describe("Dimension 4: Semantic Search & C++ Knowledge Base", () => {
       {
         id: "quicksort",
         name: "quicksort",
+        language: "c",
+        version: "1.0.0",
+        tags: ["sort", "divide-and-conquer"],
         category: "algorithms",
         categoryId: "sorting",
         description: "High performance divide and conquer sorting algorithm",
@@ -47,6 +50,9 @@ describe("Dimension 4: Semantic Search & C++ Knowledge Base", () => {
       {
         id: "floyd_cycle_detection",
         name: "floyd_cycle_detection",
+        language: "c",
+        version: "1.0.0",
+        tags: ["cycle", "linked-list"],
         category: "algorithms",
         categoryId: "graph_and_tree",
         description: "Detect loop in linked list using tortoise and hare pointers",
@@ -59,6 +65,9 @@ describe("Dimension 4: Semantic Search & C++ Knowledge Base", () => {
       {
         id: "circular_queue",
         name: "circular_queue",
+        language: "c",
+        version: "1.0.0",
+        tags: ["queue", "fifo"],
         category: "data-structures",
         categoryId: "queue",
         description: "FIFO buffer using fixed array",
@@ -73,17 +82,20 @@ describe("Dimension 4: Semantic Search & C++ Knowledge Base", () => {
     const mockLibraryEngine: LibraryEngine = {
       search: vi.fn(async () => mockComponents),
       findComponent: vi.fn(async (id) => mockComponents.find((c) => c.id === id) || null),
+      resolveAlias: vi.fn(async () => null),
       getCategories: vi.fn(async () => []),
       getByCategory: vi.fn(async () => []),
       getByCategoryId: vi.fn(async () => []),
       getByCategoryBranch: vi.fn(async () => []),
+      getCategoryBranchCount: vi.fn(async () => 0),
+      getChildren: vi.fn(async () => []),
+      findCategoryByPath: vi.fn(async () => null),
       getSnippets: vi.fn(async () => []),
-      getSnippetsByPrefix: vi.fn(async () => []),
+      getSnippet: vi.fn(async () => null),
       count: vi.fn(async () => mockComponents.length),
       getDependencies: vi.fn(async () => []),
       getAllComponents: vi.fn(async () => mockComponents),
       getCategoryCounts: vi.fn(async () => ({})),
-      getDuplicateDetector: vi.fn() as any,
     };
 
     it("matches algorithmic intent 'fast sort' directly to quicksort with top score", async () => {

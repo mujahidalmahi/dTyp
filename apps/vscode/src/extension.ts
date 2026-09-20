@@ -65,6 +65,7 @@ let memoryEngine: MemoryEngine | null = null;
 let updateEngine: UpdateEngine | null = null;
 let renewEngine: RenewEngine | null = null;
 let ownLibraryStorage: OwnLibraryStorage | null = null;
+let ghostPreviewEngine: GhostPreviewEngine | null = null;
 
 let libraryTreeProvider: LibraryTreeProvider | null = null;
 let ownLibraryTreeProvider: OwnLibraryTreeProvider | null = null;

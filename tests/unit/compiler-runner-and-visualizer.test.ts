@@ -180,6 +180,9 @@ void test() {
       const treeComp: Component = {
         id: "bst_insert",
         name: "bst_insert",
+        language: "c",
+        version: "1.0.0",
+        tags: ["tree", "bst"],
         category: "data-structures",
         categoryId: "ds_tree",
         description: "Insert node into Binary Search Tree",

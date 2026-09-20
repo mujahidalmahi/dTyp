@@ -353,6 +353,19 @@ export class OwnLibraryStorage {
   }
 
   /**
+   * Find an own component by exact name match (case-insensitive)
+   */
+  public findByName(name: string): OwnComponent | undefined {
+    const lowerName = name.toLowerCase();
+    for (const item of this.items.values()) {
+      if (item.name.toLowerCase() === lowerName) {
+        return item;
+      }
+    }
+    return undefined;
+  }
+
+  /**
    * Convert OwnComponent to standard dTyp Component interface
    */
   public toComponent(own: OwnComponent): Component {
