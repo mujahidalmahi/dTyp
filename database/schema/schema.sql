@@ -1,4 +1,4 @@
--- dTyp SQLite Database Schema v3.2.0
+-- dTyp SQLite Database Schema v4.0.0
 -- Unlimited-Depth Hierarchical Taxonomy & High-Performance C Component Library
 
 CREATE TABLE IF NOT EXISTS metadata (

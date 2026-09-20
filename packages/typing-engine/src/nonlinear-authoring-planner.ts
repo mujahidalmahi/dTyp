@@ -68,7 +68,7 @@ export class NonlinearAuthoringPlanner {
 
     // 2. Phase 1b: Scaffold minimal main() skeleton
     const returnLine = main.returnStatement.trim() || "return 0;";
-    const mainScaffoldCode = `${main.signature} {\n    ${returnLine}\n}\n`;
+    const mainScaffoldCode = `${main.signature} {\n\t${returnLine}\n}\n`;
 
     const initialCode = headerCode + mainScaffoldCode;
 
@@ -122,13 +122,13 @@ export class NonlinearAuthoringPlanner {
     }
 
     // 5. Phase 4: Driver Logic Inside main()
-    const driver = main.driverStatements.trim();
+    const driver = this.normalizeBodyIndentation(main.driverStatements);
     if (driver.length > 0) {
       const driverCode = driver + "\n";
       steps.push({
         kind: "main_driver",
         code: driverCode,
-        cursorMoveBefore: { lineOffset: 1, column: 4, landmark: "inside_main" },
+        cursorMoveBefore: { lineOffset: 1, column: 0, landmark: "inside_main" },
         pauseBeforeMs: 500,
         pauseAfterMs: 400,
         description: "move inside main() to author driver logic, function calls, and printfs",
@@ -150,7 +150,7 @@ export class NonlinearAuthoringPlanner {
 
     // 2. Scaffold function signature + return statement + closing brace
     const returnLine = fn.returnStatement?.trim() || "return 0;";
-    const fnScaffoldCode = `${fn.signature} {\n    ${returnLine}\n}\n`;
+    const fnScaffoldCode = `${fn.signature} {\n\t${returnLine}\n}\n`;
     const initialCode = headerCode + fnScaffoldCode;
 
     steps.push({
@@ -179,14 +179,14 @@ export class NonlinearAuthoringPlanner {
     }
 
     // 4. Fill function body above return statement
-    const bodyCode = (fn.bodyBeforeReturn || "").trim();
+    const bodyCode = this.normalizeBodyIndentation(fn.bodyBeforeReturn || fn.body || "");
     if (bodyCode.length > 0) {
       steps.push({
         kind: "function_body",
         code: bodyCode + "\n",
         cursorMoveBefore: hasMovedAbove
-          ? { lineOffset: 1, column: 4, landmark: "above_return" }
-          : { lineOffset: -2, column: 4, landmark: "above_return" },
+          ? { lineOffset: 1, column: 0, landmark: "above_return" }
+          : { lineOffset: -2, column: 0, landmark: "above_return" },
         pauseBeforeMs: 350,
         pauseAfterMs: 300,
         description: `implement ${fn.name}() algorithm logic above return`,
@@ -211,7 +211,7 @@ export class NonlinearAuthoringPlanner {
     // 2. Scaffold entry function
     const returnLine = entryFn.returnStatement?.trim() || "";
     const entryScaffoldCode = returnLine
-      ? `${entryFn.signature} {\n    ${returnLine}\n}\n`
+      ? `${entryFn.signature} {\n\t${returnLine}\n}\n`
       : `${entryFn.signature} {\n}\n`;
 
     const initialCode = headerCode + entryScaffoldCode;
@@ -260,14 +260,14 @@ export class NonlinearAuthoringPlanner {
     }
 
     // 5. Fill entry function body
-    const bodyCode = (entryFn.bodyBeforeReturn || entryFn.body || "").trim();
+    const bodyCode = this.normalizeBodyIndentation(entryFn.bodyBeforeReturn || entryFn.body || "");
     if (bodyCode.length > 0) {
       steps.push({
         kind: "function_body",
         code: bodyCode + "\n",
         cursorMoveBefore: {
           lineOffset: 1,
-          column: 4,
+          column: 0,
           landmark: entryFn.returnStatement ? "above_return" : "inside_main",
         },
         pauseBeforeMs: 400,
@@ -277,5 +277,36 @@ export class NonlinearAuthoringPlanner {
     }
 
     return steps;
+  }
+
+  private static normalizeBodyIndentation(rawBody: string): string {
+    const rawLines = rawBody.split(/\r?\n/);
+    while (rawLines.length > 0 && rawLines[0].trim() === "") rawLines.shift();
+    while (rawLines.length > 0 && rawLines[rawLines.length - 1].trim() === "") rawLines.pop();
+
+    if (rawLines.length === 0) return "";
+
+    let minIndent = Infinity;
+    for (const line of rawLines) {
+      if (line.trim().length > 0) {
+        const match = line.match(/^[ \t]*/);
+        const indentLen = match ? match[0].length : 0;
+        if (indentLen < minIndent) minIndent = indentLen;
+      }
+    }
+    if (minIndent === Infinity) minIndent = 0;
+
+    return rawLines
+      .map((line) => {
+        if (line.trim().length === 0) return "";
+        const stripped = line.slice(minIndent);
+        // Normalize any internal nested leading indentation from spaces to tabs
+        const leadingMatch = stripped.match(/^[ \t]*/);
+        const leading = leadingMatch ? leadingMatch[0] : "";
+        const rest = stripped.slice(leading.length);
+        const tabCount = Math.floor(leading.replace(/\t/g, "    ").length / 4);
+        return "\t" + "\t".repeat(tabCount) + rest;
+      })
+      .join("\n");
   }
 }

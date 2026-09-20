@@ -1,6 +1,6 @@
 {
   "name": "dtyp-monorepo",
-  "version": "3.2.0",
+  "version": "4.0.0",
   "private": true,
   "description": "dTyp - Don't Tell Your Professor (Offline Academic C Library & VS Code Extension)",
   "workspaces": [

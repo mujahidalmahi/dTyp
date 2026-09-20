@@ -1,4 +1,4 @@
-<p align="center">
+﻿<p align="center">
   <img src="images/icon.png" width="128" height="128" alt="dTyp Logo" />
 </p>
 
@@ -8,9 +8,9 @@
 
 <p align="center">
   <a href="https://github.com/mujahidalmahi/dTyp/actions/workflows/ci.yml"><img src="https://img.shields.io/github/actions/workflow/status/mujahidalmahi/dTyp/ci.yml?branch=main&label=CI&logo=github" alt="CI Build Status" /></a>
-  <a href="https://github.com/mujahidalmahi/dTyp/releases/latest"><img src="https://img.shields.io/badge/release-v3.2.0-blue?logo=semanticrelease" alt="Release Version" /></a>
+  <a href="https://github.com/mujahidalmahi/dTyp/releases/latest"><img src="https://img.shields.io/badge/release-v4.0.0-blue?logo=semanticrelease" alt="Release Version" /></a>
   <a href="https://marketplace.visualstudio.com/items?itemName=1da7b1e6-01f1-6f58-9ef3-d95516c5e875.dtyp-vscode"><img src="https://img.shields.io/badge/VS%20Code-Marketplace-007ACC?logo=visualstudiocode&logoColor=white" alt="VS Code Marketplace" /></a>
-  <a href="../../docs/LIBRARY_CATALOG.md"><img src="https://img.shields.io/badge/library-500%20C%20Components-emerald?logo=c" alt="500 C Components" /></a>
+  <a href="../../docs/LIBRARY_CATALOG.md"><img src="https://img.shields.io/badge/library-500%20C%20Components-emerald?logo=c" alt="665 C Components" /></a>
   <a href="https://sql.js.org/"><img src="https://img.shields.io/badge/runtime-SQLite%20WASM-blueviolet?logo=sqlite" alt="SQLite WASM" /></a>
   <a href="../../SECURITY.md"><img src="https://img.shields.io/badge/privacy-100%25%20Offline-orange" alt="100% Offline" /></a>
   <a href="../../LICENSE"><img src="https://img.shields.io/badge/license-MIT-green.svg" alt="License: MIT" /></a>
@@ -20,7 +20,7 @@
 
 ## ⚡ Executive Summary
 
-**dTyp v3.2** is a zero-cloud, high-performance C/C++ developer companion and **humanized stealth typing assistant** built natively for Visual Studio Code. It packages **500 compilable, bloat-free C components** across 7 primary computer science domains inside an embedded SQLite WebAssembly database, accompanies full support for your **Own Library** of custom components, and features an industry-leading **humanized keystroke simulation engine** featuring **Smart Block Auto-Expansion** and **Universal Non-Sequential Coding**.
+**dTyp v4.0** is a zero-cloud, high-performance C/C++ developer companion and **humanized stealth typing assistant** built natively for Visual Studio Code. It packages **500 compilable, bloat-free C components** across 7 primary computer science domains inside an embedded SQLite WebAssembly database, accompanies full support for your **Own Library** of custom components, and features an industry-leading **humanized keystroke simulation engine** featuring **Smart Block Auto-Expansion** and **Universal Non-Sequential Coding**.
 
 Whether practicing complex algorithms, preparing academic lab assignments, or presenting real-world systems, dTyp types flawless, production-ready code directly into your editor—either continuously with muscle-memory bursts, smart block expansion, and non-sequential skeleton-first authoring, or discreetly keystroke-by-keystroke via **`Ctrl+Shift+D`**.
 
@@ -51,7 +51,7 @@ Whether practicing complex algorithms, preparing academic lab assignments, or pr
 
 ## ⚖️ Why dTyp?
 
-| Capability | Traditional Snippet Packs | Cloud AI Assistants (Copilot, etc.) | **dTyp v3.2** |
+| Capability | Traditional Snippet Packs | Cloud AI Assistants (Copilot, etc.) | **dTyp v4.0** |
 |---|---|---|---|
 | **Insertion Mechanism** | Instant bulk clipboard paste | Multi-token streaming / paste | **Humanized natural cadence, Smart Block Auto-Expansion, non-sequential drafting, or stealth `Ctrl+Shift+D` stepping** |
 | **Typing Realism** | ❌ None (Paste event) | ❌ Machine-like streaming | **Keyword bursts (35-60% faster), cognitive hesitations, delayed-recognition typo bursts & backspaces, operator rhythms** |
@@ -71,7 +71,7 @@ Whether practicing complex algorithms, preparing academic lab assignments, or pr
 ## 🌟 Key Architectural Features
 
 ### 1. Humanized Natural Typing Engine & Smart Block Expansion
-dTyp v3.2 introduces a revolutionary natural typing engine that reproduces the mechanical and cognitive reality of human programming:
+dTyp v4.0 introduces a revolutionary natural typing engine that reproduces the mechanical and cognitive reality of human programming:
 - **Smart Block Auto-Expansion (`enter_block`)**: When typing a block opener such as `int main(void) {`, pressing Enter in VS Code naturally expands into a 3-line indented scaffold with the cursor placed at column 4 on line 2, and the closing brace pushed to line 3. dTyp emulates this exact behavior natively, eliminating clumsy manual indentation typing and sideways brace pushing.
 - **Delayed-Recognition Typo Bursts**: Real programmers overshoot typos by 1–2 characters before realizing their mistake. dTyp models this realistic human reflex: type wrong char &rarr; overshoot next character &rarr; cognitive realization pause &rarr; double backspace &rarr; correct typing.
 - **Intelligent Delimiter Pairing & Overtyping**: Detects editor-inserted closing delimiters (`}`, `)`, `]`, `"`, `'`) and smoothly steps over them (`overtypeCharacter`), completely eliminating syntax errors and duplicate tokens.
@@ -86,7 +86,7 @@ dTyp v3.2 introduces a revolutionary natural typing engine that reproduces the m
   - **Tab-Switch Guard**: Halts typing if you switch editor tabs or files.
 
 ### 2. Universal Non-Sequential Coding
-Real programmers rarely write code purely sequentially from line 1 to line 100. dTyp v3.2 features an intelligent non-sequential authoring planner:
+Real programmers rarely write code purely sequentially from line 1 to line 100. dTyp v4.0 features an intelligent non-sequential authoring planner:
 - **Intra-Function Skeleton-First Drafting**: Writes function signature and block scaffold &rarr; immediately drafts return statement skeleton (`return 0;`) &rarr; jumps back up (`above_return`) to flesh out algorithm logic and variables.
 - **Allocation-Cleanup Pairing**: Allocates heap resources (`malloc`) &rarr; immediately generates cleanup code at function exit (`free`, `fclose`) &rarr; navigates upward (`above_free`) to author processing logic, guaranteeing leak-free code drafting.
 - **Multi-Function Scaffolding**: Automatically scaffolds helper structs and declarations before jumping back to implement consumer functions.
@@ -98,7 +98,7 @@ Manage your private snippets, lab solutions, and custom algorithms with first-cl
 - **Full Production Engine Compatibility**: Insert your custom components with full access to the Humanized Typing Engine, Smart Block Expansion, Non-Sequential Coding, Header Auto-Injection, and Memory Leak Analysis.
 - **Zero-Cloud Persistent Storage**: Saved locally in your VS Code global storage directory (`own-library.json`) with one-click JSON export and import capabilities.
 
-### 4. 500 Compilable C Components (Zero Comments)
+### 4. 665 Compilable C Components (Zero Comments)
 Curated, bloat-free, standards-compliant C99/C11 code organized into 7 primary domains and 361 categories. Every component follows the strict **Zero-Comments Invariant**:
 - **boiler-plates** (64 components): CLI starters, argument parsers, Makefiles, arenas, test harnesses.
 - **data-structures** (126 components): Singly/doubly/circular linked lists, stacks, queues, trees, heaps, hash tables.
@@ -121,18 +121,18 @@ Curated, bloat-free, standards-compliant C99/C11 code organized into 7 primary d
 - 🔄 **UpdateEngine**: Non-intrusive background check against GitHub releases with direct VSIX download.
 
 ### 6. Dedicated Activity Bar & 5 Sidebar TreeViews
-- 🌲 **Offline C Library (500)**: Hierarchical explorer organized by Domain > Category > Component.
+- 🌲 **OFFLINE C LIBRARY (665)**: Hierarchical explorer organized by Domain > Category > Component.
 - 📚 **Own Library**: Your private library of custom components with quick actions to Add, Edit, Delete, Insert, and Export/Import.
 - ⭐ **Favorites & Pinned**: Keep your most frequently used structs and algorithms pinned for instantaneous access.
 - 📜 **Recent Insertions**: Search and re-insert recently used components with one click.
 - 🎛️ **Quick Controls**: Switch typing mode, toggle header injection, view diagnostics, and trigger release notes directly from the sidebar.
 
 ### 7. Interactive Release Notes & Automated Update Engine
-- **"What's New in v3.2" Webview Panel**: Dark-mode dashboard highlighting Smart Block Expansion, Non-Sequential Coding, and Own Library.
+- **"What's New in v4.0" Webview Panel**: Dark-mode dashboard highlighting Smart Block Expansion, Non-Sequential Coding, and Own Library.
 - **Background Release Check**: Non-intrusive update notification with one-click direct update.
 
 ### 8. 100% Offline & Zero-Cloud Privacy Guarantee
-All 500 components reside in `dtyp.db` (WebAssembly `sql.js`), and your custom library resides in local JSON. No external network requests, zero telemetry, zero analytics.
+All 665 components reside in `dtyp.db` (WebAssembly `sql.js`), and your custom library resides in local JSON. No external network requests, zero telemetry, zero analytics.
 
 ---
 
@@ -144,12 +144,12 @@ Click the **dTyp** icon in the VS Code Activity Bar (or open the Explorer) to vi
 ┌──────────────────────────────────────────────┐
 │ dTyp: Activity Bar Explorer                  │
 ├──────────────────────────────────────────────┤
-│ ▼ OFFLINE C LIBRARY (500)                    │
-│   ▶ 📁 Boiler Plates (64)                    │
-│   ▶ 📁 Data Structures (126)                 │
-│   ▶ 📁 Algorithms (120)                      │
-│   ▶ 📁 Competitive Programming (50)          │
-│   ▶ 📁 Academics Programming (46)            │
+│ ▼ OFFLINE C LIBRARY (665)                    │
+│   ▶ 📁 Boiler Plates (103)                    │
+│   ▶ 📁 Data Structures (178)                 │
+│   ▶ 📁 Algorithms (164)                      │
+│   ▶ 📁 Competitive Programming (70)          │
+│   ▶ 📁 Academics Programming (56)            │
 │   ▶ 📁 Projects (30)                         │
 │   ▼ 📁 Detection (64)                        │
 │       📄 detect_linked_list_cycle_floyd      │
@@ -185,13 +185,16 @@ Click the **dTyp** icon in the VS Code Activity Bar (or open the Explorer) to vi
 | Shortcut | Command ID | Action / Description |
 |---|---|---|
 | **`Ctrl+Shift+D`** | `dtyp.typeNextCharacter` | Types the next character (or batch) from the manual stepping queue |
+| **`Alt+P`** | `dtyp.togglePauseTyping` | Instantly pauses or resumes ongoing automated or manual typing |
+| **`Ctrl+Shift+R`** | `dtyp.renewQueue` | Restarts the current or most recent typing queue from character 0 |
+| **`Ctrl+Shift+U`** | `dtyp.rewindStep` | Rewinds one manual character step (backspaces and decrements queue) |
 | **`Ctrl+Alt+D`** | `dtyp.browseLibrary` | Opens the themed category and component browser |
 | **`Escape`** | `dtyp.cancelTyping` | Instantly halts automatic typing or flushes the manual queue |
 | `Ctrl+Shift+P` | `dtyp.createOwnComponent` | Opens the native form to create a new Custom Component |
 | `Ctrl+Shift+P` | `dtyp.quickInsert` | Opens ranked fuzzy search QuickPick with item action buttons |
 | `Ctrl+Shift+P` | `dtyp.insertSnippet` | Interactively selects and inserts standard C snippets |
 | `Ctrl+Shift+P` | `dtyp.showHistory` | Opens history QuickPick to re-insert recently used items |
-| `Ctrl+Shift+P` | `dtyp.showReleaseNotes` | Launches the interactive "What's New in v3.2" Webview panel |
+| `Ctrl+Shift+P` | `dtyp.showReleaseNotes` | Launches the interactive "What's New in v4.0" Webview panel |
 | `Ctrl+Shift+P` | `dtyp.exportOwnLibrary` | Exports your Own Library components to a portable JSON file |
 | `Ctrl+Shift+P` | `dtyp.importOwnLibrary` | Imports components into your Own Library from a JSON file |
 | `Ctrl+Shift+P` | `dtyp.checkForUpdates` | Checks GitHub releases for new dTyp versions |
@@ -257,13 +260,13 @@ Configure dTyp via your VS Code Settings UI (`Ctrl+,`) or `settings.json`:
 
 ## 📚 Component Taxonomy
 
-The offline database (`dtyp.db`) houses **500 components** across 7 primary domains, plus user-defined components in the **Own Library**:
+The offline database (`dtyp.db`) houses **665 components** across 7 primary domains, plus user-defined components in the **Own Library**:
 
 | Domain | Count | Key Categories & Scope |
 |---|---|---|
 | **Boiler Plates** | 103 | CLI starters, entry points, argument parsing (`getopt`), REPLs, benchmarks, arena allocators, assertion test runners |
-| **Data Structures** | 113 | Singly/doubly/circular linked lists, stacks, queues, deques, BST, AVL, red-black trees, binary heaps, tries, segment trees, Fenwick trees, DSU, hash tables |
-| **Algorithms** | 64 | 10 sorting algorithms (3-way QuickSort, Merge, Heap, TimSort), binary search, graph traversals (BFS, DFS), shortest paths (Dijkstra, Bellman-Ford, Floyd-Warshall), MST (Kruskal, Prim), DP (Knapsack, LCS, LIS, Matrix Chain, Coin Change) |
+| **Data Structures** | 178 | Singly/doubly/circular linked lists, stacks, queues, deques, BST, AVL, red-black trees, binary heaps, tries, segment trees, Fenwick trees, DSU, hash tables |
+| **Algorithms** | 164 | 10 sorting algorithms (3-way QuickSort, Merge, Heap, TimSort), binary search, graph traversals (BFS, DFS), shortest paths (Dijkstra, Bellman-Ford, Floyd-Warshall), MST (Kruskal, Prim), DP (Knapsack, LCS, LIS, Matrix Chain, Coin Change) |
 | **Competitive Programming** | 70 | Fast I/O buffers (`getchar_unlocked`), modular arithmetic, prime sieves, LCA binary lifting, string algorithms (KMP, Z-algorithm) |
 | **Academics Programming** | 56 | Numerical methods (Gauss-Jordan, LU, Newton-Raphson, Runge-Kutta RK4/RK45), discrete math truth tables, physics simulations |
 | **Projects** | 30 | Standalone systems (micro UNIX shell, HTTP parser, event loop, JSON parser, custom allocator, key-value store, chess, snake) |
@@ -288,7 +291,7 @@ In addition to the component database, dTyp provides 1,492 structured snippets w
 1. **Via VS Code Marketplace**: Search for `dTyp` in the Extensions view (`Ctrl+Shift+X`) and click **Install**.
 2. **Via Pre-built VSIX**: Download the latest `.vsix` package from [Releases](https://github.com/mujahidalmahi/dTyp/releases) and run:
    ```bash
-   code --install-extension dtyp-vscode-3.2.0.vsix
+   code --install-extension dtyp-vscode-4.0.0.vsix
    ```
 
 ### First Run Walkthrough
@@ -313,7 +316,7 @@ In addition to the component database, dTyp provides 1,492 structured snippets w
 2. Run **`dTyp: Diagnostics & System Health Check`**.
 3. dTyp executes a live self-test verifying:
    - WebAssembly SQLite initialization.
-   - Database integrity and component count (`500` components verified).
+   - Database integrity and component count (`665` components verified).
    - Core engine responsiveness (AutoType, Header, Memory, Cursor, Snippet, Session, Search).
    - Active typing mode, natural model, and keybinding registrations.
 
@@ -341,10 +344,10 @@ dTyp/
 │   └── library-engine/           # SQLite abstraction layer
 ├── docs/
 │   ├── architecture.md           # End-to-end technical architecture guide
-│   ├── LIBRARY_CATALOG.md        # Complete 500 component domain catalog
+│   ├── LIBRARY_CATALOG.md        # Complete 665 component domain catalog
 │   ├── typing-engine.md          # Humanized typing simulation & stealth spec
 │   ├── faq.md                    # Frequently Asked Questions
-│   └── components/               # 500 Standalone Markdown documentation pages
+│   └── components/               # 665 Standalone Markdown documentation pages
 ├── scripts/                      # Database build, generator & bump tools
 ├── CONTRIBUTING.md               # Contributor guidelines
 ├── ROADMAP.md                    # Project roadmap & milestones
@@ -357,7 +360,7 @@ dTyp/
 ## 🤝 Open Source Community & Governance
 
 - 📖 **[Contributing Guide](../../CONTRIBUTING.md)**: Setup instructions, coding standards, and C component conventions.
-- 🗺️ **[Project Roadmap](../../ROADMAP.md)**: Current v3.0 status and future milestones.
+- 🗺️ **[Project Roadmap](../../ROADMAP.md)**: Current v4.0 status and future milestones.
 - 🛡️ **[Security & Privacy Policy](../../SECURITY.md)**: Our commitment to zero telemetry and local-first computing.
 - 📜 **[Code of Conduct](../../CODE_OF_CONDUCT.md)**: Contributor Covenant v2.1 standards.
 - ❓ **[FAQ](../../docs/faq.md)**: Frequently asked questions about offline mechanics and exam stealth.
@@ -368,3 +371,4 @@ dTyp/
 
 - **Author**: [Mujahid Al Mahi](https://github.com/mujahidalmahi)
 - **License**: Released under the open-source [MIT License](../../LICENSE).
+

@@ -4,7 +4,36 @@ This document outlines the strategic roadmap for the **dTyp** developer ecosyste
 
 ---
 
-## 🚀 Released: Version 3.2.0 (Current Production Release)
+## 🚀 Released: Version 4.0.0 (Current Production Release)
+
+- [x] **Control Center Flight Deck (`dtyp.openControlCenter`, `Ctrl+Alt+C`)**:
+  - Fullscreen dark-mode flight deck with bento grid layout, live telemetry, and instant mode switching.
+  - Searchable interactive shortcuts cheatsheet with one-click command execution.
+- [x] **Academic Code Doctor & Auto-Fixer (`dtyp.diagnoseCode`, `Ctrl+Shift+L`)**:
+  - Offline AST linter identifying 7 classic C bugs (uninitialized pointers, buffer overflows, format mismatches, memory leaks, missing returns).
+  - 1-click QuickFix actions directly in the editor.
+- [x] **CP Contest Arena & Scaffolder (`dtyp.scaffoldContest`)**:
+  - Automated scaffolding for Fast I/O (`getchar_unlocked`), 64MB Static Bump Arena, and randomized differential stress testing.
+- [x] **Interactive Recursion Tree Visualizer (`dtyp.visualizeRecursion`, `Ctrl+Shift+K`)**:
+  - Interactive SVG call stack visualizer with step scrubber, call depth tracking, and duplicate subproblem detection.
+- [x] **Valgrind & AddressSanitizer Memory Profiler (`dtyp.runValgrind`, `Ctrl+Shift+V`)**:
+  - Automated Valgrind leak detection with stack trace parser and AddressSanitizer runtime UB guards.
+- [x] **Interactive C Typing Drill Arena (`dtyp.startTypingDrill`, `Ctrl+Shift+T`)**:
+  - Gamified touch-typing practice arena with real-time WPM, accuracy %, and C syntax drills.
+- [x] **Chameleon Ghost-Typing Mode (`dtyp.enableChameleonMode`, `Alt+C`)**:
+  - Type ANY key on physical keyboard to emit the exact next character from the queued algorithm.
+- [x] **Biomechanical Cadence & False Starts Engine (`dtyp.enableFalseStarts`)**:
+  - Hand alternation, finger reach dynamics, QWERTY physical key distance modeling, and realistic rethink/false start pauses.
+- [x] **Interactive Status Bar Quick Menu (`dtyp.openStatusBarMenu`, `Ctrl+Shift+M`)**:
+  - Comprehensive launcher providing 1-click access to all 20+ commands, visualizers, and tools.
+- [x] **665 Compilable C Components (Zero Comments)**:
+  - Library expanded to 665 components across 7 canonical domains with 1,492 snippets.
+- [x] **Settings Overhaul & Zero-Conflict Configuration**:
+  - 22 cleanly mapped settings covering cadence, formatting, sounds, and UI options.
+
+---
+
+## 🚀 Released: Version 3.2.0
 
 - [x] **Smart Block Auto-Expansion (`enter_block`)**:
   - Emulates VS Code native `onEnterRules` block indentation.
@@ -70,8 +99,8 @@ This document outlines the strategic roadmap for the **dTyp** developer ecosyste
 
 ---
 
-## 🎯 Upcoming: Version 3.3.0
+## 🎯 Upcoming: Version 4.1.0 & Beyond
 
-- [ ] **Typing Profiles & Custom Presets**: User-selectable typing cadence profiles (Casual, Hacker, Coder Exam, Speed Demon).
-- [ ] **Multi-File Project Scaffolding**: One-click generation of complete multi-file academic C projects with Makefiles, headers, and test harnesses.
+- [ ] **Multi-File Academic Project Scaffolding**: One-click generation of complete multi-file academic C projects with Makefiles, headers, and test harnesses.
 - [ ] **Interactive Visual Debugger Stepping**: Stepping through component execution with visual pointers in an interactive webview.
+- [ ] **Custom Cadence Profiler**: Fine-grained biomechanical profile tuning with live recording of user typing speeds.

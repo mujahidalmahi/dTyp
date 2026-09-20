@@ -68,7 +68,7 @@ describe("Enhanced Humanized & Non-Sequential Typing Engine", () => {
       const enterBlockAction = actions.find((a) => a.type === "enter_block");
       expect(enterBlockAction).toBeDefined();
       expect(enterBlockAction?.baseIndent).toBe("");
-      expect(enterBlockAction?.blockIndent).toBe("    ");
+      expect(enterBlockAction?.blockIndent).toBe("\t");
 
       // Closing brace should be an overtype
       const overtypeBrace = actions.find((a) => a.type === "overtype" && a.char === "}");
@@ -93,7 +93,7 @@ describe("Enhanced Humanized & Non-Sequential Typing Engine", () => {
       expect(braceAction?.autoClose).toBe("}");
     });
 
-    it("executes enterBlock in VSCodeTypingTarget to produce 3-line scaffold with cursor at column 4", async () => {
+    it("executes enterBlock in VSCodeTypingTarget to produce 3-line scaffold with tab indentation", async () => {
       let lines = ["int main(void) {}"];
       let activePos = new (vscode.Position as any)(0, 16); // between { and }
 
@@ -129,20 +129,20 @@ describe("Enhanced Humanized & Non-Sequential Typing Engine", () => {
       const target = new VSCodeTypingTarget(mockEditor);
       target.resetHead(activePos);
 
-      await target.enterBlock("", "    ");
+      await target.enterBlock("", "\t");
 
       // Verify that 3 lines are created:
       // Line 0: int main(void) {
-      // Line 1:     
+      // Line 1: \t
       // Line 2: }
       expect(lines.length).toBe(3);
       expect(lines[0]).toBe("int main(void) {");
-      expect(lines[1]).toBe("    ");
+      expect(lines[1]).toBe("\t");
       expect(lines[2]).toBe("}");
 
-      // Cursor placed on line 1, column 4 (ready to type directly into indented body)
+      // Cursor placed on line 1, column 1 (after 1 tab)
       expect(activePos.line).toBe(1);
-      expect(activePos.character).toBe(4);
+      expect(activePos.character).toBe(1);
     });
   });
 
@@ -335,7 +335,7 @@ int lcm(int a, int b) {
         await engine.stepNextCharacter(mockEditor);
       }
 
-      expect(mockTarget.enterBlock).toHaveBeenCalledWith("", "    ");
+      expect(mockTarget.enterBlock).toHaveBeenCalledWith("", "\t");
       expect(mockTarget.overtypeCharacter).toHaveBeenCalledWith("}");
     });
   });

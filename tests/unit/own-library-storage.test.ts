@@ -40,6 +40,7 @@ describe("OwnLibraryStorage Engine", () => {
     expect(comp.id).toBeDefined();
     expect(comp.category).toBe("Own Library");
     expect(comp.subDomain).toBe("General");
+    expect(comp.topic).toBe("Algorithms");
     expect(comp.subTopic).toBe("Custom");
     expect(comp.name).toBe("add"); // inferred from function definition
     expect(comp.type).toBe("snippet");
@@ -51,7 +52,8 @@ describe("OwnLibraryStorage Engine", () => {
   it("creates a component with all optional fields provided", async () => {
     const comp = await storage.create({
       subDomain: "Networking",
-      subTopic: "TCP Sockets",
+      topic: "TCP",
+      subTopic: "Sockets",
       name: "tcp_connect",
       type: "function",
       signature: "int tcp_connect(const char *ip, int port);",
@@ -62,7 +64,8 @@ describe("OwnLibraryStorage Engine", () => {
     });
 
     expect(comp.subDomain).toBe("Networking");
-    expect(comp.subTopic).toBe("TCP Sockets");
+    expect(comp.topic).toBe("TCP");
+    expect(comp.subTopic).toBe("Sockets");
     expect(comp.name).toBe("tcp_connect");
     expect(comp.type).toBe("function");
     expect(comp.signature).toBe("int tcp_connect(const char *ip, int port);");
@@ -103,19 +106,22 @@ describe("OwnLibraryStorage Engine", () => {
     expect(storage.getById(comp.id)).toBeUndefined();
   });
 
-  it("queries subdomains and subtopics correctly", async () => {
-    await storage.create({ subDomain: "Math", subTopic: "Matrix", code: "void mat(void) {}" });
-    await storage.create({ subDomain: "Math", subTopic: "Primes", code: "void prime(void) {}" });
-    await storage.create({ subDomain: "Trees", subTopic: "Binary", code: "void tree(void) {}" });
+  it("queries subdomains, topics, and subtopics correctly", async () => {
+    await storage.create({ subDomain: "Math", topic: "Linear Algebra", subTopic: "Matrix", code: "void mat(void) {}" });
+    await storage.create({ subDomain: "Math", topic: "Number Theory", subTopic: "Primes", code: "void prime(void) {}" });
+    await storage.create({ subDomain: "Trees", topic: "Binary Trees", subTopic: "BST", code: "void tree(void) {}" });
 
     const subDomains = storage.getSubDomains();
     expect(subDomains).toEqual(["Math", "Trees"]);
 
-    const mathTopics = storage.getSubTopics("Math");
-    expect(mathTopics).toEqual(["Matrix", "Primes"]);
+    const mathTopics = storage.getTopics("Math");
+    expect(mathTopics).toEqual(["Linear Algebra", "Number Theory"]);
 
-    const treesTopics = storage.getSubTopics("Trees");
-    expect(treesTopics).toEqual(["Binary"]);
+    const mathSubTopics = storage.getSubTopics("Math", "Linear Algebra");
+    expect(mathSubTopics).toEqual(["Matrix"]);
+
+    const treesSubTopics = storage.getSubTopics("Trees", "Binary Trees");
+    expect(treesSubTopics).toEqual(["BST"]);
   });
 
   it("exports to JSON and imports back correctly", async () => {
@@ -139,6 +145,7 @@ describe("OwnLibraryStorage Engine", () => {
   it("converts to standard dTyp Component interface", async () => {
     const comp = await storage.create({
       subDomain: "Algorithms",
+      topic: "Searching",
       subTopic: "Sorting",
       name: "bubble_sort",
       code: "void bubble_sort(int *a, int n) {}",
@@ -149,7 +156,7 @@ describe("OwnLibraryStorage Engine", () => {
     expect(dtypComp.name).toBe("bubble_sort");
     expect(dtypComp.category).toBe("Own Library");
     expect(dtypComp.subcategory).toBe("Algorithms");
-    expect(dtypComp.path).toBe("Own Library / Algorithms / Sorting / bubble_sort");
+    expect(dtypComp.path).toBe("Own Library / Algorithms / Searching / Sorting / bubble_sort");
     expect(dtypComp.isCustom).toBe(true);
     expect(dtypComp.language).toBe("c");
   });

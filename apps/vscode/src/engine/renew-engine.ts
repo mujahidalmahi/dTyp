@@ -20,29 +20,110 @@ export class RenewEngine {
   ) {}
 
   /**
-   * Resets the manual typing queue back to character 0 so the user can re-type the component.
+   * Resets the typing queue back to character 0 or re-triggers typing of the last component.
    */
-  public async renewQueue(): Promise<boolean> {
+  public async renewQueue(onReInsert?: (componentId: string, mode?: "automatic" | "manual", options?: { force?: boolean }) => Promise<void>): Promise<boolean> {
     const queue = this.autoTypeEngine.getActiveQueue();
-    if (!queue) {
-      vscode.window.showInformationMessage("dTyp: No active typing queue to renew.");
-      return false;
+    if (queue) {
+      queue.currentIndex = 0;
+      queue.startedAt = Date.now();
+
+      let editor = vscode.window.activeTextEditor;
+      if (!editor && this.autoTypeEngine.getLastInsertion()?.editorUri) {
+        try {
+          const uri = vscode.Uri.parse(this.autoTypeEngine.getLastInsertion()!.editorUri);
+          const doc = await vscode.workspace.openTextDocument(uri);
+          editor = await vscode.window.showTextDocument(doc);
+        } catch {
+          // ignore
+        }
+      }
+
+      if (editor) {
+        this.typingTarget.setEditor(editor);
+        this.typingTarget.resetHead(editor.selection.active);
+      }
+
+      await this.autoTypeEngine.stepNextCharacter(editor);
+      this.logger.info(`Renewed typing queue for "${queue.componentName}" back to character 0`);
+      vscode.window.showInformationMessage(
+        `dTyp: Renewed typing queue for "${queue.componentName}"! Press Ctrl+Shift+D to step.`
+      );
+      return true;
     }
 
-    queue.currentIndex = 0;
-    queue.startedAt = Date.now();
-
-    const editor = vscode.window.activeTextEditor;
-    if (editor) {
-      this.typingTarget.resetHead(editor.selection.active);
+    // If currently typing in automated mode, cancel and re-trigger from character 0
+    if (this.autoTypeEngine.isTyping()) {
+      const activeInsertion = this.autoTypeEngine.getLastInsertion();
+      this.autoTypeEngine.cancel();
+      if (activeInsertion && onReInsert) {
+        let editor = vscode.window.activeTextEditor;
+        if (!editor && activeInsertion.editorUri) {
+          try {
+            const uri = vscode.Uri.parse(activeInsertion.editorUri);
+            const doc = await vscode.workspace.openTextDocument(uri);
+            editor = await vscode.window.showTextDocument(doc);
+          } catch {
+            // ignore
+          }
+        }
+        if (editor) {
+          this.typingTarget.setEditor(editor);
+          this.typingTarget.resetHead(editor.selection.active);
+        }
+        this.logger.info(`Renewing active automated component "${activeInsertion.componentName}"`);
+        vscode.window.showInformationMessage(`dTyp: Renewing "${activeInsertion.componentName}" from start!`);
+        await onReInsert(activeInsertion.componentId, activeInsertion.mode, { force: true });
+        return true;
+      }
     }
 
-    this.autoTypeEngine.stepNextCharacter(editor);
-    this.logger.info(`Renewed typing queue for "${queue.componentName}" back to character 0`);
-    vscode.window.showInformationMessage(
-      `dTyp: Renewed typing queue for "${queue.componentName}"! Press Ctrl+Shift+D to step.`
-    );
-    return true;
+    // Fallback: Check if there was an automatic or previous insertion
+    const lastInsertion = this.autoTypeEngine.getLastInsertion();
+    if (lastInsertion && onReInsert) {
+      this.autoTypeEngine.cancel();
+      let editor = vscode.window.activeTextEditor;
+      if (!editor && lastInsertion.editorUri) {
+        try {
+          const uri = vscode.Uri.parse(lastInsertion.editorUri);
+          const doc = await vscode.workspace.openTextDocument(uri);
+          editor = await vscode.window.showTextDocument(doc);
+        } catch {
+          // ignore
+        }
+      }
+      if (editor) {
+        this.typingTarget.setEditor(editor);
+        this.typingTarget.resetHead(editor.selection.active);
+      }
+      this.logger.info(`Renewing last inserted component "${lastInsertion.componentName}" in ${lastInsertion.mode} mode`);
+      vscode.window.showInformationMessage(`dTyp: Renewing "${lastInsertion.componentName}" from start!`);
+      await onReInsert(lastInsertion.componentId, lastInsertion.mode, { force: true });
+      return true;
+    }
+
+    // Complete fallback: Prompt to select a component to start typing
+    if (onReInsert) {
+      const allComponents = await this.libraryEngine.getAllComponents(50);
+      if (allComponents.length > 0) {
+        const picked = await vscode.window.showQuickPick(
+          allComponents.map((c) => ({
+            label: `${c.name}()`,
+            description: `[${c.category}]`,
+            detail: c.description,
+            componentId: c.id,
+          })),
+          { placeHolder: "No recent session to renew. Select a component to start typing:" }
+        );
+        if (picked) {
+          await onReInsert(picked.componentId, undefined, { force: true });
+          return true;
+        }
+      }
+    }
+
+    vscode.window.showInformationMessage("dTyp: No active or recent typing session to renew.");
+    return false;
   }
 
   /**
@@ -83,7 +164,7 @@ export class RenewEngine {
   /**
    * Renews / updates a previously inserted library component in the active document.
    */
-  public async renewComponentInFile(onReInsert: (componentId: string) => Promise<void>): Promise<void> {
+  public async renewComponentInFile(onReInsert: (componentId: string, mode?: "automatic" | "manual", options?: { force?: boolean }) => Promise<void>): Promise<void> {
     const editor = vscode.window.activeTextEditor;
     if (!editor) {
       vscode.window.showWarningMessage("Open a C/C++ file to renew components.");
@@ -135,9 +216,16 @@ export class RenewEngine {
     if (!action) return;
 
     if (action.mode === "replace") {
-      // Find where function or struct starts
-      const fnRegex = new RegExp(`\\b${comp.name}\\s*\\([^)]*\\)\\s*\\{[\\s\\S]*?\\n\\}`, "m");
-      const match = docText.match(fnRegex);
+      // Robust regex matching functions, structs, typedefs, or macros
+      let pattern: RegExp;
+      if (comp.type === "struct" || comp.name.startsWith("struct ")) {
+        const rawName = comp.name.replace(/^struct\s+/, "");
+        pattern = new RegExp(`(?:typedef\\s+)?struct\\s+${rawName}\\s*\\{[\\s\\S]*?\\}(?:\\s*${rawName})?\\s*;?`, "m");
+      } else {
+        pattern = new RegExp(`\\b${comp.name}\\s*\\([^)]*\\)\\s*\\{[\\s\\S]*?\\n\\}`, "m");
+      }
+
+      const match = docText.match(pattern);
       if (match && match.index !== undefined) {
         const startPos = editor.document.positionAt(match.index);
         const endPos = editor.document.positionAt(match.index + match[0].length);
@@ -146,7 +234,7 @@ export class RenewEngine {
       }
     }
 
-    await onReInsert(comp.id);
+    await onReInsert(comp.id, undefined, { force: true });
   }
 
   /**

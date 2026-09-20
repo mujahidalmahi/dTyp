@@ -5,6 +5,7 @@ import { Component, ComponentType } from "@dtyp/types";
 
 export interface OwnComponentInput {
   subDomain?: string;
+  topic?: string;
   subTopic?: string;
   name?: string;
   type?: ComponentType;
@@ -19,6 +20,7 @@ export interface OwnComponent {
   id: string;
   category: "Own Library";
   subDomain: string;
+  topic: string;
   subTopic: string;
   name: string;
   type: ComponentType;
@@ -71,6 +73,7 @@ export class OwnLibraryStorage {
         if (Array.isArray(list)) {
           for (const item of list) {
             if (item && item.id && item.code) {
+              if (!item.topic) item.topic = "General";
               this.items.set(item.id, item);
             }
           }
@@ -90,6 +93,7 @@ export class OwnLibraryStorage {
       if (Array.isArray(backup)) {
         for (const item of backup) {
           if (item && item.id && item.code) {
+            if (!item.topic) item.topic = "General";
             this.items.set(item.id, item);
           }
         }
@@ -158,6 +162,7 @@ export class OwnLibraryStorage {
     const now = Date.now();
     const id = `own_${now}_${Math.random().toString(36).substring(2, 7)}`;
     const subDomain = (input.subDomain && input.subDomain.trim()) ? input.subDomain.trim() : "General";
+    const topic = (input.topic && input.topic.trim()) ? input.topic.trim() : "Algorithms";
     const subTopic = (input.subTopic && input.subTopic.trim()) ? input.subTopic.trim() : "Custom";
     const name = (input.name && input.name.trim()) ? input.name.trim() : this.inferNameFromCode(input.code);
     const type: ComponentType = input.type || "snippet";
@@ -168,6 +173,7 @@ export class OwnLibraryStorage {
       id,
       category: "Own Library",
       subDomain,
+      topic,
       subTopic,
       name,
       type,
@@ -197,6 +203,7 @@ export class OwnLibraryStorage {
     const updated: OwnComponent = {
       ...existing,
       subDomain: input.subDomain !== undefined && input.subDomain.trim() ? input.subDomain.trim() : existing.subDomain,
+      topic: input.topic !== undefined && input.topic.trim() ? input.topic.trim() : existing.topic,
       subTopic: input.subTopic !== undefined && input.subTopic.trim() ? input.subTopic.trim() : existing.subTopic,
       name: input.name !== undefined && input.name.trim() ? input.name.trim() : existing.name,
       type: input.type !== undefined ? input.type : existing.type,
@@ -242,21 +249,42 @@ export class OwnLibraryStorage {
     return Array.from(set).sort();
   }
 
-  public getSubTopics(subDomain?: string): string[] {
+  public getTopics(subDomain?: string): string[] {
     const set = new Set<string>();
     for (const item of this.items.values()) {
       if (!subDomain || item.subDomain.toLowerCase() === subDomain.toLowerCase()) {
+        set.add(item.topic || "General");
+      }
+    }
+    return Array.from(set).sort();
+  }
+
+  public getSubTopics(subDomain?: string, topic?: string): string[] {
+    const set = new Set<string>();
+    for (const item of this.items.values()) {
+      const matchDomain = !subDomain || item.subDomain.toLowerCase() === subDomain.toLowerCase();
+      const matchTopic = !topic || (item.topic || "General").toLowerCase() === topic.toLowerCase();
+      if (matchDomain && matchTopic) {
         set.add(item.subTopic);
       }
     }
     return Array.from(set).sort();
   }
 
+  public getByHierarchy(subDomain: string, topic: string, subTopic: string): OwnComponent[] {
+    return this.getAll().filter(
+      (c) =>
+        c.subDomain.toLowerCase() === subDomain.toLowerCase() &&
+        (c.topic || "General").toLowerCase() === topic.toLowerCase() &&
+        c.subTopic.toLowerCase() === subTopic.toLowerCase()
+    );
+  }
+
   public getBySubDomainAndTopic(subDomain: string, subTopic: string): OwnComponent[] {
     return this.getAll().filter(
       (c) =>
         c.subDomain.toLowerCase() === subDomain.toLowerCase() &&
-        c.subTopic.toLowerCase() === subTopic.toLowerCase()
+        (c.subTopic.toLowerCase() === subTopic.toLowerCase() || (c.topic || "").toLowerCase() === subTopic.toLowerCase())
     );
   }
 
@@ -287,6 +315,7 @@ export class OwnLibraryStorage {
 
       const id = typeof raw.id === "string" && raw.id.trim() ? raw.id.trim() : `own_${Date.now()}_${Math.random().toString(36).substring(2, 7)}`;
       const subDomain = typeof raw.subDomain === "string" && raw.subDomain.trim() ? raw.subDomain.trim() : "General";
+      const topic = typeof raw.topic === "string" && raw.topic.trim() ? raw.topic.trim() : "Algorithms";
       const subTopic = typeof raw.subTopic === "string" && raw.subTopic.trim() ? raw.subTopic.trim() : "Custom";
       const name = typeof raw.name === "string" && raw.name.trim() ? raw.name.trim() : this.inferNameFromCode(raw.code);
       const type: ComponentType = raw.type || "snippet";
@@ -297,6 +326,7 @@ export class OwnLibraryStorage {
         id,
         category: "Own Library",
         subDomain,
+        topic,
         subTopic,
         name,
         type,
@@ -334,7 +364,7 @@ export class OwnLibraryStorage {
       categoryId: `own-${own.subDomain.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`,
       category: "Own Library",
       subcategory: own.subDomain,
-      path: `Own Library / ${own.subDomain} / ${own.subTopic} / ${own.name}`,
+      path: `Own Library / ${own.subDomain} / ${own.topic || "General"} / ${own.subTopic} / ${own.name}`,
       description: own.description,
       signature: own.signature,
       code: own.code,

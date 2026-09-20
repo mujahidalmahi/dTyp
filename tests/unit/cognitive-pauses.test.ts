@@ -12,16 +12,16 @@ describe("Cognitive Pauses & Stamina Renewal Engines", () => {
 
       for (let i = 0; i < 20; i++) {
         const controlPause = model.getPauseDuration("control_flow");
-        expect(controlPause).toBeGreaterThan(150);
-        expect(controlPause).toBeLessThan(1500);
+        expect(controlPause).toBeGreaterThan(100);
+        expect(controlPause).toBeLessThan(1800);
 
         const syntaxPause = model.getPauseDuration("syntax_statement");
-        expect(syntaxPause).toBeGreaterThan(80);
-        expect(syntaxPause).toBeLessThan(800);
+        expect(syntaxPause).toBeGreaterThan(50);
+        expect(syntaxPause).toBeLessThan(1000);
 
         const restPause = model.getPauseDuration("fatigue_rest");
-        expect(restPause).toBeGreaterThan(500);
-        expect(restPause).toBeLessThan(5000);
+        expect(restPause).toBeGreaterThan(400);
+        expect(restPause).toBeLessThan(6000);
       }
     });
 

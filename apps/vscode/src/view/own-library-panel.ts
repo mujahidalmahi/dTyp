@@ -6,6 +6,8 @@ export class OwnLibraryPanel {
   private readonly _panel: vscode.WebviewPanel;
   private _disposables: vscode.Disposable[] = [];
   private editComponentId: string | undefined;
+  private targetDocUri?: vscode.Uri;
+  private targetViewColumn?: vscode.ViewColumn;
 
   public static show(
     context: vscode.ExtensionContext,
@@ -13,12 +15,16 @@ export class OwnLibraryPanel {
     editComponentId?: string,
     onSaved?: (comp: OwnComponent, autoInsert: boolean) => void
   ): void {
-    const column = vscode.window.activeTextEditor
-      ? vscode.window.activeTextEditor.viewColumn
-      : undefined;
+    const activeEditor = vscode.window.activeTextEditor;
+    const column = activeEditor ? activeEditor.viewColumn : undefined;
+    const targetDocUri = activeEditor ? activeEditor.document.uri : undefined;
 
     if (OwnLibraryPanel.currentPanel) {
       OwnLibraryPanel.currentPanel.editComponentId = editComponentId;
+      if (targetDocUri) {
+        OwnLibraryPanel.currentPanel.targetDocUri = targetDocUri;
+        OwnLibraryPanel.currentPanel.targetViewColumn = column;
+      }
       OwnLibraryPanel.currentPanel._panel.reveal(column);
       OwnLibraryPanel.currentPanel.updateHtml();
       return;
@@ -34,7 +40,15 @@ export class OwnLibraryPanel {
       }
     );
 
-    OwnLibraryPanel.currentPanel = new OwnLibraryPanel(panel, context, storage, editComponentId, onSaved);
+    OwnLibraryPanel.currentPanel = new OwnLibraryPanel(
+      panel,
+      context,
+      storage,
+      editComponentId,
+      onSaved,
+      targetDocUri,
+      column
+    );
   }
 
   private constructor(
@@ -42,10 +56,14 @@ export class OwnLibraryPanel {
     private readonly context: vscode.ExtensionContext,
     private readonly storage: OwnLibraryStorage,
     editComponentId?: string,
-    private readonly onSaved?: (comp: OwnComponent, autoInsert: boolean) => void
+    private readonly onSaved?: (comp: OwnComponent, autoInsert: boolean) => void,
+    targetDocUri?: vscode.Uri,
+    targetViewColumn?: vscode.ViewColumn
   ) {
     this._panel = panel;
     this.editComponentId = editComponentId;
+    this.targetDocUri = targetDocUri;
+    this.targetViewColumn = targetViewColumn;
     this._panel.iconPath = vscode.Uri.joinPath(this.context.extensionUri, "images", "icon.png");
     this.updateHtml();
 
@@ -93,11 +111,20 @@ export class OwnLibraryPanel {
 
       this._panel.webview.postMessage({ command: "saved", component: savedComp });
 
-      if (this.onSaved) {
-        this.onSaved(savedComp, autoInsert);
+      if (autoInsert && this.targetDocUri) {
+        try {
+          const doc = await vscode.workspace.openTextDocument(this.targetDocUri);
+          await vscode.window.showTextDocument(doc, this.targetViewColumn || vscode.ViewColumn.One);
+        } catch {
+          // ignore
+        }
       }
 
       this.dispose();
+
+      if (this.onSaved) {
+        this.onSaved(savedComp, autoInsert);
+      }
     } catch (err: any) {
       vscode.window.showErrorMessage(`dTyp Save Error: ${err.message}`);
       this._panel.webview.postMessage({ command: "error", message: err.message });
@@ -107,9 +134,10 @@ export class OwnLibraryPanel {
   private updateHtml(): void {
     const existing = this.editComponentId ? this.storage.getById(this.editComponentId) : undefined;
     const subDomains = this.storage.getSubDomains();
+    const topics = this.storage.getTopics();
     const subTopics = this.storage.getSubTopics();
     this._panel.title = existing ? `dTyp: Edit "${existing.name}"` : "dTyp: Create Custom Component";
-    this._panel.webview.html = this.getHtmlContent(existing, subDomains, subTopics);
+    this._panel.webview.html = this.getHtmlContent(existing, subDomains, topics, subTopics);
   }
 
   public dispose(): void {
@@ -124,13 +152,16 @@ export class OwnLibraryPanel {
   private getHtmlContent(
     existing?: OwnComponent,
     subDomains: string[] = [],
+    topics: string[] = [],
     subTopics: string[] = []
   ): string {
     const subDomainOptions = subDomains.map((d) => `<option value="${this.escapeAttr(d)}">`).join("");
+    const topicOptions = topics.map((t) => `<option value="${this.escapeAttr(t)}">`).join("");
     const subTopicOptions = subTopics.map((t) => `<option value="${this.escapeAttr(t)}">`).join("");
 
     const isEdit = !!existing;
     const initialSubDomain = existing ? existing.subDomain : "";
+    const initialTopic = existing ? (existing.topic || "") : "";
     const initialSubTopic = existing ? existing.subTopic : "";
     const initialName = existing ? existing.name : "";
     const initialType = existing ? existing.type : "snippet";
@@ -330,13 +361,19 @@ export class OwnLibraryPanel {
     <form id="componentForm">
       <div class="grid">
         <div class="form-group">
-          <label for="subDomain">Sub Domain <span class="optional-hint">Optional (e.g. Network, Math)</span></label>
+          <label for="subDomain">Sub Domain <span class="optional-hint">Optional (e.g. Algorithms, Network)</span></label>
           <input type="text" id="subDomain" list="subDomainList" placeholder="Defaults to 'General'" value="${this.escapeAttr(initialSubDomain)}">
           <datalist id="subDomainList">${subDomainOptions}</datalist>
         </div>
 
         <div class="form-group">
-          <label for="subTopic">Sub Topic <span class="optional-hint">Optional (e.g. Sockets, Helpers)</span></label>
+          <label for="topic">Topic <span class="optional-hint">Optional (e.g. Sorting, Sockets)</span></label>
+          <input type="text" id="topic" list="topicList" placeholder="Defaults to 'Algorithms'" value="${this.escapeAttr(initialTopic)}">
+          <datalist id="topicList">${topicOptions}</datalist>
+        </div>
+
+        <div class="form-group">
+          <label for="subTopic">Sub Topic <span class="optional-hint">Optional (e.g. Helpers, Custom)</span></label>
           <input type="text" id="subTopic" list="subTopicList" placeholder="Defaults to 'Custom'" value="${this.escapeAttr(initialSubTopic)}">
           <datalist id="subTopicList">${subTopicOptions}</datalist>
         </div>
@@ -437,6 +474,7 @@ void my_component(void) {
     function getFormData() {
       return {
         subDomain: document.getElementById("subDomain").value,
+        topic: document.getElementById("topic").value,
         subTopic: document.getElementById("subTopic").value,
         name: document.getElementById("name").value,
         type: document.getElementById("type").value,

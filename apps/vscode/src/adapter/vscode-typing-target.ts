@@ -51,7 +51,16 @@ export class VSCodeTypingTarget implements TypingTarget {
     if (activeEditor) {
       this.expectedHead = pos ?? activeEditor.selection.active;
       this.activeDocUri = activeEditor.document.uri.toString();
+    } else if (pos) {
+      this.expectedHead = pos;
     }
+  }
+
+  public resetTarget(): void {
+    this.expectedHead = null;
+    this.activeDocUri = null;
+    this.charCount = 0;
+    this.isSessionStart = true;
   }
 
   public getExpectedHead(): vscode.Position | null {
@@ -76,16 +85,19 @@ export class VSCodeTypingTarget implements TypingTarget {
       throw new Error("TYPING_PAUSED_TAB_SWITCHED");
     }
 
-    // 2. Cursor Relocation Detection
+    // 2. Cursor Relocation Detection & Resilient Memory
     let targetPos = activeEditor.selection.active;
     if (this.expectedHead && !targetPos.isEqual(this.expectedHead)) {
-      this.logger.warn(`Cursor manually jumped from ${this.expectedHead.line}:${this.expectedHead.character} to ${targetPos.line}:${targetPos.character}`);
+      this.logger.debug(`Cursor position out of sync: expected ${this.expectedHead.line}:${this.expectedHead.character}, was ${targetPos.line}:${targetPos.character}`);
       this.onCursorJumpCallback?.(this.expectedHead, targetPos);
 
-      if (this.cursorJumpPolicy === "pause") {
-        throw new Error("TYPING_PAUSED_CURSOR_MOVED");
-      } else if (this.cursorJumpPolicy === "realign") {
+      if (this.cursorJumpPolicy === "realign") {
         targetPos = this.expectedHead;
+        activeEditor.selection = new vscode.Selection(this.expectedHead, this.expectedHead);
+      } else if (this.cursorJumpPolicy === "pause") {
+        targetPos = this.expectedHead;
+        activeEditor.selection = new vscode.Selection(this.expectedHead, this.expectedHead);
+        throw new Error("TYPING_PAUSED_CURSOR_MOVED");
       } else if (this.cursorJumpPolicy === "abort") {
         throw new Error("TYPING_ABORTED_CURSOR_MOVED");
       }
@@ -125,6 +137,7 @@ export class VSCodeTypingTarget implements TypingTarget {
       this.expectedHead = nextPos;
     } else {
       const nextPos = new vscode.Position(targetPos.line, targetPos.character + character.length);
+      activeEditor.selection = new vscode.Selection(nextPos, nextPos);
       this.expectedHead = nextPos;
     }
   }
@@ -141,16 +154,19 @@ export class VSCodeTypingTarget implements TypingTarget {
       throw new Error("TYPING_PAUSED_TAB_SWITCHED");
     }
 
-    // Cursor Relocation Detection
+    // Cursor Relocation Detection & Resilient Memory
     let targetPos = activeEditor.selection.active;
     if (this.expectedHead && !targetPos.isEqual(this.expectedHead)) {
-      this.logger.warn(`Cursor manually jumped from ${this.expectedHead.line}:${this.expectedHead.character} to ${targetPos.line}:${targetPos.character}`);
+      this.logger.debug(`Cursor position out of sync: expected ${this.expectedHead.line}:${this.expectedHead.character}, was ${targetPos.line}:${targetPos.character}`);
       this.onCursorJumpCallback?.(this.expectedHead, targetPos);
 
-      if (this.cursorJumpPolicy === "pause") {
-        throw new Error("TYPING_PAUSED_CURSOR_MOVED");
-      } else if (this.cursorJumpPolicy === "realign") {
+      if (this.cursorJumpPolicy === "realign") {
         targetPos = this.expectedHead;
+        activeEditor.selection = new vscode.Selection(this.expectedHead, this.expectedHead);
+      } else if (this.cursorJumpPolicy === "pause") {
+        targetPos = this.expectedHead;
+        activeEditor.selection = new vscode.Selection(this.expectedHead, this.expectedHead);
+        throw new Error("TYPING_PAUSED_CURSOR_MOVED");
       } else if (this.cursorJumpPolicy === "abort") {
         throw new Error("TYPING_ABORTED_CURSOR_MOVED");
       }
@@ -179,15 +195,18 @@ export class VSCodeTypingTarget implements TypingTarget {
         this.charCount++;
         return;
       }
-      if (targetPos.line + 1 < activeEditor.document.lineCount) {
-        const nextLineText = activeEditor.document.lineAt(targetPos.line + 1).text;
-        const idxNextLine = nextLineText.indexOf("}");
-        if (idxNextLine !== -1 && nextLineText.slice(0, idxNextLine).trim() === "") {
-          const nextPos = new vscode.Position(targetPos.line + 1, idxNextLine + 1);
+      for (let offset = 1; offset <= 3 && targetPos.line + offset < activeEditor.document.lineCount; offset++) {
+        const checkLineText = activeEditor.document.lineAt(targetPos.line + offset).text;
+        const idxNextLine = checkLineText.indexOf("}");
+        if (idxNextLine !== -1 && checkLineText.slice(0, idxNextLine).trim() === "") {
+          const nextPos = new vscode.Position(targetPos.line + offset, idxNextLine + 1);
           activeEditor.selection = new vscode.Selection(nextPos, nextPos);
           this.expectedHead = nextPos;
           this.charCount++;
           return;
+        }
+        if (checkLineText.trim() !== "") {
+          break;
         }
       }
     }
@@ -248,17 +267,23 @@ export class VSCodeTypingTarget implements TypingTarget {
 
     let targetPos = activeEditor.selection.active;
     if (this.expectedHead && !targetPos.isEqual(this.expectedHead)) {
-      this.logger.warn(`Cursor manually jumped from ${this.expectedHead.line}:${this.expectedHead.character} to ${targetPos.line}:${targetPos.character}`);
+      this.logger.debug(`Cursor position out of sync: expected ${this.expectedHead.line}:${this.expectedHead.character}, was ${targetPos.line}:${targetPos.character}`);
       this.onCursorJumpCallback?.(this.expectedHead, targetPos);
 
-      if (this.cursorJumpPolicy === "pause") {
-        throw new Error("TYPING_PAUSED_CURSOR_MOVED");
-      } else if (this.cursorJumpPolicy === "realign") {
+      if (this.cursorJumpPolicy === "realign") {
         targetPos = this.expectedHead;
+        activeEditor.selection = new vscode.Selection(this.expectedHead, this.expectedHead);
+      } else if (this.cursorJumpPolicy === "pause") {
+        targetPos = this.expectedHead;
+        activeEditor.selection = new vscode.Selection(this.expectedHead, this.expectedHead);
+        throw new Error("TYPING_PAUSED_CURSOR_MOVED");
       } else if (this.cursorJumpPolicy === "abort") {
         throw new Error("TYPING_ABORTED_CURSOR_MOVED");
       }
     }
+
+    const normalizedBlockIndent = blockIndent ? blockIndent.replace(/    /g, "\t") : "\t";
+    const normalizedBaseIndent = baseIndent ? baseIndent.replace(/    /g, "\t") : "";
 
     const currentLineText = activeEditor.document.lineAt(targetPos.line).text;
     const charAtCursor = currentLineText.charAt(targetPos.character);
@@ -267,8 +292,8 @@ export class VSCodeTypingTarget implements TypingTarget {
     // If closing brace is already at cursor, insert newline + blockIndent + newline + baseIndent before it
     // If not, insert newline + blockIndent + newline + baseIndent + }
     const textToInsert = hasClosingBrace
-      ? `\n${blockIndent}\n${baseIndent}`
-      : `\n${blockIndent}\n${baseIndent}}`;
+      ? `\n${normalizedBlockIndent}\n${normalizedBaseIndent}`
+      : `\n${normalizedBlockIndent}\n${normalizedBaseIndent}}`;
 
     await activeEditor.edit(
       (editBuilder) => {
@@ -280,7 +305,7 @@ export class VSCodeTypingTarget implements TypingTarget {
       }
     );
 
-    const indentedPos = new vscode.Position(targetPos.line + 1, blockIndent.length);
+    const indentedPos = new vscode.Position(targetPos.line + 1, normalizedBlockIndent.length);
     activeEditor.selection = new vscode.Selection(indentedPos, indentedPos);
     this.expectedHead = indentedPos;
     this.charCount += 2;
@@ -318,16 +343,30 @@ export class VSCodeTypingTarget implements TypingTarget {
         }
       }
       if (targetLine !== -1) {
-        // If line immediately above is empty, position cursor on it.
-        if (targetLine > 0 && doc.lineAt(targetLine - 1).text.trim() === "") {
-          targetLine = targetLine - 1;
-        } else {
-          // If no empty line above, insert a newline before
+        const lineAbove = targetLine > 0 ? doc.lineAt(targetLine - 1).text.trim() : "";
+        if (lineAbove !== "") {
+          // No empty line between previous code and main/function; insert "\n\n"
           const insertPos = new vscode.Position(targetLine, 0);
-          await activeEditor.edit((builder) => builder.insert(insertPos, "\n"), {
+          await activeEditor.edit((builder) => builder.insert(insertPos, "\n\n"), {
             undoStopBefore: false,
             undoStopAfter: false,
           });
+          targetLine = targetLine + 1;
+        } else {
+          // Line above is empty (""). Check if the line above THAT was a header or macro!
+          const lineAboveAbove = targetLine > 1 ? doc.lineAt(targetLine - 2).text.trim() : "";
+          if (lineAboveAbove.startsWith("#include") || lineAboveAbove.startsWith("#define")) {
+            // That empty line is the header separation blank line! Do NOT overwrite it.
+            // Insert a newline so the header separation remains intact.
+            const insertPos = new vscode.Position(targetLine - 1, 0);
+            await activeEditor.edit((builder) => builder.insert(insertPos, "\n"), {
+              undoStopBefore: false,
+              undoStopAfter: false,
+            });
+            targetLine = targetLine;
+          } else {
+            targetLine = targetLine - 1;
+          }
         }
         targetCol = 0;
       }
@@ -359,11 +398,20 @@ export class VSCodeTypingTarget implements TypingTarget {
         }
 
         if (returnLine !== -1) {
-          targetLine = returnLine;
+          if (returnLine > mainLine + 1 && doc.lineAt(returnLine - 1).text.trim() === "") {
+            targetLine = returnLine - 1;
+          } else {
+            const insertPos = new vscode.Position(returnLine, 0);
+            await activeEditor.edit((builder) => builder.insert(insertPos, "\n"), {
+              undoStopBefore: false,
+              undoStopAfter: false,
+            });
+            targetLine = returnLine;
+          }
           targetCol = 0;
         } else if (braceLine !== -1) {
           targetLine = Math.min(doc.lineCount - 1, braceLine + 1);
-          targetCol = 4;
+          targetCol = 0;
         }
       }
     } else if (landmark === "above_return") {
@@ -378,19 +426,17 @@ export class VSCodeTypingTarget implements TypingTarget {
       }
 
       if (returnLine !== -1) {
-        // If line above return is empty, position there
         if (returnLine > 0 && doc.lineAt(returnLine - 1).text.trim() === "") {
           targetLine = returnLine - 1;
         } else {
-          // Insert an indented line above return
           const insertPos = new vscode.Position(returnLine, 0);
-          await activeEditor.edit((builder) => builder.insert(insertPos, "    \n"), {
+          await activeEditor.edit((builder) => builder.insert(insertPos, "\n"), {
             undoStopBefore: false,
             undoStopAfter: false,
           });
           targetLine = returnLine;
         }
-        targetCol = 4;
+        targetCol = 0;
       }
     } else if (landmark === "above_free") {
       // Find free or fclose statement
@@ -408,13 +454,13 @@ export class VSCodeTypingTarget implements TypingTarget {
           targetLine = freeLine - 1;
         } else {
           const insertPos = new vscode.Position(freeLine, 0);
-          await activeEditor.edit((builder) => builder.insert(insertPos, "    \n"), {
+          await activeEditor.edit((builder) => builder.insert(insertPos, "\n"), {
             undoStopBefore: false,
             undoStopAfter: false,
           });
           targetLine = freeLine;
         }
-        targetCol = 4;
+        targetCol = 0;
       }
     }
 

@@ -31,7 +31,7 @@ body:
     attributes:
       label: Environment
       description: OS and VS Code version (Tip: run 'dTyp: Diagnostics & System Health Check' in VS Code to auto-generate this).
-      placeholder: "Windows 11 / VS Code 1.85.0 / dTyp v3.0.0"
+      placeholder: "Windows 11 / VS Code 1.85.0 / dTyp v4.0.0"
     validations:
       required: true
   - type: textarea

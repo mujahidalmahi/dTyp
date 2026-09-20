@@ -60,3 +60,23 @@
 
 ### Q: How can I update dTyp when a new release is available?
 **A:** dTyp includes an integrated **Update Engine**. By default, it checks the public GitHub releases API in the background. When a new version is released, a notification with an **"Update Extension"** button will appear, downloading and applying the update automatically. You can also run **`dTyp: Check for Updates...`** from the Command Palette anytime.
+
+---
+
+### Q: What is the Control Center Flight Deck?
+**A:** Press **`Ctrl+Alt+C`** or run `dTyp: Open Control Center Flight Deck` to launch a full-screen, dark-mode command center. It offers real-time session telemetry, live 1-click typing mode switching, a searchable keyboard shortcuts cheatsheet, and quick launcher buttons for every diagnostic and visualization tool in dTyp.
+
+---
+
+### Q: What is Chameleon Ghost-Typing Mode?
+**A:** Press **`Alt+C`** (`dtyp.toggleChameleonMode`). While Chameleon Mode is active, pressing any physical key on your keyboard outputs the exact next character from the queued algorithm. This allows you to type naturally and rhythmically on your physical keyboard during live examinations or technical interviews without having to memorize character positions.
+
+---
+
+### Q: How does the Code Doctor Automated Linter work?
+**A:** Press **`Ctrl+Shift+L`** or run `dTyp: Academic Code Doctor: Diagnose & Auto-Fix`. Code Doctor scans your active C source code for 7 common academic bugs (uninitialized pointers, buffer overflows, format string mismatches, memory leaks, missing return types) and provides 1-click QuickFixes right in the editor.
+
+---
+
+### Q: How many components are available in dTyp v4.0?
+**A:** dTyp v4.0 includes **665 production-grade, compilable C components** across 7 primary computer science domains (103 Boiler Plates, 178 Data Structures, 164 Algorithms, 70 Competitive Programming, 56 Academics Programming, 30 Projects, 64 Detection), plus 1,492 native snippets and unlimited custom components in your **Own Library**.

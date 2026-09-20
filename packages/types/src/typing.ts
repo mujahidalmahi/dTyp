@@ -58,6 +58,8 @@ export interface TypingOptions {
   typoRate?: number;
   cognitivePauseIntensity?: CognitivePauseIntensity;
   enableFatigueRenewal?: boolean;
+  enableFalseStarts?: boolean;
+  falseStartRate?: number;
 }
 
 export type TypingState = "idle" | "typing" | "paused" | "cancelled" | "completed" | "error";
@@ -138,8 +140,12 @@ export interface TypingEngine {
   start(text: string, options: TypingOptions): Promise<void>;
   pause(): void;
   resume(): void;
+  togglePause?(): boolean;
   cancel(): void;
   isTyping(): boolean;
+  isPaused?(): boolean;
+  setSpeedMultiplier?(mult: number): void;
+  getSpeedMultiplier?(): number;
   getState(): TypingState;
   getStatistics(): TypingStatistics;
 }

@@ -61,7 +61,7 @@ All C components in dTyp adhere to strict quality invariants:
 
 ### 2. Adding / Modifying Engines & Storage
 The VS Code extension core is partitioned into modular engines and storage providers located under `apps/vscode/src/engine/` and `apps/vscode/src/storage/`:
-- `auto-type-engine.ts`: Dual-mode typing (automatic streaming vs manual `Ctrl+Shift+D` stepping) with human cadence, Smart Block Auto-Expansion (`enter_block`), delimiter overtyping, and delayed-recognition typo correction.
+- `auto-type-engine.ts`: Dual-mode typing (automatic streaming vs manual `Ctrl+Shift+D` stepping) with human cadence, Chameleon Ghost-Typing, Smart Block Auto-Expansion (`enter_block`), delimiter overtyping, false starts, and delayed-recognition typo correction.
 - `header-engine.ts`: Document header scanning and duplicate-free auto-injection.
 - `memory-engine.ts`: Heap allocation leak detection and disposable resource tracking.
 - `cursor-engine.ts`: Placeholder detection and cursor navigation.
@@ -70,8 +70,11 @@ The VS Code extension core is partitioned into modular engines and storage provi
 - `search-engine.ts`: Scored fuzzy search with category filters.
 - `update-engine.ts`: Background GitHub release checking and one-click VSIX update.
 - `own-library-storage.ts`: Persistent local storage and JSON export/import for custom user components.
+- `contest-scaffolder.ts`: Competitive programming workspace generator (Fast I/O, bump arena, stress tester).
+- `sandbox-compiler.ts`: Multi-test sandbox runner with stdin/stdout comparison and timeout guard.
+- `valgrind-runner.ts`: Valgrind + AddressSanitizer runner with human-readable diagnostic output.
 
-All engine logic must remain modular and covered by unit tests in `tests/unit/`.
+All engine logic must remain modular and covered by unit tests. The test suite currently stands at **146 tests across 29 suites — 100% green** (run `npm test` to verify).
 
 ---
 

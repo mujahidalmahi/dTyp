@@ -17,6 +17,18 @@ export class TypingScheduler {
   private isCancelled = false;
   private isRunning = false;
   private pausePromiseResolve: (() => void) | null = null;
+  private sleepTimeout: NodeJS.Timeout | null = null;
+  private sleepResolve: (() => void) | null = null;
+  private speedMultiplier = 1.0;
+
+  public setSpeedMultiplier(mult: number): void {
+    this.speedMultiplier = Math.max(0.1, Math.min(10.0, mult));
+    this.logger.info(`Typing speed multiplier adjusted to ${this.speedMultiplier.toFixed(2)}x`);
+  }
+
+  public getSpeedMultiplier(): number {
+    return this.speedMultiplier;
+  }
   private logger = defaultLogger.child("Scheduler");
 
   constructor(
@@ -24,6 +36,28 @@ export class TypingScheduler {
     private mapper: StandardKeyboardMapper,
     private callbacks: SchedulerCallbacks = {}
   ) {}
+
+  private interruptibleSleep(ms: number): Promise<void> {
+    return new Promise<void>((resolve) => {
+      this.sleepResolve = resolve;
+      this.sleepTimeout = setTimeout(() => {
+        this.sleepTimeout = null;
+        this.sleepResolve = null;
+        resolve();
+      }, ms);
+    });
+  }
+
+  private interruptSleep(): void {
+    if (this.sleepTimeout) {
+      clearTimeout(this.sleepTimeout);
+      this.sleepTimeout = null;
+    }
+    if (this.sleepResolve) {
+      this.sleepResolve();
+      this.sleepResolve = null;
+    }
+  }
 
   public async run(options: TypingOptions): Promise<void> {
     if (this.isRunning) {
@@ -96,10 +130,11 @@ export class TypingScheduler {
 
         this.callbacks.onProgress?.(stats, item.char);
 
-        // Delay before next character
-        const delay = item.delayOverrideMs ?? calculateDelayWithJitter(options.delayMs, options.jitterMs);
+        // Delay before next character (scaled dynamically by speedMultiplier)
+        const baseDelay = item.delayOverrideMs ?? calculateDelayWithJitter(options.delayMs, options.jitterMs);
+        const delay = Math.max(1, Math.round(baseDelay / this.speedMultiplier));
         if (delay > 0) {
-          await sleep(delay);
+          await this.interruptibleSleep(delay);
         }
       }
 
@@ -132,12 +167,14 @@ export class TypingScheduler {
       this.isPaused = false;
       this.isCancelled = false;
       this.pausePromiseResolve = null;
+      this.interruptSleep();
     }
   }
 
   public pause(): void {
     if (this.isRunning && !this.isPaused) {
       this.isPaused = true;
+      this.interruptSleep();
     }
   }
 
@@ -153,6 +190,7 @@ export class TypingScheduler {
 
   public cancel(): void {
     this.isCancelled = true;
+    this.interruptSleep();
     if (this.pausePromiseResolve) {
       this.pausePromiseResolve();
       this.pausePromiseResolve = null;

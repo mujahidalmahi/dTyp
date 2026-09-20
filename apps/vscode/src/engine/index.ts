@@ -8,3 +8,4 @@ export * from "./snippet-engine.js";
 export * from "./update-engine.js";
 export * from "./renew-engine.js";
 export * from "./own-library-storage.js";
+export * from "./ghost-preview-engine.js";

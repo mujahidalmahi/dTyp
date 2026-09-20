@@ -143,4 +143,68 @@ describe("RenewEngine (Session & Queue Renewal)", () => {
     expect(queue!.currentIndex).toBe(2);
     expect(deleteBackwardSpy).toHaveBeenCalled();
   });
+
+  it("renews last inserted component in automatic mode via reInsert callback", async () => {
+    const target = new VSCodeTypingTarget();
+    const typingEngine = new DefaultTypingEngine(target);
+    const autoTypeEngine = new AutoTypeEngine(typingEngine, target);
+
+    const mockContext: any = {
+      globalState: { get: vi.fn().mockReturnValue([]), update: vi.fn() },
+    };
+    const sessionEngine = new SessionEngine(mockContext);
+    const mockLibraryEngine: any = {
+      search: vi.fn().mockResolvedValue([]),
+      getSnippets: vi.fn().mockResolvedValue([]),
+      findComponent: vi.fn(),
+    };
+    const searchEngine = new SearchEngine(mockLibraryEngine);
+    const snippetEngine = new SnippetEngine(mockLibraryEngine);
+
+    const renewEngine = new RenewEngine(
+      autoTypeEngine,
+      target,
+      sessionEngine,
+      mockLibraryEngine,
+      searchEngine,
+      snippetEngine
+    );
+
+    const mockEditor: any = {
+      document: { uri: { toString: () => "file:///test.c" }, getText: () => "" },
+      selection: { active: { line: 0, character: 0 } },
+    };
+
+    // Simulate startInsertion record
+    await autoTypeEngine.startInsertion("c_bubble_sort", "bubble_sort", "void bubble_sort() {}", mockEditor, "manual");
+    autoTypeEngine.cancelManualQueue(); // complete manual session
+
+    const reInsertSpy = vi.fn().mockResolvedValue(undefined);
+    const renewed = await renewEngine.renewQueue(reInsertSpy);
+
+    expect(renewed).toBe(true);
+    expect(reInsertSpy).toHaveBeenCalledWith("c_bubble_sort", "manual", { force: true });
+  });
+
+  it("toggles pause and resume on AutoTypeEngine", () => {
+    const target = new VSCodeTypingTarget();
+    const typingEngine = new DefaultTypingEngine(target);
+    const autoTypeEngine = new AutoTypeEngine(typingEngine, target);
+
+    expect(autoTypeEngine.isPaused()).toBe(false);
+
+    autoTypeEngine.pause();
+    expect(autoTypeEngine.isPaused()).toBe(true);
+
+    autoTypeEngine.resume();
+    expect(autoTypeEngine.isPaused()).toBe(false);
+
+    const paused = autoTypeEngine.togglePause();
+    expect(paused).toBe(true);
+    expect(autoTypeEngine.isPaused()).toBe(true);
+
+    const resumed = autoTypeEngine.togglePause();
+    expect(resumed).toBe(false);
+    expect(autoTypeEngine.isPaused()).toBe(false);
+  });
 });

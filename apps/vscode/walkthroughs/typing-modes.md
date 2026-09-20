@@ -15,8 +15,16 @@ Simulates human-like character insertion with a configurable delay from 1ms up t
 Queues the selected component in the background and types characters per press of **Ctrl+Shift+D**.
 - Step through code at your own pace with `dtyp.stepSize` (1 to 50 chars per press).
 - Delimiter step-overs, block expansion, and typo backspaces are all executed through the manual buffer.
-- Flush all remaining queued code instantly with `dtyp.flushRemaining`.
-- Cancel queue anytime with <kbd>Escape</kbd>.
+- **Instant Pause & Resume (`Alt+P`)**: Press <kbd>Alt+P</kbd> or click the status bar item to instantly pause or resume typing.
+- **Renew Queue (`Ctrl+Shift+R`)**: Reset the current or completed session back to character 0.
+- **Rewind Step (`Ctrl+Shift+U`)**: Undo the last character typed in manual mode.
+- **Cancel Anytime (`Escape`)**: Cancel automated typing or clear the manual buffer.
+
+### 3. Chameleon Ghost-Typing Mode (`Alt+C`)
+When active, press **any physical key** on your keyboard to emit the exact next character from the queued algorithm. Enables flawless typing during live evaluations or interviews while your hands type freely.
+- **Biomechanical Cadence**: Models finger reach, hand alternation, and QWERTY proximity.
+- **False Starts & Rethinking (`dtyp.enableFalseStarts`)**: Realistically drafts 2–4 alternative characters, hesitates, backspaces, and writes the correct code.
 
 [Configure Typing Mode](command:workbench.action.openSettings?%22dtyp.typingMode%22)
 [Toggle Typing Mode Now](command:dtyp.toggleTypingMode)
+[Toggle Chameleon Mode](command:dtyp.toggleChameleonMode)

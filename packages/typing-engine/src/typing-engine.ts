@@ -24,6 +24,7 @@ export class DefaultTypingEngine implements TypingEngine {
     elapsedMs: 0,
     averageSpeedCps: 0,
   };
+  private speedMultiplier = 1.0;
   private events = new EventEmitter<TypingEngineEvents>();
   private logger = defaultLogger.child("TypingEngine");
 
@@ -64,6 +65,8 @@ export class DefaultTypingEngine implements TypingEngine {
         preserveTabs: options.preserveTabs,
         cognitivePauseIntensity: options.cognitivePauseIntensity,
         enableFatigueRenewal: options.enableFatigueRenewal,
+        enableFalseStarts: options.enableFalseStarts,
+        falseStartRate: options.falseStartRate,
       });
       const actions = tokenizer.tokenize(text);
       this.queue.loadActions(actions);
@@ -146,6 +149,32 @@ export class DefaultTypingEngine implements TypingEngine {
 
   public isTyping(): boolean {
     return this.state === "typing" || this.state === "paused";
+  }
+
+  public isPaused(): boolean {
+    return this.state === "paused" || (this.scheduler !== null && this.scheduler.paused);
+  }
+
+  public togglePause(): boolean {
+    if (this.isPaused()) {
+      this.resume();
+      return false;
+    } else if (this.state === "typing") {
+      this.pause();
+      return true;
+    }
+    return false;
+  }
+
+  public setSpeedMultiplier(mult: number): void {
+    this.speedMultiplier = Math.max(0.1, Math.min(10.0, mult));
+    if (this.scheduler) {
+      this.scheduler.setSpeedMultiplier(this.speedMultiplier);
+    }
+  }
+
+  public getSpeedMultiplier(): number {
+    return this.scheduler ? this.scheduler.getSpeedMultiplier() : this.speedMultiplier;
   }
 
   public getState(): TypingState {

@@ -2,7 +2,7 @@
   "name": "dtyp-vscode",
   "displayName": "dTyp — Don't Tell Your Professor",
   "description": "Offline academic C programming library & automated character-by-character typing assistant",
-  "version": "3.2.0",
+  "version": "4.0.0",
   "publisher": "1da7b1e6-01f1-6f58-9ef3-d95516c5e875",
   "icon": "images/icon.png",
   "engines": {
@@ -49,6 +49,7 @@
     "onView:dtyp.favoritesView",
     "onView:dtyp.historyView",
     "onView:dtyp.quickActionsView",
+    "onView:dtyp.ownLibraryView",
     "onCommand:dtyp.showReleaseNotes",
     "onCommand:dtyp.checkForUpdates",
     "onCommand:dtyp.healthCheck",
@@ -60,7 +61,34 @@
     "onCommand:dtyp.jumpToPrevPlaceholder",
     "onCommand:dtyp.renewQueue",
     "onCommand:dtyp.rewindStep",
-    "onCommand:dtyp.renewComponent"
+    "onCommand:dtyp.renewComponent",
+    "onCommand:dtyp.createOwnComponent",
+    "onCommand:dtyp.editOwnComponent",
+    "onCommand:dtyp.deleteOwnComponent",
+    "onCommand:dtyp.insertOwnComponent",
+    "onCommand:dtyp.copyOwnComponentCode",
+    "onCommand:dtyp.refreshOwnLibrary",
+    "onCommand:dtyp.exportOwnLibrary",
+    "onCommand:dtyp.importOwnLibrary",
+    "onCommand:dtyp.togglePauseTyping",
+    "onCommand:dtyp.pauseTyping",
+    "onCommand:dtyp.resumeTyping",
+    "onCommand:dtyp.toggleChameleonMode",
+    "onCommand:dtyp.runTestCases",
+    "onCommand:dtyp.runSanitizer",
+    "onCommand:dtyp.modularize",
+    "onCommand:dtyp.benchmarkComponent",
+    "onCommand:dtyp.openFlashcards",
+    "onCommand:dtyp.toggleSteppingHud",
+    "onCommand:dtyp.showShortcuts",
+    "onCommand:dtyp.formatAcademic",
+    "onCommand:dtyp.auditCode",
+    "onCommand:dtyp.scaffoldContest",
+    "onCommand:dtyp.visualizeRecursion",
+    "onCommand:dtyp.runValgrind",
+    "onCommand:dtyp.openTypingDrill",
+    "onCommand:dtyp.openControlCenter",
+    "onCommand:dtyp.openStatusBarMenu"
   ],
   "contributes": {
     "commands": [
@@ -103,6 +131,24 @@
         "command": "dtyp.cancelTyping",
         "title": "dTyp: Cancel Typing / Clear Queue",
         "category": "dTyp"
+      },
+      {
+        "command": "dtyp.togglePauseTyping",
+        "title": "dTyp: Pause / Resume Typing",
+        "category": "dTyp",
+        "icon": "$(debug-pause)"
+      },
+      {
+        "command": "dtyp.pauseTyping",
+        "title": "dTyp: Pause Typing",
+        "category": "dTyp",
+        "icon": "$(debug-pause)"
+      },
+      {
+        "command": "dtyp.resumeTyping",
+        "title": "dTyp: Resume Typing",
+        "category": "dTyp",
+        "icon": "$(debug-start)"
       },
       {
         "command": "dtyp.insertComponentById",
@@ -236,6 +282,132 @@
         "title": "dTyp: Import Own Library from JSON...",
         "category": "dTyp",
         "icon": "$(cloud-download)"
+      },
+      {
+        "command": "dtyp.compileAndRun",
+        "title": "dTyp: Compile & Run in Terminal",
+        "category": "dTyp",
+        "icon": "$(play)"
+      },
+      {
+        "command": "dtyp.visualizeComponent",
+        "title": "dTyp: Visualize Data Structure & Memory",
+        "category": "dTyp",
+        "icon": "$(eye)"
+      },
+      {
+        "command": "dtyp.previewComponent",
+        "title": "dTyp: Preview Ghost Code",
+        "category": "dTyp",
+        "icon": "$(preview)"
+      },
+      {
+        "command": "dtyp.speedUpTyping",
+        "title": "dTyp: Speed Up Typing (+25%)",
+        "category": "dTyp",
+        "icon": "$(fast-forward)"
+      },
+      {
+        "command": "dtyp.slowDownTyping",
+        "title": "dTyp: Slow Down Typing (-20%)",
+        "category": "dTyp",
+        "icon": "$(debug-step-back)"
+      },
+      {
+        "command": "dtyp.toggleChameleonMode",
+        "title": "dTyp: Toggle Chameleon Ghost-Typing Mode (Alt+C)",
+        "category": "dTyp",
+        "icon": "$(eye)"
+      },
+      {
+        "command": "dtyp.runTestCases",
+        "title": "dTyp: Run Multi-Test Sandbox (Ctrl+F6)",
+        "category": "dTyp",
+        "icon": "$(beaker)"
+      },
+      {
+        "command": "dtyp.runSanitizer",
+        "title": "dTyp: Run AddressSanitizer & UB Guard (Ctrl+F7)",
+        "category": "dTyp",
+        "icon": "$(shield)"
+      },
+      {
+        "command": "dtyp.modularize",
+        "title": "dTyp: Modularize into Header, Impl & Makefile",
+        "category": "dTyp",
+        "icon": "$(package)"
+      },
+      {
+        "command": "dtyp.benchmarkComponent",
+        "title": "dTyp: Benchmark Empirical Complexity",
+        "category": "dTyp",
+        "icon": "$(graph)"
+      },
+      {
+        "command": "dtyp.openFlashcards",
+        "title": "dTyp: Open Exam Flashcards & Cheat Sheets",
+        "category": "dTyp",
+        "icon": "$(mortar-board)"
+      },
+      {
+        "command": "dtyp.toggleSteppingHud",
+        "title": "dTyp: Toggle Floating Stepping HUD",
+        "category": "dTyp",
+        "icon": "$(dashboard)"
+      },
+      {
+        "command": "dtyp.showShortcuts",
+        "title": "dTyp: View Keyboard Shortcuts & Cheatsheet",
+        "category": "dTyp",
+        "icon": "$(keyboard)"
+      },
+      {
+        "command": "dtyp.formatAcademic",
+        "title": "dTyp: Format Code with Academic Pure Tabs",
+        "category": "dTyp",
+        "icon": "$(wand)"
+      },
+      {
+        "command": "dtyp.auditCode",
+        "title": "dTyp: Audit C Code for Academic Defects (Ctrl+F8)",
+        "category": "dTyp",
+        "icon": "$(checklist)"
+      },
+      {
+        "command": "dtyp.scaffoldContest",
+        "title": "dTyp: Scaffold Competitive Programming Arena (Ctrl+F9)",
+        "category": "dTyp",
+        "icon": "$(flame)"
+      },
+      {
+        "command": "dtyp.visualizeRecursion",
+        "title": "dTyp: Visualize Live Recursion Tree & Call Stack",
+        "category": "dTyp",
+        "icon": "$(type-hierarchy-sub)"
+      },
+      {
+        "command": "dtyp.runValgrind",
+        "title": "dTyp: Run Valgrind Deep Leak Profiler",
+        "category": "dTyp",
+        "icon": "$(microscope)"
+      },
+      {
+        "command": "dtyp.openTypingDrill",
+        "title": "dTyp: Open C Typing Speed & Muscle Memory Drill",
+        "category": "dTyp",
+        "icon": "$(zap)"
+      },
+      {
+        "command": "dtyp.openControlCenter",
+        "title": "dTyp: Open Control Center & Master Hub",
+        "category": "dTyp",
+        "icon": "$(dashboard)"
+      },
+      {
+        "command": "dtyp.openStatusBarMenu",
+        "title": "dTyp: Open Master Tools & Actions Menu",
+        "category": "dTyp",
+        "icon": "$(menu)"
       }
     ],
     "keybindings": [
@@ -254,6 +426,11 @@
         "when": "editorTextFocus && (dtyp.isTyping || dtyp.hasQueuedCharacters)"
       },
       {
+        "command": "dtyp.togglePauseTyping",
+        "key": "alt+p",
+        "when": "editorTextFocus && (dtyp.isTyping || dtyp.hasQueuedCharacters)"
+      },
+      {
         "command": "dtyp.jumpToNextPlaceholder",
         "key": "alt+down",
         "when": "editorTextFocus && dtyp.hasPlaceholders"
@@ -266,12 +443,56 @@
       {
         "command": "dtyp.renewQueue",
         "key": "ctrl+shift+r",
-        "when": "editorTextFocus && dtyp.hasQueuedCharacters"
+        "when": "editorTextFocus && (dtyp.isTyping || dtyp.hasQueuedCharacters || dtyp.hasLastInsertion)"
       },
       {
         "command": "dtyp.rewindStep",
         "key": "ctrl+shift+u",
         "when": "editorTextFocus && dtyp.hasQueuedCharacters"
+      },
+      {
+        "command": "dtyp.compileAndRun",
+        "key": "ctrl+f5",
+        "when": "editorTextFocus && (resourceExtname == .c || resourceExtname == .cpp)"
+      },
+      {
+        "command": "dtyp.speedUpTyping",
+        "key": "ctrl+]",
+        "when": "editorTextFocus && dtyp.isTyping"
+      },
+      {
+        "command": "dtyp.slowDownTyping",
+        "key": "ctrl+[",
+        "when": "editorTextFocus && dtyp.isTyping"
+      },
+      {
+        "command": "dtyp.toggleChameleonMode",
+        "key": "alt+c",
+        "when": "editorTextFocus"
+      },
+      {
+        "command": "dtyp.runTestCases",
+        "key": "ctrl+f6",
+        "when": "editorTextFocus && (resourceExtname == .c || resourceExtname == .cpp)"
+      },
+      {
+        "command": "dtyp.runSanitizer",
+        "key": "ctrl+f7",
+        "when": "editorTextFocus && (resourceExtname == .c || resourceExtname == .cpp)"
+      },
+      {
+        "command": "dtyp.formatAcademic",
+        "key": "shift+alt+f",
+        "when": "editorTextFocus && (resourceExtname == .c || resourceExtname == .cpp)"
+      },
+      {
+        "command": "dtyp.auditCode",
+        "key": "ctrl+f8",
+        "when": "editorTextFocus && (resourceExtname == .c || resourceExtname == .cpp)"
+      },
+      {
+        "command": "dtyp.scaffoldContest",
+        "key": "ctrl+f9"
       }
     ],
     "configuration": {
@@ -314,8 +535,8 @@
             "realign",
             "abort"
           ],
-          "default": "pause",
-          "description": "Behavior when cursor manually changes position during active auto-typing: 'pause' prompts user with resume options, 'realign' forces cursor back to head, 'abort' terminates typing."
+          "default": "realign",
+          "description": "Behavior when cursor manually changes position during active typing: 'realign' seamlessly maintains cursor memory and keeps typing at head, 'pause' pauses typing, 'abort' terminates typing."
         },
         "dtyp.pauseOnTabSwitch": {
           "type": "boolean",
@@ -365,6 +586,48 @@
           "minimum": 0,
           "maximum": 0.1,
           "description": "Probability of human typo on alphabetic keystrokes (0.015 = 1.5% typo rate)."
+        },
+        "dtyp.enableChameleonMode": {
+          "type": "boolean",
+          "default": false,
+          "description": "When enabled, pressing any random key on your physical keyboard will output the exact next character from the queued C code (Chameleon Ghost-Typing)."
+        },
+        "dtyp.enableFalseStarts": {
+          "type": "boolean",
+          "default": false,
+          "description": "Simulate natural mid-thought retractions and cognitive false starts when typing C variable declarations and expressions."
+        },
+        "dtyp.falseStartRate": {
+          "type": "number",
+          "default": 0.01,
+          "minimum": 0,
+          "maximum": 0.1,
+          "description": "Probability of mid-thought false start on identifiers (0.01 = 1% rate)."
+        },
+        "dtyp.soundFeedback": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable synthesized mechanical keyboard sound feedback in the stepping HUD."
+        },
+        "dtyp.switchProfile": {
+          "type": "string",
+          "enum": [
+            "blue",
+            "brown",
+            "thock",
+            "muted"
+          ],
+          "default": "blue",
+          "description": "Synthesized switch acoustic profile: 'blue' (Cherry MX Blue clicky), 'brown' (tactile bump), 'thock' (Gateron Black deep thock), or 'muted' (quiet linear)."
+        },
+        "dtyp.academicBraceStyle": {
+          "type": "string",
+          "enum": [
+            "kr",
+            "allman"
+          ],
+          "default": "kr",
+          "description": "Academic formatting brace style: 'kr' (Kernighan & Ritchie - opening brace on same line) or 'allman' (opening brace on its own line)."
         },
         "dtyp.analyzeMemoryAllocations": {
           "type": "boolean",
@@ -427,7 +690,19 @@
       ]
     },
     "menus": {
+      "editor/title": [
+        {
+          "command": "dtyp.compileAndRun",
+          "when": "resourceExtname == .c || resourceExtname == .cpp",
+          "group": "navigation@1"
+        }
+      ],
       "view/title": [
+        {
+          "command": "dtyp.openControlCenter",
+          "when": "view == 'dtyp.quickActionsView' || view == 'dtyp.libraryView'",
+          "group": "navigation@0"
+        },
         {
           "command": "dtyp.refreshViews",
           "when": "view == 'dtyp.libraryView' || view == 'dtyp.favoritesView' || view == 'dtyp.historyView' || view == 'dtyp.quickActionsView'",
@@ -476,6 +751,11 @@
           "group": "inline@4"
         },
         {
+          "command": "dtyp.visualizeComponent",
+          "when": "view == 'dtyp.libraryView' && viewItem == 'component'",
+          "group": "inline@5"
+        },
+        {
           "command": "dtyp.insertOwnComponent",
           "when": "view == 'dtyp.ownLibraryView' && viewItem == 'ownComponent'",
           "group": "inline@1"
@@ -501,13 +781,13 @@
       {
         "id": "dtyp.gettingStarted",
         "title": "Getting Started with dTyp",
-        "description": "Master the 500-component offline C library across 7 domains and stealth typing engine.",
+        "description": "Master the 665-component offline C library across 7 domains and stealth typing engine.",
         "featuredImage": "images/icon.png",
         "steps": [
           {
             "id": "welcome",
-            "title": "Discover 500 C Components",
-            "description": "Explore the completely offline C library across 7 structured domains.\n[Browse Offline Library](command:dtyp.browseLibrary)",
+            "title": "Discover 665 C Components across 7 Domains",
+            "description": "Explore the completely offline C library across 7 structured domains.\n[Open Control Center](command:dtyp.openControlCenter) &bull; [Browse Offline Library](command:dtyp.browseLibrary)",
             "media": {
               "markdown": "walkthroughs/welcome.md"
             },
@@ -546,6 +826,17 @@
             },
             "completionEvents": [
               "onCommand:dtyp.healthCheck"
+            ]
+          },
+          {
+            "id": "shortcuts",
+            "title": "Keyboard Shortcuts & Cheatsheet",
+            "description": "Master all shortcuts: Chameleon Mode (Alt+C), Step (Ctrl+Shift+D), Compile (Ctrl+F5), Sandbox (Ctrl+F6), ASan (Ctrl+F7), and Speed (Ctrl+[/]).\n[View Shortcuts Documentation](command:dtyp.showShortcuts)",
+            "media": {
+              "markdown": "walkthroughs/shortcuts.md"
+            },
+            "completionEvents": [
+              "onCommand:dtyp.showShortcuts"
             ]
           }
         ]

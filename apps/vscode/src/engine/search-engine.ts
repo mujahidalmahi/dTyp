@@ -7,6 +7,41 @@ export interface ScoredComponent {
   matchField: "id" | "name" | "prefix" | "category" | "alias" | "tag";
 }
 
+const ALGORITHMIC_INTENTS: Record<string, string[]> = {
+  // Sorting
+  "fast sort": ["quicksort", "mergesort", "heapsort"],
+  "quick sort": ["quicksort"],
+  "merge sort": ["mergesort"],
+  "stable sort": ["mergesort", "insertion_sort"],
+  "bubble sort": ["bubble_sort"],
+
+  // Graphs & Trees
+  "cycle": ["floyd", "cycle", "loop", "tortoise"],
+  "loop in list": ["floyd", "cycle", "detect_cycle"],
+  "detect loop": ["floyd", "cycle", "detect_cycle"],
+  "find loop": ["floyd", "cycle", "detect_cycle"],
+  "shortest path": ["dijkstra", "bellman_ford", "bfs"],
+  "minimum spanning tree": ["kruskal", "prim"],
+  "mst": ["kruskal", "prim"],
+  "tree traversal": ["inorder", "preorder", "postorder", "level_order"],
+  "balanced tree": ["avl", "red_black", "splay"],
+
+  // Data structures
+  "fifo": ["queue", "circular_queue"],
+  "lifo": ["stack"],
+  "priority queue": ["heap", "priority_queue", "min_heap", "max_heap"],
+  "hash map": ["hash_table", "hash_map"],
+  "lru": ["lru_cache"],
+  "dynamic array": ["vector", "dynamic_array"],
+
+  // Searching & Math
+  "binary search": ["binary_search", "bsearch"],
+  "gcd": ["euclidean_gcd", "gcd"],
+  "prime": ["sieve", "is_prime"],
+  "reverse list": ["reverse_linked_list", "reverse_list", "linkedlist"],
+  "palindrome": ["is_palindrome", "palindrome_check"],
+};
+
 export class SearchEngine {
   private cache = new Map<string, ScoredComponent[]>();
   private readonly MAX_CACHE = 100;
@@ -89,6 +124,17 @@ export class SearchEngine {
     const id = comp.id.toLowerCase();
     const name = comp.name.toLowerCase();
 
+    // 0. Algorithmic intent / synonym matching
+    for (const [intentKey, targets] of Object.entries(ALGORITHMIC_INTENTS)) {
+      if (q.includes(intentKey) || intentKey.includes(q)) {
+        for (const target of targets) {
+          if (id.includes(target) || name.includes(target)) {
+            return { score: 950, field: "name" };
+          }
+        }
+      }
+    }
+
     // 1. Exact matches
     if (id === q) return { score: 1000, field: "id" };
     if (name === q) return { score: 800, field: "name" };
@@ -109,12 +155,24 @@ export class SearchEngine {
       return { score: 250, field: "category" };
     }
 
-    // 6. Tags
+    // 6. Multi-word token overlap
+    const tokens = q.split(/\s+/).filter((t) => t.length > 1);
+    if (tokens.length > 1) {
+      const fullText = `${id} ${name} ${comp.category} ${comp.description} ${(comp.tags || []).join(" ")}`.toLowerCase();
+      const matchedTokens = tokens.filter((t) => fullText.includes(t));
+      if (matchedTokens.length === tokens.length) {
+        return { score: 450, field: "name" };
+      } else if (matchedTokens.length > 0) {
+        return { score: 120 * matchedTokens.length, field: "tag" };
+      }
+    }
+
+    // 7. Tags
     if (comp.tags && comp.tags.some((t) => t.toLowerCase().includes(q))) {
       return { score: 150, field: "tag" };
     }
 
-    // 7. Description
+    // 8. Description
     if (comp.description.toLowerCase().includes(q)) {
       return { score: 80, field: "tag" };
     }

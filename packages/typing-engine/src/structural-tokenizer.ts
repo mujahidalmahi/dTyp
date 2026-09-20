@@ -15,6 +15,8 @@ export interface TokenizerOptions {
   preserveTabs?: boolean;
   cognitivePauseIntensity?: CognitivePauseIntensity;
   enableFatigueRenewal?: boolean;
+  enableFalseStarts?: boolean;
+  falseStartRate?: number;
 }
 
 const OPEN_TO_CLOSE: Record<string, string> = {
@@ -106,28 +108,39 @@ export class StructuralTokenizer {
     const enableTypos = this.options.enableTypoSimulation ?? true;
     const typoRate = this.options.typoRate ?? 0.015;
 
-    // Normalize newlines and tabs according to options
+    // Normalize newlines and enforce tab-only indentation
     let normalized = source;
     if (this.options.preserveNewlines !== false) {
       normalized = normalized.replace(/\r\n/g, "\n").replace(/\r/g, "\n");
     } else {
       normalized = normalized.replace(/\r?\n/g, " ");
     }
-    if (this.options.preserveTabs === false) {
-      normalized = normalized.replace(/\t/g, "    ");
-    }
 
-    // Pass 1: Identify burst keywords for muscle-memory speedup
-    const wordsInText: Array<{ start: number; end: number; word: string; isBurst: boolean }> = [];
+    // Ensure all line-leading indentation strictly uses tabs '\t' (no space characters for indentation)
+    normalized = normalized.replace(/^[ \t]+/gm, (leading) => {
+      const spaceCount = leading.replace(/\t/g, "    ").length;
+      const tabs = Math.max(1, Math.round(spaceCount / 4));
+      return "\t".repeat(tabs);
+    });
+
+    // Pass 1: Identify burst keywords and identifier frequencies for muscle memory
+    const wordsInText: Array<{ start: number; end: number; word: string; isBurst: boolean; isFamiliar: boolean }> = [];
+    const identifierCounts = new Map<string, number>();
     const wordRegex = /[a-zA-Z_][a-zA-Z0-9_]*/g;
     let match: RegExpExecArray | null;
     while ((match = wordRegex.exec(normalized)) !== null) {
       const word = match[0];
+      const isBurst = C_BURST_KEYWORDS.has(word);
+      const prevCount = identifierCounts.get(word) ?? 0;
+      identifierCounts.set(word, prevCount + 1);
+      const isFamiliar = !isBurst && prevCount >= 1; // seen at least once prior
+
       wordsInText.push({
         start: match.index,
         end: match.index + word.length,
         word,
-        isBurst: C_BURST_KEYWORDS.has(word),
+        isBurst,
+        isFamiliar,
       });
     }
 
@@ -141,13 +154,15 @@ export class StructuralTokenizer {
     for (let i = 0; i < normalized.length; i++) {
       const char = normalized[i];
 
-      // Determine if current char is part of a keyword burst
+      // Determine if current char is part of a keyword burst or familiar identifier
       while (wordIdx < wordsInText.length && wordsInText[wordIdx].end <= i) {
         wordIdx++;
       }
       let inBurst = false;
+      let isFamiliar = false;
       if (wordIdx < wordsInText.length && i >= wordsInText[wordIdx].start && i < wordsInText[wordIdx].end) {
         inBurst = wordsInText[wordIdx].isBurst;
+        isFamiliar = wordsInText[wordIdx].isFamiliar;
       }
 
       // 1. Cognitive pause before control flow keywords (if, while, for, switch, do)
@@ -194,7 +209,7 @@ export class StructuralTokenizer {
         }
       }
 
-      let strokeDelay = this.cadence.calculateStrokeDelay(char, inBurst, prevChar);
+      let strokeDelay = this.cadence.calculateStrokeDelay(char, inBurst, prevChar, isFamiliar);
       if (isHumanized && this.options.enableFatigueRenewal !== false) {
         strokeDelay = Math.max(1, Math.round(strokeDelay * this.stamina.getDelayMultiplier()));
         this.stamina.recordKeystroke();
@@ -316,9 +331,11 @@ export class StructuralTokenizer {
 
           const afterNewline = restOfLine.slice(matchNewline[0].length);
           const nextLineIndentMatch = afterNewline.match(/^([ \t]*)/);
-          let blockIndent = nextLineIndentMatch ? nextLineIndentMatch[1] : baseIndent + "    ";
+          let blockIndent = (nextLineIndentMatch && nextLineIndentMatch[1].length > 0)
+            ? nextLineIndentMatch[1]
+            : baseIndent + "\t";
           if (blockIndent.length <= baseIndent.length) {
-            blockIndent = baseIndent + "    ";
+            blockIndent = baseIndent + "\t";
           }
 
           delimiterStack.push("}");
@@ -438,13 +455,31 @@ export class StructuralTokenizer {
         }
       }
 
-      // Chance to simulate realistic human typo on alphabetic characters and common punctuation
-      const isAlpha = /[a-zA-Z]/.test(char);
-      const isPunct = char === "." || char === "," || char === ";";
+      // Chance to simulate mid-thought retraction & false start on identifier or variable beginnings
+      const isWordStart = wordIdx < wordsInText.length && i === wordsInText[wordIdx].start;
+      const enableFalseStarts = this.options.enableFalseStarts ?? false;
+      const falseStartRate = this.options.falseStartRate ?? 0.01;
+      const shouldFalseStart =
+        isHumanized &&
+        enableFalseStarts &&
+        isWordStart &&
+        /[a-zA-Z]/.test(char) &&
+        Math.random() < falseStartRate;
+
+      if (shouldFalseStart) {
+        const falseChar = this.cadence.getAdjacentKey(char) || (char === "i" ? "j" : "tmp"[Math.floor(Math.random() * 3)]);
+        const falseSeq = this.createFalseStartSequence(char, falseChar, strokeDelay);
+        actions.push(...falseSeq);
+        prevChar = char;
+        continue;
+      }
+
+      // Chance to simulate realistic human typo on alphabetic characters, digits, and common symbols
+      const isTypoEligible = /[a-zA-Z0-9.,;:\-_=+[\]]/.test(char);
       const shouldTypo =
         isHumanized &&
         enableTypos &&
-        (isAlpha || isPunct) &&
+        isTypoEligible &&
         !inBurst &&
         Math.random() < typoRate;
 
@@ -452,7 +487,7 @@ export class StructuralTokenizer {
         const adjacent = this.cadence.getAdjacentKey(char);
         if (adjacent && adjacent !== char) {
           if (
-            isAlpha &&
+            /[a-zA-Z]/.test(char) &&
             i + 1 < normalized.length &&
             /[a-zA-Z0-9]/.test(normalized[i + 1]) &&
             Math.random() < 0.5
@@ -478,5 +513,34 @@ export class StructuralTokenizer {
     }
 
     return actions;
+  }
+
+  public createFalseStartSequence(targetChar: string, falseChar: string, strokeDelay: number): TypingAction[] {
+    const base = this.options.baseDelayMs;
+    const scale = Math.max(0.02, base / 30);
+    return [
+      {
+        type: "type",
+        char: falseChar,
+        delayMs: Math.max(1, Math.round(strokeDelay * 0.9)),
+        description: `false start: typed '${falseChar}' before reconsideration`,
+      },
+      {
+        type: "pause",
+        delayMs: Math.max(1, Math.round((180 + Math.random() * 150) * scale)),
+        description: "mid-thought cognitive pivot & pause",
+      },
+      {
+        type: "backspace",
+        delayMs: Math.max(1, Math.round((45 + Math.random() * 30) * scale)),
+        description: "retracting false start token",
+      },
+      {
+        type: "type",
+        char: targetChar,
+        delayMs: Math.max(1, Math.round(strokeDelay * 1.15)),
+        description: `resumed correct stroke '${targetChar}'`,
+      },
+    ];
   }
 }

@@ -1,8 +1,8 @@
-# dTyp Architecture Guide (v3.2)
+# dTyp Architecture Guide (v4.0)
 
 ## Overview
 
-**dTyp (Don't Tell Your Professor)** is a production-grade VS Code extension and offline academic C programming ecosystem providing instant offline C code insertion, smart context awareness, customizable Own Library authoring, and humanized character-by-character editor typing simulation.
+**dTyp (Don't Tell Your Professor)** is a production-grade VS Code extension and offline academic C programming ecosystem providing instant offline C code insertion, smart context awareness, customizable Own Library authoring, interactive visualizers, automated diagnostics, and humanized character-by-character editor typing simulation.
 
 ```
                                 dTyp Workspace
@@ -16,10 +16,12 @@
   (Library Explorer,         (AutoType, Header,          (WebAssembly sql.js +
    Own Library Explorer,      Memory, Cursor,             Local JSON Storage)
    Favorites, History,        Snippet, Session,                    │
-   Quick Controls,            Search, Update)           ┌──────────┴──────────┐
-    Release Notes Webview,                              │                     │
-    Own Library Webview)                           SQLite (dtyp.db)     own-library.json
-         │                                         500 C Components     Custom Library
+   Quick Controls,            Search, Update,           ┌──────────┴──────────┐
+   Control Center Flight Deck, Code Doctor,             │                     │
+   Recursion Visualizer,      Contest Scaffolder,      SQLite (dtyp.db)     own-library.json
+   Typing Drill Arena,        Valgrind Runner,         665 C Components     Custom Library
+   Release Notes Webview)     Sandbox Compiler)
+         │                            │                            │
          └────────────────────────────┼────────────────────────────┘
                                       │
                                  Shared Core
@@ -41,8 +43,12 @@ When Visual Studio Code activates `dtyp-vscode`:
 1. **Database & WASM Bootstrap**: `LibraryEngine` loads `sql-wasm.wasm` and opens `library/dtyp.db` via `sql.js` purely in memory. No native C++ addons are loaded, guaranteeing cross-platform compatibility across Windows, macOS, and Linux.
 2. **Own Library Storage**: `OwnLibraryStorage` initializes and reads user components from `globalStorageUri/own-library.json`, enabling offline custom component persistence, CRUD operations, and JSON export/import.
 3. **Core Production Engines**:
-   - `AutoTypeEngine`: Dual-mode orchestrator supporting humanized cadence across both automatic streaming and `Ctrl+Shift+D` manual stepping.
+   - `AutoTypeEngine`: Dual-mode orchestrator supporting humanized cadence across both automatic streaming and `Ctrl+Shift+D` manual stepping, plus Chameleon Ghost-Typing and false start simulations.
    - `NonlinearAuthoringPlanner` & `CStructuralDecomposer`: Transforms linear code into realistic human drafting sequences (drafting skeletons first, pairing resource allocations with cleanups).
+   - `CodeDoctorProvider`: AST-based defect analyzer inspecting active C files for 7 classic bugs (uninitialized pointers, buffer overflows, format mismatches, memory leaks, missing returns) with instant 1-click QuickFixes.
+   - `ContestScaffolder`: 1-click competitive programming workspace generator with fast I/O, 64MB bump arena, and differential randomized stress testing.
+   - `ValgrindRunner`: Memory leak profiling and AddressSanitizer runtime diagnostics engine.
+   - `SandboxCompiler`: Zero-configuration multi-test runner and terminal executor with GCC/Clang autodetect.
    - `HeaderEngine`: Scans code requirements and safely injects missing standard headers (`<stdlib.h>`, `<stdbool.h>`, `<stdio.h>`, `<math.h>`) at top of file.
    - `MemoryEngine`: Scans dynamic heap allocations (`malloc`, `calloc`, `realloc`), checks for matching `free()`, and warns of leaks.
    - `CursorEngine`: Placeholder token detection and bidirectional navigation (`Alt+Down` / `Alt+Up`).
@@ -50,14 +56,18 @@ When Visual Studio Code activates `dtyp-vscode`:
    - `SessionEngine`: Restores and persists insertion history and starred favorites.
    - `SearchEngine`: Sub-millisecond scored fuzzy search with category prefixes (`boiler:`, `ds:`, `algo:`, `own:`).
    - `UpdateEngine`: Non-intrusive background check against GitHub releases.
-4. **Activity Bar TreeView Registration**:
-   - `LibraryTreeProvider` -> `dtyp.libraryView` (500 components across 7 themed domains)
+4. **Activity Bar & Webview Registration**:
+   - `LibraryTreeProvider` -> `dtyp.libraryView` (665 components across 7 themed domains)
    - `OwnLibraryTreeProvider` -> `dtyp.ownLibraryView` (custom user components organized hierarchically)
    - `FavoritesTreeProvider` -> `dtyp.favoritesView`
    - `HistoryTreeProvider` -> `dtyp.historyView`
    - `QuickActionsProvider` -> `dtyp.quickActionsView`
+   - `ControlCenterPanel` -> `dtyp.openControlCenter` (`Ctrl+Alt+C`)
+   - `RecursionVisualizerPanel` -> `dtyp.visualizeRecursion` (`Ctrl+Shift+K`)
+   - `TypingDrillPanel` -> `dtyp.startTypingDrill` (`Ctrl+Shift+T`)
+   - `ReleaseNotesPanel` -> `dtyp.showReleaseNotes`
 5. **Lifecycle Hooks**:
-   - Check if an extension version upgrade occurred. If so, display the interactive "What's New in v3.2" Release Notes Webview.
+   - Check if an extension version upgrade occurred. If so, display the interactive "What's New in v4.0" Release Notes Webview.
    - If `dtyp.checkForUpdates` is true, schedule an asynchronous non-blocking GitHub release check.
 
 ---

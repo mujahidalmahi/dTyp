@@ -19,6 +19,7 @@ export class AutoTypeEngine {
   private logger = defaultLogger.child("AutoTypeEngine");
   private pendingQueue: PendingTypingQueue | null = null;
   private onQueueChangeListeners: Array<(hasQueue: boolean, remaining: number) => void> = [];
+  private lastInsertion: { componentId: string; componentName: string; text: string; mode: TypingMode; editorUri: string } | null = null;
 
   constructor(
     private typingEngine: DefaultTypingEngine,
@@ -27,6 +28,12 @@ export class AutoTypeEngine {
     this.typingTarget.onCursorJump((expected, actual) => {
       this.logger.warn(`Cursor relocated: expected ${expected.line}:${expected.character}, actual ${actual.line}:${actual.character}`);
     });
+
+    const config = vscode.workspace.getConfiguration("dtyp");
+    const initialChameleon = config.get<boolean>("enableChameleonMode", false);
+    if (initialChameleon) {
+      this.setChameleonMode(true);
+    }
   }
 
   public onQueueChange(cb: (hasQueue: boolean, remaining: number) => void): () => void {
@@ -56,7 +63,101 @@ export class AutoTypeEngine {
     return this.pendingQueue;
   }
 
+  private manualPaused = false;
+  private chameleonMode = false;
+
+  public isChameleonEnabled(): boolean {
+    return this.chameleonMode;
+  }
+
+  public isChameleonActive(): boolean {
+    return this.chameleonMode && this.isManualQueueActive();
+  }
+
+  public setChameleonMode(enabled: boolean): void {
+    this.chameleonMode = enabled;
+    vscode.commands.executeCommand("setContext", "dtyp.chameleonMode", enabled);
+    this.logger.info(`Chameleon Ghost-Typing mode ${enabled ? "enabled" : "disabled"}`);
+  }
+
+  public toggleChameleonMode(): boolean {
+    this.setChameleonMode(!this.chameleonMode);
+    return this.chameleonMode;
+  }
+
+  public getLastInsertion() {
+    return this.lastInsertion;
+  }
+
+  public pause(): void {
+    if (this.typingEngine.isTyping()) {
+      this.typingEngine.pause();
+    } else {
+      this.manualPaused = true;
+    }
+  }
+
+  public resume(): void {
+    if (this.typingEngine.isPaused()) {
+      this.typingEngine.resume();
+    }
+    this.manualPaused = false;
+  }
+
+  public togglePause(): boolean {
+    if (this.typingEngine.isTyping()) {
+      return this.typingEngine.togglePause();
+    }
+    this.manualPaused = !this.manualPaused;
+    return this.manualPaused;
+  }
+
+  public isPaused(): boolean {
+    return this.typingEngine.isPaused() || this.manualPaused;
+  }
+
+  public isTyping(): boolean {
+    return this.typingEngine.isTyping() || this.isManualQueueActive();
+  }
+
+  public speedUp(): number {
+    const current = this.typingEngine.getSpeedMultiplier?.() ?? 1.0;
+    const next = Math.min(5.0, Number((current * 1.25).toFixed(2)));
+    this.typingEngine.setSpeedMultiplier?.(next);
+    vscode.window.setStatusBarMessage(`$(zap) dTyp: Speed ${next}x (Ctrl+] / Ctrl+[)`, 2500);
+    return next;
+  }
+
+  public slowDown(): number {
+    const current = this.typingEngine.getSpeedMultiplier?.() ?? 1.0;
+    const next = Math.max(0.25, Number((current * 0.8).toFixed(2)));
+    this.typingEngine.setSpeedMultiplier?.(next);
+    vscode.window.setStatusBarMessage(`$(zap) dTyp: Speed ${next}x (Ctrl+] / Ctrl+[)`, 2500);
+    return next;
+  }
+
+  public setSpeedMultiplier(mult: number): void {
+    this.typingEngine.setSpeedMultiplier?.(mult);
+  }
+
+  public getSpeedMultiplier(): number {
+    return this.typingEngine.getSpeedMultiplier?.() ?? 1.0;
+  }
+
+  public cancel(): void {
+    this.manualPaused = false;
+    this.cancelManualQueue();
+    if (this.typingEngine.isTyping() || this.typingEngine.isPaused()) {
+      this.typingEngine.cancel();
+    }
+    this.typingTarget.resetTarget();
+    vscode.commands.executeCommand("setContext", "dtyp.isTyping", false);
+    vscode.commands.executeCommand("setContext", "dtyp.isPaused", false);
+    vscode.commands.executeCommand("setContext", "dtyp.hasQueuedCharacters", false);
+  }
+
   public cancelManualQueue(): void {
+    this.manualPaused = false;
     if (this.pendingQueue) {
       this.pendingQueue = null;
       this.notifyQueueChange();
@@ -74,7 +175,7 @@ export class AutoTypeEngine {
     const mode = modeOverride || config.get<TypingMode>("typingMode", "automatic");
     const delayMs = config.get<number>("typingDelayMs", 15);
     const jitterMs = config.get<number>("typingJitterMs", 5);
-    const cursorPolicy = config.get<CursorJumpAction>("onCursorJump", "pause");
+    const cursorPolicy = config.get<CursorJumpAction>("onCursorJump", "realign");
     const pauseOnTabSwitch = config.get<boolean>("pauseOnTabSwitch", true);
     const undoChunkSize = config.get<number>("undoChunkSize", 3);
     const naturalTypingModel = config.get<TypingModel>("naturalTypingModel", "nonlinear");
@@ -82,12 +183,23 @@ export class AutoTypeEngine {
     const typoRate = config.get<number>("typoRate", 0.015);
     const cognitivePauseIntensity = config.get<"subtle" | "natural" | "deliberate">("cognitivePauseIntensity", "natural");
     const enableFatigueRenewal = config.get<boolean>("enableFatigueRenewal", true);
+    const enableFalseStarts = config.get<boolean>("enableFalseStarts", false);
+    const falseStartRate = config.get<number>("falseStartRate", 0.01);
 
     this.typingTarget.setEditor(editor);
     this.typingTarget.setCursorJumpPolicy(cursorPolicy);
     this.typingTarget.setPauseOnTabSwitch(pauseOnTabSwitch);
     this.typingTarget.setUndoChunkSize(undoChunkSize);
     this.typingTarget.resetHead(editor.selection.active);
+
+    this.lastInsertion = {
+      componentId,
+      componentName,
+      text,
+      mode,
+      editorUri: editor?.document?.uri ? editor.document.uri.toString() : "",
+    };
+    vscode.commands.executeCommand("setContext", "dtyp.hasLastInsertion", true);
 
     if (mode === "automatic") {
       this.cancelManualQueue();
@@ -104,6 +216,8 @@ export class AutoTypeEngine {
           typoRate,
           cognitivePauseIntensity,
           enableFatigueRenewal,
+          enableFalseStarts,
+          falseStartRate,
         });
       } catch (err: any) {
         if (err.message === "TYPING_PAUSED_CURSOR_MOVED") {
@@ -155,6 +269,8 @@ export class AutoTypeEngine {
           preserveTabs: true,
           cognitivePauseIntensity,
           enableFatigueRenewal,
+          enableFalseStarts,
+          falseStartRate,
         });
         actions = tokenizer.tokenize(text);
       } else {
@@ -202,7 +318,7 @@ export class AutoTypeEngine {
           await this.typingTarget.deleteBackward();
         } else if (action.type === "enter_block") {
           if (this.typingTarget.enterBlock) {
-            await this.typingTarget.enterBlock(action.baseIndent ?? "", action.blockIndent ?? "    ");
+            await this.typingTarget.enterBlock(action.baseIndent ?? "", action.blockIndent ?? "\t");
           } else {
             await this.typingTarget.typeCharacter("\n");
           }
@@ -220,8 +336,16 @@ export class AutoTypeEngine {
           await this.typingTarget.typeCharacter(action.char || "", action.autoClose);
         }
       } catch (err: any) {
+        if (err.message === "TYPING_PAUSED_CURSOR_MOVED") {
+          const head = this.typingTarget.getExpectedHead();
+          if (head) {
+            activeEditor.selection = new vscode.Selection(head, head);
+          }
+          this.pendingQueue.currentIndex--;
+          stepsExecuted--;
+          break;
+        }
         if (
-          err.message === "TYPING_PAUSED_CURSOR_MOVED" ||
           err.message === "TYPING_PAUSED_TAB_SWITCHED" ||
           err.message === "TYPING_ABORTED_CURSOR_MOVED"
         ) {
@@ -261,7 +385,7 @@ export class AutoTypeEngine {
         await this.typingTarget.deleteBackward();
       } else if (action.type === "enter_block") {
         if (this.typingTarget.enterBlock) {
-          await this.typingTarget.enterBlock(action.baseIndent ?? "", action.blockIndent ?? "    ");
+          await this.typingTarget.enterBlock(action.baseIndent ?? "", action.blockIndent ?? "\t");
         } else {
           await this.typingTarget.typeCharacter("\n");
         }

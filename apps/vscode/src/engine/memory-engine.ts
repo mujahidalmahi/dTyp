@@ -6,6 +6,7 @@ export interface AllocationInfo {
   allocationType: "malloc" | "calloc" | "realloc";
   line: number;
   hasMatchingFree: boolean;
+  hasNullCheck?: boolean;
   isUnsafeRealloc?: boolean;
 }
 
@@ -69,6 +70,23 @@ export class MemoryEngine implements vscode.Disposable, vscode.CodeActionProvide
         diagnostics.push(diag);
       }
 
+      if (alloc.hasNullCheck === false) {
+        const lineIdx = Math.max(0, alloc.line - 1);
+        const line = document.lineAt(lineIdx);
+        const colStart = Math.max(0, line.text.indexOf(alloc.variableName));
+        const colEnd = colStart + alloc.variableName.length;
+        const range = new vscode.Range(lineIdx, colStart, lineIdx, colEnd);
+
+        const diag = new vscode.Diagnostic(
+          range,
+          `dTyp: Missing NULL check! Pointer '${alloc.variableName}' allocated via ${alloc.allocationType}() without verifying '${alloc.variableName} == NULL'.`,
+          vscode.DiagnosticSeverity.Information
+        );
+        diag.source = "dTyp Memory Guard";
+        diag.code = "dtyp.memory.null_check";
+        diagnostics.push(diag);
+      }
+
       if (alloc.isUnsafeRealloc) {
         const lineIdx = Math.max(0, alloc.line - 1);
         const line = document.lineAt(lineIdx);
@@ -125,9 +143,25 @@ export class MemoryEngine implements vscode.Disposable, vscode.CodeActionProvide
           }
 
           const insertPos = new vscode.Position(targetLine, 0);
-          const snippet = `    if (${varName} != NULL) {\n        free(${varName});\n        ${varName} = NULL;\n    }\n`;
+          const snippet = `\tif (${varName} != NULL) {\n\t\tfree(${varName});\n\t\t${varName} = NULL;\n\t}\n`;
           fix.edit = new vscode.WorkspaceEdit();
           fix.edit.insert(document.uri, insertPos, snippet);
+          actions.push(fix);
+        }
+      } else if (diag.code === "dtyp.memory.null_check") {
+        const varMatch = /Pointer '(\w+)'/.exec(diag.message);
+        const varName = varMatch ? varMatch[1] : null;
+        if (varName) {
+          const fix = new vscode.CodeAction(
+            `dTyp: Insert if (${varName} == NULL) allocation guard`,
+            vscode.CodeActionKind.QuickFix
+          );
+          fix.diagnostics = [diag];
+          fix.isPreferred = true;
+          fix.edit = new vscode.WorkspaceEdit();
+          const nextLinePos = new vscode.Position(diag.range.start.line + 1, 0);
+          const snippet = `\tif (${varName} == NULL) {\n\t\tperror("Allocation failed");\n\t\texit(EXIT_FAILURE);\n\t}\n`;
+          fix.edit.insert(document.uri, nextLinePos, snippet);
           actions.push(fix);
         }
       }
@@ -155,6 +189,11 @@ export class MemoryEngine implements vscode.Disposable, vscode.CodeActionProvide
           const freeRegex = new RegExp(`\\bfree\\s*\\(\\s*${varName}\\s*\\)`);
           const hasMatchingFree = freeRegex.test(code);
 
+          const nullCheckRegex = new RegExp(
+            `\\bif\\s*\\(\\s*(?:${varName}\\s*==\\s*NULL|!\\s*${varName}|${varName}\\s*!=\\s*NULL)\\b`
+          );
+          const hasNullCheck = nullCheckRegex.test(code);
+
           // Check if unsafe direct realloc assignment: ptr = realloc(ptr, ...)
           const isUnsafeRealloc =
             allocType === "realloc" &&
@@ -165,6 +204,7 @@ export class MemoryEngine implements vscode.Disposable, vscode.CodeActionProvide
             allocationType: allocType,
             line: i + 1,
             hasMatchingFree,
+            hasNullCheck,
             isUnsafeRealloc,
           });
         }

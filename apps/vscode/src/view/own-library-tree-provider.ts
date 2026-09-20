@@ -3,6 +3,7 @@ import { OwnLibraryStorage, OwnComponent } from "../engine/own-library-storage.j
 
 export type OwnLibraryTreeNode =
   | SubDomainNode
+  | TopicNode
   | SubTopicNode
   | OwnComponentNode
   | EmptyStateNode;
@@ -12,10 +13,20 @@ export class SubDomainNode {
   constructor(public readonly subDomain: string, public readonly count: number) {}
 }
 
+export class TopicNode {
+  readonly kind = "topic";
+  constructor(
+    public readonly subDomain: string,
+    public readonly topic: string,
+    public readonly count: number
+  ) {}
+}
+
 export class SubTopicNode {
   readonly kind = "subTopic";
   constructor(
     public readonly subDomain: string,
+    public readonly topic: string,
     public readonly subTopic: string,
     public readonly count: number
   ) {}
@@ -78,12 +89,25 @@ export class OwnLibraryTreeProvider
       return item;
     }
 
+    if (element.kind === "topic") {
+      const item = new vscode.TreeItem(
+        element.topic,
+        vscode.TreeItemCollapsibleState.Expanded
+      );
+      item.id = `own_topic_${element.subDomain}_${element.topic}`;
+      item.description = `(${element.count})`;
+      item.iconPath = new vscode.ThemeIcon("tag");
+      item.tooltip = `Topic: ${element.topic} (${element.count} component${element.count > 1 ? "s" : ""})`;
+      item.contextValue = "ownTopic";
+      return item;
+    }
+
     if (element.kind === "subTopic") {
       const item = new vscode.TreeItem(
         element.subTopic,
         vscode.TreeItemCollapsibleState.Expanded
       );
-      item.id = `own_subtopic_${element.subDomain}_${element.subTopic}`;
+      item.id = `own_subtopic_${element.subDomain}_${element.topic}_${element.subTopic}`;
       item.description = `(${element.count})`;
       item.iconPath = new vscode.ThemeIcon("list-tree");
       item.tooltip = `Sub Topic: ${element.subTopic} (${element.count} component${element.count > 1 ? "s" : ""})`;
@@ -113,7 +137,7 @@ export class OwnLibraryTreeProvider
     if (comp.description) {
       md.appendMarkdown(`${comp.description}\n\n`);
     }
-    md.appendMarkdown(`**Hierarchy:** \`Own Library\` -> \`${comp.subDomain}\` -> \`${comp.subTopic}\`\n\n`);
+    md.appendMarkdown(`**Hierarchy:** \`Own Library\` -> \`${comp.subDomain}\` -> \`${comp.topic || "General"}\` -> \`${comp.subTopic}\`\n\n`);
     md.appendMarkdown(`**Type:** \`${comp.type}\` | **Signature:** \`${comp.signature}\`\n\n`);
     if (comp.tags && comp.tags.length > 0) {
       md.appendMarkdown(`**Tags:** ${comp.tags.map((t) => `\`${t}\``).join(", ")}\n\n`);
@@ -152,20 +176,35 @@ export class OwnLibraryTreeProvider
     }
 
     if (element.kind === "subDomain") {
-      // List subTopics within subDomain
-      const subTopics = this.storage.getSubTopics(element.subDomain);
+      // List topics within subDomain
+      const topics = this.storage.getTopics(element.subDomain);
+      return topics.map((t) => {
+        const count = all.filter(
+          (c) => c.subDomain === element.subDomain && (c.topic || "General") === t
+        ).length;
+        return new TopicNode(element.subDomain, t, count);
+      });
+    }
+
+    if (element.kind === "topic") {
+      // List subTopics within subDomain and topic
+      const subTopics = this.storage.getSubTopics(element.subDomain, element.topic);
       return subTopics.map((st) => {
         const count = all.filter(
-          (c) => c.subDomain === element.subDomain && c.subTopic === st
+          (c) =>
+            c.subDomain === element.subDomain &&
+            (c.topic || "General") === element.topic &&
+            c.subTopic === st
         ).length;
-        return new SubTopicNode(element.subDomain, st, count);
+        return new SubTopicNode(element.subDomain, element.topic, st, count);
       });
     }
 
     if (element.kind === "subTopic") {
-      // List components within subDomain and subTopic
-      const comps = this.storage.getBySubDomainAndTopic(
+      // List components within subDomain, topic, and subTopic
+      const comps = this.storage.getByHierarchy(
         element.subDomain,
+        element.topic,
         element.subTopic
       );
       return comps.map((c) => new OwnComponentNode(c));

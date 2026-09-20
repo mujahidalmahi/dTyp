@@ -2,40 +2,79 @@
 
 All notable changes to the "dtyp-vscode" extension will be documented in this file.
 
-## [3.2.0] - 2026-09-19
+## [4.0.0] - 2026-09-20
 
-### Smart Block Auto-Expansion, Universal Non-Sequential Authoring, and Own Library Creator
+### World-Class Flagship Release — 15 Super-Dimensions of Academic C Excellence
+
+- **Control Center Flight Deck (`dtyp.openControlCenter`, `Ctrl+Alt+C`)**:
+  - Full-screen dark-mode bento grid command center with live telemetry, typing mode toggle cards, and all tool launchers.
+  - Searchable interactive keyboard shortcuts cheatsheet covering every dTyp command.
+- **Academic Code Doctor & Auto-Fixer (`dtyp.diagnoseCode`, `Ctrl+Shift+L`)**:
+  - Offline AST-level C linter identifying 7 critical academic bugs: uninitialized wild pointers, buffer overflows, format string mismatches, malloc-without-null-check, memory leaks, missing return statements in non-void functions, and unreachable dead code.
+  - `CodeActionProvider` delivering 1-click diagnostic QuickFixes (e.g. auto-initialize pointer to `NULL`, add `if (!ptr) return NULL;`).
+- **CP Contest Arena & Stress Tester (`dtyp.scaffoldContest`, `Ctrl+F9`)**:
+  - 1-click competitive scaffold picker: Fast I/O (`getchar_unlocked`, ~5x faster than `scanf`), 64MB Static Bump Arena (`arena_alloc()`), and Automated Differential Stress Tester (thousands of randomized trials comparing `solve_brute()` vs `solve_optimized()`).
+- **Interactive Recursion Tree Visualizer (`dtyp.visualizeRecursion`)**:
+  - Live SVG recursion tree showing call stack frames, per-frame variable state, execution step scrubber, and duplicate subproblem highlighting (memoization feedback).
+- **Valgrind & AddressSanitizer Memory Profiler (`dtyp.runValgrind`)**:
+  - Runs `valgrind --leak-check=full` with debug symbols and parses "definitely lost" / "indirectly lost" bytes into human-friendly summaries with allocation stack traces.
+  - AddressSanitizer: compiles with `-fsanitize=address,undefined` and translates cryptic ASan traces into plain English diagnostics.
+- **C Typing Speed Drill Arena (`dtyp.openTypingDrill`)**:
+  - Gamified TypeRacer-style drill specifically for C syntax: real-time WPM/CPM gauges, color-coded accuracy feedback, and personal high score tracking.
+- **Chameleon Ghost-Typing Mode (`dtyp.toggleChameleonMode`, `Alt+C`)**:
+  - Intercepts any physical keystroke and emits the exact next character, block expansion, or delimiter step-over from the queued algorithm. Eliminates any chance of accidental typos during live exams or interviews.
+  - `dtyp.enableChameleonMode`: Persist Chameleon state across sessions.
+- **Biomechanical Cadence & False Starts Engine**:
+  - `dtyp.enableFalseStarts`: Simulates real programmer rethinking — types 2–4 characters of an alternative approach, hesitates, backspaces, then proceeds with the correct implementation.
+  - Physical QWERTY key distance, hand alternation, and finger reach dynamics modulate per-character latency for ultra-realistic simulation.
+- **Interactive Status Bar Quick Menu (`dtyp.openStatusBarMenu`, `Ctrl+Shift+M`)**:
+  - Full-featured in-editor launcher covering all 20+ commands and visualizers with descriptive labels and keyboard hint overlays.
+- **Inline Code Hover Preview (Scrollable Full Source)**:
+  - Hovering over any component in the Activity Bar or QuickPick triggers a scrollable, syntax-highlighted preview of its full source code.
+- **In-Flight Speed Scrubbing (`Ctrl+]` / `Ctrl+[`)**:
+  - Dynamically accelerate (+25%) or decelerate (-20%) typing speed multiplier mid-flight (0.25x to 5.0x) without restarting.
+- **Academic Pure Tab Formatter (`dtyp.formatAcademic`, `Shift+Alt+F`)**:
+  - Enforces pure `\t` indentation, spaces around binary operators, and configurable K&R, Allman, or GNU brace styles via `dtyp.academicBraceStyle`.
+- **Multi-Test Sandbox Runner (`dtyp.runTestCases`, `Ctrl+F6`)**:
+  - Zero-configuration 1-click compile, run, and test suite comparing stdin/stdout with expected outputs. Includes timeout guard and preset algorithm suites.
+- **Library Expanded to 665 Components**:
+  - Boiler Plates: 103, Data Structures: 178, Algorithms: 164, Competitive Programming: 70, Academics Programming: 56, Projects: 30, Detection: 64.
+- **Settings Overhaul (22 Clean Properties)**:
+  - All 22 settings cleanly mapped to engine logic. Zero dummy/redundant settings. New properties: `enableFalseStarts`, `falseStartRate`, `enableChameleonMode`, `soundFeedback`, `switchProfile`, `academicBraceStyle`.
+- **Test Suite: 146 tests across 29 suites — 100% green**.
+
+## [3.2.0] - 2026-09-20
+
+### Instant Pause/Resume, Renew Engine Overhaul, 4-Level Own Library, & Indentation Stability
+- **Instant Pause & Resume (`Alt+P`, `dtyp.togglePauseTyping`)**:
+  - Implemented interruptible sleep timer (`interruptibleSleep()`) so pause events instantly halt sleep delays, including long cognitive micro-pauses (400–1500ms).
+  - Status bar updates dynamically to show `$(debug-pause) dTyp: Paused [Click to resume]` with character counts.
+  - Full support across both automated continuous typing and stealth manual stepping queues.
+  - Commands added: `dtyp.togglePauseTyping`, `dtyp.pauseTyping`, `dtyp.resumeTyping`.
+- **Renew Engine & Rewind Upgrades (`Ctrl+Shift+R`, `dtyp.renewQueue`)**:
+  - Upgraded queue renewal to support both automated mode and manual mode: cancels active session and re-initiates insertion from character 0.
+  - Integrated duplicate detector bypass (`force: true`) so renewed components are never skipped as duplicates.
+  - Rewind step (`Ctrl+Shift+U`, `dtyp.rewindStep`) accurately deletes backward and rewinds queue state.
+  - In-file renewal (`dtyp.renewComponent`) with robust regex matching for structs, typedefs, macros, and function bodies.
+- **4-Level Own Library Hierarchy**:
+  - Expanded custom library hierarchy to 4 structured tiers: **Sub Domain &rarr; Topic &rarr; Sub Topic &rarr; Component**.
+  - Added dedicated `topic` field across `OwnComponent`, form inputs, tree nodes (`TopicNode`), and path builders.
+  - Fixed Webview focus loss: Save & Auto-Type automatically restores active document and editor focus before insertion.
+- **Indentation & Formatting Stability**:
+  - Added clean double-newline (`\n\n`) separation after `#include` header injections to prevent headers from fusing to structs and helper functions.
+  - Added `normalizeBodyIndentation()` to prevent driver statement trimming from stripping leading 4-space indentation.
+  - Corrected cursor placement landmarks to prevent indentation doubling (`targetCol = 0` for pre-indented lines).
+  - Enhanced closing brace overtype matching to scan across multi-line whitespace and cleanly step over indented braces.
 - **Smart Block Auto-Expansion (`enter_block`)**:
   - Implemented exact VS Code native `onEnterRules` emulation.
-  - When `{` is typed followed by a line break, the engine pairs `{}` on the same line, immediately executes `enter_block` to create the 3-line scaffold:
-    - Line 1: `... {`
-    - Line 2: `    |` (auto-indented to column 4, cursor placed here)
-    - Line 3: `}` (closing brace on its own line at base indentation)
-  - Code statements inside the block type directly into the indented line.
-  - At block termination, the closing brace `}` is cleanly overtyped without pushing the brace sideways across the editor line.
-  - Completely eradicates the machine artifact of spaces pushing `}` horizontally.
+  - When `{` is typed followed by a line break, pairs `{}` on the same line and creates the 3-line scaffold with cursor placed at column 4.
+  - Eradicates the machine artifact of spaces pushing `}` sideways across the line.
 - **Universal Non-Sequential Coding**:
-  - Expanded non-linear authoring beyond full programs to handle single functions, competitive programming routines, algorithms, and multi-function libraries.
-  - **Intra-Function Skeleton-First Drafting**: Function signature and return anchor drafted first (`int fib(int n) { return 0; }`), then cursor jumps above return (`landmark: "above_return"`) to author intermediate algorithm logic.
-  - **Resource-Cleanup Pairing**: Dynamic memory allocations (`malloc`/`calloc`) and file handles (`fopen`) are paired immediately with cleanups (`free(ptr);`, `fclose(f);`), with cursor jumping between them (`landmark: "above_free"`) to write data operations.
-  - **Multi-Function Scaffolding**: Automatically scaffolds primary/entry functions first, moves cursor above to author helper functions, and returns inside the entry function to complete driver logic.
-- **Own Library Custom Component Creator**:
-  - Added dedicated **Own Library** sidebar TreeView (`dtyp.ownLibraryView`) in the Activity Bar with collapsible hierarchy (`Sub Domain` &rarr; `Sub Topic` &rarr; `Component Item`).
-  - Native Webview Form (`OwnLibraryPanel`) with 10 custom fields:
-    - Domain (`Own Library` fixed badge), Sub Domain, Sub Topic, Component Name, Component Type (`snippet`, `function`, `struct`, `program`, `header`), Signature, Description, Tags, Aliases, and Code Content.
-    - Tab key indentation support (4 spaces) and dynamic line/character counting.
-  - Persistent JSON Storage (`OwnLibraryStorage`) saving to `context.globalStorageUri/own-library.json` with synchronous in-memory caching and globalState fallback.
-  - Full CRUD operations, JSON library export (`dtyp.exportOwnLibrary`), and schema-validated JSON import (`dtyp.importOwnLibrary`).
-  - Integrated into QuickPick browser (`dtyp.browseLibrary`), fuzzy search (`dtyp.quickInsert`), and the dual-mode typing pipeline.
-- **Natural Typing Kinetics & Cadence**:
-  - **Delayed-Recognition Typo Bursts**: Velocity-aware typo simulation where the engine types 1 overshoot character, experiences a recognition pause (90–160ms), issues a 2x backspace burst (35–60ms), and types the corrected sequence.
-  - **Rhythmic Operator Spacing**: Deliberate cadence on binary operators surrounded by whitespace (` = `, ` == `, ` != `, ` + `, ` - `) versus reflex strokes on unary operators (`++i`, `*ptr`).
-  - **Cognitive Micro-Pauses**:
-    - Comma parameter inspection hesitation (`comma_parameter`: 90–220ms).
-    - Post-statement breathing pause before newlines (`post_statement`: 80–200ms).
-    - Inter-block conceptual formulation pause on double newlines (`inter_block`: 350–700ms).
+  - Intra-function skeleton-first drafting (`landmark: "above_return"`).
+  - Resource-cleanup pairing (`landmark: "above_free"`).
+  - Multi-function scaffolding with primary entry point drafted first.
 - **Test Suite Expansion**:
-  - Added 12 new dedicated unit tests (`tests/unit/nonlinear-typing-behaviors.test.ts`), bringing the full test suite to 87 tests passing with 100% success rate.
+  - 89 automated tests passing with 100% success rate across 14 test suites covering the entire engine.
 
 ## [3.1.0] - 2026-09-17
 

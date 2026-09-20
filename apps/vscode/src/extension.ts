@@ -18,6 +18,7 @@ import {
   HeaderEngine,
   RenewEngine,
   OwnLibraryStorage,
+  GhostPreviewEngine,
 } from "./engine/index.js";
 import {
   LibraryTreeProvider,
@@ -28,9 +29,27 @@ import {
   HierarchicalQuickPickBrowser,
   OwnLibraryPanel,
   OwnLibraryTreeProvider,
+  VisualizerPanel,
+  TestRunnerPanel,
+  FlashcardsPanel,
+  HudPanel,
+  RecursionVisualizerPanel,
+  TypingDrillPanel,
+  ControlCenterPanel,
 } from "./view/index.js";
 import { UpdateEngine } from "./engine/update-engine.js";
-import { DiagnosticsManager } from "./command/diagnostics-command.js";
+import {
+  DiagnosticsManager,
+  CompilerRunner,
+  SanitizerRunner,
+  AcademicModularizer,
+  BenchmarkRunner,
+  AcademicFormatter,
+  CodeDoctorAnalyzer,
+  CodeDoctorProvider,
+  ContestScaffolder,
+  ValgrindRunner,
+} from "./command/index.js";
 
 const logger = defaultLogger.child("VSCodeExtension");
 
@@ -54,7 +73,7 @@ let historyTreeProvider: HistoryTreeProvider | null = null;
 let quickActionsTreeProvider: QuickActionsTreeProvider | null = null;
 
 export async function activate(context: vscode.ExtensionContext): Promise<void> {
-  const version = context.extension.packageJSON.version || "3.0.0";
+  const version = context.extension.packageJSON.version || "4.0.0";
   logger.info(`Activating dTyp VS Code Extension v${version}`);
 
   const dbPath = path.join(context.extensionPath, "library", "dtyp.db");
@@ -104,6 +123,18 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
 
   memoryEngine = new MemoryEngine();
   context.subscriptions.push(memoryEngine);
+  context.subscriptions.push(
+    vscode.languages.registerCodeActionsProvider(["c", "cpp"], memoryEngine, {
+      providedCodeActionKinds: [vscode.CodeActionKind.QuickFix],
+    })
+  );
+
+  ghostPreviewEngine = new GhostPreviewEngine();
+  context.subscriptions.push(ghostPreviewEngine);
+
+  context.subscriptions.push(
+    vscode.languages.registerCodeLensProvider(["c", "cpp"], new CompilerRunner())
+  );
 
   updateEngine = new UpdateEngine(context);
 
@@ -123,22 +154,42 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
     })
   );
 
+  // Initialize Code Doctor Provider (Academic Formatter & QuickFixes)
+  CodeDoctorProvider.init(context);
+  context.subscriptions.push(
+    vscode.languages.registerCodeActionsProvider(["c", "cpp"], new CodeDoctorProvider(), {
+      providedCodeActionKinds: [vscode.CodeActionKind.QuickFix],
+    }),
+    vscode.languages.registerDocumentFormattingEditProvider(["c", "cpp"], {
+      provideDocumentFormattingEdits(doc: vscode.TextDocument): vscode.TextEdit[] {
+        const config = vscode.workspace.getConfiguration("dtyp");
+        const style = config.get<"kr" | "allman">("academicBraceStyle", "kr");
+        const formatted = AcademicFormatter.format(doc.getText(), style);
+        const fullRange = new vscode.Range(doc.positionAt(0), doc.positionAt(doc.getText().length));
+        return [vscode.TextEdit.replace(fullRange, formatted)];
+      },
+    })
+  );
+
   // Initialize diagnostics and placeholder decorations for active text editor
   if (vscode.window.activeTextEditor) {
     memoryEngine.updateDiagnostics(vscode.window.activeTextEditor.document);
+    CodeDoctorProvider.updateDiagnostics(vscode.window.activeTextEditor.document);
     CursorEngine.updateDecorations(vscode.window.activeTextEditor);
   }
 
   context.subscriptions.push(
     vscode.window.onDidChangeActiveTextEditor((editor) => {
-      if (editor && memoryEngine) {
-        memoryEngine.updateDiagnostics(editor.document);
+      if (editor) {
+        memoryEngine?.updateDiagnostics(editor.document);
+        CodeDoctorProvider.updateDiagnostics(editor.document);
         CursorEngine.updateDecorations(editor);
       }
     }),
     vscode.workspace.onDidChangeTextDocument((e) => {
       if (vscode.window.activeTextEditor && e.document === vscode.window.activeTextEditor.document) {
         memoryEngine?.updateDiagnostics(e.document);
+        CodeDoctorProvider.updateDiagnostics(e.document);
         CursorEngine.updateDecorations(vscode.window.activeTextEditor);
       }
     })
@@ -155,12 +206,12 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
     vscode.window.registerTreeDataProvider("dtyp.ownLibraryView", ownLibraryTreeProvider)
   );
 
-  favoritesTreeProvider = new FavoritesTreeProvider(sessionEngine);
+  favoritesTreeProvider = new FavoritesTreeProvider(sessionEngine, libraryEngine);
   context.subscriptions.push(
     vscode.window.registerTreeDataProvider("dtyp.favoritesView", favoritesTreeProvider)
   );
 
-  historyTreeProvider = new HistoryTreeProvider(sessionEngine);
+  historyTreeProvider = new HistoryTreeProvider(sessionEngine, libraryEngine);
   context.subscriptions.push(
     vscode.window.registerTreeDataProvider("dtyp.historyView", historyTreeProvider)
   );
@@ -175,23 +226,46 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
   // Status Bar Item
   const statusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Right, 100);
   statusBarItem.text = `$(keyboard) dTyp: ${totalCount.toLocaleString()} Ready`;
-  statusBarItem.tooltip = `dTyp Offline C Library (${totalCount.toLocaleString()} components) - Click to Browse`;
-  statusBarItem.command = "dtyp.browseLibrary";
+  statusBarItem.tooltip = `dTyp Master Hub (${totalCount.toLocaleString()} components) - Click for Tools & Controls`;
+  statusBarItem.command = "dtyp.openStatusBarMenu";
   statusBarItem.show();
   context.subscriptions.push(statusBarItem);
 
   // Engine Event Listeners
   typingEngine.on("start", (stats) => {
     vscode.commands.executeCommand("setContext", "dtyp.isTyping", true);
+    vscode.commands.executeCommand("setContext", "dtyp.isPaused", false);
+    statusBarItem.command = "dtyp.togglePauseTyping";
+    statusBarItem.tooltip = "dTyp is typing... Click or press Alt+P to pause";
     statusBarItem.text = `$(sync~spin) dTyp: 0/${stats.charactersTotal}`;
   });
 
   typingEngine.on("progress", (data) => {
-    statusBarItem.text = `$(sync~spin) dTyp: ${data.stats.charactersTyped}/${data.stats.charactersTotal} (${data.stats.averageSpeedCps} cps)`;
+    if (typingEngine?.isPaused()) {
+      statusBarItem.text = `$(debug-pause) dTyp: Paused (${data.stats.charactersTyped}/${data.stats.charactersTotal})`;
+      statusBarItem.tooltip = "dTyp is paused. Click or press Alt+P to resume";
+    } else {
+      statusBarItem.text = `$(sync~spin) dTyp: ${data.stats.charactersTyped}/${data.stats.charactersTotal} (${data.stats.averageSpeedCps} cps)`;
+      statusBarItem.tooltip = "dTyp is typing... Click or press Alt+P to pause";
+    }
+  });
+
+  typingEngine.on("pause", () => {
+    vscode.commands.executeCommand("setContext", "dtyp.isPaused", true);
+    statusBarItem.text = "$(debug-pause) dTyp: Paused [Click to resume]";
+    statusBarItem.tooltip = "dTyp is paused. Click or press Alt+P to resume";
+  });
+
+  typingEngine.on("resume", () => {
+    vscode.commands.executeCommand("setContext", "dtyp.isPaused", false);
+    statusBarItem.tooltip = "dTyp is typing... Click or press Alt+P to pause";
   });
 
   typingEngine.on("complete", () => {
     vscode.commands.executeCommand("setContext", "dtyp.isTyping", false);
+    vscode.commands.executeCommand("setContext", "dtyp.isPaused", false);
+    statusBarItem.command = "dtyp.openStatusBarMenu";
+    statusBarItem.tooltip = `dTyp Master Hub (${totalCount.toLocaleString()} components) - Click for Tools & Controls`;
     statusBarItem.text = "$(check) dTyp: Completed";
     setTimeout(() => {
       statusBarItem.text = `$(keyboard) dTyp: ${totalCount.toLocaleString()} Ready`;
@@ -200,6 +274,9 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
 
   typingEngine.on("cancel", () => {
     vscode.commands.executeCommand("setContext", "dtyp.isTyping", false);
+    vscode.commands.executeCommand("setContext", "dtyp.isPaused", false);
+    statusBarItem.command = "dtyp.openStatusBarMenu";
+    statusBarItem.tooltip = `dTyp Master Hub (${totalCount.toLocaleString()} components) - Click for Tools & Controls`;
     statusBarItem.text = "$(x) dTyp: Cancelled";
     setTimeout(() => {
       statusBarItem.text = `$(keyboard) dTyp: ${totalCount.toLocaleString()} Ready`;
@@ -208,7 +285,8 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
   autoTypeEngine.onQueueChange((hasQueue, remaining) => {
     if (hasQueue) {
       statusBarItem.text = `$(keyboard) dTyp: ${remaining} chars [Ctrl+Shift+D to step]`;
-    } else {
+    } else if (!typingEngine?.isTyping()) {
+      statusBarItem.command = "dtyp.browseLibrary";
       statusBarItem.text = `$(keyboard) dTyp: ${totalCount.toLocaleString()} Ready`;
     }
   });
@@ -230,12 +308,16 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
 
   const hoverProvider = vscode.languages.registerHoverProvider(
     ["c", "cpp"],
-    new DTypHoverProvider(libraryEngine)
+    new DTypHoverProvider(libraryEngine, ownLibraryStorage ?? undefined)
   );
   context.subscriptions.push(hoverProvider);
 
   // Reusable Insertion Pipeline
-  const insertComponentPipeline = async (componentId: string, modeOverride?: "automatic" | "manual") => {
+  const insertComponentPipeline = async (
+    componentId: string,
+    modeOverride?: "automatic" | "manual",
+    options?: { force?: boolean }
+  ) => {
     if (!libraryEngine || !typingEngine || !typingTarget || !autoTypeEngine || !sessionEngine) return;
 
     const editor = vscode.window.activeTextEditor;
@@ -243,6 +325,8 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
       vscode.window.showWarningMessage("Open a C/C++ file to insert component.");
       return;
     }
+
+    ghostPreviewEngine?.clearPreview();
 
     let comp = await libraryEngine.findComponent(componentId);
     let componentsToInsert: Component[] = [];
@@ -268,7 +352,7 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
     }
 
     const config = vscode.workspace.getConfiguration("dtyp");
-    const checkDuplicates = config.get<boolean>("checkDuplicates", true);
+    const checkDuplicates = !options?.force && config.get<boolean>("checkDuplicates", true);
 
     if (checkDuplicates) {
       const currentDocText = editor.document.getText();
@@ -743,20 +827,61 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
   context.subscriptions.push(historyCmd);
 
   const cancelCmd = vscode.commands.registerCommand("dtyp.cancelTyping", () => {
-    if (autoTypeEngine?.isManualQueueActive()) {
-      autoTypeEngine.cancelManualQueue();
-      vscode.window.showInformationMessage("dTyp: Manual typing queue cleared.");
-    }
-    if (typingEngine?.isTyping()) {
+    ghostPreviewEngine?.clearPreview();
+    if (autoTypeEngine?.isTyping() || autoTypeEngine?.isManualQueueActive()) {
+      autoTypeEngine.cancel();
+      vscode.window.showInformationMessage("dTyp: Typing cancelled and queue cleared.");
+    } else if (typingEngine?.isTyping()) {
       typingEngine.cancel();
       vscode.window.showInformationMessage("dTyp: Automated character typing cancelled.");
     }
   });
   context.subscriptions.push(cancelCmd);
 
+  const togglePauseCmd = vscode.commands.registerCommand("dtyp.togglePauseTyping", () => {
+    if (autoTypeEngine?.isTyping()) {
+      const paused = autoTypeEngine.togglePause();
+      if (paused) {
+        vscode.window.showInformationMessage("dTyp: Typing paused (Alt+P to resume).");
+      } else {
+        vscode.window.showInformationMessage("dTyp: Typing resumed.");
+      }
+    } else if (typingEngine?.isTyping()) {
+      const paused = typingEngine.togglePause();
+      if (paused) {
+        vscode.window.showInformationMessage("dTyp: Typing paused (Alt+P to resume).");
+      } else {
+        vscode.window.showInformationMessage("dTyp: Typing resumed.");
+      }
+    }
+  });
+  context.subscriptions.push(togglePauseCmd);
+
+  const pauseCmd = vscode.commands.registerCommand("dtyp.pauseTyping", () => {
+    if (autoTypeEngine?.isTyping() && !autoTypeEngine.isPaused()) {
+      autoTypeEngine.pause();
+      vscode.window.showInformationMessage("dTyp: Typing paused (Alt+P to resume).");
+    } else if (typingEngine?.isTyping() && !typingEngine.isPaused()) {
+      typingEngine.pause();
+      vscode.window.showInformationMessage("dTyp: Typing paused (Alt+P to resume).");
+    }
+  });
+  context.subscriptions.push(pauseCmd);
+
+  const resumeCmd = vscode.commands.registerCommand("dtyp.resumeTyping", () => {
+    if (autoTypeEngine?.isPaused()) {
+      autoTypeEngine.resume();
+      vscode.window.showInformationMessage("dTyp: Typing resumed.");
+    } else if (typingEngine?.isPaused()) {
+      typingEngine.resume();
+      vscode.window.showInformationMessage("dTyp: Typing resumed.");
+    }
+  });
+  context.subscriptions.push(resumeCmd);
+
   const renewQueueCmd = vscode.commands.registerCommand("dtyp.renewQueue", async () => {
     if (renewEngine) {
-      await renewEngine.renewQueue();
+      await renewEngine.renewQueue(insertComponentPipeline);
     }
   });
   context.subscriptions.push(renewQueueCmd);
@@ -860,6 +985,375 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
   });
   context.subscriptions.push(jumpPrevCmd);
 
+  // 1-Click Compile & Run
+  const compileAndRunCmd = vscode.commands.registerCommand("dtyp.compileAndRun", async (doc?: vscode.TextDocument) => {
+    await CompilerRunner.compileAndRun(doc);
+  });
+  context.subscriptions.push(compileAndRunCmd);
+
+  // Interactive Pointer & Data Structure Visualizer
+  const visualizeCmd = vscode.commands.registerCommand("dtyp.visualizeComponent", async (node: any) => {
+    let comp: Component | null = null;
+    if (node && node.component) {
+      comp = node.component;
+    } else if (typeof node === "string") {
+      comp = await libraryEngine?.findComponent(node) ?? null;
+      if (!comp && ownLibraryStorage) {
+        const ownComp = ownLibraryStorage.getById(node);
+        if (ownComp) comp = ownLibraryStorage.toComponent(ownComp);
+      }
+    } else {
+      const components = await libraryEngine?.getAllComponents(80) ?? [];
+      const items = components.map((c) => ({
+        label: `${c.name}()`,
+        description: `[${c.category}] ${c.complexity.time}`,
+        detail: c.description,
+        component: c,
+      }));
+      const picked = await vscode.window.showQuickPick(items, {
+        placeHolder: "Select a component to inspect memory & pointer architecture...",
+      });
+      if (picked) comp = picked.component;
+    }
+    if (comp) {
+      VisualizerPanel.show(context.extensionUri, comp, insertComponentPipeline);
+    }
+  });
+  context.subscriptions.push(visualizeCmd);
+
+  // Ghost Code Preview
+  const previewCmd = vscode.commands.registerCommand("dtyp.previewComponent", async (node: any) => {
+    const editor = vscode.window.activeTextEditor;
+    if (!editor) {
+      vscode.window.showWarningMessage("dTyp: Open a C/C++ editor to preview component code.");
+      return;
+    }
+    let comp: Component | null = null;
+    if (node && node.component) {
+      comp = node.component;
+    } else if (typeof node === "string") {
+      comp = await libraryEngine?.findComponent(node) ?? null;
+    }
+    if (comp && ghostPreviewEngine) {
+      ghostPreviewEngine.showPreview(editor, comp.code);
+      vscode.window.setStatusBarMessage(`$(preview) dTyp: Showing ghost preview for "${comp.name}". Press Escape to clear.`, 4000);
+    }
+  });
+  context.subscriptions.push(previewCmd);
+
+  // In-Flight Typing Speed Controls
+  const speedUpCmd = vscode.commands.registerCommand("dtyp.speedUpTyping", () => {
+    autoTypeEngine?.speedUp();
+  });
+  context.subscriptions.push(speedUpCmd);
+
+  const slowDownCmd = vscode.commands.registerCommand("dtyp.slowDownTyping", () => {
+    autoTypeEngine?.slowDown();
+  });
+  context.subscriptions.push(slowDownCmd);
+
+  // Initialize Sanitizer diagnostics collection
+  SanitizerRunner.init(context);
+
+  // 1. Intercept physical typing for Chameleon Ghost-Typing Mode
+  context.subscriptions.push(
+    vscode.commands.registerCommand("type", async (args: { text: string }) => {
+      if (autoTypeEngine?.isChameleonActive() && vscode.window.activeTextEditor) {
+        await autoTypeEngine.stepNextCharacter(vscode.window.activeTextEditor);
+        return;
+      }
+      await vscode.commands.executeCommand("default:type", args);
+    })
+  );
+
+  // 2. Toggle Chameleon Ghost-Typing Mode (Alt+C)
+  const toggleChameleonCmd = vscode.commands.registerCommand("dtyp.toggleChameleonMode", () => {
+    if (!autoTypeEngine) return;
+    const isEnabled = autoTypeEngine.toggleChameleonMode();
+    quickActionsTreeProvider?.refresh();
+    if (isEnabled) {
+      vscode.window.setStatusBarMessage("$(eye) dTyp: Chameleon Ghost-Typing ON (Any key typed advances algorithm)", 4000);
+      vscode.window.showInformationMessage("dTyp: Chameleon Ghost-Typing Mode ON. Mash any keys on your keyboard to type the algorithm!");
+    } else {
+      vscode.window.setStatusBarMessage("$(eye-closed) dTyp: Chameleon Ghost-Typing OFF", 3000);
+      vscode.window.showInformationMessage("dTyp: Chameleon Ghost-Typing Mode OFF");
+    }
+  });
+  context.subscriptions.push(toggleChameleonCmd);
+
+  // 3. Multi-Test Case Sandbox Runner (Ctrl+F6)
+  const runTestCasesCmd = vscode.commands.registerCommand("dtyp.runTestCases", (uri?: vscode.Uri) => {
+    const filePath = uri ? uri.fsPath : vscode.window.activeTextEditor?.document.uri.fsPath;
+    TestRunnerPanel.show(context.extensionUri, filePath);
+  });
+  context.subscriptions.push(runTestCasesCmd);
+
+  // 4. AddressSanitizer & Undefined Behavior Guard (Ctrl+F7)
+  const runSanitizerCmd = vscode.commands.registerCommand("dtyp.runSanitizer", async (doc?: vscode.TextDocument) => {
+    await SanitizerRunner.runSanitizer(doc);
+  });
+  context.subscriptions.push(runSanitizerCmd);
+
+  // 5. 1-Click Academic Modularize & Makefile (dtyp.modularize)
+  const modularizeCmd = vscode.commands.registerCommand("dtyp.modularize", async () => {
+    await AcademicModularizer.execute(vscode.window.activeTextEditor);
+  });
+  context.subscriptions.push(modularizeCmd);
+
+  // 6. Empirical Complexity Benchmarker (dtyp.benchmarkComponent)
+  const benchmarkCmd = vscode.commands.registerCommand("dtyp.benchmarkComponent", async () => {
+    const editor = vscode.window.activeTextEditor;
+    const algoName = editor ? path.basename(editor.document.uri.fsPath, ".c") : "Algorithm";
+    const res = await BenchmarkRunner.benchmark(algoName);
+    vscode.window.showInformationMessage(
+      `⚡ dTyp Benchmark (${res.algorithmName}): Asymptotic Fit: ${res.asymptoticFit} - ${res.fitExplanation}`
+    );
+  });
+  context.subscriptions.push(benchmarkCmd);
+
+  // 7. Interactive Exam Flashcards (dtyp.openFlashcards)
+  const flashcardsCmd = vscode.commands.registerCommand("dtyp.openFlashcards", () => {
+    FlashcardsPanel.show(context.extensionUri);
+  });
+  context.subscriptions.push(flashcardsCmd);
+
+  // 8. Floating On-Screen Stepping HUD (dtyp.toggleSteppingHud)
+  const toggleHudCmd = vscode.commands.registerCommand("dtyp.toggleSteppingHud", () => {
+    if (autoTypeEngine && typingEngine) {
+      HudPanel.show(autoTypeEngine, typingEngine);
+    }
+  });
+  context.subscriptions.push(toggleHudCmd);
+
+  // 9. Inside-VS Code Shortcuts Documentation (dtyp.showShortcuts)
+  const showShortcutsCmd = vscode.commands.registerCommand("dtyp.showShortcuts", async () => {
+    const shortcutsPath = path.join(context.extensionPath, "walkthroughs", "shortcuts.md");
+    if (fs.existsSync(shortcutsPath)) {
+      const uri = vscode.Uri.file(shortcutsPath);
+      await vscode.commands.executeCommand("markdown.showPreview", uri);
+    } else {
+      vscode.window.showInformationMessage(
+        "dTyp Shortcuts: Ctrl+Shift+D (Step) | Alt+C (Chameleon) | Alt+P (Pause/Resume) | Ctrl+Shift+R (Renew) | Ctrl+F5 (Compile & Run) | Ctrl+F6 (Test Sandbox) | Ctrl+F7 (ASan Guard) | Shift+Alt+F (Academic Format) | Ctrl+F8 (Audit) | Ctrl+F9 (Contest Arena)"
+      );
+    }
+  });
+  context.subscriptions.push(showShortcutsCmd);
+
+  // 10. Academic Code Doctor & Formatter (Shift+Alt+F / dtyp.formatAcademic)
+  const formatAcademicCmd = vscode.commands.registerCommand("dtyp.formatAcademic", async () => {
+    await CodeDoctorProvider.formatActiveDocument();
+  });
+  context.subscriptions.push(formatAcademicCmd);
+
+  // 11. Academic Code Doctor Audit (Ctrl+F8 / dtyp.auditCode)
+  const auditCodeCmd = vscode.commands.registerCommand("dtyp.auditCode", () => {
+    if (vscode.window.activeTextEditor) {
+      const issues = CodeDoctorProvider.updateDiagnostics(vscode.window.activeTextEditor.document);
+      if (issues.length === 0) {
+        vscode.window.showInformationMessage("dTyp Code Doctor: No defects detected! Clean academic C code.");
+      } else {
+        vscode.window.showWarningMessage(
+          `dTyp Code Doctor: Found ${issues.length} potential academic defect(s). Check Problems panel.`
+        );
+      }
+    } else {
+      vscode.window.showWarningMessage("dTyp: Open a C/C++ file to audit.");
+    }
+  });
+  context.subscriptions.push(auditCodeCmd);
+
+  // 12. Competitive Programming Contest Scaffolder (Ctrl+F9 / dtyp.scaffoldContest)
+  const scaffoldContestCmd = vscode.commands.registerCommand("dtyp.scaffoldContest", async () => {
+    await ContestScaffolder.scaffold();
+  });
+  context.subscriptions.push(scaffoldContestCmd);
+
+  // 13. Interactive Recursion Tree Visualizer (dtyp.visualizeRecursion)
+  const visualizeRecursionCmd = vscode.commands.registerCommand("dtyp.visualizeRecursion", () => {
+    RecursionVisualizerPanel.show(context.extensionUri);
+  });
+  context.subscriptions.push(visualizeRecursionCmd);
+
+  // 14. Valgrind Deep Leak Profiler (dtyp.runValgrind)
+  const runValgrindCmd = vscode.commands.registerCommand("dtyp.runValgrind", async () => {
+    await ValgrindRunner.run();
+  });
+  context.subscriptions.push(runValgrindCmd);
+
+  // 15. C Typing Speed Drill Arena (dtyp.openTypingDrill)
+  const openTypingDrillCmd = vscode.commands.registerCommand("dtyp.openTypingDrill", () => {
+    TypingDrillPanel.show(context.extensionUri);
+  });
+  context.subscriptions.push(openTypingDrillCmd);
+
+  // 16. Unified Control Center & Master Hub (dtyp.openControlCenter)
+  const openControlCenterCmd = vscode.commands.registerCommand("dtyp.openControlCenter", () => {
+    ControlCenterPanel.show(context);
+  });
+  context.subscriptions.push(openControlCenterCmd);
+
+  // 17. Unified Status Bar Hub Menu (dtyp.openStatusBarMenu)
+  const openStatusBarMenuCmd = vscode.commands.registerCommand("dtyp.openStatusBarMenu", async () => {
+    const config = vscode.workspace.getConfiguration("dtyp");
+    const currentMode = config.get<string>("typingMode", "automatic");
+    const isChameleon = autoTypeEngine?.isChameleonEnabled() ?? false;
+
+    const items = [
+      {
+        label: "$(dashboard) Open Control Center & Master Hub",
+        description: "Full visual flight deck & cheatsheet",
+        command: "dtyp.openControlCenter",
+      },
+      {
+        label: "$(library) Browse Offline C Library (665 Algorithms)",
+        description: "Ctrl+Alt+D",
+        detail: "Hierarchical category tree of all data structures and algorithms",
+        command: "dtyp.browseLibrary",
+      },
+      {
+        label: "$(search) Quick Insert Component (Fuzzy Search)",
+        description: "Ranked search",
+        detail: "Fuzzy search with preview across all 665 components",
+        command: "dtyp.quickInsert",
+      },
+      {
+        label: `$(eye) ${isChameleon ? "Disable" : "Enable"} Chameleon Ghost-Typing Mode`,
+        description: "Alt+C",
+        detail: "Mash any physical keys to advance the queued C algorithm character-by-character",
+        command: "dtyp.toggleChameleonMode",
+      },
+      {
+        label: `$(keyboard) Toggle Typing Mode (Current: ${currentMode})`,
+        description: currentMode === "automatic" ? "Switch to Stealth Manual" : "Switch to Automatic",
+        detail: "Switch between auto humanized typing and stealth step-by-step (Ctrl+Shift+D)",
+        command: "dtyp.toggleTypingMode",
+      },
+      {
+        label: "$(wand) Format Code with Academic Pure Tabs",
+        description: "Shift+Alt+F",
+        detail: "Enforce university standards with pure tabs ('\\t'), operator spacing, and clean braces",
+        command: "dtyp.formatAcademic",
+      },
+      {
+        label: "$(checklist) Audit C Code for Academic Defects",
+        description: "Ctrl+F8",
+        detail: "Check for missing returns in non-void functions, uninitialized pointers, and dead code",
+        command: "dtyp.auditCode",
+      },
+      {
+        label: "$(flame) Scaffold Competitive Programming Arena",
+        description: "Ctrl+F9",
+        detail: "Fast I/O (getchar_unlocked), 64MB bump arena, and automated stress tester",
+        command: "dtyp.scaffoldContest",
+      },
+      {
+        label: "$(play) 1-Click Compile & Run in Terminal",
+        description: "Ctrl+F5 (GCC)",
+        detail: "Compile active file with -Wall -Wextra -std=c11 -O2 and run in terminal",
+        command: "dtyp.compileAndRun",
+      },
+      {
+        label: "$(beaker) Run Multi-Test Case Sandbox",
+        description: "Ctrl+F6",
+        detail: "Multi-case stdin/stdout diff testing with timeout guard",
+        command: "dtyp.runTestCases",
+      },
+      {
+        label: "$(shield) Run AddressSanitizer & UB Guard",
+        description: "Ctrl+F7",
+        detail: "Detect memory corruptions, stack/heap overflows, and undefined behavior",
+        command: "dtyp.runSanitizer",
+      },
+      {
+        label: "$(microscope) Run Valgrind Deep Leak Profiler",
+        description: "Heap leak analyzer",
+        detail: "Compile with -g -O0 and run full Valgrind memory leak check",
+        command: "dtyp.runValgrind",
+      },
+      {
+        label: "$(type-hierarchy-sub) Open Live Recursion Tree Visualizer",
+        description: "Call stack & SVG tree",
+        detail: "Interactive step-by-step recursion tree with activation frame indicators",
+        command: "dtyp.visualizeRecursion",
+      },
+      {
+        label: "$(zap) Open C Typing Speed Drill Arena",
+        description: "TypeRacer for C",
+        detail: "Gamified speed typing challenges with live WPM, CPM, and accuracy gauges",
+        command: "dtyp.openTypingDrill",
+      },
+      {
+        label: "$(mortar-board) Open Exam Flashcards & Cheat Sheet",
+        description: "Recurrences & pointers",
+        detail: "Interactive 3D flippable flashcards for computer science exams",
+        command: "dtyp.openFlashcards",
+      },
+      {
+        label: "$(dashboard) Toggle Live Stepping HUD & WebAudio",
+        description: "Cherry MX Synthesizer",
+        detail: "Floating mini-player with progress scrubber and mechanical keyboard sounds",
+        command: "dtyp.toggleSteppingHud",
+      },
+      {
+        label: "$(package) Modularize into Header, Impl & Makefile",
+        description: "Split .c file",
+        detail: "Decompose into module.h, module.c, main.c, and tab-indented Makefile",
+        command: "dtyp.modularize",
+      },
+      {
+        label: "$(graph) Benchmark Empirical Complexity",
+        description: "Big-O fitting",
+        detail: "Measure empirical runtime across N inputs and fit asymptotic curve",
+        command: "dtyp.benchmarkComponent",
+      },
+      {
+        label: "$(book) Keyboard Shortcuts & Documentation",
+        description: "Master Cheatsheet",
+        detail: "Complete reference table for all dTyp shortcuts and commands",
+        command: "dtyp.showShortcuts",
+      },
+      {
+        label: "$(gear) Configure dTyp Settings...",
+        description: "Extension Preferences",
+        detail: "Speed, jitter, natural model, typo simulation, acoustic switch profile",
+        command: "workbench.action.openSettings",
+        args: ["@ext:1da7b1e6-01f1-6f58-9ef3-d95516c5e875.dtyp-vscode"],
+      },
+      {
+        label: "$(pulse) Diagnostics & System Health Check",
+        description: "Verify SQLite/WASM",
+        detail: "Run database integrity check and verify WASM engine",
+        command: "dtyp.healthCheck",
+      },
+    ];
+
+    const picked = await vscode.window.showQuickPick(items, {
+      placeHolder: "dTyp Master Hub: Select an action, tool, or workspace...",
+      matchOnDescription: true,
+      matchOnDetail: true,
+    });
+
+    if (picked) {
+      if ((picked as any).args) {
+        vscode.commands.executeCommand(picked.command, ...(picked as any).args);
+      } else {
+        vscode.commands.executeCommand(picked.command);
+      }
+    }
+  });
+  context.subscriptions.push(openStatusBarMenuCmd);
+
+  // Configuration change listener for real-time reactivity
+  context.subscriptions.push(
+    vscode.workspace.onDidChangeConfiguration((e) => {
+      if (e.affectsConfiguration("dtyp.enableChameleonMode")) {
+        const enabled = vscode.workspace.getConfiguration("dtyp").get<boolean>("enableChameleonMode", false);
+        autoTypeEngine?.setChameleonMode(enabled);
+        quickActionsTreeProvider?.refresh();
+      }
+    })
+  );
+
   // Check whether to show Release Notes on version upgrade/install
   const lastVersion = context.globalState.get<string>("dtyp.lastVersion");
   const currentVersion = context.extension.packageJSON.version;
@@ -876,7 +1370,7 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
     updateEngine?.checkForUpdates(false).catch(() => {});
   }, 5000);
 
-  logger.info("dTyp Extension v3.0.0 activated successfully with all production engines & views");
+  logger.info("dTyp Extension v4.0.0 activated successfully with all production engines & views");
 }
 
 export function deactivate(): void {

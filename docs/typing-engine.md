@@ -1,4 +1,4 @@
-# dTyp Humanized Typing Engine Specification (v3.2)
+# dTyp Humanized Typing Engine Specification (v4.0)
 
 The dTyp typing engine is a dual-mode, humanized keystroke simulation engine designed for Visual Studio Code. It eliminates abrupt clipboard pasting in favor of realistic, organic character generation that simulates how real programmers type in modern IDEs.
 
@@ -103,3 +103,16 @@ The `TypingScheduler` drives automatic typing by executing the queued `TypingAct
 2. **Granular Undo**: Groups edits into 2–3 character chunks so pressing `Ctrl+Z` undoes a few characters at a time (`dtyp.undoChunkSize`), with the first character opening a fresh undo stop.
 3. **Cursor Relocation Guard**: If the user moves the cursor manually while typing, the engine immediately pauses and offers a prompt to resume or realign.
 4. **Tab-Switch Guard**: If the user switches editor tabs while typing, the engine pauses immediately to prevent code corruption in other files.
+
+### H. Chameleon Ghost-Typing Mode (`Alt+C`)
+When Chameleon Mode is toggled via <kbd>Alt+C</kbd> (`dtyp.toggleChameleonMode`), typing is hijacked into stealth ghost-typing mode:
+- Every physical key struck by the programmer emits the exact next character, block expansion, or delimiter step-over from the queued algorithm.
+- Allows authentic natural physical hand movement during live coding exams, technical interviews, or presentations with zero chance of syntax mistakes.
+
+### I. Biomechanical Cadence & False Starts Engine
+- **Hand Alternation & Physical Proximity**: Evaluates keyboard row transitions, hand alternation (left hand vs right hand), and finger reach distance to modulate inter-key latency.
+- **False Starts & Rethinking Simulation (`dtyp.enableFalseStarts`)**: Realistically simulates programmer hesitation by occasionally typing 2–4 characters of an alternative approach, pausing to "rethink", deleting them with backspaces, and typing the true token sequence.
+
+### J. Academic Formatting Styles & Pure Tabs
+- Format active code or inserted snippets with university-grade pure tabs (`\t`).
+- Supports **K&R**, **Allman** (braces on dedicated newline at outer indent), and **GNU** bracket styles via `dtyp.academicBraceStyle`.

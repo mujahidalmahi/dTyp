@@ -22,6 +22,14 @@ export class HeaderEngine {
     { header: "pthread.h", pattern: /\b(pthread_create|pthread_join|pthread_mutex_t|pthread_mutex_lock|pthread_mutex_unlock|pthread_t)\b/, desc: "POSIX threads" },
     { header: "fcntl.h", pattern: /\b(O_RDONLY|O_WRONLY|O_RDWR|O_CREAT|O_TRUNC|O_APPEND)\b/, desc: "File control options" },
     { header: "windows.h", pattern: /\b(HANDLE|DWORD|HINSTANCE|HWND|CreateThread|CloseHandle)\b/, desc: "Windows API" },
+    // C++ Standard Library Headers
+    { header: "iostream", pattern: /\b(std::cout|std::cin|std::endl|cout|cin|endl)\b/, desc: "C++ I/O streams" },
+    { header: "vector", pattern: /\b(std::vector|vector<)\b/, desc: "C++ Dynamic array" },
+    { header: "string", pattern: /\b(std::string|string\s+\w+)\b/, desc: "C++ String" },
+    { header: "algorithm", pattern: /\b(std::sort|std::find|std::reverse|std::min|std::max)\b/, desc: "C++ Algorithms" },
+    { header: "memory", pattern: /\b(std::make_unique|std::make_shared|std::unique_ptr|std::shared_ptr)\b/, desc: "C++ Smart pointers" },
+    { header: "queue", pattern: /\b(std::queue|std::priority_queue)\b/, desc: "C++ Queue & Heap" },
+    { header: "stack", pattern: /\b(std::stack)\b/, desc: "C++ Stack" },
   ];
 
   public static getExistingHeaders(documentText: string): Set<string> {
@@ -58,7 +66,8 @@ export class HeaderEngine {
 
     if (missing.length === 0) return [];
 
-    const includeBlock = missing.map((h) => `#include <${h}>`).join("\n") + "\n";
+    // Always guarantee double newline (\n\n) after headers to separate from subsequent code!
+    const includeBlock = missing.map((h) => `#include <${h}>`).join("\n") + "\n\n";
     const initialText = document.getText();
     const wasEmpty = initialText.trim().length === 0;
 
@@ -67,7 +76,8 @@ export class HeaderEngine {
     });
 
     if (wasEmpty) {
-      // If document was empty, place cursor on line below injected headers
+      // If document was empty, place cursor on line below injected headers + blank line
+      // missing.length header lines + 1 blank line = line missing.length + 1
       const newPos = new vscode.Position(missing.length + 1, 0);
       editor.selection = new vscode.Selection(newPos, newPos);
     }

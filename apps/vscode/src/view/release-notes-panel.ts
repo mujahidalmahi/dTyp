@@ -17,7 +17,7 @@ export class ReleaseNotesPanel {
 
     const panel = vscode.window.createWebviewPanel(
       "dtyp.releaseNotes",
-      "What's New in dTyp v3.2",
+      "What's New in dTyp v4.0",
       column || vscode.ViewColumn.One,
       {
         enableScripts: true,
@@ -88,7 +88,7 @@ export class ReleaseNotesPanel {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>What's New in dTyp v3.2</title>
+  <title>What's New in dTyp v4.0</title>
   <style>
     :root {
       --bg: var(--vscode-editor-background);
@@ -292,16 +292,16 @@ export class ReleaseNotesPanel {
     <div class="brand">
       <div class="brand-badge">dTyp_</div>
       <div class="title-group">
-        <h1>Welcome to dTyp v3.2</h1>
-        <p>Offline Academic C Library & Automated Stealth Typing Assistant</p>
+        <h1>Welcome to dTyp v4.0</h1>
+        <p>Offline Academic C Library &amp; World-Class Development Ecosystem</p>
       </div>
     </div>
-    <span class="version-tag">v3.2.0 Production Release</span>
+    <span class="version-tag">v4.0.0 Flagship Release</span>
   </div>
 
   <div class="actions">
     <button class="btn-primary" onclick="sendMessage('browseLibrary')">
-      <span>📚</span> Browse Library (500)
+      <span>📚</span> Browse Library (665)
     </button>
     <button class="btn-secondary" onclick="sendMessage('openWalkthrough')">
       <span>🎓</span> Open Interactive Walkthrough
@@ -317,43 +317,61 @@ export class ReleaseNotesPanel {
     </button>
   </div>
 
-  <div class="section-title">✨ What's New in Version 3.2.0</div>
+  <div class="section-title">🌟 What's New in Version 4.0.0</div>
 
   <div class="grid">
     <div class="card">
+      <div class="card-icon">🎛️</div>
+      <h3>Unified Control Center &amp; Master Hub</h3>
+      <p>A mission control cockpit bringing all 15 super-dimensions, live status gauges, interactive cheatsheet, and quick action controls into one unified dashboard.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🩺</div>
+      <h3>Academic Code Doctor &amp; Pure Tab Formatter</h3>
+      <p>Strict university indentation with pure tabs (<kbd>\t</kbd>), clean binary operator spacing, and AST auditing for missing returns, wild pointers, and dead code.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🏆</div>
+      <h3>CP Contest Arena &amp; Stress Tester</h3>
+      <p>Competition-ready boilerplate with <code>getchar_unlocked</code> fast I/O (~5x faster), 64MB bump arena allocator, and automated differential stress testing.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🌳</div>
+      <h3>Live Recursion Tree Visualizer</h3>
+      <p>Interactive SVG recursion tree with call stack frames, step scrubbers, and duplicate subproblem highlights for Fibonacci, Hanoi, MergeSort, and Trees.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🔬</div>
+      <h3>Integrated Valgrind Deep Leak Profiler</h3>
+      <p>Native Linux &amp; WSL Valgrind integration compiling with debug symbols to parse definitely/indirectly lost bytes and map allocation stack traces.</p>
+    </div>
+
+    <div class="card">
       <div class="card-icon">⚡</div>
-      <h3>Smart Block Auto-Expansion (enter_block)</h3>
-      <p>Native VS Code <code>onEnterRules</code> simulation. Typing <code>{</code> creates the 3-line scaffold with cursor placed at column 4. Closing brace waits on line 3 with <b>zero sideways brace movement</b>.</p>
+      <h3>C Typing Speed Drill Arena ("TypeRacer for C")</h3>
+      <p>Gamified drill arena with 5 classic C algorithmic challenges, real-time keystroke accuracy, WPM/CPM gauges, and high score tracking.</p>
     </div>
 
     <div class="card">
-      <div class="card-icon">🧠</div>
-      <h3>Universal Non-Sequential Coding</h3>
-      <p>Drafts code skeleton-first like a real programmer: function signature and return anchors scaffolded first, jumping above return (<code>landmark: "above_return"</code>) and pairing resource cleanups (<code>above_free</code>).</p>
-    </div>
-
-    <div class="card">
-      <div class="card-icon">📁</div>
-      <h3>Own Library Component Creator</h3>
-      <p>Dedicated Activity Bar view (<code>dtyp.ownLibraryView</code>), interactive form with 10 text fields, global JSON persistence, full CRUD, and export/import integration.</p>
-    </div>
-
-    <div class="card">
-      <div class="card-icon">⌨️</div>
-      <h3>Natural Typing Kinetics & Typos</h3>
-      <p>Delayed-recognition typo bursts (overshoot &rarr; pause &rarr; 2x backspace &rarr; correct), operator whitespace rhythm, comma parameter pauses, and post-statement breathing breaks.</p>
-    </div>
-
-    <div class="card">
-      <div class="card-icon">📚</div>
-      <h3>500 Curated C Components (Zero Comments)</h3>
-      <p>Completely bloat-free offline library across 7 structured domains inside an embedded SQLite WebAssembly database.</p>
+      <div class="card-icon">🦎</div>
+      <h3>Chameleon Ghost-Typing Mode (Alt+C)</h3>
+      <p>Press any physical key on your keyboard to advance the queued algorithm character-by-character with realistic cadence and zero machine artifacts.</p>
     </div>
 
     <div class="card">
       <div class="card-icon">🛡️</div>
-      <h3>Dual Modes & Edge-Case Guards</h3>
-      <p>Automatic streaming and stealth manual stepping (<kbd>Ctrl+Shift+D</kbd>) with cursor relocation pause and tab-switch guards.</p>
+      <h3>AddressSanitizer &amp; Undefined Behavior Guard</h3>
+      <p>Compile with <code>-fsanitize=address,undefined</code> and translate cryptic ASan traces into plain-English student explanations and inline editor squiggles.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🧪</div>
+      <h3>Multi-Test Case Sandbox Runner (Ctrl+F6)</h3>
+      <p>Side-by-side stdin/stdout diff tester with timeout guard, pre-loaded algorithmic suites, and pass/fail/TLE status indicators.</p>
     </div>
   </div>
 
@@ -372,6 +390,21 @@ export class ReleaseNotesPanel {
         <td><b>Step Next Character</b> (Stealth Typing)</td>
         <td><kbd>Ctrl+Shift+D</kbd></td>
         <td>Editor has queued characters in Manual mode</td>
+      </tr>
+      <tr>
+        <td><b>Pause / Resume Typing</b></td>
+        <td><kbd>Alt+P</kbd></td>
+        <td>While typing is active or queue is non-empty</td>
+      </tr>
+      <tr>
+        <td><b>Renew Typing Queue</b></td>
+        <td><kbd>Ctrl+Shift+R</kbd></td>
+        <td>While typing is active or recent insertion exists</td>
+      </tr>
+      <tr>
+        <td><b>Rewind Step (Undo Character)</b></td>
+        <td><kbd>Ctrl+Shift+U</kbd></td>
+        <td>Manual stepping mode with active queue</td>
       </tr>
       <tr>
         <td><b>Browse Offline Library</b></td>

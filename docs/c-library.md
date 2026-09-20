@@ -1,8 +1,8 @@
-# dTyp Academic C Library & Database Guide (v3.2)
+# dTyp Academic C Library & Database Guide (v4.0)
 
 ## 1. Overview
 
-The dTyp C Library is an offline-first collection of **500 production-grade academic C components** and 1,492 structured snippets spanning 7 canonical computer science domains and 361 categories, augmented in v3.2 by user-defined components in the **Own Library**.
+The dTyp C Library is an offline-first collection of **665 production-grade academic C components** and 1,492 structured snippets spanning 7 canonical computer science domains and 361 categories, augmented in v4.0 by user-defined components in the **Own Library**.
 
 Every built-in component strictly enforces the **Zero-Comments Invariant** (100% verified, 0 comments) for clean, academic-grade code.
 
@@ -16,11 +16,11 @@ The library is compiled into an indexed SQLite WebAssembly database (`dtyp.db`) 
 
 | Domain | Category Code | Component Count | Highlights |
 |---|---|---|---|
-| **Boiler Plates** | `boiler-plates` | 64 | Standard entry points, argument parsers (`getopt`), REPL shells, file I/O, arenas, test runners |
-| **Data Structures** | `data-structures` | 126 | Singly, doubly, circular linked lists; stacks; queues; deques; BST, AVL, segment trees; binary heaps; hash tables |
-| **Algorithms** | `algorithms` | 120 | Sorting (Quick, Merge, Heap, Tim), searching, graph traversals (BFS, DFS, Dijkstra, Prim), dynamic programming |
-| **Competitive Programming** | `competitive-programming` | 50 | Fast I/O buffers (`getchar_unlocked`), modular arithmetic, prime sieves, Fenwick trees (BIT), LCA binary lifting |
-| **Academics Programming** | `academics-programming` | 46 | Discrete truth tables, numerical methods (Gauss-Jordan, LU, Newton-Raphson, Runge-Kutta RK4/RK45), physics |
+| **Boiler Plates** | `boiler-plates` | 103 | Standard entry points, argument parsers (`getopt`), REPL shells, file I/O, arenas, test runners |
+| **Data Structures** | `data-structures` | 178 | Singly, doubly, circular linked lists; stacks; queues; deques; BST, AVL, segment trees; binary heaps; hash tables |
+| **Algorithms** | `algorithms` | 164 | Sorting (Quick, Merge, Heap, Tim), searching, graph traversals (BFS, DFS, Dijkstra, Prim), dynamic programming |
+| **Competitive Programming** | `competitive-programming` | 70 | Fast I/O buffers (`getchar_unlocked`), modular arithmetic, prime sieves, Fenwick trees (BIT), LCA binary lifting |
+| **Academics Programming** | `academics-programming` | 56 | Discrete truth tables, numerical methods (Gauss-Jordan, LU, Newton-Raphson, Runge-Kutta RK4/RK45), physics |
 | **Projects** | `projects` | 30 | Standalone compilable systems: micro UNIX shell, HTTP parser, event loop, JSON parser, custom allocator, key-value store |
 | **Detection** | `detection` | 64 | Algorithmic detection: Floyd's/Brent's cycle detection, graph cycles, palindromes, bipartiteness, overflow, endianness |
 | **Own Library** | `own-library` | User-defined | Private code snippets, lab solutions, and custom algorithms with full typing and header support |
