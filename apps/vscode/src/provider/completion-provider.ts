@@ -1,9 +1,13 @@
 import * as vscode from "vscode";
 import { DefaultLibraryEngine } from "@dtyp/library-engine";
 import { CommandParser } from "../parser/command-parser.js";
+import { OwnLibraryStorage } from "../engine/own-library-storage.js";
 
 export class DTypCompletionProvider implements vscode.CompletionItemProvider {
-  constructor(private libraryEngine: DefaultLibraryEngine) {}
+  constructor(
+    private libraryEngine: DefaultLibraryEngine,
+    private ownLibraryStorage?: OwnLibraryStorage
+  ) {}
 
   public async provideCompletionItems(
     document: vscode.TextDocument,
@@ -31,6 +35,35 @@ export class DTypCompletionProvider implements vscode.CompletionItemProvider {
 
     const items: vscode.CompletionItem[] = [];
 
+    // Handle Own Library category path e.g. "own>" or "own-library>"
+    if (this.ownLibraryStorage && (normalizedCat === "own" || normalizedCat === "own-library")) {
+      const ownComps = this.ownLibraryStorage.getAllAsComponents();
+      const filtered = filterQuery
+        ? ownComps.filter((c) => c.name.toLowerCase().includes(filterQuery))
+        : ownComps;
+
+      for (const comp of filtered.slice(0, 50)) {
+        const item = new vscode.CompletionItem(
+          `${comp.name}()`,
+          vscode.CompletionItemKind.Function
+        );
+        item.detail = `${comp.signature} (Own Library)`;
+        item.documentation = new vscode.MarkdownString(
+          `### ${comp.name} *(Own Library)*\n\n${comp.description}\n\n\`\`\`c\n${comp.code}\n\`\`\``
+        );
+        item.command = {
+          command: "dtyp.insertComponentById",
+          title: "Insert Component",
+          arguments: [comp.id],
+        };
+        const startChar = position.character - (hasTrailingGt ? 0 : filterQuery.length);
+        item.range = new vscode.Range(position.line, startChar, position.line, position.character);
+        item.sortText = `0_${comp.name}`;
+        items.push(item);
+      }
+      return items;
+    }
+
     // 1. Check for child subcategories to allow fluent hierarchical drilling
     const matchedCategory = await this.libraryEngine.findCategoryByPath(normalizedCat);
     if (matchedCategory) {
@@ -57,6 +90,14 @@ export class DTypCompletionProvider implements vscode.CompletionItemProvider {
     if (components.length === 0) {
       // Try searching by path prefix
       components = await this.libraryEngine.search(normalizedCat, 100);
+    }
+
+    // Also include own library components if query matches
+    if (this.ownLibraryStorage && filterQuery) {
+      const ownMatches = this.ownLibraryStorage
+        .getAllAsComponents()
+        .filter((c) => c.name.toLowerCase().includes(filterQuery) || c.id.toLowerCase().includes(filterQuery));
+      components.push(...ownMatches);
     }
 
     // Filter by query if present

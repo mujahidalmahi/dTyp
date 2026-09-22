@@ -6,6 +6,10 @@ export interface DuplicateCheckResult {
   reason?: string;
 }
 
+function escapeRegex(str: string): string {
+  return str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
 export class DuplicateDetector {
   private logger = defaultLogger.child("DuplicateDetector");
 
@@ -14,7 +18,8 @@ export class DuplicateDetector {
    */
   public hasFunction(source: string, functionName: string): boolean {
     if (!source || !functionName) return false;
-    const regex = new RegExp(`\\b${functionName}\\s*\\(`, "m");
+    const safeName = escapeRegex(functionName);
+    const regex = new RegExp(`\\b${safeName}\\s*\\(`, "m");
     return regex.test(source);
   }
 
@@ -23,7 +28,8 @@ export class DuplicateDetector {
    */
   public hasFunctionDefinition(source: string, functionName: string): boolean {
     if (!source || !functionName) return false;
-    const regex = new RegExp(`\\b${functionName}\\s*\\([^;{]*\\)\\s*\\{`, "m");
+    const safeName = escapeRegex(functionName);
+    const regex = new RegExp(`\\b${safeName}\\s*\\([^;{]*\\)\\s*\\{`, "m");
     return regex.test(source);
   }
 
@@ -32,7 +38,8 @@ export class DuplicateDetector {
    */
   public hasStruct(source: string, structName: string): boolean {
     if (!source || !structName) return false;
-    const regex = new RegExp(`\\bstruct\\s+${structName}\\b`, "m");
+    const safeName = escapeRegex(structName);
+    const regex = new RegExp(`\\bstruct\\s+${safeName}\\b`, "m");
     return regex.test(source);
   }
 
@@ -41,7 +48,8 @@ export class DuplicateDetector {
    */
   public hasTypedef(source: string, typeName: string): boolean {
     if (!source || !typeName) return false;
-    const regex = new RegExp(`\\btypedef\\b[^;]*\\b${typeName}\\s*;`, "m");
+    const safeName = escapeRegex(typeName);
+    const regex = new RegExp(`\\btypedef\\b[^;]*\\b${safeName}\\s*;`, "m");
     return regex.test(source);
   }
 
@@ -50,7 +58,8 @@ export class DuplicateDetector {
    */
   public hasMacro(source: string, macroName: string): boolean {
     if (!source || !macroName) return false;
-    const regex = new RegExp(`^\\s*#\\s*define\\s+${macroName}\\b`, "m");
+    const safeName = escapeRegex(macroName);
+    const regex = new RegExp(`^\\s*#\\s*define\\s+${safeName}\\b`, "m");
     return regex.test(source);
   }
 
@@ -59,7 +68,8 @@ export class DuplicateDetector {
    */
   public hasEnum(source: string, enumName: string): boolean {
     if (!source || !enumName) return false;
-    const regex = new RegExp(`\\benum\\s+${enumName}\\b`, "m");
+    const safeName = escapeRegex(enumName);
+    const regex = new RegExp(`\\benum\\s+${safeName}\\b`, "m");
     return regex.test(source);
   }
 
@@ -68,6 +78,11 @@ export class DuplicateDetector {
    */
   public checkComponent(source: string, component: Component): DuplicateCheckResult {
     if (!source || source.trim().length === 0) {
+      return { isDuplicate: false };
+    }
+
+    // Custom user components from Own Library should never be suppressed
+    if (component.isCustom) {
       return { isDuplicate: false };
     }
 

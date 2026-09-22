@@ -122,7 +122,7 @@ export class OwnLibraryTreeProvider
       vscode.TreeItemCollapsibleState.None
     );
     item.id = `own_comp_${comp.id}`;
-    item.description = `${comp.type} • ${comp.subTopic}`;
+    item.description = `${comp.type || "snippet"} • ${comp.subTopic || comp.topic || "Custom"}`;
 
     let icon = "symbol-method";
     if (comp.type === "struct") icon = "symbol-structure";
@@ -137,8 +137,8 @@ export class OwnLibraryTreeProvider
     if (comp.description) {
       md.appendMarkdown(`${comp.description}\n\n`);
     }
-    md.appendMarkdown(`**Hierarchy:** \`Own Library\` -> \`${comp.subDomain}\` -> \`${comp.topic || "General"}\` -> \`${comp.subTopic}\`\n\n`);
-    md.appendMarkdown(`**Type:** \`${comp.type}\` | **Signature:** \`${comp.signature}\`\n\n`);
+    md.appendMarkdown(`**Hierarchy:** \`Own Library\` -> \`${comp.subDomain || "General"}\` -> \`${comp.topic || "General"}\` -> \`${comp.subTopic || "Custom"}\`\n\n`);
+    md.appendMarkdown(`**Type:** \`${comp.type || "snippet"}\` | **Signature:** \`${comp.signature || comp.name}\`\n\n`);
     if (comp.tags && comp.tags.length > 0) {
       md.appendMarkdown(`**Tags:** ${comp.tags.map((t) => `\`${t}\``).join(", ")}\n\n`);
     }
@@ -167,35 +167,49 @@ export class OwnLibraryTreeProvider
     }
 
     if (!element) {
+      // If library has 6 or fewer components, display them directly at the root for immediate 1-click access
+      if (all.length <= 6) {
+        return all.map((c) => new OwnComponentNode(c));
+      }
+
       // Root: list subDomains
       const subDomains = this.storage.getSubDomains();
       return subDomains.map((sd) => {
-        const count = all.filter((c) => c.subDomain === sd).length;
+        const count = all.filter((c) => (c.subDomain || "General") === sd).length;
         return new SubDomainNode(sd, count);
       });
     }
 
     if (element.kind === "subDomain") {
+      const compsInDomain = all.filter((c) => (c.subDomain || "General") === element.subDomain);
+      if (compsInDomain.length <= 4) {
+        return compsInDomain.map((c) => new OwnComponentNode(c));
+      }
+
       // List topics within subDomain
       const topics = this.storage.getTopics(element.subDomain);
       return topics.map((t) => {
         const count = all.filter(
-          (c) => c.subDomain === element.subDomain && (c.topic || "General") === t
+          (c) => (c.subDomain || "General") === element.subDomain && (c.topic || "General") === t
         ).length;
         return new TopicNode(element.subDomain, t, count);
       });
     }
 
     if (element.kind === "topic") {
+      const compsInTopic = all.filter(
+        (c) =>
+          (c.subDomain || "General") === element.subDomain &&
+          (c.topic || "General") === element.topic
+      );
+      if (compsInTopic.length <= 3) {
+        return compsInTopic.map((c) => new OwnComponentNode(c));
+      }
+
       // List subTopics within subDomain and topic
       const subTopics = this.storage.getSubTopics(element.subDomain, element.topic);
       return subTopics.map((st) => {
-        const count = all.filter(
-          (c) =>
-            c.subDomain === element.subDomain &&
-            (c.topic || "General") === element.topic &&
-            c.subTopic === st
-        ).length;
+        const count = compsInTopic.filter((c) => (c.subTopic || "Custom") === st).length;
         return new SubTopicNode(element.subDomain, element.topic, st, count);
       });
     }

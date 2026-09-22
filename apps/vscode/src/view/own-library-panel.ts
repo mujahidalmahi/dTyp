@@ -465,8 +465,8 @@ void my_component(void) {
         e.preventDefault();
         const start = this.selectionStart;
         const end = this.selectionEnd;
-        this.value = this.value.substring(0, start) + "    " + this.value.substring(end);
-        this.selectionStart = this.selectionEnd = start + 4;
+        this.value = this.value.substring(0, start) + "\t" + this.value.substring(end);
+        this.selectionStart = this.selectionEnd = start + 1;
         updateCounts();
       }
     });

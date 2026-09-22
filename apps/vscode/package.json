@@ -473,22 +473,22 @@
       {
         "command": "dtyp.runTestCases",
         "key": "ctrl+f6",
-        "when": "editorTextFocus && (resourceExtname == .c || resourceExtname == .cpp)"
+        "when": "editorTextFocus && (resourceExtname == .c || resourceExtname == .cpp || editorLangId == c || editorLangId == cpp)"
       },
       {
         "command": "dtyp.runSanitizer",
         "key": "ctrl+f7",
-        "when": "editorTextFocus && (resourceExtname == .c || resourceExtname == .cpp)"
+        "when": "editorTextFocus && (resourceExtname == .c || resourceExtname == .cpp || editorLangId == c || editorLangId == cpp)"
       },
       {
         "command": "dtyp.formatAcademic",
         "key": "shift+alt+f",
-        "when": "editorTextFocus && (resourceExtname == .c || resourceExtname == .cpp)"
+        "when": "editorTextFocus && (resourceExtname == .c || resourceExtname == .cpp || editorLangId == c || editorLangId == cpp)"
       },
       {
         "command": "dtyp.auditCode",
         "key": "ctrl+f8",
-        "when": "editorTextFocus && (resourceExtname == .c || resourceExtname == .cpp)"
+        "when": "editorTextFocus && (resourceExtname == .c || resourceExtname == .cpp || editorLangId == c || editorLangId == cpp)"
       },
       {
         "command": "dtyp.scaffoldContest",

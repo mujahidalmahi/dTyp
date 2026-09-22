@@ -49,7 +49,7 @@ export interface QuickPickBrowserOptions {
   libraryEngine: DefaultLibraryEngine;
   sessionEngine?: SessionEngine;
   ownLibraryStorage?: OwnLibraryStorage;
-  onInsert?: (componentId: string) => Promise<void>;
+  onInsert?: (componentId: string, modeOverride?: "automatic" | "manual", options?: { force?: boolean }) => Promise<void>;
   onFavoriteChanged?: () => void;
 }
 
@@ -142,7 +142,8 @@ export class HierarchicalQuickPickBrowser {
       } else if (selected.itemType === "component") {
         this.quickPick.hide();
         if (this.options.onInsert) {
-          await this.options.onInsert(selected.component.id);
+          const isCustom = selected.component?.isCustom;
+          await this.options.onInsert(selected.component.id, undefined, { force: isCustom });
         }
       }
     });
@@ -267,11 +268,17 @@ export class HierarchicalQuickPickBrowser {
       const subDomains = storage.getSubDomains();
       const breadcrumb = "Own Library";
       this.quickPick.title = `dTyp: ${breadcrumb}`;
-      this.quickPick.placeholder = "Select a Sub Domain in Own Library...";
+      this.quickPick.placeholder = "Select a component or Sub Domain in Own Library...";
 
       if (all.length === 0) {
         vscode.window.showInformationMessage("Your Own Library is empty! Click [+] in the sidebar to create one.");
         this.renderComponents([]);
+        return;
+      }
+
+      // If library has 12 or fewer components, list them directly for instant access
+      if (all.length <= 12) {
+        this.renderComponents(storage.getAllAsComponents(), true);
         return;
       }
 
@@ -284,7 +291,7 @@ export class HierarchicalQuickPickBrowser {
           parentCategory: currentCat,
         },
         ...subDomains.map((sd): BrowserQuickPickItem => {
-          const count = all.filter((c) => c.subDomain === sd).length;
+          const count = all.filter((c) => (c.subDomain || "General") === sd).length;
           return {
             itemType: "category",
             label: `$(folder-library) ${sd}`,
@@ -309,12 +316,17 @@ export class HierarchicalQuickPickBrowser {
 
     if (currentCat.id.startsWith("own_sd_")) {
       const subDomain = currentCat.name;
-      const subTopics = storage.getSubTopics(subDomain);
-      const compsInSd = all.filter((c) => c.subDomain === subDomain);
+      const compsInSd = all.filter((c) => (c.subDomain || "General") === subDomain);
 
       this.quickPick.title = `dTyp: Own Library > ${subDomain}`;
-      this.quickPick.placeholder = `Select a Sub Topic in ${subDomain}...`;
+      this.quickPick.placeholder = `Select a component in ${subDomain}...`;
 
+      if (compsInSd.length <= 10) {
+        this.renderComponents(compsInSd.map((c) => storage.toComponent(c)), true);
+        return;
+      }
+
+      const subTopics = storage.getSubTopics(subDomain);
       const items: BrowserQuickPickItem[] = [
         {
           itemType: "view_all",
@@ -324,7 +336,7 @@ export class HierarchicalQuickPickBrowser {
           parentCategory: currentCat,
         },
         ...subTopics.map((st): BrowserQuickPickItem => {
-          const count = compsInSd.filter((c) => c.subTopic === st).length;
+          const count = compsInSd.filter((c) => (c.subTopic || "Custom") === st).length;
           return {
             itemType: "category",
             label: `$(list-tree) ${st}`,

@@ -2,6 +2,7 @@ import * as vscode from "vscode";
 import * as fs from "node:fs";
 import * as path from "node:path";
 import { Component, ComponentType } from "@dtyp/types";
+import { AcademicFormatter } from "../command/code-doctor.js";
 
 export interface OwnComponentInput {
   subDomain?: string;
@@ -169,6 +170,9 @@ export class OwnLibraryStorage {
     const signature = (input.signature && input.signature.trim()) ? input.signature.trim() : `${type} ${name}`;
     const description = (input.description && input.description.trim()) ? input.description.trim() : `User custom component: ${name}`;
 
+    // Standardize code formatting with pure tabs and nested block rules
+    const formattedCode = AcademicFormatter.format(input.code, "kr");
+
     const component: OwnComponent = {
       id,
       category: "Own Library",
@@ -181,7 +185,7 @@ export class OwnLibraryStorage {
       description,
       tags: this.normalizeArray(input.tags),
       aliases: this.normalizeArray(input.aliases),
-      code: input.code,
+      code: formattedCode,
       createdAt: now,
       updatedAt: now,
       isCustom: true,
@@ -200,6 +204,10 @@ export class OwnLibraryStorage {
       throw new Error("Code content cannot be empty.");
     }
 
+    const updatedCode = input.code !== undefined
+      ? AcademicFormatter.format(input.code, "kr")
+      : existing.code;
+
     const updated: OwnComponent = {
       ...existing,
       subDomain: input.subDomain !== undefined && input.subDomain.trim() ? input.subDomain.trim() : existing.subDomain,
@@ -211,7 +219,7 @@ export class OwnLibraryStorage {
       description: input.description !== undefined ? input.description.trim() : existing.description,
       tags: input.tags !== undefined ? this.normalizeArray(input.tags) : existing.tags,
       aliases: input.aliases !== undefined ? this.normalizeArray(input.aliases) : existing.aliases,
-      code: input.code !== undefined ? input.code : existing.code,
+      code: updatedCode,
       updatedAt: Date.now(),
     };
 
@@ -244,7 +252,7 @@ export class OwnLibraryStorage {
   public getSubDomains(): string[] {
     const set = new Set<string>();
     for (const item of this.items.values()) {
-      set.add(item.subDomain);
+      set.add(item.subDomain || "General");
     }
     return Array.from(set).sort();
   }
@@ -252,7 +260,7 @@ export class OwnLibraryStorage {
   public getTopics(subDomain?: string): string[] {
     const set = new Set<string>();
     for (const item of this.items.values()) {
-      if (!subDomain || item.subDomain.toLowerCase() === subDomain.toLowerCase()) {
+      if (!subDomain || (item.subDomain || "General").toLowerCase() === subDomain.toLowerCase()) {
         set.add(item.topic || "General");
       }
     }
@@ -262,30 +270,36 @@ export class OwnLibraryStorage {
   public getSubTopics(subDomain?: string, topic?: string): string[] {
     const set = new Set<string>();
     for (const item of this.items.values()) {
-      const matchDomain = !subDomain || item.subDomain.toLowerCase() === subDomain.toLowerCase();
+      const matchDomain = !subDomain || (item.subDomain || "General").toLowerCase() === subDomain.toLowerCase();
       const matchTopic = !topic || (item.topic || "General").toLowerCase() === topic.toLowerCase();
       if (matchDomain && matchTopic) {
-        set.add(item.subTopic);
+        set.add(item.subTopic || "Custom");
       }
     }
     return Array.from(set).sort();
   }
 
   public getByHierarchy(subDomain: string, topic: string, subTopic: string): OwnComponent[] {
+    const sdTarget = (subDomain || "General").toLowerCase();
+    const tTarget = (topic || "General").toLowerCase();
+    const stTarget = (subTopic || "Custom").toLowerCase();
     return this.getAll().filter(
       (c) =>
-        c.subDomain.toLowerCase() === subDomain.toLowerCase() &&
-        (c.topic || "General").toLowerCase() === topic.toLowerCase() &&
-        c.subTopic.toLowerCase() === subTopic.toLowerCase()
+        (c.subDomain || "General").toLowerCase() === sdTarget &&
+        (c.topic || "General").toLowerCase() === tTarget &&
+        (c.subTopic || "Custom").toLowerCase() === stTarget
     );
   }
 
   public getBySubDomainAndTopic(subDomain: string, subTopic: string): OwnComponent[] {
-    return this.getAll().filter(
-      (c) =>
-        c.subDomain.toLowerCase() === subDomain.toLowerCase() &&
-        (c.subTopic.toLowerCase() === subTopic.toLowerCase() || (c.topic || "").toLowerCase() === subTopic.toLowerCase())
-    );
+    const sdTarget = (subDomain || "General").toLowerCase();
+    const stTarget = (subTopic || "").toLowerCase();
+    return this.getAll().filter((c) => {
+      const cSd = (c.subDomain || "General").toLowerCase();
+      const cSt = (c.subTopic || "Custom").toLowerCase();
+      const cT = (c.topic || "General").toLowerCase();
+      return cSd === sdTarget && (cSt === stTarget || cT === stTarget);
+    });
   }
 
   public exportToJson(): string {
@@ -392,5 +406,24 @@ export class OwnLibraryStorage {
 
   public getAllAsComponents(): Component[] {
     return this.getAll().map((c) => this.toComponent(c));
+  }
+
+  public searchComponents(query: string): Component[] {
+    const q = query.toLowerCase().trim();
+    if (!q) return this.getAllAsComponents();
+    return this.getAll()
+      .filter((c) => {
+        return (
+          c.name.toLowerCase().includes(q) ||
+          c.description.toLowerCase().includes(q) ||
+          (c.subDomain && c.subDomain.toLowerCase().includes(q)) ||
+          (c.topic && c.topic.toLowerCase().includes(q)) ||
+          (c.subTopic && c.subTopic.toLowerCase().includes(q)) ||
+          (c.tags && c.tags.some((t) => t.toLowerCase().includes(q))) ||
+          (c.aliases && c.aliases.some((a) => a.toLowerCase().includes(q))) ||
+          (c.code && c.code.toLowerCase().includes(q))
+        );
+      })
+      .map((c) => this.toComponent(c));
   }
 }

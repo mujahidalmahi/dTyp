@@ -295,7 +295,7 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
   // Providers
   const completionProvider = vscode.languages.registerCompletionItemProvider(
     ["c", "cpp"],
-    new DTypCompletionProvider(libraryEngine),
+    new DTypCompletionProvider(libraryEngine, ownLibraryStorage ?? undefined),
     ">"
   );
   context.subscriptions.push(completionProvider);
@@ -329,21 +329,32 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
 
     ghostPreviewEngine?.clearPreview();
 
-    let comp = await libraryEngine.findComponent(componentId);
+    let comp: Component | null | undefined;
     let componentsToInsert: Component[] = [];
 
-    if (!comp && ownLibraryStorage) {
+    if (componentId.startsWith("own_") && ownLibraryStorage) {
       const ownComp = ownLibraryStorage.getById(componentId);
       if (ownComp) {
         comp = ownLibraryStorage.toComponent(ownComp);
         componentsToInsert = [comp];
       }
-    } else if (comp) {
-      try {
-        componentsToInsert = await libraryEngine.getDependencies(componentId);
-      } catch (err: any) {
-        vscode.window.showErrorMessage(`Dependency resolution error: ${err.message}`);
-        return;
+    }
+
+    if (!comp) {
+      comp = await libraryEngine.findComponent(componentId);
+      if (comp) {
+        try {
+          componentsToInsert = await libraryEngine.getDependencies(componentId);
+        } catch (err: any) {
+          vscode.window.showErrorMessage(`Dependency resolution error: ${err.message}`);
+          return;
+        }
+      } else if (ownLibraryStorage) {
+        const ownComp = ownLibraryStorage.getById(componentId);
+        if (ownComp) {
+          comp = ownLibraryStorage.toComponent(ownComp);
+          componentsToInsert = [comp];
+        }
       }
     }
 
@@ -353,7 +364,7 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
     }
 
     const config = vscode.workspace.getConfiguration("dtyp");
-    const checkDuplicates = !options?.force && config.get<boolean>("checkDuplicates", true);
+    const checkDuplicates = !options?.force && !comp.isCustom && config.get<boolean>("checkDuplicates", true);
 
     if (checkDuplicates) {
       const currentDocText = editor.document.getText();
@@ -373,7 +384,9 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
       return;
     }
 
-    const fullText = componentsToInsert.map((c) => c.code).join("\n\n") + "\n";
+    let fullText = componentsToInsert.map((c) => c.code).join("\n\n") + "\n";
+    const academicBraceStyle = config.get<"kr" | "allman">("academicBraceStyle", "kr");
+    fullText = AcademicFormatter.format(fullText, academicBraceStyle);
 
     const autoIncludeHeaders = config.get<boolean>("autoIncludeHeaders", true);
     if (autoIncludeHeaders) {
@@ -465,8 +478,10 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
       } as vscode.QuickPickItem & { componentId: string; component: Component };
     };
 
-    // Preload top components so user doesn't see a blank list
-    const initialComps = await libraryEngine.getAllComponents(35);
+    // Preload top components (combining Own Library + standard library) so user doesn't see a blank list
+    const ownComps = ownLibraryStorage ? ownLibraryStorage.getAllAsComponents() : [];
+    const dbComps = await libraryEngine.getAllComponents(35);
+    const initialComps = [...ownComps, ...dbComps].slice(0, 35);
     quickPick.items = initialComps.map((c) => buildItem(c));
 
     quickPick.onDidChangeValue(async (value) => {
@@ -475,8 +490,11 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
         return;
       }
       quickPick.busy = true;
+      const ownMatches = ownLibraryStorage ? ownLibraryStorage.searchComponents(value) : [];
       const scored = await searchEngine!.search(value, 35);
-      quickPick.items = scored.map((s) => buildItem(s.component, s.score));
+      const dbItems = scored.map((s) => buildItem(s.component, s.score));
+      const ownItems = ownMatches.map((c) => buildItem(c, 100));
+      quickPick.items = [...ownItems, ...dbItems].slice(0, 35);
       quickPick.busy = false;
     });
 
@@ -516,7 +534,8 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
       const selectedItem = quickPick.selectedItems[0] as any;
       quickPick.hide();
       if (selectedItem && selectedItem.componentId) {
-        await insertComponentPipeline(selectedItem.componentId);
+        const isCustom = selectedItem.component?.isCustom;
+        await insertComponentPipeline(selectedItem.componentId, undefined, { force: isCustom });
       }
     });
 
@@ -619,7 +638,7 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
     OwnLibraryPanel.show(context, ownLibraryStorage, undefined, async (comp, autoInsert) => {
       ownLibraryTreeProvider?.refresh();
       if (autoInsert) {
-        await insertComponentPipeline(comp.id);
+        await insertComponentPipeline(comp.id, undefined, { force: true });
       }
     });
   });
@@ -637,7 +656,7 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
       OwnLibraryPanel.show(context, ownLibraryStorage, compId, async (comp, autoInsert) => {
         ownLibraryTreeProvider?.refresh();
         if (autoInsert) {
-          await insertComponentPipeline(comp.id);
+          await insertComponentPipeline(comp.id, undefined, { force: true });
         }
       });
     }
@@ -679,7 +698,7 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
       compId = arg.component.id;
     }
     if (compId) {
-      await insertComponentPipeline(compId);
+      await insertComponentPipeline(compId, undefined, { force: true });
     }
   });
   context.subscriptions.push(insertOwnCompCmd);
